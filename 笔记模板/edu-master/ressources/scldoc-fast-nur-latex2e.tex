@@ -1,0 +1,6034 @@
+%% skrapport Skånings rapportklass
+%%
+%% Copyright (C) 2012-2013 by Simon Sigurdhsson <sigurdhsson@gmail.com>
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Simon Sigurdhsson.
+%% 
+%% This work consists of the file skrapport.tex and the derived files:
+%%  * skrapport.cls
+%%  * skrapport-colortheme-default.sty
+%%  * skrapport-colortheme-unscathed.sty
+%%  * skrapport-colortheme-violet.sty
+%%  * skrapport-colortheme-cruelwater.sty
+%%  * skrapport-colortheme-skdoc.sty
+%%  * skrapport-size-common.sty
+%%  * skrapport-size10pt.clo
+%%  * skrapport-size11pt.clo
+%%  * skrapport-size12pt.clo
+\documentclass{skdoc}
+
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc} 
+
+\usepackage{ngerman}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{cancel}
+\usepackage{esvect}
+\usepackage{etoolbox}
+\usepackage{eurosym}
+\usepackage{geometry}
+\usepackage[notcomma, notperiod, notquote, notquery]{hanging}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{polynom}
+\usepackage{tabularx}
+\usepackage{tikz}
+%\usepackage{ulsy}
+\usepackage{units}
+\usepackage[only, lightning]{stmaryrd}
+\usepackage[newcommands]{ragged2e}
+\usepackage{hyperref}
+
+
+\let\SI\relax
+\usepackage{siunitx}
+\DeclareSIUnit\point{pt}
+\usepackage{hologo,booktabs,xcoffins,calc}
+\usepackage[style=authoryear]{biblatex}
+\usepackage{csquotes}
+\usepackage{varioref,cleveref}
+%\usepackage{chslacite}
+
+\ExplSyntaxOn
+\cs_set_protected_nopar:Npn\ExplHack{
+    \char_set_catcode_letter:n{ 58 }
+    \char_set_catcode_letter:n{ 95 }
+}
+\ExplSyntaxOff
+
+% Hide the implementation
+\OnlyDescription
+
+% Bibliography entries
+%\begin{filecontents}{skrapport.bib}
+%    @article{kpfonts,
+%        author = {Christophe Caignaert},
+%        title = {KP-Fonts 3.31},
+%        year = {2010},
+%        url = {http://www.tex.ac.uk/tex-archive/fonts/kpfonts/doc/kpfonts.pdf}
+%    }
+%    @standard{ISO216,
+%        title = {ISO 216:2007},
+%        subtitle = {Writing paper and certain classes of printed matter -- Trimmed sizes -- A and B series, and indication of machine direction},
+%        author = {{International Organization for Standardization, Technical Committee 6}},
+%        year = {2007}
+%    }
+%    @standard{ISO8601,
+%        title = {ISO 8601:2004},
+%        subtitle = {Data elements and interchange formats -- Information interchange -- Representation of dates and times},
+%        author = {{International Organization for Standardization, Technical Committee 154}},
+%        year = {2004}
+%    }
+%\end{filecontents}
+%\addbibresource{skrapport.bib}
+
+% Declare the target files
+\SelfPreambleTo{\mypreamble}
+\DeclareFile[key=class,preamble=\mypreamble]{scldoc.cls}
+%\DeclareFile[key=class,preamble=\mypreamble]{skrapport.cls}
+
+
+
+
+% This is where the documentation begins
+
+
+\begin{document}
+% Change & version info
+\version{0.1}
+\changes{0.1}{Initial version}
+
+% Metadata
+\package[ctan=scldoc,vcs=https://github.com/wunderlich]{scldoc}
+\title{The \textbf{\thepackage} document class}
+\author{Daniel Wunderlich}
+\email{latex@wu-web.de}
+
+% First page
+\maketitle
+\begin{abstract}
+Die Dokumentenklasse \thepackage\ dient der Erstellung von Arbeitsblättern, Klassenarbeiten bzw. Klausuren und ähnlichen Dokumenten für Bildungseinrichtungen. Sie lädt gängige Packages, erlaubt eine erleichterte Einrichtung von Arbeitsblättern (Schriftarten, Seitenränder, etc.), definiert u.\,A. passende Kopf- und Fußzeilen und stellt komfortable Makros und Umgebungen zum Satz von Aufgaben zur Verfügung. Ein Schwerpunkt liegt hierbei im Satz mathematischer Aufgaben.
+\end{abstract}
+\tableofcontents
+
+\section{Einleitung}
+
+Das Erstellen von Arbeitsblättern oder Klassenarbeiten/Klausuren für Lehrende mit \LaTeX\ Standard-Dokumentenklassen erweißt sich je nach Anspruch als umständliches Unterfangen. Diese Dokumentenklasse stellt eine Vielzahl von Funktionen zur Verfügung, die das effiziente Erstellen solcher Dokumente ermöglicht. Sie erlaubt außerdem das komfortable Ändern gängiger \LaTeX{}-Optionen, die in diesem Kontext relevant sind.
+
+Hierzu erweitert \pkg{scldoc} die herausragende Dokumentenklasse \pkg{scrartcl} des \emph{KOMA-Scripts} von \textsc{Michael Kohm} \cite{koma} um die gewünschte Funktionalität und passt entsprechende Parameter (nach Meinung des Autors) sinnvoll an. Außerdem werden in diesem Kontext häufig verwendete Packages geladen und konfiguriert.
+
+% Abschnitt~\ref{verwendung} dieser Dokumentation stellt neben den neuen Befehlen der \textsf{scldoc}-Klasse auch viele der geladenen und dem Benutzer eventuell unbekannte Packages vor, welche für Lehrende von Interesse sein könnten und erläutert deren grundlegende Verwendung. Die Funktionen dieser Packages werden in den meisten Fällen jedoch nur angeschnitten -- bei Interesse empfiehlt sich ein Blick in die jeweiligen Dokumentationen. Auch grundlegende Aspekte von \LaTeX\ und Typographie im Allgemeinen werden an wenigen Stellen thematisiert. Ein Beispieldokument, welches die Funktionalität der Dokumentenklasse in deutscher Sprache demonstriert, stellt |scldoc-demo-de.sty| mit dem zugehörigen PDF |scldoc-demo-de.pdf| dar.
+%
+% Die Implementierung des Packages in Abschnitt~\ref{implementierung} enthällt den Code der Klasse und ist im Allgemeinen nur für Autoren von Klassen oder Packages interessant. Benutzer können diesen Abschnitt im Normalfall vernachlässigen.
+
+\section{Voraussetzungen}
+
+Die \textsf{scldoc}-Klasse benötigt die Dokumentenklasse \textsf{scrartcl} des \emph{KOMA-Scripts} und die folgenden Packages:
+
+
+\begin{multicols}{5}
+{\sffamily 
+\noindent amsmath\\
+amssymb\\
+amsthm\\
+bibgerm\\
+booktabs\\
+boxedminipage\\
+calc\\
+cancel\\
+ccicons\\
+enumitem\\
+environ\\
+esvect\\
+etoolbox\\
+eurosym\\
+expdlist\\
+fancybox\\
+forloop\\
+gauss\\
+geometry\\
+graphicx\\
+hanging\\
+hyperref\\
+lastpage\\
+lato*\\
+listings\\
+multicol\\
+multirow\\
+pdflscape\\
+pifont\\
+polynom\\
+rotating\\
+ragged2e\\
+scrpage2\\
+setspace\\
+siunitx\\
+subfig\\
+tabularx\\
+% thmbox\\
+thmtools\\
+tikz\\
+titlesec\\
+% ulsy\\
+units\\
+stmaryrd\\
+xcolor\\
+xspace}
+\end{multicols}
+\noindent\textsf{* optional}
+ 
+\medskip
+Alle Packages sollten in den Standard-Repositorys unter Windows über MiKTeX und unter Linux über die Paketverwaltung der jeweiligen Distribution verfügbar sein. Ausnahme bildet \pkg{lato}, welches z.\,B. unter Ubuntu 12.04 (noch) nicht in den Repositorys vorhanden ist.
+
+
+\section{Installation}
+ 
+Die manuelle Installation von Packages bzw. Dokumentenklassen wird an vielen Stellen im Internet erläutert. Deshalb wird sie hier nur sehr kompakt beschrieben. Bei Problemen bieten diverse Websiten Hilfestellung.
+ 
+\subsection{Linux (Ubuntu 12.04/Linux Mint 13)}
+
+\begin{enumerate}
+  \item Per Kommandozeile in den Ordner navigieren, indem sich die heruntergeladene Datei \verb+scldoc.cls+ befindet.
+  \item Einen Ordner für die Dokumentenklasse im \TeX-Verzeichnisbaum erstellen:
+  \begin{verbatim}
+sudo mkdir /usr/share/texmf/tex/latex/scldoc
+  \end{verbatim}\vspace{-\baselineskip}
+  \item Nun wird die Datei \verb+scldoc.cls+ in den neuen Ordner kopiert:
+  \begin{verbatim}
+sudo cp scldoc.cls /usr/share/texmf/tex/latex/scldoc/
+  \end{verbatim}\vspace{-\baselineskip}
+    \item Abschließend muss der \TeX-Verzeichnisbaum neu aufgebaut werden:
+  \begin{verbatim}
+sudo mktexlsr
+  \end{verbatim}\vspace{-\baselineskip}
+\end{enumerate}
+
+ 
+\subsection{Windows\,7}
+
+\begin{enumerate}
+  \item Bei einer Standardinstalltion von MiKTeX~2.9 unter Windows\,7 zuerst den Ordner
+  \begin{verbatim}
+C:\Program Files (x86)\MiKTeX 2.9\tex\latex\scldoc
+  \end{verbatim}
+  \vspace{-\baselineskip}
+  erstellen.
+  \item Dann die Datei \verb+scldoc.cls+ in diesen Ordner verschieben.
+  \item Das Programm \verb+Settings+ von MiKTeX öffnen:
+  \begin{center}
+    \itshape Startmenü $\rightarrow$ Alle Programme $\rightarrow$ MiKTeX 2.9 $\rightarrow$ Maintenance $\rightarrow$ Settings
+  \end{center}
+  \item Über die Schaltfläche \emph{Refresh~FNDB} wird die neue Datei eingelesen.
+ \end{enumerate}
+
+
+\Implementation\ExplHack
+
+\section{Implementation}
+
+\subsection{Optionen}
+
+Die folgenden Packages werden zur Erstellung und Bearbeitung der Optionen verwendet:
+
+\begin{MacroCode}{class}
+\RequirePackage{expl3, l3keys2e}
+
+\RequirePackage{ifthen}
+\RequirePackage[patch]{kvoptions}
+
+\end{MacroCode}
+
+Im Folgenden werden die Optionen nach Kategorie deklariert:
+
+\subsubsection{Schriftarten}
+
+\begin{option}{rmfont}
+\begin{option}{sffont}
+\begin{option}{ttfont}
+\begin{option}{sfdefault}
+\begin{option}{beramono}
+\begin{option}{lato}
+\begin{option}{palatino}
+\begin{option}{sourcecodepro}
+\begin{option}{sourcesanspro}
+
+Options for fonts:
+
+\begin{MacroCode}{class}
+
+\DeclareStringOption[cmr]{rmfont}        % name of the roman font
+\DeclareStringOption[cmss]{sffont}       % name of the sans-serif font
+\DeclareStringOption[cmtt]{ttfont}       % name of the sans-serif font
+
+\DeclareBoolOption[false]{sfdefault}     % sans-serif als familydefault
+
+\DeclareBoolOption[true]{beramono}       % use Bera Mono as typewriter
+\DeclareBoolOption[false]{lato}          % use lato as sans-serif (same as sffont=fla)
+\DeclareBoolOption[true]{palatino}       % use mathpazo
+\DeclareBoolOption[false]{sourcecodepro} % use Source Code Pro
+\DeclareBoolOption[true]{sourcesanspro}  % use Source Sans Pro
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+\subsubsection{Schriftgröße}
+
+
+\begin{option}{fontsize}
+\begin{option}{transparencyfontsize}
+\begin{MacroCode}{class}
+\DeclareStringOption[]{fontsize}                  % Fontsize
+\DeclareStringOption[20pt]{transparencyfontsize}  % Fontsize for transparency
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+\subsubsection{Special options}
+
+
+\begin{option}{twoup}
+\begin{option}{transparency}
+\begin{MacroCode}{class}
+\DeclareBoolOption[false]{twoup}              % Print at A5-paper
+\DeclareBoolOption[false]{transparency}       % Print at transparency
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+
+\subsubsection{Paragraph highlighting}
+
+\begin{option}{parindent}
+\begin{option}{parskip}
+\begin{MacroCode}{class}
+\DeclareBoolOption[false]{parindent}            % Enable/disable parindent
+\DeclareBoolOption[true]{parskip}            	  % Enable/disable parskip
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+\subsubsection{Margins -- normal mode}
+
+\begin{option}{top}
+\begin{option}{right}
+\begin{option}{bottom}
+\begin{option}{left}
+\begin{MacroCode}{class}
+\DeclareStringOption[15mm]{top}               % Top margin
+\DeclareStringOption[15mm]{right}             % Right margin
+\DeclareStringOption[15mm]{bottom}            % Bottom margin
+\DeclareStringOption[15mm]{left}              % Left margin
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+\subsubsection{Margins -- twoup mode}
+
+\begin{option}{twouptop}
+\begin{option}{twoupright}
+\begin{option}{twoupbottom}
+\begin{option}{twoupleft}
+\begin{MacroCode}{class}
+\DeclareStringOption[20mm]{twouptop}          % Top margin A5-print
+\DeclareStringOption[20mm]{twoupright}        % Right margin A5-print
+\DeclareStringOption[20mm]{twoupbottom}       % Bottom margin A5-print
+\DeclareStringOption[20mm]{twoupleft}         % Left margin A5-print
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+\subsubsection{Margins -- transparency mode}
+
+\begin{option}{transparencytop}
+\begin{option}{transparencyright}
+\begin{option}{transparencybottom}
+\begin{option}{transparencyleft}
+\begin{MacroCode}{class}
+\DeclareStringOption[10mm]{transparencytop}       % Top margin A5-print
+\DeclareStringOption[10mm]{transparencyright}     % Right margin A5-print
+\DeclareStringOption[10mm]{transparencybottom}    % Bottom margin A5-print
+\DeclareStringOption[15mm]{transparencyleft}      % Left margin A5-print
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+\subsubsection{Parts}
+
+\begin{option}{parts}
+Set part as topmost structure.
+\begin{MacroCode}{class}
+
+\DeclareBoolOption[false]{parts}  						% Set part as topmost structure element
+
+\end{MacroCode}
+\end{option}
+
+
+\subsubsection{Lists}
+
+\begin{option}{listarraysep}
+\begin{option}{listarraymargin}
+These options affect to lists and arrays:
+\begin{MacroCode}{class}
+\DeclareStringOption[0.5em]{listarraysep}     % Space between label and content
+\DeclareStringOption[0.25em]{listarraymargin} % Left margin
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+
+\subsubsection{Metadata}
+
+\begin{option}{author}
+\begin{option}{class}
+\begin{option}{date}
+\begin{option}{email}
+\begin{option}{field}
+\begin{option}{group}
+\begin{option}{license}
+\begin{option}{subject}
+\begin{option}{topic}
+\begin{option}{version}
+Options for metadata like author, date etc.
+\begin{MacroCode}{class}
+\DeclareStringOption{author}
+\DeclareStringOption{class}
+\DeclareStringOption{date}
+\DeclareStringOption{email}
+\DeclareStringOption{field}
+\DeclareStringOption{group}
+\DeclareStringOption{license}
+\DeclareStringOption{subject}
+\DeclareStringOption{topic}
+\DeclareStringOption{version}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+\begin{option}{authorstyle}
+\begin{option}{classstyle}
+\begin{option}{datestyle}
+\begin{option}{emailstyle}
+\begin{option}{fieldstyle}
+\begin{option}{groupstyle}
+\begin{option}{licensestyle}
+\begin{option}{subjectstyle}
+\begin{option}{topicstyle}
+\begin{option}{versionstyle}
+Styles of metadata:
+\begin{MacroCode}{class}
+\DeclareStringOption[\large\sffamily\scshape]{authorstyle}   % Style of subtitle
+\DeclareStringOption[\large\sffamily]{classstyle}   % Style of subtitle
+\DeclareStringOption[\small\sffamily]{datestyle}   % Style of subtitle
+\DeclareStringOption[\footnotesize\sffamily]{emailstyle}   % Style of subtitle
+\DeclareStringOption[\large\sffamily]{fieldstyle}   % Style of subtitle
+\DeclareStringOption[\Large\sffamily\bfseries]{groupstyle}   % Style of subtitle
+\DeclareStringOption[\small\sffamily]{licensestyle}   % Style of subtitle
+\DeclareStringOption[\large\sffamily]{subjectstyle}   % Style of subtitle
+\DeclareStringOption[\Large\sffamily\bfseries]{subtitlestyle}   % Style of subtitle
+\DeclareStringOption[\LARGE\sffamily\bfseries]{titlestyle}   		% Style of title
+\DeclareStringOption[\small\sffamily]{versionstyle}   		% Style of title
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+\subsubsection{Title}
+
+
+\begin{option}{titleskip}
+\begin{option}{titlefg}
+\begin{option}{titlebg}
+\begin{option}{groupfg}
+\begin{option}{groupbg}
+Options of title:
+\begin{MacroCode}{class}
+\DeclareStringOption[7ex]{titleskip}         % Style of title
+
+\DeclareStringOption[black]{titlefg}         % Foreground-color of title
+\DeclareStringOption[white]{titlebg}         % Background-color of title
+
+\DeclareStringOption[white]{groupfg}         % Foreground-color of group
+\DeclareStringOption[black]{groupbg}         % Background-color of group
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+\subsubsection{Header and Footer}
+
+\begin{option}{headerrulewidth}
+\begin{option}{footer}
+\begin{option}{pagecount}
+\begin{option}{footskip}
+\begin{option}{twoupfootskip}
+Options of header and footer:
+\begin{MacroCode}{class}
+\DeclareStringOption[0.5pt]{headerrulewidth} % Width of header rule
+
+\DeclareBoolOption[true]{footer}             % Enable/disable footer
+\DeclareBoolOption[true]{pagecount}          % Enable/disable pagecount at footer
+
+\DeclareStringOption[1.0cm]{footskip}        % Skip to first baseline of  footer
+\DeclareStringOption[0.75cm]{twoupfootskip}  % Skip to first baseline of  footer in twoup-mode
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+\subsubsection{Inhaltsverzeichnis}
+
+
+\begin{option}{exetoc}
+Options of toc:
+\begin{MacroCode}{class}
+\DeclareBoolOption[false]{exetoc}			% Add (sub)exercises and (sub)solutions to toc?
+
+\end{MacroCode}
+\end{option}
+
+
+
+\subsubsection{Aufzählungen, Nummerierungen}
+
+\begin{option}{itemizefg}
+\begin{option}{enumeratefg}
+\begin{option}{descriptionfg}
+Options of lists:
+\begin{MacroCode}{class}
+\DeclareStringOption[black]{itemizefg}	      % Color of itemize-labels
+\DeclareStringOption[black]{enumeratefg}	    % Color of enumerate-labels
+\DeclareStringOption[black]{descriptionfg}  	% Color of description-labels
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+
+\subsubsection{Parts, Überschriften, Unterüberschriften}
+
+\begin{option}{partnumbersize}
+\begin{option}{sectionnumbersize}
+\begin{option}{subsectionnumbersize}
+Sizes of sections:
+\begin{MacroCode}{class}
+\DeclareStringOption[\Large]{partnumbersize}   			% Size of part numbers
+\DeclareStringOption[\normalsize]{sectionnumbersize}   		% Size of section numbers
+\DeclareStringOption[\footnotesize]{subsectionnumbersize}   	% Size of subsection numbers
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+
+
+\begin{option}{partnumberfg}
+\begin{option}{partnumberbg}
+\begin{option}{partfg}
+\begin{option}{sectionnumberfg}
+\begin{option}{sectionnumberbg}
+\begin{option}{sectionfg}
+\begin{option}{subsectionnumberfg}
+\begin{option}{subsectionnumberbg}
+\begin{option}{subsectionfg}
+Styles of sections:
+\begin{MacroCode}{class}
+\DeclareStringOption[white]{partnumberfg}        % Foreground color of part numbers
+\DeclareStringOption[black]{partnumberbg}        % Background color of part numbers
+\DeclareStringOption[black]{partfg}              % Foreground color of parts
+
+\DeclareStringOption[white]{sectionnumberfg}     % Foreground color of section numbers
+\DeclareStringOption[black]{sectionnumberbg}     % Background color of section numbers
+\DeclareStringOption[black]{sectionfg}           % Foreground color of sections
+
+\DeclareStringOption[white]{subsectionnumberfg}  % Foreground color of subsection numbers
+\DeclareStringOption[black]{subsectionnumberbg}  % Background color of subsection numbers
+\DeclareStringOption[black]{subsectionfg}        % Foreground color of subsection
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+\subsubsection{Hyperref}
+
+\begin{option}{colorlinks}
+\begin{option}{linkfg}
+\begin{option}{linkborderfg}
+Options of hyperrefs:
+\begin{MacroCode}{class}
+\DeclareBoolOption[true]{colorlinks}					% Use colorlinks or framed links
+\DeclareStringOption[black]{linkfg}						% Foreground color of all kinds of links
+\DeclareStringOption[{1 0 0}]{linkborderfg}		% Color of all kind of link-borders
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+
+
+\subsubsection{Siehe Abschnitt, siehe Abbildung, etc.}
+
+\begin{option}{seelabel}
+\begin{option}{seeexerciselabel}
+\begin{option}{seefigurelabel}
+\begin{option}{seelistinglabel}
+\begin{option}{seesectionlabel}
+\begin{option}{seesolutionlabel}
+\begin{option}{seelabelsep}
+\begin{option}{seerefsep}
+\begin{option}{seeleft}
+\begin{option}{seeright}
+Options \cs{see}-commands:
+\begin{MacroCode}{class}
+\DeclareStringOption[s.]{seelabel} 							% Label of 'see'
+
+\DeclareStringOption[Aufg.]{seeexerciselabel}   	% Label of 'exercise'
+\DeclareStringOption[Abb.]{seefigurelabel} 			% Label of 'figure'
+\DeclareStringOption[List.]{seelistinglabel} 		% Label of 'listing'
+\DeclareStringOption[Abschn.]{seesectionlabel} 	% Label of 'section'
+\DeclareStringOption[L\"os.]{seesolutionlabel}  % Label of 'solution'
+
+\DeclareStringOption[\,]{seelabelsep}           % First seperator of 'see'
+\DeclareStringOption[\,]{seerefsep} 							% Second seperator of 'see'
+
+\DeclareStringOption[(]{seeleft} 								% Left delimiter of 'see'
+\DeclareStringOption[)]{seeright} 							  % Right delimiter of 'see'
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+\subsubsection{Aufgaben angeben: S.\,X, Nr.\,Y}
+
+\begin{option}{pglabel}
+\begin{option}{nolabel}
+Options exercise references (in books):
+\begin{MacroCode}{class}
+\DeclareStringOption[S.]{pglabel}    % Label of Page in 'pgno'
+\DeclareStringOption[Nr.]{nolabel}   % Label of Page in 'pgno'
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+
+\subsubsection{Formatierungen}
+
+\begin{option}{cemphfg}
+Formatting options:
+\begin{MacroCode}{class}
+\DeclareStringOption[wuSemiDarkRed]{cemphfg} 			% Color of cemph
+
+\end{MacroCode}
+\end{option}
+
+
+\subsubsection{Symbole}
+
+\begin{option}{ccscale}
+\begin{option}{actionfg}
+\begin{option}{speechfg}
+Various options of symbols:
+\begin{MacroCode}{class}
+\DeclareStringOption[1.5]{ccscale} 			% Scaling Creative Commons Icons
+
+\DeclareStringOption[black]{actionfg}    % Color of action-symbol
+\DeclareStringOption[black]{speechfg}    % Color of speech-symbol
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+
+
+\subsubsection{Themes}
+
+\begin{option}{colortheme}
+\begin{option}{styletheme}
+Option of color- and styletheme:
+\begin{MacroCode}{class}
+\DeclareStringOption[]{colortheme} 				% Color-Theme
+\DeclareStringOption[]{styletheme} 				% Style-Theme
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+
+\subsubsection{Grafik}
+
+\begin{option}{graphicspath}
+\begin{option}{tikzpath}
+Options of graphics:
+\begin{MacroCode}{class}
+\DeclareStringOption[img/]{graphicspath}	    % Path to images
+\DeclareStringOption[tikz/]{tikzpath}				% Path to tikz-files (for tikz)
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+
+\subsubsection{Mathematik}
+
+\begin{option}{commasep}
+\begin{option}{amsoptions}
+\begin{option}{thm}
+Basic math options:
+\begin{MacroCode}{class}
+\DeclareBoolOption[true]{commasep}           % Comma as separator
+\DeclareStringOption[intlimits]{amsoptions}  % Pass options to amsmath-package
+
+\DeclareBoolOption[true]{thm}                % Load predefined theorems of the given style
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+
+
+\begin{option}{thmlabelfg}
+\begin{option}{thmframestyle}
+\begin{option}{thmframefg}
+\begin{option}{thmframebg}
+Basic style options of theorem-like environments:
+\begin{MacroCode}{class}
+\DeclareStringOption[black]{thmlabelfg}              % Color of theorem labels
+
+\DeclareStringOption[shadeframecolor]{thmframestyle} % Style of framed theorems.
+\DeclareStringOption[wuDarkerGray]{thmframefg}       % Color of framed theorem frame.
+\DeclareStringOption[wuLightGray]{thmframebg}        % Color of framed theorem background.
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+\begin{option}{thmimpheadstyle}
+\begin{option}{thmimpnotestyle}
+\begin{option}{thmimpbodystyle}
+Style of important theorems:
+\begin{MacroCode}{class}
+\DeclareStringOption[\sffamily\bfseries]{thmimpheadstyle}  % Style of heads.
+\DeclareStringOption[\sffamily\bfseries]{thmimpnotestyle}  % Style of notes.
+\DeclareStringOption[]{thmimpbodystyle}                    % Style of bodies.
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+
+
+\begin{option}{thmimpheadstyle}
+\begin{option}{thmimpnotestyle}
+\begin{option}{thmimpbodystyle}
+Style of unimportant theorems:
+\begin{MacroCode}{class}
+\DeclareStringOption[\sffamily\bfseries]{thmunimpheadstyle}  % Style of heads.
+\DeclareStringOption[\sffamily]{thmunimpnotestyle}           % Style of notes.
+\DeclareStringOption[]{thmunimpbodystyle}                    % Style of bodies.
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+
+\begin{option}{thmdefinitionlabel}
+\begin{option}{thmdefitheolabel}
+\begin{option}{thmexamplelabel}
+\begin{option}{thmexampleexelabel}
+\begin{option}{thmhintlabel}
+\begin{option}{thmremarklabel}
+\begin{option}{thmsolutionlabel}
+\begin{option}{thmtheoremlabel}
+Labels of theorems:
+\begin{MacroCode}{class}
+\DeclareStringOption[Definition]{thmdefinitionlabel}       % Label for definitions.
+\DeclareStringOption[Definition/Satz]{thmdefitheolabel}    % Label for definitions/theorems.
+\DeclareStringOption[Beispiel]{thmexamplelabel}            % Label for examples.
+\DeclareStringOption[Beispielaufgabe]{thmexampleexelabel}  % Label for example exercises.
+\DeclareStringOption[Hinweis]{thmhintlabel}                % Label for hints.
+\DeclareStringOption[Bemerkung]{thmremarklabel}            % Label for remarks.
+\DeclareStringOption[L\"osung]{thmsolutionlabel}           % Label for solutions.
+\DeclareStringOption[Satz]{thmtheoremlabel}                % Label for theorems.
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+\subsubsection{Informatik}
+
+\begin{option}{lstnumberfg}
+\begin{option}{lstkeywordfg}
+\begin{option}{lstrulefg}
+Options of listings:
+\begin{MacroCode}{class}
+\DeclareStringOption[black]{lstnumberfg}	    % Color of listing numbers.
+\DeclareStringOption[black]{lstkeywordfg}   % Color of listing keywords.
+\DeclareStringOption[gray]{lstrulefg}       % Color of listing frame.
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+
+
+\subsubsection{Aufgaben}
+
+\begin{option}{exelabel}
+\begin{option}{subexelabel}
+Labels of (sub-)exercises:
+\begin{MacroCode}{class}
+\DeclareStringOption[Aufgabe]{exelabel}
+\DeclareStringOption[]{subexelabel}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+\begin{option}{exenumberstyle}
+\begin{option}{exenumberseparator}
+\begin{option}{exelabelstyle}
+\begin{option}{exestyle}
+\begin{option}{exepointsstyle}
+Style of exercises:
+\begin{MacroCode}{class}
+\DeclareStringOption[\footnotesize]{exenumberstyle}
+\DeclareStringOption[.]{exenumberseparator}
+\DeclareStringOption[\large\bfseries\sffamily]{exelabelstyle}
+\DeclareStringOption[\large\sffamily]{exestyle}
+\DeclareStringOption[\small\bfseries\sffamily]{exepointsstyle}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+\begin{option}{exenumberfg}
+\begin{option}{exenumberbg}
+\begin{option}{exefg}
+\begin{option}{exebg}
+\begin{option}{exepointsfg}
+Colors of exercises:
+\begin{MacroCode}{class}
+\DeclareStringOption[white]{exenumberfg}
+\DeclareStringOption[black]{exenumberbg}
+\DeclareStringOption[black]{exefg}
+\DeclareStringOption[white]{exebg}
+\DeclareStringOption[black]{exepointsfg}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+\begin{option}{subexenumberstyle}
+\begin{option}{subexenumberseparator}
+\begin{option}{subexelabelstyle}
+\begin{option}{subexestyle}
+\begin{option}{subexepointsstyle}
+Style of subexercises:
+\begin{MacroCode}{class}
+\DeclareStringOption[\scriptsize]{subexenumberstyle}
+\DeclareStringOption[]{subexenumberseparator}
+\DeclareStringOption[\bfseries\sffamily]{subexelabelstyle}
+\DeclareStringOption[\sffamily]{subexestyle}
+\DeclareStringOption[\scriptsize\bfseries\sffamily]{subexepointsstyle}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+\begin{option}{subexenumberfg}
+\begin{option}{subexenumberbg}
+\begin{option}{subexefg}
+\begin{option}{subexebg}
+\begin{option}{subexepointsfg}
+Colors of subexercises:
+\begin{MacroCode}{class}
+\DeclareStringOption[white]{subexenumberfg}
+\DeclareStringOption[black]{subexenumberbg}
+\DeclareStringOption[black]{subexefg}
+\DeclareStringOption[white]{subexebg}
+\DeclareStringOption[black]{subexepointsfg}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+\begin{option}{exebeforeskip}
+\begin{option}{exeafterskip}
+\begin{option}{subexebeforeskip}
+\begin{option}{subexeafterskip}
+\begin{option}{arraybeforeskip}
+\begin{option}{arrayafterskip}
+Skips before and after (sub-)exercises:
+\begin{MacroCode}{class}
+\DeclareStringOption[2.25ex]{exebeforeskip}
+\DeclareStringOption[0.5ex]{exeafterskip}
+
+\DeclareStringOption[1.5ex]{subexebeforeskip}
+\DeclareStringOption[0.5ex]{subexeafterskip}
+
+% Skip before and after multiexearray optically corrected
+\DeclareStringOption[0.5\baselineskip]{arraybeforeskip}
+\DeclareStringOption[0.2\baselineskip]{arrayafterskip}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+\begin{option}{multiexestyle}
+\begin{option}{multiexepointslabel}
+Style of multiexe-environments:
+\begin{MacroCode}{class}
+\DeclareStringOption[]{multiexenumberstyle}
+\DeclareStringOption[\sffamily\footnotesize\bfseries]{multiexepointsstyle}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+
+\begin{option}{multiexefg}
+\begin{option}{multiexenumberfg}
+\begin{option}{multiexepointsfg}
+Colors of multiexe-environments:
+\begin{MacroCode}{class}
+\DeclareStringOption[black]{multiexefg}
+\DeclareStringOption[black]{multiexenumberfg}
+\DeclareStringOption[black]{multiexepointsfg}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+
+
+\begin{option}{exepointslabel}
+\begin{option}{subexepointslabel}
+\begin{option}{multiexepointslabel}
+Labels of points:
+\begin{MacroCode}{class}
+\DeclareStringOption[\,P]{exepointslabel}
+\DeclareStringOption[\,P]{subexepointslabel}
+\DeclareStringOption[]{multiexepointslabel}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+
+
+\begin{option}{exepointssep}
+\begin{option}{subexepointssep}
+Space after points:
+\begin{MacroCode}{class}
+\DeclareStringOption[]{exepointssep}
+\DeclareStringOption[]{subexepointssep}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+
+\begin{option}{exepointsleft}
+\begin{option}{exepointsright}
+\begin{option}{subexepointsleft}
+\begin{option}{subexepointsright}
+\begin{option}{multiexepointsleft}
+\begin{option}{multiexepointsright}
+\begin{option}{multiexelabelleft}
+\begin{option}{multiexelabelright}
+Delimiter of points:
+\begin{MacroCode}{class}
+\DeclareStringOption[[]{exepointsleft}
+\DeclareStringOption[{]}]{exepointsright}
+
+\DeclareStringOption[[]{subexepointsleft}
+\DeclareStringOption[{]}]{subexepointsright}
+
+\DeclareStringOption[[]{multiexepointsleft}
+\DeclareStringOption[{]}]{multiexepointsright}
+
+\DeclareStringOption[]{multiexelabelleft}
+\DeclareStringOption[)]{multiexelabelright}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+\subsubsection{Lösungen}
+
+\begin{option}{sollabel}
+\begin{option}{subsollabel}
+Labels of (sub-)solutions:
+\begin{MacroCode}{class}
+\DeclareStringOption[L\"osung]{sollabel}
+\DeclareStringOption[]{subsollabel}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+\begin{option}{solnumberstyle}
+\begin{option}{solnumberseparator}
+\begin{option}{sollabelstyle}
+\begin{option}{solstyle}
+Style of solutions:
+\begin{MacroCode}{class}
+\DeclareStringOption[\footnotesize]{solnumberstyle}
+\DeclareStringOption[.]{solnumberseparator}
+\DeclareStringOption[\large\bfseries\sffamily]{sollabelstyle}
+\DeclareStringOption[\large\sffamily]{solstyle}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+\begin{option}{solnumberfg}
+\begin{option}{solnumberbg}
+\begin{option}{solfg}
+\begin{option}{solbg}
+Colors of solutions:
+\begin{MacroCode}{class}
+\DeclareStringOption[white]{solnumberfg}
+\DeclareStringOption[black]{solnumberbg}
+\DeclareStringOption[black]{solfg}
+\DeclareStringOption[white]{solbg}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+\begin{option}{subsolnumberstyle}
+\begin{option}{subsolnumberseparator}
+\begin{option}{subsollabelstyle}
+\begin{option}{subsolstyle}
+Style of subsolutions:
+\begin{MacroCode}{class}
+\DeclareStringOption[\scriptsize]{subsolnumberstyle}
+\DeclareStringOption[]{subsolnumberseparator}
+\DeclareStringOption[\bfseries\sffamily]{subsollabelstyle}
+\DeclareStringOption[\sffamily]{subsolstyle}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+\begin{option}{subsolnumberfg}
+\begin{option}{subsolnumberbg}
+\begin{option}{subsolfg}
+\begin{option}{subsolbg}
+Colors of subsolutions:
+\begin{MacroCode}{class}
+\DeclareStringOption[white]{subsolnumberfg}
+\DeclareStringOption[black]{subsolnumberbg}
+\DeclareStringOption[black]{subsolfg}
+\DeclareStringOption[white]{subsolbg}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+\begin{option}{solbeforeskip}
+\begin{option}{solafterskip}
+\begin{option}{subsolbeforeskip}
+\begin{option}{subsolafterskip}
+Skips before and after (sub-)solutions:
+\begin{MacroCode}{class}
+\DeclareStringOption[2.25ex]{solbeforeskip}
+\DeclareStringOption[0.5ex]{solafterskip}
+
+\DeclareStringOption[1.5ex]{subsolbeforeskip}
+\DeclareStringOption[0.5ex]{subsolafterskip}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+
+\subsubsection{Lösungen in Aufgaben}
+
+\begin{option}{showresults}
+\begin{option}{resultfg}
+\begin{option}{resultrule}
+\begin{option}{resultrulelength}
+Delimiter of points:
+\begin{MacroCode}{class}
+\DeclareBoolOption[false]{showresults}
+
+\DeclareStringOption[gray]{resultfg}
+
+\DeclareStringOption[0.4pt]{resultrule}
+\DeclareStringOption[5cm]{resultrulelength}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+\subsubsection{Fragen}
+
+\begin{option}{questlabel}
+\begin{option}{questpointslabel}
+Label of questions:
+\begin{MacroCode}{class}
+\DeclareStringOption[Frage]{questlabel}
+
+\DeclareStringOption[\,P]{questpointslabel}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+\begin{option}{questlabelstyle}
+\begin{option}{queststyle}
+\begin{option}{questpointsstyle}
+Style of questions:
+\begin{MacroCode}{class}
+\DeclareStringOption[\sffamily\bfseries\small]{questlabelstyle}
+\DeclareStringOption[\sffamily\small]{queststyle}
+\DeclareStringOption[\sffamily\small]{questpointsstyle}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+
+\begin{option}{questlabelfg}
+\begin{option}{questmclabelfg}
+Colors of questions:
+\begin{MacroCode}{class}
+\DeclareStringOption[black]{questlabelfg}
+\DeclareStringOption[black]{questmclabelfg}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+\begin{option}{questpointsleft}
+\begin{option}{questpointsright}
+Delimiter of question points:
+\begin{MacroCode}{class}
+\DeclareStringOption[[]{questpointsleft}
+\DeclareStringOption[{]}]{questpointsright}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+\begin{option}{questpointssep}
+\begin{option}{questsep}
+Space before and after question points:
+\begin{MacroCode}{class}
+\DeclareStringOption[0.25em]{questpointssep}
+\DeclareStringOption[0.5em]{questsep}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+\begin{option}{questbeforeskip}
+\begin{option}{questafterskip}
+Skips before and after questions:
+\begin{MacroCode}{class}
+\DeclareStringOption[1ex]{questbeforeskip}
+\DeclareStringOption[0ex]{questafterskip}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+
+\subsubsection{Notizen}
+
+
+\begin{option}{shownotes}
+\begin{option}{notetstyle}
+\begin{option}{notehrule}
+\begin{option}{notetfg}
+\begin{option}{notehrfg}
+Skips before and after questions:
+\begin{MacroCode}{class}
+\DeclareBoolOption[true]{shownotes}
+
+\DeclareStringOption[\sffamily]{notetstyle}
+
+\DeclareStringOption[0.4pt]{notehrule}
+
+\DeclareStringOption[wuRed]{notetfg}
+\DeclareStringOption[wuRed]{notehrfg}
+
+\ExplSyntaxOn
+\keys_define:nn {scldoc} {
+  shownotess .bool_set:N = \g_scldoc_shownotes,
+  shownotess .initial:n = false
+}
+\ExplSyntaxOff
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+
+
+\subsubsection{Unterrichtsablauf}
+
+First, options of the timetable:
+
+\begin{option}{tttimelabel}
+\begin{option}{ttstagelabel}
+\begin{option}{ttactivitylabel}
+\begin{option}{ttmethodlabel}
+\begin{option}{ttmedialabel}
+Column labels:
+\begin{MacroCode}{class}
+\DeclareStringOption[Zeit]{tttimelabel}
+\DeclareStringOption[Phase]{ttstagelabel}
+\DeclareStringOption[Ablauf]{ttactivitylabel}
+\DeclareStringOption[Methoden]{ttmethodlabel}
+\DeclareStringOption[Medien/Material]{ttmedialabel}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+\begin{option}{tttimewidth}
+\begin{option}{ttstagewidth}
+\begin{option}{ttmethodwidth}
+\begin{option}{ttmediawidth}
+Column widths (normal):
+\begin{MacroCode}{class}
+\DeclareStringOption[1cm]{tttimewidth}
+\DeclareStringOption[2.25cm]{ttstagewidth}
+\DeclareStringOption[2cm]{ttmethodwidth}
+\DeclareStringOption[2.75cm]{ttmediawidth}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+\begin{option}{tttimewidthlscape}
+\begin{option}{ttstagewidthlscape}
+\begin{option}{ttmethodwidthlscape}
+\begin{option}{ttmediawidthlscape}
+Column widths (landscape):
+\begin{MacroCode}{class}
+\DeclareStringOption[1cm]{tttimewidthlscape}
+\DeclareStringOption[3.5cm]{ttstagewidthlscape}
+\DeclareStringOption[3.5cm]{ttmethodwidthlscape}
+\DeclareStringOption[3.5cm]{ttmediawidthlscape}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+\begin{option}{ttshowtime}
+\begin{option}{ttentrytimelabel}
+Various options:
+\begin{MacroCode}{class}
+\DeclareBoolOption[true]{ttshowtime}
+
+\DeclareStringOption[]{ttentrytimelabel}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+
+Options of sequence-lists:
+
+\begin{option}{ttshowtime}
+\begin{option}{ttentrytimelabel}
+Labels of teachers and pupils:
+\begin{MacroCode}{class}
+\DeclareStringOption[L]{seqteacherlabel}
+\DeclareStringOption[S]{seqpupillabel}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+\begin{option}{seqteacherstyle}
+\begin{option}{seqpupilstyle}
+Style of labels:
+\begin{MacroCode}{class}
+\DeclareStringOption[\sffamily\bfseries]{seqteacherstyle}
+\DeclareStringOption[\sffamily\bfseries]{seqpupilstyle}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+\begin{option}{seqteacherfg}
+\begin{option}{seqpupilfg}
+Colors of labels:
+\begin{MacroCode}{class}
+\DeclareStringOption[black]{seqteacherfg}
+\DeclareStringOption[black]{seqpupilfg}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+
+
+\subsubsection{Tafelbild}
+
+\begin{option}{bbstyle}
+\begin{option}{bbfontsize}
+\begin{option}{bbbaselineoffset}
+\begin{option}{bbheight}
+Options of blackboard:
+\begin{MacroCode}{class}
+\DeclareStringOption[\sffamily]{bbstyle}
+
+\DeclareStringOption[8pt]{bbfontsize}
+\DeclareStringOption[1pt]{bbbaselineoffset}
+
+\DeclareStringOption[0.25\linewidth - 2\fboxsep]{bbheight}
+
+\end{MacroCode}
+\end{option}
+\end{option}
+\end{option}
+\end{option}
+
+
+\subsubsection{Undefinierte Optionen}
+
+\begin{MacroCode}{class}
+\DeclareOption*{%
+  \PassOptionsToClass{\CurrentOption}{scrartcl}%
+}
+
+\end{MacroCode}
+
+
+\subsubsection{Optionen verarbeiten}
+
+\begin{MacroCode}{class}
+\ProcessOptions             % LaTeX-Basics (for \PassOptionsToClass)
+\ProcessKeyvalOptions*      % kvoptions
+\ProcessKeysOptions{scldoc}  % l3keys2e options
+
+\end{MacroCode}
+
+
+\subsection{Basisklasse und Packages laden}
+
+Informationen der einzelnen Packages sind der jeweiligen Dokumentation zu entnehmen.
+
+\subsubsection{Basisklasse}
+
+\begin{MacroCode}{class}
+\LoadClass{scrartcl}
+
+\end{MacroCode}
+
+
+\subsubsection{Grundlegende Packages}
+
+\begin{MacroCode}{class}
+\RequirePackage[T1]{fontenc} 
+\RequirePackage[utf8]{inputenc} 
+\RequirePackage[ngerman]{babel}
+
+\RequirePackage{calc}
+\RequirePackage{environ}
+\RequirePackage{etoolbox}
+\RequirePackage{forloop}
+\RequirePackage{suffix}
+
+\end{MacroCode}
+
+
+\subsubsection{Layout/Typographie}
+
+\begin{MacroCode}{class}
+\RequirePackage{booktabs}
+\RequirePackage{boxedminipage}
+\RequirePackage{ccicons}
+\RequirePackage{enumitem}
+\RequirePackage{eurosym}                                           % Euro-Sign
+\RequirePackage{expdlist}
+\RequirePackage{geometry}
+\RequirePackage{fancybox}
+\RequirePackage[notcomma, notperiod, notquote, notquery]{hanging}  % Hanging indention of multiexe
+\RequirePackage{lastpage}                                          % Number of pages with 
+\RequirePackage{multicol}
+\RequirePackage{multirow}
+\RequirePackage{pdflscape}
+\RequirePackage{pifont}
+\RequirePackage[newcommands]{ragged2e}
+\RequirePackage{rotating}
+\RequirePackage{scrpage2}
+\RequirePackage{setspace}
+\RequirePackage{siunitx}
+\RequirePackage{tabularx}
+\RequirePackage[nobottomtitles*]{titlesec}
+\RequirePackage{units}
+\RequirePackage{xspace}
+
+\end{MacroCode}
+
+
+\subsubsection{Graphik}
+
+
+\begin{MacroCode}{class}
+\RequirePackage{graphicx}
+\RequirePackage[svgnames]{xcolor}
+\RequirePackage{subfig}
+\RequirePackage{tikz}
+
+\end{MacroCode}
+
+
+\subsubsection{Style- und Color-Themes}
+
+\begin{MacroCode}{class}
+\AtEndPreamble{
+  \ifthenelse{\equal{\scldoc@colortheme}{\empty}}{}{%
+    \RequirePackage{scldoccolors\scldoc@colortheme}
+  }
+
+  \ifthenelse{\equal{\scldoc@styletheme}{\empty}}{}{%
+    \RequirePackage{scldocstyles\scldoc@styletheme}
+  }
+}
+
+\end{MacroCode}
+
+
+\subsubsection{Mathematik}
+
+\begin{MacroCode}{class}
+\RequirePackage[\scldoc@amsoptions]{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{cancel}
+\RequirePackage{esvect}
+\RequirePackage{gauss}
+\RequirePackage{polynom}
+%\RequirePackage{thmbox}
+\RequirePackage{thmtools}
+%\RequirePackage{ulsy}      % Flash-Symbol for contradiction (Widerspruch)
+\RequirePackage[only, lightning]{stmaryrd}
+
+\end{MacroCode}
+
+
+\subsubsection{Computer Science}
+
+\begin{MacroCode}{class}
+\RequirePackage{listings}
+
+\end{MacroCode}
+
+
+\subsubsection{Sonstige}
+
+\begin{MacroCode}{class}
+\RequirePackage{bibgerm}
+\RequirePackage{hyperref}
+
+\end{MacroCode}
+
+
+\subsection{Schriften}
+
+\subsubsection{Schriftarten}
+
+Soll eine Overhead-Folie gesetzt werden (\opt{sfdefault}), wird serifenlose Schrift verwendet:
+
+\begin{MacroCode}{class}
+\ifthenelse{\boolean{scldoc@transparency}}
+{%
+  \setkeys{scldoc}{sfdefault=true}
+}{}
+
+\end{MacroCode}
+
+Mithilfe von \opt{sfdefault} kann \cs{sfdefault} als Standardschrift verwendet werden. Die Symbole für Formeln werden dann einzeln angegeben, da das Einbinden von  \textsf{cmbright} zu einem Fehler führt, wenn man innerhalb des Dokuments die Schriftgröße ändert, was bei \opt{transparency} der Fall ist (\Macro\KOMAoption{fontsize}{22pt}). Es sollten alle Mathesymbole (inkl. griechischer Buchstaben) serifenlos gesetzt werden. Nur große Operatoren (Summe, Integral) sind nicht serifenlos vorhanden.
+
+\begin{MacroCode}{class}
+\ifthenelse{\boolean{scldoc@sfdefault}}
+{%
+  \renewcommand{\familydefault}{\sfdefault}
+  
+  \DeclareSymbolFont      {operators} {OT1}{cmbr}{m}{n}
+  \DeclareSymbolFont        {letters} {OML}{cmbrm}{m}{it}
+  \SetSymbolFont      {letters}{bold} {OML}{cmbrm}{b}{it}
+  
+  \DeclareSymbolFont        {symbols} {OMS}{cmbrs}{m}{n}
+  \DeclareMathAlphabet{\mathit} {OT1}{cmbr}{m}{sl}
+  \DeclareMathAlphabet{\mathbf} {OT1}{cmbr}{bx}{n}
+  \DeclareMathAlphabet{\mathtt} {OT1}{cmtl}{m}{n}
+  \DeclareMathAlphabet{\mathbold}{OML}{cmbrm}{b}{it}
+  
+  \DeclareMathSymbol{\alpha}{\mathalpha}{letters}{11}
+  \DeclareMathSymbol{\beta}{\mathalpha}{letters}{12}
+  \DeclareMathSymbol{\gamma}{\mathalpha}{letters}{13}
+  \DeclareMathSymbol{\delta}{\mathalpha}{letters}{14}
+  \DeclareMathSymbol{\epsilon}{\mathalpha}{letters}{15}
+  \DeclareMathSymbol{\zeta}{\mathalpha}{letters}{16}
+  \DeclareMathSymbol{\eta}{\mathalpha}{letters}{17}
+  \DeclareMathSymbol{\theta}{\mathalpha}{letters}{18}
+  \DeclareMathSymbol{\iota}{\mathalpha}{letters}{19}
+  \DeclareMathSymbol{\kappa}{\mathalpha}{letters}{20}
+  \DeclareMathSymbol{\lambda}{\mathalpha}{letters}{21}
+  \DeclareMathSymbol{\mu}{\mathalpha}{letters}{22}
+  \DeclareMathSymbol{\nu}{\mathalpha}{letters}{23}
+  \DeclareMathSymbol{\xi}{\mathalpha}{letters}{24}
+  \DeclareMathSymbol{\pi}{\mathalpha}{letters}{25}
+  \DeclareMathSymbol{\rho}{\mathalpha}{letters}{26}
+  \DeclareMathSymbol{\sigma}{\mathalpha}{letters}{27}
+  \DeclareMathSymbol{\tau}{\mathalpha}{letters}{28}
+  \DeclareMathSymbol{\upsilon}{\mathalpha}{letters}{29}
+  \DeclareMathSymbol{\phi}{\mathalpha}{letters}{30}
+  \DeclareMathSymbol{\chi}{\mathalpha}{letters}{31}
+  \DeclareMathSymbol{\psi}{\mathalpha}{letters}{32}
+  \DeclareMathSymbol{\omega}{\mathalpha}{letters}{33}
+  \DeclareMathSymbol{\varepsilon}{\mathalpha}{letters}{34}
+  \DeclareMathSymbol{\vartheta}{\mathalpha}{letters}{35}
+  \DeclareMathSymbol{\varpi}{\mathalpha}{letters}{36}
+  \DeclareMathSymbol{\varrho}{\mathalpha}{letters}{37}
+  \DeclareMathSymbol{\varsigma}{\mathalpha}{letters}{38}
+  \DeclareMathSymbol{\varphi}{\mathalpha}{letters}{39}
+}{}
+
+\end{MacroCode}
+
+Außerdem können die Standardschriftarten mithilfe der entsprechenden Optionen geändert werden:
+
+\begin{MacroCode}{class}
+\renewcommand{\rmdefault}{\scldoc@rmfont}
+\renewcommand{\sfdefault}{\scldoc@sffont}
+\renewcommand{\ttdefault}{\scldoc@ttfont}
+
+\end{MacroCode}
+
+Über die Optionen \opt{palatino}, \opt{lato} und \opt{beramono} können diese als Standardschrift für Serifenschrift, serifenlose Schrift bzw. nichtproportionale Schrift gewählt werden:
+
+\begin{MacroCode}{class}
+\ifthenelse{\boolean{scldoc@beramono}}
+{%
+  \RequirePackage[scaled=0.85]{beramono}
+}
+
+\ifthenelse{\equal{\scldoc@sffont}{fla} \or \boolean{scldoc@lato}}
+{%
+  \RequirePackage[defaultsans]{lato}
+  \pdfmapfile{+lato.map}
+  \setkeys{scldoc}{sffont=fla}
+}
+
+\ifthenelse{\boolean{scldoc@palatino} \and \not\boolean{scldoc@sfdefault}}
+{%
+  \RequirePackage{mathpazo}
+  \setkeys{scldoc}{rmfont=ppl}
+}
+
+\ifthenelse{\boolean{scldoc@sourcecodepro}}
+{%
+  \RequirePackage[]{sourcecodepro}
+}
+
+\ifthenelse{\boolean{scldoc@sourcesanspro}}
+{%
+  \RequirePackage[scale=0.96]{sourcesanspro}
+}
+
+\end{MacroCode}
+
+
+\subsubsection{Schriftgröße}
+
+Bei Verwendung der Option \opt{twuop} wird die Schriftgröße des gesamten Dokuments angepasst.
+
+\begin{MacroCode}{class}
+\AtBeginDocument{
+  \ifthenelse{\boolean{scldoc@twoup}}
+  {%
+    \KOMAoptions{fontsize=14pt}
+  }{
+    \KOMAoptions{fontsize=11pt}
+  }
+}
+
+\AtBeginDocument{
+  \ifthenelse{\equal{\scldoc@fontsize}{}}
+  {}{
+    \KOMAoptions{fontsize=\scldoc@fontsize}
+  }
+}
+
+\end{MacroCode}
+
+
+
+\subsection{Metadaten}
+
+\begin{macro*}{\@author}
+\begin{macro*}{\@class}
+\begin{macro*}{\@date}
+\begin{macro*}{\@email}
+\begin{macro*}{\@field}
+\begin{macro*}{\@group}
+\begin{macro*}{\@license}
+\begin{macro*}{\@subject}
+\begin{macro*}{\@subtitle}
+\begin{macro*}{\@title}
+\begin{macro*}{\@version}
+\begin{MacroCode}{class}
+\renewcommand{\@author}{}
+\newcommand{\@class}{}
+\renewcommand{\@date}{}
+\newcommand{\@email}{}
+\newcommand{\@field}{}
+\newcommand{\@group}{}
+\newcommand{\@license}{}
+\renewcommand{\@subject}{}
+\renewcommand{\@subtitle}{}
+\renewcommand{\@title}{}
+\newcommand{\@version}{}
+
+\end{MacroCode}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+
+\begin{macro*}{\@authorshort}
+\begin{macro*}{\@classshort}
+\begin{macro*}{\@dateshort}
+\begin{macro*}{\@emailshort}
+\begin{macro*}{\@fieldshort}
+\begin{macro*}{\@groupshort}
+\begin{macro*}{\@licenseshort}
+\begin{macro*}{\@subjectshort}
+\begin{macro*}{\@subtitleshort}
+\begin{macro*}{\@titleshort}
+\begin{macro*}{\@versionshort}
+\begin{MacroCode}{class}
+\newcommand{\@authorshort}{}
+\newcommand{\@classshort}{}
+\newcommand{\@dateshort}{}
+\newcommand{\@emailshort}{}
+\newcommand{\@fieldshort}{}
+\newcommand{\@groupshort}{}
+\newcommand{\@licenseshort}{}
+\newcommand{\@subjectshort}{}
+\newcommand{\@subtitleshort}{}
+\newcommand{\@titleshort}{}
+\newcommand{\@versionshort}{}
+
+\end{MacroCode}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+
+
+\begin{macro}{\author}[2]{[<author short>]}{<author>}
+\begin{macro}{\class}[2]{[<class short>]}{<class>}
+\begin{macro}{\date}[2]{[<date short>]}{<date>}
+\begin{macro}{\email}[2]{[<email short>]}{<email>}
+\begin{macro}{\field}[2]{[<field short>]}{<field>}
+\begin{macro}{\group}[2]{[<group short>]}{<group>}
+\begin{macro}{\license}[2]{[<license short>]}{<license>}
+\begin{macro}{\subject}[2]{[<subject short>]}{<subject>}
+\begin{macro}{\subtitle}[2]{[<subtitle short>]}{<subtitle>}
+\begin{macro}{\title}[2]{[<title short>]}{<title>}
+\begin{macro}{\version}[2]{[<version short>]}{<version>}
+\begin{MacroCode}{class}
+\renewcommand{\author}[2][]{%
+  \renewcommand{\@author}{#2}
+  \ifthenelse{\equal{#1}{\empty}}{%
+    \renewcommand{\@authorshort}{#2}
+  }{%
+    \renewcommand{\@authorshort}{#1}
+  }
+}
+
+\newcommand{\class}[2][]{%
+  \renewcommand{\@class}{#2}
+  \ifthenelse{\equal{#1}{\empty}}{%
+    \renewcommand{\@classshort}{#2}
+  }{%
+    \renewcommand{\@classshort}{#1}
+  }
+}
+
+\renewcommand{\date}[2][]{%
+  \renewcommand{\@date}{#2}
+  \ifthenelse{\equal{#1}{\empty}}{%
+    \renewcommand{\@dateshort}{#2}
+  }{%
+    \renewcommand{\@dateshort}{#1}
+  }
+}
+
+\newcommand{\email}[2][]{%
+  \renewcommand{\@email}{#2}
+  \ifthenelse{\equal{#1}{\empty}}{%
+    \renewcommand{\@emailshort}{#2}
+  }{%
+    \renewcommand{\@emailshort}{#1}
+  }
+}
+
+\newcommand{\field}[2][]{%
+  \renewcommand{\@field}{#2}
+  \ifthenelse{\equal{#1}{\empty}}{%
+    \renewcommand{\@fieldshort}{#2}
+  }{%
+    \renewcommand{\@fieldshort}{#1}
+  }
+}
+
+\newcommand{\group}[2][]{%
+  \renewcommand{\@group}{#2}
+  \ifthenelse{\equal{#1}{\empty}}{%
+    \renewcommand{\@groupshort}{#2}
+  }{%
+    \renewcommand{\@groupshort}{#1}
+  }
+}
+
+\newcommand{\license}[2][]{%
+  \renewcommand{\@license}{#2}
+  \ifthenelse{\equal{#1}{\empty}}{%
+    \renewcommand{\@licenseshort}{#2}
+  }{%
+    \renewcommand{\@licenseshort}{#1}
+  }
+}
+
+\renewcommand{\subject}[2][]{%
+  \renewcommand{\@subject}{#2}
+  \ifthenelse{\equal{#1}{\empty}}{%
+    \renewcommand{\@subjectshort}{#2}
+  }{%
+    \renewcommand{\@subjectshort}{#1}
+  }
+}
+
+\renewcommand{\subtitle}[2][]{%
+  \renewcommand{\@subtitle}{#2}
+  \ifthenelse{\equal{#1}{\empty}}{%
+    \renewcommand{\@subtitleshort}{#2}
+  }{%
+    \renewcommand{\@subtitleshort}{#1}
+  }
+}
+
+\renewcommand{\title}[2][]{%
+  \renewcommand{\@title}{#2}
+  \ifthenelse{\equal{#1}{\empty}}{%
+    \renewcommand{\@titleshort}{#2}
+  }{%
+    \renewcommand{\@titleshort}{#1}
+  }
+}
+
+\newcommand{\version}[2][]{%
+  \renewcommand{\@version}{#2}
+  \ifthenelse{\equal{#1}{\empty}}{%
+    \renewcommand{\@versionshort}{#2}
+  }{%
+    \renewcommand{\@versionshort}{#1}
+  }
+}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+
+
+\subsection{Hyperref}
+
+
+\begin{macro*}{\@pdftitletemp}
+\begin{macro*}{\@pdfsubjecttemp}
+First, document title and subject are created.
+\begin{MacroCode}{class}
+\newcommand{\@pdftitletemp}{\@title}
+\newcommand{\@pdfsubjecttemp}{}
+
+\AtEndPreamble{
+  \ifthenelse{\equal{\@subtitle}{\empty}}{}{%
+    \expandafter\def\expandafter\@pdftitletemp\expandafter{%
+      \@pdftitletemp\ -- \@subtitle%
+    }
+  }
+  
+  \ifthenelse{\equal{\@subject}{\empty}}{}{%
+    \expandafter\def\expandafter\@pdfsubjecttemp\expandafter{%
+      \@pdfsubjecttemp\@subject%
+    }
+  }
+  
+  \ifthenelse{\not\equal{\@subject}{\empty} \and \not\equal{\@field}{\empty}}{%
+    \expandafter\def\expandafter\@pdfsubjecttemp\expandafter{%
+      \@pdfsubjecttemp:~
+    }
+  }{}
+  
+  \ifthenelse{\equal{\@field}{\empty}}{}{%
+    \expandafter\def\expandafter\@pdfsubjecttemp\expandafter{%    
+        \@pdfsubjecttemp \@field%
+    }
+  }
+  
+  \ifthenelse{\equal{\@class}{\empty}}{}{%
+    \expandafter\def\expandafter\@pdfsubjecttemp\expandafter{%    
+        \@pdfsubjecttemp~(\@class)%
+    }
+  }
+
+\end{MacroCode}
+\end{macro*}
+\end{macro*}
+
+Then, \pkg{hyperref} is configured:
+
+\begin{MacroCode}{class}
+  \hypersetup{
+    breaklinks=false,
+    linkcolor=\scldoc@linkfg,
+    citecolor=\scldoc@linkfg,
+    filecolor=\scldoc@linkfg,
+    urlcolor=\scldoc@linkfg,
+    linkbordercolor=\scldoc@linkborderfg,
+    citebordercolor=\scldoc@linkborderfg,
+    filebordercolor=\scldoc@linkborderfg,
+    urlbordercolor=\scldoc@linkborderfg,
+    pdftitle={\@pdftitletemp},
+    pdfauthor={\@author},
+    pdfsubject={\@pdfsubjecttemp},
+    linktocpage=true
+  }%
+  
+  \ifthenelse{\boolean{scldoc@colorlinks}}{%
+    \hypersetup{
+      colorlinks=true
+    }%
+  }{%
+    \hypersetup{
+      colorlinks=false
+    }%
+  }%
+}
+
+\end{MacroCode}
+
+
+\subsection{Layout}
+
+\subsubsection{Allgemeine Einstellungen}
+
+\begin{MacroCode}{class}
+\setlength{\columnsep}{0.75cm}
+
+\end{MacroCode}
+
+\subsubsection{Listen}
+
+\begin{macro*}{\@listsep}
+\begin{macro*}{\@listmargin}
+\begin{macro*}{\@listarraysep}
+\begin{macro*}{\@listarraymargin}
+\begin{macro*}{\@listlabelwidth}
+Define new lengths:
+\begin{MacroCode}{class}
+%\newlength{\@parskipreducelength}
+%\setlength{\@parskipreducelength}{0ex}
+
+\newlength{\@listsep}
+\newlength{\@listmargin}
+\newlength{\@listarraysep}
+\newlength{\@listarraymargin}
+
+\newlength{\@listlabelwidth}
+\settowidth{\@listlabelwidth}{m)}
+
+\end{MacroCode}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+
+
+Configure list-settings:
+\begin{MacroCode}{class}
+\AtBeginDocument{
+  \setlength{\@listmargin}{\scldoc@listarraymargin}
+  \setlength{\@listsep}{\scldoc@listarraysep}
+  \settowidth{\@listlabelwidth}{m)}
+}
+
+\setlist{%
+  partopsep=0ex,
+  topsep=0.5\baselineskip - \parskip,
+  itemsep=0.5\baselineskip - \parskip,
+  parsep=\parskip,
+  labelsep=\@listsep,
+  leftmargin=\@listlabelwidth + \@listsep + \@listmargin
+}
+
+\setlist[2]{topsep=0.5\baselineskip - \parskip}
+\setlist[3]{topsep=0.5\baselineskip - \parskip}
+\setlist[4]{topsep=0.5\baselineskip - \parskip}
+\setlist[5]{topsep=0.5\baselineskip - \parskip}
+
+\setlist[itemize, 1]{label=\color{\scldoc@itemizefg}\rule[0.3ex]{0.8ex}{0.8ex}}
+\setlist[itemize, 2]{label=\color{\scldoc@itemizefg}\rule[0.5ex]{0.8ex}{0.4ex}}
+\setlist[itemize, 3]{label=\color{\scldoc@itemizefg}\rule[0.55ex]{0.8ex}{0.2ex}}
+
+\setlist[enumerate, 1]{label=\color{\scldoc@enumeratefg}\textsf{\arabic*.}}
+\setlist[enumerate, 2]{label=\color{\scldoc@enumeratefg}\textsf{\alph*.)}}
+\setlist[enumerate, 3]{label=\color{\scldoc@enumeratefg}\textsf{\roman*.}}
+
+\setlist[description]{labelsep=0.25em, font=\color{\scldoc@descriptionfg}}
+
+\ifthenelse{\boolean{scldoc@sourcesanspro}}{%
+  \setlist[description]{font=\fontseries{sb}\selectfont\color{\scldoc@descriptionfg}}
+}{}
+
+\end{MacroCode}
+
+
+\begin{environment}{scldoclist}[2]{[<itemsep>]}{<item>}
+Liste, welche in Teilaufgaben, Lösungen, Fragen und Antworten verwendet wird.
+\begin{MacroCode}{class}
+\newenvironment{scldoclist}[2][0.5\baselineskip]{
+  \setlength{\@listarraysep}{\scldoc@listarraysep}
+  \setlength{\@listarraymargin}{\scldoc@listarraymargin}
+%  
+  \vspace{0.5\baselineskip}
+  \begin{list}{\sffamily #2}{%
+    \setlength{\partopsep}{0ex}%
+    \setlength{\topsep}{0pt}%
+    \setlength{\parsep}{\parskip}%
+    \setlength{\itemsep}{#1 - \parskip}%
+    \setlength{\labelsep}{\@listarraysep}%
+    \setlength{\leftmargin}{%
+      \@listlabelwidth + \@listarraysep + \@listarraymargin%
+    }%
+  }
+}{
+  \end{list}%
+  \vspace{0.5\baselineskip}
+}
+
+\end{MacroCode}
+\end{environment}
+
+\begin{environment}{itemizet}
+Liste ohne oberen und unteren Abstand. Geeignet für Aufzählungen in Tabellen. \begin{MacroCode}{class}
+\newenvironment{itemizet}{%
+  \@minipagetrue
+%  \compress
+  \begin{itemize}[nosep, leftmargin=1em]
+}{%
+  \vspace{-\baselineskip}
+  \end{itemize}
+}
+
+%  \makeatletter
+%\newcommand{\compress}{\@minipagetrue}
+%  \makeatother
+
+%    \end{macrocode}
+
+\end{MacroCode}
+\end{environment}
+
+
+\subsubsection{Tabellen}
+
+Spaltentyp für zentrierte Spalten mit fester Breite:
+\begin{MacroCode}{class}
+\newcolumntype{C}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+
+\end{MacroCode}
+
+Spaltentyp für \env{multiexearray}.
+\begin{MacroCode}{class}
+\newcolumntype{e}{%
+  >{%
+    {\sffamily\multiexelabelboxed}%
+      \hspace{\@listarraysep}\hangpara{\@hangindention}{1}\raggedright\arraybackslash%
+     }%
+     X%
+}%
+
+\end{MacroCode}
+
+Spaltentyp für \env{multiexearray*}.
+\begin{MacroCode}{class}
+\newcolumntype{E}{%
+  >{%
+    {\sffamily\multiexelabelboxed}%
+      \hspace{\@listarraysep}$\displaystyle%
+     }%
+     X%
+    <{$}%
+}%
+
+\end{MacroCode}
+
+Spaltentyp für \env{questmcarray}.
+\begin{MacroCode}{class}
+\newcolumntype{q}{%
+  >{%
+    {\sffamily%
+      \makebox[\@listlabelwidth][r]{%
+        \color{\scldoc@questmclabelfg}%
+        $\square$%
+      }%
+    }%
+    \hspace{\@listarraysep}%
+    \hangpara{\@hangindention}{1}\raggedright\arraybackslash%
+   }%
+   X%
+}%
+
+\end{MacroCode}
+
+Spaltentyp für \env{questmcarray*}.
+\begin{MacroCode}{class}
+\newcolumntype{Q}{%
+  >{%
+    {\color{\scldoc@questmclabelfg}%
+      \sffamily$\square$%
+    }%
+      \hspace{\@listarraysep}$\displaystyle%
+  }%
+  X%
+  <{$}%
+}%
+
+\end{MacroCode}
+
+Spaltentyp für \env{questmcarrayalph}.
+\begin{MacroCode}{class}
+\newcolumntype{a}{%
+  >{%
+    {\sffamily\questmclabelboxed}%
+      \hspace{\@listarraysep}\hangpara{\@hangindention}{1}\raggedright\arraybackslash%
+     }%
+     X%
+}%
+
+\end{MacroCode}
+
+Spaltentyp für \env{questmcarrayalph*}.
+\begin{MacroCode}{class}
+\newcolumntype{A}{%
+  >{%
+    {\sffamily\questmclabelboxed}%
+      \hspace{\@listarraysep}$\displaystyle%
+     }%
+     X%
+    <{$}%
+}%
+
+\end{MacroCode}
+
+
+\begin{macro}{\arraysetup}[2]{[<extrarowheight>]}{<m>}
+Setup der wichtigsten Parameter und Erzeugung des Abstands vor Tabellen bei \env{multiexearray}, \env{multiexearray*}, \env{questmcarray}, \env{questmcarray*}, \env{questmcarrayalph} und \env{questmcarrayalph*}.
+\begin{MacroCode}{class}
+\newcommand{\arraysetup}[2][0ex]{%
+  \par
+  \parskipreduce
+  
+  \setlength{\extrarowheight}{#1}
+%  \renewcommand{\arraystretch}{1.25} % War aktiviert. Warum?!
+  \setlength{\@listarraysep}{\scldoc@listarraysep}
+  \setlength{\@listarraymargin}{\scldoc@listarraymargin}
+  \setlength{\tabcolsep}{\@listarraymargin}
+  \setlength{\@hangindention}{\@listlabelwidth+\@listarraysep}
+%  
+  \ifthenelse{\equal{#2}{m}}{%
+      \renewcommand{\tabularxcolumn}[1]{m{##1}}
+  }{
+      \renewcommand{\tabularxcolumn}[1]{p{##1}}
+  }%
+%  
+  \vspace{\scldoc@arraybeforeskip}
+  \vspace{-#1}
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\begin{macro}{\arraycleanup}
+Deaktivieren der wichtigsten Parameter und Erzeugung des Abstands nach Tabellen bei \env{multiexearray}, \env{multiexearray*}, \env{questmcarray}, \env{questmcarray*}, \env{questmcarrayalph} und \env{questmcarrayalph*}.
+\begin{MacroCode}{class}
+\newcommand{\arraycleanup}{%
+  \vspace{\scldoc@arrayafterskip}
+  \parskipreduce
+%  \renewcommand{\arraystretch}{1.0}
+  \par
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsubsection{Sonstige Umgebungen}
+
+\begin{macro}{\fpbox}[2]{[<width>]}{<content>}
+Umrahmte Box mit variabler Breite (standardmäßig \cs{linewidth}).
+\begin{MacroCode}{class}
+\newcommand{\fpbox}[2][\linewidth]{%
+  \fbox{\parbox{#1}{#2}}
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsubsection{Seitenränder}
+
+\begin{macro}{\setgeometry}
+Makro zum aktualisieren der Seitenränder, falls eine der Optionen \opt{top} etc. geändert wurde. Ruft sich anschließend selbst auf.
+\begin{MacroCode}{class}
+\newcommand{\setgeometry}{%
+  \ifthenelse{\boolean{scldoc@twoup}}
+  {%    
+    \ifthenelse{\boolean{scldoc@footer}}
+    {%
+      \setlength{\footskip}{\scldoc@twoupfootskip}
+      \geometry{a4paper, includefoot,%
+        top=\scldoc@twouptop, bottom=\scldoc@twoupbottom,%
+        left=\scldoc@twoupleft, right=\scldoc@twoupright%
+      }
+    }{%
+      \setlength{\footskip}{0pt}
+      \geometry{a4paper,%
+        top=\scldoc@twouptop, bottom=\scldoc@twoupbottom,%
+        left=\scldoc@twoupleft, right=\scldoc@twoupright%
+      }
+    }
+  }{%
+    
+    \ifthenelse{\boolean{scldoc@footer}}
+    {%
+      \setlength{\footskip}{\scldoc@footskip}
+      \geometry{a4paper, includefoot,%
+        top=\scldoc@top, bottom=\scldoc@bottom,%
+        left=\scldoc@left, right=\scldoc@right%
+      }
+    }{%
+      \setlength{\footskip}{0pt}
+      \geometry{a4paper,%
+        top=\scldoc@top, bottom=\scldoc@bottom,%
+        left=\scldoc@left, right=\scldoc@right%
+      }
+    }
+  }
+  
+  \ifthenelse{\boolean{scldoc@transparency}}
+  {%
+    \setkeys{scldoc}{footer=false}
+      \setlength{\footskip}{\scldoc@twoupfootskip}
+    \geometry{a4paper,%
+      top=\scldoc@transparencytop, bottom=\scldoc@transparencybottom,%
+      left=\scldoc@transparencyleft, right=\scldoc@transparencyright%
+    }
+  }{}%
+}
+
+\setgeometry
+\end{MacroCode}
+\end{macro}
+
+
+\subsubsection{Overhead-Folien}
+
+Ausgelagert?
+
+\subsubsection{Abschnitte (Parts, Sections, Subsection, etc.)}
+
+\minisec{part}
+
+\begin{macro*}{\partbefore}
+\begin{macro*}{\partafter}
+\begin{macro*}{\@partnumbertempwidth}
+\begin{macro*}{\@partnumberminwidth}
+First, some new lengths:
+\begin{MacroCode}{class}
+\newlength{\partbefore}
+\newlength{\partafter}
+\setlength{\partbefore}{2.5ex}
+\setlength{\partafter}{0.75ex}
+
+\newlength{\@partnumbertempwidth}
+\newlength{\@partnumberminwidth}
+\settowidth{\@partnumberminwidth}{M}
+
+\end{MacroCode}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+
+Now, changing \cs{part} using titlesec:
+\begin{MacroCode}{class}
+\titleformat{\part}
+  [hang]                                                    % Shape
+  {\sffamily\bfseries\LARGE\color{\scldoc@partfg}}          % Format
+  {\setlength{\fboxsep}{0.125em}%
+    \raisebox{0.1ex}{%
+    \scldoc@partnumbersize\colorbox{\scldoc@partnumberbg}{%
+      \settowidth{\@partnumbertempwidth}{\thepart}%
+      \ifthenelse{\lengthtest{\@partnumbertempwidth < \@partnumberminwidth}}{%
+        \makebox[\@partnumberminwidth]{\textcolor{\scldoc@partnumberfg}{\thepart}}%
+      }{%
+        \textcolor{\scldoc@partnumberfg}{\thepart}%
+      }%
+    }
+  }}                                 % Label
+  {0.5em}                            % Sep
+  {}                                 % Before
+  {}                                 % After
+  
+%{\setlength{\fboxsep}{2.25pt}%
+%    \raisebox{0.2ex}{%
+%    \scldoc@sectionnumbersize\colorbox{\scldoc@sectionnumberbg}{%
+%      \textcolor{\scldoc@sectionnumberfg}{\thesection}%
+%    }
+%  }}                      % Label  
+  
+\titlespacing*{\part}
+  {0pt}                        % Left
+  {\sectionbefore - \parskip}  % Beforesep
+  {\sectionafter - \parskip}   % Aftersep
+
+\end{MacroCode}
+
+
+\minisec{section}
+
+\begin{macro*}{\sectionbefore}
+\begin{macro*}{\sectionafter}
+First, some new lengths:
+\begin{MacroCode}{class}
+\newlength{\sectionbefore}
+\newlength{\sectionafter}
+\setlength{\sectionbefore}{2.5ex}
+\setlength{\sectionafter}{0.75ex}
+
+\end{MacroCode}
+\end{macro*}
+\end{macro*}
+
+Now, changing \cs{section} using titlesec:
+\begin{MacroCode}{class}
+\titleformat{\section}
+  [hang]                                              % Shape
+  {\sffamily\bfseries\Large\color{\scldoc@sectionfg}} % Format
+  {\setlength{\fboxsep}{0.125em}%
+    \raisebox{0.2ex}{%
+    \scldoc@sectionnumbersize\colorbox{\scldoc@sectionnumberbg}{%
+      \textcolor{\scldoc@sectionnumberfg}{\thesection}%
+    }
+  }}                                 % Label
+  {0.5em}                            % Sep
+  {}                                 % Before
+  {}                                 % After
+  
+\titlespacing*{\section}
+  {0pt}                              % Left
+  {\sectionbefore - \parskip}        % Beforesep
+  {\sectionafter - \parskip}         % Aftersep
+  
+%{\setlength{\fboxsep}{2.25pt}%
+%    \raisebox{0.2ex}{%
+%    \scldoc@sectionnumbersize\colorbox{\scldoc@sectionnumberbg}{%
+%      \textcolor{\scldoc@sectionnumberfg}{\thesection}%
+%    }
+%  }}                      % Label  
+  
+\titlespacing*{\part}
+  {0pt}                              % Left
+  {\sectionbefore - \parskip}        % Beforesep
+  {\sectionafter - \parskip}         % Aftersep
+
+\end{MacroCode}
+
+
+\minisec{subsection}
+
+\begin{macro*}{\subsectionbefore}
+\begin{macro*}{\subsectionafter}
+First, some new lengths:
+\begin{MacroCode}{class}
+\newlength{\subsectionbefore}
+\newlength{\subsectionafter}
+\setlength{\subsectionbefore}{1.75ex}
+\setlength{\subsectionafter}{0.75ex}
+
+\end{MacroCode}
+\end{macro*}
+\end{macro*}
+
+Now, changing \cs{subsection} using titlesec:
+\begin{MacroCode}{class}
+\titleformat{\subsection}
+  [hang]                                                 % Shape
+  {\sffamily\bfseries\large\color{\scldoc@subsectionfg}} % Format
+  {\setlength{\fboxsep}{0.125em}%
+    \raisebox{0.15ex}{%
+    \scldoc@subsectionnumbersize\colorbox{\scldoc@subsectionnumberbg}{%
+      \textcolor{\scldoc@subsectionnumberfg}{\thesubsection}%
+    }
+  }}                                  % Label
+  {0.5em}                             % Sep
+  {}                                  % Before
+  {}                                  % After
+  
+\titlespacing*{\subsection}
+  {0pt}                               % Left
+  {\subsectionbefore - \parskip}      % Beforesep
+  {\subsectionafter - \parskip}       % Aftersep
+
+\end{MacroCode}
+
+
+\minisec{subsubsection}
+
+Changing \cs{subsubsection} using titlesec:
+\begin{MacroCode}{class}
+\titleformat{\subsubsection}
+  [hang]                               % Shape
+  {\sffamily\bfseries\small}           % Format
+  {\thesubsubsection}                  % Label
+  {0.5em}                              % Sep
+  {}                                   % Before
+  {}                                   % After
+  
+\titlespacing*{\subsubsection}
+  {0pt}                                % Left
+  {1ex}                                % Beforesep
+  {0.1ex}                              % Aftersep
+
+\end{MacroCode}
+
+
+\subsubsection{Absatzauszeichnung}
+
+Es können Einzug (\opt{parindent}) und Abstand zwischen Absätzen (\opt{parskip}) kombiniert werden:
+
+\begin{macro}{\setpar}
+Setzt die Absatzauszeichnung.
+\begin{MacroCode}{class}
+\newcommand{\setpar}{%
+\ifthenelse{\boolean{scldoc@parindent}}%
+{%
+  \ifthenelse{\boolean{scldoc@parskip}}%
+  {%
+    \KOMAoptions{parskip=half}%
+  }{}%
+  \setlength{\parindent}{1.00001em}% 1em doesn't work?
+  }{%
+	  \ifthenelse{\boolean{scldoc@parskip}}%
+	  {%
+	    \KOMAoptions{parskip=half}%
+	  }{}%
+	  \setlength{\parindent}{0em}%
+  }
+}
+
+\AtBeginDocument{%
+  \setpar%
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\begin{macro}{\parskipreduce}
+An vielen Stellen muss der Absatzabstand nachträglich entfernt werden. Hierzu dient dieses Makro.
+\begin{MacroCode}{class}
+\newcommand{\parskipreduce}{%
+  \vspace{-\parskip}
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsubsection{Inhaltsverzeichnis}
+
+Bei der Verwendung von Parts als höchste Gliederungsebene wird die Überschrift des Inhaltsverzeichnisses vergrößert.
+\begin{MacroCode}{class}
+\ifthenelse{\boolean{scldoc@parts}}{%
+  \AtBeginDocument{
+    \newcommand{\@contentsnametemp}{}
+    \let\@contentsnametemp\contentsname
+    \renewcommand*{\contentsname}{\LARGE\@contentsnametemp}
+  }
+}
+
+\end{MacroCode}
+
+Die Farbe und Schriftgröße von Parts im Inhaltsverzeichnis wird vergrößert.
+\begin{MacroCode}{class}
+\addtokomafont{partentry}{%  
+  \color{wuDarkRed}\Large
+}
+
+\end{MacroCode}
+
+
+\subsubsection{Titel}
+
+Bei der Option \opt{parts} wird der Titel in der Schriftgröße \texttt{huge} gesetzt:
+\begin{MacroCode}{class}
+\AtEndPreamble{
+  \ifthenelse{\boolean{scldoc@parts}}%
+  {%
+    \expandafter\def\expandafter\scldoc@titlestyle\expandafter{%
+      \scldoc@titlestyle\huge
+    }
+  }{}%
+}
+
+\end{MacroCode}
+
+
+\begin{macro*}{\titletext}
+\begin{macro}{\maketitle}
+\begin{MacroCode}{class}
+\newcommand{\titletext}{}
+
+\renewcommand{\maketitle}{%
+
+  % Title and subtitle
+  \ifthenelse{\equal{\@title}{\empty}}{}{%
+    \expandafter\def\expandafter\titletext\expandafter{\titletext%
+      {%
+        \scldoc@titlestyle\color{\scldoc@titlefg}\huge\noindent\@title%
+      }%
+      \par\parskipreduce%
+    }
+  }
+
+  \ifthenelse{\equal{\@subtitle}{\empty}}{}{%
+    \expandafter\def\expandafter\titletext\expandafter{\titletext%
+      \vspace{1ex}
+      {%
+        \scldoc@subtitlestyle\color{\scldoc@titlefg}\noindent\@subtitle%
+      }%
+      \par\parskipreduce%
+    }
+  }
+
+  % Subject and field
+  \ifthenelse{\not\equal{\@subject}{\empty} \or \not\equal{\@field}{\empty} \or \not\equal{\@class}{\empty}}{%
+    \expandafter\def\expandafter\titletext\expandafter{\titletext%
+      \vspace{4ex}
+    }
+  }{}
+  
+  \ifthenelse{\equal{\@subject}{\empty}}{}{%
+    \expandafter\def\expandafter\titletext\expandafter{\titletext%
+      {%
+        \scldoc@subjectstyle\noindent\@subject%
+      }%
+    }
+  }
+
+  \ifthenelse{\not\equal{\@subject}{\empty} \and \not\equal{\@field}{\empty}}{%
+    \expandafter\def\expandafter\titletext\expandafter{%
+      \titletext:~
+    }
+  }{}
+  
+  \ifthenelse{\equal{\@field}{\empty}}{}{%
+    \expandafter\def\expandafter\titletext\expandafter{\titletext%
+      {%
+        \scldoc@fieldstyle\noindent\@field%
+      }%
+    }
+  }
+
+  \ifthenelse{\not\equal{\@subject}{\empty} \or \not\equal{\@field}{\empty}}{%
+    \expandafter\def\expandafter\titletext\expandafter{\titletext%
+      \par\parskipreduce
+    }
+  }{}
+  
+  % Class
+  \ifthenelse{\equal{\@class}{\empty}}{}{%
+    \expandafter\def\expandafter\titletext\expandafter{\titletext%
+      {%
+        \scldoc@classstyle\noindent\@class%
+      }%
+      \par\parskipreduce
+    }
+  }
+
+  % Author
+  \ifthenelse{\not\equal{\@author}{\empty} \or \not\equal{\@email}{\empty}}{%
+    \expandafter\def\expandafter\titletext\expandafter{\titletext%
+      \vspace{3ex}
+    }
+  }{}
+  
+  \ifthenelse{\equal{\@author}{\empty}}{}{%
+    \expandafter\def\expandafter\titletext\expandafter{\titletext%
+      {%
+        \scldoc@authorstyle\noindent\@author%
+      }%
+      \par\parskipreduce%
+    }
+  }
+
+  % E-Mail
+  \ifthenelse{\equal{\@email}{\empty}}{}{%
+    \expandafter\def\expandafter\titletext\expandafter{\titletext%
+      %\vspace{0.5ex}
+      {%
+        \scldoc@emailstyle\noindent\@email%
+      }%
+      \par\parskipreduce%
+    }
+  }
+
+  % Date and Version
+  \ifthenelse{\not\equal{\@date}{\empty} \or \not\equal{\@version}{\empty} \or \not\equal{\@license}{\empty}}{%
+    \expandafter\def\expandafter\titletext\expandafter{\titletext%
+      \vspace{4ex}
+    }
+  }{}
+  
+  \ifthenelse{\equal{\@date}{\empty}}{}{%
+    \expandafter\def\expandafter\titletext\expandafter{\titletext%
+      {%
+        \scldoc@datestyle\noindent\@date%
+      }%
+    }
+  }
+
+  \ifthenelse{\not\equal{\@date}{\empty} \and \not\equal{\@version}{\empty}}{%
+    \expandafter\def\expandafter\titletext\expandafter{%
+      \titletext,~
+    }
+  }{}
+  
+  \ifthenelse{\equal{\@version}{\empty}}{}{%
+    \expandafter\def\expandafter\titletext\expandafter{\titletext%
+      {%
+        \scldoc@versionstyle\noindent\@version%
+      }%
+    }
+  }
+
+  \ifthenelse{\not\equal{\@date}{\empty} \or \not\equal{\@version}{\empty}}{%
+    \expandafter\def\expandafter\titletext\expandafter{\titletext%
+      \par\parskipreduce
+    }
+  }{}
+  
+  % License
+  \ifthenelse{\equal{\@license}{\empty}}{}{%
+    \expandafter\def\expandafter\titletext\expandafter{\titletext%
+      {%
+        \scldoc@licensestyle\noindent\@license%
+      }%
+      \par\parskipreduce
+    }
+  }
+  
+  \vspace*{1cm}
+  \begin{center}
+    \titletext
+  \end{center}
+  \vspace{\scldoc@titleskip}%
+%
+  \ifthenelse{\boolean{scldoc@transparency}}%
+  {%
+    \KOMAoption{fontsize}{\scldoc@transparencyfontsize}%
+  }{}%
+}
+
+\end{MacroCode}
+\end{macro}
+\end{macro*}
+
+
+\begin{macro}{\maketitle*}
+\begin{MacroCode}{class}
+\WithSuffix\newcommand\maketitle*{%
+  \setlength{\parfillskip}{0em}
+  \par
+%  \vspace{-0.5ex}
+  \vspace{0.75ex}
+  \parskipreduce
+  {\scldoc@titlestyle%
+    \color{\scldoc@titlefg}%
+    \noindent\@title%
+  }%
+  \hfill%
+  \ifthenelse{\equal{\@group}{\empty}}{~}{%
+    {\setlength{\fboxsep}{0.25em}
+      \scldoc@groupstyle%
+      \colorbox{\scldoc@groupbg}{%
+        \textcolor{\scldoc@groupfg}{\@group}%
+      }%
+    }%
+  }%
+  
+  \par
+  \setlength{\parfillskip}{1em plus 1fil}
+  
+  \ifthenelse{\equal{\@subtitle}{\empty}}{}{%
+      \parskipreduce
+      {\scldoc@subtitlestyle\color{\scldoc@titlefg}\noindent\@subtitle\par}
+  }
+%
+  \ifthenelse{\boolean{scldoc@transparency}}%
+  {%
+    \KOMAoption{fontsize}{22pt}%
+  }{}%
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsubsection{Intro}
+
+\begin{macro}{\intro}
+Dient zur Einleitung eines Textes vor den eigentlichen Aufgaben. Erzeugt lediglich einen Abstand zwischen dem Titel (durch \cs{maketitle}) und dem nachfolgenden Fließtext.
+\begin{MacroCode}{class}
+\newcommand{\intro}{%
+  \vspace{1.5ex}
+  \parskipreduce
+%  \medskip
+%  \par\noindent
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsubsection{Abstract (Zusammenfassung)}
+
+Falls Absatzeinzug deaktiviert ist, soll auch der Abstract keinen Einzug erhalten.
+\begin{MacroCode}{class}
+\ifthenelse{\boolean{scldoc@parindent}}{}{%
+  \ifundef{\abstract}{}{%
+    \patchcmd{\abstract}{\quotation}{\quotation\setpar\noindent\ignorespaces}{}{}
+  }
+}
+
+\AtEndEnvironment{abstract}{\vspace{3em}}
+
+\end{MacroCode}
+
+
+\subsubsection{Kopfzeile}
+
+\begin{macro}{\makeheader}
+Dieses Makro erstellt in Abhängig der relevanten Optionen die Kopfzeile der ersten Seite.
+\begin{MacroCode}{class}
+\newcommand{\makeheader}{%
+  {\sffamily\small
+    {\noindent\@subjectshort \hfill \@dateshort}\\
+    {\noindent\@fieldshort \hfill \@classshort}}\\
+    \noindent\rule[0.5em]{\textwidth}{\scldoc@headerrulewidth}
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsubsection{Fußzeile}
+
+Die Fußzeilen werden durch das Package \pkg{scrheadings} realisiert. Dieses wird zuerst aktiviert und die standard Kopf- und Fußzeilen gelöscht:
+\begin{MacroCode}{class}
+\AtBeginDocument
+{
+  \ifthenelse{\boolean{scldoc@footer}}
+  {%
+    \pagestyle{scrheadings}
+  
+    \clearscrheadings
+    \clearscrheadfoot
+
+\end{MacroCode}
+
+Abhängig von den getroffenen oder nicht getroffenen Angaben von \cs{author}, \cs{field} etc. wird der Inhalt der inneren Seite der Fußzeile (bei einseitigem Satz links) im Makro \cs{footertext} erzeugt und an der entsprechenden Position der Fußzeile eingefügt:
+\begin{macro*}{footertext}
+\begin{MacroCode}{class}
+  \newcommand{\footertext}{}
+
+  \ifthenelse{\equal{\@licenseshort}{\empty}}
+  {}{
+    \expandafter\def\expandafter\footertext\expandafter{%
+      \footertext \@licenseshort\hspace{0.4em} %
+    }
+  }
+
+  \ifthenelse{\equal{\@authorshort}{\empty}}
+  {}{
+    \expandafter\def\expandafter\footertext\expandafter{%
+      \footertext \textsc{\@authorshort}\hspace{0.4em}\textbar\hspace{0.4em}%
+    }
+  }
+  
+  \ifthenelse{\equal{\@fieldshort}{\empty}}
+  {}{
+    \expandafter\def\expandafter\footertext\expandafter{%
+      \footertext\@fieldshort%
+    }
+  }
+  
+  \ifthenelse{\equal{\@fieldshort}{\empty} \or%
+    \equal{\@titleshort}{\empty}}
+  {}{
+    \expandafter\def\expandafter\footertext\expandafter{%
+      \footertext:%
+    }
+  }
+  
+  \ifthenelse{\equal{\@titleshort}{\empty}}
+  {}{
+    \expandafter\def\expandafter\footertext\expandafter{%
+      \footertext\ \@titleshort%
+    }
+  }
+  
+  \ifthenelse{\equal{\@versionshort}{\empty}}
+  {}{
+    \expandafter\def\expandafter\footertext\expandafter{%
+      \footertext\quad (\@versionshort)%
+    }
+  }
+  
+  \refoot[]{\footertext}  % gerade rechts
+  \lofoot[]{\footertext}  % ungerade links
+
+\end{MacroCode}
+\end{macro*}
+
+Die andere Seite der Fußzeile wird mit der Seitenanzahl (\cs{pagemark}) und -- je nach Wert der Option \opt{pagecount} -- zusätzlich der Anzahl der Seiten (\cs{pageref{LastPage}}) versehen:
+\begin{MacroCode}{class}
+  \ifthenelse{\boolean{scldoc@pagecount}}
+  {
+    \rofoot[]{\small\normalfont\sffamily%
+      \pagemark/\pageref*{LastPage}}         % gerade rechts
+    \lefoot[]{\small\normalfont\sffamily%
+      \pagemark/\pageref*{LastPage}}         % ungerade links
+  }{
+    \lefoot[]{\pagemark}                    % gerade links
+    \rofoot[]{\pagemark}                    % ungerade rechts
+  }
+
+\end{MacroCode}
+
+Kopfzeilen bleiben leer:
+\begin{MacroCode}{class}
+  \lehead[]{}  % gerade links
+  \rehead[]{}  % gerade rechts
+  \lohead[]{}  % ungerade links
+  \rohead[]{}  % ungerade rechts
+
+\end{MacroCode}
+
+Die Formatierung von \cs{pagemark} und der Fußzeile wird durch \pkg{scrheadings} vorgenommen und muss gesondert vorgenommen werden:
+\begin{MacroCode}{class}
+  \setkomafont{pagenumber}{%
+    \small\normalfont\sffamily
+  }
+
+  \setkomafont{pagefoot}{%
+    \footnotesize\normalfont\sffamily
+  }
+  }{ % \ifthenelse{\boolean{scldoc@footer}}
+    \pagestyle{empty}
+  }
+} % \AtBeginDocument
+
+\end{MacroCode}
+
+
+\subsubsection{Typographie}
+
+
+\begin{macro}{\textsfbf}[1]{<text>}
+\begin{macro}{\cemph}[1]{<text>}
+\begin{macro}{\csfemph}[1]{<text>}
+Formatierungskommandos:
+\begin{MacroCode}{class}
+\newcommand{\textsfbf}[1]{\text{\sffamily\bfseries #1}}
+
+\newcommand{\cemph}[1]{\textcolor{\scldoc@cemphfg}{#1}}
+\newcommand{\csfemph}[1]{\textcolor{\scldoc@cemphfg}{\sffamily#1}}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro}
+
+
+\begin{macro}{\textrightarrow}
+\begin{macro}{\textRightarrow}
+\begin{MacroCode}{class}
+\providecommand\textrightarrow{$\rightarrow$\xspace}
+\renewcommand{\textrightarrow}{$\rightarrow$\xspace}
+\providecommand\textRightarrow{$\Rightarrow$\xspace}
+\renewcommand{\textRightarrow}{$\Rightarrow$\xspace}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+
+Das Eurozeichen der Tastatur als \cs{euro}-Makro auffassen, dass mithilfe des Packages \textsf{eurosym} das Eurosymbols setzt:
+\begin{MacroCode}{class}
+\DeclareUnicodeCharacter{20AC}{\euro}
+
+\end{MacroCode}
+
+\begin{macro}{\today*}
+Analog zu \cs{today} stellt die hier definierte Sternvariante das aktuelle Datum an. Es wird jedoch im Format T.M.JJJJ (bzw. D.M.YYYY) dargestellt.
+\begin{MacroCode}{class}
+\AfterPreamble{
+  \WithSuffix\newcommand\today*{\the\day.\the\month.\the\year}
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\begin{macro}{\headrule}
+Das folgende Makro erzeugt eine \cs{midrule} des \pkg{booktabs}-Packages in der Stärke \cs{heavyrulethick} zum optisch auffallenderen Trennen des Kopfes einer Tabelle und deren Inhalt:
+\begin{MacroCode}{class}
+\newcommand{\headrule}{\midrule[\heavyrulewidth]}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsubsection{Einheiten}
+
+Konfiguration des Packages \pkg{siunitx} nach deutscher Konvention:
+\begin{MacroCode}{class}
+\sisetup{%
+  locale=DE,%
+  per-mode=fraction,%
+  list-final-separator={ und },%
+  list-pair-separator={ und },%
+  list-separator={; },%
+  range-phrase={ bis }
+}
+
+\end{MacroCode}
+
+Häufig genutzte Einheiten werden definiert:
+\begin{MacroCode}{class}
+\DeclareSIUnit \scm{\square\centi\metre}
+\DeclareSIUnit \sm{\square\metre}
+\DeclareSIUnit \skm{\square\kilo\metre}
+
+\DeclareSIUnit \qcm{\square\centi\metre}
+\DeclareSIUnit \qm{\square\metre}
+\DeclareSIUnit \qkm{\square\kilo\metre}
+
+\DeclareSIUnit \ccm{\cubic\centi\metre}
+\DeclareSIUnit \cm{\cubic\metre}
+\DeclareSIUnit \ckm{\cubic\kilo\metre}
+
+\DeclareSIUnit \cmps{\centi\metre\per\second}
+\DeclareSIUnit \mps{\metre\per\second}
+\DeclareSIUnit \kmps{\kilo\metre\per\second}
+
+\DeclareSIUnit \cmph{\centi\metre\per\hour}
+\DeclareSIUnit \mph{\metre\per\hour}
+\DeclareSIUnit \kmph{\kilo\metre\per\hour}
+
+\end{MacroCode}
+
+
+\subsection{Abkürzungen, Symbole etc.}
+
+\subsubsection{Abkürzungen} 
+
+\begin{macro}{\dh}
+\begin{macro}{\Dh}
+\begin{macro}{\so}
+\begin{macro}{\So}
+\begin{macro}{\su}
+\begin{macro}{\Su}
+\begin{macro}{\ua}
+\begin{macro}{\Ua}
+\begin{macro}{\uU}
+\begin{macro}{\UU}
+\begin{macro}{\zB}
+\begin{macro}{\ZB}
+Deutsche Abkürzungen:
+\begin{MacroCode}{class}
+\renewcommand{\dh}{d.\,h.\xspace}
+\newcommand{\Dh}{D.\,h.\xspace}
+\newcommand{\so}{s.\,o.\xspace}
+\newcommand{\So}{s.\,o.\xspace}
+\newcommand{\su}{s.\,u.\xspace}
+\newcommand{\Su}{s.\,u.\xspace}
+\newcommand{\ua}{u.\,a.\xspace}
+\newcommand{\Ua}{U.\,a.\xspace}
+\newcommand{\uU}{u.\,U.\xspace}
+\newcommand{\UU}{U.\,U.\xspace}
+\newcommand{\zB}{z.\,B.\xspace}
+\newcommand{\ZB}{Z.\,B.\xspace}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+
+
+\subsubsection{Siehe Abschnitte, siehe Abbildungen, etc.}
+
+\begin{macro}{\see}
+\begin{macro}{\seee}
+\begin{macro}{\seef}
+\begin{macro}{\seel}
+\begin{macro}{\seer}
+\begin{macro}{\sees}
+\begin{macro}{\seesol}
+Geklammerte 'Siehe'-Verweise auf Abschnitte, Abbildungen, etc:
+\begin{MacroCode}{class}
+\newcommand{\see}[1]{%
+  \scldoc@seeleft%
+  \scldoc@seelabel\scldoc@seelabelsep#1%
+  \scldoc@seeright%
+}
+
+\newcommand{\seee}[1]{%
+  \scldoc@seeleft%
+  \scldoc@seelabel\scldoc@seelabelsep%
+  \scldoc@seeexerciselabel\scldoc@seerefsep\ref{#1}%
+  \scldoc@seeright%
+}
+
+\newcommand{\seef}[1]{%
+  \scldoc@seeleft%
+  \scldoc@seelabel\scldoc@seelabelsep%
+  \scldoc@seefigurelabel\scldoc@seerefsep\ref{#1}%
+  \scldoc@seeright%
+}
+
+\newcommand{\seel}[1]{%
+  \scldoc@seeleft%
+  \scldoc@seelabel\scldoc@seelabelsep%
+  \scldoc@seelistinglabel\scldoc@seerefsep\ref{#1}%
+  \scldoc@seeright%
+}
+
+\newcommand{\seer}[1]{%
+  \scldoc@seeleft%
+  \scldoc@seelabel\scldoc@seelabelsep%
+  \ref{#1}%
+  \scldoc@seeright%
+}
+
+\newcommand{\sees}[1]{%
+  \scldoc@seeleft%
+  \scldoc@seelabel\scldoc@seelabelsep%
+  \scldoc@seesectionlabel\scldoc@seerefsep\ref{#1}%
+  \scldoc@seeright%
+}
+
+\newcommand{\seesol}[1]{%
+  \scldoc@seeleft%
+  \scldoc@seelabel\scldoc@seelabelsep%
+  \scldoc@seesolutionlabel\scldoc@seerefsep\ref{#1}%
+  \scldoc@seeright%
+}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+
+
+\subsubsection{Aufgaben angeben: S.\,X, Nr.\,Y}
+
+\begin{macro}{\pgno}[2]{[<pagenumber>]}{<no>}
+Zur Angabe von Aufgaben im Format S.\,X, Nr.\,Y.
+\begin{MacroCode}{class}
+\newcommand{\pgno}[2][]{%
+  \ifthenelse{\equal{#1}{\empty}}%
+    {}{%
+    S.\,#1, 
+  }%
+  Nr.\,#2\xspace
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsubsection{Creative Commons Lizenz}
+
+\begin{macro}{\ccLogo}
+\begin{macro}{\ccAttribution}
+\begin{macro}{\ccShareAlike}
+\begin{macro}{\ccNoDerivatives}
+\begin{macro}{\ccNonCommercial}
+\begin{macro}{\ccNonCommercialEU}
+\begin{macro}{\ccNonCommercialJP}
+\begin{macro}{\ccZero}
+\begin{macro}{\ccPublicDomain}
+\begin{macro}{\ccSampling}
+\begin{macro}{\ccShare}
+\begin{macro}{\ccRemix}
+\begin{macro}{\ccCopy}
+Skalierte Symbole für Creative Commons Lizenz:
+   \begin{MacroCode}{class}
+\WithSuffix\newcommand\ccLogo*{\scalebox{\scldoc@ccscale}{\ccLogo}}
+\WithSuffix\newcommand\ccAttribution*{\scalebox{\scldoc@ccscale}{\ccAttribution}}
+\WithSuffix\newcommand\ccShareAlike*{\scalebox{\scldoc@ccscale}{\ccShareAlike}}
+\WithSuffix\newcommand\ccNoDerivatives*{\scalebox{\scldoc@ccscale}{\ccNoDerivatives}}
+\WithSuffix\newcommand\ccNonCommercial*{\scalebox{\scldoc@ccscale}{\ccNonCommercial}}
+\WithSuffix\newcommand\ccNonCommercialEU*{\scalebox{\scldoc@ccscale}{\ccNonCommercialEU}}
+\WithSuffix\newcommand\ccNonCommercialJP*{\scalebox{\scldoc@ccscale}{\ccNonCommercialJP}}
+\WithSuffix\newcommand\ccZero*{\scalebox{\scldoc@ccscale}{\ccZero}}
+\WithSuffix\newcommand\ccPublicDomain*{\scalebox{\scldoc@ccscale}{\ccPublicDomain}}
+\WithSuffix\newcommand\ccSampling*{\scalebox{\scldoc@ccscale}{\ccSampling}}
+\WithSuffix\newcommand\ccShare*{\scalebox{\scldoc@ccscale}{\ccShare}}
+\WithSuffix\newcommand\ccRemix*{\scalebox{\scldoc@ccscale}{\ccRemix}}
+\WithSuffix\newcommand\ccCopy*{\scalebox{\scldoc@ccscale}{\ccCopy}}
+
+   \end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+
+\begin{macro}{\ccby*}
+\begin{macro}{\ccbysa*}
+\begin{macro}{\ccbynd*}
+\begin{macro}{\ccbync*}
+\begin{macro}{\ccbynceu*}
+\begin{macro}{\ccbyncjp*}
+\begin{macro}{\ccbyncsa*}
+\begin{macro}{\ccbyncsaeu*}
+\begin{macro}{\ccbyncsajp*}
+\begin{macro}{\ccbyncnd*}
+\begin{macro}{\ccbyncndeu*}
+\begin{macro}{\ccbyncndjp*}
+\begin{macro}{\cczero*}
+\begin{macro}{\ccpd*}
+Skalierte Symbole für Create Commons Lizenz:
+   \begin{MacroCode}{class}
+\WithSuffix\newcommand\ccby*{\scalebox{\scldoc@ccscale}{\ccby}}
+\WithSuffix\newcommand\ccbysa*{\scalebox{\scldoc@ccscale}{\ccbysa}}
+\WithSuffix\newcommand\ccbynd*{\scalebox{\scldoc@ccscale}{\ccbynd}}
+\WithSuffix\newcommand\ccbync*{\scalebox{\scldoc@ccscale}{\ccbync}}
+\WithSuffix\newcommand\ccbynceu*{\scalebox{\scldoc@ccscale}{\ccbynceu}}
+\WithSuffix\newcommand\ccbyncjp*{\scalebox{\scldoc@ccscale}{\ccbyncjp}}
+\WithSuffix\newcommand\ccbyncsa*{\scalebox{\scldoc@ccscale}{\ccbyncsa}}
+\WithSuffix\newcommand\ccbyncsaeu*{\scalebox{\scldoc@ccscale}{\ccbyncsaeu}}
+\WithSuffix\newcommand\ccbyncsajp*{\scalebox{\scldoc@ccscale}{\ccbyncsajp}}
+\WithSuffix\newcommand\ccbyncnd*{\scalebox{\scldoc@ccscale}{\ccbyncnd}}
+\WithSuffix\newcommand\ccbyncndeu*{\scalebox{\scldoc@ccscale}{\ccbyncndeu}}
+\WithSuffix\newcommand\ccbyncndjp*{\scalebox{\scldoc@ccscale}{\ccbyncndjp}}
+\WithSuffix\newcommand\cczero*{\scalebox{\scldoc@ccscale}{\cczero}}
+\WithSuffix\newcommand\ccpd*{\scalebox{\scldoc@ccscale}{\ccpd}}
+
+   \end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+
+
+\subsubsection{Symbole für Unterrichtsablauf}
+
+\begin{macro}{\action}
+\begin{macro}{\speech}
+Symbole für Handlung oder Sprache -- erstellt mit \pkg{tikz}.
+\begin{MacroCode}{class}
+\newcommand{\action}{%
+  \raisebox{0.5ex}{%
+    \resizebox{1em}{!}{%
+      \tikz \draw[\scldoc@actionfg, ->, line width=2.5pt] (0,0) .. controls (0.1, 0.1) ..  (0.5,0);%
+    }%
+  }\xspace%
+}
+
+\newcommand{\speech}{%
+  \raisebox{0.5ex}{%
+    \resizebox{1em}{\heightof{L}}{%
+      \tikz \node[\scldoc@speechfg, draw, fill, ellipse callout, callout relative pointer={(0.25,-0.25)}, callout pointer arc=40, xscale=-1] {\phantom{aa}};%
+    }%
+  }\xspace%
+}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+
+
+\subsection{Grafik}
+
+\subsubsection{Vordefinierte Farben}
+
+Definition der verwendeten Farben:
+\begin{MacroCode}{class}
+\definecolor{wuDarkRed}{HTML}{910000}
+\definecolor{wuSemiDarkRed}{HTML}{a00000}
+\definecolor{wuRed}{HTML}{F22222}
+
+\definecolor{wuDarkerGray}{RGB}{75, 75, 75}  
+\definecolor{wuDarkGray}{RGB}{160, 160, 160}  
+\definecolor{wuGray}{RGB}{210, 210, 210}  
+\definecolor{wuLightGray}{RGB}{227, 227, 227}  
+\definecolor{wuLighterGray}{RGB}{235, 235, 235}  
+
+\definecolor{wuBlue}{HTML}{3851FF}
+
+\definecolor{wuGreen}{HTML}{009E0A}
+
+\definecolor{wuOrange}{HTML}{FF8D29}
+
+\definecolor{wuPink}{HTML}{FF5BF8}
+
+\definecolor{wuViolet}{HTML}{9F32CC}
+
+\definecolor{wuTurquoise}{HTML}{3E9DA6}
+
+\definecolor{wuBrown}{HTML}{885704}
+
+\end{MacroCode}
+
+
+\subsubsection{Grafikpfad}
+
+\begin{MacroCode}{class}
+\AtBeginDocument{
+  \graphicspath{\scldoc@graphicspath}  
+}
+
+\end{MacroCode}
+
+
+\subsubsection{TikZ}
+
+Laden zusätzlicher \pkg{tikz}-Bibliotheken:
+\begin{MacroCode}{class}
+\usetikzlibrary{calc}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}  
+\usetikzlibrary{positioning}  
+\usetikzlibrary{shapes.callouts}
+
+\end{MacroCode}
+
+Konfiguration von \pkg{tikz}:
+\begin{MacroCode}{class}
+\tikzset{>=stealth}
+\tikzset{font=\small}
+\tikzset{execute at end picture={\renewcommand{\tikzScale}{1.0}}}
+
+\end{MacroCode}
+
+Der folgende Befehl behebt vom Adobe Reader falsch angezeigte Farben mit opacity-Option. Weshalb ist mir nicht bekannt.
+\begin{MacroCode}{class}
+\pdfpageattr{/Group << /S /Transparency /I true /CS /DeviceRGB>>}
+
+\end{MacroCode}
+
+Vordefinierte Werte, die innerhalb von Grafiken das Erstellen von Graphen verwendet werden können.
+
+\begin{macro}{\tikzScale}[1]{<scale>}
+\begin{macro}{\tikzXStart}[1]{<x-start>}
+\begin{macro}{\tikzXEnd}[1]{<x-end>}
+\begin{macro}{\tikzYStart}[1]{<y-start>}
+\begin{macro}{\tikzYEnd}[1]{<y-end>}
+\begin{MacroCode}{class}
+\newcommand{\tikzScale}{1}
+
+\newcommand{\tikzXStart}{-3}
+\newcommand{\tikzXEnd}{3}
+\newcommand{\tikzYStart}{-3}
+\newcommand{\tikzYEnd}{3}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+
+
+\begin{macro}{\tikzscale}[1]{<scale>}
+Wird innerhalb einer TikZ-Grafik das Makro \cs{tikzScale} als 
+Skalierungsfaktor verwendet, kann die Grafik durch Aufruf 
+dieses Befehls skaliert werden.
+\begin{MacroCode}{class}
+\newcommand{\tikzscale}[1]{\renewcommand{\tikzScale}{#1}}
+
+\end{MacroCode}
+\end{macro}
+
+\begin{macro}{\tikzinput}[2]{[<scale>]}{<pgf-file>}
+Zum Laden von PGF-Dateien mit TikZ-Code aus dem Ordner/Pfad \cs{scldoc@tikzpath} kann dieses Makro verwendet werden.
+\begin{MacroCode}{class}
+\newcommand{\tikzinput}[2][1.0]{%
+  \renewcommand{\tikzScale}{#1}%
+  \input{\scldoc@tikzpath#2}%
+  \renewcommand{\tikzScale}{1.0}%
+}
+
+\end{MacroCode}
+\end{macro}
+
+\begin{macro}{\tikzinput}[2]{[<scale>]}{<pgf-file>}
+Arbeitet analog zu \cs{tikzinput}, zentriert die Graphik jedoch durch Schachtelung in \env*{center}-Umgebung.
+\begin{MacroCode}{class}
+\WithSuffix\newcommand\tikzinput*[2][1.0]{%
+  \renewcommand{\tikzScale}{#1}%
+  \begin{center}
+    \input{\scldoc@tikzpath#2}
+  \end{center}
+  \renewcommand{\tikzScale}{1.0}%
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsection{Einrichtung der \textsf{scldoc}-Klasse}
+
+\begin{macro}{\sclsetup}[1]{<key>=<val> list}
+\begin{macro}{\scloption}[2]{<key>}{<val>}
+Wrapper für \cs{setkeys} zum Setzen der Optionen.
+\begin{MacroCode}{class}
+\newcommand{\sclsetup}[1]
+{
+  \setkeys{scldoc}{#1}
+}
+
+\newcommand{\scloption}[2]
+{
+  \setkeys{scldoc}{{#1}={#2}}
+}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+
+
+\subsection{Überschriften für Aufgaben etc.}
+
+Die Überschriften der Aufgaben werden durch das Package \pkg{titlesec} implementiert. Exemplarisch wird an dieser Stelle die Abhandlung von Aufgaben besprochen. Die Überschriften für Lösungen usw. werden analog implementiert.
+
+
+\subsubsection{Counter und Hilfsmakros}
+
+Zum Zählen der Aufgabennummern werden zuerst Zähler definiert. Anschließend Hilfs-Makros erstellt, welche im späteren Verlauf zur Anzeige der Punkte und zum Zusammensetzen der Überschriften dienen.
+
+\begin{macro}{\exepoints}
+\begin{macro}{\exelabeltext}
+\begin{macro}{\subexelabeltext}
+\begin{MacroCode}{class}
+\newcounter{exercisecounter}
+\newcounter{subexercisecounter}[exercisecounter]
+\newcounter{multiexecounter}
+
+\renewcommand{\thesubexercisecounter}{\theexercisecounter.\arabic{subexercisecounter}}
+
+\newcommand{\exepoints}{}        % For optional number points
+\newcommand{\exelabeltext}{}     % Concatenation of the exercise-label
+\newcommand{\subexelabeltext}{}  % Concatenation of the subexercise-label
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro}
+
+\begin{macro}{\sollabeltext}
+\begin{macro}{\subsollabeltext}
+\begin{MacroCode}{class}
+\newcounter{solutioncounter}
+\newcounter{subsolutioncounter}[solutioncounter]
+\newcounter{multisolcounter}
+
+\renewcommand{\thesubsolutioncounter}{\thesolutioncounter.\arabic{subsolutioncounter}}
+
+\newcommand{\sollabeltext}{}     % Concatenation of the exercise-label
+\newcommand{\subsollabeltext}{}  % Concatenation of the subexercise-label
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+
+\begin{macro}{\rstexe}
+\begin{macro}{\rstsubexe}
+\begin{macro}{\rstmultiexe}
+Mit den folgenden Makros können Counter für Aufgaben manuell zurückgesetzt werden:
+\begin{MacroCode}{class}
+\newcommand{\rstexe}{\setcounter{exercisecounter}{0}}
+\newcommand{\rstsubexe}{\setcounter{subexercisecounter}{0}}
+\newcommand{\rstmultiexe}{\setcounter{multiexecounter}{0}}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro}
+
+
+\subsubsection{Überschriften-Klassen und Benutzermakros}
+
+Nun werden die Überschriften-Klassen für Aufgaben (\cs{exercise}) und Unteraufgaben (\cs{subexercise}) erzeugt. Für beide Klassen werden außerdem Makros erstellt (\cs{exe} und \cs{subexe}), welche für den Benutzer zur Erzeugung einer (Unter-) Aufgabenüberschrift dienen. Durch sie werden die Punktzahlen unter Berücksichtigung der Label \opt{exepointslabel} und \opt{subexepointslabel} erzeugt und der Text der Überschriften \cs{exetext} bzw. \cs{subexelabeltext} unter Berücksichtugung der entsprechenden Parameter zusammengesetzt. Abschließend wird in \cs{exe} und \cs{subexe} durch den Aufruf von \cs{exercise} bzw. \cs{subexercise} die entsprechende Überschrift erzeugt.
+
+Sowohl \cs{exercise} als auch \cs{subexercise} setzen den Counter für Teilaufgaben \cs{multiexecounter} auf Null.
+
+\begin{macro}{\exe}[2]{[<number points>]}{<title>}
+\begin{MacroCode}{class}
+\newcommand{\exe}[2][]{
+  \refstepcounter{exercisecounter}
+  
+  \renewcommand{\exelabeltext}{}
+  
+  \ifthenelse{\equal{#1}{\empty}}{
+    \renewcommand{\exepoints}{}
+  }{
+    \renewcommand{\exepoints}{%
+      \scldoc@exepointsleft#1\scldoc@exepointslabel\scldoc@exepointsright%
+    }
+  }
+  
+  \ifthenelse{\equal{#2}{\empty}}
+  {
+    \ifthenelse{\equal{\scldoc@exelabel}{\empty}}
+    {
+      \renewcommand{\exelabeltext}{}
+    }{
+      \renewcommand{\exelabeltext}{\hspace{0.1em}\scldoc@exelabel}
+    }
+  }{
+    \ifthenelse{\equal{\scldoc@exelabel}{\empty}}
+    {
+      \renewcommand{\exelabeltext}{\hspace{0.3em}}
+    }{
+      \renewcommand{\exelabeltext}{\hspace{0.1em}\scldoc@exelabel: \hspace{0.3em}}
+    }
+  }
+    
+  \setlength{\parfillskip}{0em} % Damit Punktzahl bei parkip wirklich rechtsbündig ist. Sonst rechts Abstand in letzter (einziger) Zeile.
+  \vspace{\scldoc@exebeforeskip}%
+  \parskipreduce%
+  {\scldoc@exelabelstyle%
+    \setlength{\fboxsep}{0.125em}%
+    \raisebox{0.2ex}{%
+      \colorbox{\scldoc@exenumberbg}{%
+        \textcolor{\scldoc@exenumberfg}{%
+          \scldoc@exenumberstyle\theexercisecounter\scldoc@exenumberseparator%
+        }%
+      }%
+    }%
+    \hspace{0.1em}%
+    \colorbox{\scldoc@exebg}{%
+      \textcolor{\scldoc@exefg}{\exelabeltext}%
+    }%
+  }%
+  {\scldoc@exestyle #2}%
+  \hfill%
+  {\scldoc@exepointsstyle%
+    \textcolor{\scldoc@exepointsfg}{%
+      \exepoints%
+    }%
+  }%
+  \nopagebreak\@afterheading%
+  \vspace{\scldoc@exeafterskip}%
+  \parskipreduce%
+  \par % Wichtig, damit \setlength{\parfillskip}{0em} wirkt (s. o.).
+  \setlength{\parfillskip}{1em plus 1fil}
+
+  \ifthenelse{\boolean{scldoc@exetoc}}
+  {
+    \addcontentsline{toc}{section}{\theexercisecounter\scldoc@exenumberseparator~\exelabeltext #2}
+  }{}
+  
+  \setcounter{subexercisecounter}{0}
+  \setcounter{multiexecounter}{0}
+  \setcounter{question}{0}
+%  \ifthenelse{\equal{\scldoc@exepointssep}{\empty}}
+%  {
+%    \exercise{\exelabeltext\hfill\exepoints}
+%  }{
+%    \exercise{\exelabeltext\hspace{\scldoc@exepointssep}\exepoints}
+%  }
+}
+
+\end{MacroCode}
+\end{macro}
+
+\begin{macro}{\subexe}[2]{[<number points>]}{<title>}
+\begin{MacroCode}{class}
+\newcommand{\subexe}[2][]{
+  
+  \refstepcounter{subexercisecounter}
+  
+  \renewcommand{\subexelabeltext}{}  
+  
+  \ifthenelse{\equal{#1}{\empty}}{
+    \renewcommand{\exepoints}{}
+  }{
+    \renewcommand{\exepoints}{%
+      \scldoc@subexepointsleft#1\scldoc@subexepointslabel\scldoc@subexepointsright%
+     }
+  }
+  
+  \ifthenelse{\equal{#2}{\empty}}
+  {
+    \ifthenelse{\equal{\scldoc@subexelabel}{\empty}}
+    {
+      \renewcommand{\subexelabeltext}{}
+    }{
+      \renewcommand{\subexelabeltext}{\hspace{0.1em}\scldoc@subexelabel}
+    }
+  }{
+    \ifthenelse{\equal{\scldoc@subexelabel}{\empty}}
+    {
+      \renewcommand{\subexelabeltext}{\hspace{0.3em}}
+    }{
+      \renewcommand{\subexelabeltext}{\hspace{0.1em}\scldoc@subexelabel: \hspace{0.3em}}
+    }
+  } 
+    
+  \setlength{\parfillskip}{0em}
+  \vspace{\scldoc@subexebeforeskip}%
+  \parskipreduce%
+  {\scldoc@subexelabelstyle%
+    \setlength{\fboxsep}{0.125em}
+    \raisebox{0.2ex}{%
+      \colorbox{\scldoc@subexenumberbg}{%
+        \textcolor{\scldoc@subexenumberfg}{%
+          \scldoc@subexenumberstyle%
+          \thesubexercisecounter%
+          \scldoc@subexenumberseparator%
+        }%
+      }%
+    }%
+    \colorbox{\scldoc@subexebg}{%
+      \textcolor{\scldoc@subexefg}{\subexelabeltext}%
+    }%
+  }%
+  {\scldoc@subexestyle #2}%
+  \hfill%
+  {\scldoc@subexepointsstyle%
+    \textcolor{\scldoc@subexepointsfg}{%
+      \exepoints%
+    }%
+  }%
+  \nopagebreak\@afterheading
+  \vspace{\scldoc@subexeafterskip}%
+  \parskipreduce%
+  \par
+  \setlength{\parfillskip}{1em plus 1fil}
+
+  \ifthenelse{\boolean{scldoc@exetoc}}
+  {
+    \addcontentsline{toc}{subsection}{\theexercisecounter.\thesubexercisecounter\scldoc@subexenumberseparator~\subexelabeltext #2}
+  }{}
+  
+  \setcounter{multiexecounter}{0}
+  \setcounter{question}{0}
+  
+%  \ifthenelse{\equal{\scldoc@subexepointssep}{\empty}}
+%  {
+%    \subexercisecounter{\subexelabeltext\hfill\exepoints}
+%  }{
+%    \subexercise{\subexelabeltext\hspace{\scldoc@subexepointssep}\exepoints}
+%  }
+}
+
+\end{MacroCode}
+\end{macro}
+Die Implementierung der Überschriften für Lösungen erfolgt analog:
+
+\begin{macro}{\sol}[1]{<title>}
+\begin{MacroCode}{class}
+\newcommand{\sol}[1]{
+  
+  \refstepcounter{solutioncounter}
+  
+  \renewcommand{\sollabeltext}{}  
+    
+  \ifthenelse{\equal{#1}{\empty}}
+  {
+    \ifthenelse{\equal{\scldoc@sollabel}{\empty}}
+    {
+      \renewcommand{\sollabeltext}{}
+    }{
+      \renewcommand{\sollabeltext}{\hspace{0.1em}\scldoc@sollabel}
+    }
+  }{
+    \ifthenelse{\equal{\scldoc@sollabel}{\empty}}
+    {
+      \renewcommand{\sollabeltext}{\hspace{0.3em}}
+    }{
+      \renewcommand{\sollabeltext}{\scldoc@sollabel: \hspace{0.3em}}
+    }
+  }
+  
+  %\setlength{\parfillskip}{0em}
+  \vspace{\scldoc@exebeforeskip}%
+  \parskipreduce%
+  {\scldoc@sollabelstyle%
+    \setlength{\fboxsep}{0.125em}%
+    \raisebox{0.2ex}{%
+      \colorbox{\scldoc@solnumberbg}{%
+        \textcolor{\scldoc@solnumberfg}{%
+          \scldoc@solnumberstyle\thesolutioncounter\scldoc@solnumberseparator%
+        }%
+      }%
+    }%
+    \hspace{0.1em}%
+    \colorbox{\scldoc@solbg}{%
+      \textcolor{\scldoc@solfg}{\sollabeltext}%
+    }%
+  }%
+  {\scldoc@solstyle #1}%
+  \vspace{\scldoc@exeafterskip}%
+  \parskipreduce%
+  %\par % Wichtig, damit \setlength{\parfillskip}{0em} wirkt (s. o.).
+  %\setlength{\parfillskip}{1em plus 1fil}
+    
+  \ifthenelse{\boolean{scldoc@exetoc}}
+  {
+    \addcontentsline{toc}{section}{\thesolutioncounter\scldoc@solnumberseparator~\sollabeltext #1}
+   }{}
+  
+  \setcounter{subsolutioncounter}{0} 
+  \setcounter{multiexecounter}{0}
+  
+  %\solution{\sollabeltext}
+}
+
+\end{MacroCode}
+\end{macro}
+
+\begin{macro}{\subsol}[1]{<title>}
+\begin{MacroCode}{class}
+\newcommand{\subsol}[1]{
+  
+  \refstepcounter{subsolutioncounter}
+  
+  \renewcommand{\subsollabeltext}{}  
+    
+  \ifthenelse{\equal{#1}{\empty}}
+  {
+    \ifthenelse{\equal{\scldoc@subsollabel}{\empty}}
+    {
+      \renewcommand{\subsollabeltext}{}
+    }{
+      \renewcommand{\subsollabeltext}{\hspace{0.1em}\scldoc@subsollabel}
+    }
+  }{
+    \ifthenelse{\equal{\scldoc@subsollabel}{\empty}}
+    {
+      \renewcommand{\subsollabeltext}{\hspace{0.3em}}
+    }{
+      \renewcommand{\subsollabeltext}{\hspace{0.1em}\scldoc@subsollabel: \hspace{0.3em}}
+    }
+  }
+  
+  \vspace{\scldoc@subexebeforeskip}%
+  \parskipreduce%
+  {\scldoc@subsollabelstyle%
+    \setlength{\fboxsep}{0.125em}
+    \raisebox{0.2ex}{%
+      \colorbox{\scldoc@subsolnumberbg}{%
+        \textcolor{\scldoc@subsolnumberfg}{%
+          \scldoc@subsolnumberstyle%
+          \thesubsolutioncounter%
+          \scldoc@subsolnumberseparator%
+        }%
+      }%
+    }%
+    \colorbox{\scldoc@subsolbg}{%
+      \textcolor{\scldoc@subsolfg}{\subsollabeltext}%
+    }%
+  }%
+  {\scldoc@subsolstyle #1}%
+  \hfill%
+  {\scldoc@subexepointsstyle\exepoints}%
+  \nopagebreak\@afterheading
+  \vspace{\scldoc@subexeafterskip}%
+  \parskipreduce%
+%  \par
+%  \setlength{\parfillskip}{1em plus 1fil}
+
+  \ifthenelse{\boolean{scldoc@exetoc}}
+  {
+    \addcontentsline{toc}{subsection}{\thesolutioncounter.\thesubsolutioncounter\scldoc@subsolnumberseparator~\subsollabeltext #1}
+  }
+  
+  \setcounter{multiexecounter}{0}
+  
+%  \subsolution{\subsollabeltext}
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsection{Teilaufgaben-Umgebungen}
+
+\subsubsection{Längen definieren}
+
+Zuerst werden die benötigten Längen definiert:
+\begin{MacroCode}{class}
+\newlength{\@hangindention}
+
+\end{MacroCode}
+
+
+\subsubsection{Nummerierung und Punkte der Teilaufgaben}
+
+\begin{macro}{\multiexelabel}
+\begin{macro}{\multiexelabelboxed}
+Diese Makros liefern die aktuelle Nummerierung der Teilaufgabe in Kleinbuchstaben mit anschließender Klammer (a), b),\dots) und erhöhen den Counter um Eins. \cs{multiexelabelboxed} setzt die Buchstaben zusätzlich rechtsbündig in eine Box.
+\begin{MacroCode}{class}
+\newcommand{\multiexelabel}{%
+  \stepcounter{multiexecounter}%
+  {\scldoc@multiexenumberstyle%
+    \textcolor{\scldoc@multiexefg}{%
+      \scldoc@multiexelabelleft\alph{multiexecounter}\scldoc@multiexelabelright%
+    }%
+  }
+}
+
+\newcommand{\multiexelabelboxed}{%
+  \stepcounter{multiexecounter}%    War \refstepcounter. Dies erzeugt vertikalen Abstand.
+  \setlength{\fboxsep}{0pt}%
+  \makebox[\@listlabelwidth][r]{%
+    \scldoc@multiexenumberstyle%
+    \textcolor{\scldoc@multiexefg}{%
+      \scldoc@multiexelabelleft\alph{multiexecounter}\scldoc@multiexelabelright
+    }%
+  }%
+}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+
+
+\begin{macro}{\points}
+\begin{macro}{\points*}
+Setzt die Punktzahl der aktuellen Teilaufgabe zusammen. Die Sternvariante setzt die Punktzahl am rechten Rand der aktuellen Zeile.
+\begin{MacroCode}{class}
+\newcommand{\points}[1]{%
+  \text{%
+    \scldoc@multiexepointsstyle%
+    \color{\scldoc@multiexepointsfg}%
+    \scldoc@multiexepointsleft%
+      #1\scldoc@multiexepointslabel%
+    \scldoc@multiexepointsright%
+   }%
+}
+
+\WithSuffix\newcommand\points*[1]{%
+  \hspace*{0pt}\hfill\hspace{0.5em}%
+  \points{#1}
+}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+
+
+\begin{macro}{\res}[2]{[<alternative text>]}{<text>}
+Zeigt Ergebnisse in Abhängigkeit der Option \opt{showresults} an.
+\begin{MacroCode}{class}
+\newcommand{\res}[2][]{%
+  \ifthenelse{\boolean{scldoc@showresults}}{%
+    \textcolor{\scldoc@resultfg}{#2}%
+  }{#1}%
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\begin{macro}{\resr}[2]{[<rule length>]}{<text>}
+Zeigt Ergebnisse in Abhängigkeit der Option \opt{showresults} an. Ansonsten wird ein horizontale Linie beliebiger Länge angezeigt.
+\begin{MacroCode}{class}
+\newcommand{\resr}[2][\scldoc@resultrulelength]{%
+  \ifthenelse{\boolean{scldoc@showresults}}{%
+    \textcolor{\scldoc@resultfg}{#2}%
+  }{\raisebox{-\scldoc@resultrule}{\rule{#1}{\scldoc@resultrule}}}%
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsubsection{Aufgabenliste (einspaltiger Satz von Teilaufgaben)}
+
+
+\begin{environment}{multiexelist}[1]{[<itemsep>]}
+\begin{environment}{multiexelist*}[1]{[<itemsep>]}
+Der einspaltige Satz von Teilaufgaben geschieht mithilfe einer angepassten Liste. Die normale Variante sollte verwendet werden, wenn vor den Teilaufgaben Fließtext steht. Folgen die Teilaufgaben direkt auf eine Aufgabenüberschrift (\cs{exe}, \cs{subexe}, \dots), sollte die Sternvariante verwendet werden, da hierbei der obere Abstand angepasst werden muss.
+\begin{MacroCode}{class}
+\newenvironment{multiexelist}[1][0.5\baselineskip]{
+  \parskipreduce
+  \begin{scldoclist}[#1]{\multiexelabelboxed}
+}{
+  \end{scldoclist}
+  \parskipreduce
+}
+
+\newenvironment{multiexelist*}[1][0.5\baselineskip]{
+  \ifthenelse{\boolean{scldoc@parskip}}{%
+    \vspace{0.125\baselineskip}%
+  }{%
+    \vspace{-0.375\baselineskip}%
+  }%
+%
+  \begin{multiexelist}%
+}{
+  \end{multiexelist}%
+}
+
+\end{MacroCode}
+\end{environment}
+\end{environment}
+
+
+\subsubsection{Aufgabentabelle (mehrspaltiger Satz von Teilaufgaben)}
+
+\begin{environment}{multiexearray}[2]{[<extrarowheight>]}{<number cols>}
+Der mehrspaltige Satz von Teilaufgaben geschieht mithilfe einer \cs*{tabularx}-Tabelle und einem angepassten Spaltentyp \texttt{A}.
+
+Die Zeilenhöhe kann optional verändert werden, wobei \cs{extrarowheight} verwendet wird. Anschließend werden alle für den Satz der Tabelle nötigen Längen gesetzt bzw. berechnet und der neue Spaltentyp definiert. Vor jede Spalte wird die Nummer der aktuellen Teilaufgabe durch \cs{multiexelabelboxed} gesetzt. Die Box wird benötigt, damit die Nummerierung rechtsbündig erfolgt. Da dieser Umgebung dem Satz von Fließtext dient, werden ab der zweiten Zeile alle Zeilen eingerückt, damit die Nummerierung links übersteht.
+\begin{MacroCode}{class}
+\newenvironment{multiexearray}[2][0.25\baselineskip]{
+  \arraysetup[#1]{}
+  \noindent\tabularx{\textwidth}{*{#2}{e}}%
+}{%
+  \endtabularx
+  \arraycleanup
+}
+
+\end{MacroCode}
+\end{environment}
+
+\begin{environment}{multiexearray*}[2]{[<extrarowheight>]}{<number cols>}
+Diese Umgebung arbeitet analog zu \cs{mutiexearray}, versetzt jedoch alle Zellen für Teilaufgaben in den Mathematik-Modus.
+\begin{MacroCode}{class}
+\newenvironment{multiexearray*}[2][0.25\baselineskip]{
+  \arraysetup[#1]{m}
+  \noindent\tabularx{\textwidth}{*{#2}{E}}
+}{
+  \endtabularx
+  \vspace{\scldoc@arrayafterskip}
+  \parskipreduce
+  \renewcommand{\arraystretch}{1.0}
+  \par
+}
+
+\end{MacroCode}
+\end{environment}
+
+\begin{macro}{\ls}
+Abkürzung für vergrößerten vertikalen Abstand in Tabellenzeile.
+\begin{MacroCode}{class}
+\newcommand{\ls}{\addlinespace[1.5ex]}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsection{Fragen}
+
+\subsubsection{Zähler, Längen und Überschriften}
+
+Zuerst werden benötigte Zähler und Längen definiert und die Nummerierung und Beschriftung der Fragen als Titel definiert:
+\begin{MacroCode}{class}
+\newcounter{question}
+\newcounter{@questtextlinecounter}
+\newcounter{@questmccounter}
+
+\newlength{\@questmclabelwidth}            % Frame width at enumerated multiple choice
+\setlength{\@questmclabelwidth}{0.9em}
+
+\newcommand{\questpoints}{}
+
+\end{MacroCode}
+
+
+\begin{macro}{\quest}[2]{<number points>}{<text>}
+
+Erzeugt eine neue Frage unter Berücksichtigung der relevanten Optionen.
+\begin{MacroCode}{class}
+\newcommand{\quest}[2][]{%
+  
+  \refstepcounter{question}
+  
+  \renewcommand{\questpoints}{#1}
+  
+  \setcounter{@questmccounter}{0}
+  
+  \vspace{\scldoc@questbeforeskip}
+  \ifthenelse{\equal{#1}{\empty}}
+  {%
+%    \question{}\hspace{\scldoc@questsep}{\scldoc@queststyle #2}
+    {\scldoc@questlabelstyle%
+      \textcolor{\scldoc@questlabelfg}{%
+        \thequestion.\,\scldoc@questlabel%
+      }%
+    }%
+    \hspace{\scldoc@questsep}{\scldoc@queststyle #2}
+  }{%
+%    \question{}\hspace{\scldoc@questpointssep}\textsf{\small%
+    {\scldoc@questlabelstyle%
+      \textcolor{\scldoc@questlabelfg}{%
+        \thequestion.\,\scldoc@questlabel%
+      }%
+    }%
+    \hspace{\scldoc@questpointssep}%
+    {%
+      \scldoc@questpointsstyle\scldoc@questpointsleft%
+      \questpoints\scldoc@questpointslabel%
+      \scldoc@questpointsright%
+    }%
+    \hspace{\scldoc@questsep}{\scldoc@queststyle #2}
+  }
+  \nopagebreak\@afterheading
+  \vspace{\scldoc@questafterskip}
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsubsection{Makros für Nummerierung bei alphabetischem Multiple Choice}
+
+
+\begin{macro}{\questmclabel}
+\begin{macro}{\questmclabelboxed}
+
+
+\begin{MacroCode}{class}
+\newcommand{\questmclabel}{%
+  \stepcounter{@questmccounter}%
+  \alph{@questmccounter}%
+}
+
+\newcommand{\questmclabelboxed}{
+  \stepcounter{@questmccounter}%    War \refstepcounter, erzeugt aber vert. Abstand.
+  \setlength{\fboxsep}{0pt}%
+  \makebox[\@listlabelwidth][r]{%
+    \raisebox{-0.125em}{%
+      \color{\scldoc@questmclabelfg}%
+      \framebox[\@questmclabelwidth][c]{%
+        \rule{0pt}{\@questmclabelwidth}%
+        \raisebox{0.2em}{\footnotesize\alph{@questmccounter}}%
+      }%
+    }%
+  }%
+}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+
+
+
+\subsubsection{Umgebungen für Antworten}
+
+
+\begin{macro}{\questblank}[1]{[<vert. space>]}
+Erzeugt eine neue Frage unter Berücksichtigung der relevanten Optionen mit anschließendem Freiraum.
+\begin{MacroCode}{class}
+\newcommand{\questblank}[1][3cm]{%
+  \vspace{#1}
+  \parskipreduce
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\begin{macro}{\questtextblank}[3]{[<lineskip>]}{<number lines>}{<linewidth>}
+Erzeugt eine neue Frage unter Berücksichtigung der relevanten Optionen mit anschließenden horizontalen Linien variabler Breite, die zusätzlichen freien Raum daneben ermöglichen.
+\begin{MacroCode}{class}
+\newcommand{\questtextblank}[3][0.75cm]{%
+  \par\vspace{1ex}
+  \forloop{@questtextlinecounter}{0}{\value{@questtextlinecounter} < #2}%
+  {%
+    \par
+    \vspace{-\baselineskip}
+    \parskipreduce
+    \vspace{#1}
+    \noindent\rule{#3}{0.4pt}
+  }
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+
+\begin{macro}{\questtext}[2]{[<lineskip>]}{<number lines>}
+Erzeugt eine neue Frage unter Berücksichtigung der relevanten Optionen mit anschließenden horizontalen Linien.
+\begin{MacroCode}{class}
+\newcommand{\questtext}[2][0.75cm]{%
+  \questtextblank[#1]{#2}{\linewidth}
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\begin{environment}{questmclist}[1]{[<itemsep>]}
+Erzeugt eine neue Frage unter Berücksichtigung der relevanten Optionen mit anschließender Multiple-Choice-Aufzählung.
+\begin{MacroCode}{class}
+\newenvironment{questmclist}[1][0.5\baselineskip]{%
+  \parskipreduce%
+  \vspace{-0.25\baselineskip}%
+  \begin{scldoclist}[#1]{\color{\scldoc@questmclabelfg}$\square$}
+}{%
+  \end{scldoclist}
+  \parskipreduce
+}
+
+\end{MacroCode}
+\end{environment}
+
+
+
+\begin{environment}{questmclistalph}[1]{[<itemsep>]}
+\begin{MacroCode}{class}
+\newenvironment{questmclistalph}[1][0.5\baselineskip]{%
+  \parskipreduce%
+  \vspace{-0.25\baselineskip}%
+  \begin{scldoclist}[#1]{\questmclabelboxed}
+}{%
+  \end{scldoclist}%
+  \parskipreduce
+}
+
+\end{MacroCode}
+\end{environment}
+
+
+\begin{environment}{questmcarray}[2]{[<extrarowheight>]}{<number columns>}
+Erzeugt eine neue Frage unter Berücksichtigung der relevanten Optionen mit anschließendem Multiple-Choice-Array.
+\begin{MacroCode}{class}
+\newenvironment{questmcarray}[2][0.25\baselineskip]{  
+  \arraysetup[#1]{}
+  \noindent\tabularx{\textwidth}{*{#2}{q}}%
+}{%
+  \endtabularx
+  \arraycleanup
+}
+
+\end{MacroCode}
+\end{environment}
+
+
+\begin{environment}{questmcarray*}[2]{[<extrarowheight>]}{<number columns>}
+Erzeugt eine neue Frage unter Berücksichtigung der relevanten Optionen mit anschließendem Multiple-Choice-Array mit Zellen im Mathematik-Modus.
+\begin{MacroCode}{class}
+\newenvironment{questmcarray*}[2][0.25\baselineskip]{  
+  \arraysetup[#1]{m}
+  \noindent\tabularx{\textwidth}{*{#2}{Q}}%
+}{%
+  \endtabularx
+  \arraycleanup
+}
+
+\end{MacroCode}
+\end{environment}
+
+
+\begin{environment}{questmcarrayalph}[2]{[<extrarowheight>]}{<number columns>}
+Erzeugt eine neue Frage unter Berücksichtigung der relevanten Optionen mit anschließendem Multiple-Choice-Array in alphabetischer Nummerierung.
+\begin{MacroCode}{class}
+\newenvironment{questmcarrayalph}[2][0.25\baselineskip]{  
+  \arraysetup[#1]{}
+  \noindent\tabularx{\textwidth}{*{#2}{a}}%
+}{%
+  \endtabularx
+  \arraycleanup
+}
+
+\end{MacroCode}
+\end{environment}
+
+
+\begin{environment}{questmcarrayalph*}[2]{[<extrarowheight>]}{<number columns>}
+Erzeugt eine neue Frage unter Berücksichtigung der relevanten Optionen mit anschließendem Multiple-Choice-Array in alphabetischer Nummerierung mit Zellen im Mathematik-Modus.
+\begin{MacroCode}{class}
+\newenvironment{questmcarrayalph*}[2][0.25\baselineskip]{  
+  \arraysetup[#1]{m}
+  \noindent\tabularx{\textwidth}{*{#2}{A}}%
+}{%
+  \endtabularx
+  \arraycleanup
+}
+
+\end{MacroCode}
+\end{environment}
+
+
+\subsection{Mehrspaltiges Layout}
+
+\begin{macro*}{@colone}
+\begin{macro*}{@coltwo}
+\begin{macro*}{scldoc@colalign}
+Zuerst werden benötigte Längen definiert und initialisiert:
+\begin{MacroCode}{class}
+\newlength{\@colone}
+\newlength{\@coltwo}
+
+\newcommand{\scldoc@colalign}{t}
+
+\end{MacroCode}
+\end{macro*}
+\end{macro*}
+\end{macro*}
+
+
+Der Abstand zwischen den Spalten und dem umgebenden Fließtext entspricht 
+dem Absatzabstand:
+\begin{MacroCode}{class}
+\setlength{\multicolsep}{0.5\baselineskip}
+
+\end{MacroCode}
+
+
+\begin{environment}{multicols2r}
+Abkürzendes Makro für gleichmäßiges, zweispaltiges Layout ohne bündigen unteren Rand über das Package \pkg{multicol}.
+\begin{MacroCode}{class}
+\newenvironment{multicols2r}%
+{%
+  \begin{multicols}{2}\raggedcolumns
+}{%
+  \end{multicols}%
+}
+
+\end{MacroCode}
+\end{environment}
+
+
+\begin{environment}{multicols3r}
+Abkürzendes Makro für gleichmäßiges, dreispaltiges Layout ohne bündigen unteren Rand über das Package \pkg{multicol}.
+\begin{MacroCode}{class}
+\newenvironment{multicols3r}%
+{%
+  \begin{multicols}{3}\raggedcolumns
+}{%
+  \end{multicols}%
+}
+
+\end{MacroCode}
+\end{environment}
+
+
+\begin{environment}{cols2}[1]{[<width of left column>]}
+\begin{environment}{cols2*}[1]{[<width of left column>]}
+Abkürzendes Makro für zweispaltiges Layout. Das optionale Argument bestimmt die Breite der linken Spalte. Die Sternvariante zentriert die beiden Spalten vertikal.
+\begin{MacroCode}{class}
+\newenvironment{cols2}[1][0.5\linewidth]%
+{%
+  \par
+  \setlength{\parfillskip}{0em}
+  \setlength{\@colone}{#1 - 0.5\columnsep}
+  \setlength{\@coltwo}{\linewidth - \@colone - \columnsep}
+%
+  \parskipreduce
+  \noindent\begin{minipage}[\scldoc@colalign]{\@colone}%
+  \setpar
+  \parskipreduce
+}{%
+  \end{minipage}%
+  \par
+  \setlength{\parfillskip}{1em plus 1fil}
+  \vspace{1.2\multicolsep}
+  \parskipreduce
+}
+
+\newenvironment{cols2*}[1][0.5\linewidth]%
+{%
+  \renewcommand{\scldoc@colalign}{c}
+  \par
+  \setlength{\parfillskip}{0em}
+  \setlength{\@colone}{#1 - 0.5\columnsep}
+  \setlength{\@coltwo}{\linewidth - \@colone - \columnsep}
+%
+  \parskipreduce
+  \vspace{1.2\multicolsep} % Erhöht, da bei [t] minipage vorher keinen normalen baselineskip hat.
+  \noindent\begin{minipage}[\scldoc@colalign]{\@colone}%
+  \setpar
+  \parskipreduce
+}{%
+  \end{minipage}%
+  \par
+  \setlength{\parfillskip}{1em plus 1fil}
+  \vspace{1.2\multicolsep} % Erhöht, da bei [t] minipage vorher keinen normalen baselineskip hat.
+  \parskipreduce
+  \renewcommand{\scldoc@colalign}{t}
+}
+
+\end{MacroCode}
+\end{environment}
+\end{environment}
+
+
+\begin{environment}{cols2var}
+Dieses Makro ermöglicht den Satz zweier unterschiedlich großer Spalten. Optional kann die Breite der linken Spalte angegeben werden. Anschließend werden die benötigten Breiten berechnet und eine \env{minipage} begonnen. Durch \cs{colbreak} (s.\,u.) wird die erste Spalte verlassen und in die zweite Spalte gewechselt.
+
+Die Breite wird mithilfe der Zeilenbreite \cs{linewidth} und dem Spaltenabstand \cs{columnsep} verwendet. Letzterer wird durch das Package \pkg{multicol} definiert und verwendet, damit der Spaltenabstand, unabhängig davon ob man \env{col2var} oder Umgebungen aus \pkg{multicol} verwendet, gleich ist.
+\begin{MacroCode}{class}
+%\newenvironment{cols2var}[1][0.5\linewidth - 0.5\columnsep]%
+%{%
+%  \par
+%  \setlength{\@colone}{#1}
+%  \setlength{\@coltwo}{\linewidth - \@colone - \columnsep}
+%%
+%  \vspace{\multicolsep}
+%  \parskipreduce
+%  \noindent\begin{minipage}[t]{\@colone}%
+%  \setpar
+%}{%
+%  \end{minipage}%
+%  \par
+%  \vspace{\multicolsep}
+%  \parskipreduce
+%}
+%
+
+\end{MacroCode}
+\end{environment}
+
+
+\begin{environment}{cols2var*}
+Erzeugt analog zu \env{cols2var} ein zweispaltiges Layout mit variabler Spaltenbreite. Diese werden jedoch zentriert nebeneinander gesetzt. Diese Umgebung ist so Satz von Abbildungen, Tabellen u.\,Ä. neben Text gedacht. Zum Wechsel in die zweite Spalte muss \cs{colbreak*} verwendet werden.
+\begin{MacroCode}{class}
+%\newenvironment{cols2var*}[1][0.5\linewidth - 0.5\columnsep]%
+%{%
+%  \setlength{\@colone}{#1}
+%  \setlength{\@coltwo}{\linewidth - \@colone - \columnsep}
+%%
+%  \vspace{\multicolsep}
+%  \noindent\begin{minipage}{\@colone}%
+%  \setpar
+%  \vspace{0pt}
+%}{%
+%  \end{minipage}%
+%  \vspace{\multicolsep}
+%}
+%
+
+\end{MacroCode}
+\end{environment}
+
+
+\begin{environment}{cols}[1]{[<number columns>]}
+\begin{environment}{cols*}[1]{[<width of left column>]}
+Abkürzendes Makro für mehrspaltiges Layout. Die Sternvariante zentriert die beiden Spalten vertikal. Das optionale Argument gibt die Anzahl der Spalten an. Standardwert ist hierbei 2. D. h. \Macro\begin{cols} entspricht \Macro\begin{cols}[2] und \Macro\begin{cols2}.
+\begin{MacroCode}{class}
+\newenvironment{cols}[1][2]%
+{%  
+  \par
+  \setlength{\parfillskip}{0em}
+%
+  % Bei der Berechnung wichtig: Bei Multiplikation einer Länge mit einer
+  % Ganzzahl muss zuerst die Länge (hier \columnsep) angegeben werden.
+  \setlength{\@colone}{(\linewidth - \columnsep * (#1 - 1))/#1}
+  \setlength{\@coltwo}{\@colone}
+%
+  \parskipreduce
+  \noindent\begin{minipage}[\scldoc@colalign]{\@colone}%
+  \setpar
+  \parskipreduce
+}{%
+  \end{minipage}%
+  \par
+  \setlength{\parfillskip}{1em plus 1fil}
+  \vspace{1.2\multicolsep}
+  \parskipreduce
+}
+
+\newenvironment{cols*}[1][0.5\linewidth]%
+{%
+  \renewcommand{\scldoc@colalign}{c}
+  \par
+  \setlength{\parfillskip}{0em}
+%
+  % Bei der Berechnung wichtig: Bei Multiplikation einer Länge mit einer
+  % Ganzzahl muss zuerst die Länge (hier \columnsep) angegeben werden.
+  \setlength{\@colone}{(\linewidth - \columnsep * (#1 - 1))/#1}
+  \setlength{\@coltwo}{\@colone}
+%
+  \parskipreduce
+  \vspace{1.2\multicolsep} % Erhöht, da bei [t] minipage vorher keinen normalen baselineskip hat.
+  \noindent\begin{minipage}[\scldoc@colalign]{\@colone}%
+  \setpar
+  \parskipreduce
+}{%
+  \end{minipage}%
+  \par
+  \setlength{\parfillskip}{1em plus 1fil}
+  \vspace{1.2\multicolsep} % Erhöht, da bei [t] minipage vorher keinen normalen baselineskip hat.
+  \parskipreduce
+  \renewcommand{\scldoc@colalign}{t}
+}
+
+\end{MacroCode}
+\end{environment}
+\end{environment}
+
+
+\begin{macro}{\colbreak}
+Durch \cs{colbreak} wird die erste \env*{minipage} beendet und in die zweite \env*{minipage} gewechselt.
+\begin{MacroCode}{class}
+\newcommand{\colbreak}{%
+  \end{minipage}\hfill%
+  \begin{minipage}[\scldoc@colalign]{\@coltwo}%
+  \setpar
+  \parskipreduce
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\begin{environment}{colbreak*}
+Analog zu \cs{colbreak}, sollte jedoch in Kombination mit \env{cols2var*} verwendet werden, da die zweite \env*{minipage} ebenfalls vertikal zentriert wird.
+\begin{MacroCode}{class}
+%\WithSuffix\newcommand\colbreak*{%
+%  \end{minipage}\hfill%
+%  \begin{minipage}[t]{\@coltwo}%
+%  \setpar
+%  \parskipreduce
+%}
+
+\end{MacroCode}
+\end{environment}
+
+
+\begin{macro}{\mathreduce}
+Verwendet man zu Beginn einer Spalte eine abgesetzte Gleichung,
+wird ein fehlerhafter Abstand vor der Gleichung erzeugt. Dieser 
+kann mit diesem Befehl beseitigt werden.
+\begin{MacroCode}{class}
+\newcommand{\mathreduce}{%
+  \vspace{-\abovedisplayskip}
+  \vspace{-0.5\baselineskip}
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\begin{environment}{graphicscol}[3]{[<width of graphicscolumn>]}{<options of \cs*{includegraphics}>}{<file>}
+\begin{environment}{graphicscol*}[3]{[<width of graphicscolumn>]}{<options of \cs*{includegraphics}>}{<file>}
+\begin{macro*}{@filename}
+\begin{macro*}{@graphicsoptions}
+Das folgende Makro erzeugt ein zweispaltiges Layout, wobei die rechte 
+Spalte (in der Sternversion die linke Spalte) eine beliebige Abbildung 
+zentriert darstellt.
+Die Breite der rechten Spalte und Optionen für das verwendete \cs*{includegraphics} können angegeben werden.
+\begin{MacroCode}{class}
+\newcommand{\@filename}{}
+\newcommand{\@graphicsoptions}{}
+
+\newenvironment{graphicscol}[3][0.5\linewidth]%
+{%
+  \renewcommand{\@graphicsoptions}{#2}
+  \renewcommand{\@filename}{#3}
+  \begin{cols2*}[#1]
+}{%
+  \colbreak
+  \begin{center}
+    \expandafter\includegraphics\expandafter[\@graphicsoptions]{\@filename}
+  \end{center}
+  \end{cols2*}
+}
+
+\newenvironment{graphicscol*}[3][0.5\linewidth]%
+{%
+  \begin{cols2*}[#1]
+  \begin{center}
+    \expandafter\includegraphics\expandafter[#2]{#3}
+  \end{center}
+  \colbreak
+}{%
+  \end{cols2*}
+}
+
+\end{MacroCode}
+\end{macro*}
+\end{macro*}
+\end{environment}
+\end{environment}
+
+
+\begin{environment}{tikzcol}[2]{[<width of tikz-column>]}{<file>}
+\begin{environment}{tikzcol*}[2]{[<width of tikz-column>]}{<file>}
+Das folgende Makro erzeugt ein zweispaltiges Layout, wobei die rechte 
+Spalte (in der Sternversion die linke Spalte) eine beliebige \pkg{tikz}-Grafik 
+zentriert darstellt. Diese Grafik muss in einer PGF-Datei im vorgegebene \opt{tikzpath} vorliegen und wird mittels \cs{tikzinput*} eingebunden.
+Die Breite der rechten Spalte und Optionen für das verwendete \cs{includegraphics} können angegeben werden.
+\begin{MacroCode}{class}
+\newenvironment{tikzcol}[2][0.5\linewidth]%
+{%
+  \renewcommand{\@filename}{#2}
+  \begin{cols2*}[#1]
+}{%
+  \colbreak
+  \begin{center}
+    \expandafter\tikzinput\expandafter{\@filename}
+  \end{center}
+  \end{cols2*}
+}
+
+\newenvironment{tikzcol*}[2][0.5\linewidth]%
+{%
+  \begin{cols2*}[#1]
+  \begin{center}
+    \expandafter\tikzinput\expandafter{#2}
+  \end{center}
+  \colbreak
+}{%
+  \end{cols2*}
+}
+
+\end{MacroCode}
+\end{environment}
+\end{environment}
+
+
+\subsection{Notizen}
+
+\begin{macro}{\notet}[1]{<text>}
+Textnotizen:
+\begin{MacroCode}{class}
+  \ExplSyntaxOn
+\newcommand{\notet}[1]{%
+%  \ifthenelse{\boolean{scldoc@shownotes}}{%
+%    {\scldoc@notetstyle\textcolor{\scldoc@notetfg}{#1}}\xspace%
+%  }{}%
+  \bool_if:NT \g_scldoc_shownotes {
+    {\scldoc@notetstyle\textcolor{\scldoc@notetfg}{#1}}\xspace%
+  }
+}
+  \ExplSyntaxOff
+\end{MacroCode}
+\end{macro}
+
+
+\begin{macro}{\notehr}
+Horizontale Linie zur Markierung.
+\begin{MacroCode}{class}
+\newcommand{\notehr}{%
+  \ifthenelse{\boolean{scldoc@shownotes}}{%
+    \par
+    {%
+      \color{\scldoc@notehrfg}
+      \rule[0.75\baselineskip]{\linewidth}{\scldoc@notehrule}%
+      \vspace{-\baselineskip}%
+    }%
+  }{}%
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsection{Unterrichtsablauf}
+
+\subsubsection{Hilfskommandos}
+
+Zuerst einige Zähler:
+\begin{MacroCode}{class}
+\newcounter{ttminutesum}      % To sum up the minutes
+\setcounter{ttminutesum}{0}   % Initialization
+
+\newcounter{tthour}           % The minute of the current ttentry
+\newcounter{ttminute}         % The hour of the current ttentry
+
+\end{MacroCode}
+
+
+\begin{macro}{\ttaddhours}[1]{<hours>}
+\begin{macro}{\ttaddminutes}[1]{<minutes>}
+Die Uhrzeit zur Beginn der jeweiligen Phase soll berechnet werden.
+ Die aktuelle Stunde und Minute wird in den Countern \texttt{tthour} und \texttt{ttminute} gespeichert. Die folgenden Kommandos erlauben das Addieren von Stunden und Minuten zur aktuellen Zeit. Es sind jedoch nur Stundenwerte kleiner 24 und Minutenwerte kleiner 60 zulässig.
+\begin{MacroCode}{class}
+\newcommand{\ttaddhours}[1]{%
+  \addtocounter{tthour}{#1}
+  \ifthenelse{\value{tthour} > 23}{%
+    \addtocounter{tthour}{-24}
+  }{}
+}
+
+\newcommand{\ttaddminutes}[1]{%
+  \addtocounter{ttminute}{#1}%
+  \ifthenelse{\value{ttminute} > 59}{%
+    \addtocounter{tthour}{1}%
+    \addtocounter{ttminute}{-60}%
+    \ifthenelse{\value{tthour} > 23}{%
+      \addtocounter{tthour}{-24}%
+    }{}%
+  }{}%
+}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+
+
+\begin{macro}{\ttentrytime}[1]{[<time label>]}
+Mit diesem Makro kann die aktuelle Uhrzeit im Format hh:mm ausgegeben werden. Optional kann eine Einheit (z.\,B. "`Uhr"') angegeben werden. Ansonsten wird der Standardwert \opt{ttentrytimelabel} verwendet.
+\begin{MacroCode}{class}
+\newcommand{\ttentrytime}[1][\scldoc@ttentrytimelabel]{%
+  \ifthenelse{\value{tthour} < 10}{%
+    0\arabic{tthour}%
+  }{%
+    \arabic{tthour}%
+  }%
+  :%
+  \ifthenelse{\value{ttminute} < 10}{%
+    0\arabic{ttminute}%
+  }{%
+    \arabic{ttminute}%
+  }%
+  \ifthenelse{\equal{#1}{\empty}}{}{%
+  \,#1%
+  }%
+  \xspace%
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsubsection{Tabelle}
+
+Tabelle zur Planung des Unterrichtsablaufs
+
+\begin{environment}{ttable}[2]{<begin hour>}{<begin minute>}
+\begin{environment}{ttable*}[3]{<text before>}{<begin hour>}{<begin minute>}
+Erzeugt die Tabelle für den Unterrichtsablauf unter Verwendung diverser Optionen. Als Argumente müssen die aktuelle Stunde und Minuten angegeben werden, z.\,B. \Macro\begin{ttable}{9}{45} für 9:45\,Uhr.
+
+Die Sternvariante setzt die Tabelle im Querformat. Die Breiten der Spalten werden über eigene Optionen angegeben. Ein zusätzlicher, optionaler Parameter kann verwendet werden, um Text (z.\,B. eine Überschrift) über der Tabelle zu positionieren -- jedoch ebenfalls im Querformat.
+\begin{MacroCode}{class}
+\newenvironment{ttable}[2]%
+{%
+  \setcounter{ttminutesum}{0}
+  \setcounter{tthour}{#1}
+  \setcounter{ttminute}{#2}
+  \tabularx{\linewidth}{%
+      p{\scldoc@tttimewidth}%
+      p{\scldoc@ttstagewidth}%
+      X%
+      p{\scldoc@ttmethodwidth}%
+      p{\scldoc@ttmediawidth}%
+    }
+    \midrule
+    \small\textsfbf{\scldoc@tttimelabel} & 
+    \small\textsfbf{\scldoc@ttstagelabel} & 
+    \small\textsfbf{\scldoc@ttactivitylabel} &  
+    \small\textsfbf{\scldoc@ttmethodlabel} & 
+    \small\textsfbf{\scldoc@ttmedialabel} \\ \midrule
+}{%
+  \endtabularx
+}
+
+\newenvironment{ttable*}[3][0]%
+{%
+  \setcounter{ttminutesum}{0}
+  \setcounter{tthour}{#2}
+  \setcounter{ttminute}{#3}
+  \landscape
+  #1
+  \tabularx{\linewidth}{%
+      p{\scldoc@tttimewidthlscape}%
+      p{\scldoc@ttstagewidthlscape}%
+      X%
+      p{\scldoc@ttmethodwidthlscape}%
+      p{\scldoc@ttmediawidthlscape}%
+    }
+    \midrule
+    \small\textsfbf{\scldoc@tttimelabel} & 
+    \small\textsfbf{\scldoc@ttstagelabel} & 
+    \small\textsfbf{\scldoc@ttactivitylabel} &  
+    \small\textsfbf{\scldoc@ttmethodlabel} & 
+    \small\textsfbf{\scldoc@ttmedialabel} \\ \midrule
+}{%
+  \endtabularx
+  \endlandscape
+}
+
+\end{MacroCode}
+\end{environment}
+\end{environment}
+
+
+\begin{macro*}{\@ttmethodtemp}
+\begin{macro*}{\@ttmediatemp}
+\begin{macro}{\ttentry}[5]{[<duration>]}{<stage>}{<activity>}{<methods>}{<media>}
+\begin{macro}{\ttentry*}[5]{[<duration>]}{<stage>}{<activity>}{<methods>}{<media>}
+Durch \cs{ttentry} wird eine Zeile des Unterrichtsablaufes angegeben. Die Parameter entsprechen den Spalten der Tabelle. Der erste Parameter -- die Dauer der Phase -- ist optional. Wird sie nicht angegeben, entfällt die Anzeige der Dauer/Uhrzeit.
+
+Die Sternvariante setzt die Zelle direkt in eine Aufzählung vom Typ \env*{itemizet}.
+\begin{MacroCode}{class}
+\newcommand{\@ttmethodtemp}{}
+\newcommand{\@ttmediatemp}{}
+
+\newcommand{\ttentry}[5][]%
+{%
+  \ifthenelse{\equal{#1}{\empty}}{}{%
+    \ifthenelse{\boolean{scldoc@ttshowtime}}{%
+      \ttentrytime\newline
+    }{}
+    \ttaddminutes{#1}%
+    \addtocounter{ttminutesum}{#1}%
+    #1\textbar\arabic{ttminutesum}
+  }%
+  & #2 & #3 & #4 & #5 \\ \midrule
+}
+
+\WithSuffix\newcommand\ttentry*[5][]{%
+  \ttentry[#1]{#2}{%
+    \begin{itemizet}%
+      #3
+    \end{itemizet}%
+    }{#4}{#5}%
+}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro*}
+\end{macro*}
+
+
+\subsubsection{Ablaufliste}
+
+
+\begin{macro}{\teachera}
+\begin{macro}{\teachers}
+\begin{macro}{\pupila}
+\begin{macro}{\pupils}
+Zuerst werden Makros erstellt, welche die Label erzeugen. Für Lehrer und Schüler, Handlungen und Gesprochenes:
+\begin{MacroCode}{class}
+\newcommand{\teachera}{%
+  \makebox[2em][l]{{\scldoc@seqteacherstyle\color{\scldoc@seqteacherfg} \scldoc@seqteacherlabel} \action}%
+}
+
+\newcommand{\teachers}{%
+  \makebox[2em][l]{{\scldoc@seqteacherstyle\color{\scldoc@seqteacherfg} \scldoc@seqteacherlabel} \speech}%
+}
+
+\newcommand{\pupila}{%
+  \makebox[2em][l]{{\scldoc@seqpupilstyle\color{\scldoc@seqpupilfg} \scldoc@seqpupillabel} \action}%
+}
+
+\newcommand{\pupils}{%
+  \makebox[2em][l]{{\scldoc@seqpupilstyle\color{\scldoc@seqpupilfg} \scldoc@seqpupillabel} \speech}%
+}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+
+
+
+\begin{macro}{\teachera}
+\begin{macro}{\teachers}
+\begin{macro}{\pupila}
+\begin{macro}{\pupils}
+Damit diese analog zu \cs{item} verwendet werden können, müssen sie nun noch in ein solches gebettet werden. Dies kann nicht in einem Schritt geschehen (Warum?).
+\begin{MacroCode}{class}
+\newcommand{\itemta}{\item[\teachera]}
+\newcommand{\itemts}{\item[\teachers]}
+\newcommand{\itempa}{\item[\pupila]}
+\newcommand{\itemps}{\item[\pupils]}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+
+
+\begin{environment}{sequence}
+\begin{environment}{sequencet}
+Abschließend wird eine angepasste Auflistung \env{sequence} definiert. Die Variante \env{sequencet} ist analog zu \env{itemizet} zur Verwendung in einer Ablauftabelle geeignet.
+\begin{MacroCode}{class}
+\newenvironment{sequence}{%
+  \begin{itemize}[labelwidth=2em, leftmargin= 2em + \labelsep + \labelsep]
+}{%
+  \end{itemize}
+}
+
+\newenvironment{sequencet}{%
+  \@minipagetrue%
+  \setpar
+  \begin{itemize}[labelwidth=2em, leftmargin= 2em + \labelsep + 0.1\labelsep, nosep]
+}{%
+  \vspace{-\baselineskip}
+  \end{itemize}
+}
+
+\end{MacroCode}
+\end{environment}
+\end{environment}
+
+
+\subsection{Tafelbild}
+
+\begin{macro}{\setbblengths}
+Die folgenden Längen werden für das Tafelbild angepasst.
+\begin{MacroCode}{class}
+\newcommand{\setbblengths}{%
+  \setlength{\columnsep}{0.5em}%
+  \setlength{\jot}{0pt}%
+  \setlength{\abovedisplayskip}{0.4ex}%
+  \setlength{\belowdisplayskip}{0.4ex}%
+}
+
+\end{MacroCode}
+\end{macro}
+
+
+\begin{macro*}{\@bbbaselineskip}
+\begin{environment}{bbpart}[2]{[<vertical alignment>]}{<width>}
+\begin{environment}{bbpart*}[2]{[<vertical alignment>]}{<width>}
+Nun wird die \env{bbpart}-Umgebung definiert. Mit ihr ist es möglich, 
+den Teil einer Tafel (als rechteckige Minipage) zu setzen. Das 
+optionale Argument gibt die vertikale Zentrierung an, das benötigte 
+Argument die Breite des Rechtecks. Die Höhe entspricht einem Viertel 
+der Seitenbreite.
+
+In der Sternvariante wird der Text horizontal zentriert.
+
+Wichtig: Jede Zeile mit einem \% beenden, sonst entsteht ein ungewünschter Abstand zwischen den Tafelteilen.
+
+Wichtig: Da die Definitionen von \cs*{NewEnviron} nicht geschachtelt werden 
+können, müssen alle Varianten der Umgebung einzeln definiert werden. Dies 
+führt leider zu Redundanzen und muss beim Verändern berücksichtigt werden.
+\begin{MacroCode}{class}
+\newlength{\@bbbaselineskip}
+\setlength{\@bbbaselineskip}{\scldoc@bbfontsize + \scldoc@bbbaselineoffset}
+
+\NewEnviron{bbpart}[2][t]{%
+  \setbblengths%
+  \fbox{%
+    \begin{minipage}[c][\scldoc@bbheight][#1]{#2 - 2\fboxsep}%
+      \scldoc@bbstyle%
+      \fontsize{\scldoc@bbfontsize}{\@bbbaselineskip}\selectfont%
+      \setpar%
+      \BODY
+      \par ~  % Damit Tafel auch ohne Inhalt angezeigt wird.
+    \end{minipage}%
+  }\hspace{-\fboxrule}%
+}
+
+\NewEnviron{bbpart*}[2][t]{%
+  \setbblengths%
+  \fbox{%
+    \begin{minipage}[c][\scldoc@bbheight][#1]{#2 - 2\fboxsep}%
+      \scldoc@bbstyle%
+      \fontsize{\scldoc@bbfontsize}{\@bbbaselineskip}\selectfont%
+      \setpar%
+      \begin{center}
+      \BODY
+      \par ~  % Damit Tafel auch ohne Inhalt angezeigt wird.
+      \end{center}
+    \end{minipage}%
+  }\hspace{-\fboxrule}%
+}
+
+\end{MacroCode}
+\end{environment}
+\end{environment}
+\end{macro*}
+
+
+\begin{environment}{bbhalf}[1]{[<vertical alignment>]}
+\begin{environment}{bbhalf*}[1]{[<vertical alignment>]}
+Analog zu oben, jedoch mit fester Breite von einem Viertel der Seitenbreite.
+Entspricht einer Klapptafel.
+\begin{MacroCode}{class}
+\NewEnviron{bbhalf}[1][t]{%
+  \setbblengths%
+  \fbox{%
+    \begin{minipage}[c][\scldoc@bbheight][#1]{0.25\linewidth - 2\fboxsep}%
+      \scldoc@bbstyle%
+      \fontsize{\scldoc@bbfontsize}{\@bbbaselineskip}\selectfont%
+      \setpar%
+      \BODY
+      \par ~  % Damit Tafel auch ohne Inhalt angezeigt wird.
+    \end{minipage}%
+  }\hspace{-\fboxrule}%
+}
+
+\NewEnviron{bbhalf*}[1][t]{%
+  \setbblengths%
+  \fbox{%
+    \begin{minipage}[c][\scldoc@bbheight][#1]{0.25\linewidth - 2\fboxsep}%
+      \scldoc@bbstyle%
+      \fontsize{\scldoc@bbfontsize}{\@bbbaselineskip}\selectfont%
+      \setpar%
+      \begin{center}
+        \BODY
+      \end{center}
+      \par ~  % Damit Tafel auch ohne Inhalt angezeigt wird.
+    \end{minipage}%
+  }\hspace{-\fboxrule}%
+}
+
+\end{MacroCode}
+\end{environment}
+\end{environment}
+
+
+\begin{environment}{bbfull}[1]{[<vertical alignment>]}
+\begin{environment}{bbfull*}[1]{[<vertical alignment>]}
+Analog zu oben, jedoch mit fester Breite von der Hälfte der Seitenbreite.
+Entspricht der zentralen, großen Tafelfläche.
+\begin{MacroCode}{class}
+\NewEnviron{bbfull}[1][t]{%
+  \setbblengths%
+  \fbox{%
+    \begin{minipage}[c][\scldoc@bbheight][#1]{0.5\linewidth - 2\fboxsep}%
+      \scldoc@bbstyle
+      \fontsize{\scldoc@bbfontsize}{\@bbbaselineskip}\selectfont
+      \setpar
+      \BODY
+      \par ~  % Damit Tafel auch ohne Inhalt angezeigt wird.
+    \end{minipage}%
+  }\hspace{-\fboxrule}%
+}
+
+\NewEnviron{bbfull*}[1][t]{%
+  \setbblengths%
+  \fbox{%
+    \begin{minipage}[c][\scldoc@bbheight][#1]{0.5\linewidth - 2\fboxsep}%
+      \scldoc@bbstyle
+      \fontsize{\scldoc@bbfontsize}{\@bbbaselineskip}\selectfont
+      \setpar
+      \begin{center}
+        \BODY
+      \end{center}
+      \par ~  % Damit Tafel auch ohne Inhalt angezeigt wird.
+    \end{minipage}%
+  }\hspace{-\fboxrule}%
+}
+
+\end{MacroCode}
+\end{environment}
+\end{environment}
+
+
+\subsection{Mathematik}
+
+\subsubsection{Längen anpassen}
+
+Zum Einsparen von Platz, werden Abstände vor und nach Gleichungen 
+verkleinert.
+
+\begin{MacroCode}{class}
+\AtBeginDocument{
+  \setlength{\abovedisplayskip}{1.2ex plus 0.2ex minus 0.1ex}
+  \setlength{\abovedisplayshortskip}{1ex plus 0.2ex minus 0.2ex}
+  \setlength{\belowdisplayskip}{1.2ex plus 0.2ex minus 0.1ex}
+  \setlength{\belowdisplayshortskip}{1ex plus 0.2ex minus 0.2ex}
+}
+
+\end{MacroCode}
+
+
+\subsubsection{Komma als Dezimaltrenner}
+
+Abhängig von der Option \opt{commasep} wird mithilfe des Packages \pkg{icomma} das Komma als Dezimaltrenner verwendet.
+
+\begin{MacroCode}{class}
+\ifthenelse{\boolean{scldoc@commasep}}
+{
+  \RequirePackage{icomma}
+}{}
+
+\end{MacroCode}
+
+
+\subsubsection{Gleichungsumgebungen}
+
+\begin{environment}{aligntr}
+\begin{environment}{aligntr*}
+Gleichungsumgebung zum Setzen von Äquivalenzumformungen 
+(Transformations). Verwendet intern \env*{alignat}. Als Trenner für 
+Umformungen sollte \cs{tr} verwendet werden. Die Sternvariante erzeugt 
+Gleichungen ohne Nummerierung.
+\begin{MacroCode}{class}
+\newenvironment{aligntr}{%
+  \alignat{2}%
+}{%
+  \endalignat%
+}
+
+\newenvironment{aligntr*}{%
+  \csname alignat*\endcsname{2}%
+}{%
+  \csname endalignat*\endcsname%
+}
+
+\end{MacroCode}
+\end{environment}
+\end{environment}
+
+\begin{macro}{\tr}
+Dient als Trenner für Umformungen in \env*{aligntr}.
+\begin{MacroCode}{class}
+\newcommand{\tr}{&& \mid}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsubsection{Theorem-Umgebungen}
+
+
+\begin{macro*}{\thmafterskip}
+\begin{macro*}{\thmbeforeskip}
+Zuerst werden benötigte Längen und Hilfsmakros definiert:
+\begin{MacroCode}{class}
+\newlength{\thmafterskip}
+\newlength{\thmbeforeskip}
+
+\setlength{\thmafterskip}{0.5\baselineskip-0.5\parskip}
+\setlength{\thmbeforeskip}{0.5\baselineskip}
+
+%\newcommand{\scldoc@thmshade}{\scldoc@thmframefg}
+%\newcommand{\scldoc@thmframe}{\scldoc@thmshadebg}
+
+\end{MacroCode}
+\end{macro*}
+\end{macro*}
+
+Nun werden die Theoremstyles definiert:
+
+\begin{MacroCode}{class}
+\declaretheoremstyle[%
+  spaceabove=\thmbeforeskip, spacebelow=\thmafterskip,
+  headfont=\scldoc@thmimpheadstyle\color{\scldoc@thmlabelfg},
+  notefont=\scldoc@thmimpnotestyle, notebraces={\!:\hspace{0.5em}}{},
+  bodyfont=\scldoc@thmimpbodystyle,
+  headpunct={},
+  postheadspace=0.75em
+]{important}
+
+\declaretheoremstyle[%
+  spaceabove=\thmbeforeskip, spacebelow=\thmafterskip,
+  headfont=\scldoc@thmunimpheadstyle\color{\scldoc@thmlabelfg},
+  notefont=\scldoc@thmunimpnotestyle, notebraces={\hspace{0.2em}(}{)},
+  bodyfont=\scldoc@thmunimpbodystyle,
+  headpunct={:},
+  numbered=no,
+  postheadspace=0.25em
+]{unimportant}
+
+\end{MacroCode}
+
+
+Je nach Wahl der Option |thmframestyle| werden nun die Farben für Rahmen und Hintergrund festgelegt:
+
+\begin{MacroCode}{class}
+%\ifthenelse{\equal{\scldoc@thmframestyle}{shade}}{%
+%  \renewcommand{\scldoc@thmshade}{wuLightGray}
+%  \renewcommand{\scldoc@thmframe}{white}
+%}{}%  
+%
+%\ifthenelse{\equal{\scldoc@thmframestyle}{frame}}{%
+%  \renewcommand{\scldoc@thmshade}{white}
+%  \renewcommand{\scldoc@thmframe}{gray}
+%}{}%  
+%
+%\ifthenelse{\equal{\scldoc@thmframestyle}{framecolor}}{%
+%  \renewcommand{\scldoc@thmshade}{white}
+%  \renewcommand{\scldoc@thmframe}{wuDarkRed}
+%}{}%  
+%
+%\ifthenelse{\equal{\scldoc@thmframestyle}{shadeframe}}{%
+%  \renewcommand{\scldoc@thmshade}{wuLightGray}
+%  \renewcommand{\scldoc@thmframe}{gray}
+%}{}%  
+%
+%\ifthenelse{\equal{\scldoc@thmframestyle}{shadeframecolor}}{%
+%  \renewcommand{\scldoc@thmshade}{wuLightGray}
+%  \renewcommand{\scldoc@thmframe}{wuDarkRed}
+%}{}%
+
+\end{MacroCode}
+
+
+Dann werden die Theoremumgebungen definiert. Zuerst die Standard-Umgebungen vom \pkg{amsthm}:
+
+\begin{MacroCode}{class}
+\ifthenelse{\boolean{scldoc@thm}}
+{%
+  \declaretheorem[style=important, name=\scldoc@thmtheoremlabel]{theorem}
+  \declaretheorem[style=important, name=\scldoc@thmdefinitionlabel]{definition}
+  \declaretheorem[style=important, name=\scldoc@thmdefitheolabel]{defitheo}
+  
+  \declaretheorem[style=unimportant, name=\scldoc@thmexamplelabel]{example}
+  \declaretheorem[style=unimportant, name=\scldoc@thmexampleexelabel]{exampleexe}
+  \declaretheorem[style=unimportant, name=\scldoc@thmhintlabel]{hint}
+  \declaretheorem[style=unimportant, name=\scldoc@thmremarklabel]{remark}
+  \declaretheorem[style=unimportant, name=\scldoc@thmsolutionlabel]{solution}
+}{}%
+
+\end{MacroCode}
+
+
+Nun werden die Theoremugebungen mit Hintergrund und/oder Rahmen (\pkg{thmtools} verwendet hierzu \pkg{shadethm}) definiert. Es wird mit einem Wrapper gearbeitet, um Abstände anzupassen:
+
+\begin{MacroCode}{class}
+\ifthenelse{\boolean{scldoc@thm}}
+{%
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmtheoremlabel,
+    sharenumber=theorem,
+    shaded={%
+      bgcolor=\scldoc@thmframebg,%
+      textwidth=\linewidth-1em-2pt,%
+      margin=0.5em,%
+      leftmargin=0em,%
+      rightmargin=0em,%
+      rulecolor=\scldoc@thmframefg,%
+      rulewidth=1pt
+    },
+    preheadhook=,
+    postheadhook={%
+      \setpar%
+      \ifthenelse{\boolean{scldoc@parskip}}%
+      {%
+        \vspace{-0.8\parskip}%
+      }{}%
+    }
+  ]{theoremfthm}
+  
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmdefinitionlabel,
+    sharenumber=definition,
+    shaded={%
+      bgcolor=\scldoc@thmframebg,%
+      textwidth=\linewidth-1em-2pt,%
+      margin=0.5em,%
+      leftmargin=0em,%
+      rightmargin=0em,%
+      rulecolor=\scldoc@thmframefg,%
+      rulewidth=1pt
+    },
+    preheadhook=,
+    postheadhook={%
+      \setpar%
+      \ifthenelse{\boolean{scldoc@parskip}}%
+      {%
+        \vspace{-0.8\parskip}%
+      }{}%
+    }
+  ]{definitionfthm}
+  
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmdefitheolabel,
+    sharenumber=definition,
+    shaded={%
+      bgcolor=\scldoc@thmframebg,%
+      textwidth=\linewidth-1em-2pt,%
+      margin=0.5em,%
+      leftmargin=0em,%
+      rightmargin=0em,%
+      rulecolor=\scldoc@thmframefg,%
+      rulewidth=1pt
+    },
+    preheadhook=,
+    postheadhook={%
+      \setpar%
+      \ifthenelse{\boolean{scldoc@parskip}}%
+      {%
+        \vspace{-0.8\parskip}%
+      }{}%
+    }
+  ]{defitheofthm}
+  
+  
+  \declaretheorem[%
+    style=unimportant,
+    name=\scldoc@thmexamplelabel,
+    shaded={%
+      bgcolor=\scldoc@thmframebg,%
+      textwidth=\linewidth-1em-2pt,%
+      margin=0.5em,%
+      leftmargin=0em,%
+      rightmargin=0em,%
+      rulecolor=\scldoc@thmframefg,%
+      rulewidth=1pt
+    },
+    preheadhook=,
+    postheadhook={%
+      \setpar%
+      \ifthenelse{\boolean{scldoc@parskip}}%
+      {%
+        \vspace{-0.8\parskip}%
+      }{}%
+    }
+  ]{examplefthm}
+  
+  
+  \declaretheorem[%
+    style=unimportant,
+    name=\scldoc@thmexampleexelabel,
+    shaded={%
+      bgcolor=\scldoc@thmframebg,%
+      textwidth=\linewidth-1em-2pt,%
+      margin=0.5em,%
+      leftmargin=0em,%
+      rightmargin=0em,%
+      rulecolor=\scldoc@thmframefg,%
+      rulewidth=1pt
+    },
+    preheadhook=,
+    postheadhook={%
+      \setpar%
+      \ifthenelse{\boolean{scldoc@parskip}}%
+      {%
+        \vspace{-0.8\parskip}%
+      }{}%
+    }
+  ]{exampleexefthm}
+  
+  
+  \declaretheorem[%
+    style=unimportant,
+    name=\scldoc@thmhintlabel,
+    shaded={%
+      bgcolor=\scldoc@thmframebg,%
+      textwidth=\linewidth-1em-2pt,%
+      margin=0.5em,%
+      leftmargin=0em,%
+      rightmargin=0em,%
+      rulecolor=\scldoc@thmframefg,%
+      rulewidth=1pt
+    },
+    preheadhook=,
+    postheadhook={%
+      \setpar%
+      \ifthenelse{\boolean{scldoc@parskip}}%
+      {%
+        \vspace{-0.8\parskip}%
+      }{}%
+    }
+  ]{hintfthm}
+  
+  
+  \declaretheorem[%
+    style=unimportant,
+    name=\scldoc@thmremarklabel,
+    shaded={%
+      bgcolor=\scldoc@thmframebg,%
+      textwidth=\linewidth-1em-2pt,%
+      margin=0.5em,%
+      leftmargin=0em,%
+      rightmargin=0em,%
+      rulecolor=\scldoc@thmframefg,%
+      rulewidth=1pt
+    },
+    preheadhook=,
+    postheadhook={%
+      \setpar%
+      \ifthenelse{\boolean{scldoc@parskip}}%
+      {%
+        \vspace{-0.8\parskip}%
+      }{}%
+    }
+  ]{remarkfthm}
+  
+  
+  \declaretheorem[%
+    style=unimportant,
+    name=\scldoc@thmsolutionlabel,
+    shaded={%
+      bgcolor=\scldoc@thmframebg,%
+      textwidth=\linewidth-1em-2pt,%
+      margin=0.5em,%
+      leftmargin=0em,%
+      rightmargin=0em,%
+      rulecolor=\scldoc@thmframefg,%
+      rulewidth=1pt
+    },
+    preheadhook=,
+    postheadhook={%
+      \setpar%
+      \ifthenelse{\boolean{scldoc@parskip}}%
+      {%
+        \vspace{-0.8\parskip}%
+      }{}%
+    }
+  ]{solutionfthm}
+  
+  
+  \newenvironment{theoremf}[1][]{%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+    \ifthenelse{\equal{#1}{\empty}}
+    {%
+      \begin{theoremfthm}%
+    }{%
+      \begin{theoremfthm}[#1]%
+    }
+  }{%
+    \end{theoremfthm}%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+  }
+  
+  \newenvironment{definitionf}[1][]{%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+    \ifthenelse{\equal{#1}{\empty}}
+    {%
+      \begin{definitionfthm}%
+    }{%
+      \begin{definitionfthm}[#1]%
+    }
+  }{%
+    \end{definitionfthm}%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+  }
+  
+  \newenvironment{defitheof}[1][]{%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+    \ifthenelse{\equal{#1}{\empty}}
+    {%
+      \begin{defitheofthm}%
+    }{%
+      \begin{defitheofthm}[#1]%
+    }
+  }{%
+    \end{defitheofthm}%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+  }
+  
+  \newenvironment{examplef}[1][]{%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+    \ifthenelse{\equal{#1}{\empty}}
+    {%
+      \begin{examplefthm}%
+    }{%
+      \begin{examplefthm}[#1]%
+    }
+  }{%
+    \end{examplefthm}%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+  }
+  
+  \newenvironment{exampleexef}[1][]{%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+    \ifthenelse{\equal{#1}{\empty}}
+    {%
+      \begin{exampleexefthm}%
+    }{%
+      \begin{exampleexefthm}[#1]%
+    }
+  }{%
+    \end{exampleexefthm}%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+  }
+  
+  \newenvironment{hintf}[1][]{%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+    \ifthenelse{\equal{#1}{\empty}}
+    {%
+      \begin{hintfthm}%
+    }{%
+      \begin{hintfthm}[#1]%
+    }
+  }{%
+    \end{hintfthm}%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+  }
+  
+  \newenvironment{remarkf}[1][]{%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+    \ifthenelse{\equal{#1}{\empty}}
+    {%
+      \begin{remarkfthm}%
+    }{%
+      \begin{remarkfthm}[#1]%
+    }
+  }{%
+    \end{remarkfthm}%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+  }
+  
+  \newenvironment{solutionf}[1][]{%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+    \ifthenelse{\equal{#1}{\empty}}
+    {%
+      \begin{solutionfthm}%
+    }{%
+      \begin{solutionfthm}[#1]%
+    }
+  }{%
+    \end{solutionfthm}%
+    \vspace{-0.3\baselineskip}%
+    \vspace{0.5\parskip}%
+  }
+  
+}{}%
+
+\end{MacroCode}
+
+
+Es folgen die Theoremugebungen durch \pkg{thmbox} in allen Varianten. Seltsamerweise muss der Parameter \cs{thmbox@leftmargin} neu gesetzt werden, ansonsten kommt es zu Komplikationen bei \texttt{parskip=true}:
+
+\begin{MacroCode}{class}
+\ifthenelse{\boolean{scldoc@thm}}
+{%
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmtheoremlabel,
+    sharenumber=theorem,
+    thmbox=S,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{theorembs}
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmtheoremlabel,
+    sharenumber=theorem,
+    thmbox=M,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{theorembm}
+    
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmtheoremlabel,
+    sharenumber=theorem,
+    thmbox=L,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{theorembl}
+  
+  
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmdefinitionlabel,
+    sharenumber=definition,
+    thmbox=S,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{definitionbs}
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmdefinitionlabel,
+    sharenumber=definition,
+    thmbox=M,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{definitionbm}
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmdefinitionlabel,
+    sharenumber=definition,
+    thmbox=L,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{definitionbl}
+  
+  
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmdefitheolabel,
+    sharenumber=definition,
+    thmbox=S,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{defitheobs}
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmdefitheolabel,
+    sharenumber=definition,
+    thmbox=M,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{defitheobm}
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmdefitheolabel,
+    sharenumber=definition,
+    thmbox=L,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{defitheobl}
+  
+  
+  % Seltsamerweise funktioniert style=unimportant nicht.
+  % Anscheinend hat thmtools/thmbox Probleme mit numbered=no.
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmexamplelabel,
+    thmbox=S,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{examplebs}
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmexamplelabel,
+    sharenumber=examplebs,
+    thmbox=M,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{examplebm}
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmexamplelabel,
+    sharenumber=examplebs,
+    thmbox=L,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{examplebl}
+  
+  
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmexampleexelabel,
+    thmbox=S,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{exampleexebs}
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmexampleexelabel,
+    sharenumber=exampleexebs,
+    thmbox=M,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{exampleexebm}
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmexampleexelabel,
+    sharenumber=exampleexebs,
+    thmbox=L,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{exampleexebl}
+  
+  
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmhintlabel,
+    thmbox=S,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{hintbs}
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmhintlabel,
+    sharenumber=hintbs,
+    thmbox=M,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{hintbm}
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmhintlabel,
+    sharenumber=hintbs,
+    thmbox=L,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{hintbl}
+  
+  
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmremarklabel,
+    thmbox=S,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{remarkbs}
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmremarklabel,
+    sharenumber=remarkbs,
+    thmbox=M,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{remarkbm}
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmremarklabel,
+    sharenumber=remarkbs,
+    thmbox=L,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{remarkbl}
+  
+  
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmsolutionlabel,
+    thmbox=S,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{solutionbs}
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmsolutionlabel,
+    sharenumber=solutionbs,
+    thmbox=M,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{solutionbm}
+  
+  \declaretheorem[%
+    style=important,
+    name=\scldoc@thmsolutionlabel,
+    sharenumber=solutionbs,
+    thmbox=L,
+    postheadhook=\setpar\hspace{-0.5em},
+    postfoothook=\setpar\parskipreduce
+  ]{solutionbl}
+
+  
+  \setlength{\thmbox@leftmargin}{1.5em}
+
+}{}%
+
+\end{MacroCode}
+
+
+\subsubsection{Symbole für spezielle Mengen}
+
+\begin{macro}{\N}
+\begin{macro}{\Z}
+\begin{macro}{\Q}
+\begin{macro}{\R}
+\begin{macro}{\I}
+\begin{macro}{\C}
+\begin{macro}{\L}
+Definiert Symbole für spezielle Mengen.
+\begin{MacroCode}{class}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\I}{\ensuremath{\mathbb{I}}}
+\newcommand{\C}{\ensuremath{\mathbb{C}}}
+
+\renewcommand{\L}{\ensuremath{\mathbb{L}}}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+
+
+\subsubsection{Vektoren}
+
+\begin{macro}{\vec}[1]{<expression>}
+Anderer Name für einen Vektor markiert durch einen Pfeil, der durch \cs*{vv} aus dem Package \pkg{esvect} erzeugt wird.
+\begin{MacroCode}{class}
+\renewcommand{\vec}[1]{\vv{#1}}
+
+\end{MacroCode}
+\end{macro}
+
+
+\begin{macro}{\vect}[1]{<expressions in matrix-syntax>}
+Verkürzte Erzeugung eines Spaltenvektors durch \env*{pmatrix}-Umgebung.
+\begin{MacroCode}{class}
+\newcommand{\vect}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+
+\end{MacroCode}
+\end{macro}
+
+
+\subsubsection{Gleichungssysteme/Gauß-Verfahren}
+
+In \pkg{gauss} sollen die Zeilenumformungen angezeigt werden:
+
+\begin{MacroCode}{class}
+\renewcommand{\rowswapfromlabel}[1]{#1}
+\renewcommand{\rowswaptolabel}[1]{#1}
+
+\end{MacroCode}
+
+\begin{environment}{gmatrix*}[1]{[<arraycolsep>]}
+\begin{environment}{gmatrixp*}[1]{[<arraycolsep>]}
+\begin{environment}{gmatrixv*}[1]{[<arraycolsep>]}
+\begin{MacroCode}{class}
+\newenvironment{gmatrix*}[1][2pt]{%
+  \setlength{\arraycolsep}{#1}
+  \begin{gmatrix}%
+}{%
+  \end{gmatrix}
+}
+
+\newenvironment{gmatrixp*}[1][4pt]{%
+  \setlength{\arraycolsep}{#1}
+  \begin{gmatrix}[p]%
+}{%
+  \end{gmatrix}
+}
+
+\newenvironment{gmatrixv*}[1][4pt]{%
+  \setlength{\arraycolsep}{#1}
+  \begin{gmatrix}[v]%
+}{%
+  \end{gmatrix}
+}
+
+%\AtBeginEnvironment{gmatrix}{\setlength{\arraycolsep}{2pt}}
+
+\end{MacroCode}
+\end{environment}
+\end{environment}
+\end{environment}
+
+
+\subsubsection{Polynomdivision}
+
+Polynomdivision wird durch \textsf{polynom} durchgeführt. Dieses Package wird an dieser Stelle konfiguriert.
+
+\begin{MacroCode}{class}
+\polyset{style=C, div=:}
+
+\end{MacroCode}
+
+\subsubsection{Typographie}
+
+\begin{macro}{\qtext}[1]{<text>}
+\begin{macro}{\qqtext}[1]{<text>}
+\begin{macro}{\qund}
+\begin{macro}{\qqund}
+\begin{macro}{\qoder}
+\begin{macro}{\qqoder}
+\begin{macro}{\qmath}[1]{<expression>}
+\begin{macro}{\qqmath}[1]{<expression>}
+\begin{macro}{\qRightarrow}
+\begin{macro}{\qrightarrow}
+\begin{macro}{\qLeftarrow}
+\begin{macro}{\qleftarrow}
+\begin{macro}{\qLeftrightarrow}
+\begin{macro}{\qleftrightarrow}
+\begin{macro}{\qqRightarrow}
+\begin{macro}{\qqrightarrow}
+\begin{macro}{\qqLeftarrow}
+\begin{macro}{\qqleftarrow}
+\begin{macro}{\qqLeftrightarrow}
+\begin{macro}{\qqleftrightarrow}
+Einfügen von Text/Formeln mit beidseitigem Abstand \cs*{quad} bzw. \cs{qquad} im Mathemodus.
+\begin{MacroCode}{class}
+\newcommand{\qtext}[1]{\ensuremath{\quad\text{#1}\quad}}
+\newcommand{\qqtext}[1]{\ensuremath{\qquad\text{#1}\qquad}}
+
+\newcommand{\qund}{\qtext{und}}
+\newcommand{\qqund}{\qqtext{und}}
+
+\newcommand{\qoder}{\qtext{oder}}
+\newcommand{\qqoder}{\qqtext{oder}}
+
+\newcommand{\qmath}[1]{\ensuremath{\quad #1 \quad}}
+\newcommand{\qqmath}[1]{\ensuremath{\qquad #1 \qquad}}
+
+\newcommand{\qRightarrow}{\qmath{\Rightarrow}}
+\newcommand{\qrightarrow}{\qmath{\rightarrow}}
+\newcommand{\qLeftarrow}{\qmath{\Leftarrow}}
+\newcommand{\qleftarrow}{\qmath{\lefttarrow}}
+\newcommand{\qLeftrightarrow}{\qmath{\Leftrightarrow}}
+\newcommand{\qleftrightarrow}{\qmath{\leftrightarrow}}
+
+\newcommand{\qqRightarrow}{\qqmath{\Rightarrow}}
+\newcommand{\qqrightarrow}{\qqmath{\rightarrow}}
+\newcommand{\qqLeftarrow}{\qqmath{\Leftarrow}}
+\newcommand{\qqleftarrow}{\qqmath{\lefttarrow}}
+\newcommand{\qqLeftrightarrow}{\qqmath{\Leftrightarrow}}
+\newcommand{\qqleftrightarrow}{\qqmath{\leftrightarrow}}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+
+
+\subsubsection{Betrag und Norm -- auch von Vektoren}
+
+\begin{macro}{\abs}[1]{<expression>}
+\begin{macro}{\absvec}[1]{<expression>}
+\begin{macro}{\abs*}[1]{<expression>}
+\begin{macro}{\absvec*}[1]{<expression>}
+\begin{macro}{\norm}[1]{<expression>}
+\begin{macro}{\normvec}[1]{<expression>}
+\begin{macro}{\norm*}[1]{<expression>}
+\begin{macro}{\normvec*}[1]{<expression>}
+Makros für (Vektor-)Beträge und (Vektor-)Normen. In den Sternvarianten skalieren die Klammern nicht.
+\begin{MacroCode}{class}
+\newcommand{\abs}[1]{\ensuremath{\left| #1 \right|}}
+\newcommand{\absvec}[1]{\ensuremath{\abs{\vec{#1}}}}
+
+\WithSuffix\newcommand\abs*[1]{\ensuremath{\lvert #1 \rvert}}
+\WithSuffix\newcommand\absvec*[1]{\ensuremath{\abs*{\vec{#1}}}}
+
+\newcommand{\norm}[1]{\ensuremath{\left\| #1 \right\|}}
+\newcommand{\normvec}[1]{\ensuremath{\norm{\vec{#1}}}}
+
+\WithSuffix\newcommand\norm*[1]{\ensuremath{\lVert #1 \rVert}}
+\WithSuffix\newcommand\normvec*[1]{\ensuremath{\norm*{\vec{#1}}}}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+
+
+\subsubsection{Verschiedenes}
+
+\begin{macro}{\ds}
+\begin{macro}{\der}
+\begin{macro}{\i}
+\begin{macro}{\minusp}
+\begin{macro}{\qe}
+\begin{macro}{\qevar}
+\begin{macro}{\sep}
+\begin{macro}{\solset}
+\begin{macro}{\textlightning}
+Sonstige Symbole, Konstanten, Abkürzungen etc. Selbsterklärend.
+\begin{MacroCode}{class}
+\newcommand{\ds}{\ensuremath{\displaystyle}}
+\newcommand{\der}{\ensuremath{\ \mathrm{d}}}
+\renewcommand{\i}{\ensuremath{\mathrm{i}}}
+\newcommand{\minusp}{\ensuremath{\hphantom{-}}}
+\newcommand{\qe}[2]{\ensuremath -\frac{#1}{2} \pm \sqrt{\left(\frac{#1}{2}\right)^2 - #2}}
+\newcommand{\qevar}[2]{\ensuremath #1 \pm \sqrt{#2}}
+\newcommand{\sep}{\,\vert\,}    
+\newcommand{\solset}[1]{\ensuremath \mathbb{L} = \left\lbrace #1 \right\rbrace}
+\newcommand{\textlightning}{\ensuremath{\lightning}}
+
+\end{MacroCode}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+\end{macro}
+
+
+\subsection{Informatik}
+
+\subsubsection{\textsf{listings}}
+
+Zuerst werden Styles für abgesetzte Listings und Inline-Listings definiert:
+
+\begin{macro*}{\@lstbelowskip}
+\begin{MacroCode}{class}
+\newlength{\@lstbelowskip}
+\setlength{\@lstbelowskip}{0.2\baselineskip-0.5\parskip}
+
+\lstdefinestyle{lststyle}{%
+  aboveskip=0.75\baselineskip,
+  belowskip=\@lstbelowskip,
+  language=Java, 
+  basicstyle=\ttfamily\footnotesize, 
+  keywordstyle=\color{\scldoc@lstnumberfg}\bfseries, 
+  stringstyle=\emph, 
+  numberstyle=\color{\scldoc@lstnumberfg}\ttfamily\scriptsize,
+  numbers=left, 
+  numbersep=8pt, 
+  frame=trbl, 
+  framesep=0pt,
+  framexleftmargin=2pt,
+  framexrightmargin=2pt,
+  framerule=0.7pt,
+  rulecolor=\color{\scldoc@lstrulefg},
+  captionpos=b, 
+  tabsize=2, 
+  showstringspaces=false, 
+  xleftmargin=2.5em,
+  xrightmargin=0cm,
+  breaklines=true,
+  prebreak={\,\,\Pisymbol{psy}{191}},
+%  backgroundcolor=\color{wuLightGray},
+  escapeinside={/@}{@/},
+  lineskip=1pt
+}
+
+\lstdefinestyle{lstistyle}{%
+  language=Java, 
+  basicstyle=\ttfamily, 
+  keywordstyle=\color{\scldoc@lstnumberfg}\bfseries, 
+  stringstyle=\emph, 
+  breaklines=true,
+  prebreak={\,\,\Pisymbol{psy}{191}}
+}
+
+\lstset{%
+  style=lststyle
+}
+
+\end{MacroCode}
+\end{macro*}
+
+
+\begin{MacroCode}{class}
+%\ExplSyntaxOff
+
+\end{MacroCode}
+
+
+%  \begin{thebibliography}{mm}
+%    \bibitem{cancel} \textsc{Donald Arseneau}: \emph{cancel}. \url{http://www.ctan.org/pkg/cancel}.
+%    \bibitem{ulsy} \textsc{Ulrich Goldschmitt}: \emph{ulsy}. \url{http://www.ctan.org/pkg/ulsy}.
+%    \bibitem{booktabs} \textsc{Simon Fear} und \textsc{Danie Els} \emph{listings}. \url{http://www.ctan.org/pkg/booktabs}.
+%    \bibitem{polynom} \textsc{Carsten Heinz}: \emph{polynom}. \url{http://www.ctan.org/pkg/polynom}.
+%    \bibitem{listings} \textsc{Carsten Heinz} und \textsc{Brooks Moses} \emph{listings}. \url{http://www.ctan.org/pkg/listings}.
+%    \bibitem{koma} \textsc{Markus Kohm}: \emph{KOMA-Script}. \url{http://www.ctan.org/pkg/koma-script}.
+%    \bibitem{pdfpages} \textsc{Andreas Matthias}: \emph{pdfpages}. \url{http://www.ctan.org/pkg/pdfpages}.
+%    \bibitem{multicol} \textsc{Frank Mittelbach}: \emph{multicol}. \url{http://www.ctan.org/pkg/multicol}.
+%    \bibitem{lato} \textsc{Mohamed El Morabity}: \emph{lato}. \url{http://www.ctan.org/pkg/lato}.
+%    \bibitem{units} \textsc{Axel Reichert}: \emph{units}. \url{http://www.ctan.org/pkg/units}.
+%    \bibitem{esvect} \textsc{Eddie Saudrais}: \emph{esvect}. \url{http://www.ctan.org/pkg/esvect}.
+%    \bibitem{icomma} \textsc{Walter Schmidt}: \emph{icomma}. \url{http://www.ctan.org/pkg/icomma}.
+%    \bibitem{fonts} \textsc{Walter Schmidt}: \emph{psnfss}. \url{http://www.ctan.org/pkg/pifont}.
+%    \bibitem{tikz} \textsc{Till Tantau}: \emph{tikz}. \url{http://www.texample.net/tikz/}.
+%    \bibitem{eurosym} \textsc{Henrik Theiling}: \emph{eurosym}. \url{http://www.ctan.org/pkg/eurosym}.
+%  \end{thebibliography}
+
+
+
+%% Die folgende Umgebung ist eine Abkürzung für die |listing|-Umgebung.
+%% \begin{environment}{lst}
+%%    \begin{macrocode}
+%\lstnewenvironment{lst}{}{}
+%      
+%%    \end{macrocode}
+%% \end{environment}
+%% 
+%% \begin{macro}{\lsti}
+%% \begin{macro}{\lstiv}
+%% \begin{macro}{\lstib}
+%% 
+%% Damit abgesetzte Listings und Inline-Listungs in unterschiedlichen 
+%% Schriftgrößen gesetzt werden, sollte eines der folgenden Makros für 
+%% Inline-Listings verwendet werde:
+%%    \begin{macrocode}
+%\newcommand{\lsti}[1]{\lstinline[style=lstistyle]~#1~}  % [ Highlight-escape
+%\newcommand{\lstiv}[1]{\lstinline[style=lstistyle]!#1!}  % [ Highlight-escape
+%\newcommand{\lstib}[1]{\lstinline[style=lstistyle]{#1}}  % [ Highlight-escape
+%      
+%%    \end{macrocode}
+%% \end{macro}
+%% \end{macro}
+%% \end{macro}
+
+
+
+
+
+    \Finale
+%    \section{Installation}
+%    The easiest way to install this package is using the package
+%    manager provided by your \LaTeX\ installation if such a program
+%    is available. Failing that, provided you have obtained the package
+%    source (\file{skrapport.tex} and \file{Makefile}) from either CTAN
+%    or Github, running \texttt{make install} inside the source directory
+%    works well. This will extract the documentation and code from
+%    \file{skrapport.tex}, install all files into the TDS tree at
+%    \texttt{TEXMFHOME} and run \texttt{mktexlsr}.
+%
+%    If you want to extract code and documentation without installing
+%    the package, run \texttt{make all} instead. If you insist on not
+%    using \texttt{make}, remember that packages distributed using
+%    \pkg{skdoc} must be extracted using \texttt{pdflatex}, \emph{not}
+%    \texttt{tex} or \texttt{latex}.
+
+    \PrintChanges
+    
+    Index
+    \PrintIndex
+    \printbibliography
+\end{document}

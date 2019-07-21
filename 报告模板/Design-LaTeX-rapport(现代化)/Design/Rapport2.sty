@@ -1,0 +1,252 @@
+\RequirePackage[automark,autooneside=false, footwidth=\the\textwidth]{scrlayer-scrpage} % pour la structure des pages (headers, etc.)
+\RequirePackage{ifluatex}
+\PassOptionsToPackage{fleqn}{amsmath} % amsmath avec équations un peu vers la gauche
+\IfFileExists{mtpro2.sty}{
+\ifluatex
+   \RequirePackage[no-math]{fontspec}
+   \RequirePackage{newtxtext} % police
+   \let\hbar\relax
+   \RequirePackage[subscriptcorrection,uprightGreek,zswash,nofontinfo,amssymbols,mtphrd]{mtpro2}
+\else
+   \RequirePackage[utf8]{inputenc}
+   \RequirePackage[T1]{fontenc}
+   \RequirePackage{newtxtext} % police
+   \let\hbar\relax
+   \RequirePackage[subscriptcorrection,uprightGreek,zswash,nofontinfo,amssymbols,mtphrd]{mtpro2}
+\fi
+}
+{
+\ifluatex
+   \RequirePackage[no-math]{fontspec}
+   \RequirePackage{newtxtext,newtxmath}% police
+\else
+   \RequirePackage[utf8]{inputenc}
+   \RequirePackage[T1]{fontenc}
+   \RequirePackage{newtxtext,newtxmath} % police
+ \fi
+}
+
+\RequirePackage[protrusion=true,expansion,auto]{microtype} % rendre typographie plus belle
+\RequirePackage{ntheorem} % environnement théorème
+\RequirePackage{etoolbox}
+\RequirePackage{tensor} % Pour afficher les tenseurs avec des espaces
+\RequirePackage{moresize}
+\RequirePackage[frenchb]{babel}
+\RequirePackage{import} % importer
+\RequirePackage{cite} % citer
+\RequirePackage{booktabs} % beaux tableaux
+\RequirePackage{bm} % Vecteurs en gras
+\RequirePackage{physics} % Macros pour physiciens
+\RequirePackage{caption} % Légendes
+\RequirePackage{subcaption} % Légendes
+\RequirePackage{mathtools}
+\RequirePackage{stmaryrd}
+\RequirePackage{float} % Figures [H]-forçage ~ floating
+\RequirePackage{hyperref} % Références et table des matières cliquables
+\hypersetup{
+    colorlinks,
+    citecolor=schrift,
+    filecolor=black,
+    linkcolor=darkblue,
+    urlcolor=darkblue
+}
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
+\widowpenalty=10000
+\vfuzz \hfuzz
+\raggedbottom
+
+
+\RequirePackage[noabbrev, french]{cleveref}
+\RequirePackage{lastpage} % Pour référencer la dernière page dynamiquement.
+\RequirePackage{multicol} % Multicolonnes dans les tableaux
+\RequirePackage{multirow} % Multilignes dans les tableaux
+\RequirePackage{pstricks} % Créer des graphiques
+\RequirePackage{siunitx} % Unité
+\RequirePackage{dsfont} % pour les blackboard letters
+\RequirePackage[normalem]{ulem}
+\RequirePackage{soul} % Pour emphaser le texte (barré, souligné, etc.)
+\RequirePackage{url} % Pour les urls
+\RequirePackage{xcolor} % Couleurs
+\RequirePackage{tikz} % Pour faire des dessins
+\RequirePackage{pgfplots} % Tracer des fonctions
+\RequirePackage{tikz-cd}
+\tikzcdset{arrow style=math font}
+\RequirePackage{graphicx} % Inclut les figures
+\RequirePackage[space]{grffile} % Permet d'ajouter graphique avec espace(s) dans le nom
+\RequirePackage{setspace} % Espace
+\pgfplotsset{compat=1.14}
+
+
+
+%%
+\makeatletter
+\g@addto@macro\bfseries{\boldmath}
+\makeatother
+
+
+
+% Redéfinition des ensembles usuels
+
+\newcommand{\R}{\mathds{R}}
+%\newcommand{\N}{\mathds{N}}
+\newcommand{\Z}{\mathds{Z}}
+%\newcommand{\C}{\mathds{C}}
+
+% Url
+\urlstyle{same}
+
+
+
+% Modification des sections, etc.
+
+\makeatletter
+\renewcommand{\l@section}{\@dottedtocline{1}{1.5em}{2.6em}}
+\renewcommand{\l@subsection}{\@dottedtocline{2}{4.0em}{3.6em}}
+\renewcommand{\l@subsubsection}{\@dottedtocline{3}{7.4em}{4.5em}}
+\makeatother
+
+%%
+\frenchbsetup{} % Typographie française
+\onehalfspacing % Espace interligne
+\RequirePackage{tocloft} %% Pour controler le design typographique de la table des matières
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % Points dans la table des matières
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Définition de la ligne
+
+
+% Définition des couleurs
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+\definecolor{rahmen}{RGB}{0,73,114}
+\definecolor{grund}{RGB}{238,241,251}
+\definecolor{schrift}{RGB}{0,73,114}
+\definecolor{lightgray}{gray}{.95}
+
+
+
+
+% Définition du style de la première page
+
+\newpairofpagestyles{firstpage}{
+\KOMAoptions{headsepline = false, footsepline = false}
+\ohead{}
+\chead{}
+\ihead{}
+  \rofoot{}
+  \lofoot{}
+}
+\renewcommand*\titlepagestyle{firstpage}
+
+% Headers & footers
+
+\setkomafont{pageheadfoot}{\upshape}
+\setkomafont{pagehead}{\normalfont}
+\setkomafont{headsepline}{\color{darkblue}}
+\setkomafont{footsepline}{\color{darkblue}}
+\setkomafont{disposition}{\color{schrift}\bfseries}
+\endinput
+
+    linkcolor=darkblue,
+    urlcolor=darkblue
+}
+
+
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
+\widowpenalty=10000
+\vfuzz \hfuzz
+\raggedbottom
+
+
+\RequirePackage[noabbrev, french]{cleveref}
+%\RequirePackage{lastpage} % Pour référencer la dernière page dynamiquement.
+\RequirePackage{multicol} % Multicolonnes dans les tableaux
+\RequirePackage{multirow} % Multilignes dans les tableaux
+\RequirePackage{pstricks} % Créer des graphiques
+\RequirePackage{siunitx} % Unité
+\RequirePackage{dsfont} % pour les blackboard letters
+\RequirePackage[normalem]{ulem}
+\RequirePackage{soul} % Pour emphaser le texte (barré, souligné, etc.)
+\RequirePackage{url} % Pour les urls
+\RequirePackage{xcolor} % Couleurs
+\RequirePackage{tikz} % Pour faire des dessins
+\RequirePackage{pgfplots} % Tracer des fonctions
+\RequirePackage{tikz-cd}
+\tikzcdset{arrow style=math font}
+\RequirePackage{graphicx} % Inclut les figures
+\RequirePackage[space]{grffile} % Permet d'ajouter graphique avec espace(s) dans le nom
+\RequirePackage{setspace} % Espace
+\pgfplotsset{compat=1.14}
+
+
+
+
+\makeatletter
+\g@addto@macro\bfseries{\bm} % Titre avec les maths en gras
+\makeatother
+
+
+
+% Redéfinition des ensembles usuels + d'autres macros
+
+\newcommand{\R}{\mathds{R}}
+%\newcommand{\N}{\mathds{N}}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\e}{\mathrm{e}} 
+\newcommand{\ii}{\mathrm{i}}
+%\newcommand{\C}{\mathds{C}}
+
+% Url
+\urlstyle{same}
+
+
+
+% Modification des sections, etc.
+
+\makeatletter
+\renewcommand{\l@section}{\@dottedtocline{1}{1.5em}{2.6em}}
+\renewcommand{\l@subsection}{\@dottedtocline{2}{4.0em}{3.6em}}
+\renewcommand{\l@subsubsection}{\@dottedtocline{3}{7.4em}{4.5em}}
+\makeatother
+
+%%
+\frenchbsetup{} % Typographie française
+\onehalfspacing % Espace interligne
+\RequirePackage{tocloft} %% Pour controler le design typographique de la table des matières
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % Points dans la table des matières
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Définition de la ligne
+
+
+% Définition des couleurs
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3} 
+\definecolor{rahmen}{RGB}{0,73,114}
+\definecolor{grund}{RGB}{238,241,251}          
+\definecolor{schrift}{RGB}{0,73,114}
+\definecolor{lightgray}{gray}{.95}
+
+
+
+
+% Définition du style de la première page
+
+\newpairofpagestyles{firstpage}{
+\KOMAoptions{headsepline = false, footsepline = false}
+\ohead{}
+\chead{}
+\ihead{}
+  \rofoot{}
+  \lofoot{}
+}
+\renewcommand*\titlepagestyle{firstpage}
+
+% Headers & footers
+
+\setkomafont{pageheadfoot}{\upshape}
+\setkomafont{pagehead}{\normalfont}
+\setkomafont{headsepline}{\color{darkblue}}
+\setkomafont{footsepline}{\color{darkblue}}
+\setkomafont{disposition}{\color{schrift}\bfseries}
+\endinput

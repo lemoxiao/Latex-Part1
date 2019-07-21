@@ -1,0 +1,33 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage{graphicx}
+\usepackage{hologo}       % bibtex 图标
+\usepackage{amsmath}      % iint
+\usepackage{bm}           % bm
+\usepackage{metalogo}
+\usepackage{verbatim}
+\usepackage{indentfirst}
+\usepackage{setspace}
+%%%%%%%%%%%%%%%%covering%%%%%%%%%%%%%%%
+\begin{document}
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.2\textwidth]{sf1.png}\par
+	{\scshape\LARGE Harbin Institute of Technology \par}
+	\vspace{1cm}
+	{\scshape\Large English Paper\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Are We Lost{？}\par}
+	\vspace{2cm}
+	{\Large\itshape Jinxin Hu\par}
+	\Large\itshape	1160000000
+	\vfill
+	supervised by\par
+	Dr. \textsc{Wang}
+	\vfill
+	{\large \today\par}
+\end{titlepage}
+%%%%%%%%%%%cover end%%%%%%%%%%%
+\include{Body}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{plain}
+\bibliography{ENGLISH}

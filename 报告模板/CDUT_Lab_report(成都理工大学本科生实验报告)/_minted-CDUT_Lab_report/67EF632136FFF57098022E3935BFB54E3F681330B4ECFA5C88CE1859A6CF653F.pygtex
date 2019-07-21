@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZpc{}\PYGZpc{} 计算三角形面积}
+\PYG{n}{clc}\PYG{p}{;}\PYG{n}{clear}\PYG{p}{;}
+\PYG{n}{high}\PYG{p}{=}\PYG{n}{input}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Please input high: \PYGZsq{}}\PYG{p}{);}
+\PYG{n}{bottom}\PYG{p}{=}\PYG{n}{input}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Please input bottom: \PYGZsq{}}\PYG{p}{);}
+\PYG{n}{area}\PYG{p}{=}\PYG{n}{bottom}\PYG{o}{*}\PYG{n}{high}\PYG{o}{*}\PYG{l+m+mf}{0.5}\PYG{p}{;}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}area=\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{disp}\PYG{p}{(}\PYG{n}{area}\PYG{p}{);}
+\end{Verbatim}

@@ -1,0 +1,63 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\contentsline {part}{\numberline {I}Einleitung}{3}{section*.1}% 
+\contentsline {section}{\numberline {1}\IeC {\"U}ber \thepackage }{3}{section*.1}% 
+\contentsline {section}{\numberline {2}\IeC {\"U}ber diese Dokumentation}{3}{section*.1}% 
+\contentsline {part}{\numberline {II}Installation}{4}{table.caption.2}% 
+\contentsline {section}{\numberline {3}Voraussetzungen}{4}{table.caption.2}% 
+\contentsline {part}{\numberline {III}Allgemeines zum Textsatz in der Schule}{5}{table.caption.2}% 
+\contentsline {section}{\numberline {4}Kopf- und Fu\IeC {\ss }zeilen}{5}{table.caption.2}% 
+\contentsline {section}{\numberline {5}Absatzauszeichnung}{5}{table.caption.2}% 
+\contentsline {part}{\numberline {IV}Tutorials: Der schnelle Einstieg}{6}{table.caption.2}% 
+\contentsline {section}{\numberline {6}Das erste Arbeitsblatt}{6}{table.caption.2}% 
+\contentsline {subsection}{\numberline {6.1}Laden der Dokumentenklasse}{6}{table.caption.2}% 
+\contentsline {subsection}{\numberline {6.2}Optionen verwenden}{6}{table.caption.2}% 
+\contentsline {subsection}{\numberline {6.3}Metadaten eingeben}{7}{table.caption.3}% 
+\contentsline {subsection}{\numberline {6.4}Kopfzeile erzeugen}{8}{table.caption.4}% 
+\contentsline {subsection}{\numberline {6.5}Titel erzeugen}{9}{table.caption.4}% 
+\contentsline {subsection}{\numberline {6.6}Aufgaben erstellen}{10}{table.caption.4}% 
+\contentsline {subsection}{\numberline {6.7}Fragen: Freie Antworten und Multiple Choice}{14}{table.caption.4}% 
+\contentsline {subsection}{\numberline {6.8}Spalten verwenden}{17}{table.caption.4}% 
+\contentsline {subsection}{\numberline {6.9}Grafikdateien einf\IeC {\"u}gen}{19}{table.caption.4}% 
+\contentsline {subsection}{\numberline {6.10}TikZ-Grafiken einf\IeC {\"u}gen}{20}{table.caption.4}% 
+\contentsline {subsection}{\numberline {6.11}L\IeC {\"o}sungen erstellen}{21}{table.caption.4}% 
+\contentsline {subsection}{\numberline {6.12}Pseudo-A5-Druckvorlage und Folien}{24}{table.caption.4}% 
+\contentsline {subsection}{\numberline {6.13}Notizen}{25}{table.caption.4}% 
+\contentsline {section}{\numberline {7}Die erste Klassenarbeit}{25}{table.caption.4}% 
+\contentsline {subsection}{\numberline {7.1}Zeile f\IeC {\"u}r Sch\IeC {\"u}lerdaten -- Viel Erfolg!}{25}{table.caption.4}% 
+\contentsline {subsection}{\numberline {7.2}Verrechnungspunkte angeben}{26}{table.caption.4}% 
+\contentsline {subsection}{\numberline {7.3}Bereiche f\IeC {\"u}r Ergebnisse}{29}{table.caption.4}% 
+\contentsline {section}{\numberline {8}Die erste Unterrichtsplanung}{30}{table.caption.4}% 
+\contentsline {section}{\numberline {9}Erscheinungsbild anpassen}{30}{table.caption.4}% 
+\contentsline {subsection}{\numberline {9.1}Fu\IeC {\ss }zeile}{30}{table.caption.4}% 
+\contentsline {part}{\numberline {V}Dokumentation}{31}{table.caption.4}% 
+\contentsline {subsection}{\numberline {9.2}Allgemeines}{31}{table.caption.4}% 
+\contentsline {subsubsection}{\numberline {9.2.1}Farben}{31}{table.caption.4}% 
+\contentsline {subsection}{\numberline {9.3}Optionen}{31}{table.caption.4}% 
+\contentsline {subsubsection}{\numberline {9.3.1}Medienarten}{31}{table.caption.4}% 
+\contentsline {subsubsection}{\numberline {9.3.2}Schriftarten}{31}{table.caption.4}% 
+\contentsline {subsubsection}{\numberline {9.3.3}Schriftgr\IeC {\"o}\IeC {\ss }en}{31}{table.caption.4}% 
+\contentsline {subsubsection}{\numberline {9.3.4}Absatzauszeichnung}{32}{table.caption.4}% 
+\contentsline {subsubsection}{\numberline {9.3.5}Seitenr\IeC {\"a}nder}{32}{table.caption.4}% 
+\contentsline {subsubsection}{\numberline {9.3.6}Teile (Parts)}{32}{table.caption.4}% 
+\contentsline {subsubsection}{\numberline {9.3.7}Listen}{32}{table.caption.4}% 
+\contentsline {subsubsection}{\numberline {9.3.8}Metadaten}{33}{figure.caption.5}% 
+\contentsline {subsubsection}{\numberline {9.3.9}Titel}{33}{figure.caption.5}% 
+\contentsline {subsubsection}{\numberline {9.3.10}Kopf- und Fu\IeC {\ss }zeile}{34}{figure.caption.5}% 
+\contentsline {subsubsection}{\numberline {9.3.11}Inhaltsverzeichnis}{34}{figure.caption.5}% 
+\contentsline {subsubsection}{\numberline {9.3.12}Aufz\IeC {\"a}hlungen, Nummerierungen und Beschreibungen}{34}{figure.caption.5}% 
+\contentsline {subsubsection}{\numberline {9.3.13}\IeC {\"U}berschriften}{34}{figure.caption.5}% 
+\contentsline {subsubsection}{\numberline {9.3.14}Verweise}{35}{figure.caption.5}% 
+\contentsline {subsubsection}{\numberline {9.3.15}Schulbuch-Aufgaben angeben}{35}{figure.caption.6}% 
+\contentsline {subsubsection}{\numberline {9.3.16}Formatierungen}{35}{figure.caption.6}% 
+\contentsline {subsubsection}{\numberline {9.3.17}Symbole}{35}{figure.caption.6}% 
+\contentsline {subsubsection}{\numberline {9.3.18}Themes}{36}{figure.caption.6}% 
+\contentsline {subsubsection}{\numberline {9.3.19}Grafik}{36}{figure.caption.6}% 
+\contentsline {subsubsection}{\numberline {9.3.20}Aufgaben}{36}{figure.caption.6}% 
+\contentsline {subsubsection}{\numberline {9.3.21}L\IeC {\"o}sungen}{38}{figure.caption.6}% 
+\contentsline {subsubsection}{\numberline {9.3.22}L\IeC {\"o}sungen in Aufgaben}{39}{figure.caption.6}% 
+\contentsline {subsubsection}{\numberline {9.3.23}Fragen}{40}{figure.caption.6}% 
+\contentsline {subsubsection}{\numberline {9.3.24}Notizen}{40}{figure.caption.6}% 
+\contentsline {subsubsection}{\numberline {9.3.25}Unterrichtsablauf}{41}{figure.caption.6}% 
+\contentsline {subsubsection}{\numberline {9.3.26}Tafelbild}{42}{figure.caption.6}% 
+\contentsline {subsubsection}{\numberline {9.3.27}Informatik}{42}{figure.caption.6}% 
+\par 

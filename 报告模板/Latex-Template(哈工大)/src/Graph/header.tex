@@ -1,0 +1,62 @@
+\usepackage[margin=1in]{geometry}
+\pagestyle{headings}
+% 调整页面大小，默认页面与常用规格不符
+
+% 用来输入摘要
+\usepackage{abstract}
+
+% 用来插入图片
+\usepackage{graphicx}
+
+% 插入数学符号
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% 引用链接可点击
+\usepackage{cite}
+\usepackage[colorlinks,linkcolor=black,anchorcolor=blue,citecolor=green]{hyperref}
+
+% 用于插入伪代码
+\usepackage{clrscode3e}
+
+% 用于插入C代码
+\usepackage{listings}
+
+% 调整代码的背景和风格
+\usepackage{xcolor}
+\lstset{
+    %行号
+    numbers=left,
+    %背景框
+    framexleftmargin=10mm,
+    frame=none,
+    %背景色
+    %backgroundcolor=\color[rgb]{1,1,0.76},
+    backgroundcolor=\color[RGB]{245,245,244},
+    %样式
+    keywordstyle=\bf\color{blue},
+    identifierstyle=\bf,
+    numberstyle=\color[RGB]{0,192,192},
+    commentstyle=\it\color[RGB]{0,96,96},
+    stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},
+    %显示空格
+    showstringspaces=false
+}
+
+% 设置参考文献风格
+\bibliographystyle{plain}
+
+% 处理下划线
+\usepackage{underscore}
+
+\usepackage{ctexheading}
+
+% 设置Section标题风格
+% 标题居左《一、标题》
+%\ctexset{section={name={,、},number= \chinese{section},format = \Large\bfseries\raggedright}}
+% 标题居左《第一章 标题》
+\ctexset{section={name={第,章},number= \chinese{section},format = \Large\bfseries\raggedright}}
+% 标题居中《第一章 标题》
+%\ctexset{section={name={第,章},number= \chinese{section}}} 

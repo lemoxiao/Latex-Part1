@@ -1,0 +1,1869 @@
+%
+% \section{Verwendung}\label{verwendung}
+%
+% Dieser Abschnitt beschreibt die Optionen, Makros und Umgebungen der \textsf{scldoc}-Klasse. Die behandelten Befehle werden eingerahmt hervorgehoben, wobei die jeweiligen Arten wiefolgt angegeben werden:
+% \begin{decl}
+%   |option=|\meta{Typ}\quad(|Standardwert|)\\[1.2ex]
+%   |\makro|\\[1.2ex]
+%   |\begin{umgebung}|\\
+%   |\end{umgebung}|
+% \end{decl}
+% Typen von Optionen werden im folgenden Abschnitt~\ref{optionen} beschrieben. Die Optionen, Makros und Umgebungen werden thematisch sortiert und größtenteils in der Reihenfolge ihrer angedachten Verwendung behandelt.
+%
+% 
+%
+% \subsection{Klasse laden und Optionen manipulieren}\label{optionen}
+%
+% \textsf{scldoc} wird als Dokumentenklasse zu Beginn des Dokuments geladen:
+% \begin{center}
+%   |\documentclass|\oarg{Optionen}|{scldoc}|
+% \end{center}
+% Es steht eine Vielzahl von \meta{Optionen} zur Verfügung, die im Folgenden beschrieben werden. Optionen können außerdem über die Kommandos |\sclsetup| und |\scloption| innerhalb der Präambel des Dokuments (d.\,h. vor |\begin{document}|) manipuliert werden:
+%
+%
+% \begin{decl}
+%   |\sclsetup{|\meta{Option}=\meta{Wert},\dots,\meta{Option}=\meta{Wert}|}|\\
+%   |\scloption{|\meta{Option}|}||{|\meta{Wert}|}|
+% \end{decl}
+% \noindent|\sclsetup| dient zum Ändern mehrerer Optionen, wohingegen |\scloption| nur das Setzen einer Option ermöglicht. Unabhängig davon, ob sie durch |\sclsetup|, |\scloption| oder bereits beim Laden durch |\documentclass| angegeben werden, können Optionen je nach Typ unterschiedlich gesetzt werden:
+%
+% Vielen Optionen kann ein beliebiger Text (\meta{String}) zugeordnet werden. Einige Optionen erwarten eine Maßeinheit (\meta{Dim} -- \emph{Dimension}), z.\,B. in |cm|, |mm|, |pt|, |ex| oder |em|. Booleschen Optionen (\meta{Bool}) hingegen können die \emph{Wahrheitswerte} |true| (\emph{Wahr}) und |false| (\emph{Falsch}) zugeordnet werden. Boolesche Optionen können alternativ auch ohne Wert angegeben, was dem Wert |true| entspricht. D.\,h. die Angabe |twoup| entspricht |twoup=true|. Tabelle \ref{options} fasst die Optionstypen zusammen.
+%
+% \begin{table}[htb]
+%   \centering
+%   \begin{tabular}{lll}\toprule
+%     \sffamily Typ & \sffamily Bezeichnung & \sffamily Beispiel \\\midrule[\heavyrulewidth]
+%     Text & \meta{String} & |autor=Max Mustermann| \\\midrule
+%     Maßeinheit & \meta{Dim} & |listarraysep=0.5cm| \\\midrule
+%     Boolesch & \meta{Bool} & |twoup=true| oder |twoup| \\\bottomrule
+%   \end{tabular}
+%   \caption{Typen von Optionen.}
+%   \label{options}
+% \end{table}
+% 
+% |\sclsetup| und |\scloption| können innerhalb der Präambel beliebig oft verwendet werden. Es sei nochmals darauf hingewiesen, dass die folgenden Aufrufe im Normalfall\footnote{Ausnahmen sind im Folgenden als solche gekennzeichnet.} zum gleichen Ergebnis führen:
+% \begin{itemize}
+%   \item |\documentclass[author=Max Mustermann, twoup]{scldoc}|
+%   \item |\sclsetup{author=Max Mustermann, twoup}|
+%   \item |\scloption{author}{Max Mustermann}| und |\scloption{twoup}{true}|
+% \end{itemize}
+%
+% Optionen der \textsf{scrartcl} Dokumentenklasse, welche von \textsf{scldoc} nicht neu definiert werden, werden automatisch an \textsf{scldoc} weitergereicht. Sie können direkt in |\documentclass| angegeben werden oder durch |\KOMAoptions| gesetzt werden. Weitere Informationen sind der Dokumentation des \emph{KOMA-Scripts} \cite{koma} zu entnehmen.
+%
+%
+% \subsection{Kopfzeile}\label{kopfzeile}
+%
+% Auf Arbeitsblättern und ähnlichen Dokumenten dient eine Kopfzeile hauptsächlich zur Einordnung des Dokuments in Fächer und innerhalb einzelner Fächer in Gebiete (z.\,B. Prozentrechnung). Aus Platzgründen genügt es, die Kopfzeile lediglich auf der ersten Seite des Dokumentes anzugeben. Es handelt sich deshalb nicht um eine Kopfzeile im eigentlichen Sinn -- dennoch bedienen wir uns dieses Begriffes. Eine zusätzliche, platzsparendere Fußzeile (s.\,Abschnitt~\ref{fusszeile}) übernimmt die Funktion der Kopfzeile bei mehrseitigen Dokumenten auf Folgeseiten.
+%
+% \begin{decl}
+%   |author|=\meta{String}\\
+%   |subject|=\meta{String}\\
+%   |class|=\meta{String}\\
+%   |field|=\meta{String}\\
+%   |topic|=\meta{String}\\
+%   |date|=\meta{String}
+% \end{decl}
+%
+% \noindent Zuerst sollten alle für die Kopf- und Fußzeile relevanten Optionen z.\,B. durch |\sclsetup| gesetzt werden. Tabelle~\ref{docattributes} zeigt alle relevanten Optionen und ob diese in Kopf- und/oder Fußzeile verwendet werden. Die Angabe der Optionen ist nicht zwingend, wird jedoch empfohlen, da sie alle zur Einordnung des Dokuments hilfreich sind. Die Beispiele aus Tabelle~\ref{docattributes} könnten also wiefolgt angewandt werden:
+% \begin{verbatim}
+%\sclsetup{
+%  author=Max Mustermann,
+%  subject=Mathematik, 
+%  class=Klasse 7b, 
+%  field=Vektorrechnung,
+%  topic=Der Ortsvektor,
+%  date=\today
+%}
+% \end{verbatim}
+% Die resultierende Kopfzeile sieht wie folgt aus:
+% 
+% \medskip
+% \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{%
+% {\sffamily\small
+%    {\noindent Mathematik \hfill \today}\\
+%    {\noindent Vektorrechnung \hfill Klasse 7b}}\\
+%	  \noindent\rule[0.5em]{\linewidth}{0.5pt}
+% 
+% Lorem ipsum \dots
+% }}
+%
+% \begin{table}[htb]
+%   \centering
+%   \begin{tabular}{llccl}\toprule
+%     \sffamily Angabe & \sffamily Option & \sffamily Kopfzeile & \sffamily Fußzeile & \sffamily Beispiel \\\midrule[\heavyrulewidth]
+%     Autor & |author| &  & \textsf{X} & |author=Max Mustermann| \\\midrule
+%     Fach & |subject| & \textsf{X} &  & |subject=Mathematik| \\\midrule
+%     Klasse & |class| & \textsf{X} &  & |class=Klasse 7b| \\\midrule
+%     Gebiet & |field| & \textsf{X} & \textsf{X} & |field=Vektorrechnung| \\\midrule
+%     Thema & |topic| &  & \textsf{X} & |topic=Der Ortsvektor| \\\midrule
+%     Datum & |date| & \textsf{X} &  & |date=\today| \\\bottomrule
+%   \end{tabular}
+%   \caption{Relevante Optionen für Kopf- und Fußzeile.}
+%   \label{docattributes}
+% \end{table}
+%
+% \begin{decl}
+%   |\makeheader|
+% \end{decl}
+%
+% \noindent Die Kopfzeile wird durch |\makeheader| erzeugt. |\makeheader| sollte zu Beginn des Dokuments direkt nach |\begin{document}| aufgerufen werden.
+%
+%
+% \begin{decl}
+%   |headerrulewidth=|\meta{Dim}\quad(|0.5pt|)
+% \end{decl}
+%
+% \noindent Die Kopfzeile wird standardmäßig durch eine \unit[0.5]{pt} breite, horizontale Line vom folgenden Text getrennt. Durch die Option |headerrulewidth| kann die Breite der Linie geändert werden (z.\,B. |\scloption{headerrulewidth}{2pt}|). Zum Ausblenden der Linie wählt man eine Breite von \unit[0]{pt}.
+%
+%
+%
+% \subsection{Fußzeile}\label{fusszeile}
+%
+% Im Gegensatz zur Kopfzeile wird die Fußzeile bei mehrseitigen Dokumenten auf jeder Seite gesetzt. Da die Seitennummer zum Sortieren solcher Dokumente unerlässlich ist, wird der Platz für die Fußzeile sowieso benötigt. Der restliche Platz wird verwendet, um den Autor, das Gebiet und den Titel des Dokuments anzugeben. Einzelne Seiten können hierdurch dem zugehörigen Dokument zugeordnet werden.
+%
+% Zuerst müssen die in Tabelle~\ref{docattributes} aus Abschnitt~\ref{kopfzeile} für die Fußzeile relevanten Optionen gesetzt werden. In Abschnitt~\ref{kopfzeile} wird dies anhand eines Beispiels gezeigt, wie diese Optionen gesetzt werden können.
+%
+%
+% \begin{decl}
+%   |footer=|\meta{Bool}\quad(|true|)
+% \end{decl}
+%
+% \noindent Sollte die Fußzeile unerwünscht sein, kann sie durch diese Option deaktiviert werden: |\scloption{footer}{false}|.
+%
+%
+% \begin{decl}
+%   |pagecount=|\meta{Bool}\quad(|true|)
+% \end{decl}
+%
+% \noindent Standardmäßig wird neben der Seitenzahl auch die Anzahl der Seiten in der Fußzeile angegeben. Z.\,B. wird die dritte Seite eines fünfseitigen Dokuments mit \textsf{3/5} gekennzeichnet. Sollte lediglich die Seitenzahl erwünscht sein, kann die Anzahl der Seiten mit dieser Option deaktiviert werden.
+%
+%
+% \begin{decl}
+%   |footskip=|\meta{Dim}\quad(|10mm|)\\
+%   |twoupfootskip=|\meta{Dim}\quad(|10mm|)
+% \end{decl}
+%
+% \noindent Mit diesen Optionen können die Abstände zwischen dem Seiteninhalt und der Fußzeile angepasst werden. Genau genommen wird der Abstand zwischen der Grundlinie der letzten Zeile des Seiteninhalts und der Grundlinie der Fußzeile angegeben. |footskip| ist zu verwenden, wenn mehrseitiger Druck nicht aktiviert wurde (Standard). Im Falle mehrseitigen Drucks (|twoup=true|, s.\,Abschnitt~\ref{mehrseitig}) muss |twoupfootskip| verwendet werden.
+%
+% 
+% \subsection{Titelzeile}
+%
+% \begin{decl}
+%   |\makedocumenttitle|
+% \end{decl}
+%
+% \noindent Die Titelzeile des Dokuments wird durch |\makedocumenttitle| erzeugt. Der Title wird durch die in Abschnitt~\ref{kopfzeile} beschriebene Option |topic| angegeben und entspricht dem Thema des Dokuments. Üblicherweise wird |\makedocumenttitle| direkt nach der Kopfzeile, d.\,h. |\makeheader|, aufgerufen.
+%
+% 
+% \subsection{Intro}
+%
+% \begin{decl}
+%   |\intro|
+% \end{decl}
+%
+% \noindent Soll vor der ersten Überschrift (Aufgabe oder Abschnitt) einleitender Text platziert werden, sollte dieser durch |\intro| eingeleitet werden. |\intro| sorgt für einen korrekten Abstand zwischen Titel und nachfolgendem Text. Um eine Einrückung des Textes als Absatzauszeichnung zu verhindern, darf zwischen |\intro| und dem Text keine Leerzeile stehen.
+%
+%
+%
+% \subsection{Aufgabenüberschriften} \label{aufgaben}
+%
+% \begin{decl}
+%   |\exe|\oarg{Punkte}\marg{Titel}\\
+%   |\subexe|\oarg{Punkte}\marg{Titel}
+% \end{decl}
+%
+% \noindent Aufgaben können in drei Stufen gegliedert werden. Eine Aufgabe entspricht der obersten Stufe und wird durch das Kommando |\exe| erzeugt. Der \meta{Titel} kann eine Aufgabe beschreiben und auf Wunsch leer bleiben. Die geschwungenen Klammern des Befehls müssen jedoch angegeben werden. Optional kann der Aufgabe eine Punktzahl zugewiesen werden, z.\,B. für Klassenarbeiten. Aufgaben werden arabisch nummeriert. Hier einige Beispiele für Aufgabenüberschriften:
+%
+% \begin{itemize}
+%   \item |\exe[4]{Betrag berechnen}|
+% 
+%   \medskip
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{%
+%    {\sffamily\bfseries\large 1. Aufgabe: \hspace{0.3em} Betrag berechnen} \hfill {\sffamily\bfseries\small [4\,P]}
+% 
+% \vspace{0.25\baselineskip}
+% Lorem ipsum \dots
+% }}
+%   
+%   \item |\exe[4]{}|
+% 
+%   \medskip
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{%
+%    {\sffamily\bfseries\large 1. Aufgabe} \hfill {\sffamily\bfseries\small [4\,P]}
+% 
+% \vspace{0.25\baselineskip}
+% Lorem ipsum \dots
+% }}
+%   
+%   \item |\exe{}|
+% 
+%   \medskip
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{%
+%    {\sffamily\bfseries\large 1. Aufgabe}
+% 
+% \vspace{0.25\baselineskip}
+% Lorem ipsum \dots
+% }}
+% 
+% \end{itemize}
+%
+% Analog können mit |\subexe| Unteraufgaben zu einzelnen Aufgaben erzeugt werden. Die Verwendung entspricht der von |\exe| -- der \meta{Titel} kann leer bleiben und \meta{Punkte} ist eine optionale Punktzahl. Unteraufgaben stellen die zweite Gliederungsebene dar und werden ebenfalls arabisch nummeriert. Sie werden im Gegensatz zu Aufgaben standardmäßig nach der Nummerierung nicht durch "`Aufgabe"' eingeleitet. Zu jeder Aufgabe können beliebig viele (auch keine) Unteraufgaben erstellt werden. Das folgende Beispiel verdeutlicht die Verwendung von Unteraufgaben:
+%
+% \begin{verbatim}
+%\exe[4]{Erste Aufgabe}
+%\subexe[2]{Erste Unteraufgabe}
+%		
+%Lorem ipsum \dots
+%		
+%\subexe[1]{Zweite Unteraufgabe}
+%		
+%Lorem ipsum \dots
+%		
+%\subexe[1]{Dritte Unteraufgabe}
+%		
+%Lorem ipsum \dots
+%		
+%\exe[5]{Zweite Aufgabe}
+%		
+%Lorem ipsum \dots
+%
+%\exe[3]{Dritte Aufgabe}
+%\subexe[2]{Erste Unteraufgabe}
+%		
+%Lorem ipsum \dots
+% \end{verbatim}
+% 
+%   \medskip
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{%
+%    {\sffamily\bfseries\large 1. Aufgabe: \hspace{0.3em} Erste Aufgabe} \hfill {\sffamily\bfseries\small [4\,P]}
+% 
+% \vspace{0.4\baselineskip}
+
+%    {\sffamily\bfseries\normalsize 1.1 \hspace{0.3em} Erste Unteraufgabe} \hfill {\sffamily\bfseries\scriptsize [2\,P]}
+% 
+% \vspace{0.15\baselineskip}
+%
+% Lorem ipsum \dots
+% 
+% \vspace{0.4\baselineskip}
+
+%    {\sffamily\bfseries\normalsize 1.2 \hspace{0.3em} Zweite Unteraufgabe} \hfill {\sffamily\bfseries\scriptsize [1\,P]}
+% 
+% \vspace{0.15\baselineskip}
+%
+% Lorem ipsum \dots
+% 
+% \vspace{0.4\baselineskip}
+
+%    {\sffamily\bfseries\normalsize 1.3 \hspace{0.3em} Dritte Unteraufgabe} \hfill {\sffamily\bfseries\scriptsize [1\,P]}
+% 
+% \vspace{0.15\baselineskip}
+%
+% Lorem ipsum \dots 
+% 
+% \vspace{\baselineskip}
+%
+%   {\sffamily\bfseries\large 2. Aufgabe: \hspace{0.3em} Zweite Aufgabe} \hfill {\sffamily\bfseries\small [5\,P]}
+%
+% Lorem ipsum \dots 
+% 
+% \vspace{\baselineskip}
+%
+%   {\sffamily\bfseries\large 3. Aufgabe: \hspace{0.3em} Dritte Aufgabe} \hfill {\sffamily\bfseries\small [3\,P]}
+% 
+% \vspace{0.4\baselineskip}
+
+%    {\sffamily\bfseries\normalsize 3.1 \hspace{0.3em} Erste Unteraufgabe} \hfill {\sffamily\bfseries\scriptsize [2\,P]}
+% 
+% \vspace{0.15\baselineskip}
+%
+% Lorem ipsum \dots
+% }}
+%
+% \bigskip
+%
+% Das Erscheinungsbild von Aufgaben- und Unteraufgabenüberschriften kann durch die folgenden Optionen angepasst werden.
+% 
+% \begin{decl}
+%   |exelabel=|\meta{String} \quad (|Aufgabe|)\\
+%   |subexelabel=|\meta{String} \quad (||)
+% \end{decl}
+% 
+% \noindent|exelabel| und |subexelabel| geben Text nach der Nummerierung einer Aufgabe bzw. Unteraufgabe an. Das vorherige Beispiel zeigt den Standard: Während Aufgaben mit "`Aufgabe"' versehen werden, folgt bei Unteraufgaben auf die Nummerierung direkt der Titel der Aufgabe. Dieses Verhalten kann durch diese Optionen verändert werden. In beiden Fällen ist auch eine leere Bezeichnung möglich.
+%
+% 
+% \begin{decl}
+%   |exepointslabel=|\meta{String} \quad (|\,P|)\\
+%   |subexepointslabel=|\meta{String} \quad (|\,P|)
+% \end{decl}
+% 
+% \noindent Punkte werden standardmäßig mit dem Zusatz "`P"' dargestellt. |exepointslabel| und |subexepointslabel| erlauben alternative (auch leere) Bezeichnungen. Man beachte, dass das Einfügen eines horizontalen Abstands zwischen der Punktzahl und |exepointslabel| bzw. |subexepointslabel| Aufgabe des Benutzers ist.
+%
+% 
+% \begin{decl}
+%   |exepointssep=|\meta{Dim} \quad ()\\
+%   |subexepointssepl=|\meta{Dim} \quad ()
+% \end{decl}
+% 
+% \noindent Diese Optionen ermöglichen die Angabe eines Abstands zwischen der eigentlichen Überschrift der Aufgbabe bzw. Unteraufgabe und der Punktzahl. Sollte kein Wert gesetzt werden (was standardmäßig zutrifft), wird die Punktzahl durch |\hfill| am rechten Textrand positioniert.
+% 
+% 
+% \begin{decl}
+%   |exepointsleft=|\meta{String} \quad (|[|)\\
+%   |exepointsright=|\meta{String} \quad (|]|)\\
+%   |subexepointsleft=|\meta{String} \quad (|[|)\\
+%   |subexepointsright=|\meta{String} \quad (|]|)
+% \end{decl}
+%
+% \noindent Die Punktzahlen von Aufgaben und Unteraufgaben werden von |exepointsleft| und |exepointsright| bzw. |subexepointsleft| und |subexepointsright| eingeschlossen. Auch diese können manipuliert werden.
+%
+% Alle genannten Optionen werden durch das folgende Beispiel veranschaulicht:
+%
+% \begin{verbatim}
+%\sclsetup{
+%  exelabel=, subexelabel=Unteraufgabe,
+%  exepointslabel=\,Punkte, subexepointslabel=,
+%  exepointssep=, subexepointssep=0.5em,
+%  exepointsleft=\{, exepointsright=\},
+%  subexepointsleft=(, subexepointsright=)
+%}
+% \end{verbatim}
+% 
+%   \medskip
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{%
+%    {\sffamily\bfseries\large 1 \hspace{0.3em} Erste Aufgabe} \hfill {\sffamily\bfseries\small \{4\,Punkte\}}
+% 
+% \vspace{0.4\baselineskip}
+
+%    {\sffamily\bfseries\normalsize 1.1. Unteraufgabe: \hspace{0.3em} Erste Unteraufgabe} \hspace{0.5em} {\sffamily\bfseries\scriptsize (2)}
+% 
+% \vspace{0.15\baselineskip}
+%
+% Lorem ipsum \dots
+% }}
+%
+%
+%
+% \subsection{Lösungsüberschriften} \label{loesungen}
+%
+% \begin{decl}
+%   |\sol|\marg{Titel}\\
+%   |\subsol|\marg{Titel}
+% \end{decl}
+%
+% \noindent Zu Aufgaben und Unteraufgaben können Überschriften für Lösungen und Unterlösungen mit einem \meta{Titel} erstellt werden. Diese werden analog zu |\exe| und |\subexe| in Abschnitt~\ref{aufgaben} verwendet, verfügen jedoch über kein optionales Argument für Punkte. Die Nummerierung erfolgt über eigene Zähler und ebenfalls analog zu |\exe| und |\subexe|:
+%
+% \begin{verbatim}
+%\exe{Erste Aufgabe}
+%\subexe{Erste Unteraufgabe}
+%		
+%Lorem ipsum \dots
+%
+%\sol{Erste Lösung}
+%\subsol{Erste Unterlösung}
+%		
+%Lorem ipsum \dots
+%		
+%\exe{Zweite Aufgabe}
+%		
+%Lorem ipsum \dots
+%
+%\sol{Zweite Lösung}
+%		
+%Lorem ipsum \dots
+% \end{verbatim}
+% 
+%   \medskip
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{%
+%    {\sffamily\bfseries\large 1. Aufgabe: \hspace{0.3em} Erste Aufgabe}
+% 
+% \vspace{0.4\baselineskip}
+
+%    {\sffamily\bfseries\normalsize 1.1 \hspace{0.3em} Erste Unteraufgabe}
+% 
+% \vspace{0.15\baselineskip}
+%
+% Lorem ipsum \dots
+% 
+% 
+% \vspace{\baselineskip}
+% 
+% 
+%    {\sffamily\bfseries\large 1. Lösung: \hspace{0.3em} Erste Lösung}
+% 
+% \vspace{0.4\baselineskip}
+
+%    {\sffamily\bfseries\normalsize 1.1 \hspace{0.3em} Erste Unterlösung}
+% 
+% \vspace{0.15\baselineskip}
+%
+% Lorem ipsum \dots
+% 
+% 
+% \vspace{\baselineskip}
+%
+%   {\sffamily\bfseries\large 2. Aufgabe: \hspace{0.3em} Zweite Aufgabe}
+%
+% Lorem ipsum \dots 
+% 
+% 
+% \vspace{\baselineskip}
+%
+%   {\sffamily\bfseries\large 2. Lösung: \hspace{0.3em} Zweite Lösung}
+%
+% Lorem ipsum \dots 
+%  
+% }}
+%
+% \medskip
+%
+% 
+% \begin{decl}
+%   |sollabel=|\meta{String} \quad (|L\"osung|) \\
+%   |subsollabel=|\meta{String} \quad ()
+% \end{decl}
+%
+% \noindent Mit diesen Optionen können die Texte nach den Nummerierungen von Lösungen und Unterlösungen verändert werden. Den Standard zeigt das vorherige Beispiel.
+%
+% 
+%
+% 
+%
+%
+%
+%
+% \subsection{Teilaufgaben} \label{teilaufgaben}
+%
+% Teilaufgaben stellen die unterste Gliederungsebene von \textsf{scldoc} dar und unterteilen Aufgaben und Unteraufgaben. Sie werden verwendet, wenn eine große Anzahl nummerierter Teilaufgaben benötigt wird, wie es z.\,B. bei Mathematikaufgaben häufig der Fall ist. Außerdem werden sie im Vergleich zu Aufgaben und Unteraufgaben alphabetisch nummeriert.
+%
+% 
+% \begin{decl}
+%   |\begin{multiexelist}|\oarg{Abstand} \\
+%   |\end{multiexelist}|
+% \end{decl}
+%
+% \noindent Einspaltig gesetzte Teilaufgaben können durch die |multiexelist|-Umgebung erstellt werden. Der Name lässt erkennen, dass es sich hierbei um eine Liste handelt, weshalb sich |multiexelist| auch wie eine solche verwenden lässt. Wie bei z.\,B. |itemize| oder |enumerate| werden innerhalb der Umgebung neue Teilaufgaben durch |\item| eingeleitet:
+%
+% \begin{verbatim}
+%\begin{multiexelist}
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%\end{multiexelist}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   \vspace{-0.75em}
+%  \begin{itemize}
+%\setlength{\parsep}{0pt}%
+%    \setlength{\itemsep}{0.25\baselineskip}%
+%   \item[\textsf{a)}] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%   \item[\textsf{b)}] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%   \item[\textsf{c)}] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \end{itemize}
+%   \vspace{-0.75em}
+%   }}
+% \vspace{0.4\baselineskip}
+%
+% Durch die Option \meta{Abstand} kann der Abstand zwischen den Teilaufgaben verändert werden:
+%
+% \begin{verbatim}
+%\begin{multiexelist}[0ex]
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%\end{multiexelist}
+%Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%\begin{multiexelist}[3ex]
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%\end{multiexelist}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   \vspace{-0.75em}
+%  \begin{itemize}
+%   \setlength{\itemsep}{0pt}%
+%   \setlength{\itemsep}{-0.5ex}%
+%   \item[\textsf{a)}] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%   \item[\textsf{b)}] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%   \item[\textsf{c)}] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \end{itemize}
+% Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \begin{itemize}
+%\setlength{\parsep}{0pt}%
+%    \setlength{\itemsep}{2.5ex}%
+%   \item[\textsf{d)}] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%   \item[\textsf{e)}] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%   \item[\textsf{f)}] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \end{itemize}
+%   \vspace{-0.75em}
+%   }}
+% \vspace{0.4\baselineskip}
+%
+% Durch das Beispiel wird außerdem deutlich, dass die Nummerierung aufeinanderfolgender |multiexelist|-Umgebungen fortlaufend ist. Sie beginnt jedoch sinnvollerweise nach jedem Aufruf von |\exe| oder |\subexe| von vorne.
+%
+% 
+% \begin{decl}
+%   |\begin{multiexearray}|\oarg{Abstand}\marg{Spaltenzahl} \\
+%   |\end{multiexearray}|\\[1.2ex]
+%   |\begin{multiexearray*}|\oarg{Abstand}\marg{Spaltenzahl} \\
+%   |\end{multiexearray*}|
+% \end{decl}
+%
+% \noindent Vor allem in der Mathematik werden häufig mehrere kurze Aufgaben gestellt. Um die Arbeitsblätter platzsparender gestalten zu können, kann man hierzu die |\multiexearray| Umgebung verwenden. Sie erstellt -- wie |multiexelist| -- alphabetisch nummerierte Teilaufgaben. Diese werden jedoch tabellarisch angeordnet, weshalb |multiexearray| wie eine Tabelle verwendet wird. Da der Blocksatz schmaler Spalten problematisch ist, werden Teilaufgaben in linksbündigem Flattersatz mit Silbentrennung erzeugt. \meta{Spaltenzahl} gibt die Anzahl der Spalten der Umgebung an:
+%
+%\begin{verbatim}\begin{multiexearray}{4}
+%  Eins: Lorem ipsum dolor sit. & 
+%  Zwei: Lorem ipsum dolor sit. & 
+%  Drei: Lorem ipsum dolor sit. & 
+%  Vier: Lorem ipsum dolor sit. \\
+%  Fünf: Lorem ipsum dolor sit. & 
+%  Sechs: Lorem ipsum dolor sit. & 
+%  Sieben: Lorem ipsum dolor sit.
+%\end{multiexearray}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   \renewcommand{\arraystretch}{1.25}
+%   \centering
+%\newcolumntype{A}{>{\raggedright\arraybackslash}X}
+%
+%   \begin{tabularx}{0.9\textwidth}{*{4}{A}} 
+%     \makebox[1em][r]{\textsf{a)}}\hspace{0.5em}\hangpara{1.5em}{1}Eins: Lorem ipsum dolor sit. &
+%     \makebox[1em][r]{\textsf{b)}}\hspace{0.5em}\hangpara{1.5em}{1}Zwei: Lorem ipsum dolor sit. &
+%     \makebox[1em][r]{\textsf{c)}}\hspace{0.5em}\hangpara{1.5em}{1}Drei: Lorem ipsum dolor sit. &
+%     \makebox[1em][r]{\textsf{d)}}\hspace{0.5em}\hangpara{1.5em}{1}Vier: Lorem ipsum dolor sit. \\
+%     \makebox[1em][r]{\textsf{e)}}\hspace{0.5em}\hangpara{1.5em}{1}Fünf: Lorem ipsum dolor sit. &
+%     \makebox[1em][r]{\textsf{f)}}\hspace{0.5em}\hangpara{1.5em}{1}Sechs: Lorem ipsum dolor sit. &
+%     \makebox[1em][r]{\textsf{g)}}\hspace{0.5em}\hangpara{1.5em}{1}Sieben: Lorem ipsum dolor sit.
+%   \end{tabularx}
+%   \renewcommand{\arraystretch}{1.0}
+%   }}
+% \vspace{0.4\baselineskip}
+%
+%  \medskip\noindent\emph{Hinweis}: Vor und nach Absätzen sollte im Quellcode eine Leerzeile stehen. Hierdurch wird ein neues Absatz erzeugt und die Abstände vor und nach den Umgebungen werden korrekt gesetzt.
+%
+%  Die Sternvariante |multiexearray*| verhält sich analog, sie aktiviert jedoch in jeder Zeile automatisch den Mathemodus:
+%
+%\begin{verbatim}
+%\begin{multiexearray*}{4}
+%  2x = 3            & 3x = 4            & 4x = 5            & 5x = 6  \\
+%  6x = 7            & 7x = 8            & 8x = 9            & 9x = 10 \\
+%  \frac{1}{2} x = 3 & \frac{2}{3} x = 4 & \frac{3}{4} x = 5 & \frac{4}{5} x = 6 \\
+%  \frac{5}{6} x = 7 & \frac{6}{7} x = 8 & \frac{7}{8} x = 9 & \frac{8}{9} x = 10
+%\end{multiexearray*}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   \renewcommand{\arraystretch}{1.25}
+%   \centering
+%   \begin{tabularx}{0.9\textwidth}{*{4}{X}} 
+%     \makebox[1em][r]{\textsf{a)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 2x = 3$ &
+%     \makebox[1em][r]{\textsf{b)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 3x = 4$ &
+%     \makebox[1em][r]{\textsf{c)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 4x = 5$ &
+%     \makebox[1em][r]{\textsf{d)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 5x = 6$ \\
+%     \makebox[1em][r]{\textsf{e)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 6x = 7$ &
+%     \makebox[1em][r]{\textsf{f)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 7x = 8$ &
+%     \makebox[1em][r]{\textsf{g)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 8x = 9$ &
+%     \makebox[1em][r]{\textsf{h)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 9x = 10$ \\
+%     \makebox[1em][r]{\textsf{i)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{1}{2} x = 3$ &
+%     \makebox[1em][r]{\textsf{j)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{2}{3} x = 4$ &
+%     \makebox[1em][r]{\textsf{k)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{3}{4} x = 5$ &
+%     \makebox[1em][r]{\textsf{l)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{4}{5} x = 6$ \\
+%     \makebox[1em][r]{\textsf{m)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{5}{6} x = 7$ &
+%     \makebox[1em][r]{\textsf{n)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{6}{7} x = 8$ &
+%     \makebox[1em][r]{\textsf{o)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{7}{8} x = 9$ &
+%     \makebox[1em][r]{\textsf{p)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{8}{9} x = 10$
+%   \end{tabularx}
+%   \renewcommand{\arraystretch}{1.0}
+%   }}
+% \vspace{0.4\baselineskip}
+% 
+% Das Beispiel zeigt, dass "`einzeilige"' Aufgaben korrekt gesetzt werden (\textsf{a--h}), es jedoch zu Problemen bei "`höheren"' Zeilen kommt (\textsf{i--p}). Aufgrund der internen Umsetzung müssen solche Fälle manuell angepasst werden. Dies kann auf zwei Wegen geschehen. Mithilfe des optionalen Parameters \meta{Abstand} von |multiexearray| und |multiexearray*| kann in jeder Zeile ein zusätzlicher Abstand eingefügt werden:
+%
+%\begin{verbatim}
+%\begin{multiexearray*}[8pt]{4}
+%  2x = 3            & 3x = 4            & 4x = 5            & 5x = 6  \\
+%  6x = 7            & 7x = 8            & 8x = 9            & 9x = 10 \\
+%  \frac{1}{2} x = 3 & \frac{2}{3} x = 4 & \frac{3}{4} x = 5 & \frac{4}{5} x = 6 \\
+%  \frac{5}{6} x = 7 & \frac{6}{7} x = 8 & \frac{7}{8} x = 9 & \frac{8}{9} x = 10
+%\end{multiexearray*}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   \renewcommand{\arraystretch}{1.25}
+%   \setlength{\extrarowheight}{8pt}
+%   \vspace{-0.75em}
+%   \centering
+%   \begin{tabularx}{0.9\textwidth}{*{4}{X}}  
+%     \makebox[1em][r]{\textsf{a)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 2x = 3$ &
+%     \makebox[1em][r]{\textsf{b)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 3x = 4$ &
+%     \makebox[1em][r]{\textsf{c)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 4x = 5$ &
+%     \makebox[1em][r]{\textsf{d)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 5x = 6$ \\
+%     \makebox[1em][r]{\textsf{e)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 6x = 7$ &
+%     \makebox[1em][r]{\textsf{f)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 7x = 8$ &
+%     \makebox[1em][r]{\textsf{g)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 8x = 9$ &
+%     \makebox[1em][r]{\textsf{h)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 9x = 10$ \\
+%     \makebox[1em][r]{\textsf{i)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{1}{2} x = 3$ &
+%     \makebox[1em][r]{\textsf{j)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{2}{3} x = 4$ &
+%     \makebox[1em][r]{\textsf{k)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{3}{4} x = 5$ &
+%     \makebox[1em][r]{\textsf{l)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{4}{5} x = 6$ \\
+%     \makebox[1em][r]{\textsf{m)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{5}{6} x = 7$ &
+%     \makebox[1em][r]{\textsf{n)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{6}{7} x = 8$ &
+%     \makebox[1em][r]{\textsf{o)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{7}{8} x = 9$ &
+%     \makebox[1em][r]{\textsf{p)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{8}{9} x = 10$
+%   \end{tabularx}
+%   \renewcommand{\arraystretch}{1.0}
+%   \vspace{-0.25em}
+%   }}
+% \vspace{0.4\baselineskip}
+% 
+% Es wird deutlich, dass diese Methode zwar wenig Aufwand erfordert (eine Angabe für alle Zeilen genügt), jedoch allen Zeilen der gleichen Abstand hinzufügt wird -- auch solchen, die eigentlich hoch genug sind (\textsf{a--h}). Aus diesem Grund steht zusätzlich das folgende Makro zur Verfügung:
+%
+% 
+% \begin{decl}
+%   |\ls|
+% \end{decl}
+%
+% \noindent Im Falle von Zeilen unterschiedlicher Höhe kann mithilfe von |\ls| (\emph{Lineskip}) nach einer Zeile ein zusätzlicher Abstand eingefügt werden:
+%
+%\begin{verbatim}
+%\begin{multiexearray*}{4}
+%  2x = 3            & 3x = 4            & 4x = 5            & 5x = 6  \\
+%  6x = 7            & 7x = 8            & 8x = 9            & 9x = 10 \\
+%  \frac{1}{2} x = 3 & \frac{2}{3} x = 4 & \frac{3}{4} x = 5 & \frac{4}{5} x = 6 \\ \ls
+%  \frac{5}{6} x = 7 & \frac{6}{7} x = 8 & \frac{7}{8} x = 9 & \frac{8}{9} x = 10
+%\end{multiexearray*}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   \renewcommand{\arraystretch}{1.25}
+%   \vspace{-0.75em}
+%   \centering
+%   \begin{tabularx}{0.9\textwidth}{*{4}{X}}  
+%     \makebox[1em][r]{\textsf{a)}}\hspace{0.5em}$\displaystyle 2x = 3$ &
+%     \makebox[1em][r]{\textsf{b)}}\hspace{0.5em}$\displaystyle 3x = 4$ &
+%     \makebox[1em][r]{\textsf{c)}}\hspace{0.5em}$\displaystyle 4x = 5$ &
+%     \makebox[1em][r]{\textsf{d)}}\hspace{0.5em}$\displaystyle 5x = 6$ \\
+%     \makebox[1em][r]{\textsf{e)}}\hspace{0.5em}$\displaystyle 6x = 7$ &
+%     \makebox[1em][r]{\textsf{f)}}\hspace{0.5em}$\displaystyle 7x = 8$ &
+%     \makebox[1em][r]{\textsf{g)}}\hspace{0.5em}$\displaystyle 8x = 9$ &
+%     \makebox[1em][r]{\textsf{h)}}\hspace{0.5em}$\displaystyle 9x = 10$ \\
+%     \makebox[1em][r]{\textsf{i)}}\hspace{0.5em}$\displaystyle \frac{1}{2} x = 3$ &
+%     \makebox[1em][r]{\textsf{j)}}\hspace{0.5em}$\displaystyle \frac{2}{3} x = 4$ &
+%     \makebox[1em][r]{\textsf{k)}}\hspace{0.5em}$\displaystyle \frac{3}{4} x = 5$ &
+%     \makebox[1em][r]{\textsf{l)}}\hspace{0.5em}$\displaystyle \frac{4}{5} x = 6$ \\ \addlinespace[1.5ex]
+%     \makebox[1em][r]{\textsf{m)}}\hspace{0.5em}$\displaystyle \frac{5}{6} x = 7$ &
+%     \makebox[1em][r]{\textsf{n)}}\hspace{0.5em}$\displaystyle \frac{6}{7} x = 8$ &
+%     \makebox[1em][r]{\textsf{o)}}\hspace{0.5em}$\displaystyle \frac{7}{8} x = 9$ &
+%     \makebox[1em][r]{\textsf{p)}}\hspace{0.5em}$\displaystyle \frac{8}{9} x = 10$
+%   \end{tabularx}
+%   \renewcommand{\arraystretch}{1.0}
+%   \vspace{-0.25em}
+%   }}
+% \vspace{0.4\baselineskip}
+% 
+% \medskip\noindent\emph{Hinweis}: |\ls| ist eine Abkürzung des Makros |\addlinespace|\oarg{Abstand} des Packages \textsf{booktabs} \cite{booktabs}. Mithilfe von |\addlinespace|\oarg{Abstand} kann analog ein beliebiger \meta{Abstand} zwischen den Zeilen eingefügt werden.
+%
+% Ein Unterschied zwischen |multiexearray| und |multiexearray*| besteht in der vertikalen Ausrichtung der Aufgabennummerierung: Da |multiexearray| für Aufgaben in Textform, d.\,h. Fließtext, gedacht ist, wird die Nummerierung in der ersten Zeile der Aufgabe gesetzt. Da Formeln in |multiexearray*| unterschiedlich hoch sind, wird die Nummerierung hier vertikal zentriert gesetzt.
+%
+% Die Spaltenanzahl von |multiexearray*| sollte so gewählt werden, dass die einzelnen Formeln in eine Zeile gesetzt werden können, da Umbrüche in der aktuellen Version von \textsf{scldoc} zu unerwünschten Ergebnissen führen:
+%
+%\begin{verbatim}
+%\begin{multiexearray*}[7pt]{7}
+%  \frac{1}{2} x = 3 & \frac{2}{3} x = 4 & \frac{3}{4} x = 5 & \frac{4}{5} x = 6 %
+%  \frac{5}{6} x = 7 & \frac{6}{7} x = 8 & \frac{7}{8} x = 9
+%\end{multiexearray*}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   \renewcommand{\arraystretch}{1.25}
+%   \setlength{\extrarowheight}{0pt}
+%   \centering
+%   \begin{tabularx}{0.9\textwidth}{*{7}{X}} 
+%     \makebox[1em][r]{\textsf{i)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{1}{2} x = 3$ &
+%     \makebox[1em][r]{\textsf{j)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{2}{3} x = 4$ &
+%     \makebox[1em][r]{\textsf{k)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{3}{4} x = 5$ &
+%     \makebox[1em][r]{\textsf{l)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{4}{5} x = 6$ &
+%     \makebox[1em][r]{\textsf{m)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{5}{6} x = 7$ &
+%     \makebox[1em][r]{\textsf{n)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{6}{7} x = 8$ &
+%     \makebox[1em][r]{\textsf{o)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle \frac{7}{8} x = 9$ 
+%   \end{tabularx}
+%   \renewcommand{\arraystretch}{1.0}
+%   \vspace{-0.5em}
+%   }}
+% \vspace{0.4\baselineskip}
+% 
+%
+% Es sollte berücksichgt werden, dass bei alphabetischer Nummerierung nur Teilaufgaben a--z, d.\,h. 26 Stück, erstellt werden können. Sollte diese Zahl überschritten werden, erzeugt \LaTeX\ den Fehler |Counter too large|. Die Teilaufgaben sollten dann in mehrere Aufgaben bzw. Unteraufgaben unterteilt werden, da hierdurch die Nummerierung der Teilaufgaben zurückgesetzt wird.
+%
+% 
+% \begin{decl}
+%   |\points|\marg{Punkte}
+% \end{decl}
+%
+% \noindent Auch Teilaufgaben in |multiexelist|, |multiexearray| und |multiexearray*| können Punktzahlen zugewiesen werden. Hierzu beendet man eine Teilaufgabe mit |\points| und der entsprechenden Punktzahl \meta{Punkte}:
+%
+%\begin{verbatim}
+%\begin{multiexearray*}{4}
+%  2x = 3 \points{1} & 3x = 4 \points{2} & 4x = 5 \points{3} & 5x = 6
+%\end{multiexearray*}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   \renewcommand{\arraystretch}{1.25}
+%   \centering
+%   \begin{tabularx}{0.9\textwidth}{*{4}{X}} 
+%     \makebox[1em][r]{\textsf{a)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 2x = 3$ \hfill{\sffamily\scriptsize [1\,P]}&
+%     \makebox[1em][r]{\textsf{b)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 3x = 4$ \hfill{\sffamily\scriptsize [2\,P]} &
+%     \makebox[1em][r]{\textsf{c)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 4x = 5$ \hfill{\sffamily\scriptsize [3\,P]} &
+%     \makebox[1em][r]{\textsf{d)}}\hspace{0.5em}\hangpara{1.5em}{1}$\displaystyle 5x = 6$
+%   \end{tabularx}
+%   \vspace{-0.5em}
+%   \renewcommand{\arraystretch}{1.0}
+%   }}
+% \vspace{0.4\baselineskip}
+% 
+%
+% \setlength{\fboxsep}{0.5cm}
+% 
+% Auch die Umgebungen für Teilaufgaben können durch eine Vielzahl von Optionen den eigenen Wünschen entsprechend angepasst werden:
+%
+% 
+% \begin{decl}
+%   |listarraymargin=|\meta{Dim} \quad(|0.25em|)\\
+%   |listarraysep=|\meta{Dim} \quad(|0.5em|)
+% \end{decl}
+%
+% \noindent Die Optionen |listarraymargin| und |listarraysep| definieren den Abstand zwischen Textrand und Nummerierung (|listarraymargin|) und Nummerierung und Aufgabe (|listarraysep|) in |multiexelist| und |multiexearray|. Da die Buchstaben der Nummerierung rechtsbündig ausgerichtet sind, orientiert sich |listarraymargin| am breitesten Buchstaben, dem "`m"':
+%
+% \vspace{0.6\baselineskip}
+%
+% \setlength{\fboxsep}{0cm}
+% 
+% \noindent \tikz{\draw (0,0cm) -- (0, 1.3cm) node[right, yshift=-5pt]{Textrand}; \draw[<->] (0,2.5pt) -- node[above]{|listarraymargin|} +(3cm,0);}\fbox{\textsf{m)}}\tikz{\draw (0,0); \draw[<->] (0,2.5pt) -- node[above]{|listarraysep|} +(2.5cm,0);}\fbox{Lorem ipsum \dots}
+%
+% \setlength{\fboxsep}{0.5cm}
+%
+% \bigskip
+% \noindent\emph{Hinweis}: Damit Teilaufgaben und Aufzählungen/Nummerierungen bündig gesetzt werden, wirken sich Änderungen von |listarraymargin| und |listarraysep| analog auf |itemize|, |enumerate|, |questmclist|, |questmcarray| und |questmcarray*| aus.
+%
+% 
+% \begin{decl}
+%   |multiexelabelleft=|\meta{String} \quad()\\
+%   |multiexelabelright=|\meta{String} \quad(|)|)
+% \end{decl}
+%
+% \noindent Die Buchstaben der Nummerierung werden von den Werten |multiexelabelleft| und |multiexelabelright| umschlossen. Standardmäßig wird nur rechts des Buchstabens eine Klammer gesetzt: \textsf{a)}.
+%
+%
+% 
+% \begin{decl}
+%   |multiexepointslabel=|\meta{String} \quad(|\,P|)
+% \end{decl}
+%
+% \noindent Die Option |multiexepointslabel| gibt den Zusatz nach der Punktzahl der Teilaufgabe an. Sie entspricht den Optionen |exepointslabel| und |subexepointslabel| für Aufgaben und Unteraufgaben. Deren Beschreibung erfolgt in Abschnitt~\ref{aufgaben}.
+%
+%
+% \begin{decl}
+%   |multiexepointsleft=|\meta{String} \quad(|[|)\\
+%   |multiexepointsright=|\meta{String} \quad(|]|)
+% \end{decl}
+%
+% \noindent Die Punkzahl einer Teilaufgabe und deren Zusatz werden durch |multiexepointsleft| und |multiexepointsright| umrahmt. Diese können angepasst werden.
+%
+% 
+% 
+% \subsection{Fragen} \label{fragen}
+%
+% 
+% \begin{decl}
+%   |\quest|\oarg{Punkte}\marg{Frage}
+% \end{decl}
+%
+% \noindent Neben Aufgabe können in \textsf{scldoc} auch Fragen erstellt werden. Durch |\quest|\oarg{Punkte}\marg{Frage} wird die \meta{Frage} mit der optionalen Punktzahl \meta{Punkte} erzeugt. Fragen werden arabisch nummeriert, wobei die Nummerierung durch die Erstellung einer Aufgabe oder Unteraufgabe zurückgesetzt wird.
+%
+% Nach der Frage muss dem Bearbeitenden eine angemessene Möglichkeit geboten werden, die Antwort zu verfassen. Hierzu werden für die folgenden Anwendungsfälle geeignete Kommandos/Umgebungen zur Verfügung gestellt, die im Anschluss beschrieben und durch ein Beispiel veranschaulicht werden:
+% \begin{itemize}
+%   \item Die Frage wird durch eine Zeichnung beantwortet. In diesem Fall wird freier Platz auf dem Blatt benötigt.
+%   \item Die Frage wird durch Text beantwortet. Der Aufschrieb wird durch horizontale Linien vereinfacht.
+%   \item Die Frage wird durch Text und eine Zeichnung beantwortet. Hierzu werden horizontale Linien erstellt, die sich nicht über die gesamte Textbreite erstrecken.
+%   \item Die Frage wird durch Ankreuzen einer oder mehrer vorgegebenen Antwortmöglichkeiten (\emph{Multiple Choice}) beantwortet.
+% \end{itemize}
+%
+%
+% \begin{decl}
+%   |\questblank|\oarg{Höhe}
+% \end{decl}
+%
+% \noindent |\questblank| erzeugt einen Freiraum zum zeichnerischen Beantworten von Fragen. Standardmäßig ist dieser \unit[3]{cm} hoch. Optional kann die \meta{Höhe}\footnote{Der Abstand wird zum standardmäßig unter der Frage eingefügten Freiraum addiert. Er ist de facto also etwas höher als \meta{Höhe}. Dies gilt auch für den standardmäßigen Abstand von \unit[3]{cm}.} des Freiraumes angegeben werden. Das folgende Beispiel erzeugt eine Frage mit zwei Punkten und einem Freiraum von \unit[2]{cm}:
+%
+% \begin{verbatim}
+%\quest[2]{Lorem ipsum dolor sit amet, consetetur sadipscing elitr,%
+%  sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,%
+%  sed diam voluptua?}
+%
+%\questblank[2cm]
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   \sffamily\small{\bfseries\small 1.\,Frage}\hspace{0.25em}{\small[2\,P]}\hspace{0.5em} Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua?
+% \vspace{2cm}
+%   }}
+% \vspace{0.4\baselineskip}
+%
+%
+% \begin{decl}
+%   |\questtext|\oarg{Zeilenabstand}\marg{Zeilenanzahl}
+% \end{decl}
+%
+% \noindent Durch dieses Makro werden \meta{Zeilenanzahl} viele horizontale Linien über die gesamte Textbreite erzeugt. Der standardmäßige Abstand von \unit[0.75]{cm} kann durch das optionale Argument \meta{Zeilenabstand} variiert werden. Das folgende Beispiel erzeugt eine Frage mit drei Punkten und vier Zeilen im Abstand von \unit[0.5]{cm}:
+%
+% \begin{verbatim}
+%\quest[3]{Lorem ipsum dolor sit amet, consetetur sadipscing elitr?}
+%
+%\questtext[0.5cm]{4}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   \sffamily\small{\bfseries\small 1.\,Frage}\hspace{0.25em}{\small[3\,P]}\hspace{0.5em} Lorem ipsum dolor sit amet, consetetur sadipscing elitr?
+% \par
+% \vspace{-\baselineskip}
+% \vspace{0.5cm}
+% \noindent\rule{\linewidth}{0.4pt}
+% \par
+% \vspace{-\baselineskip}
+% \vspace{0.5cm}
+% \noindent\rule{\linewidth}{0.4pt}
+% \par
+% \vspace{-\baselineskip}
+% \vspace{0.5cm}
+% \noindent\rule{\linewidth}{0.4pt}
+% \par
+% \vspace{-\baselineskip}
+% \vspace{0.5cm}
+% \noindent\rule{\linewidth}{0.4pt}
+%   }}
+% \vspace{0.4\baselineskip}
+%
+%
+% \begin{decl}
+%   |\questtextblank|\oarg{Zeilenabstand}\marg{Zeilenanzahl}\marg{Zeilenbreite}
+% \end{decl}
+%
+% \noindent Sollen Aufgaben durch Text und eine Zeichnung beantwortet werden, können mithilfe dieses Kommandos analog zu |\questtext| horizontale Linien erzeugt werden, deren Breite jedoch durch \meta{Zeilenbreite} festgelegt werden muss. Das folgende Beispiel erzeugt eine Frage ohne Punkzahl und drei Linien im standardmäßigen Abstand von \unit[0.75]{cm} und mit einer Breite, welche der Hälfte der Textbreite entspricht:
+%
+% \begin{verbatim}
+%\quest{Lorem ipsum dolor sit amet, consetetur sadipscing elitr?}
+%
+%\questtextblank{3}{0.5\textwidth}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   \sffamily\small{\bfseries\small 1.\,Frage}\hspace{0.5em}Lorem ipsum dolor sit amet, consetetur sadipscing elitr?
+% \par
+% \vspace{-\baselineskip}
+% \vspace{0.75cm}
+% \noindent\rule{0.5\linewidth}{0.4pt}
+% \par
+% \vspace{-\baselineskip}
+% \vspace{0.75cm}
+% \noindent\rule{0.5\linewidth}{0.4pt}
+% \par
+% \vspace{-\baselineskip}
+% \vspace{0.75cm}
+% \noindent\rule{0.5\linewidth}{0.4pt}
+%   }}
+% \vspace{0.4\baselineskip}
+%
+%
+% \begin{decl}
+%   |\begin{questmclist}|\oarg{Abstand}\\
+%   |\end{questmclist}|
+% \end{decl}
+%
+% \noindent Diese Umgebung dient der Erzeugung von Multiple-Choice-Antworten in Form einer Liste. Entsprechend wird sie wie eine Liste verwendet und neue Antwortmöglichkeiten durch |\item| eingeleitet. Optional kann der \meta{Abstand} der Antworten manipuliert werden. Hier ein Beispiel:
+%
+% \begin{verbatim}
+%\quest{Lorem ipsum dolor sit amet, consetetur sadipscing elitr?}
+%
+%\begin{questmclist}
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%\end{questmclist}
+%
+%\quest{Lorem ipsum dolor sit amet, consetetur sadipscing elitr?}
+%
+%\begin{questmclist}[2.5ex]
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%\end{questmclist}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   {\sffamily\small{\bfseries\small 1.\,Frage}\hspace{0.5em}Lorem ipsum dolor sit amet, consetetur sadipscing elitr?}
+%  \begin{itemize}
+%\setlength{\parsep}{0pt}%
+%\setlength{\itemsep}{0pt}%
+%   \item[$\square$] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%   \item[$\square$] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%   \item[$\square$] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \end{itemize}
+%
+%   {\sffamily\small{\bfseries\small 2.\,Frage}\hspace{0.5em}Lorem ipsum dolor sit amet, consetetur sadipscing elitr?}
+%  \begin{itemize}
+%\setlength{\parsep}{0pt}%
+%\setlength{\itemsep}{2.5ex}%
+%   \item[$\square$] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%   \item[$\square$] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%   \item[$\square$] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \end{itemize}
+%   \vspace{-0.75em}
+%   }}
+% \vspace{0.4\baselineskip}
+%
+%
+% \begin{decl}
+%   |\begin{questmcarray}|\oarg{Abstand}\marg{Spaltenzahl}\\
+%   |\end{questmcarray}| \\[1.2ex]
+%   |\begin{questmcarray*}|\oarg{Abstand}\marg{Spaltenzahl}\\
+%   |\end{questmcarray*}|
+% \end{decl}
+%
+% \noindent Multiple-Choice-Fragen mit kurzen und/oder vielen Antwortmöglichkeiten können mithilfe der |questmcarray|-Umgebung platzsparend tabellarisch gesetzt werden. Hierzu ist die notwendig die \meta{Spaltenzahl} anzugeben. Die Sternvariante |questmcarray*| aktiviert zusätzlich in jeder Zelle den Mathematik-Modus. Die Umgebung wird wie eine Tabelle (|tabular|) verwendet:
+%
+%\begin{verbatim}
+%\quest{Lorem ipsum dolor sit amet, consetetur sadipscing elitr?}
+%
+%\begin{questmcarray}{4}
+%  Eins: Lorem ipsum dolor sit. & 
+%  Zwei: Lorem ipsum dolor sit. & 
+%  Drei: Lorem ipsum dolor sit. & 
+%  Vier: Lorem ipsum dolor sit. \\
+%  Fünf: Lorem ipsum dolor sit. & 
+%  Sechs: Lorem ipsum dolor sit. & 
+%  Sieben: Lorem ipsum dolor sit.
+%\end{questmcarray}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   {\sffamily\small{\bfseries\small 1.\,Frage}\hspace{0.5em}Lorem ipsum dolor sit amet, consetetur sadipscing elitr?}
+%   \renewcommand{\arraystretch}{1.25}
+%   
+%   \smallskip
+%\newcolumntype{A}{>{\raggedright\arraybackslash}X}
+%   \centering
+%   \begin{tabularx}{0.9\textwidth}{*{4}{A}} 
+%     \makebox[1em][r]{$\square$}\hspace{0.5em}\hangpara{1.5em}{1}Eins: Lorem ipsum dolor sit. &
+%     \makebox[1em][r]{$\square$}\hspace{0.5em}\hangpara{1.5em}{1}Zwei: Lorem ipsum dolor sit. &
+%     \makebox[1em][r]{$\square$}\hspace{0.5em}\hangpara{1.5em}{1}Drei: Lorem ipsum dolor sit. &
+%     \makebox[1em][r]{$\square$}\hspace{0.5em}\hangpara{1.5em}{1}Vier: Lorem ipsum dolor sit. \\
+%     \makebox[1em][r]{$\square$}\hspace{0.5em}\hangpara{1.5em}{1}Fünf: Lorem ipsum dolor sit. &
+%     \makebox[1em][r]{$\square$}\hspace{0.5em}\hangpara{1.5em}{1}Sechs: Lorem ipsum dolor sit. &
+%     \makebox[1em][r]{$\square$}\hspace{0.5em}\hangpara{1.5em}{1}Sieben: Lorem ipsum dolor sit.
+%   \end{tabularx}
+%   \renewcommand{\arraystretch}{1.0}
+%   }}
+% \vspace{0.4\baselineskip}
+%
+% Analog zur |multiexearray|-Umgebung und ihrer Sternvariante kann mithilfe des optionalen Arguments \meta{Abstand} in jeder Zeile ein zusätzlicher vertikaler Abstand eingefügt werden oder über |\ls| in jeder Zeile separat ein solcher Abstand eingefügt werden. Die Beispiele zu |multiexearray*| gelten analog für |questmcarray| und |questmcarray*|.
+%
+%
+% \begin{decl}
+%   |\begin{questmclistalph}|\oarg{Abstand}\\
+%   |\end{questmclistalph}|
+% \end{decl}
+%
+% \noindent Zum besseren Vergleich von Multiple-Choice-Fragen ist eine Nummerierung der Antwortmöglichkeiten dienlich. Die |questmclistalph|-Umgebung verhält sich analog zur |questmclist|, die Kästchen werden jedoch alphabetisch nummeriert. Es können maximal 26 Antwortmöglichkeiten (a--z) vorgegeben werden und die Nummerierung wird durch eine neue Frage (|\quest|) von vorne begonnen. Optional kann der \meta{Abstand} zwischen den Antwortmöglichkeiten verändert werden. Hier ein Beispiel:
+%
+% \begin{verbatim}
+%\quest{Lorem ipsum dolor sit amet, consetetur sadipscing elitr?}
+%
+%\begin{questmclistalph}
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%\end{questmclistalph}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   {\sffamily\small{\bfseries\small 1.\,Frage}\hspace{0.5em}Lorem ipsum dolor sit amet, consetetur sadipscing elitr?}
+%  \begin{itemize}
+%\setlength{\parsep}{0pt}%
+%\setlength{\itemsep}{0pt}%
+%\setlength{\fboxsep}{0pt}
+%   \item[\fbox{\makebox[0.8em][c]{\rule{0pt}{0.8em}\raisebox{0.15em}{\footnotesize\sffamily a}}}] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%   \item[\fbox{\makebox[0.8em][c]{\rule{0pt}{0.8em}\raisebox{0.1em}{\footnotesize\sffamily b}}}] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%   \item[\fbox{\makebox[0.8em][c]{\rule{0pt}{0.8em}\raisebox{0.15em}{\footnotesize\sffamily c}}}] Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%  \end{itemize}
+%   \vspace{-0.75em}
+%   }}
+% \vspace{0.4\baselineskip}
+%
+%
+% \begin{decl}
+%   |\begin{questmcarrayalph}|\oarg{Abstand}\marg{Spaltenzahl}\\
+%   |\end{questmcarrayalph}| \\[1.2ex]
+%   |\begin{questmcarrayalph*}|\oarg{Abstand}\marg{Spaltenzahl}\\
+%   |\end{questmcarrayalph*}|
+% \end{decl}
+%
+% \noindent Analog zu |questmcarray| erzeugt diese Umgebung tabellarisch angeordnete Antwortmöglichkeiten. Diese werden jedoch zusätzlich alphabetisch nummeriert. Die Sternvariante |questmcarrayalph*| aktiviert zusätzlich in jeder Zelle den Mathematik-Modus. Es können maximal 26 Antwortmöglichkeiten (a--z) vorgegeben werden und die Nummerierung wird durch eine neue Frage (|\quest|) von vorne begonnen. Die Umgebung wird wie eine Tabelle (|tabular|) verwendet:
+%
+%\begin{verbatim}
+%\quest{Lorem ipsum dolor sit amet, consetetur sadipscing elitr?}
+%
+%\begin{questmcarrayalph}{4}
+%  Eins: Lorem ipsum dolor sit. & 
+%  Zwei: Lorem ipsum dolor sit. & 
+%  Drei: Lorem ipsum dolor sit. & 
+%  Vier: Lorem ipsum dolor sit. \\
+%  Fünf: Lorem ipsum dolor sit. & 
+%  Sechs: Lorem ipsum dolor sit. & 
+%  Sieben: Lorem ipsum dolor sit.
+%\end{questmcarrayalph}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   {\sffamily\small{\bfseries\small 1.\,Frage}\hspace{0.5em}Lorem ipsum dolor sit amet, consetetur sadipscing elitr?}
+%   \renewcommand{\arraystretch}{1.25}
+%   
+%   \smallskip
+%\newcolumntype{A}{>{\raggedright\arraybackslash}X}
+%   \setlength{\fboxsep}{0pt}%
+%   \centering
+%   \begin{tabularx}{0.9\textwidth}{*{4}{A}} 
+%   \makebox[1em][r]{\raisebox{-0.125em}{\framebox[0.9em][c]{\rule{0pt}{0.9em}\raisebox{0.2em}{\footnotesize\sffamily a}}}}\hspace{0.5em}\hangpara{1.5em}{1}Eins: Lorem ipsum dolor sit. &
+%     \makebox[1em][r]{\raisebox{-0.125em}{\framebox[0.9em][c]{\rule{0pt}{0.9em}\raisebox{0.2em}{\footnotesize\sffamily b}}}}\hspace{0.5em}\hangpara{1.5em}{1}Zwei: Lorem ipsum dolor sit. &
+%     \makebox[1em][r]{\raisebox{-0.125em}{\framebox[0.9em][c]{\rule{0pt}{0.9em}\raisebox{0.2em}{\footnotesize\sffamily c}}}}\hspace{0.5em}\hangpara{1.5em}{1}Drei: Lorem ipsum dolor sit. &
+%     \makebox[1em][r]{\raisebox{-0.125em}{\framebox[0.9em][c]{\rule{0pt}{0.9em}\raisebox{0.2em}{\footnotesize\sffamily d}}}}\hspace{0.5em}\hangpara{1.5em}{1}Vier: Lorem ipsum dolor sit. \\
+%     \makebox[1em][r]{\raisebox{-0.125em}{\framebox[0.9em][c]{\rule{0pt}{0.9em}\raisebox{0.2em}{\footnotesize\sffamily e}}}}\hspace{0.5em}\hangpara{1.5em}{1}Fünf: Lorem ipsum dolor sit. &
+%     \makebox[1em][r]{\raisebox{-0.125em}{\framebox[0.9em][c]{\rule{0pt}{0.9em}\raisebox{0.2em}{\footnotesize\sffamily f}}}}\hspace{0.5em}\hangpara{1.5em}{1}Sechs: Lorem ipsum dolor sit. &
+%     \makebox[1em][r]{\raisebox{-0.125em}{\framebox[0.9em][c]{\rule{0pt}{0.9em}\raisebox{0.2em}{\footnotesize\sffamily g}}}}\hspace{0.5em}\hangpara{1.5em}{1}Sieben: Lorem ipsum dolor sit.
+%   \end{tabularx}
+%   \renewcommand{\arraystretch}{1.0}
+%   }}
+% \vspace{0.4\baselineskip}
+%
+% Analog zur |multiexearray|-Umgebung und ihrer Sternvariante kann mithilfe des optionalen Arguments \meta{Abstand} in jeder Zeile ein zusätzlicher vertikaler Abstand eingefügt werden oder über |\ls| in jeder Zeile separat ein solcher Abstand eingefügt werden. Die Beispiele zu |multiexearray*| gelten analog für |questmcarrayalph| und |questmcarrayalph*|.
+%
+% 
+% Das Erscheinungsbild von Fragen kann durch diverse Optionen angepasst werden. Diese werden nun beschrieben.
+%
+% \begin{decl}
+%   |questlabel=|\meta{String} \quad(|Frage|)\\
+%   |questpointslabel=|\meta{String} \quad(|\,P|)\\
+%   |questpointsleft=|\meta{String} \quad(|[|)\\
+%   |questpointsright=|\meta{String} \quad(|]|)
+% \end{decl}
+%
+% \noindent Diese Optionen entsprechen in gleicher Reihenfolge den Optionen |exelabel|, |exepointslabel|, |exepointsleft| und |exepointsright| für Aufgaben. Die Erläuterung ist Abschnitt~\ref{aufgaben} zu entnehmen.
+%
+% \begin{decl}
+%   |queststyle=|\meta{String} \quad(|\sffamily\small|)
+% \end{decl}
+%
+% \noindent Mit dieser Option kann die Formatierung der Fragen vorgenommen werden. Durch
+%
+%\begin{verbatim}
+%\scloption{queststyle}{\rmfamily\bfseries\itshape}
+% \end{verbatim}
+% \vspace{-\baselineskip}
+% werden diese z.\,B. fett und kursiv in normaler Serifenschrift gesetzt ({\rmfamily\bfseries\itshape Lorem ipsum dolor sit.}).
+%
+% \begin{decl}
+%   |questpointssep=|\meta{Dim} \quad(|0.25em|)\\
+%   |questsep=|\meta{Dim} \quad(|0.5em|)
+% \end{decl}
+%
+% \noindent Diese Optionen definieren die folgenden Abstände:
+%
+% \vspace{0.6\baselineskip}
+%
+% \setlength{\fboxsep}{0cm}
+% 
+% \noindent \fbox{\sffamily\bfseries\small 1.\,Frage}\tikz{\draw (0,0); \draw[<->] (0,2.5pt) -- node[above]{|questpointssep|} +(3cm,0);}\fbox{\sffamily\small [1\,P]}\tikz{\draw (0,0); \draw[<->] (0,2.5pt) -- node[above]{|questsep|} +(1.75cm,0);}\fbox{\sffamily\small Lorem ipsum \dots}
+%
+% \setlength{\fboxsep}{0.5cm}
+%
+% \bigskip
+%
+% \subsection{Schriften}
+%
+% \begin{decl}
+%   |rmfont=|\meta{String} \quad(|cmr|)\\
+%   |sffont=|\meta{String} \quad(|cmss|)\\
+%   |ttfont=|\meta{String} \quad(|cmtt|)
+% \end{decl}
+%
+% \noindent Mit diesen Optionen können die Schriftarten der Schriftfamilien des Dokuments verändert werden. Die Beudeutung der Optionen ist Tabelle~\ref{fontfamilies} zu entnehmen.
+%
+% Schriftarten in \LaTeX\ sind ein komplexes Thema. Die auf allen gängigen \LaTeX-Distributionen vorhandenen Schriftarten sind Bestandteil des Packages \textsf{psnfss} (\emph{PostScript standard Symbol and Dingbats fonts}) \cite{fonts}. Die Dokumentation des Packages liefert einen Überblick über die Verwendung und die Namen dieser Schriftarten.
+%
+% \begin{table}[htb]
+%   \centering
+%   \begin{tabular}{llll}\toprule
+%     \sffamily Familie & \sffamily Option & \sffamily Verwendung & \sffamily Beispiel \\\midrule[\heavyrulewidth]
+%     Serifenschrift & |rmfont| & Fließtext & \textrm{Beispieltext} \\\midrule
+%     Serifenlose Schrift & |sffont| & Überschriften & \textsf{Beispieltext} \\\midrule
+%     Nichtproportionale Schrift & |ttfont| & Programmcode & \texttt{Beispieltext} \\\bottomrule
+%   \end{tabular}
+%   \caption{Schriftfamilien.}
+%   \label{fontfamilies}
+% \end{table}
+%
+% Die Standardwerte der Optionen |rmfont|, |sffont| und |ttfont| können durch die Standardwerte der folgenden Optionen für Schriften überschrieben und somit unrelevant werden.
+%
+%
+% \begin{decl}
+%   |sfdefault=|\meta{Bool} \quad(|false|)
+% \end{decl}
+%
+% \noindent Soll auch der Fließtext eines Dokuments in serifenloser Schrift gesetzt werden, ist dies durch die Option |sfdefault| zu bewerkstelligen.
+%
+%
+% \begin{decl}
+%   |palatino=|\meta{Bool} \quad(|true|)
+% \end{decl}
+%
+% \noindent Durch diese Option kann \emph{Palatino} als Serifenschrift aktiviert werden. Sie führt zum Laden des Packages \textsf{mathpazo}, welches zusätzlich für den Einsatz von Palatino in Formeln sorgt.
+%
+%
+% \begin{decl}
+%   |lato=|\meta{Bool} \quad(|false|)
+% \end{decl}
+%
+% \noindent \emph{Lato} ist eine moderne, serifenlose Schrift des Designers \textsc{Łukasz Dziedzic}, welche durch \textsc{Mohamed El Morabity} als \LaTeX-Package veröffentlicht wurde \cite{lato}. Leider muss sie in manchen Fällen manuell installiert werden.
+%
+%
+% \begin{decl}
+%   |beramono=|\meta{Bool} \quad(|true|)
+% \end{decl}
+%
+% \noindent Die Option aktiviert \emph{Beramono} als nichtproportionale Schriftart.
+%
+% 
+% 
+%
+% \subsection{Layout/Typographie}
+%
+%
+% \subsubsection{Gliederung}
+%
+% Die gängigen Makros aus |scrartcl| zur Gliederung des Dokuments |\section|, |\subsection|, |\subsubsection| und ihre Sternvarianten können auch in \textsf{scldoc} verwendet werden. Ihre Formattierung wurde den Überschriften für Aufgaben und Unteraufgaben angepasst. Insbesondere verhält sich |\section| analog zu |\exe| und |\subsection| analog zu |\subexe|.
+%
+%
+% \subsubsection{Mehrspaltiger Satz}
+%
+%
+% \begin{decl}
+%   |\begin{cols2}|\\
+%   |\end{cols2}| \\[1.2ex]
+%   |\begin{cols3}|\\
+%   |\end{cols3}|
+% \end{decl}
+%
+% \noindent Durch diese Makros kann auf zwei- bzw. dreispaltes Layout mit Spalten gleicher Breite umgeschaltet werden. Beide Umgebungen sind lediglich Abkürzungen für die entsprechenden Befehle des Packages \textsf{multicol} \cite{multicol}. Innerhalb der Umgebungen wird mithilfe des Makros |\columnbreak| in die nächste Spalte gewechselt. Dieser Wechsel findet entweder mit dem nächsten Absatz (sofern vor oder nach |\columnbreak| eine Leerzeile steht) oder am Zeilenende des aktuellen Absatzes nach Aufruf von |\columnbreak| (sofern |\columnbreak| innerhalb eines Absatzes aufgerufen wird) statt.
+%
+%\begin{verbatim}
+%\begin{cols2}
+% Lorem ipsum dolor sit amet, consetetur sadipscing elitr, [...].
+% \columnbreak
+
+% Lorem ipsum dolor sit amet, consetetur sadipscing elitr [...].
+%\end{cols2}
+%
+%\begin{cols3}
+% Lorem ipsum dolor sit amet, consetetur sadipscing elitr, [...].
+% \columnbreak
+
+% Lorem ipsum dolor sit amet, consetetur sadipscing elitr [...].
+% \columnbreak
+
+% Lorem ipsum dolor sit amet, consetetur sadipscing elitr [...].
+%\end{cols3}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%\vspace{-1em}
+%\begin{multicols}{2}
+% Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+% 
+% \columnbreak
+% 
+% Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{multicols}
+%
+%\begin{multicols}{3}
+% Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+% 
+% \columnbreak
+% 
+% Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.
+% 
+% \columnbreak
+% 
+% Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.
+%\end{multicols}
+%\vspace{-0.5em}
+%   }}
+%
+%
+% \begin{decl}
+%   |\begin{cols2var}|\oarg{Breite}\\
+%   |\end{cols2var}|\\[1.2ex]
+%   |\begin{cols2var*}|\oarg{Breite}\\
+%   |\end{cols2var*}|
+% \end{decl}
+%
+% \noindent Zweispaltiges Layout kann auch verwendet werden, um Abbildungen, Tabellen oder Ähnliches platzsparend neben Text zu platzieren. Hierzu kann die |cols2|-Umgebung verwendet werden. Handelt es sich jedoch um eine Abbildung o.\,Ä., deren Platzbedarf von der Hälfte Textbreite abweicht, kann die Umgebung |cols2var| verwendet werden. 
+%
+% Diese erzeugt analog zu |col2| zwei Spalten, ermöglicht es jedoch zusätzlich, die Breite der Spalten zu bestimmen. Hierzu gibt man die \meta{Breite} der linken Spalte an. Die Breite der rechten Spalte ergibt sich aus der Textbreite abzüglich der linken Spalte und dem Abstand zwischen den Spalten (|\colsep|, s.\,u.). Mithilfe des Befehls |\colbreak| wechselt man innerhalb der Umgebung in die nächste Spalte. Hier ein Beispiel mit Text in beiden Spalten:
+%
+%\begin{verbatim}
+%\begin{cols2var}[0.75\linewidth]
+%  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, [...].
+%  \colbreak
+%  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, [...].
+%\end{cols2var}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%\begin{minipage}[t]{0.72\linewidth}
+%  \hspace{1em}Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%\end{minipage}\hfill
+%\begin{minipage}[t]{0.22\linewidth}
+%  \hspace{1em}Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.
+%\end{minipage}
+%   }}
+% \bigskip
+%
+%
+% Die Sternvariante |cols2var*| ist zu verwenden, wenn in einer der Spalten eine Abbildung oder Ähnliches gesetzt werden soll. Im Gegensatz zu |cols2var| werden die beiden Spalten hierbei vertikal zueinander zentriert. Außerdem sollte zum Wechsel in die zweite Spalte der Befehl |\colbreak*| verwendet werden:
+%
+%\begin{verbatim}
+%\begin{cols2var*}[0.75\linewidth]
+%  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, [...].
+%  \colbreak*
+%  \centering
+%  \begin{tikzpicture}[scale=0.75]
+%	    \draw[->] (-1.5,0) -- (1.5,0) node[below]{$x$};
+%	    \draw[->] (0,-1.5) -- (0,1.5) node[right]{$y$};
+%	    \draw[thick] (0,0) circle (1.25);
+%     \draw[thick, dashed] (-1, 1.25) cos (0,0) sin (1, -1.25);
+%  \end{tikzpicture}
+%\end{cols2var*}
+% \end{verbatim}
+%   
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+% \vspace{-0.5em}
+%\begin{minipage}{0.72\linewidth}
+%  \hspace{1em}Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+%\end{minipage}\hfill
+%\begin{minipage}{0.22\linewidth}
+%\centering
+%\begin{tikzpicture}[scale=0.75]
+%	\draw[->] (-1.5,0) -- (1.5,0) node[below]{$x$};
+%	\draw[->] (0,-1.5) -- (0,1.5) node[right]{$y$};
+%	\draw[thick] (0,0) circle (1.25);
+% \draw[thick, dashed] (-1, 1.25) cos (0,0) sin (1, -1.25);
+%\end{tikzpicture}
+%\end{minipage}
+% \vspace{-0.5em}
+%   }}
+% 
+%
+% \begin{decl}
+%   |\colsep| \quad (|0.75cm|)
+% \end{decl}
+%
+% \noindent Der Abstand zwischen Spalten wird durch die Länge |\colsep| bestimmt. Sie wird durch das Package \textsf{multicol} \cite{multicol} definiert und auch von \textsf{scldoc} verwendet. Der Abstand kann z.\,B. durch |\setlength{\colsep}{1cm}| auf einen Zentimeter vergrößert werden. Er wirkt sich auf alle mehrspaltigen Umgebungen gleichermaßen aus.
+%
+% 
+%
+%
+% \subsubsection{Mehrseitiger Druck} \label{mehrseitig}
+% 
+% \begin{decl}
+%   |twoup=|\meta{Bool} \quad(|false|)
+% \end{decl}
+%
+% \noindent Es bietet es sich an, Dokumente mit wenig Inhalt in DIN A5 anzufertigen. Häufig wird ein Dokument hierzu nicht auf A5-Papier gedruckt, sondern auf irgendeinem Wege nachträglich auf A5 skaliert und zweimal auf ein A4-Blatt gedruckt, welches anschließend in zwei A5-Teile zerschnitten wird. Unabhängig davon, ob die Skalierung durch spezielle Software (z.\,B. über das Package \textsf{pdfpages} \cite{pdfpages}) oder durch einen Kopierer geschieht, muss berücksichtigt werden, dass sich die Schrift verkleinert. Auch Längen, die durch absolute Werte angegeben werden, sollten angepasst werden. 
+%
+% Die Option |twoup=true| bewegt \textsf{scldoc} dazu, die Schriftgröße auf \unit[14]{pt} zu erhöhen. Die meisten Standardwerte der Längen in \textsf{scldoc} sind als relative Werte angegeben. Lediglich die Seitenränder sind in Millimetern als absolute Werte implementiert. Aus diesem Grund verfügt \textsf{scldoc} über Seitenränder für "`normale"' Dokumente und solche mit |twoup=true|. Letztere werden durch |twoup| automatisch aktiviert. Eine genauere Beschreibung der Seitenränder erfolgt in Abschnitt~\ref{seitenraender}.
+% 
+%
+%
+%
+% \subsubsection{Seitenränder} \label{seitenraender}
+% 
+% \begin{decl}
+%   |top=|\meta{Dim} \quad(|15mm|)\\
+%   |right=|\meta{Dim} \quad(|15mm|)\\
+%   |bottom=|\meta{Dim} \quad(|15mm|)\\
+%   |left=|\meta{Dim} \quad(|15mm|)
+% \end{decl}
+%
+% \noindent Über diese Optionen können die Seitenränder des Dokuments angepasst werden. Um platzsparende Arbeitsblätter zu erstellen, sind sie standardmäßig relativ gering gewählt. Der untere Rand |bottom| berücksichtigt, ob die Fußzeile aktiviert ist. D.\,h. |bottom| gibt den Abstand vom unteren Rand der Seite zur letzten Zeile an -- unabhängig davon, ob es sich um eine Fußzeile oder sonstigen Inhalt des Dokuments handelt.
+%
+% \medskip\noindent\emph{Hinweis}: Die Seitenränder müssen bereits beim Laden der Dokumentenklasse, d.\,h. in |\documentclass|, festgelegt werden. Die Änderung durch |\scloption| oder |\sclsetup| zeigt keine Wirkung. Die Optionen werden außerdem nicht berücksichtigt, wenn |twoup| aktiviert ist. In diesem Fall werden die folgenden Optionen verwendet:
+% 
+% 
+% \begin{decl}
+%   |twouptop=|\meta{Dim} \quad(|20mm|)\\
+%   |twoupright=|\meta{Dim} \quad(|20mm|)\\
+%   |twoupbottom=|\meta{Dim} \quad(|20mm|)\\
+%   |twoupleft=|\meta{Dim} \quad(|20mm|)
+% \end{decl}
+%
+% \noindent Diese Optionen ermöglichen das Manipulieren der Seitenränder eines Dokuments für den mehrseitigen Druck, d.\,h. mit aktivierter Option |twoup|. Weitere Informationen sind der Beschreibung von |top|, |right|, |bottom| und |left| zu entnehmen.
+%
+%
+% \subsubsection{Schriftgröße}
+% 
+% \begin{decl}
+%   |fontsize=|\meta{Dim} \quad()
+% \end{decl}
+%
+% \noindent Standardmäßig beträgt die Schriftgröße \unit[11]{pt}. Sie wird ggf. durch die Option |twoup| auf \unit[14]{pt} erhöht. Unabhängig davon kann sie durch die Option |fontsize| gesetzt werden. Sobald |fontsize| ein Wert zugewiesen wird, überschreibt dieser den Standardwert, unabhängig von |twoup|. |fontsize| kann eine beliebige Größe zugeordnet werden. Gängig sind jedoch Angaben in \unit{pt} (Punkt): |10pt| bis |14pt|.
+%
+% 
+%
+% \subsubsection{Absatzauszeichnung}
+% 
+% Es gibt zwei gängige Möglichkeiten, Absätze auszuzeichnen (d.\,h. kenntlich zu machen). Zum einen kann zwischen den Absätzen ein Abstand eingefügt werden. Diese Methode hat jedoch den gravierenden Nachteil, dass Absatzumbrüche an Seitenenden, Gleitobjekten (z.\,B. durch |figure|- oder |table|- Umgebungen) und abgesetzten Formeln nicht zu erkennen sind. Auch die Tatsache, dass in der letzten Zeile eines Absatzes kein Blocksatz erzwungen wird und sie somit "`linksbündig"' erscheint, beseitigt diesen Nachteil nicht zufriedenstellend: Da je nach Beschaffung eines Absatzes auch die letzte Zeile als Blocksatz erkannt werden kann (wenn sie "`komplett gefüllt"' ist), genügt dieses Kriterium im Allgemeinen nicht. Außerdem ist zu Beginn einer neuen Seite die letzte Zeile des letzten Absatzes nicht zu erkennen und erfordert ggf. ein Umblättern.
+%
+% Deshalb ist die zweite Methode grundsätzlich vorzuziehen: In jedem Absatz wird die erste Zeile eingerückt. Hierdurch werden alle Nachteile beseitigt und man erkennt beim Lesen unmittelbar den Beginn eines neuen Absatzes. Diese Methode ist standardmäßig in \textsf{scldoc} aktiviert. Dennoch ist auch ein Absatzabstand verfügbar. Beide Methoden und der Nachteil des Absatzabstands nach Formeln werden hier veranschaulicht:
+%
+% \bigskip
+% \noindent\fbox{\begin{minipage}[t]{0.4\linewidth}
+%   \textsf{\bfseries Absatzabstand}
+%   
+%   \smallskip
+%   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.
+%
+%   \medskip
+%   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore. 
+%
+% \[
+%   a^2 + b^2 = c^2
+% \]
+% 
+%   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore. 
+% \end{minipage}}
+% \hfill
+% \fbox{\begin{minipage}[t]{0.4\linewidth}
+%   \textsf{\bfseries Absatzeinzug}
+%   
+%   \smallskip
+%   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.
+% 
+% \hspace{1em} Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et do.
+%
+% \[
+%   a^2 + b^2 = c^2
+% \]
+% 
+% \hspace{1em} Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et do.
+% \end{minipage}}
+% 
+% 
+% \begin{decl}
+%   |parindent=|\meta{Bool} \quad(|true|)
+% \end{decl}
+%
+% \noindent Aktiviert den Einzug der ersten Zeile um \unit[1]{em} als Absatzauszeichnung.
+% 
+% 
+% \begin{decl}
+%   |parskip=|\meta{Bool} \quad(|false|)
+% \end{decl}
+%
+% \noindent Aktiviert einen Absatzabstand von einer halben Zeile als Absatzauszeichnung.
+%
+%
+% \subsubsection{Aufzählungen und Nummerierungen}
+%
+% Aufzählungen (|itemize|) und Nummerierungen (|enumerate|) können wie gewohnt verwendet werden. Die vertikalen Abstände wurden aus Platzgründen minimiert und Aufzählungszeichen und das Format der Nummerierung angepasst.
+%
+% Damit Aufählungen und Nummerierungen zu Teilaufgaben (|multiexelist|, |multiexearray|) horizontal bündig gesetzt werden, wirken sich die Optionen |listarraymargin| und |listarraysep| auch auf |itemize| und |enumerate| aus.
+%
+%
+% \subsubsection{Abkürzende Makros}
+% 
+% 
+% \begin{decl}
+%   |\textsfbf|\marg{Text}
+% \end{decl}
+%
+% \noindent Mit |\textsfbf| kann \meta{Text} serifenlos und fett dargestellt werden.
+% 
+% 
+% \begin{decl}
+%   |\dh|, |\Dh|, |\so|, |\So|, |\su|, |\Su|, |\ua|, |\Ua|, |\uU|, |\UU|, |\zB|, |\ZB|
+% \end{decl}
+%
+% \noindent Abkürzungen zweier Wörter sollten durch einen kleinen Abstand getrennt werden: |z.\,B.| (z.\,B.) statt |z. B.| (z. B.). Diese Makros erleichtern die Eingabe und erzeugen die in Tabelle~\ref{shortcuts} aufgelisteten Abkürzungen.
+%
+% \begin{table}[htb]
+%   \centering
+%   \begin{tabular}{lll}\toprule
+%     \sffamily Makro & \sffamily Bedeutung & \sffamily Ausgabe \\\midrule[\heavyrulewidth]
+%     |\dh|, |\Dh| & das heißt & d.\,h., D.\,h.  \\\midrule
+%     |\su|, |\Su| & siehe unten & s.\,u., S.\,u.  \\\midrule
+%     |\so|, |\So| & siehe oben & s.\,o., S.\,o.  \\\midrule
+%     |\ua|, |\Ua| & unter anderem & d.\,h., D.\,h.  \\\midrule
+%     |\uU|, |\UU| & unter Umständen & u.\,U., U.\,U.  \\\midrule
+%     |\zB|, |\ZB| & zum Beispiel & z.\,B., Z.\,B.  \\\bottomrule
+%   \end{tabular}
+%   \caption{Abkürzungen.}
+%   \label{shortcuts}
+% \end{table}
+%
+%
+% \subsubsection{Tabellen}
+%
+% Tabellen in \LaTeX\ sind von ungleichmäßigen Abständen oben und unten zwischen den horizontalen Rahmenlinien und den Inhalten der Zeilen geprägt. Dieser störende Sachverhalt kann durch das Package \textsf{booktabs} \cite{booktabs} beseitigt werden. \textsf{booktabs} richtet sich nach Regeln des professionellen Textsatzes im wissenschaftlichen Bereich und basiert auf zwei Prämissen:
+%
+% \begin{enumerate}
+%   \item Verwende keine vertikalen Linien.
+%   \item Verwende keine doppelten Linien.
+% \end{enumerate}
+% Diese Prämissen scheinen zuerst sehr restriktiv, bei genauerer Betrachtung ergeben sie jedoch Sinn: Vertikale Linien trennen die Zellen der einzelnen Zeilen. Aufgrund der Ausrichtung der Zellen einer Spalte untereinander ist die optische Trennung der Spalten jedoch auch ohne vertikale Linien völlig ausreichend. Zum optischen Trennen des Kopfes der Tabelle definiert \textsf{scldoc} eine dickere Linie, welche doppelte Linien obsolet macht. 
+%
+% \textsf{booktabs} lässt sich innerhalb der gängigen |tabular|- oder |tabularx|-Umgebung verwenden. Lediglich für horizontale Linien werden neue Makros verwendet:
+% 
+% 
+% \begin{decl}
+%   |\toprule|\oarg{Breite}\\
+%   |\headrule|\oarg{Breite}\\
+%   |\midrule|\oarg{Breite}\\
+%   |\bottomrule|\oarg{Breite}
+% \end{decl}
+%
+% \noindent Der obere/untere Rand der Tabelle wird durch |\toprule|/|\bottomrule| begrenzt. Der Kopf der Tabelle (d.\,h. die Spaltentitel) wird durch |\headrule| vom Inhalt der Tabelle getrannt. |\headrule| ist kein urspüngliches Makro aus \textsf{booktabs}, sondern wird von \textsf{scldoc} definiert. Diese drei Linien sind dicker gehalten als die |\midrule|, welche zum Trennen der restlichen Zeilen verwendet werden kann. Durch das optionale Argument \meta{Breite} kann eine Linienbreite angegeben werden. Hierzu besteht jedoch im Allgemeinen kein Grund.
+% 
+% 
+% \begin{decl}
+%   |\cmidrule|\oarg{Breite}\parg{Trimmen}\marg{Von-Bis}
+% \end{decl}
+%
+% \noindent |\cmidrule| ist das \textsf{booktabs}-Analogon zu |\cline|. Es erzeugt eine zu |\midrule| äquivalente horizontale Linie, jedoch nur von Spalte \meta{Von} bis Spalte \meta{Bis} -- d.\,h. nicht notwendig über die gesamte Zeile der Tabelle. \meta{Breite} entspricht der Breite der Linie. \meta{Trimmen} erwartet einen der Werte |l|, |l|\oarg{Breite}, |r| oder |r|\oarg{Breite} oder eine Kombination dieser Werte. Hierdurch wird die Linie an der entsprechenden Seite (|r| -- rechts, |l| -- links) gekürzt, damit sie von eventuell angrenzenden Linien getrennt ist. Die \meta{Breite} der Trimmung kann optional angegeben werden, der Standardwert beträgt \unit[0.5]{em}.
+%
+% Es folgt ein Beispiel einer Tabelle, deren Linie durch \textsf{booktabs} gesetzt wurden. Zum Vergleich wird außerdem die gleiche Tabelle mit \LaTeX-Bordmitteln erzeugt.
+%   \begin{verbatim}
+%\begin{center}
+%  \begin{tabular}{p{4cm}ll} \toprule
+%    \multicolumn{2}{c}{Achterbahn} & \\ \cmidrule(r){1-2}
+%    Name & Land & Höhe \\ \midrule[\heavyrulewidth]
+%    Kingda Ka & USA & \unit[139]{m} \\ \midrule
+%    Top Thrill Dragster & USA & \unit[128]{m} \\ \midrule
+%    Superman: Escape from Crypton & USA & \unit[126.5]{m} \\ \bottomrule
+%  \end{tabular}
+%  \hfill
+%  \begin{tabular}{p{4cm}ll} \hline\hline
+%    \multicolumn{2}{c}{Achterbahn} & \\ \cline{1-2}
+%    Name & Land & Höhe \\  \hline\hline
+%    Kingda Ka & USA & \unit[139]{m} \\ \hline
+%    Top Thrill Dragster & USA & \unit[128]{m} \\ \hline
+%    Superman: Escape from Crypton & USA & \unit[126.5]{m} \\ \hline\hline
+%  \end{tabular}
+%\end{center}
+%   \end{verbatim}
+%
+%\begin{center}
+%\begin{tabular}{p{4cm}ll} \toprule
+%  \multicolumn{2}{c}{Achterbahn} & \\ \cmidrule(r){1-2}
+%  Name & Land & Höhe \\ \midrule[\heavyrulewidth]
+%  Kingda Ka & USA & \unit[139]{m} \\ \midrule
+%  Top Thrill Dragster & USA & \unit[128]{m} \\ \midrule
+%  Superman: Escape from Crypton & USA & \unit[126.5]{m} \\ \bottomrule
+%\end{tabular}
+%\hfill
+%\begin{tabular}{p{4cm}ll} \hline\hline
+%  \multicolumn{2}{c}{Achterbahn} & \\ \cline{1-2}
+%  Name & Land & Höhe \\  \hline\hline
+%  Kingda Ka & USA & \unit[139]{m} \\ \hline
+%  Top Thrill Dragster & USA & \unit[128]{m} \\ \hline
+%  Superman: Escape from Crypton & USA & \unit[126.5]{m} \\  \hline\hline
+%\end{tabular}
+%\end{center}
+%
+%
+%
+% \subsubsection{Euro-Symbol}
+% 
+% 
+% \begin{decl}
+%   |\euro|\\
+%   |\EUR|\marg{Betrag}
+% \end{decl}
+%
+% \noindent \textsf{scldoc} lädt zum Einbinden des Euro-Symbols das Package \textsf{eurosym} \cite{eurosym}. Der Befehl |\euro| erzeugt das Euro-Symbol. Die Eingabe des Euro-Symbols über die Tastatur wird intern in |\euro| umgewandelt und erzeugt ebenfalls das Euro-Symbol. Der Aufruf |10 \euro| erzeugt jedoch ein normales Leerzeichen zwischen dem Betrag und dem Euro-Symbol. Um den korrekten Abstand, ein kleines Leerzeichen, zwischen Betrag und Symbol zu erzeugen, sollte entweder explizit ein kleines Leerzeichen angegeben werden (|10\,\euro|) oder das Makro |\EUR|\marg{Betrag} verwendet werden. Tabelle~\ref{euro} zeigt die unterschiedlichen Abstände.
+%
+% \begin{table}[htb]
+%   \centering
+%   \begin{tabular}{lll}\toprule
+%     \sffamily Makro & \sffamily Ergebnis & \\\midrule[\heavyrulewidth]
+%     |10 \euro| & 10 \euro & falscher Abstand  \\\midrule
+%     |10\,\euro| & 10\,\euro & korrekter Abstand  \\\midrule
+%     |\EUR{10}| & \EUR{10} & korrekter Abstand  \\\bottomrule
+%   \end{tabular}
+%   \caption{Verwendung des Euro-Symbols.}
+%   \label{euro}
+% \end{table}
+%
+%
+% \subsubsection{Einheiten}
+% 
+% Units durch |siunitx| ersetzen.
+% 
+% \begin{decl}
+%   |\unit|\oarg{Wert}\marg{Einheit}\\
+%   |\unitfrac|\oarg{Wert}\marg{Zähler-Einheit}\marg{Nenner-Einheit}
+% \end{decl}
+% 
+% \noindent Der typographisch korrekte Satz von Einheiten wird durch das Package \textsf{units} \cite{units} bewerkstelligt. Es stellt das Makro |\unit| zur Verfügung, dem man die Einheit als Argument \meta{Einheit} übergibt. Optional kann ein \meta{Wert} angegeben werden. |\unitfrac| ermöglicht überdies den Satz von Einheiten als Bruch. Es wird deshalb zwischen \meta{Zähler-Einheit} und \meta{Nenner-Einheit} unterschieden.
+%
+% Beispielsweise erzeugt |\unit[500]{km}| die Ausgabe \unit[500]{km} und |\unitfrac[100]{km}{h}| die Ausgabe \unitfrac[100]{km}{h}.
+% 
+% 
+%
+% \subsection{Grafik}
+%
+%
+% \subsubsection{Grafikpfad}
+%  
+% \begin{decl}
+%   |graphicspath=|\meta{String} \quad(|img/|)
+% \end{decl}
+%
+% \noindent Um Ordnung im Verzeichnis einer \LaTeX-Datei zu wahren, sucht \textsf{scldoc} Grafiken (z.\,B. jpg oder png) im Ordner |img|, der sich im gleichen Ordner befinden muss wie die \texttt{.tex}-Datei. Durch |graphicspath| kann der Ordnername verändert werden bzw. ein Pfad zum Ordner angegeben werden. Sollen sich die Grafiken im gleichen Ordner befinden, wie die \texttt{.tex}-Datei, ist |graphicspath=| bzw. |\scloption{graphicspath}{}| zu wählen.
+%
+% \medskip\noindent\emph{Hinweis}: |graphicspath| muss immer mit einem Slash "`/"' (Schrägstrich) beendet werden.
+%
+%
+% \subsubsection{TikZ}
+%
+% Zur Erstellung von Grafiken für PDF-Dokumente empfiehlt sich das mächtigen Packages \textsf{tikz} \cite{tikz}. \textsf{scldoc} lädt dieses zusammen mit den folgenden, häufig verwendeten Libraries:
+%
+% \begin{verbatim}
+%\usetikzlibrary{fadings}
+%\usetikzlibrary{calc}
+%\usetikzlibrary{patterns}
+% \end{verbatim}
+%  
+% \begin{decl}
+%   |pgfpath=|\meta{String} \quad(|pgf/|)
+% \end{decl}
+%
+% \noindent Analog zu |graphicspath| müssen sich PGF-Dateien mit TikZ-Code im Verzeichnis |pgf| befinden. Durch |pgfpath| kann ein neuer Ordner/Pfad spezifiziert werden.
+%
+% \medskip\noindent\emph{Hinweis}: |pgfpath| muss immer mit einem Slash "`/"' (Schrägstrich) beendet werden.
+%  
+% \begin{decl}
+%   |\tikzinput|\marg{Dateiname}
+% \end{decl}
+%
+% \noindent Mit diesem Befehl werden PGF-Dateien mit TikZ-Code aus dem durch |pgfpath| festgelegten Ordner wie durch das \LaTeX-Makro |\input| eingebunden.
+% 
+%
+% \subsection{Mathematik}
+% 
+% \subsubsection{Komma als Dezimaltrenner}
+% 
+% \begin{decl}
+%   |commasep=|\meta{Bool} \quad(|true|)
+% \end{decl}
+%
+% \noindent Der englischen Notation entsprechend verwendet \LaTeX\ standardmäßig den Punkt als Dezimaltrenner. Verwendet man ein Komma, führt dies zu fehlerhaften Abständen. Zur Anpassung ans Deutsche wird mittels |commasep| das Komma als Dezimaltrenner aktiviert. Dies wird intern durch das Package \textsf{icomma} \cite{icomma} realisiert.
+% 
+%
+% \subsubsection{Optionen von \textsf{amsmath}}
+% 
+% \begin{decl}
+%   |amsoptions=|\meta{String} \quad(|intlimits|)
+% \end{decl}
+%
+% \noindent \textsf{scldoc} lädt u.\,a. das Package \textsf{amsmath}. Um zusätzliche Optionen an \textsf{amsmath} weiterzureichen, kann die Option |amsoptions| verwendet werden. Standardmäßig wird lediglich die Option |intlimits| übergeben, welche Grenzen eines Integrals über und unter das Integralsymbol setzt. Ansonsten werden diese rechts neben dem Symbol platziert. Die Liste der Optionen lässt sich gemäß des folgenden Beispiels anpassen:
+%
+% \begin{verbatim}
+%   \scloption{amsoptions}{intlimits, sumlimits=false, leqno}
+% \end{verbatim}
+% 
+%
+% \subsubsection{Spezielle Mengen}
+% 
+% \begin{decl}
+%   |\N|, |\Z|, |\Q|, |\R|, |\I|, |\C|
+% \end{decl}
+%
+% Diese kurzen Makros erstellen Symbole für spezielle Mengen: Natürliche ($\mathbb{N}$), ganze ($\mathbb{Z}$), rationale ($\mathbb{Q}$), reelle ($\mathbb{R}$), irrationale ($\mathbb{I}$) und komplexe ($\mathbb{C}$) Zahlen. |\N| z.\,B. ist Abkürzung für |\mathbb{N}|.
+%
+%
+% \subsubsection{Vektoren}
+% 
+% \begin{decl}
+%   |\vec|\marg{math. Ausdruck}
+% \end{decl}
+%
+% \noindent Die grundlegenden Möglichkeiten der Auszeichnung von Vektoren durch Pfeile in \LaTeX\ sind nicht zufriedenstellend. Das ursprüngliche Makro |\vec|\marg{math. Ausdruck} führt zu Problemen, wenn der hierdurch ausgezeichnete mathematische Ausdruck mehr als ein Zeichen beinhaltet. Die Alternative |\overrightarrow|\marg{math. Ausdruck} berücksichticht zwar die Länge des mathematischen Ausdrucks, erzeugt jedoch eine zu große Pfeilspitze. Deshalb greift \textsf{scldoc} auf das Package \textsf{esvect} \cite{esvect} zurück und definiert das Makro |\vec| neu. Es erzeugt nun einen Vektorpfeil durch den Befehl |\vv| aus \textsf{esvect}, welches die Probleme der anderen Methoden behebt. Tabelle~\ref{vectors} zeigt die unterschiedlichen Resultate.
+%
+% \begin{table}[htb]
+%   \centering
+%   \begin{tabular}{lll}\toprule
+%     \sffamily Makro & \sffamily Ergebnis & \sffamily Bemerkung \\\midrule[\heavyrulewidth]
+%     |\vec{AB}| & $\vec{AB}$ & \LaTeX-Original  \\\midrule
+%     |\overrightarrow{AB}| & $\overrightarrow{AB}$  \\\midrule
+%     |\vec{AB}| & $\vv{AB}$ & In \textsf{scldoc} durch \textsf{esvect} \\\bottomrule
+%   \end{tabular}
+%   \caption{Methoden zur Erzeugung von Vektorpfeilen.}
+%   \label{vectors}
+% \end{table}
+% 
+% 
+% \begin{decl}
+%   |\vect|\marg{Vektor}
+% \end{decl}
+%
+% \noindent Das Erzeugen eines Spaltenvektors geschieht in \LaTeX\ durch die |pmatrix|-Umgebung. |\vect| stellt eine Abkürzung dieser Umgebung dar. Das Argument \meta{Vektor} ist analog zum Inhalt der |pmatrix|-Umgebung aufzufassen: |\vect{a + b \\ b + c \\ d}| erzeugt den Spaltenvektor
+% \[
+%   \begin{pmatrix}a + b \\ b + c \\ d \end{pmatrix}.
+% \]
+% 
+% \iffalse meta-comment
+% \subsubsection{Widerspruch-Symbol}
+% 
+% 
+% \begin{decl}
+%   |\blitza|, |\blitzb|, |\blitzc|, |\blitzd|, |\blitze|
+% \end{decl}
+% 
+% \noindent Beweise werden oft durch Widerspruch geführt. Ein Widerspruch wird meistens durch einen kleinen Blitz notiert. Das von \textsf{scldoc} geladene Package \textsf{ulsy} \cite{ulsy} stellt ein solches Symbol in verschiedenen Größen zur Verfügung. Tabelle~\ref{contradiction} zeigt alle Größen. Die Symbole sind im Text- und nicht im Mathematik-Modus verfügbar!
+%
+% \begin{table}[htb]
+%   \centering
+%   \begin{tabular}{ll}\toprule
+%     \sffamily Makro & \sffamily Ergebnis \\\midrule[\heavyrulewidth]
+%     |\blitza| & \blitza \\\midrule
+%     |\blitzb| & \blitzb \\\midrule
+%     |\blitzc| & \blitzc \\\midrule
+%     |\blitzd| & \blitzd \\\midrule
+%     |\blitze| & \blitze \\\bottomrule
+%   \end{tabular}
+%   \caption{Widerspruchs-Symbole.}
+%   \label{contradiction}
+% \end{table}
+% \fi
+% 
+%
+% \subsubsection{Terme durchstreichen}
+% 
+% 
+% \begin{decl}
+%   |\cancel|\marg{math. Ausdruck}
+% \end{decl}
+%
+% \noindent Das Kürzen von Brüchen oder ähnliche Vorgänge der Schulmathematik werden häufig durch das Durchstreichen des Terms dargestellt. \textsf{scldoc} lädt hierzu das Package \textsf{cancel} \cite{cancel}, welches insbesondere das Makro |\cancel| definiert. Der Aufruf |\cancel{a + b}| erzeugt
+% \[
+%   \cancel{a + b}.
+% \]
+%
+% 
+%
+% \subsubsection{Polynomdivision}
+% 
+% 
+% \begin{decl}
+%   |\polylongdiv|\marg{Dividend}\marg{Divisor}
+% \end{decl}
+%
+% \noindent Der manuelle Satz einer Polynomdivision ist sehr umständlich. Deshalb lädt \textsf{scldoc} das Package \textsf{polynom} \cite{polynom}. Als Divisionszeichen wird der Doppelpunkt gewählt und das Layout der Polynomdivision der deutschen Schreibweise angepasst. Zur Darstellung der Division von $x^3+6x^2+9x+4$ (\meta{Dividend}) durch $x+1$ (\meta{Divisor}) genügt der Aufruf |\polylongdiv{x^3+6x^2+9x+4}{x+1}| im Mathematik-Modus. Die Rechnung wird dann durch \LaTeX\ ausgeführt und wiefolgt dargestellt:
+%
+% \[
+%   \polylongdiv[style=C, div=:]{x^3+6x^2+9x+4}{x+1}
+% \]
+% 
+%
+% \subsubsection{Typographie}
+% 
+% \begin{decl}
+%   |\qtext|\marg{Text}\\
+%   |\qqtext|\marg{Text}
+% \end{decl}
+%
+% \noindent In einer abgesetzten Formel kann der Einschub von Text zwischen zwei Termen erwünscht sein. Um den Text ausreichend von den Termen zu trennen, kann man sich |\quad| bzw. |\qquad| bedienen. Die Makros |\qtext|\marg{Text} und |\qqtext|\marg{Text} setzen den \meta{Text} im Mathematik-Modus als Text (|\text|\marg{Text}) und umrahmen ihn mit |\quad| bzw. |\qquad|. Ein Beispiel verdeutlicht die Verwendung:
+%
+% \begin{verbatim}
+%\begin{gather*}
+%  \frac{a + b}{c + d} \qtext{oder} \frac{a + d}{c + a} \\
+%  \frac{a + b}{c + d} \qqtext{oder} \frac{a + d}{c + a}
+%\end{gather*}
+%   
+% \end{verbatim}
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%   \vspace{-1.25em}
+%   \begin{gather*}
+%     \frac{a + b}{c + d} \quad\text{oder}\quad \frac{a + d}{c + a}\\
+%     \frac{a + b}{c + d} \qquad\text{oder}\qquad \frac{a + d}{c + a}
+%   \end{gather*}
+%   \vspace{-1.5em}
+%   }}
+% \vspace{0.4\baselineskip}
+%
+% 
+%
+% \subsubsection{Verschiedenes}
+% 
+% 
+% \begin{decl}
+%   |\ds|
+% \end{decl}
+% 
+% \noindent Das Makro |\ds| ist eine Abkürzung für |\displaystyle|. Dieses wiederum kann verwendet werden, um Inline-Formeln (d.\,h. Formeln im Fließtext) in der gleichen Größe wie abgesetzte Formeln darzustellen. Die Größe wirkt sich nur auf Symbole aus, die im Fließtext kleiner gesetzt werden als in abgesetzten Formeln (z.\,B. Brüche oder Integrale). Hier ein Beispiel:
+%
+% \begin{verbatim}
+%Der Bruch $\frac{1}{2}$ ist gekürzt.\\
+%Der Bruch $\ds \frac{1}{2}$ ist gekürzt.
+% \end{verbatim}
+%   \noindent\framebox[\linewidth]{\parbox{0.9\linewidth}{ %
+%Der Bruch $\frac{1}{2}$ ist gekürzt.\\
+%Der Bruch $\displaystyle \frac{1}{2}$ ist gekürzt.
+%   }}
+% \vspace{0.4\baselineskip}
+% 
+% 
+% \begin{decl}
+%   |\der|
+% \end{decl}
+% 
+% \noindent Das Differential eines Integrals wird zur Unterscheidung von Variablen durch |\der| aufrecht gesetzt: |\int f(x) \der x| erzeugt
+% \[
+%   \int f(x)\ \mathrm{d}x
+% \]
+% 
+% 
+% \begin{decl}
+%   |\i|
+% \end{decl}
+% 
+% \noindent Die imaginäre Einheit der komplexen Zahlen wird zur Unterscheidung von Variablen durch |\i| aufrecht gesetzt: |3 + 5\i| erzeugt $3 + 5\mathrm{i}$.
+% 
+% 
+% \begin{decl}
+%   |\sep|
+% \end{decl}
+% 
+% \noindent Die Koordinaten von Punkten werden im Deutschen häufig durch einen vertikalen Strich voneinander getrennt. Die vorhandenen Makros |\mid| und |\vert| erzeugen jedoch sehr große bzw. kleine Abstände zwischen Strich und Koordinate. Das Makro |\sep| stellt einen Trenner mit angemessenem Abstand zur Verfügung. Tabelle~\ref{coordinates} zeigt die Unterschiede.
+%
+% \begin{table}[htb]
+%   \centering
+%   \begin{tabular}{lll}\toprule
+%     \sffamily Makro & \sffamily Ergebnis & \sffamily Bemerkung \\\midrule[\heavyrulewidth]
+%     |A(x \mid y \mid z)| & $A(x \mid y \mid z)$ & Abstand sehr groß  \\\midrule
+%     |A(x \vert y \vert z)| & $A(x \vert y \vert z)$ & Abstand sehr klein  \\\midrule
+%     |A(x \sep y \sep z)| & $A(x \,\vert\, y \,\vert\, z)$ & Abstand angemessen \\\bottomrule
+%   \end{tabular}
+%   \caption{Möglichkeiten der Trennung von Koordinaten eines Punktes.}
+%   \label{coordinates}
+% \end{table}
+%
+%
+%
+% \subsection{Informatik}
+%  
+% 
+% \subsubsection{Listings}
+%
+% Die Darstellung von Quellcode sollte durch das Package \textsf{listings} \cite{listings} vorgenommen werden. \textsf{scldoc} lädt \textsf{listings} und konfiguriert das Package wiefolgt:
+%
+% \begin{verbatim}
+%\lstset{
+%  aboveskip=0.5\baselineskip,
+%  belowskip=0.5\baselineskip,
+%  language=Java, 
+%  basicstyle=\ttfamily\footnotesize, 
+%  keywordstyle=\bfseries, 
+%  stringstyle=\emph, 
+%  numberstyle=\color{gray}\sffamily\scriptsize,
+%  numbers=left, 
+%  numbersep=8pt, 
+%  frame=leftline, 
+%  captionpos=b, 
+%  tabsize=2, 
+%  showstringspaces=false, 
+%  xleftmargin=1cm,
+%  xrightmargin=0cm,
+%  breaklines=true,
+%  prebreak={\,\,\Pisymbol{psy}{191}},
+%  escapeinside={/@}{@/},
+%  lineskip=1pt
+%}
+% \end{verbatim}
+%
+% Die Einstellungen können jedoch durch Verwendung des Makros |\lstset| von \textsf{listings} in der Präambel des eigenen Dokuments nach eigenen Wünschen angepasst werden.
+%
+%
+% \subsection{Liste geladener Packages}
+%
+% Folgende Packages werden von \textsf{scldoc} standardmäßig geladen:
+%
+% \begin{verbatim}
+%\RequirePackage[T1]{fontenc} 
+%\RequirePackage[utf8]{inputenc} 
+%\RequirePackage[ngerman]{babel}
+%
+%\RequirePackage{calc}
+%\RequirePackage{forloop}
+%
+%\RequirePackage{booktabs}
+%\RequirePackage{boxedminipage}
+%\RequirePackage{ccicons}
+%\RequirePackage{enumitem}
+%\RequirePackage{eurosym}
+%\RequirePackage{expdlist}
+%\RequirePackage{geometry}
+%\RequirePackage{fancybox}
+%\RequirePackage[notcomma, notperiod, notquote, notquery]{hanging}
+%\RequirePackage{lastpage}
+%\RequirePackage{multicol}
+%\RequirePackage{multirow}
+%\RequirePackage{pifont}
+%\RequirePackage{rotating}
+%\RequirePackage[newcommands]{ragged2e}
+%\RequirePackage{scrpage2}
+%\RequirePackage{setspace}
+%\RequirePackage{siunitx}
+%\RequirePackage{tabularx}
+%\RequirePackage[nobottomtitles*]{titlesec}
+%\RequirePackage{units}
+%\RequirePackage{xspace}
+%
+%\RequirePackage{graphicx}
+%\RequirePackage[svgnames]{xcolor}
+%\RequirePackage{subfig}
+%\RequirePackage{tikz}
+%
+%\RequirePackage[\scldoc@amsoptions]{amsmath}
+%\RequirePackage{amssymb}
+%\RequirePackage{amsthm}
+%\RequirePackage{cancel}
+%\RequirePackage{esvect}
+%\RequirePackage{polynom}
+%%\RequirePackage{thmbox}
+%\RequirePackage{thmtools}
+%%\RequirePackage{ulsy}
+%\RequirePackage[only, lightning]{stmaryrd}
+%
+%\RequirePackage{listings}
+%
+%\RequirePackage{bibgerm}
+%\RequirePackage[breaklinks=false, pdfborder={0 0 0}]{hyperref}
+% \end{verbatim}
+%
+% 
+%

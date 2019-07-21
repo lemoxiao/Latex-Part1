@@ -1,0 +1,23 @@
+This is the HITEC class. As the name implies, it is intended
+for use on technical documents in hi-tec companies.
+
+It is based upon the article class, but it looks VERY different.
+In fact, one of the design aims was to escape the academic look
+of the well-known LaTeX document classes.
+
+This is a beta version, which means that it works wonderfully
+for me, and on papers I've downloaded from the web. I believe
+it's perfectly useful, but it hasn't been widely tested yet.
+
+This is my first and probably last time I deal with document
+classes. I'll be glad to receive bug reports, even though I
+can't promise to correct them (TeX isn't that easy to deal with).
+
+I'll also be glad to receive comments regarding bad TeX
+style or inconsistencies.
+
+Eli Billauer
+
+eli_billauer@yahoo.com
+
+Oct 17, 2001

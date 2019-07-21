@@ -1,0 +1,74 @@
+%-----------------------------------------------------------------------------
+%
+%                         Project Name:NjustBeamer 
+%
+%-----------------------------------------------------------------------------
+%
+%                 created by Qingyun Fang <fqy2017@gmail.com>
+%
+%                        Last-modified: 2017-8-25
+%
+%-----------------------------------------------------------------------------
+\documentclass{beamer}
+\usepackage{NjustBeamerTemplate}
+\usepackage{latexsym,amssymb,amsmath,amsbsy,amsopn,amstext,xcolor,multicol}
+\usepackage{graphicx,wrapfig,fancybox}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{fontspec}
+\xdefinecolor{njust}{RGB}{128,50,128}
+%\usepackage{ctex}  äœ¿çšäž­ææ¶ äœ¿çšè¯¥package
+
+\begin{document}
+	\title[]{\bf\LARGE\fontspec{Sitka Heading}This is a beamer in \LaTeX ~for NJUST}
+	\author{Prof.}
+	\institute[NUST]{Nanjing University of Sci \& Tech}
+	\date{\today}
+
+\begin{frame}
+    \titlepage
+\end{frame}	 
+	
+  \section*{Table of Contents}
+  \frame {
+	\frametitle{\secname}
+	\tableofcontents
+    }
+
+  \section{SectionOne}
+
+  \subsection{SubsectionOne}
+   \begin{frame}
+   \frametitle{ Nanjing University of Sci \& Tech}
+    Blah, blah.
+   \end{frame}
+
+  \subsection{SubsectionTwo}
+   \begin{frame}
+   \frametitle{{School of Electronic and Optical Eigeneering}}
+   Blah, blah.
+   \end{frame}
+
+
+  \section{	SectionTwo}
+  
+  \subsection{SubsectionOne}
+  \begin{frame}
+  \frametitle{Class Two}
+   Blah, blah.
+  \end{frame}
+
+  \subsection{SubsectionTwo}
+  \begin{frame}
+  \frametitle{School Number}
+  Blah, blah.
+  \begin{itemize}
+  	\item 1
+  	\item 2
+  \end{itemize}
+  \end{frame}
+
+  \section*{Thank you}
+	 \frame{
+	 \centering\Huge{\textcolor[RGB]{128,50,128}{Thank you!}}
+ }
+\end{document}

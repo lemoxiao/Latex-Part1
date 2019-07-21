@@ -1,0 +1,36 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{CJK_xe_font}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage[BoldFont, SlantFont, CJKnumber, CJKchecksingle]{xeCJK}
+
+%---------------------------- 英文字体 ----------------------------------%
+% 衬线字体，是文档的默认字体
+%\setmainfont{DejaVu Serif}
+% 同setmainfont，由fontspec宠包提供
+%\setromanfont{DejaVu Serif}
+% 无衬线字体，比衬线字体更醒目，常用作标题
+%\setsansfont{DejaVu Sans}
+% 等宽字体
+%\setmonofont{DejaVu Sans Mono}
+%\setmonofont{Consolas}
+%---------------------------- 中文字体 ----------------------------------%
+\setCJKmainfont[BoldFont={黑体}]{宋体}
+\setCJKsansfont[BoldFont={黑体}]{楷体}
+
+\setCJKfamilyfont{zhsong}{宋体}
+\setCJKfamilyfont{zhhei}{黑体}
+\setCJKfamilyfont{zhkai}{楷体}
+\setCJKfamilyfont{zhfs}{仿宋}
+\setCJKfamilyfont{zhli}{隶书}
+\setCJKfamilyfont{zhyou}{幼圆}
+\setCJKfamilyfont{yahei}{微软雅黑}
+
+\newcommand*{\yahei}{\CJKfamily{yahei}} % 微软雅黑
+\newcommand*{\songti}{\CJKfamily{zhsong}} % 宋体
+\newcommand*{\heiti}{\CJKfamily{zhhei}}   % 黑体
+\newcommand*{\kaishu}{\CJKfamily{zhkai}}  % 楷书
+\newcommand*{\fangsong}{\CJKfamily{zhfs}} % 仿宋
+\newcommand*{\lishu}{\CJKfamily{zhli}}    % 隶书
+\newcommand*{\youyuan}{\CJKfamily{zhyou}} % 幼圆
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

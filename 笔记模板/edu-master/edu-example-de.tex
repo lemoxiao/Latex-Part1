@@ -1,0 +1,1267 @@
+\documentclass[
+shownotess=true,
+showresults=false,
+edumath,
+]{edu} 
+
+
+%\edusetup{
+%	author=D. Wunderlich,
+%	subject=Mathematik, 
+%	class= Klasse 5c,
+%	field=Lineare Algebra, 
+%	topic=Abiturvorbereitung Analysis -- Wirtschaftsgymnasium,
+%	date=6.1.2013,
+%	version=Ver. 1.0,
+%	license=\ccbysa*
+%}
+
+%\edusetup{
+%	exelabel=,
+%	subexelabel=Unteraufgabe,
+%	exepointslabel=\,Punkte,
+%	subexepointslabel=,
+%	exepointssep=,
+%	subexepointssep=0.5em,
+%	exepointsleft=\{,
+%	exepointsright=\},
+%	subexepointsleft=(,
+%	subexepointsright=),
+%	multiexepointsleft=m,
+%	multiexepointsright=M,
+%	multiexepointslabel=\,P
+%}
+
+
+%\edusetup{
+%	questionlabel=Fragé,
+%	questionsep=0em,
+%	questionpointssep=0em
+%}
+
+
+%\edusetup{
+%	sollabel=Lösug,
+%	subsollabel=Lösug
+%}
+
+%\edusetup{
+%	fontsize=14pt
+%}
+
+%\edusetup{
+%	twoup=true,
+%	footer=true
+%}
+
+%\edusetup{
+%	listarraymargin=0pt,
+%	listarraysep=2em
+%}
+
+\title[edu Dokumentenklasse]{Die edu Dokumentenklasse}
+\subtitle{\LaTeX\ in Bildungseinrichtungen}
+\author[D. Wunderlich]{Daniel Wunderlich}
+\email{code@wu-web.de}
+\subject{Umgang mit dem Computer}
+\date{\today}
+\version[Ver. 0.5]{Version 0.5}
+\field{Textsatz}
+\group{B}
+\class{Alle Klassen}
+\license[\ccbysa*]{Creative Commons ShareAlike 3.0 Lizenz}
+
+\begin{document}
+
+\makeheader
+
+\maketitle
+
+\begin{abstract}
+  Dieses Dokument ist ein Beispiel der Dokumentenklasse \textsf{edu}. Es soll die wichtigsten Funktionen aufzeigen und Hinweise zu deren Nutzung geben. Es stellt keinen Ersatz der eigentlich Dokumentation dar und erhebt keinen Anspruch auf Vollständigkeit!
+\end{abstract}
+
+\tableofcontents
+
+
+\part{Gliederungen}
+
+\textsf{edu} stellt die aus \LaTeX\ bekannten Gliederungsebenen \lstinline!\part!, \lstinline!\section!, \lstinline!\subsection! und \lstinline!\subsubsection! zur Verfügung. Diese verhalten sich wie gewohnt, wurden jedoch optisch an \textsf{edu} angepasst.
+
+\section{Abschnitt}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+
+\section{Abschnitt}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+
+\subsection{Unterabschnitt}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+
+\section{Abschnitt}
+
+\subsection{Unterabschnitt}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+
+\subsection{Unterabschnitt}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+
+\subsubsection{Unterunterabschnitt}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+
+\subsection{Unterabschnitt}
+
+\subsubsection{Unterunterabschnitt}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+
+
+
+\part{Aufgaben}
+
+
+
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+
+\subsection{Ein Unterabschnitt}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+
+\textcolor{wuDarkRed}{\rule{5ex}{5ex}} \textcolor{wuSemiDarkRed}{\rule{5ex}{5ex}} \textcolor{wuRed}{\rule{5ex}{5ex}} Lorem ipsum dolor sit amet, \pgno[3][5a], \pgno[][6c], \pgno[5][] consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua\footnote{Eine Fußnote.}!  Siehe \ref{testlabel}. Und ab ins Netz: \href{http://www.google.de}{Google} bzw. \url{http://www.google.de}
+\begin{aligntr*}
+	-3x\alpha + 5 -x &= x + 4x + 4 \\
+    \minusp 4x + 5 &= 5x + 4 \tr -4 \\
+    -4x + 1 &= 5x \tr +4x \\
+    1 &= 9x \tr :9 \\
+    \frac{1}{9} &= x
+\end{aligntr*}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+\[
+	a = 4 \qqLeftrightarrow b=5. \solset{1;2}
+\]
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua! Die PQ-Formel:
+\[
+	\qfr{3}{4}
+\]
+oder variabel:
+\[
+	\qfrvar{\frac{3}{2}}{\frac{7}{3}}.
+\]
+
+\textsfbf{Text mit} \verb$\textsfbf$\\
+\cemph{Text mit} \verb$\cemph$\\
+\csfemph{Text mit} \verb$\csfemph$
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+
+\fpbox{Eine fpbox}
+
+\cemph{Lorem ipsum dolor} \csfemph{sit amet}, \textsfbf{consetetur sadipscing} \textrightarrow elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat \textRightarrow sed diam voluptua! 
+
+Heute ist der \today\ (\lstinline!\today!).
+
+Ein Logo in groß und klein: \ccbysa und \ccbysa*
+\begin{description}
+	\item[Lineare Gleichung] Eine oder keine Lösung. Keine Lösung \zB bei $-2x = 5 - 2x \Leftrightarrow 0 = 5$, da ein Widerspruch entsteht.
+	\item[Quadratische Gleichungen] Keine Lösung (negative Zahl unter Wurzel), eine Lösung (Null unter Wurzel) oder zwei Lösungen.
+  \item[$\mathsf{x}$ ausklammern] Erzeugt zusätzlich die Lösung $x = 0$.
+  \item[Substitution] Für jede positive Lösung der quadratischen Gleichung erhält man durch die Resubstitution zwei Lösungen.
+\end{description}
+
+\csfemph{Lorem ipsum dolor} sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+
+\action Eine Aktion\\
+\speech Eine Handlung
+
+
+\newpage
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua! 
+
+\begin{cols}[4]
+	Bla Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua! 
+  	
+  	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua sed diam voluptua sed diam voluptua! 
+    
+  	
+  	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua sed diam voluptua sed diam voluptua! 
+    \colbreak
+  	
+  	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua sed diam voluptua sed diam voluptua! 
+    \colbreak
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua! 
+    \colbreak
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua et dolore magna aliquyam! 
+\end{cols}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+  \begin{cols2*}[0.7\linewidth]%
+  	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua! 
+  	
+  	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua sed diam voluptua sed diam voluptua! 
+    \colbreak
+    \tikzscale{1}
+    \begin{center}
+	    \begin{tikzpicture}[scale=\tikzscalefactor]
+				\draw[->] (-0.25, 0) -- (3.25, 0) node[below] {$x$};
+				\draw[->] (0, -0.25) -- (0, 3.25) node[left] {$y$};
+				\draw[domain=-0.25:2.5, wuGreen, thick] plot function {0.5*x**2} node[right] {$f(x)$};
+				\draw[domain=-0.25:2.5, wuPink, thick] plot function {0.375*x**2} node[right] {$g(x)$};
+				\draw[domain=-0.25:2.5, wuBlue, thick] plot function {0.25*x**2} node[right] {$h(x)$};
+				\draw[domain=-0.25:2.5, wuOrange, thick] plot function {0.125*x**2} node[right] {$i(x)$};
+				
+				\draw[thick, dashed, wuViolet] (-0.25, 2.75) node[left] {$y=a$} -- (3, 2.75);
+				\draw[thick, dashed, wuTurquoise] (-0.25, 2.) node[left] {$y=b$} -- (3, 2.);
+				\draw[thick, dashed, wuBrown] (-0.25, 1.25) node[left] {$y=c$} -- (3, 1.25);
+	    \end{tikzpicture}
+    \end{center}
+	  \end{cols2*}
+    \tikzinput*[0.9]{tikz-example.pgf}
+  \begin{cols2*}[0.6\linewidth]%
+  	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua! 
+  	
+  	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua sed diam voluptua sed diam voluptua! 
+  	
+  	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua sed diam voluptua sed diam voluptua! 
+    \colbreak
+    \tikzinput[0.9]{tikz-example.pgf}
+	  \end{cols2*}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua! 
+  \begin{cols2}%
+  	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua! 
+  	
+  	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua sed diam voluptua sed diam voluptua! 
+    \colbreak
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua! 
+    
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua et dolore magna aliquyam! 
+  \end{cols2}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+  \begin{cols2}%
+  \mathreduce
+  \begin{aligntr*}
+    4x^2 - 12x - 40 &= 0 \tr :4 \quad\text{(Normieren)} \\
+    x^2 - 3x - 10 &= 0 \tr \text{p-q-Formel}
+  \end{aligntr*}
+    \colbreak
+  \mathreduce
+    \begin{gather*}
+       x^2 + px + q = 0 \\
+       \Rightarrow x_{1/2} = \qfr{p}{q}
+    \end{gather*}
+  \end{cols2}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+
+
+
+\newpage
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+%
+\begin{graphicscol}{image-example.jpg}[width=5cm]
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+	
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+\end{graphicscol}
+%
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+%
+\begin{graphicscol*}[0.4\linewidth]{image-example.jpg}[width=3cm][c]
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+	
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+\end{graphicscol*}
+%
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+%
+\begin{tikzcol}[0.3\linewidth]{tikz-example.pgf}[c]
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+	
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+\end{tikzcol}
+%
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+%
+\begin{tikzcol*}{tikz-example.pgf}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+	
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+\end{tikzcol*}
+%
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+
+
+
+%\begin{multicols}{2}\raggedcolumns%
+%\begin{aligntr*}
+%    4x^2 - 12x - 40 &= 0 \tr :4 \quad\text{(Normieren)} \\
+%    x^2 - 3x - 10 &= 0 \tr \text{p-q-Formel}
+%  \end{aligntr*}
+%  \vspace*{-2\belowdisplayskip}
+%  \begin{align*}
+%    x_{1/2} &= \qe{-3}{(-10)} \\
+%    &= \qevar{\frac{3}{2}}{\frac{9}{4} + \frac{40}{4}} 
+%    = \frac{3}{2} \pm \sqrt{\frac{49}{4}} = \frac{3}{2} \pm \frac{7}{2} \\
+%    \Rightarrow x_1 &= \frac{10}{2} = 5 \qtext{und} x_2 = -\frac{4}{2} = -2
+%    \qRightarrow \boxed{\solset{-2; 5}}
+%  \end{align*}%
+%\columnbreak%
+%\begin{aligntr*}
+%    4x^2 - 12x - 40 &= 0 \tr :4 \quad\text{(Normieren)} \\
+%    x^2 - 3x - 10 &= 0 \tr \text{p-q-Formel}
+%  \end{aligntr*}
+%  \end{multicols}
+%%
+%Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua!
+%%
+%\begin{cols2var}%
+%\begin{aligntr*}
+%    4x^2 - 12x - 40 &= 0 \tr :4 \quad\text{(Normieren)} \\
+%    x^2 - 3x - 10 &= 0 \tr \text{p-q-Formel}
+%  \end{aligntr*}
+%  \vspace*{-2\belowdisplayskip}
+%  \begin{align*}
+%    x_{1/2} &= \qe{-3}{(-10)} \\
+%    &= \qevar{\frac{3}{2}}{\frac{9}{4} + \frac{40}{4}} 
+%    = \frac{3}{2} \pm \sqrt{\frac{49}{4}} = \frac{3}{2} \pm \frac{7}{2} \\
+%    \Rightarrow x_1 &= \frac{10}{2} = 5 \qtext{und} x_2 = -\frac{4}{2} = -2
+%    \qRightarrow \boxed{\solset{-2; 5}}
+%  \end{align*}%
+%  
+%\colbreak%
+%
+%\begin{aligntr*}
+%    4x^2 - 12x - 40 &= 0 \tr :4 \quad\text{(Normieren)} \\
+%    x^2 - 3x - 10 &= 0 \tr \text{p-q-Formel}
+%  \end{aligntr*}
+%  \end{cols2var}
+
+\newpage
+
+\subsection{Wirtschaftsgymnasium}
+
+\exe[2]{Erste Aufgabe}
+
+\subexe{Einfache Aufgaben}\label{testlabel}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua \seee{testlabel}.
+
+\res[Bliblablub]{Hier ist die Lösung: $a = 1$.}
+
+Das geht auch mit einer Linie zum Ausfüllen:
+
+Lösung:\resr{$a = 1$}
+
+\begin{definition}[Monotonie]
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{definition}
+
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\begin{example}
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{example}
+
+\begin{examplef}
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{examplef}
+
+\begin{exampleexe}
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{exampleexe}
+
+\begin{exampleexef}
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{exampleexef}
+
+\begin{hint}
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{hint}
+
+\begin{hintf}
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{hintf}
+
+\begin{remark}
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{remark}
+
+\begin{remarkf}
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{remarkf}
+
+\begin{solution}
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{solution}
+
+\begin{solutionf}
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{solutionf}
+
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\begin{theorem}
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+	
+	I Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{theorem}
+
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\begin{theoremf}[Bla Bla Satz]
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+	
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{theoremf}
+
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\begin{definitionf}[Bla Bla Definition]
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+	
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{definitionf}
+
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\begin{defitheof}[Bla Bla Definition]
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+	
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{defitheof}
+
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\subsection{thmbox}
+	
+%\begin{definitionbm}[Satz des Pythagoras]
+%Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%	
+%Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{definitionbm}
+%
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%	
+%\begin{defitheobm}[Satz des Pythagoras]
+%Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%	
+%Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{defitheobm}
+%
+%\begin{examplebs}
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{examplebs}
+%
+%\begin{examplebm}
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{examplebm}
+%
+%\begin{examplebl}
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{examplebl}
+%
+%
+%\begin{exampleexebs}
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{exampleexebs}
+%
+%\begin{exampleexebm}
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{exampleexebm}
+%
+%\begin{exampleexebl}
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{exampleexebl}
+%
+%\begin{hintbs}
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{hintbs}
+%
+%\begin{hintbm}
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{hintbm}
+%
+%\begin{hintbl}
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{hintbl}
+%
+%\begin{remarkbs}
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{remarkbs}
+%
+%\begin{remarkbm}
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{remarkbm}
+%
+%\begin{remarkbl}
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{remarkbl}
+%
+%\begin{solutionbs}
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{solutionbs}
+%
+%\begin{solutionbm}
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{solutionbm}
+%
+%\begin{solutionbl}
+%	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\end{solutionbl}
+
+\section{Section}
+
+\textcolor{Green}{Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.}
+
+Lorem \SI[]{13456355,21}{\metre\squared\per\second} \numlist{12;34;56} ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+
+\subsection{Subsection}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+
+\subsection{Subsection}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\section{Subsection}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+
+\subsection{Subsection}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+
+
+\exe[5]{Erste Aufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+
+\subexe[5]{Erste Aufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\subexe[5]{Erste Aufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\sol{Erste Lösung}
+
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+
+\subsol{Erste Lösung}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\sol{Erste Lösung}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+
+\subsol{Erste Lösung}\label{sol:test}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\subsol{Erste Lösung}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua \seesol{sol:test}.
+
+\exe[5]{Erste Aufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\subexe[5]{Erste Aufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+
+
+\subexe[5]{Erste Aufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+
+\subexe[5]{Erste Aufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+
+\subexe[5]{Erste Aufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+
+\subexe[5]{Erste Aufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt. 
+
+\subexe[5]{Erste Aufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut. 
+
+\subexe[5]{Erste Aufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt. 
+
+\newpage
+
+\quest{Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua?}
+
+\questblank[2cm]
+
+\quest[3]{Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt?}
+
+\questtext[1cm]{3}
+
+\quest[3]{Jetzt kommt eine Frage mit Linien!}
+\questtextblank[0.75cm]{5}{0.5\linewidth}
+
+\newpage
+
+\quest{Lorem ipsum dolor sit amet, consetetur sadipscing elitr?}
+
+\begin{questmclist}
+\item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+\item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+\item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+\end{questmclist}
+
+\quest{Lorem ipsum dolor sit amet, consetetur sadipscing elitr?}
+\begin{questmclist}[2.5ex]
+\item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+\item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+\item Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+\end{questmclist}
+
+
+\quest{questmclist -- normal}
+
+\begin{questmclist}
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+\end{questmclist}
+
+\quest{questmclist -- erhöhter Abstand}
+
+\begin{questmclist}[2ex]
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+\end{questmclist}
+
+\quest{questmclistalph -- normal}
+
+\begin{questmclistalph}
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+\end{questmclistalph}
+
+\quest{questmclistalph -- erhöhter Abstand}
+
+\begin{questmclistalph}[2ex]
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+\end{questmclistalph}
+
+
+\newpage
+
+\exe[3]{List -- normal}
+
+\begin{multiexelist*}
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt. \points{5}
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+  
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+\end{multiexelist*}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+
+\begin{multiexelist}
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt. \points{1}
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.\points*{4}
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+\end{multiexelist}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+
+\subexe{multiexelist -- erhöhter Abstand}
+
+\begin{multiexelist*}[2ex]
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+\end{multiexelist*}
+
+
+
+\newpage
+
+\exe{Array -- normal}
+
+\subexe{multiexearray -- normal}
+
+Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr.
+
+Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr.
+
+\begin{multiexearray}{4}
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. \\
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr.
+\end{multiexearray}
+Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr.
+
+\subexe{multiexearray -- erhöhter Abstand}
+
+Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr.
+\begin{multiexearray}[5ex]{4}
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. \\
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr.
+\end{multiexearray}
+Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr.
+
+
+\quest{questmcarray -- normal}
+
+\begin{questmcarray}{4}
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. \\
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr.
+\end{questmcarray}
+
+\quest{questmcarray -- erhöhter Abstand}
+
+\begin{questmcarray}[2ex]{4}
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. \\
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr.
+\end{questmcarray}
+
+
+\quest{questmcarrayalph -- normal}
+
+\begin{questmcarrayalph}{4}
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. \\
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr.
+\end{questmcarrayalph}
+
+\quest{questmcarrayalph -- erhöhter Abstand}
+
+\begin{questmcarrayalph}[2ex]{4}
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. \\
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr. & 
+	Lorem ipsum dolor sit amet, cons elitr.
+\end{questmcarrayalph}
+
+
+\newpage
+
+\exe{Array -- Mathe}
+
+\subexe{multiexearray -- normal}
+
+Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr. 
+\begin{multiexearray*}{4}
+  2x = 3,5 & 3x = 4 & 4x = 5 & 5x = 6 \\
+  6x = 7 & 7x = 8 & 8x = 9 & 9x = 10 \\
+  \frac{1}{2} x = 3 & 
+  \frac{2}{3} x = 4 & 
+  \frac{3}{4} x = 5 & 
+  \frac{4}{5} x = 6 \\
+  \frac{5}{6} x = 7 & 
+  \frac{6}{7} x = 8 & 
+  \frac{7}{8} x = 9 & 
+  \frac{8}{9} x = 10 \\ \ls
+  \frac{5}{6} x = 7 & 
+  \frac{6}{7} x = 8
+\end{multiexearray*}
+Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr.
+\begin{multiexearray*}{4}
+  2x = 3 & 3x = 4 & 4x = 5 & 5x = 6 \\
+  6x = 7 & 7x = 8 & 8x = 9 & 9x = 10
+\end{multiexearray*}
+Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr. 
+
+\subexe{multiexearray -- erhöhter Abstand}
+
+Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr.
+
+\begin{multiexearray*}[2ex]{4}
+  \frac{1}{2} x = 3 & 
+  \frac{2}{3} x = 4 & 
+  \frac{3}{4} x = 5 & 
+  \frac{4}{5} x = 6 \\
+  \frac{5}{6} x = 7 & 
+  \frac{6}{7} x = 8 & 
+  \frac{7}{8} x = 9 & 
+  \frac{8}{9} x = 10
+\end{multiexearray*}
+
+Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr. 
+
+\exe{multiexearray -- normal}
+
+Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr. Lorem ipsum dolor sit amet, cons elitr. 
+
+
+\quest{questmcarray -- normal}
+
+\begin{questmcarray*}{4}
+	2x = 3 & 3x = 4 & 4x = 5 & 5x = 6 \\
+  6x = 7 & 7x = 8 & 8x = 9 & 9x = 10 \\
+  \frac{1}{2} x = 3 & 
+  \frac{2}{3} x = 4 & 
+  \frac{3}{4} x = 5 & 
+  \frac{4}{5} x = 6 \\
+  \frac{5}{6} x = 7 & 
+  \frac{6}{7} x = 8 & 
+  \frac{7}{8} x = 9 & 
+  \frac{8}{9} x = 10
+\end{questmcarray*}
+
+\quest{questmcarray -- erhöhter Abstand}
+
+\begin{questmcarray*}[1.5ex]{4}
+  \frac{1}{2} x = 3 & 
+  \frac{2}{3} x = 4 & 
+  \frac{3}{4} x = 5 & 
+  \frac{4}{5} x = 6 \\
+  \frac{5}{6} x = 7 & 
+  \frac{6}{7} x = 8 & 
+  \frac{7}{8} x = 9 & 
+  \frac{8}{9} x = 10
+\end{questmcarray*}
+
+\quest{questmcarrayalph -- normal}
+
+\begin{questmcarrayalph*}{4}
+	2x = 3 & 3x = 4 & 4x = 5 & 5x = 6 \\
+  6x = 7 & 7x = 8 & 8x = 9 & 9x = 10 \\
+  \frac{1}{2} x = 3 & 
+  \frac{2}{3} x = 4 & 
+  \frac{3}{4} x = 5 & 
+  \frac{4}{5} x = 6 \\
+  \frac{5}{6} x = 7 & 
+  \frac{6}{7} x = 8 & 
+  \frac{7}{8} x = 9 & 
+  \frac{8}{9} x = 10
+\end{questmcarrayalph*}
+
+\quest{questmcarrayalph -- erhöhter Abstand}
+
+\begin{questmcarrayalph*}[2ex]{4}
+	2x = 3 & 3x = 4 & 4x = 5 & 5x = 6 \\
+  6x = 7 & 7x = 8 & 8x = 9 & 9x = 10 \\
+  \frac{1}{2} x = 3 & 
+  \frac{2}{3} x = 4 & 
+  \frac{3}{4} x = 5 & 
+  \frac{4}{5} x = 6 \\
+  \frac{5}{6} x = 7 & 
+  \frac{6}{7} x = 8 & 
+  \frac{7}{8} x = 9 & 
+  \frac{8}{9} x = 10
+\end{questmcarrayalph*}
+
+\newpage
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+ 
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\begin{cols2}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+ 
+\colbreak
+ 
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{cols2}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua ut labore et dolore magna aliquyam erat, sed diam voluptua erat, sed diam voluptua.
+
+%\begin{cols2var}[0.75\linewidth]
+%Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+%
+%Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.
+%
+%\colbreak
+%
+%Lorem ipsum dolor sit amet.
+%
+%Consetetur sadipscing elitr, sed diam nonumy.
+%\end{cols2var}
+%
+%Lala Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.tempor invidunt ut labore et dolore 
+%
+%\begin{cols2var*}[0.75\linewidth]
+%Lala Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
+%
+%Ut labore et dolore magna aliquyam erat, sed diam voluptua.
+%\colbreak*
+%\centering
+%\begin{tikzpicture}[scale=0.75]
+%	\draw[->] (-1.5,0) -- (1.5,0) node[below]{$x$};
+%	\draw[->] (0,-1.5) -- (0,1.5) node[right]{$y$};
+%	\draw[thick] (0,0) circle (1.25);
+%\end{tikzpicture}
+%\end{cols2var*}
+
+
+\newpage
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\begin{itemize}
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  \begin{itemize}
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  \begin{itemize}
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{itemize}
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{itemize}
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{itemize}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\begin{enumerate}[nosep]
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\begin{enumerate}[nosep]
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\begin{enumerate}[nosep]
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{enumerate}
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{enumerate}
+  \item Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  \notehr
+  \item \notet{Lorem ipsum dolor} sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\end{enumerate}
+
+
+\newpage
+
+\subexe[2]{Zweite Unteraufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\[
+	\polylongdiv{x^3+6x^2+9x+4}{x+1}
+\]
+
+\begin{gather*}
+  \frac{a + b}{c + d} \qtext{oder} \frac{a + d}{c + a} \\
+  \frac{a + b}{c + d} \qqtext{oder} \frac{a + d}{c + a}
+\end{gather*}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\[
+\begin{gmatrix*}
+			 & & 4x_2 & - & 4x_3 & = &  8 \\
+			 && 2x_2 & + & 6x_3 & = & 20 \\
+				5x_1 & - & 3x_2 & + & x_3 & = & 5 \\ \\ 
+5x_1 & - & 3x_2 & + & x_3 & = & 5 \\
+&& 2x_2 & + & 6x_3 & = & 20 \\
+&  & 4x_2 & - & 4x_3 & = & 8
+\rowops
+\swap{0}{2}
+\mult{5}{\cdot (-2)}
+\add{5}{6}
+\end{gmatrix*}
+\]
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\[
+\begin{gmatrixp*}
+			  & 4 & -4 &8 \\
+			 & 2 & 6 & 20 \\
+				5 & 3 & 1 & 5
+\rowops
+\swap{0}{2}
+\end{gmatrixp*}
+\]
+
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+\[
+\begin{gmatrixp*}
+			  & 4 & -4 & \mvsep & 8 \\
+			 & 2 & 6 & \mvsep & 20 \\
+				5 & 3 & 1 & \mvsep & 5
+\rowops
+\swap{0}{2}
+\end{gmatrixp*}
+\]
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\begin{tabular}{lll} \toprule
+  \multicolumn{2}{c}{Achterbahn} & \\ \cmidrule(r){1-2}
+  Name & Land & Höhe \\ \headrule
+  Kingda Ka & USA & \SI{139}{\m} \\ \midrule
+  Top Thrill Dragster & USA & \SI{128}{\m} \\ \midrule
+  Superman: Escape from Crypton & USA & \SI{126,5}{\m} \\ \bottomrule
+\end{tabular}
+
+\subexe[1]{Zweite Unteraufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\subexe[1]{Dritte Unteraufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\exe[5]{Zweite Aufgabe}
+
+\subexe[2]{Erster Unteraufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\subexe[3]{Zweite Unteraufgabe}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+
+\begin{multiexelist}
+	\item $\vv{abcd}$
+	\item $\N \Z \Q \C \I \L$
+	\item $\ds\int_a^b$
+\end{multiexelist}
+
+\subexe[1]{Zeichnen von Vektoren}
+
+%\edusetup{
+%	multiexemargin=0pt,
+%	multiexesep=2em,
+%	multiexepointslabel=,
+%	multiexepointsleft=\{,
+%  multiexepointsright=\}
+%}
+
+
+
+\subexe[1]{Zeichnen von Vektoren}
+
+%\begin{multiexearray*}{4}
+%	\N \Z \Q \C \points{3} & \int_a^b f(x) & a + b + c \points*{3} & \sqrt[3]{\frac{3}{s}} 
+%\\
+%	\sqrt[3]{\frac{3}{s}} & \int_a^b f(x) & $(1, 2, \dots, 10)$ & $(1, 2, \dots, 10)$ \\
+%\end{multiexearray*}
+
+
+%\begin{multiexearrayi}[2ex]{4}
+%	
+%\end{multiexearrayi}
+
+\sol{Horsti}
+
+\subsol{Rechnen mit Vektoren}
+
+\sol{}
+
+\subsol{}
+
+\exe{Next}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+\begin{lstlisting}[caption=Auszug einer Kalibrierungsdatei.]
+public class HalloWelt {
+	public static void main(String[] args) {
+		System.out.println("Hallo Welt!");
+	}
+}
+\end{lstlisting}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, \lstinline!int a = 5! sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+
+
+\begin{bbpart}{0.25\linewidth}
+  \underline{Schritt 2:} Rückwärtseinsetzen
+		
+		%\vspace{-1.5\baselineskip}
+		Aus unterster Gleichung:
+		\begin{align*}
+%			-16x_3 &= -32 \\
+			\color{wuRed} x_3 &\color{wuRed} = 2
+		\end{align*}
+		Einsetzen in mittlere Gleichung:
+		\begin{align*}
+			-2x_2 - 6 \cdot 2 &= -20 \\
+			-2x_2 &= -8 \\
+			\color{wuRed} x_2 &\color{wuRed} = 4
+		\end{align*}		
+		Einsetzen in obere Gleichung:
+		\begin{align*}
+			5x_1 - 3 \cdot 4 + 2 &= 5 \\
+			5x_1 &= 15 \\
+			\color{wuRed} x_1 &\color{wuRed} = 3 \\
+			\Rightarrow \L &= \{(3;4;2)\}
+		\end{align*}	
+\end{bbpart}
+%
+\begin{bbfull}[c]
+  \begin{cols}
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, \lstinline!int a = 5! sed diam nonumy.
+  
+  Eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  
+  \colbreak
+  
+  \begin{tikzpicture}[scale=0.5]
+	\draw[very thick] (0,0) node[ below] {$A$} -- (5,0) node[below] {$B$} -- (7,3) node[above] {$C$} -- (2,3) node[above] {$D$} -- (0,0);
+	\draw[very thick, wuOrange] (3,0) -- node[right]{$h_g$} (3,3);
+	\draw[very thick, red] (0,0) -- node[below]{$g$} (5,0);
+	\draw[thick] (3.5,0) arc (0:90:0.5);
+	\fill (3.2, 0.2) circle (2pt);
+\end{tikzpicture}
+  \end{cols}
+\end{bbfull}
+%
+\begin{bbhalf}
+  
+\end{bbhalf}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, \lstinline!int a = 5! sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+
+\section{Ablauf -- Hochformat}
+
+\ttstart{9}{45}
+
+\ttentry[15]{HA}{%
+	\begin{itemizet}
+		\item HA kontrollieren
+		\item L. präsentiert HA auf OHP
+	\end{itemizet}
+}{LV}{F1}%
+\ttentry*[5]{Motivation}{%
+	\item Einführung: Wackelnder Tisch/Stuhl, Dreibeiniges Stativ
+	\item Hintergrund dieses Phänomens: Ebenen
+	\item 3D-Drucker
+}{LV}{Stativ,\newline W. Tisch/Stuhl,\newline F1}%
+\ttentry*[]{Erarbeitung}{%
+	\item S. erarbeiten Parametergleichung einer Ebene mithilfe AB1, A1+A2
+}{PA}{AB1, \newline AB1-Lösungen}%
+
+\ttable
+
+
+\ttstart{11}{15}
+
+\ttentry[1]{HA}{%
+	\begin{itemizet}
+		\item HA kontrollieren
+		\item L. präsentiert HA auf OHP
+	\end{itemizet}
+}{LV}{F1}%
+\ttentry*[5]{Motivation}{%
+	\item Einführung: Wackelnder Tisch/Stuhl, Dreibeiniges Stativ
+	\item Hintergrund dieses Phänomens: Ebenen
+	\item 3D-Drucker
+}{LV}{Stativ,\newline W. Tisch/Stuhl,\newline F1}%
+\ttentry*[]{Erarbeitung}{%
+	\item S. erarbeiten Parametergleichung einer Ebene mithilfe AB1, A1+A2
+}{PA}{AB1, \newline AB1-Lösungen}%
+\ttentry[35]{Erarbeitung}{%
+\begin{sequencet}
+  \itemta Lorem ipsum dolor sit amet, consetetur sadipscing elitr, \lstinline!int a = 5! sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  
+  Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  \itemts Bli Bla Blub
+  \itemss Lorem ipsum dolor sit amet, consetetur sadipscing elitr, \lstinline!int a = 5! sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  \itemsa Bli Bla Blub
+\end{sequencet}
+}{GA}{}%
+
+\ttable*[\section{Ablauf -- Querformat}]
+
+\vfill
+
+\newpage
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, \lstinline!int a = 5! sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+
+\begin{sequence}
+  \itemta Lorem ipsum dolor sit amet, consetetur sadipscing elitr, \lstinline!int a = 5! sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  
+  Nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  \itemts Bli Bla Blub
+  \itemss Lorem ipsum dolor sit amet, consetetur sadipscing elitr, \lstinline!int a = 5! sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+  \itemsa Bli Bla Blub
+\end{sequence}
+
+	
+\end{document}

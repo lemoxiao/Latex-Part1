@@ -1,0 +1,12 @@
+\contentsline {chapter}{\numberline {1}Elegant Note模板的由来}{3}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}长长的历史，长长的期待}{3}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}一张白纸折腾出一个模板}{4}{section.1.2}% 
+\contentsline {chapter}{\numberline {2}Elegant Note开服说明}{5}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}关于字体}{5}{section.2.1}% 
+\contentsline {section}{\numberline {2.2}文档说明}{5}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}编译方式}{5}{subsection.2.2.1}% 
+\contentsline {subsection}{\numberline {2.2.2}选项设置}{5}{subsection.2.2.2}% 
+\contentsline {subsection}{\numberline {2.2.3}数学环境简介}{6}{subsection.2.2.3}% 
+\contentsline {subsection}{\numberline {2.2.4}可编辑的字段}{6}{subsection.2.2.4}% 
+\contentsline {chapter}{\numberline {3}笔记写作示例}{7}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}灵魂不随便出卖，代码也不随便瞎写}{7}{section.3.1}% 

@@ -1,0 +1,140 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\input{defs}
+
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%
+% Title Page
+\title{\LaTeX\ template for business reports}
+\author{Karol Kozioł\\Company Name / Company Address}
+\date{\today}
+\summary{
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. 
+}
+%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+\clearpage
+
+\section{Features commands}
+
+\subsection{Titlepage}
+
+\begin{verbatim}
+\title{Report title}
+\author{Author / Company Name / Company Address / or something}
+\date{\today}
+\summary{Summary, blah, blah}
+\end{verbatim}
+
+\noindent
+Opening picture filename (in titlepage): \texttt{opening}\\
+Logo filename (in foot): \texttt{logo}
+
+\subsection{Boxes}
+
+\begin{verbatim}
+\fullboxbegin
+Content
+\fullboxend
+\end{verbatim}
+
+\begin{verbatim}
+\leftboxbegin
+Content
+\leftboxend
+\end{verbatim}
+
+\begin{verbatim}
+\rightboxbegin
+Content
+\rightboxend
+\end{verbatim}
+
+\begin{verbatim}
+\frameboxbegin{Frame Title}
+Content
+\frameboxend
+\end{verbatim}
+
+\newpage
+
+\section{First section}
+\lipsum[1]
+
+\fullboxbegin
+\lipsum[1]
+\fullboxend
+
+\lipsum[1]
+
+\subsection{First subsection}
+\lipsum[1]
+
+\leftboxbegin
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. 
+\leftboxend
+
+\lipsum[1-2]
+
+\rightboxbegin
+\begin{itemize}
+ \item Lorem ipsum
+ \item Lorem ipsum
+\end{itemize}
+\rightboxend
+
+\lipsum[1]
+
+\subsubsection{First subsubsection}
+
+\lipsum[1]
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.5\textwidth]{opening.jpg}
+\caption{The sky is the limit.}
+\end{figure}
+
+\section*{Unnumbered section}
+\lipsum[1]
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.5\textwidth]{opening.jpg}
+\caption*{The sky is the limit.}
+\end{figure}
+
+\section{Second section}
+
+\lipsum[1]
+\begin{table}[!h]
+\centering
+\caption{Sample table.}
+\begin{tabular}{cccc}
+\toprule
+Value 1 & Value 2 & Value 3 & Value 4\\
+\midrule
+ odd     & odd   & odd & 1.00 \\
+ even    & even  & even& 1.00 \\
+ odd     & odd   & odd & 1.00 \\
+ even    & even  & even& 1.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\lipsum[1]
+
+\frameboxbegin{Sample frame}
+\lipsum[1]
+\frameboxend
+
+\end{document}          

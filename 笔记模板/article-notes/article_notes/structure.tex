@@ -1,0 +1,68 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Article Notes
+% Structure Specification File
+% Version 1.0 (1/10/15)
+%
+% This file has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Authors:
+% Vel (vel@latextemplates.com)
+% Christopher Eliot (christopher.eliot@hofstra.edu)
+% Anthony Dardis (anthony.dardis@hofstra.edu)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	REQUIRED PACKAGES
+%----------------------------------------------------------------------------------------
+
+\usepackage[includeheadfoot,columnsep=2cm, left=1in, right=1in, top=.5in, bottom=.5in]{geometry} % Margins
+
+\usepackage[T1]{fontenc} % For international characters
+\usepackage{XCharter} % XCharter as the main font
+
+\usepackage{natbib} % Use natbib to manage the reference
+\bibliographystyle{apalike} % Citation style
+
+\usepackage[english]{babel} % Use english by default
+
+%----------------------------------------------------------------------------------------
+%	CUSTOM COMMANDS
+%----------------------------------------------------------------------------------------
+
+\newcommand{\articletitle}[1]{\renewcommand{\articletitle}{#1}} % Define a command for storing the article title
+\newcommand{\articlecitation}[1]{\renewcommand{\articlecitation}{#1}} % Define a command for storing the article citation
+\newcommand{\doctitle}{\articlecitation\ --- ``\articletitle''} % Define a command to store the article information as it will appear in the title and header
+
+\newcommand{\datenotesstarted}[1]{\renewcommand{\datenotesstarted}{#1}} % Define a command to store the date when notes were first made
+\newcommand{\docdate}[1]{\renewcommand{\docdate}{#1}} % Define a command to store the date line in the title
+
+\newcommand{\docauthor}[1]{\renewcommand{\docauthor}{#1}} % Define a command for storing the article notes author
+
+% Define a command for the structure of the document title
+\newcommand{\printtitle}{
+\begin{center}
+\textbf{\Large{\doctitle}}
+
+\docdate
+
+\docauthor
+\end{center}
+}
+
+%----------------------------------------------------------------------------------------
+%	STRUCTURE MODIFICATIONS
+%----------------------------------------------------------------------------------------
+
+\setlength{\parskip}{3pt} % Slightly increase spacing between paragraphs
+
+% Uncomment to center section titles
+%\usepackage{sectsty}
+%\sectionfont{\centering}
+
+% Uncomment for Roman numerals for section numbers
+%\renewcommand\thesection{\Roman{section}}

@@ -1,0 +1,169 @@
+% This is a template for BU-ECE Technical Report.
+%
+% Depending on report content and author preference, a BU-ECE report may be
+% in one of the two following styles:
+%
+%   - genuine report based on ``report'' style, i.e., with chapters, much like
+%     a thesis; can be single- or double-sided,
+%
+%   - report based on ``article'' style, i.e., with no chapters (only sections,
+%     subsections, etc.), much like a journal or conference paper; can be
+%     single- or double-sided.
+
+% =====================================================================
+
+%\documentclass[12pt]{report}          %Single-sided report style (chapters)
+%\documentclass[12pt,twoside]{report}  %Double-sided report style (chapters)
+%\documentclass[12pt]{article}         %Single-sided article style (no chapters)
+\documentclass[12pt,twoside]{article} %Double-sided article style (no chapters)
+
+\usepackage{bu_ece_report}
+
+% In case an adjustment of vertical or horizontal margins is needed
+% due to particular LaTeX/dvips or OS installation, you can uncomment
+% and edit the following definitions.
+% -------------------------------------------------------------------
+%\topmargin       0.00 in
+%\oddsidemargin   0.50 in
+%\evensidemargin  0.00 in
+
+\begin{document}
+
+% Definitions.
+% ------------
+\buecedefinitions%
+        {A VERY VERY VERY LONG LONG LONG TITLE TITLE TITLE TITLE OF THE REPORT}
+        {AN ABBREVIATED TITLE FOR RUNNING HEADERS}
+        {FullAuthor1, FullAuthor2 and FullAuthor3}
+        {Nov.\ 18, 2014}
+        {2014-6} % Number of the report (four year digits and number)
+
+% Box with title to fit the opening in the cover
+% (adds an empty page in double-sided printing mode).
+% ---------------------------------------------------
+\buecereporttitleboxpage
+
+% Title page
+% (adds an empty page in double-sided printing mode).
+% ---------------------------------------------------
+\buecereporttitlepage
+
+% Special page, e.g., if the report is restricted or
+% to whom it is dedicated, etc., otherwise skip.
+% (adds an empty page in double-sided printing mode).
+% ---------------------------------------------------
+\bueceprefacepage{Here comes a special preface page. For example, if the report
+is restricted, then a suitable note can be included. This page can also be used
+to indicate to whom the document is dedicated, etc.}
+
+% Report summary; max. 1 page.
+% (adds an empty page in double-sided printing mode).
+% ---------------------------------------------------
+\pagenumbering{roman}
+\setcounter{page}{1}
+\buecereportsummary{Summary of the report. Maximum 1 page.}
+
+% Table of contents, list of figures and list of tables.
+% ``\bueceemptypage'' adds empty page in double-sided
+% printing mode and performs ``\clearpage'' in single-sided
+% mode.
+% ------------------------------------------------------
+\tableofcontents\bueceemptypage
+\listoffigures\bueceemptypage
+\listoftables\bueceemptypage
+
+% Switch on running headers for the report:
+%   odd pages  - title (lowercase); if too long, use
+%                the first few words followed by ``...'',
+%   even pages - last names of the authors.
+% -------------------------------------------------------
+\buecereportheaders
+
+% Introduction.
+% -------------
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Introduction}  % Article style
+%\chapter{Introduction}  % Report style
+
+Here comes the introduction and reference to a paper \cite{Konr01cm}.
+
+% Following sections, subsections, etc.
+% -------------------------------------
+\section{Starting chapter}  % Article style
+%\chapter{Starting chapter}  % Report style
+
+This is how the first chapter starts.
+
+\subsection{Early section}  % Article style
+%\section{Early section}  % Report style
+
+And this is the first section of this chapter.
+
+\section{Another chapter}  % Article style
+%\chapter{Another chapter}  % Report style
+
+\subsection{New section}  % Article style
+%\section{New section}  % Report style
+
+Section goes here ...
+
+\section{Final chapter}  % Article style
+%\chapter{Final chapter}  % Report style
+
+\subsection{Another section}  % Article style
+%\section{Another section}  % Report style
+
+Section with a figure (Fig.~\ref{fig:example}).
+
+% Plots (PostScript files) are included through the ``figure'' environment.
+% For more complicated figures use the minipage commaned (see LaTeX manual).
+% --------------------------------------------------------------------------
+\begin{figure}[htb]
+%
+  \begin{minipage}[t]{0.49\linewidth}\centering
+%    \centerline{\epsfig{figure=figures/regbsdcod.eps,width=8.0cm}}
+    \Ovalbox{\vbox to 1.5in{\vfill\hbox{\vtop{\hsize=2.5in\hfill}\hfill}\vfill}}
+    \medskip
+    \centerline{(a)}
+  \end{minipage}\hfill
+%
+  \begin{minipage}[t]{0.49\linewidth}\centering
+%    \centerline{\epsfig{figure=figures/regbsdcod.eps,width=8.0cm}}
+    \Ovalbox{\vbox to 1.5in{\vfill\hbox{\vtop{\hsize=2.5in\hfill}\hfill}\vfill}}
+    \medskip
+    \centerline{(b)}
+  \end{minipage}
+
+  \bigskip
+
+  \begin{minipage}[t]{0.49\linewidth}\centering
+%    \centerline{\epsfig{figure=figures/regbsdcod.eps,width=8.0cm}}
+    \Ovalbox{\vbox to 1.5in{\vfill\hbox{\vtop{\hsize=2.5in\hfill}\hfill}\vfill}}
+    \medskip
+    \centerline{(c)}
+  \end{minipage}\hfill
+%
+  \begin{minipage}[t]{0.49\linewidth}\centering
+%    \centerline{\epsfig{figure=figures/regbsdcod.eps,width=8.0cm}}
+    \Ovalbox{\vbox to 1.5in{\vfill\hbox{\vtop{\hsize=2.5in\hfill}\hfill}\vfill}}
+    \medskip
+    \centerline{(d)}
+  \end{minipage}
+%
+  \caption{Block diagram: (a) one; (b) two; (c) three, and (d) four.}
+  \label{fig:example}
+\end{figure}
+
+% Bibliography.
+% -------------
+\parskip=0pt
+\parsep=0pt
+\bibliographystyle{ieeetrsrt}
+
+% Important: substitute your BiBTeX (*.bib) files below.
+% ------------------------------------------------------
+\bibliography{strings,konrad,manuals}
+
+\end{document}

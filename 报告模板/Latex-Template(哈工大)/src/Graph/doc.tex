@@ -1,0 +1,69 @@
+\documentclass[a4paper,11pt]{ctexart}
+
+\input{header.tex}
+
+% 部分使用说明
+% \begin{lstlisting}[language={C}]
+% 正式代码在此输入
+% \end{lstlisting}
+
+% \begin{codebox}
+% 伪代码在此输入
+% \end{codebox}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+
+% 页面正中央插入的图片及哈尔滨工业大学英文全称
+\includegraphics[width=0.8\textwidth]{./images/HIT.eps}\\[1cm]
+\textsc{\LARGE Harbin Institute of Technology}\\[1.5cm]
+
+% 标题
+\hrulefill \\[0.4cm]
+{ \huge \bfseries 大标题}\\[0.4cm]
+\hrulefill \\[1.5cm]
+
+% 作者和其他信息
+\begin{figure}[htb]
+    \begin{minipage}[b]{0.5\textwidth}
+    \begin{flushleft} \large% 左侧悬空
+
+    \end{flushleft}
+    \label{fig:left}
+  \end{minipage}%
+  \begin{minipage}[b]{0.5\textwidth}
+    \centering
+    \begin{flushright} \large% 右侧
+    \emph{作者:}姓名\\
+    \emph{学号:}学号
+    \end{flushright}
+    \label{fig:right}
+  \end{minipage}
+\end{figure}
+
+\vfill
+{\large \today}% 底部插入当日日期
+\end{center}
+\end{titlepage}
+
+\part*{摘要}
+\paragraph{关键词：}
+
+\tableofcontents            % 生成目录并隔开正文
+\newpage
+
+\part{正文}
+\section{测试参考文献}
+\cite{BiBTest}
+
+
+\section{参考文献}
+\bibliography{ref}
+\newpage
+\appendix
+\part{附录}
+
+
+\end{document} 

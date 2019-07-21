@@ -1,0 +1,25 @@
+BE Project Final Report Template In Latex
+================================
+
+Author : Mayank Jain
+
+Blog : [My Blog](http://firesofmay.blogspot.in/)
+
+For Details Check: [My Blog Post](http://firesofmay.blogspot.in/2012/04/final-be-project-report-template-in.html)
+
+
+Features :
+---------------
+- Main File is report.tex
+- Header/Footer as per format
+- Cover, Certificate, Company Certificate, Abstract, Ack files ready
+- Automatic Code Formatting
+- Easy to Add/Modify
+
+Tested and Recommended Software (on Linux) : Kile
+
+How to install in Ubuntu 
+
+    $ sudo apt-get install kile
+
+Enjoy!

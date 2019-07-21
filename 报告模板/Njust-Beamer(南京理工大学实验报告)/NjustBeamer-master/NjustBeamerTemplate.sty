@@ -1,0 +1,40 @@
+
+
+
+\mode<presentation>
+
+%\newif\ifbeamer@secheader
+%\beamer@secheaderfalse
+
+\ProcessOptionsBeamer
+
+%\usetheme{Berlin}
+\logo{\includegraphics[height=0.75cm]{logo.png}}
+
+\useinnertheme{rectangles}
+\useoutertheme[footline=authorinstitutetitle]{miniframes}
+\usecolortheme{dolphin}
+\usecolortheme{orchid}
+%\useinnertheme{rectangles}
+
+%\xdefinecolor{tsinghua}{rgb}{0.455,0.204,0.506}  %RGB#82318E
+\xdefinecolor{njust}{RGB}{128,50,128}
+\setbeamercolor{structure}{fg=njust!80!black}
+\setbeamercolor{frametitle}{fg=njust}
+\setbeamercolor{section in toc}{fg=njust,bg=white}
+
+\setbeamercolor{item}{fg=structure.fg!90!white}
+
+\setbeamercolor{palette sidebar primary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{palette sidebar quaternary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar secondary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar tertiary}{use=normal text,fg=normal text.fg}
+
+%\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{footline}[frame number,miniframes theme]
+
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+
+
+\mode
+<all>

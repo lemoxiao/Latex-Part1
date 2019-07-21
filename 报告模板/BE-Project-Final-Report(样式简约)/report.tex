@@ -1,0 +1,143 @@
+%-----Main FIle------
+%For Detail check out - http://firesofmay.blogspot.com/2011/10/latex-project-report-template
+%CHANGE THESE Settings ONLY IF YOU KNOW WHAT YOU DOING
+
+\documentclass[12pt,a4paper]{report}
+
+%adjust your page margins here
+\usepackage[top=0.70in, bottom=0.70in, left=0.8in,right=0.80in]{geometry} % setting the page alignment with this package
+\usepackage[pdftex]{graphicx} %for embedding images
+%\usepackage[hyphens]{url} %for proper url entries
+\usepackage[dvips, bookmarks, colorlinks=false]{hyperref} %for creating links in the pdf version and other additional pdf attributes, no effect on the printed document
+\usepackage[final]{pdfpages} %for embedding another pdf, remove if not required
+\usepackage{float} %used for figure placement with H as a parameter
+%\usepackage[hyphens]{url}
+%\usepackage{hyperref}
+\usepackage{pslatex} % for times new roman, old package, but works
+\usepackage{array} % for making text bold in table
+
+
+%For inserting Python Code
+\usepackage{listings}
+\usepackage{color}
+ 
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+ 
+\lstset{ %
+  language=Python,                % the language of the code
+  basicstyle=\footnotesize,           % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % each line is numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{dkgreen},       % comment style
+  stringstyle=\color{mauve},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add a comment within your code
+  morekeywords={*,...}               % if you want to add more keywords to the set
+}
+
+%%%%For inserting Python Code Over
+
+
+
+%For the header and footer
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{%
+%\fancyhf{} % clear all header and footer fields
+\fancyfoot[L]{\emph{This project is a Proof of Concept of Social Engineering Attack on Facebook using Web Scraping and Two Man in the middle attack Technique.}} % except the center
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+}
+
+\pagestyle{fancy}
+\lhead{Chapter \thechapter}
+\renewcommand{\chaptermark}[1]{% 
+\markboth{#1}{}} 
+
+\fancyfoot[LO,LE]{\emph{This project is a Proof of Concept of Social Engineering Attack on Facebook using Web Scraping and Two Man in the middle attack Technique.}}
+\cfoot{}
+\fancyfoot[RO, RE]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+%For the header and footer Over
+
+% Altering the Index Page Title
+%\renewcommand{\contentsname}{\begin{center}\textsc{University Of Pune \\2011 - 2012}\\[1cm]Index\end{center}} 
+
+
+%GLOBAL SETTINGS OVER, DOCUMENT BEGINS
+\begin{document}
+
+%Renames "Bibliography" to "References" on ref page
+\renewcommand\bibname{References} 
+
+%FROM HERE YOUR PAGES START GETTING ADDED
+
+% includes the cover page
+\input{cover.tex} 
+\newpage
+
+% includes the certificate page
+\input{certificate.tex} 
+\newpage
+
+% includes the acknowledgements page
+\input{acknowledgements.tex} 
+\newpage
+
+% includes the company 	certificate page
+\input{companycert.tex} 
+\newpage
+
+\input{abstract.tex} % adds the Research Methodology page
+\newpage
+
+%TABLE OF CONTENTS AND LIST OF FIGURES ARE AUTOMATICALLY ADDED BY FOLLOWING COMMANDS
+%ADD FIGURE OF TABLES IF YOU NEED TO, CHECK DOCUMENTATION
+\pagenumbering{roman} %numbering before main content starts
+
+
+%To reset the Header & Footer for TOC and LOF
+\pagestyle{empty}
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\tableofcontents % adds Index Page
+
+%\pagestyle{empty}
+
+\addtocontents{lof}{\protect\thispagestyle{empty}}
+\listoffigures % adds List of Figures
+\cleardoublepage
+
+%And reset back the settings we choose for Header and Footer
+\pagestyle{fancy}
+
+\newpage
+\pagenumbering{arabic} %reset numbering to normal for the main content
+
+\input{introduction.tex} % adds the introduction page
+\input{literature-survey.tex} % adds the Literatu	re Survey page
+\input{proposed-work.tex} % adds the Project Work page
+\input{research-methodology.tex} % adds the Research Methodology page
+\input{project-design.tex} % adds the Project Design
+\input{implementation.tex} % adds the Project Design
+\input{schedule.tex} % adds the Scheduling and Planning page
+\input{conclusion.tex} % adds the Scheduling and Planning page
+\input{ref.tex} % adds the References page
+
+\end{document}

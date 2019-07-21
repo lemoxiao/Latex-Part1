@@ -1,0 +1,98 @@
+\documentclass[a4paper]{ctexrep}
+\usepackage[colorlinks,linkcolor=black]{hyperref}
+\usepackage{listings, geometry, amsmath}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\setmonofont[Mapping={}]{Monaco}	%英文引号之类的正常显示，相当于设置英文字体
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\lstset{ % 代码高亮
+	backgroundcolor=\color{white},   % choose the background color
+	basicstyle=\footnotesize\ttfamily,        % size of fonts used for the code
+	columns=fullflexible,
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=0.5em,		% how far the line-numbers are from the code
+	breaklines=true,                 % automatic line breaking only at whitespace
+	captionpos=t,                    % sets the caption-position to bottom
+	tabsize=4,
+	frame = single,
+	framexleftmargin=2em,
+	commentstyle=\color{mygreen},    % comment style
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	keywordstyle=\color{blue},       % keyword style
+	stringstyle=\color{mymauve}\ttfamily,     % string literal style
+	rulecolor=\color{black},
+	% identifierstyle=\color{red},
+	language=c++,
+	showtabs = false,
+	showstringspaces = false,
+	showspaces = false,
+}
+
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
+
+\hypersetup{
+	pdftitle={实验报告模板},
+	pdfauthor={Netcan},
+	pdfsubject={模板},
+	pdfkeywords={},
+}
+
+\ctexset {
+	chapter = {
+		name = {实验, },
+	},
+	section = {
+		number = \arabic{section},
+		format = \Large\bfseries,
+	},
+	subsection = {
+		number = \arabic{section}.\arabic{subsection},
+	}
+}
+
+\begin{document}
+	\begin{titlepage} % 封面
+		\begin{center}
+		\includegraphics[width=12cm]{cover.png}\\[1cm]
+		{\zihao{2} \kaishu \textbf{计算机与信息学院}\\[0.5cm]
+		\textbf{实验报告}\\[3cm]}
+		
+		\vspace*{\fill}
+		\begin{tabular}{l}
+			\zihao{3}\songti
+			专业班级 xxx\\[0.5cm]\zihao{3}\songti
+			姓名学号 xxx\\[0.5cm]\zihao{3}\songti
+			教学班号 xxx\\[0.5cm]\zihao{3}\songti
+			任课教师 xxx\\[0.5cm]\zihao{3}\songti
+			指导教师 xxx\\[0.5cm]\zihao{3}\songti
+			实验地点 xxx
+		\end{tabular}
+
+		\vspace*{\fill}
+		{\zihao{3} \songti 2016\textasciitilde 2017学年第一学期}\\[0.5cm]
+		{\zihao{4} \songti 使用\LaTeX 撰写于\today}
+		\end{center}
+	\end{titlepage}
+\tableofcontents % 目录
+\chapter{}
+\section{实验目的}
+
+\section{实验要求}
+
+\section{实验内容}
+
+\section{实验步骤}
+输出helloworld:
+
+\begin{lstlisting}
+#include <stdio.h>
+int main() {
+	printf("Hello World!\n");
+	return 0;
+}
+\end{lstlisting}
+\section{实验总结}
+
+\end{document}

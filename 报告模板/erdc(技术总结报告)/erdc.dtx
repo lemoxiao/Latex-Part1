@@ -1,0 +1,1928 @@
+% \iffalse
+% $Id: erdc.dtx,v 1.31 2009-07-24 19:46:11 boris Exp $
+%
+% Copyright 2008, Boris Veytsman
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either
+% version 1.3 of this license or (at your option) any 
+% later version.
+% The latest version of the license is in
+%    http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of
+% LaTeX version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Boris Veytsman,
+% <borisv@lk.net> 
+%
+% This work consists of the file erdc.dtx and the
+% derived file erdc.cls
+%
+% \fi 
+% \CheckSum{1374}
+%
+%
+%% \CharacterTable
+%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%   Digits        \0\1\2\3\4\5\6\7\8\9
+%%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%%   Dollar        \$     Percent       \%     Ampersand     \&
+%%   Acute accent  \'     Left paren    \(     Right paren   \)
+%%   Asterisk      \*     Plus          \+     Comma         \,
+%%   Minus         \-     Point         \.     Solidus       \/
+%%   Colon         \:     Semicolon     \;     Less than     \<
+%%   Equals        \=     Greater than  \>     Question mark \?
+%%   Commercial at \@     Left bracket  \[     Backslash     \\
+%%   Right bracket \]     Circumflex    \^     Underscore    \_
+%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%   Right brace   \}     Tilde         \~} 
+%
+%\iffalse
+% Taken from xkeyval.dtx and amsdtx.dtx
+%\fi
+%\makeatletter
+%\def\DescribeOption#1{\leavevmode\@bsphack
+%              \marginpar{\raggedleft\PrintDescribeOption{#1}}%
+%              \SpecialOptionIndex{#1}\@esphack\ignorespaces}
+%\def\PrintDescribeOption#1{\strut\emph{option}\\\MacroFont #1\ }
+%\def\SpecialOptionIndex#1{\@bsphack
+%    \index{#1\actualchar{\protect\ttfamily#1}
+%           (option)\encapchar usage}%
+%    \index{options:\levelchar#1\actualchar{\protect\ttfamily#1}\encapchar
+%           usage}\@esphack}
+%\def\DescribeOptions#1{\leavevmode\@bsphack
+%  \marginpar{\raggedleft\strut\emph{options}%
+%  \@for\@tempa:=#1\do{%
+%    \\\strut\MacroFont\@tempa\SpecialOptionIndex\@tempa
+%  }}\@esphack\ignorespaces}
+% \def\cls#1{\texttt{#1}}
+% \def\cs#1{\textbackslash\texttt{#1}}
+% \let\cn\cs
+%\makeatother
+% \newcommand{\progname}[1]{\textsf{#1}}
+%
+% \MakeShortVerb{|}
+% \GetFileInfo{erdc.dtx}
+% \title{\LaTeX{} Style For Technical Information
+%                  Reports of the Engineer Research and
+%                  Development Center
+%   \thanks{\copyright 2009, Boris Veytsman}}
+% \author{Boris Veytsman\thanks{%
+% \href{mailto:borisv@lk.net}{\texttt{borisv@lk.net}},
+% \href{mailto:boris@varphi.com}{\texttt{boris@varphi.com}}}} 
+% \date{\filedate, \fileversion}
+% \maketitle
+% \begin{abstract}
+%   This package provides class for typesetting Technical Information
+%   Reports of the Engineer Research and Development Center, US Army
+%   Corps of Engineers.
+% \end{abstract}
+% \tableofcontents
+%
+% \clearpage
+% \changes{v0.1}{2009/03/20}{First fully functional version} 
+% \changes{v1.0}{2009/07/22}{Bug fixes} 
+% \changes{v1.1}{2009/07/22}{Documentation Update} 
+%
+%\section{Introduction}
+%\label{sec:intro}
+%
+% Technical publications for Engineer Research and Development Center,
+% US Army Corps of Engineers follow an elaborate
+% style~\cite{ERDC_Guide}.  This style is accompanied by templates for
+% a popular word processor software.  In this class, commissioned by US
+% Army Corps of Engineers, we try to recreate this style for \LaTeX.
+%
+% There are several kinds of documents described by~\cite{ERDC_Guide}:
+% Technical Report, Technical Note, Miscellaneous Paper, Contract
+% Report, Letter Report, Monograph, Special Report, Brochure.  In this
+% class we follow the guidelines for Technical Reports (TR).  However,
+% it can be used for other kinds of documents as long as they do not
+% differ much from Technical Reports.  
+%
+%
+%\section{User Guide}
+%\label{sec:user_guide}
+%
+%
+%
+%\subsection{Installation}
+%\label{sec:ug_install}
+%
+% The class uses a number of \LaTeX{} packages.  Normally they should be
+% present in any up-to-date distribution.  If you do not have them,
+% you can download them using the links below prior to using the class.
+%
+% You will need \progname{mathgifg}~\cite{Mathgifg}: the
+% \LaTeX{} package providing the access to Microsoft Georgia and ITC
+% Franklin Gothic.
+% Of course you will need the fonts themselves.  You will also need
+% \progname{graphics} bundle~\cite{Carlisle05:Graphics}, packages
+% \progname{geometry}~\cite{Umeki08:Geometry},
+% \progname{caption}~\cite{Sommerfeldt07:Caption},
+% \progname{ragged2e}~\cite{Schroeder03:Ragged2e},
+% \progname{longtable}~\cite{Carlisle04:Longtable},
+% \progname{dcolumn}~\cite{Carlisle01:Dcolumn}.
+% \progname{fancyhdr}~\cite{Oostrum04:Fancyhdr},
+% \progname{natbib}~\cite{Daly07:Natbib} and
+% \progname{amsmath}~\cite{amsldoc}.
+%
+%
+% The installation of the class follows the usual
+% practice~\cite{TeXFAQ} for \LaTeX{} packages:
+% \begin{enumerate}
+% \item Run \progname{latex} on |erdc.ins|.  This will produce the
+% \LaTeX{} class |erdc.cls|.
+% \item Put the files |erdc.cls|, |red_corps_castle2.eps| and
+%   |red_corps_castle2.pdf| to the place where \LaTeX{} can find it
+%   (see \cite{TeXFAQ} or the documentation for your \TeX{}
+%   system).\label{item:install}
+% \item Update the database of file names.  Again, see \cite{TeXFAQ}
+% or the documentation for your \TeX{} system for the system-specific
+% details.\label{item:update}
+% \item The file |erdc.pdf| provides the documentation for the
+% package (this is the file you are probably reading now).
+% \end{enumerate}
+% As an alternative to items~\ref{item:install} and~\ref{item:update}
+% you can just put the file |erdc.cls| in the working directory
+% where your |.tex| file is.
+%
+%
+%\subsection{Invocation}
+%\label{sec:ug_invocation}
+%
+% To use the class, put in the preamble of your document
+% \begin{flushleft}
+% |\documentclass[|\meta{options}|]{erdc}|
+% \end{flushleft}
+%
+% The class should work both with |latex| and |pdflatex| work flows.
+% Accordingly it is supplied with US Army Corps of Engineers in both
+% EPS and PDF formats.  
+%
+%
+% The class recoginzes the standard \LaTeX{} options, shared by the
+% most document classes~\cite{Lamport94}.
+% \DescribeOptions{8pt,9pt,10pt,11pt,12pt} The default font size
+% changing options (|8pt|, |9pt|, \dots, |12pt|) have no effect other
+% than producing a warning in the log since the font sizes of the
+% class are fixed by the guidelines~\cite{ERDC_Guide}. 
+%
+%
+%\subsection{Front Matter}
+%\label{sec:ug_frontmatter}
+%
+% \DescribeMacro{\frontmatter}.
+% The command |\frontmatter| starts the \emph{Front Matter} of the
+% document.  This part includes title page, table of contents, list of
+% figures, list of tables.
+%
+% \DescribeMacro{\laboratory}
+% The cover page of the Technical Report should have the center name
+% for Center-level reports or laboratory name for laboratory level
+% reports.  By default a technical report is assumed to be a
+% Center-level one, and the center name (Engineering Research and
+% Development Center) is printed in the cover page.  The macro
+% |\laboratory|\marg{Laboratory Name} overrides this default, for example:
+% \begin{verbatim}
+% \laboratory{Cold Regions Research and Engineering Laboratory}
+% \end{verbatim}
+% A line break command |\\| can be used inside this command to achieve
+% a desirable line break in the laboratory name if the automatic one
+% is not right.
+%
+% 
+% \DescribeMacro{\reportnum}
+% The command |\reportnum|\marg{Report Number} is used to store the
+% project number.  For example,
+% \begin{verbatim}
+% \reportnum{ERDC/CRREL SR-05-78}
+% \end{verbatim}
+% The report number should include the laboratory abbreviation as its
+% prefix.  
+%
+% \DescribeMacro{\program}
+% The command |\program|\marg{Program Title} is used to store the
+% title of the program.  For example,
+% \begin{verbatim}
+% \program{Military Engineering Technology}
+% \end{verbatim}
+% 
+% \DescribeMacro{\title} The command |\title| is used to store project
+% name:  |\title|\marg{Title}.  For example:
+% \begin{verbatim}
+% \title{A New Project}
+% \end{verbatim}
+% 
+% \DescribeMacro{\subtitle}
+% The command |\subtitle|\marg{Sub Title} us used to store the project
+% subtitle.  For example,
+% \begin{verbatim}
+% \subtitle{Model Investigation}
+% \end{verbatim}
+% 
+% \DescribeMacro{\date}
+% The macro |\date| stores the date of the document, for example
+% \begin{verbatim}
+% \date{March 2009}
+% \end{verbatim}
+%
+%
+% \DescribeMacro{\author}
+% \DescribeMacro{\affiliation}
+% \DescribeMacro{\and}
+% The macro |\author|\marg{Authors} stores the
+% names of authors that share the same affiliation.  The authors with
+% the same affiliation 
+% should be listed in the same |\author| macro, separated by the
+% keyword |\and|.  Do not put commas and the word ``and'' between the
+% authors' names:  \LaTeX{}
+% will take care of the proper punctuation.  The macro
+% |\affiliation|\marg{Affiliation} stores the affiliation of the
+% authors immediately preceding this command.  If a report is prepared
+% by several laboratories, or a laboratory and an outside contractor,
+% then you should list the authors with the same affiliation, then
+% show the affiliation, then repeat for the next affiliation.  For example:
+% \begin{verbatim}
+% \author{A. U. Thor \and C. O. R. Respondent \and C. O. Author}
+% \affiliation{Construction Engineering Research Laboratory\\
+%   U.S. Army Engineer Research and Development Center\\
+%   2902 Newmark Drive\\
+%   Champaign, IL 61826-9005}
+% \author{John M. Smith}
+% \affiliation{Coastal and Hydraulics Laboratory\\
+%   U.S. Army Engineer Research and Development Center\\
+%   3909 Halls Ferry Road\\
+%   Vicksburg, MS 39180-6199}
+% \end{verbatim}
+% Note that the guidelines~\cite{ERDC_Guide} do not say how to typeset
+% the authors that have several affiliations.  Accordingly we do not
+% deal with this case here.
+%
+% \DescribeMacro{\coverart}
+% It is recommended to put some artwork on the cover of the title
+% page.  It is set up by
+% the command |\coverart[|\meta{options}|]|\marg{file}.  The syntax of the
+% command is the same as the syntax of the command |\includegraphics|
+% of the \progname{graphicx} package~\cite{Carlisle05:Graphics}.  The
+% obligatory argument \marg{file} is the name of the graphics file
+% with the logo, and \oarg{options}, if present, may, for example, set
+% the dimensions of the graphics.  By default the graphics is scaled
+% to cover the full width of the page.  Note that our class uses the
+% ``extended'' version \progname{graphicx} of the package with its
+% ``key-value'' syntax.  For example,
+% \begin{verbatim}
+% \coverart[width=2in]{red_corps_castle2.eps}
+% \end{verbatim}
+% The format of the graphics file depends on the \TeX{} engine used.
+% If you use
+% \progname{latex}$\to$\progname{dvips}$\to$\progname{pstopdf} route,
+% then you need PostScript files (PS or EPS).  If you use
+% \progname{pdflatex} engine, then you need graphics files in JPEG,
+% PNG or PDF formats (see~\cite{TeXFAQ} for more information).
+%
+%
+% \DescribeMacro{\reporttype}
+% The type of the report is stored in the macro
+% |\reporttype|\marg{type}, for example:
+% \begin{verbatim}
+% \reporttype{Final Report}
+% \end{verbatim}
+% 
+% \DescribeMacro{\distribution}
+% All reports should have a distribution statement.  There are several
+% standard distribution statements, approved by  Department of Defense
+% Directive~5230.24~\cite{DoD5230.24}.  By default the reports have
+% Statement~A: \emph{Approved for public release; distribution is
+% unlimited.}  To change the default, use the macro
+% |\distribution|\marg{Distribution Statement}, for example
+% \begin{verbatim}
+% \distribution{Distribution authorized to U.S. Government Agencies
+% only; Test and Evaluation; November 2005.  Other requests should be
+% referred to U.S. Army Engineer Research and Development Center}
+% \end{verbatim}
+% 
+% \DescribeMacro{\preparedfor}
+% By default the reports have the phrase \emph{Prepared for U.S. Army
+% Corps of Engineers, Washington, DC 20314-1000} on the title page.
+% To change this designation, use the command |\preparedfor|, for
+% example,
+% \begin{verbatim}
+% \preparedfor{U.S. Army Engineer Research and Development Center\\
+% 3909 Halls Ferry Road, Vicksburg, MS 39180-6199} 
+% \end{verbatim}
+% To delete this phrase altogether, use |\preparedfor{}|.
+%
+% \DescribeMacro{\contractnum}
+% Contract or work unit number is set by |\contractnum| command, for example
+% \begin{verbatim}
+% \contractnum{Work Unit 33143}
+% \end{verbatim}
+% 
+% \DescribeMacro{\monitoredby}
+% Contract reports are monitored by a controlling laboratory.  Its
+% name and address is set by this command, for example
+% \begin{verbatim}
+% \monitoredby{U.S. Army Engineer Research and Development Center\\
+% 3909 Halls Ferry Road, Vicksburg, MS 39180-6199}
+% \end{verbatim}
+% 
+%
+%
+% \DescribeMacro{\additionalinfo}
+% The command |\additionalinfo|\marg{Additional Information} is used
+% to store additional information for the title page, for example,
+% \begin{verbatim}
+% \additionalinfo{Supercedes TR-2345-12345}
+% \end{verbatim}
+% 
+% \DescribeMacro{abstract}
+% The abstract of the report is set using the environment |abstract|:
+% \begin{verbatim}
+% \begin{abstract}
+%   This report disusses spins of electrons, protons and other
+%   fermions. 
+% \end{abstract}
+% \end{verbatim}
+% 
+% \DescribeMacro{\disclaimer}
+% By default all reports have the standard disclaimer.  If its text
+% should be changed for any reason, use the macro
+% |\disclaimer|\marg{New Disclaimer}, for example
+% \begin{verbatim}
+% \disclaimer{The contents of this report are not to be used for
+% advertising, publication, or promotional purposes. Citation of trade
+% names does not constitute an official endorsement or approval of the
+% use of such commercial products. All product names and trademarks
+% cited are the property of their respective owners. The findings of
+% this report are not to be construed as an official Department of the
+% Army position unless so designated by other authorized documents. 
+%
+% \textbf{DESTROY THIS REPORT WHEN NO LONGER NEEDED. DO NOT RETURN IT
+% TO THE ORIGINATOR.}}
+% \end{verbatim}
+% 
+%
+% \DescribeMacro{\maketitle}
+% The command |\maketitle| typesets the cover page, title page and
+% abstract page
+% of the report based on the data supplied by the macros above.  It
+% should therefore be issued \emph{after} these macros.
+%
+%
+% \DescribeMacro{\tableofcontents}
+% \DescribeMacro{\listoffigures}
+% \DescribeMacro{\listoftables}
+% \DescribeMacro{\listoffiguresandtables}
+% Table of contents is typeset with
+% the usual \LaTeX{} command~\cite{Lamport94} |\tableofcontents|.
+% This situation with the list of tables and the list of figures is
+% slightly more involved.  The guidelines~\cite{ERDC_Guide} require
+% the authors to combine the lists into the common list called
+% ``Figures and Tables'', which is subdivided into Figures and
+% Tables.  The heading of this joint list is a chapter heading, while
+% the headings of the sublists are on the section level.  However, the
+% guidelines say nothing about the situation where a report has only
+% figures or only tables.  Therefore we chose the following solution:
+% \begin{enumerate}
+% \item If you have \emph{both} figures and tables, use 
+%   |\listoffiguresandtables|.  It will automatically typeset both
+%   lists according to the requirements~\cite{ERDC_Guide}
+% \item If you have \emph{only} figures or \emph{only} tables, use either
+%   |\listoffigures| or |\listoftables| correspondingly.  In this case
+%   the heading will be typeset on the chapter level.
+% \item If you have neither (probably a rare situation), do not use
+%   any of these commands.
+% \end{enumerate}
+% 
+% \DescribeMacro{\chapter}
+% In the front matter the command |\chapter| produces an
+% \emph{unnumbered} chapter, so the commands |\chapter{Preface}| and
+% |\chapter*{Preface}|  give the same result (see also
+% Section~\ref{sec:ug_mainmatter} below).
+%
+%
+%\subsection{Main Matter}
+%\label{sec:ug_mainmatter}
+%
+% \DescribeMacro{\mainmatter}
+% The main matter starts with the macro |\mainmatter|.  The text is
+% divided into chapters, sections and subsections in the usual
+% \LaTeX{} manner. 
+% All familiar \LaTeX{} commands and packages should work without
+% problems.  Note that unlike articles, reports have chapters as the
+% highest subdivisions.  The chapters are numbered, while sections and
+% subsections are not.
+%
+% \DescribeMacro{\chapter}
+% \DescribeMacro{\chapter*}
+% One important difference between the standard \LaTeX{} and our class
+% is the following.  In standard \LaTeX{} the starred command
+% |\chapter*| produces an unnumbered chapter, that does not go into
+% the table of contents.  In our class \emph{all} chapters, numbered
+% or not, go into the table of contents.
+%
+% Tables should have the caption \emph{above} the tabular material
+% rather than below it as in standard \LaTeX.  The class automatically
+% sets the proper spacing for this arrangement, but it is the user's
+% responsibility to put the |\caption| command before the |tabular|
+% environment, for example
+% \begin{verbatim}
+% \begin{table}
+%   \centering
+%   \caption{Yearly Dividens}
+%   \label{tab:dividends}
+%   \footnotesize\sffamily
+%   \begin{tabular}{||l|D{.}{.}{2.2}||}
+%     \hline\hline
+%     \textbf{Year}  &  \multicolumn{1}{|c||}{\textbf{Dividends, \%}}\\
+%     \hline\hline
+%     $1880$  & 2.50  \\
+%     \hline
+%     $1881$  & 12.1  \\
+%     \hline
+%     $1882$  & 2.6  \\
+%     \hline\hline
+%   \end{tabular}
+% \end{table}
+% \end{verbatim}
+% Note that the guidelines~\cite{ERDC_Guide} recommend excessive rules
+% in the tables, with borders around the cells, as shown in the
+% example above.  This is usually frowned upon in the good typesetting
+% practice.  
+%
+% The guidelines~\cite{ERDC_Guide} recommend use footnotesize sans
+% serif entries in the tables itself.  The class does \emph{not} do
+% this automatically:  the users should put |\footnotesize\sffamily|
+% before |\begin{tabular}|, as shown in the example above.
+%
+% The guidelines require the centering of numerical columns on decimal
+% point.  The class automatically loads \progname{dcolumn} package, so
+% to get aligned columns use the special column designator
+% |D{.}{.}|\marg{n.m} where $n$ and $m$ are the numbers of decimal
+% points before and after the dot correspondingly. It is possible to
+% achieve other effects with this package like centering on the
+% multiplication sign;  see the
+% documentation~\cite{Carlisle01:Dcolumn} for further information.  
+% 
+% \DescribeMacro{\fbox}
+% The guidelines~\cite{ERDC_Guide} require the graphics to be
+% surrounded by a hairline box.  This is done by the standard |\fbox|
+% command, for example
+% \begin{verbatim}
+% \begin{figure}
+%   \centering
+%   \fbox{\includegraphics[width=3in]{plot}}
+%   \caption{Plot of $f(x)$}
+%   \label{fig:plot}
+% \end{figure}
+% \end{verbatim}
+% 
+% The guidelines~\cite{ERDC_Guide} require equations to be
+% individually centered.
+% This probably precludes the use of |eqnarray| environment and such
+% \progname{amsmath} constructions as |align|, |aligned|, |alignedat|
+% etc. 
+%
+%
+%
+%\subsection{Back Matter}
+%\label{sec:ug_backmatter}
+%
+% \DescribeMacro{\appendix} 
+% Back matter in ERDC reports consists of
+% the bibliography, appendices and distribution forms.  The standard
+% \LaTeX{} command |\appendix| changes the numeration of chapters
+% according to the rules~\cite{ERDC_Guide}.  It should be issued after
+% the bibliography, but before the appendices.
+%
+% 
+% The reports should contain Form~298 (see, for example,
+% \url{http://www.ntis.gov/pdf/rdpform.pdf}).  This form should be
+% typeset separately.
+%
+%\StopEventually{%
+%
+%\subsection{Acknowledgements}
+%\label{sec:ack}
+%
+% The class was commissioned and paid for by US Army Corps of
+% Engineers, Engineer Research and Development Center, 3909 Halls
+% Ferry Road, Vicksburg, MS 39180-6199.
+% 
+% I am grateful to Gordon L. Cohen, ERDC-ITL-IL for the detailed
+% explanations of the ERDC guidelines, to Christopher E. Kees,
+% ERDC-CHL-MS and Ryan E. North, ERDC-GSL-MS, for the formatting
+% suggestions and the patient 
+% recompilation of the reports with each new version of the style.
+%
+% \clearpage
+% \bibliography{erdc}
+% \bibliographystyle{unsrt}}
+% \clearpage
+%\section{Implementation}
+%\label{sec:impl}
+%
+%\subsection{Identification}
+%\label{sec:ident}
+%
+% We start with the declaration who we are.  Most |.dtx| files put
+% driver code in a separate driver file |.drv|.  We roll this code into the
+% main file, and use the pseudo-guard |<gobble>| for it.
+%    \begin{macrocode}
+%<class>\NeedsTeXFormat{LaTeX2e}
+%<*gobble>
+\ProvidesFile{erdc.dtx}
+%</gobble>
+%<class>\ProvidesClass{erdc}
+[2009/07/22 v1.1 Typesetting Technical Information Reports of 
+the Engineer Research and Development Center (ERDC), 
+US Army Corps of Engineers]
+%    \end{macrocode}
+%
+% And the driver code:
+%    \begin{macrocode}
+%<*gobble>
+\documentclass{ltxdoc}
+\usepackage{array}
+\usepackage{url,amsfonts}
+\usepackage[breaklinks,colorlinks,linkcolor=black,citecolor=black,
+            pagecolor=black,urlcolor=black,hyperindex=false]{hyperref}
+\PageIndex
+\CodelineIndex
+\RecordChanges
+\EnableCrossrefs
+\begin{document}
+  \DocInput{erdc.dtx}
+\end{document}
+%</gobble> 
+%<*class>
+%    \end{macrocode}
+%
+%
+%\subsection{Options}
+%\label{sec:options}
+%
+% \begin{macro}{\erdc@size@warning}
+% The font-changing options are not used in our setup, so we just
+% produce a warning:
+%    \begin{macrocode}
+\long\def\erdc@size@warning#1{%
+  \ClassWarning{erdc}{Size-changing option #1 will not be
+    honored}}%
+\DeclareOption{8pt}{\erdc@size@warning{\CurrentOption}}%
+\DeclareOption{9pt}{\erdc@size@warning{\CurrentOption}}%
+\DeclareOption{10pt}{\erdc@size@warning{\CurrentOption}}%
+\DeclareOption{11pt}{\erdc@size@warning{\CurrentOption}}%
+\DeclareOption{12pt}{\erdc@size@warning{\CurrentOption}}%      
+%    \end{macrocode}
+% \end{macro}
+%
+% All other options are just sent to the main class:
+%    \begin{macrocode}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
+\ProcessOptions\relax
+%    \end{macrocode}
+% 
+%\subsection{Loading Class and Packages}
+%\label{sec:loading}
+%
+% We start with the base class and some packages
+%    \begin{macrocode}
+\LoadClass[12pt,twoside]{report}
+\RequirePackage{graphicx,color,caption,longtable}
+%    \end{macrocode}
+%
+%
+% \changes{v0.2}{2009/07/07}{Added dcolumn} 
+% We use \progname{dcolumn} for dot-centered columns:
+%    \begin{macrocode}
+\RequirePackage{dcolumn}
+%    \end{macrocode}
+% 
+% \changes{v0.3}{2009/07/18}{Added natbib} 
+% We use \progname{natbib}~\cite{Daly07:Natbib} for bibliography
+% formatting:
+%    \begin{macrocode}
+\RequirePackage{natbib}
+\renewcommand{\bibfont}{\fontsize{10pt}{12pt}\selectfont}
+\setlength{\bibhang}{0.5in}
+\setlength{\bibsep}{12pt}
+%    \end{macrocode}
+% 
+% \changes{v0.3}{2009/07/18}{Added amsmath} 
+% We load \progname{amsmath} since we want to change the equation
+% numbering scheme:  \progname{amsmath} redefines it.
+%    \begin{macrocode}
+\RequirePackage{amsmath}
+%    \end{macrocode}
+%
+% \changes{v0.2}{2009/07/07}{Added ragged2e} 
+% We do not want the option |document| with \progname{ragged2e}: this
+% calls \progname{footmisc}, while we want our own footnotes:
+%    \begin{macrocode}
+\RequirePackage[originalcommands]{ragged2e}
+\setlength\RaggedRightParindent{\parindent}
+\RaggedRight
+%    \end{macrocode}
+%
+%\subsection{Fonts}
+%\label{sec:fonts}
+%
+%\begin{macro}{\normalsize}
+% \changes{v0.2}{2009/07/07}{Changed line spacing} 
+% The size is basically from~\cite{classes}, but with some changes
+% according to our fonts:
+%    \begin{macrocode}
+\renewcommand\normalsize{%
+   \@setfontsize\normalsize\@xiipt{16}%
+   \abovedisplayskip 16\p@ \@plus3\p@ \@minus7\p@
+   \abovedisplayshortskip \z@ \@plus3\p@
+   \belowdisplayshortskip 6.5\p@ \@plus3.5\p@ \@minus3\p@
+   \belowdisplayskip \abovedisplayskip
+   \let\@listi\@listI}
+\normalsize
+%    \end{macrocode}
+%\end{macro}
+%
+%
+% \changes{v0.2}{2009/07/07}{Changed fonts} 
+%
+% We use Georgia for the main font, matching Franklin Gothic for
+% the sans serifed font, and Courier for the monospaced font:
+%    \begin{macrocode}
+\usepackage{mathgifg}
+\usepackage{courier}
+%    \end{macrocode}
+% 
+% \begin{macro}{\@laboratoryfont}
+% \changes{v0.2}{2009/07/07}{Introduced the macro} 
+%   Font to typeset the laboratory on the cover
+%    \begin{macrocode}
+\def\@laboratoryfont{%
+  \sffamily\bfseries\fontsize{22pt}{25pt}\selectfont}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\@reportnumfont}
+% \changes{v0.2}{2009/07/07}{Introduced the macro} 
+%   Font to typeset the report number on the cover
+%    \begin{macrocode}
+\def\@reportnumfont{%
+  \sffamily\bfseries\fontsize{18pt}{22pt}\selectfont}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\@programfont}
+% \changes{v0.2}{2009/07/07}{Introduced the macro} 
+% \changes{v0.3}{2009/07/18}{Changhed weight to Book} 
+%   Font to typeset the program on the cover
+%    \begin{macrocode}
+\def\@programfont{%
+  \sffamily\fontseries{k}\itshape\normalsize\selectfont}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\@titlefont}
+% \changes{v0.2}{2009/07/07}{Introduced the macro} 
+%   Font to typeset the title on the cover \emph{and} chapter numbers
+%    \begin{macrocode}
+\def\@titlefont{%
+  \sffamily\fontseries{h}\fontsize{20pt}{25pt}\selectfont}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\@distributionfont}
+% \changes{v0.3}{2009/07/18}{Introduced the macro} 
+%   Font to typeset the distribution statement
+%    \begin{macrocode}
+\def\@distributionfont{%
+  \sffamily\fontseries{k}\fontsize{9pt}{11pt}\selectfont}
+%    \end{macrocode}   
+% \end{macro}
+%
+%
+% \begin{macro}{\@eqtagfont}
+% \changes{v0.3}{2009/07/18}{Introduced the macro} 
+%   The font for the equations
+%    \begin{macrocode}
+\def\@eqtagfont{\sffamily\bfseries\footnotesize}
+%    \end{macrocode}
+%   
+% \end{macro}
+%
+%\subsection{Page Dimensions and Paragraphing}
+%\label{sec:page}
+%
+% \changes{v1.1}{2009/07/22}{Changed bottom margin to 0.7''} 
+% 
+% The requirements are 1.25'' (top), 0.7'' (bottom), 1.5'' (left), and
+% 1.5'' (right). However, we need to add for the headers.
+%    \begin{macrocode}
+\RequirePackage[letterpaper, top=1in, bottom=0.7in, 
+  left=1.5in, right=1.5in]{geometry}
+%    \end{macrocode}
+%
+%
+% \begin{macro}{\parindent}
+% The paragraphs have no indentation\dots
+%    \begin{macrocode}
+\setlength{\parindent}{0pt}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\parskip}
+%   \dots and there is one baseline skip between paragraphs
+%    \begin{macrocode}
+\setlength{\parskip}{\baselineskip}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\labelwidth}
+% \changes{v1.1}{2009/07/22}{Changed defaults} 
+% The width of label for enumerate and itemize environments
+%    \begin{macrocode}
+\setlength\labelwidth{1em}
+%    \end{macrocode}
+% 
+% \end{macro}
+%
+%
+% \begin{macro}{\leftmargini}
+% \changes{v1.1}{2009/07/22}{Changed defaults} 
+% We align lists with the body
+%    \begin{macrocode}
+\setlength\leftmargini\z@
+\addtolength\leftmargini\labelwidth
+\addtolength\leftmargini\labelsep
+%    \end{macrocode}
+% 
+% \end{macro}
+%
+% \begin{macro}{\itemize}
+% \changes{v1.1}{2009/07/22}{Changed defaults} 
+%   We want left-aligned bullets:
+%    \begin{macrocode}
+\def\itemize{%
+  \ifnum \@itemdepth >\thr@@\@toodeep\else
+    \advance\@itemdepth\@ne
+    \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
+    \expandafter
+    \list
+      \csname\@itemitem\endcsname
+      {\def\makelabel##1{##1}}%
+  \fi}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\enumerate}
+% \changes{v1.1}{2009/07/22}{Changed defaults} 
+% We left-align numbers
+%    \begin{macrocode}
+\def\enumerate{%
+  \ifnum \@enumdepth >\thr@@\@toodeep\else
+    \advance\@enumdepth\@ne
+    \edef\@enumctr{enum\romannumeral\the\@enumdepth}%
+      \expandafter
+      \list
+        \csname label\@enumctr\endcsname
+        {\usecounter\@enumctr\def\makelabel##1{##1}}%
+      \fi}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\widowpenalty}
+% \begin{macro}{\clubpenalty}
+% \changes{v1.1}{2009/07/22}{Changed settings} 
+%   We forbid widows and clubs.  To prevent too extended pages we use
+%   |\raggedbottom|:
+%    \begin{macrocode}
+\widowpenalty=10000
+\clubpenalty=10000
+\raggedbottom
+%    \end{macrocode}
+%   
+% \end{macro}
+% \end{macro}
+%
+%
+%\subsection{Headers and Footers}
+%\label{sec:headers}
+% 
+% We use \progname{fancyhdr}:
+%    \begin{macrocode}
+\RequirePackage{fancyhdr}
+%    \end{macrocode}
+% 
+%
+% \begin{macro}{\headrulewidth}
+% \changes{v0.3}{2009/07/18}{Chaneged thickness}  
+% \begin{macro}{\footrulewidth}
+%   Decorative rules:
+%    \begin{macrocode}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \begin{macro}{\fancyhfoffset}
+%   Headers are wider than the text
+%    \begin{macrocode}
+\fancyhfoffset{35pt}
+%    \end{macrocode}
+%   
+% \end{macro}
+%
+% We do not have headers:
+%    \begin{macrocode}
+\pagestyle{fancy}
+\lhead{\textsf{\textbf{\footnotesize\@reportnum}}}
+\rhead{\textsf{\textbf{\footnotesize\thepage}}}
+\chead{}
+%    \end{macrocode}
+%
+% We do not have footers:
+%    \begin{macrocode}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+%    \end{macrocode}
+% 
+%
+%
+%\subsection{Main Subdivisions}
+%\label{sec:subdivisions}
+%
+% \begin{macro}{\if@frontmatter}
+%   The switch whether we are in the frontmatter
+%    \begin{macrocode}
+\newif\if@frontmatter
+\@frontmatterfalse
+%    \end{macrocode}   
+% \end{macro}
+%
+% \begin{macro}{\if@appendix}
+%   The switch whether we are in the appendix
+%    \begin{macrocode}
+\newif\if@appendix
+\@appendixfalse
+%    \end{macrocode}
+%   
+% \end{macro}
+%
+% \begin{macro}{\frontmatter}
+%   Starting front matter
+%    \begin{macrocode}
+\def\frontmatter{%
+  \pagenumbering{roman}%
+  \@frontmattertrue
+  \@appendixfalse}
+%    \end{macrocode}   
+% \end{macro}
+%
+% 
+% \begin{macro}{\mainmatter}
+%   Starting main matter
+%    \begin{macrocode}
+\def\mainmatter{%
+  \cleardoublepage
+  \pagenumbering{arabic}%
+  \@frontmatterfalse
+  \@appendixfalse}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\appendix}
+%   Start appendices
+%    \begin{macrocode}
+\def\appendix{%
+  \clearpage
+  \@frontmatterfalse
+  \@appendixtrue
+  \@addtoreset{table}{chapter}%
+  \@addtoreset{equation}{chapter}%
+  \@addtoreset{figure}{chapter}%
+  \setcounter{chapter}{0}%
+  \setcounter{section}{0}%
+  \gdef\@chapapp{\appendixname}%
+  \gdef\thechapter{\@Alph\c@chapter}%
+  \gdef\thefigure{\@Alph\c@chapter\@arabic\c@figure}%
+  \gdef\thetable{\@Alph\c@chapter\@arabic\c@table}%
+  \gdef\theequation{\@Alph\c@chapter\@arabic\c@equation}}
+%    \end{macrocode}
+%   
+% \end{macro}
+%
+%\subsection{Cover and Title Pages}
+%\label{sec:cover_title}
+%
+%
+%
+%
+% \begin{macro}{\laboratory}
+%   This macro sets up the laboratory name:
+%    \begin{macrocode}
+\def\laboratory#1{\gdef\@laboratory{#1}}
+\laboratory{Engineer Research and\\Development Center}
+%    \end{macrocode}   
+% \end{macro}
+%
+% \begin{macro}{\reportnum}
+%   Report number:
+%    \begin{macrocode}
+\def\reportnum#1{\gdef\@reportnum{#1}}
+\reportnum{ERDC TR-01-01}
+%    \end{macrocode}   
+% \end{macro}
+%
+% \begin{macro}{\program}
+%   Program:
+%    \begin{macrocode}
+\def\program#1{\gdef\@program{#1}}
+\program{}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\subtitle}
+%   Subtitle:
+%    \begin{macrocode}
+\newcommand{\subtitle}[1]{\gdef\@subtitle{#1}}
+\def\@subtitle{}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% The author and affiliation processing follows the ideas
+% of~\cite{Downes04:amsart}.  We lift most of the code from there.
+% \begin{quotation}
+% \em
+%    The general function to convert a list of items in the form
+%\begin{verbatim}
+% A\and B\and C\and D
+%\end{verbatim}
+%    to the form `A, B, C, and D' is \cs{xandlist}:
+%\begin{verbatim}
+% \xandlist{, }{ and }{, and }{A\and B\and C\and D}
+%\end{verbatim}
+%    This is a completely expandable macro, with the return value being
+%    the converted list. There is also a `no-execute' version whose
+%    fourth argument should be a macro; the text to be converted will be
+%    taken from that macro and after conversion will be put back as the
+%    macro's new replacement text.
+%\begin{verbatim}
+%      \nxandlist{, }{ and }{, and }\result
+%\end{verbatim}
+%    I don't think I want to explain this except by recommending that
+%    you watch it in operation with \cs{tracingmacros} if you're
+%    interested. [mjd,1994/10/19]
+%    \begin{macrocode}
+\newcommand{\xandlist}[4]{\@andlista{{#1}{#2}{#3}}#4\and\and}
+\def\@andlista#1#2\and#3\and{\@andlistc{#2}\@ifnotempty{#3}{%
+  \@andlistb#1{#3}}}
+\def\@andlistb#1#2#3#4#5\and{%
+  \@ifempty{#5}{%
+    \@andlistc{#2#4}%
+  }{%
+    \@andlistc{#1#4}\@andlistb{#1}{#3}{#3}{#5}%
+  }}
+\let\@andlistc\@iden
+\newcommand{\nxandlist}[4]{%
+  \def\@andlistc##1{\toks@\@xp{\the\toks@##1}}%
+  \toks@{\toks@\@emptytoks \@andlista{{#1}{#2}{#3}}}%
+  \the\@xp\toks@#4\and\and
+  \edef#4{\the\toks@}%
+  \let\@andlistc\@iden}
+%    \end{macrocode}
+%
+%  \begin{macro}{andify}
+%
+%    The \cs{andify} function is provided as a convenient abbreviation
+%    for the most common case.  See also \cs{author@andify} (for
+%    \cls{amsart} and \cls{amsproc} only), which gives better results
+%    in cases with a large number of authors.  Provide a substitutable
+%    text string to simplify language-specific modifications.
+%    \begin{macrocode}
+\def\@@and{and}
+\newcommand{\andify}{%
+  \nxandlist{\unskip, }{\unskip{} \@@and~}{\unskip, \@@and~}}
+%    \end{macrocode}
+%    Override the funny default definition of \cn{and} from \LaTeX.
+%    This is not actually used by AMS classes, however.
+%    \begin{macrocode}
+\def\and{\unskip{ }\@@and{ }\ignorespaces}
+%    \end{macrocode}
+%  \end{macro}   
+% \end{quotation}
+%   This requires some other AMS math macros:
+%    \begin{macrocode}
+\let\@xp\expandafter\relax
+\let\@nx=\noexpand
+\def\@oparg#1[#2]{\@ifnextchar[{#1}{#1[#2]}}
+\long\def\@ifempty#1{\@xifempty#1@@..\@nil}
+\long\def\@xifempty#1#2@#3#4#5\@nil{%
+  \ifx#3#4\@xp\@firstoftwo\else\@xp\@secondoftwo\fi}
+\long\def\@ifnotempty#1{\@ifempty{#1}{}}
+\def\setboxz@h{\setbox\z@\hbox}
+\def\@addpunct#1{%
+  \relax\ifhmode
+    \ifnum\spacefactor>\@m \else#1\fi
+  \fi}
+\newtoks\@emptytoks
+%    \end{macrocode}
+%
+%
+% \begin{macro}{\authors}
+%   The full authors lists
+%    \begin{macrocode}
+\def\authors{}
+%    \end{macrocode}   
+% \end{macro}
+%
+% \begin{macro}{\addresses}
+%   The list of authors \emph{and} addresses
+%    \begin{macrocode}
+\def\addresses{}
+%    \end{macrocode}
+%   
+% \end{macro}
+%
+% \begin{macro}{\author}
+%   This also follows AMS ideas
+%    \begin{macrocode}
+\def\author#1{%
+  \ifx\@empty\authors\gdef\authors{#1}\else
+  \g@addto@macro{\authors}{\and#1}\fi
+  \ifx\@empty\@addresses\gdef\addresses{\author{#1}}\else
+  \g@addto@macro{\addresses}{\par\author{#1}}\fi}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\affiliation}
+%   And affiliation
+%    \begin{macrocode}
+\def\affiliation#1{%
+  \ifx\@empty\@addresses\gdef\addresses{#1\par}\else
+  \g@addto@macro{\addresses}{#1\par\vspace{\baselineskip}}\fi}
+%    \end{macrocode}
+%   
+% \end{macro}
+%
+% \begin{macro}{\today}
+%   We use only month and year in |\today|:
+%    \begin{macrocode}
+\def\today{\ifcase\month\or
+  January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or December\fi
+  \space \number\year}
+%    \end{macrocode}   
+% \end{macro}
+%
+% \begin{macro}{\coverart}
+% \changes{v0.2}{2009/07/08}{Changed the width of cover art} 
+%   The |\logo| command has the same format as |\includegraphics|.  It
+%   actually sets up |\includegraphics| in |\maketitle|.
+%    \begin{macrocode}
+\newcommand{\coverart}[2][]{%
+  \def\@tempa{#1}%
+  \ifx\@empty\@tempa
+     \gdef\@coverart{\includegraphics[width=435\p@]{#2}}\else
+     \gdef\@coverart{\includegraphics[#1]{#2}}\fi}
+\def\@coverart{}%
+%    \end{macrocode}   
+% \end{macro}
+%
+% \begin{macro}{\reporttype}
+%   Type of the report
+%    \begin{macrocode}
+\def\reporttype#1{\gdef\@reporttype{#1}}
+\reporttype{}
+%    \end{macrocode}
+% \end{macro}
+% 
+%
+% \begin{macro}{\distribution}
+%   Distribution of the report
+%    \begin{macrocode}
+\def\distribution#1{\gdef\@distribution{#1}}
+\distribution{Approved for public release; distribution is unlimited.}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\preparedfor}
+%   The organization that ordered the report
+%    \begin{macrocode}
+\def\preparedfor#1{\gdef\@preparedfor{#1}}
+\preparedfor{U.S. Army Corps of Engineers\\ Washington, DC 20314-1000}
+%    \end{macrocode}   
+% \end{macro}
+%
+% \begin{macro}{\contractnum}
+%   Contract number
+%    \begin{macrocode}
+\def\contractnum#1{\gdef\@contractnum{#1}}
+\contractnum{}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\monitoredby}
+%   Controlling lab
+%    \begin{macrocode}
+\def\monitoredby#1{\gdef\@monitoredby{#1}}
+\monitoredby{}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\additionalinfo}
+%   Anything else on the title page
+%    \begin{macrocode}
+\def\additionalinfo#1{\gdef\@additionalinfo{#1}}
+\additionalinfo{}
+%    \end{macrocode}   
+% \end{macro}
+% 
+%
+% \begin{macro}{\abstract}
+% \changes{v0.4}{2009/07/20}{Increased parsep} 
+%   We save abstract till later.  Again, this is uses code
+%   from~\cite{Downes04:amsart}.
+%    \begin{macrocode}
+\newbox\abstractbox
+\renewenvironment{abstract}{%
+  \global\setbox\abstractbox=\vtop \bgroup
+    \normalfont
+    \list{}{\labelwidth\z@
+      \leftmargin\z@ \rightmargin\leftmargin
+      \listparindent\z@ \itemindent\z@
+      \parsep16\p@ \topsep\z@
+      \let\fullwidthdisplay\relax
+    }%
+    \item[\hskip\labelsep\bfseries Abstract:]%
+}{%
+  \endlist\egroup}
+%    \end{macrocode}   
+% \end{macro}
+% 
+%
+% \begin{macro}{\disclaimer}
+%   And disclaimer
+%    \begin{macrocode}
+\long\def\disclaimer#1{\long\gdef\@disclaimer{#1}}
+\disclaimer{The contents of this report are not to be used for
+advertising, publication, or promotional purposes. Citation of trade
+names does not constitute an official endorsement or approval of the
+use of such commercial products. All product names and trademarks
+cited are the property of their respective owners. The findings of
+this report are not to be construed as an official Department of the
+Army position unless so designated by other authorized documents. 
+
+\textbf{DESTROY THIS REPORT WHEN NO LONGER NEEDED. DO NOT RETURN IT
+TO THE ORIGINATOR.}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{@coverlist}
+% \changes{v0.2}{2009/07/08}{Made slightly thinner} 
+%   The  title page consists of boxes, which are extended beyond the
+%   margins. Here we define the margins
+%    \begin{macrocode}
+\newenvironment{@coverlist}{\begin{list}{}{%
+      \leftmargin40\p@\rightmargin-85\p@%
+      \topsep\z@\partopsep\z@\labelwidth\z@\labelsep\z@}\item{}}{%
+    \end{list}}
+%    \end{macrocode}   
+% \end{macro}
+%
+% \begin{macro}{@titlelist}
+%   Similar to |@coverlist|, but for title page
+%    \begin{macrocode}
+\newenvironment{@titlelist}{\begin{list}{}{%
+      \leftmargin-20\p@\rightmargin100\p@%
+      \topsep\z@\partopsep\z@\labelwidth\z@\labelsep\z@}\item{}}{%
+    \end{list}}
+%    \end{macrocode}   
+% \end{macro}
+%
+%
+% \begin{macro}{\if@titleblock}
+%   Title block consists of Prepared for, Work Under and Monitored By
+%   statements.  We need to decide whether to print it:
+%    \begin{macrocode}
+\newif\if@titleblock
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{@titleblock}
+%   This is the macro for title block:
+%    \begin{macrocode}
+\newenvironment{@titleblock}{%
+  \list{}{\labelwidth80\p@\labelsep10\p@ \leftmargin70\p@
+    \rightmargin-150\p@
+    \let\makelabel\@titleblocklabel}}{\endlist}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\@titleblocklabel}
+%   Small labels:
+%    \begin{macrocode}
+\newcommand*{\@titleblocklabel}[1]{\hfill\small#1}
+%    \end{macrocode}
+%   
+% \end{macro}
+%
+% \begin{macro}{\maketitle}
+% \changes{v0.2}{2009/07/07}{Changed fonts} 
+% \changes{v0.2}{2009/07/08}{Made slightly thinner} 
+% \changes{v0.3}{2009/07/18}{Increased box for the laboratory} 
+% \changes{v0.3}{2009/07/18}{Changhed weight to Book} 
+% \changes{v0.3}{2009/07/18}{Aligned the distribution line} 
+% \changes{v0.3}{2009/07/18}{Changed font sizes} 
+% \changes{v0.3}{2009/07/18}{Changed disclaimer width} 
+% \changes{v0.4}{2009/07/20}{Made the gap between red and black
+% stripes on the cover exactly 4.5pt (added 2.75pt)} 
+% \changes{v0.4}{2009/07/20}{Moved boxes around} 
+% \changes{v1.1}{2009/07/22}{Added drop between authors and addresses} 
+% \changes{v1.1}{2009/07/22}{Compensated for top margin change} 
+%   The |\maketitle| macro performs all the work of typesetting the
+%   information above.
+%
+% First, we typeset the cover page
+%    \begin{macrocode}
+\def\maketitle{%
+  \thispagestyle{empty}%
+  \enlargethispage{0.34in}%
+  \vspace*{-0.95in}
+     \makebox[0cm][r]{%
+       \raisebox{-720\p@}[\z@][\z@]{%
+         \rotatebox{90}{\makebox[\z@][l]{%
+             \colorbox{red}{\color{white}\parbox{720\p@}{%
+                 \rule{0\p@}{85\p@}%
+                 \hspace{28\p@}\raisebox{40\p@}{%
+                   \parbox[c]{350\p@}{\@laboratoryfont\@laboratory}%
+                   \hspace{10\p@}%
+                   \parbox[c]{300\p@}{\hfill\@reportnumfont\@reportnum}}}}}}}%
+     \hspace*{-14\p@}}%
+     \makebox[0cm][r]{\raisebox{-720\p@}[\z@][\z@]{\rule{8\p@}{726\p@}%
+       \hspace{-26.75\p@}}}%
+   \begin{@coverlist}%
+     \sffamily\fontseries{k}\selectfont%
+     \hfill\parbox{145\p@}{
+       \includegraphics[width=65\p@]{red_corps_castle2}\\
+       {\bfseries 
+         US Army Corps\\
+         of Engineers\raisebox{-1\p@}{\scriptsize\textregistered}}\\
+       Engineering Research and\\
+       Development Center}\par
+     \vspace{0.5cm}%
+     {\@programfont\@program\par}%
+     \vspace{0.3cm}%
+     {\raggedright\@titlefont\@title\par
+       \vspace{0.3cm}%
+       \normalsize\bfseries\@subtitle\par}%
+     \vspace{0.3cm}%
+     \begin{minipage}[t]{300\p@}\raggedright
+       \nxandlist{\unskip, }{\unskip{} \@@and~}{\unskip{} \@@and~}\authors
+       \authors\end{minipage}%
+     \begin{minipage}[t]{135\p@}\flushright\@date\end{minipage}\par
+     \vspace{0.3cm}%
+     \@coverart
+   \end{@coverlist}%
+   \vfill
+   \begin{@coverlist}%
+     \@distributionfont\@distribution
+   \end{@coverlist}%
+   \newpage\thispagestyle{empty}\hbox{}\newpage
+%    \end{macrocode}
+%
+%
+% Now title page
+%    \begin{macrocode}
+%
+  \thispagestyle{empty}%
+  \setcounter{page}{1}%
+  \vspace*{-1.5in}%
+  \vspace*{-\topmargin}%
+  \begin{@titlelist}%
+    \sffamily\fontseries{k}\selectfont
+    \begin{minipage}[t]{275\p@}%
+      \bfseries\@program
+    \end{minipage}%
+    \begin{minipage}[t]{175\p@}%
+      \bfseries\flushright\@reportnum\\\@date
+    \end{minipage}\rule[-0.5in]{\z@}{0.625in}\par
+    \begin{minipage}{\textwidth}
+      \vspace*{1cm}%
+      {\@titlefont\raggedright\@title\par}
+      \vspace*{3\p@}%
+      \bfseries\@subtitle\par
+  \end{minipage}\rule[-0.7in]{\z@}{1in}\par
+%    \end{macrocode}
+%
+%
+% Inside title page we use special processing for authors' names
+%    \begin{macrocode}
+     \def\author##1{%
+       \def\@tempa{##1}%
+       \nxandlist{\unskip, }{\unskip{} \@@and~}{\unskip{} \@@and~}\@tempa
+       {\upshape\normalsize\@tempa}\par\vspace{6\p@}}%
+     \begin{minipage}{\textwidth}
+     \textit{\footnotesize\addresses}\par
+   \end{minipage}\rule[-2.7in]{\z@}{3.7in}\par
+   \begin{minipage}{\textwidth}
+     \@reporttype\par\vspace*{3\p@}%
+     {\@distributionfont\@distribution\par}%
+   \end{minipage}
+ \end{@titlelist}%
+  \vfill
+  \begin{@titlelist}%
+    \sffamily\normalsize\fontseries{k}\selectfont
+    \ifx\@additionalinfo\@empty\else\@additionalinfo\par\fi
+    \@titleblockfalse
+    \ifx\@empty\@preparedfor\relax\else\@titleblocktrue\fi
+    \ifx\@empty\@contractnum\relax\else\@titleblocktrue\fi
+    \ifx\@empty\@monitoredby\relax\else\@titleblocktrue\fi
+    \if@titleblock
+       \begin{@titleblock}%
+             \ifx\@empty\@preparedfor\else
+                \item[Prepared for]\@preparedfor
+             \fi
+             \ifx\@empty\@contractnum\else
+                \item[Under]\@contractnum
+             \fi
+             \ifx\@empty\@monitoredby\else
+                \item[Monitored by]\@monitoredby
+             \fi
+       \end{@titleblock}
+    \fi
+  \end{@titlelist}%
+  \clearpage
+%    \end{macrocode}
+%
+%
+% Now half title page.  Again see~\cite{Downes04:amsart}
+%    \begin{macrocode}
+  \ifvoid\abstractbox
+  \else
+    \box\abstractbox
+    \prevdepth\z@ 
+  \fi
+  \vfill
+  \bgroup
+  \setlength{\fboxsep}{5\p@}%
+  \makebox[\textwidth]{\fbox{\parbox{6.5in}{%
+        \fontsize{8.5\p@}{9.5\p@}\selectfont
+        \parskip\baselineskip
+        \textbf{Disclaimer:} \@disclaimer}}}%
+  \egroup
+  \clearpage}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+%
+%
+%
+%\subsection{Sectioning}
+%\label{sec:sectioning}
+% \changes{v0.5}{2009/07/22}{Changed numbering of sections} 
+%
+% \begin{macro}{\cl@chapter}
+%   We do \emph{not} reset equation counters when stepping chapters, except
+%   in appendices:
+%    \begin{macrocode}
+\def\cl@chapter{}
+%    \end{macrocode}
+% \end{macro}
+% However, we do reset section and subsection counters
+%    \begin{macrocode}
+\@addtoreset{section}{chapter}%
+\@addtoreset{subsection}{chapter}%
+\@addtoreset{subsection}{section}%
+%    \end{macrocode}
+% 
+%
+% \begin{macro}{\chapter}
+% \changes{v0.2}{2009/07/07}{Changed font} 
+%   We redefine |\chapter| to suppress empty page style on chapter
+%   opening:
+%    \begin{macrocode}
+\renewcommand\chapter{%
+  \clearpage
+  \global\@topnum\z@
+  \@afterindentfalse
+  \secdef\@chapter\@schapter}
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\@chapter}
+% \changes{v1.1}{2009/07/22}{Changed wrapping} 
+%   Non-starred chapter:
+%    \begin{macrocode}
+\def\@chapter[#1]#2{%
+  \if@frontmatter
+      \addcontentsline{toc}{chapter}{#1}%
+      \@makechapterhead{#2}%
+  \else
+      \refstepcounter{chapter}%
+      \typeout{\@chapapp\space\thechapter.}%
+      \if@appendix
+         \addcontentsline{toc}{chapter}%
+             {\@chapapp\space\thechapter: #1}%
+         \@makechapterhead{\@chapapp\space\thechapter: #2}%
+      \else
+         \addcontentsline{toc}{chapter}%
+             {\protect\numberline{\thechapter}#1}%
+         \@makechapterhead{\makebox[35\p@]{\thechapter\hfill}#2}%
+      \fi
+  \fi
+  \@afterheading}
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\@schapter}
+%   Starred chapter:
+%    \begin{macrocode}
+\def\@schapter#1{%
+  \if@appendix
+     \addcontentsline{toc}{chapter}{\@chapapp: #1}%
+     \@makeschapterhead{\@chapapp: #1}%
+  \else
+    \addcontentsline{toc}{chapter}{#1}%
+    \@makeschapterhead{#1}%
+  \fi
+  \@afterheading}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\@makechapterhead}
+% \changes{v1.1}{2009/07/22}{Changed wrapping} 
+%   This is the macro that actually prints the chapter:
+%    \begin{macrocode}
+\def\@makechapterhead#1{%
+  \vspace*{5\p@}%
+  {\hskip-35\p@%
+      \parindent\z@\raggedright
+      \interlinepenalty\@M
+      \@titlefont #1\par\nobreak
+    \vspace*{10\p@}%
+  }}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\@makeschapterhead}
+% \changes{v1.1}{2009/07/22}{Wrote the macro} 
+%   This is like |\makechapterhead|, but does not create hanging
+%   indent:
+%    \begin{macrocode}
+\def\@makeschapterhead#1{%
+  \vspace*{5\p@}%
+  {%
+      \parindent\z@\raggedright
+      \interlinepenalty\@M
+      \leftskip-35\p@\@titlefont #1\par\nobreak
+    \vspace*{10\p@}%
+  }}
+%    \end{macrocode}
+%   
+% \end{macro}
+%
+% \begin{macro}{\theequation}
+%   We do not use chapter number in equations, except in appendices:
+%    \begin{macrocode}
+\renewcommand \theequation {\@arabic\c@equation}
+%    \end{macrocode}
+%   
+% \end{macro}
+%
+%
+%
+% \begin{macro}{tocdepth}
+%   Only chapters, sections, subsections are in TOC:
+%    \begin{macrocode}
+\setcounter{tocdepth}{2}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\section}
+%   Sections are in 14\,pt bold. 
+%    \begin{macrocode}
+\renewcommand\section{%
+  \addpenalty\@secpenalty\nobreak
+  \secdef\@section\@ssection}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\@section}
+% \changes{v0.4}{2009/07/20}{Made sections numbered} 
+% \changes{v1.1}{2009/07/22}{Changed wrapping} 
+%   This is for numbered sections:
+%    \begin{macrocode}
+\def\@section[#1]#2{%
+  \ifnum1>\c@secnumdepth
+     \addcontentsline{toc}{section}{#1}%
+  \else
+    \refstepcounter{section}%
+     \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
+  \fi
+  {\hskip-35\p@\raggedright\interlinepenalty\@M
+   \large\sffamily\bfseries
+     \ifnum1>\c@secnumdepth\else\makebox[35\p@]{\thesection\hfill}\fi#2\nobreak\par}
+   \@afterheading
+   \nobreak\par}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\@ssection}
+% \changes{v0.4}{2009/07/20}{Wrote the macro} 
+% \changes{v1.1}{2009/07/22}{Changed wrapping} 
+%   Unnumbered sections:
+%    \begin{macrocode}
+\def\@ssection#1{
+  \addcontentsline{toc}{section}{#1}%
+  {\raggedright\interlinepenalty\@M
+   \large\sffamily\bfseries\leftskip-35\p@#1\nobreak\par}
+   \@afterheading
+   \nobreak\par}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\subsection}
+%   Subsections are also bold 
+%    \begin{macrocode}
+\renewcommand\subsection{\par
+  \addpenalty\@secpenalty\nobreak
+  \secdef\@subsection\@ssubsection}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\@subsection}
+% \changes{v0.4}{2009/07/20}{Made subsections numbered} 
+%   Numbered subsections:
+%    \begin{macrocode}
+\def\@subsection[#1]#2{%
+  \ifnum2>\c@secnumdepth
+     \addcontentsline{toc}{subsection}{\itshape#1}%
+  \else
+    \refstepcounter{subsection}%
+    \addcontentsline{toc}{subsection}{\itshape\fontsize{9}{12}\selectfont
+      \protect\numberline{\thesubsection}%
+      #1}%
+  \fi
+  {\noindent\raggedright\interlinepenalty\@M
+   \normalsize\sffamily\bfseries
+   \ifnum2>\c@secnumdepth\else\thesubsection\hspace{1em}\fi#2}\nobreak\par}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\@ssubsection}
+% \changes{v0.4}{2009/07/20}{Wrote the macro} 
+%   Unnumbered subsections
+%    \begin{macrocode}
+\def\@ssubsection#1{%
+  \addcontentsline{toc}{subsection}{\itshape\fontsize{9}{12}\selectfont#1}%
+  {\noindent\raggedright\interlinepenalty\@M
+   \normalsize\sffamily\bfseries#1}\nobreak\par}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+%
+%\subsection{Special Chapters and Sections}
+%\label{sec:special}
+%
+% Since our unnumbered sections go to the TOC, we need to have 
+% special ones that do not.
+%
+% \begin{macro}{\specialchapter}
+%   A chapter that does not go into TOC\dots
+%    \begin{macrocode}
+\def\specialchapter#1{%
+  \clearpage
+  \global\@topnum\z@
+  \@afterindentfalse
+  \@makeschapterhead{#1}\par
+  \@afterheading}
+%    \end{macrocode}   
+% \end{macro}
+%
+%
+%
+%\subsection{Front Page Lists}
+%\label{sec:frontlists}
+%
+% Here we define tables of contents, lists of figures, tables and the
+% combined lists.
+%
+% \begin{macro}{\@dotsep}
+%   Separation between dots in tables
+%    \begin{macrocode}
+\def\@dotsep{0.5}
+%    \end{macrocode}
+% \end{macro}
+%
+%   
+%
+% \begin{macro}{\l@chapter}
+% \changes{v0.3}{2009/07/18}{Deleted leaders} 
+% \changes{v0.4}{2009/07/20}{Added leaders} 
+% \changes{v1.1}{2009/07/22}{Changed wrapping} 
+%   Here we define chapter entry in TOC.  Note the leaders to the end: 
+%    \begin{macrocode}
+\renewcommand\l@chapter[2]{%
+  \def\numberline##1{\makebox[1.9em]{##1\hfill}}%
+  \addpenalty{-\@highpenalty}%
+  \vskip5\p@
+  \bgroup
+    \parindent\z@\rightskip\@pnumwidth
+    \parfillskip-\@pnumwidth
+    \leavevmode\bfseries
+    \leftskip1.9em%
+    \hskip-\leftskip
+    #1\nobreak\leaders\hbox{$\m@th\mkern\@dotsep
+      mu\hbox{.}\mkern\@dotsep
+      mu$}\hfill\nobreak{\hfil\,#2}\par
+    \vskip5\p@
+      \penalty\@highpenalty
+  \egroup}
+%    \end{macrocode}   
+% \end{macro}
+%
+% \begin{macro}{\@dottedtocline}
+% \changes{v0.4}{2009/07/20}{Redefined} 
+% \changes{v0.4}{2009/07/21}{Deleted hanging indent} 
+% \changes{v1.1}{2009/07/22}{Changed wrapping} 
+% We  redefine the standard macro to allow page number font to be
+% right and to continue leaders to the end:
+%    \begin{macrocode}
+\def\@dottedtocline#1#2#3#4#5{%
+  \bgroup
+  \def\numberline##1{\makebox[#3]{##1\hfill}}%
+  \ifnum #1>\c@tocdepth \else
+    \vskip \z@ \@plus.2\p@
+    {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
+     \parindent #2\relax\@afterindenttrue
+     \interlinepenalty\@M
+     \leavevmode
+     \@tempdima #3\relax
+     \advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
+     #4\nobreak
+     \leaders\hbox{$\m@th
+        \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+        mu$}\hfill
+     \nobreak
+     {\hfil \normalcolor \,#5}%
+     \par}%
+  \fi
+  \egroup}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\@dottedtoclineLF}
+% \changes{v0.4}{2009/07/21}{Wrote macro} 
+%   This is the version of |\@dottedtocline| used in LOT and LOF
+%    \begin{macrocode}
+\def\@dottedtoclineLF#1#2#3#4#5{%
+  \bgroup
+  \ifnum #1>\c@tocdepth \else
+    \vskip \z@ \@plus.2\p@
+    {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
+     \parindent #2\relax\@afterindenttrue
+     \interlinepenalty\@M
+     \leavevmode
+     \@tempdima #2\relax
+     \advance\leftskip \@tempdima \null\nobreak\hskip -\@tempdima
+     #4\nobreak
+     \leaders\hbox{$\m@th
+        \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
+        mu$}\hfill
+     \nobreak
+     {\hfil \normalcolor \,#5}%
+     \par}%
+  \fi
+  \egroup}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\l@section}
+% \changes{v0.4}{2009/07/20}{Changed defaults} 
+% \changes{v1.1}{2009/07/22}{Changed wrapping} 
+% Section formatting in TOC
+%    \begin{macrocode}
+\renewcommand*\l@section{\@dottedtocline{1}{2em}{2.5em}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\l@subsection}
+% \changes{v0.4}{2009/07/20}{Changed defaults} 
+% \changes{v1.1}{2009/07/22}{Changed wrapping} 
+% Subsection formatting in TOC
+%    \begin{macrocode}
+\renewcommand*\l@subsection{\@dottedtocline{2}{4.7em}{3em}}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\l@figure}
+% \changes{v0.4}{2009/07/21}{Redefined} 
+%   Figure in lot
+%    \begin{macrocode}
+\renewcommand*\l@figure{\@dottedtoclineLF{1}{0em}{2.3em}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\l@table}
+% \changes{v0.4}{2009/07/21}{Redefined} 
+%   Table in lot
+%    \begin{macrocode}
+\let\l@table\l@figure
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\contentsname}
+% \changes{v0.4}{2009/07/20}{Changed defaults} 
+%  Contents...
+%    \begin{macrocode}
+\renewcommand\contentsname{Table of Contents}
+%    \end{macrocode}
+%  
+% \end{macro}
+%
+%
+% \begin{macro}{\tableofcontents}
+%   TOC:
+%    \begin{macrocode}
+\renewcommand\tableofcontents{%
+  \specialchapter{\contentsname}%
+  \def\numberline##1{\hb@xt@\@pnumwidth{##1\hfill}}%
+  {\parskip2.5\p@\footnotesize\sffamily\fontseries{k}\selectfont\raggedright 
+    \@starttoc{toc}}}
+%    \end{macrocode}   
+% \end{macro}
+% \begin{macro}{\listoffigures}
+%   LOF:
+%    \begin{macrocode}
+\renewcommand\listoffigures{%
+  \chapter{\listfigurename}%
+  \def\numberline##1{Figure ##1. }%
+  {\parskip2.5\p@\footnotesize\sffamily\fontseries{k}\selectfont\raggedright
+    \@starttoc{lof}}}
+%    \end{macrocode}   
+% \end{macro}
+% \begin{macro}{\listoftables}
+%   LOT:
+%    \begin{macrocode}
+\renewcommand\listoftables{%
+  \chapter{\listtablename}%
+  \def\numberline##1{Table ##1. }%
+  {\parskip2.5\p@\footnotesize\sffamily\fontseries{k}\selectfont\raggedright
+    \@starttoc{lot}}}
+%    \end{macrocode}   
+% \end{macro}
+%
+% \begin{macro}{\listfiguretablename}
+%   The name for the combined list
+%    \begin{macrocode}
+\def\listfiguretablename{Figures and Tables}
+%    \end{macrocode}
+%   
+% \end{macro}
+%
+% \begin{macro}{\listoffiguresandtables}
+% \changes{v0.3}{2009/07/18}{Added some vertical space} 
+%  And the combined LOF and TOC
+%    \begin{macrocode}
+\newcommand\listoffiguresandtables{%
+  \chapter{\listfiguretablename}
+  {\sffamily\bfseries\normalsize Figures\par}%
+  \vspace*{10pt}%
+  \def\numberline##1{Figure ##1. }%
+  {\parskip2.5\p@\footnotesize\sffamily\fontseries{k}\selectfont\raggedright
+    \@starttoc{lof}}%
+  {\sffamily\bfseries\normalsize Tables\par}%
+  \vspace*{10pt}%
+  \def\numberline##1{Table ##1. }%
+  {\parskip2.5\p@\footnotesize\sffamily\fontseries{k}\selectfont\raggedright
+    \@starttoc{lot}}}
+%    \end{macrocode}  
+% \end{macro}
+%
+% \begin{macro}{\bibname}
+%   We use ``References'' for bibliography
+%    \begin{macrocode}
+\renewcommand\bibname{References}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+%
+% 
+%
+%\subsection{Figures and Tables}
+%\label{sec:floats}
+%
+% \begin{macro}{\@fptop}
+% \changes{v0.5}{2009/07/21}{Redefined} 
+% We want the figures on figures-only page to be vertically
+% top-aligned rather than centered:
+%    \begin{macrocode}
+\setlength{\@fptop}{0pt}%
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\thefigure}
+% We do not use chapter numbers in figures, except in appendix:
+%    \begin{macrocode}
+\renewcommand \thefigure {\@arabic\c@figure}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\thetable}
+% We do not use chapter numbers in tables either:
+%    \begin{macrocode}
+\renewcommand \thetable {\@arabic\c@table}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \changes{v0.2}{2009/07/07}{Changed caption skips} 
+% Setting up captions:
+%    \begin{macrocode}
+\captionsetup{justification=centering,font={footnotesize,sf,bf},
+labelsep=period,aboveskip=3pt}
+\captionsetup[table]{position=top}
+%    \end{macrocode}
+% 
+%
+% \begin{macro}{\arraystretch}
+%   Increase array stretch:
+%    \begin{macrocode}
+\def\arraystretch{1.3}
+%    \end{macrocode}
+%   
+% \end{macro}
+%
+%
+%
+%
+% 
+%
+% \subsection{Equation Numbering}
+% \label{sec:eqnum}
+%
+% \begin{macro}{\maketag@@@}
+% \changes{v0.3}{2009/07/18}{Introduced the macro} 
+%   We change the \progname{amsmath} definition:
+%    \begin{macrocode}
+\let\maketag@@@@\maketag@@@
+\def\maketag@@@#1{\hbox{\m@th\@eqtagfont#1}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\eqref}
+% \changes{v0.3}{2009/07/18}{Introduced the macro} 
+%   We also change |\eqref|, otherwise the references will be in the
+%   wrong font:
+%    \begin{macrocode}
+\renewcommand{\eqref}[1]{\textup{\tagform@@{\ref{#1}}}}
+%    \end{macrocode}   
+% \end{macro}
+%
+% 
+% \begin{macro}{\tagform@@}
+% \changes{v0.3}{2009/07/18}{Introduced the macro} 
+%   This is the original \progname{amsmath} version:
+%    \begin{macrocode}
+\def\tagform@@#1{\maketag@@@@{(\ignorespaces#1\unskip\@@italiccorr)}}
+%    \end{macrocode}   
+% \end{macro}
+%
+% 
+%
+%
+%
+% \subsection{The final word}
+%\label{sec:final}
+%
+%    \begin{macrocode}
+%</class>      
+%    \end{macrocode}
+%   
+%\Finale
+%\clearpage
+%
+%\PrintChanges
+%\clearpage
+%\PrintIndex
+%
+\endinput

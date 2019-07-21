@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}stdio.h\PYGZgt{}}
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{(}\PYG{k+kt}{void}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{o}{\PYGZca{}\PYGZca{}}\PYG{n}{Iint} \PYG{n}{h}\PYG{p}{,} \PYG{n}{b}\PYG{p}{;}
+\PYG{o}{\PYGZca{}\PYGZca{}}\PYG{n}{Ifloat} \PYG{n}{area}\PYG{p}{;}
+
+\PYG{o}{\PYGZca{}\PYGZca{}}\PYG{n}{Iprintf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Please input high and bottom: \PYGZdq{}}\PYG{p}{);}
+\PYG{o}{\PYGZca{}\PYGZca{}}\PYG{n}{Iscanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d\PYGZpc{}d\PYGZdq{}}\PYG{p}{,}\PYG{o}{\PYGZam{}}\PYG{n}{h}\PYG{p}{,}\PYG{o}{\PYGZam{}}\PYG{n}{b}\PYG{p}{);}
+
+\PYG{o}{\PYGZca{}\PYGZca{}}\PYG{n}{Iarea}\PYG{o}{=}\PYG{n}{b}\PYG{o}{*}\PYG{n}{h}\PYG{o}{*}\PYG{l+m+mf}{0.5}\PYG{p}{;}
+\PYG{o}{\PYGZca{}\PYGZca{}}\PYG{n}{Iprintf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}The area of triangle area: \PYGZpc{}f\PYGZdq{}}\PYG{p}{,}\PYG{n}{area}\PYG{p}{);}
+
+\PYG{o}{\PYGZca{}\PYGZca{}}\PYG{n}{Ireturn} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

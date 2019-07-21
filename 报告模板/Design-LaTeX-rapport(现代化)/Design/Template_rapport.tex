@@ -1,0 +1,59 @@
+\documentclass[a4paper, 11pt,twoside=true]{scrartcl} % Remplace la classe "article", correspond au standard européen.
+\usepackage{Rapport2}
+%\usepackage[toc]{multitoc} double table des matières si nécessaire
+\usepackage{lipsum}
+\clearpairofpagestyles
+
+
+%%% Paramètres pour les footers et la page de titre
+\newcommand{\lab}{Laboratoire \# }
+\newcommand{\tit}{Titre du rapport}
+\newcommand{\nom}{Auteur}
+\newcommand{\superv}{Superviseur}
+\newcommand{\depa}{Département}
+
+\input{headtitre.tex}
+
+
+
+\begin{document}
+
+
+%%%%TITRE
+
+\maketitle
+
+\tableofcontents % table des matières
+\newpage
+
+%%%%%%% Début du document
+
+\section{Introduction}
+\lipsum[7]
+\section{Théorie}
+Soit $f:E\to F$ une fonction dérivable dans $E$. Pour $x\in E$, on a
+\[
+\int_0^x f'(y)\dd{y}=f(x)-f(0).
+\]
+
+\lipsum[19]
+\section{Méthode expérimentale}
+\lipsum[20]
+\section{Résultats et analyse}
+\lipsum[30]
+\section{Conclusion}
+\lipsum[20]
+
+
+
+\begin{thebibliography}{widest entry}
+
+
+\end{thebibliography}	
+
+
+
+
+
+
+\end{document}

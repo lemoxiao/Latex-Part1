@@ -1,0 +1,77 @@
+\automark[section]{section}
+
+\lehead*{%
+  \makebox[0pt][r]{
+    \colorbox{rahmen}{\makebox[\textwidth][r]{\bfseries\color{white}{\pagemark/\pageref*{LastPage}}\enskip}}\hspace*{1em}}%
+  \headmark\hspace*{1em}\headrulefill%
+}
+\rohead*{%
+  \headrulefill\hspace*{1em}\headmark%
+  \makebox[0pt][l]{%
+    \hspace*{1em}\colorbox{rahmen}{\makebox[\textwidth][l]{\enskip\bfseries\color{white}{\pagemark/\pageref*{LastPage}}}}}%
+}
+\lefoot{\color{darkgray}\small Le \today}
+\rofoot{\color{darkgray}\small  Le \today}
+\cefoot{\color{darkgray}\small \itshape \tit\unskip\strut}
+\cofoot{\color{darkgray}\small \itshape \tit\unskip\strut}
+\refoot{\color{darkgray}\small \nom\unskip\strut}
+\lofoot{\color{darkgray}\small \nom\unskip\strut}
+
+\addtokomafont{pagenumber}{\bfseries\color{white}}
+\newcommand\headrulefill{\leaders\hrule width 0pt height 3pt depth -2.8pt \hfill}
+
+%\renewcommand\titlepagestyle{empty}
+
+\hfuzz 100pt
+\hbadness 10000
+\hfuzz 100pt
+\hbadness 10000
+
+% Inversion des espaces des marges
+
+\let\tempmargin\oddsidemargin
+\let\oddsidemargin\evensidemargin
+\let\evensidemargin\tempmargin
+\reversemarginpar
+
+\sisetup{detect-weight=true, detect-family=true}
+
+\renewcommand*{\maketitle}{%
+\begin{titlepage}
+\raggedleft\includegraphics[scale=0.5]{sect_physique_pant}
+
+\begin{center}
+\horrule{0.5pt} \\[0.4cm] \vspace{-1.5ex}\textcolor{darkblue}
+	 { \huge \bfseries \lab \\ \vspace{0.4cm} \tit }\\[0.1cm]\horrule{2pt} \vspace{-2ex}
+\end{center}
+\vspace{1cm}
+\begin{center}
+ \textsc{\LARGE Université de Genève\\ \large Section de physique \\ \depa\unskip\strut} \vspace{-1.5ex} \\	
+\end{center}
+\vspace{3cm}
+\begin{minipage}[t]{0.5\textwidth}
+    \begin{flushleft}
+        {\large \nom\unskip\strut
+        }
+    \end{flushleft}
+\end{minipage}%
+%
+\begin{minipage}[t]{0.5\textwidth}
+    \begin{flushright}
+        {\large \textit{Supervisé par }\superv\unskip\strut}           
+        \vspace*{0.5cm}
+    \end{flushright}    
+\end{minipage}%
+
+\vspace{4cm}
+\begin{center}
+\begin{minipage}[b]{0.5\textwidth}
+    \vfill
+    \begin{center}
+        {\large Le \today}
+    \end{center}    
+\end{minipage}%
+\end{center}
+
+\end{titlepage}
+}

@@ -1,0 +1,22 @@
+	 LaTeX Style For Technical Information Reports of the
+	       Engineer Research and Development Center
+		      US Army Corps of Engineers
+			   2009/07/22 v1.1
+
+This package provides class for typesetting Technical Information
+Reports of the Engineer Research and Development Center, US Army Corps
+of Engineers.
+
+The class was commissioned and paid for by US Army Corps of Engineers,
+Engineer Research and Development Center, 3909 Halls Ferry Road,
+Vicksburg, MS 39180-6199.
+
+I am grateful to Gordon L. Cohen, ERDC-ITL-IL for the detailed
+explanations of the ERDC guidelines, to Christopher E. Kees,
+ERDC-CHL-MS and Ryan E. North, ERDC-GSL-MS, for the formatting
+suggestions and the patient recompilation of the reports with each new
+version of the style.
+
+
+Version 1.1: This version uses Georgia and Franklin Gothic for text
+             and math.  It conforms to the latest guidelines of USACE.

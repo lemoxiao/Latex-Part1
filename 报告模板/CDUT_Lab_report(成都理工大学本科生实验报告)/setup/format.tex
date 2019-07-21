@@ -1,0 +1,22 @@
+\pagestyle{plain}                                                                          %plain格式页眉页脚
+\titleformat{\section}{\centering\heiti\zihao{-2}}{实验\,\thesection: }{1em}{}              %小二号黑体居中
+\titleformat{\subsection}{\heiti\zihao{-3}}{\thesubsection}{1em}{}                         %小三号黑体
+\titleformat{\subsubsection}{\heiti\zihao{-4}}{\thesubsubsection}{1em}{}                   %小四号黑体
+\lstset{
+    basicstyle=\tt,                                                                        %行号
+    numbers=left,
+    rulesepcolor=\color{red!20!green!20!blue!20},
+    escapeinside=``,
+    xleftmargin=2em,xrightmargin=2em, aboveskip=1em,                                       %背景框
+    framexleftmargin=1.5mm,
+    frame=shadowbox,                                                                       %背景色
+    backgroundcolor=\color[RGB]{245,245,244},                                              %样式
+    keywordstyle=\color{blue}\bfseries,
+    identifierstyle=\bf,
+    numberstyle=\color[RGB]{0,192,192},
+    commentstyle=\it\color[RGB]{96,96,96},
+    stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},                                     %显示空格
+    showstringspaces=false
+}                                                                                          %代码显示格式设置 感谢@信的灵感
+
+\hypersetup{hidelinks}

@@ -1,0 +1,176 @@
+%%
+%% File:        bu_ece_report.sty               {LaTeX options package)
+%%
+%% Usage:       \usepackage{bu_ece_report}
+%%
+%% Purpose:     This file contains style setup and definition of title
+%%              page for BU ECE technical reports. A typical LaTeX2e file
+%%              for such a report should start with:
+%%
+%%                      \documentclass[12pt,twoside]{article}  % no chapters
+%%                      \usepackage{bu_ece_report}
+%%
+%%              or
+%%
+%%                      \documentclass[12pt,twoside]{report}  % with chapters
+%%                      \usepackage{bu_ece_report}
+%%
+%%              and then follow with:
+%%
+%%                      - title-box page,
+%%                      - title page,
+%%                      - preface page (optional),
+%%                      - report summary page,
+%%                      - table of contents,
+%%                      - list of figures,
+%%                      - list of tables,
+%%                      - content of the report ...
+%%
+%%              This style requires the following packages (usually available
+%%              on any recent LaTeX installation):
+%%
+%%                      fancyheadings, fancybox, ifthen, epsfig
+%%
+%%              The EPS file with BU logo (BUlogo_cmyk.eps) needed for the
+%%              title page is assumed to exist in the same directory as
+%%              this file and the LaTeX report file.
+%%
+%%              For an example of BU ECE report see the template file
+%%              report.tex
+%%
+
+% Packages needed: fancyheadings, fancybox, ifthen, epsfig.
+% ---------------------------------------------------------
+\usepackage{fancyheadings,fancybox,ifthen,epsfig}
+
+% Dimensions setup.
+% -----------------
+\textheight      8.75 in
+\textwidth       6.00 in
+\topmargin       0.00 in
+\oddsidemargin   0.50 in
+\evensidemargin  0.00 in
+\headheight      0.20 in
+\headsep         0.15 in
+\setcounter{tocdepth}{2}
+
+% Put an empty page without footers or headers (just ``\clearpage''
+% will not do). Useful for double-sided printing. In single-sided
+% printing it performs ``\clearpage'' only.
+% -----------------------------------------------------------------
+\def\bueceemptypage{\ifthenelse{\boolean{@twoside}}%
+        {\clearpage\mbox{}\thispagestyle{empty}\clearpage}{\clearpage}}
+
+% BU-ECE report definitions.
+% Arguments:
+%   #1 - full title,
+%   #2 - short title (for runnig headers),
+%   #3 - authors,
+%   #4 - date,
+%   #5 - report number.
+% -----------------------------------------
+\def\buecedefinitions#1#2#3#4#5{%
+        \def\buecereportfulltitle{#1}
+        \def\buecereportfulltitleuppercase{\uppercase{#1}}
+        \def\buecereportshorttitle{#2}
+        \def\buecereportshorttitleuppercase{\uppercase{#2}}
+        \def\buecereportauthors{#3}
+        \def\buecereportauthorsuppercase{\uppercase{#3}}
+        \def\buecereportdate{#4}
+        \def\buecereportnumber{#5}}
+
+% BU-ECE technical report title box page (first page to fit
+% the cut-out in the cover):
+%   - title.
+% ---------------------------------------------------------
+\def\buecereporttitleboxpage{%
+  \thispagestyle{empty}
+  \vglue 6.1cm
+  \fboxsep=10pt\fboxrule=1pt\hglue 1.25cm
+  \Ovalbox{\vbox to 6.2cm{\vfill\hbox{\vtop{\hsize=9.7cm\parindent=0pt
+        \renewcommand{\baselinestretch}{1.5}
+        \bf\sffamily
+        \begin{center}
+          \buecereportfulltitleuppercase
+        \end{center}
+        \sl\sffamily
+        \begin{center}
+          \buecereportauthors
+        \end{center}
+        \rm\sffamily
+        \centerline{\buecereportdate}
+        \centerline{Boston University}
+        \centerline{Department of Electrical and Computer Engineering}
+        \centerline{Technical Report No.~ECE-\buecereportnumber}
+        }}\vfill}}
+    \vglue 5.0cm\hglue 1.6cm
+    \vbox{\hbox{\vtop{\hsize=10.0cm\rmfamily\bfseries\Huge
+    \begin{center}
+      BOSTON\\
+      UNIVERSITY
+    \end{center}}}}
+  \bueceemptypage}
+
+% BU-ECE technical report title page:
+%   - full title,
+%   - authors,
+%   - date,
+%   - number.
+% -----------------------------------
+\def\buecereporttitlepage{%
+  \thispagestyle{empty}
+  \vglue 1.5cm
+  \begin{center}%
+    {\large\bf\buecereportfulltitleuppercase\vskip 2.0cm}%
+    {\large\it\baselineskip 1.5em
+    \begin{tabular}[t]{c}
+      \buecereportauthors
+     \end{tabular}\par}
+  \end{center}
+  \vfill
+  {\baselineskip 1.5em
+  \begin{center}
+    \BUlogo\\\bigskip
+    Boston University\\
+    Department of Electrical and Computer Engineering\\
+    8 Saint Mary's Street\\
+    Boston, MA 02215\\
+    {\tt www.bu.edu/ece}
+  \end{center}
+  }
+  \vskip 3.5cm
+  \centerline{\buecereportdate}
+  \vskip 1.0cm
+  \centerline{Technical Report No.~ECE-\buecereportnumber}
+  \bueceemptypage}
+
+% BU-ECE preface page (restriction, dedication, etc.)
+% ---------------------------------------------------
+\def\bueceprefacepage#1{%
+  \thispagestyle{empty}
+  \vglue 6.0cm
+  \centerline{\vbox{\hsize=13.0cm\noindent #1}}
+  \bueceemptypage}
+
+% BU-ECE report summary.
+% ----------------------
+\def\buecereportsummary#1{%
+  \centerline{\bf\large Summary}
+  \bigskip
+  \noindent
+  #1
+  \bueceemptypage}
+
+% BU-ECE technical report headers:
+%   - short version of the title,
+%   - author last names.
+% ----------------------------------
+\def\buecereportheaders{\pagestyle{fancyplain}
+  \addtolength{\headwidth}{0.7cm}
+  \lhead[\fancyplain{}{\sl\thepage}]{\fancyplain{}{\sl\buecereportshorttitle}}
+  \rhead[\fancyplain{}{\sl \buecereportauthors}]{\fancyplain{}{\sl\thepage}}
+  \cfoot{}}
+
+% BU logo and seal (only graphics).
+% ---------------------------------
+\def\BUlogo{\epsfig{file=BUlogo_cmyk.eps,height=2cm}}

@@ -1,0 +1,7 @@
+
+.texpadtmp/chapter/c3.aux
+*.aux
+*.log
+*.gz
+.DS_Store
+*.toc

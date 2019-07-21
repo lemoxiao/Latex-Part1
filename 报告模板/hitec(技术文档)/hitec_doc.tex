@@ -1,0 +1,66 @@
+\documentclass{hitec}
+\newcommand{\HT}{\textsc{\raisebox{0.1em}{h}\raisebox{-0.1em}{i}%
+	\raisebox{0.1em}{t}\raisebox{-0.1em}{e}\raisebox{0.1em}{c} }}
+\title{The \HT class}
+\author{Eli Billauer}
+\company{The Company, Ltd}
+\confidential{\textbf{-- Unlimited Distribution --}}
+\usepackage{hyperref} % This line is readily ommited of it makes trouble
+\begin{document}
+\maketitle
+\section{The general idea}
+This short paper is mainly a demonstration page to show what the papers written with
+this class will look like.
+
+The document class is a hack on the well-known \texttt{article} class, where pieces of \TeX
+\hspace{0pt} code has been stolen from a couple of other classes.
+
+This class completes, in my opinion, the set of tools needed to use \LaTeX \hspace{0pt}
+in a hi-tec environment, where Microsoft rules too often. I'm delighted by the fact
+that Xemacs and \LaTeX \hspace{0pt} run in a win32 environment, and that proper pdf's
+can be produced using utilities such as \texttt{pdflatex} or \texttt{dvipdfm}.
+These allow me to get a Linux-feeling even when running Windows. Even better: I can
+write technical documents the way I like, and produce pdf's that noone will complain about.
+
+But I discovered that there was no way to escape the academic look of the well-known
+\texttt{article} document class. There are many other classes around, yes, but almost
+all of them smell quite the same. Academy is not a four-letter word, but when a paper is
+submitted to your boss, he better not get the wrong impression before even reading it.
+
+So, in order to solve \emph{my} problem of giving my documents a nice outfit, I started
+the adventure of modifying \texttt{article}. While doing that, I understood why noone
+else has yet published such a class...
+
+\section{hitec vs. article}
+Papers that were compiled neatly as \texttt{article} are expected to give a fairly nice
+result right away after changing to \HT. The only exception is that \HT doesn't work
+with two-column documents. Such documents' compilation will be aborted with an error
+message.
+
+Aside from that, the \HT class behaves a bit differently regarding document information:
+\begin{itemize}
+\item The \verb+\author+ command \emph{can not} be repeated to
+present	more than one author. This wasn't an attempt to reflect the loneliness of hi-tec
+workers, as opposed to the academic world, where they always work in pairs. The reason
+is technical: The author's name appears on all pages (hi-tec, right?) and there's no place
+for a list of people. In the case of multiple authors (did you waste time working together?)
+write them all in a single line. Remember that omitting an author can be a very painful
+mistake, and this will happen with no warning when switching to \HT.
+%
+\item The \verb+\company+ command allows you not only to tell who you are,
+but also who you're working for.
+%
+\item The \verb+\confidential+ command has been added, to allow companies
+to mark their papers as confidential.
+\end{itemize}
+\section{Just a small tip}
+If a pdf is your final target, going \verb+\usepackage{hyperref}+
+in the beginning of your document is very recommended. The \texttt{hyperref} package
+will not only create web-like links where there are references to equations or sections,
+but it also creates the well-known bookmark list.
+\section{Summary}
+The \HT class was designed to allow \LaTeX \hspace{0pt} to produce papers that suite
+the hi-tec world, in functionality and appearance. Together with other free software,
+a Windows-running PC can become a comfortable platform for creating impressive pdf documents
+using well-tested tools.
+\end{document}
