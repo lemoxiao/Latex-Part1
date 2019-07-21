@@ -1,0 +1,97 @@
+\section{The fragments $\AAbarBBbar$ and $\AAbarEEbar$}\label{sec:AABB}
+In this section we show that the two symmetric fragments $\AAbarBBbar$ and $\AAbarEEbar$,
+extended with regular expressions, 
+feature a better complexity, showing MC for them to be in $\Psp$.  To this end we first prove, in Section~\ref{subsec:AAbarEEbar}, that they feature an \emph{exponential small-model property}, that is, if a trace $\rho$ of a finite Kripke structure $\Ku$ satisfies a formula $\varphi$ of $\AAbarBBbar$/$\AAbarEEbar$, then there is always a trace $\pi$, whose length is exponential 
+in the sizes of $\varphi$ and $\Ku$, starting from and leading to the same states as $\rho$, that satisfies $\varphi$.  
+Therefore, without loss of generality, one can limit the verification of traces of $\Ku$ to those having at most exponential length. It is worth recalling that, in Section~\ref{sec:AAbarEEbar}, we proved a \emph{polynomial small-model property} in the sizes of the  $\AAbarBBbar$/$\AAbarEEbar$ formula $\varphi$ and the Kripke structure $\Ku$ \emph{under the homogeneity assumption}.
+%while checking whether or not $\Ku\models \varphi$.
+
+Then, in Section~\ref{sect:PspAlgo} and~\ref{sect:genResult} we provide a $\Psp$ MC algorithm which exploits the exponential small-model property. Such an algorithm is completely different from the one presented in Section~\ref{sec:AAbarEEbar} for 
+the MC problem of the same fragments under the homogeneity assumption, which can
+exploit the aforementioned polynomial small-model property. As a matter of fact, unlike that of Section~\ref{sec:AAbarEEbar}, this algorithm cannot store even a single---possibly exponential-length---trace, being bound to use polynomial working space. For this reason it visits the (exponential-length) traces of the input Kripke structure $\Ku$ by means of a \emph{binary reachability} technique that allows it to use logarithmic space in the length of traces, hence guaranteeing the $\Psp$ complexity upper bound. The surprising fact is that both the algorithm of Section~\ref{sec:AAbarEEbar} and the one presented here use polynomial working space (independently of the different size small-models), thus showing that relaxing the homogeneity assumption comes at no additional computational cost for the fragments $\AAbarBBbar$ and $\AAbarEEbar$.
+
+Finally, in Section~\ref{sect:genResult} we prove the $\Psp$-completeness of MC for $\AAbarBBbar$ and $\AAbarEEbar$ with regular expressions.
+
+\subsection{Exponential small-model property for $\AAbarBBbar$ and $\AAbarEEbar$}
+\label{subsec:AAbarEEbar}
+%
+In this section we prove the exponential small-model property for the fragments $\AAbarBBbar$ and $\AAbarEEbar$ 
+(actually, we focus only on $\AAbarBBbar$ being the case for $\AAbarEEbar$ symmetric). Most results are just adaptations---with the aim of accounting for regular expressions---of those already presented in Section~\ref{sec:AAbarEEbar}.
+
+Given a $\DFA$ $\Du=(\Sigma,Q,q_0,\delta,F)$, we denote by $\Du(w)$ (resp., $\Du_q(w)$) the state reached by the computation of $\Du$ from $q_0$ (resp., $q\in Q$) over the word $w\in\Sigma^*$.
+
+We now consider \emph{well-formedness} of induced traces (recall Definition~\ref{definition:inducedTrk}) w.r.t.\ a set of $\DFA$s:%
+\footnote{Another variant of well-formedness of induced traces, independent of $\DFA$s, was already given in Definition~\ref{definition:inducedTrk}.}
+a well formed trace $\pi$ induced by $\rho$ preserves the states of the computations of the  $\DFA$s reached by reading prefixes of $\rho$ and $\pi$ bounded by corresponding positions.
+%
+Hereafter, for $i\in [1,|\rho|]$, $\rho^i$ denotes the prefix $\rho(1,i)$.
+
+\begin{definition}[Well-formed trace w.r.t.\ a set of $\DFA$s]
+Let $\Ku=\KuDef$ be a finite Kripke structure, $\rho\in\Trk_\Ku$ be a trace, and
+$\Du^s=(2^\Prop,Q^s,q_0^s,\delta^s,F^s)$ for $s=1,\ldots ,k$, be $\DFA$s.
+  A trace $\pi\in\Trk_\Ku$ \emph{induced by} $\rho$ is 
+\emph{$(q^1_{\ell_1}, \ldots , q^k_{\ell_k})$-well-formed w.r.t.\ }$\rho$, with $q^s_{\ell_s}\in Q^s$  for all $s=1,\ldots ,k$, if and only if:
+\begin{itemize}
+     \item for all $\pi$-positions $j$, with corresponding $\rho$-positions $i_j$, and all $s=1,\ldots ,k$, it holds that $\Du^s_{q^s_{\ell_s}}(\mu(\pi^{j}))= \Du^s_{q^s_{\ell_s}}(\mu(\rho^{i_j}))$.
+\end{itemize}
+\end{definition}
+%Well-formedness implies that
+%each $\DFA$ $\Du^s$, when starting its computation from $q^s_{\ell_s}$, reaches the same state after reading both 
+%the prefix of $\pi$ up to position $j$ and the prefix of $\rho$ up to the corresponding position $i_j$.
+It is easy to see that, 
+for $q^s_{\ell_s}\in Q^s$, $s=1,\ldots ,k$, the $(q^1_{\ell_1}, \ldots , q^k_{\ell_k})$-well-formed\-ness relation is \emph{transitive}.
+%\begin{proof} (\emph{Scketch})
+%If $\pi'$ is well formed w.r.t. $\pi$, and $\pi''$ is well formed w.r.t. $\pi'$, then the %$\pi''$-position $j$ corresponds to the $\pi$-position $k_{i_j}$, being $j$ corresponding to the %$\pi'$-position $i_j=\ell$, and $\ell$ to the $\pi$-position $k_\ell$. Thus, for all $p\in\Prop$, %$\Ku,(\pi'')^{j} \models p$ if and only if $\Ku,\pi^{k_\ell} \models p$.
+%\qed\end{proof}
+
+It is possible to show that a trace, whose length exceeds a suitable
+exponential threshold, induces a shorter, well-formed trace. 
+Such a contraction pattern (Proposition~\ref{proposition:wellFormdnessRegex})  represents a ``basic step'' in a contraction process which will allow us to prove the exponential small-model property for $\AAbarBBbar$.
+
+Let us consider 
+%Kripke structure $\Ku=(\Prop,S, \Edges,\mu,s_0)$, and 
+an $\AAbarBBbar$ formula $\varphi$ and let $r_1,\ldots ,r_k$ be the $\RE$'s over $\Prop$ in $\varphi$. Let 
+%As we said, it is possible to build $k$ 
+ $\Du^1,\ldots, \Du^k$ be the $\DFA$s such that $\mathcal{L}(\Du^t)=\mathcal{L}(r_t)$, for $t=1,\ldots, k$, where $|Q^t|\leq 2^{2|r_t|}$ (see Remark~\ref{remk:nfa}). We denote $Q^1\times \ldots \times Q^k$ by $Q(\varphi)$, and $\Du^1,\ldots, \Du^{k}$ by $\Du(\varphi)$.
+
+\begin{proposition}\label{proposition:wellFormdnessRegex} 
+Let $\Ku=\KuDef$ be a finite Kripke structure, $\varphi$ be an $\AAbarBBbar$ formula  with $\RE$'s $r_1,\ldots ,r_k$ over $\Prop$, $\rho\in\Trk_\Ku$ be
+a trace, and $(q^1,\ldots , q^k)\in Q(\varphi)$. There exists a trace $\pi\in\Trk_\Ku$, which is $(q^1,\ldots , q^k)$-well-formed w.r.t.\ $\rho$, such that $|\pi| \leq |\States|\cdot 2^{2\sum^k_{\ell=1}|r_\ell|}$.
+\end{proposition}
+The proof, which is an adaptation of that of Proposition~\ref{proposition:wellFormdness}, can be found in Appendix~\ref{proof:proposition:wellFormdnessRegex}.
+
+The next step is to determine some conditions for contracting traces while preserving the equivalence w.r.t.\ the satisfiability of the considered $\AAbarBBbar$ formula. 
+ In the following, we restrict ourselves again to formulas in \nnf.
+
+For a trace $\rho$ and a formula $\varphi$ of $\AAbarBBbar$ (in \nnf), we fix a set of distinguished $\rho$-positions, called \emph{witness positions} (recall Definition~\ref{definition:WitnessPositions}), each one corresponding to the minimum prefix of $\rho$ which satisfies a formula $\psi$ occurring in $\varphi$ as a subformula of the form $\hsB\psi$ (provided that $\hsB\psi$ is satisfied by $\rho$). Such set is denoted by $Wt(\varphi,\rho)$, and we have $|Wt(\varphi,\rho)|\leq |\varphi|-1$.
+We can show that, when a contraction is performed
+ in between a pair of \emph{consecutive} witness positions (thus no witness position is ever removed), we get a trace induced by $\rho$ (according to Definition~\ref{definition:inducedTrk}) equivalent with respect to the satisfiability of $\varphi$. 
+ %$[B]$, $[\overline{B}]$, $[A]$, and $[\overline{A}]$ of $\hsB$, $\hsBt$, $\hsA$, and $\hsAt$). % 
+
+
+We are now ready to state the exponential small-model property for $\AAbarBBbar$.
+\begin{theorem}[Exponential small-model for $\AAbarBBbar$]\label{theorem:expSizeModelPropertyAAbarBBbarRegex}
+Let $\Ku=(\Prop,\States,\allowbreak \Edges,\Lab,\sinit)$ be a finite Kripke structure, $\sigma,\rho \in \Trk_\mathpzc{K}$, and $\varphi$ be an $\AAbarBBbar$ formula in \nnf{}, with $\RE$'s  $r_1,\ldots ,r_u$ over $\Prop$, such that $\Ku,\sigma\star\rho\models \varphi$. There exists $\pi\in \Trk_\mathpzc{K}$, induced by $\rho$, such that $\Ku,\sigma\star\pi\models \varphi$ and $|\pi|\leq |\States|\cdot (|\varphi|+1) \cdot 2^{2\sum_{\ell=1}^u |r_\ell|}$.
+\end{theorem}
+%
+The theorem holds in particular if $|\sigma|\!=\!1$, and thus $\sigma\star\rho\!=\!\rho$ and $\sigma\star\pi\!=\!\pi$. In this case, if $\Ku,\rho\models \varphi$, then $\Ku,\pi\models \varphi$, where $\pi$ is induced by $\rho$ and $|\pi|\leq |\States|\cdot (|\varphi|+1) \cdot 2^{2\sum_{\ell=1}^u |r_\ell|}$. 
+The proof, which is an adaptation of the one of Theorem~\ref{theorem:polynomialSizeModelProperty}, can be found in Appendix~\ref{proof:theorem:expSizeModelPropertyAAbarBBbarRegex}.
+
+
+The exponential small-model property allows us to devise a trivial \emph{exponential working space} algorithm for $\AAbarBBbar$ (and $\AAbarEEbar$)---as already anticipated, we will actually present a polynomial space 
+one in the next sections---which basically unravels the Kripke structure and %following the structure of the formula, 
+checks all subformulas of the input formula. At every step it can consider traces not longer than $O(|\States|\cdot |\varphi| \cdot 2^{2\sum_{\ell=1}^u |r_\ell|})$. 
+Conversely, the following example shows that the exponential small-model is strict, that is, there exist a formula and a Kripke structure such that the shortest trace satisfying the formula has exponential length in the size of the formula itself. This is the case even for purely propositional formulas (of the $\HS$ fragment $\HSprop$).
+\begin{example} 
+Let $pr_i$ be the $i$-th smallest prime number. It is well-known that $pr_i\in O(i\log i)$. Let $w^{\otimes k}$ denote the string obtained by concatenating $k$ times $w$.
+%
+Let us fix some $n\in\mathbb{N}$, and 
+let $\Ku=(\{p\},\{s\}, \Edges,\mu,s)$ be the trivial Kripke structure having only one state with a self-loop, where $\Edges=\{(s,s)\}$, and $\mu(s)=\{p\}$.
+
+The shortest trace satisfying \[\psi=\bigwedge_{i=1}^n (p^{\otimes (pr_i)})^*\] is $\rho=s^{\otimes (pr_1\cdots pr_n)}$, since its length is the least common multiple of $pr_1,\ldots, pr_n$, which is, indeed, $pr_1\cdots pr_n$.
+%
+It is immediate to check that the length of $\psi$ is $O(n\cdot pr_n)=O(n^2\log n)$. On the other hand, the length of $\rho$ is $pr_1\cdots pr_n \geq 2^n$.
+\end{example}
+
+In the following, we will exploit the exponential small-model property of the two symmetrical fragments $\AAbarBBbar$ and $\AAbarEEbar$ to prove the $\Psp$-completeness of their MC problems.
+First, in Section~\ref{sect:PspAlgo}, we will provide a $\Psp$ MC algorithm for $\B\Bbar$ (resp., $\E\Ebar$). Then, in Section~\ref{sect:genResult}, we will show that the \emph{meets} and \emph{met-by} modalities $\A$ and $\Abar$ can be suitably encoded by regular expressions without increasing the complexity of $\B\Bbar$ (resp., $\E\Ebar$).

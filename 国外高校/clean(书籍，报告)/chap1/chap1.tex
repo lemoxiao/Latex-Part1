@@ -1,0 +1,22 @@
+\documentclass[../main/main.tex]{subfiles}
+
+\begin{document}
+
+\onlyinsubfile{%
+    \input{../configuration/mainmatter.tex}%
+    \setcounter{chapter}{0}
+}
+
+% =====================================
+% Chapitre 1
+% =====================================
+\chapter{Titre du chapitre}%
+\label{chap:label-chapitre}%
+\chaptertoc{}
+
+\input{../chap1/eqandfigures.tex}\clearpage{}
+
+\input{../chap1/codesandlistes.tex}\clearpage{}
+
+\end{document}
+

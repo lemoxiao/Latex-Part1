@@ -1,0 +1,165 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% UCF Electronic Dissertation and Thesis (ETD) Template
+% (C) Copyright 2007-2013 Daniel Gallagher,
+%
+% https://bitbucket.org/dgallagher/ucf-thesis-latex-template
+%
+% UCF Thesis Preamble
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \listfiles      %%% List dependencies to LaTeX output window and .log file
+% \DeclareFontFamily{OT1}{cmtt}{\hyphenchar\font=45} % Modify font (Optioinal?)
+% \font\tenrm=cmr10
+% \lefthyphenmin=2
+% \righthyphenmin=3
+% \pdfadjustspacing=1		%%% Adjust character spacing (kerning)
+% \pdfprotrudechars=1
+%
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% MA, MS, PhD, EdD Thesis?? See ucfthes.cls
+\documentclass [MS] {ucfthes}   %%% See ucfthes.cls file for all options  % Draft prints notes badboxes
+%\documentclass [PhD,single,twoside] {ucfthes}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%\documentclass[12pt,leqno,openright]{book}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%\bibliographystyle {thesis}
+\bibliographystyle {IEEEtran}        %%% Use IEEE bibliography style (ie. [1])
+%\bibliographystyle {plain}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%\bibliographystyle {agsm}
+%\usepackage{harvard}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%\usepackage[verbose,protrusion=true,expansion=true]{microtype}
+%\usepackage{euler}		   %%% Euler Math Font Family
+%\usepackage{verbatim}
+%\usepackage{moreverb}
+%\usepackage{textcomp}
+%\usepackage{listings}
+%\lstset{language=C++}
+%\usepackage{rotating}
+%\usepackage{oldlfont}
+%\usepackage{array}
+%\usepackage{wrapfig}
+%\usepackage{latexsym}
+%\usepackage{tableau}
+%\usepackage{subfigure}
+%\usepackage{indentfirst}            %%% Force indent of first paragraph in section.
+%
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%%%%%% Two options for adding draft watermark below %%%%%
+%%%%%% Watermark across each page of pdf with timestamp
+%\usepackage[all, timestamp]{draftcopy} %%% Use with postscript output only (Uses PSTricks)
+%\usepackage{draftnote}  % Requires draftnote.sty file
+%\usepackage{draftwatermark}
+\usepackage{lipsum} % Used to create placehold lorem ipsum text. Remove if unused.
+%
+%\usepackage{todo}
+%\usepackage[colorinlistoftodos]{todonotes}
+%\usepackage[draft, nomargin, footnote]{fixme}% Arguments: nomargin, inline, margin, marginclue, footnote, index
+%
+%\usepackage{notations} % See: http://ejeandel.free.fr/programs/tex.html
+%
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%%%%%%%%%%%%%%\input{newsection}
+%\input{macros}			   %%% Custom macros file (macros.tex)
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\usepackage{amsmath,amssymb,amsfonts}  %%% Typical math packages
+%\input{srcltx.sty}
+%\usepackage{chapterfolder}         %%% Nifty package (if you can get working) for using a separate folder per chapter
+%\usepackage{import}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\usepackage{graphicx}               %%% To include graphics
+%\usepackage[dvipdfm, draft]{graphicx}  %%% draft option does not embed img (Empty box for placeholder)
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%\usepackage{epsfig}
+%\usepackage{psfrag}
+%\graphicspath{{./figures/}{./figures/photos/}}
+%
+\usepackage{setspace}               %%% Allow for Single Spacing Override using \doublespacing
+\usepackage{longtable}              %%% for tables longer than one page
+\usepackage{afterpage}              %%% figures not before first reference of force \clearpage ???
+\usepackage{color}		    		%%% Colorize text
+\usepackage{multicol}               %%% Needed for signature page generation
+%\usepackage{times}                 %%% Times New Roman Font
+%
+% ~~~~~~~~ Custom commands for image sizes ~~~~~~~~~~~~
+\newcommand{\imsize}{3.5in}
+\newcommand{\lgimsize}{0.7\columnwidth}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%\usepackage{rotating}
+\usepackage{pdflscape}
+%\usepackage{flafter}
+%\usepackage{topfloat}
+\usepackage{float}
+%
+% ~~~ Place `Page Floats' at top of page per editor ~~~
+\makeatletter
+\setlength\@fptop{5pt}
+\makeatother
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%\usepackage{caption} %Modify figure caption formatting
+%\captionsetup{%margin=10pt,
+%		format=hang,
+%		indention=-0cm,
+%		font=small,
+%		labelfont=bf,
+%		textfont=it
+%}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% D.G. ,2007
+% This is to produce the PDF links to be comply with UCF PDF rules.
+% Try to keep this at the end of the preable to work properly.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage[ps2pdf,bookmarks=true,breaklinks=true]{hyperref}
+\usepackage[%dvipdfm,               %dvips, %driver used - Alt: dvips/ps2pdf(expands dvips for gs), latex2html, pdftex
+            %letterpaper, % No longer used
+            bookmarks=true,
+            hypertexnames=false,    %%%  this might be necessary in order to get the hyper-links to the figures right
+                                    %%%  use guessable names for links when set true
+	    % ~~~
+            %linktocpage=true,      %%% Use page number for bookmark links instead of heading title.
+                                    %%% I am not sure how to get both pages and links currently.
+            %plainpages=true,
+            %breaklinks=true,
+            bookmarksnumbered=true  %%% If Acrobat bookmarks are requested, include section numbers. Required for UCF.
+            ]{hyperref}
+\hypersetup{
+ pdfauthor = {Name Here - Email@here.com},
+ pdftitle = {Thesis Title Should be Included Here},
+ pdfsubject = {Master of Science Thesis, Summer 2007, Univ. of Central Florida},
+ pdfkeywords = {keyword 1, keyword 2},
+ pdfcreator = {LaTeX with hyperref package using Daniel Gallagher's ETD template},
+% pdfproducer = {dvips + ps2pdf},   %%% This is generated automatically when pdf is made, use if override is wanted.
+ baseurl = {https://bitbucket.org/dgallagher/ucf-thesis-latex-template},
+%
+%%%%%% PDF Viewing Options Below %%%%%
+%
+pdfpagemode = UseOutlines,
+% pdfpagemode = none,   %%% Determines how the file is opening in Acrobat; the possibilities are None, UseThumbs (show thumbnails), UseOutlines (show bookmarks), and FullScreen. If no mode if explicitly chosen, but the bookmarks option is set, UseOutlines is used.
+% pdfstartpage = 1,      %%% Determines on which page the PDF file is opened.
+ pdfstartview = FitV,   %%% Set the startup page view
+%
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%
+%%%%%  Adjust Bookmark Link Colors Below  %%%%%%
+% pdfborder={0 0 1}
+% colorlinks=true, %%% Colors word rather than border
+ citebordercolor = {1 1 1},  %%% Color for bibliographical citations in text.
+ linkbordercolor = {1 1 1},
+%
+ menubordercolor={1 1 1},
+ filebordercolor={1 1 1},
+ urlbordercolor={1 1 1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% backref   %%% Adds backlink text to the end of each item in the bibliography, as a list of section numbers. This can only work properly if there is a blank line after each \bibitem.
+ }
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%\usepackage{breakurl}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 

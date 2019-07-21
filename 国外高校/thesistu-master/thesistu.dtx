@@ -1,0 +1,2143 @@
+% \iffalse meta-comment
+%
+%% thesistu.dtx
+%% Copyright (C) 2016-     by Maximilian Hoheiser <maximilian.hoheiser@student.tuwien.ac.at>
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Maximilian Hoheiser.
+%
+% This work consists of the files thesistu.dtx and thesistu.ins
+% and the derived file thesistu.cls.
+% This work also consists of the file intro.tex.
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{thesistu.dtx}
+%</driver>
+%<class>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<class>\ProvidesClass{thesistu}
+%<*class>
+    [2016/09/01 v0.1 TU Wien Faculty of Physics thesis template]
+%</class>
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage[parfill]{parskip}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage[columns=1,totoc=true]{idxlayout}
+\usepackage{hypdoc}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+	\DocInput{thesistu.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{0}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+%% \newcommand{\issue}[1]{\href{https://gitlab.cg.tuwien.ac.at/auzinger/thesistu/issues/#1}{Issue \#{}#1}}
+%
+%
+%
+% \changes{v0.9}{2014/05/30}{Pre-release version}
+% \changes{v1.0}{2014/09/07}{Initial release version}
+% \changes{v1.1}{2014/10/07}{Added references to the GitLab environment}
+% \changes{v1.3}{2014/11/25}{Added support for a dissertation at the Vienna Phd School of Informatics. \issue{4}}
+% \changes{v1.4}{2015/08/01}{Added comma to separate posttitle and changed mainmatter pagestyle to `Ruled'.}
+% \changes{v1.5}{2016/01/17}{Updated name of university to `TU Wien'.}
+% \changes{v2.0}{2016/09/01}{added setinstitut, setuniversity, setfaculty, added the possibility to set header and logo}
+% \changes{v2.1}{2016/12/08}{added appendix, added introduction, added lva in titlepage}
+%
+% \GetFileInfo{thesistu.dtx}
+%
+% \DoNotIndex{\DeclareOption,\LoadClass,\PassOptionsToClass,\ProcessOptions,\RequirePackage}
+% \DoNotIndex{\f@family}
+% \DoNotIndex{\newcommand,\newenvironment,\edef,\let,\renewcommand,\renewenvironment,\set,\xdef}
+% \DoNotIndex{\begin,\begingroup,\end,\endgroup}
+% \DoNotIndex{\@empty,\@namedef,\@namelet,\@nameuse,\csname,\endcsname}
+% \DoNotIndex{\",\\}
+% \DoNotIndex{\else,\fi,\ifcsempty,\ifcsstring,\ifdefstrequal,\ifdefstring,\ifdraftdoc,\ifstrempty,\ifstrequal,\ifundef}
+% \DoNotIndex{\baselineskip,\bfseries,\bigskip,\centering,\chapter,\chapterstyle,\cleardoublepage,\displaydate,\expandafter,\fontsize,\footruleskip,\global,\graphicspath,\hfill,\hspace,\includegraphics,\languagename,\makeevenfoot,\makeevenhead,\makefootrule,\makeheadposition,\makeoddfoot,\makeoddhead,\makepagestyle,\makerunningwidth,\newdata,\newgeometry,\newlength,\pagestyle,\par,\parindent,\parskip,\raisebox,\relax,\restoregeometry,\rule,\selectfont,\selectlanguage,\setkeys,\setlength,\sfdefault,\sffamily,\smallskip,\space,\ss,\string,\textwidth,\thispagestyle,\vfill,\vspace}
+% \DoNotIndex{\#,\$,\%,\&,\@,\\,\{,\},\^,\_,\~,\ }
+%
+% \newcommand{\ispoly}{\textsuperscript{P}}
+%
+% \title{The \textsf{thesistu} class\thanks{This document
+%   corresponds to \textsf{thesistu}~\fileversion, dated \filedate.}}
+% \author{Maximilian Hoheiser \\ \texttt{maximilian.hoheiser@student.tuwien.ac.at}}
+%
+% \maketitle
+%
+% \begin{abstract}
+% This class provides a \LaTeXe\ template for theses at any Faculty at any University gifen by the author, only a Logo of the Faculty and University is needed. With a little effort it can be adapted to fit any Faculty at any Universit.
+% In the current version, bachelor and master theses as well as dissertations are supported in both English and German.
+% \end{abstract}
+%
+% \clearpage
+% \tableofcontents
+% \clearpage
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Introduction}
+%
+% This class provides a \LaTeXe\ template for all theses at the Faculty of Physics at the TU Wien. It can be adapted to fit any Faculty at any Universit.
+% Further information on the document class and accompanying support can be found at \url{https://madmaxt800.github.io/thesistu/}.
+% Further guidelines may apply to both the format and structure of certain theses.
+% Thesis authors are advised to consult Section~\ref{sec:user} for a documentation of all relevant commands.
+% Information for class developers is provided in Section~\ref{sec:class}.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Known Issues}
+%
+% This class is incompatible with the |minitoc| package as of version 60, due to the incompatibility of the underlying |memoir| class.
+% Use the |titletoc| package as a replacement.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Usage for Document Authors}
+% \label{sec:user}
+%
+% This section contains relevant information for authors of theses that are based on the |thesistu| document class.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Data}
+% \label{sec:user:data}
+%
+% To allow the generation of the title pages, signature fields, statements, etc., several pieces of information have to be set by the author using the commands in the subsequent sections.
+% We discern several categories of data: \textit{(i)} textual data, which is given by a simple text string, \textit{(ii)} persons, which are defined by their names, optional titles, and their gender, as well as, \textit{(iii)} dates and \textit{(iv)} list data, which allow the selection of one argument from a list of permissible arguments.
+% Several commands have polylingual capabilities and support different languages (see Section~\ref{sec:user:data:polylingual}). A superscript P, i.e., |\command|\ispoly, indicates such a command.
+%
+% \subsubsection{Textual Data}
+% \label{sec:user:data:text}
+%
+% \DescribeMacro{\setaddress}
+% \DescribeMacro{\setregnumber}
+% \DescribeMacro{\settitle}
+% \DescribeMacro{\setsubtitle}
+% \DescribeMacro{\setcurriculum}
+% \DescribeMacro{\setuniversity}
+% \DescribeMacro{\setfirstreviewerdata}
+% \DescribeMacro{\setsecondreviewerdata}
+% \DescribeMacro{\setfaculty}
+% \DescribeMacro{\setinstitut}
+% \DescribeMacro{\setlecture}
+%
+%
+% All commands in this section are called with one mandatory argument, e.g., as |\command|\marg{text}, where \meta{text} defines the content of the commands. For polylingual commands, given by |\command|\ispoly, one \meta{text} argument has to supplied for each language (see Section~\ref{sec:user:data:polylingual}). The following textual data can be set:
+% \begin{center}
+% \begin{tabular}{lllc}
+%   \toprule
+%   Command & Role & Type & Optional\\
+%   \midrule
+%   |\setaddress| & Address of the author & All & No \\
+%   |\setregnumber| & Registration number of the author & All & No \\
+%   |\settitle|\ispoly & Title of the thesis & All & No \\
+%   |\setsubtitle|\ispoly & Subtitle of the thesis & All & Yes \\
+%   |\setcurriculum|\ispoly & Name of the curriculum & B, M & No \\
+%	|\setuniversity| & Name of the university & B, M & No \\
+%	|\setfaculty| & Name of the faculty & B, M & No \\
+%	|\setinstitut| & Name of the institut & B, M & No \\
+%   |\setlecture| & Name of the lecture & All & Yes \\
+%   \midrule
+%   \multicolumn{4}{l}{Types: Bachelor (B), Master (M), Doctoral (D), PhD School (P), All (All)} \\
+%   \bottomrule
+% \end{tabular}
+% \end{center}
+%
+% \begin{center}
+% \begin{tabular}{lllc}
+%   \toprule
+%   Command & Role & Type & Optional\\
+%   \midrule
+%   |\setfirstreviewerdata| & Affiliation and country & P & No \\
+%                           & of first reviewer       &   &    \\
+%   |\setsecondreviewerdata| & Affiliation and country & P & No \\
+%                            & of second reviewer      &   &    \\
+%   \midrule
+%   \multicolumn{4}{l}{Types: Bachelor (B), Master (M), Doctoral (D), PhD School (P), All (All)} \\
+%   \bottomrule
+% \end{tabular}
+% \end{center}
+%
+% \subsubsection{Persons}
+% \label{sec:user:data:person}
+%
+% \DescribeMacro{\setauthor}
+% \DescribeMacro{\setadvisor}
+% \DescribeMacro{\setsecondadvisor}
+% \DescribeMacro{\setfirstassistant}
+% \DescribeMacro{\setsecondassistant}
+% \DescribeMacro{\setthirdassistant}
+% \DescribeMacro{\setfirstreviewer}
+% \DescribeMacro{\setsecondreviewer}
+% All commands in this section are called with four mandatory arguments, e.g., as |\command|\marg{pretitle}\marg{name}\marg{posttitle}\marg{gender}, where \meta{name} defines both the first name(s) and family name(s) of the person. A title that is placed before the name is assigned with \meta{pretitle}, while a trailing title is given with \meta{posttitle}. Both \meta{pretitle} and \meta{posttitle} can be left empty, to indicate an absence of such a title; the insertion of appropriate glue between titles and names is handled by the |thesistu| class. The declaration of the persons gender via \meta{gender} allows the use of gender-specific terms in languages that support them, e.g., German. The possible options for \meta{gender} are |male| and |female| (see Section~\ref{sec:user:data:list}). The following persons can be set:
+% \begin{center}
+% \begin{tabular}{lllc}
+%   \toprule
+%   Command & Role & Type & Optional\\
+%   \midrule
+%   |\setauthor| & Author of the thesis & All & No \\
+%   |\setadvisor| & Main advisor of the thesis & All & No \\
+%   |\setsecondadvisor| & Second advisor of the thesis & P & Yes \\
+%   |\setfirstassistant| & First advising assistant & B, M & Yes \\
+%   |\setsecondassistant| & Second advising assistant & B, M & Yes \\
+%   |\setthirdassistant| & Third advising assistant & B, M & Yes \\
+%   |\setfirstreviewer| & First thesis reviewer & D, P & No \\
+%   |\setsecondreviewer| & Second thesis reviewer & D, P & No \\
+%   \midrule
+%   \multicolumn{4}{l}{Types: Bachelor (B), Master (M), Doctoral (D), PhD School (P), All (All)} \\
+%   \bottomrule
+% \end{tabular}
+% \end{center}
+%
+% \subsubsection{Dates}
+%
+% \DescribeMacro{\setdate}
+% All commands in this section are called with three madatory arguments, e.g., as |\command|\marg{day}\marg{month}\marg{year}. The syntax is identical to the last three arguments of the |\newdate| command of the |datetime| package, from which these commands derive. The following dates can be set:
+% \begin{center}
+% \begin{tabular}{lllc}
+%   \toprule
+%   Command & Role & Type & Optional\\
+%   \midrule
+%   |\setdate| & Signing date & All & No \\
+%   \midrule
+%   \multicolumn{4}{l}{Types: Bachelor (B), Master (M), Doctoral (D), PhD School (P), All (All)} \\
+%   \bottomrule
+% \end{tabular}
+% \end{center}
+%
+% \subsubsection{List Data}
+% \label{sec:user:data:list}
+%
+% All commands in this section are called with at least one madatory argument called \meta{list}, e.g., as |\command|\dots\marg{list}\dots, where \meta{list} is given one element from a set of possible arguments.
+%
+% \DescribeMacro{\setauthor}
+% \DescribeMacro{\setadvisor}
+% \marginpar{\strut\hfill$\cdots$}
+% When setting a person, the person's gender is specified with a list argument (see Section~\ref{sec:user:data:person}):
+% \begin{center}
+% \begin{tabular}{lllc}
+%   \toprule
+%   Command & Options & Description\\
+%   \midrule
+%   |\command|\marg{.}\marg{.}\marg{.}\marg{list} & |male| & Specifies a male person. \\
+%                                                 & |female| & Specifies a female person. \\
+%   \bottomrule
+% \end{tabular}
+% \end{center}
+%
+% \DescribeMacro{\setthesis}
+% The thesis type is selected from one of the fundamental types:
+% \begin{center}
+% \begin{tabular}{lllc}
+%   \toprule
+%   Command & Options & Description\\
+%   \midrule
+%   |\setthesis|\marg{list} & |bachelor| & Specifies a bachelor's thesis. \\
+%                           & |master| & Specifies a master's thesis. \\
+%                           & |doctor| & Specifies a dissertation. \\
+%                           & |phd-school| & Specifies a disseration at the Vienna \\
+%                           &              & PhD school of Informatics. \\
+%   \bottomrule
+% \end{tabular}
+% \end{center}
+%
+%
+% \DescribeMacro{\setmasterdegree}
+% With a master's curriculum, different degrees can be achieved and the appropriate type has to be chosen based on the curriculum that the author is enroled in:
+% \begin{center}
+% \begin{tabular}{lllc}
+%   \toprule
+%   Command & Options & Description\\
+%   \midrule
+%   |\setmasterdegree|\marg{list} & |dipl.| & Specifies the degree \\
+%                                 &         & \hspace{1ex}`Diplom-Ingenieur(in)'. \\
+%                                 & |master| & Specifies the degree \\
+%                                 &          & \hspace{1ex}`Master of Science'. \\
+%                                 & |rer.nat.| & Specifies the degree \\
+%                                 &            & \hspace{1ex}`Magist(er/ra) der Natur- \\
+%                                 &            & \hspace{1ex}wissenschaften'. \\
+%                                 & |rer.soc.oec.| & Specifies the degree \\
+%                                 &                & \hspace{1ex}`Magist(er/ra) der Sozial- und \\
+%                                 &                & \hspace{1ex}Wirtschaftswissenschaften'. \\
+%   \bottomrule
+% \end{tabular}
+% \end{center}
+%
+% \DescribeMacro{\setdoctordegree}
+% With a doctorate study, different degrees can be achieved and the appropriate type has to be chosen based on the program that the author is enroled in:
+% \begin{center}
+% \begin{tabular}{lllc}
+%   \toprule
+%   Command & Options & Description\\
+%   \midrule
+%   |\setdoctordegree|\marg{list} & |techn.| & Specifies the degree \\
+%                                 &          & \hspace{1ex}`Doktor(in) der Technischen' \\
+%                                 &            & \hspace{1ex}Wissenschaften'. \\
+%                                 & |rer.nat.| & Specifies the degree \\
+%                                 &            & \hspace{1ex}`Doktor(in) der Natur- \\
+%                                 &            & \hspace{1ex}wissenschaften'. \\
+%                                 & |rer.soc.oec.| & Specifies the degree \\
+%                                 &                & \hspace{1ex}`Doktor(in) der Sozial- und \\
+%                                 &                & \hspace{1ex}Wirtschaftswissenschaften'. \\
+%   \bottomrule
+% \end{tabular}
+% \end{center}
+%
+% \subsubsection{Polylingual Data}
+% \label{sec:user:data:polylingual}
+%
+% \DescribeMacro{\setcurriculum}
+% Used as |\setcurriculum|\marg{english}\marg{german}, it sets the name of the curriculum that the student is enroled in.
+% The name can be given in English, with \meta{english}, and in German, with \meta{german}.
+% Note that the curriculum name does not need to be supplied for all thesis types, since, e.g., doctoral studies do not have a curriculum per se.
+% If a title page of one of the languages is not used, the corresponding argument can be left empty.
+%
+% \DescribeMacro{\settitle}
+% Used as |\settitle|\marg{english}\marg{german}, it sets the title of the thesis.
+% The title can be given both in an English version, with \meta{english}, and in a German version, with \meta{german}.
+% For title pages in a given language, the corresponding title will be used.
+% Unused languages can be supplied as empty brackets and it is possible to use the English or German title for both language versions.
+%
+% \DescribeMacro{\setsubtitle}
+% Used as |\setsubtitle|\marg{english}\marg{german}, it sets the subtitle of the thesis.
+% The same specifications as for |\settitle| apply.
+%
+% \DescribeMacro{\setuniversity}
+% Use as |\setuniversity|\marg{english}\marg{german}, it sets the university name both in englisch and in german, 
+% if both the english and the german titlepage are used, both names must be supplied.
+%
+% \DescribeMacro{\setfaculty}
+% Use as |\setfaculty|\marg{englisch}\marg{german},it sets the faculty name both in englisch and in german, 
+% if bot the englisch and the german titlepage are used, both names mutst be supplied.
+%
+% \DescribeMacro{\setinstitut}
+% Use as |\setinstitut}|\marg{english}\marg{german}, it specifies a name for yout institut, like the |\setinstitut| macro depending
+% on which tilepage is used, the german and, or the english name must be supplied.
+%
+% \changes{v2.1}{2016/12/08}{added appendix, added introduction, added lva in titlepage}
+%
+% \DescribeMacro{\setlecture}
+% Use as |\setlecture}|\marg{english}\marg{german}, it specifies a name for the lecture under which the thesis is written, like the |\setlecture| macro depending
+% on which tilepage is used, the german and, or the english name must be supplied.
+%
+%
+% \DescribeMacro{\addtitlepage}
+% The titlepage can be generated in the following languages (see Section~\ref{sec:user:layout}):
+% \begin{center}
+% \begin{tabular}{lllc}
+%   \toprule
+%   Command & Options & Description\\
+%   \midrule
+%   |\addtitlepage|\marg{list} & |english|   & Generates an English title page. \\
+%                              & |naustrian| & Generates a German title page. \\
+%   \bottomrule
+% \end{tabular}
+% \end{center}
+% Note that a non-English title page is not yet available for a dissertation at the Vienna PhD School.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Layout}
+% \label{sec:user:layout}
+%
+% Most of the data that is supplied with the commands of the previous sections is used to generate the front matter of the thesis.
+% It consists of obligatory items such as the title page(s) and the statement of originality as well as optional items such as the acknowledgements or the abstract in different languages and also an indroduction.
+% In the remainder of this section, the available items of the front matter are given.
+%
+% \changes{v2.0}{2016/09/22}{added the possibility to set header and logo}
+% \DescribeMacro{\setlogo}
+% Used as |\setlogo|\marg{UNins}, where \meta{UN} are the first two letters of your university
+% and \meta{ins} are the first tree letters of your institut. The Logo-File must be a vektor graphic with the |.eps| format.
+% The file must be placed in the main graphics folder and must have the name: |UNins_logo.eps|. To create your own, use the given ones as referenc. And make sure, that you subbmit your new ones to GitHub
+% \DescribeMacro{\setheader}
+% Used as |\setheader|\marg{UNins}, where \meta{UN} are the first two Letters of your university
+% and \meta{ins} are the first tree letters of your institut. The Logo-File must be a vektor graphic with the |.eps| format.
+% The file must be placed in the main graphics folder and must have the name: |UNins_header.eps|. To create your own, use the given ones as referenc. And make sure, that you subbmit your new ones to GitHub.
+%
+% The goal is to have as many logos and headers as possible, so that the author only has to specify one and not create his/her own.
+% A list is given and regularly updated which lists the available ones:
+% \begin{center}
+% \begin{tabular}{lrr}
+%   \toprule
+%   Name & University & Institut\\
+%   \midrule
+%   TUinf & TU Wien & Informatik\\
+%   TUifp & TU Wien & Institut f\"ur Festk\"orperphysik\\
+%   \bottomrule
+%  \end{tabular}
+%  \end{center}
+%
+% \changes{v2.0}{2016/09/21}{added ability to change footer on titlepage}
+% The following section describes the inforation that is needet for the fotnote on the titlepage, besides the university name.
+%
+% \DescribeMacro{\setunizipcode}
+% Used as |\setunizipcode|\marg{ZipCode}, where \meta{ZipCode} is the ZipCode of the University in the form of eg:
+% \marg{A-1040}, where \meta{A} is the first letter of the country, and \meta{1040} is the actual zipcode.\\
+% \DescribeMacro{\setunistreet}
+% Used as |\setunistreet|\marg{Steetname Steetnumber}, where \meta{Steetname} ist the name of the steet,
+% and \meta{Streetnumber} is the Steetnumber of the university.\\
+% \DescribeMacro{\unicity}
+% Used as |\setunicity|\marg{City}, where \meta{City} is the City of your universities address.\\
+% \DescribeMacro{\setunitelnr}
+% Used as |\setunitelnr|{Telephone Number}, where \meta{Telephone Number} is the main telephone number of your university,
+% this is not necessary but the layout will look better with the telephone number gifen.\\
+% \DescribeMacro{\setuniwebsite}
+% Used as |\setuniwebsite|\marg{URL}, where \meta{URL} is the website of your university (without http://).\\
+%
+% \DescribeMacro{\addtitlepage}
+% Used as |\addtitlepage|\marg{lang}, where \meta{lang} is the name of a language as given in the |babel| package (see Section~\ref{sec:user:data:list}). The necessary pieces of information have to be set beforehand (as described in Section~\ref{sec:user:data}). This command is usually used directly after |\begin{document}\frontmatter|.
+%
+% \DescribeMacro{\addstatementpage}
+% Used as |\addstatementpage|, it generates a page with the statement of originality.
+%
+% \DescribeEnv{acknowledgements}
+% \DescribeEnv{acknowledgements*}
+% Used as |\begin{acknowledgements}|\meta{text}|\end{acknowledgements}|, this environment generates a chapter with the English acknowledgements. Use the starred version, i.e., |acknowledgements*|, to remove the table of content entry of this environment.
+%
+% \DescribeEnv{danksagung}
+% \DescribeEnv{danksagung*}
+% Used as |\begin{danksagung}|\meta{text}|\end{danksagung}|, this environment generates a chapter with the German acknowledgements. Use the starred version, i.e., |danksagung*|, to remove the table of content entry of this environment.
+%
+% \DescribeEnv{abstract}
+% \DescribeEnv{abstract*}
+% Used as |\begin{abstract}|\meta{text}|\end{abstract}|, this environment generates a chapter with the English abstract. Use the starred version, i.e., |abstract*|, to remove the table of content entry of this environment.
+%
+% \DescribeEnv{kurzfassung}
+% \DescribeEnv{kurzfassung*}
+% Used as |\begin{kurzfassung}|\meta{text}|\end{kurzfassung}|, this environment generates a chapter with the German abstract. Use the starred version, i.e., |kurzfassung*|, to remove the table of content entry of this environment.
+%
+% \changes{v2.1}{2016/12/08}{added appendix, added introduction, added lva in titlepage}
+%
+% \DescribeEnv{introduction}
+% \DescribeEnv{introduction*}
+% Used as |\begin{introduction}|\meta{text}|\end{introduction}|, this environment generates a chapter with the English introduction. Use the starred version, i.e., |introduction*|, to remove the table of content entry of this environment.
+%
+% \DescribeEnv{einleitung}
+% \DescribeEnv{einleitung*}
+% Used as |\begin{einleitung}|\meta{text}|\end{einleitung}|, this environment generates a chapter with the German introduction. Use the starred version, i.e., |einleitung*|, to remove the table of content entry of this environment.
+%
+%
+% All the above sections are displayed without chapter header, chapter or section numbering and are listed and are numberd in the table of contents with roman numbers.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Usage for Class Writers}
+% \label{sec:class}
+%
+% To accomodate shifting requirements, the |thesistu| class provides various convenience functions that allow the modification and extension of its functionality.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Data}
+%
+% To compose several parts of the thesis layout, input from the thesis author is required.
+% For the |thesistu| class, this is realized by the commands provided in Section~\ref{sec:user:data}.
+% Additional data can be defined with the the commands in the remainder of this section.
+%
+% \DescribeMacro{\CreateData}
+% Used as |\CreateData|\marg{name}, it generates a command |\set|\meta{name}.
+% Used as |\set|\meta{name}\marg{string}, the newly created command assigns the value \meta{string} to the internal variable |\thesistu@data@|\meta{name}.
+% The variable is initialized with an error value to alert the user of the fact that \meta{string} was not supplied via the |\set|\meta{name} command.
+% Furthermore, a command |\thesistu@data@|\meta{name}|@def| is created, to increase source code readability when verifying the existance of a specific data item.
+% See Section~\ref{sec:impl:data:declarations} for examples.
+%
+% \DescribeMacro{\CreatePerson}
+% Used as |\CreatePerson|\marg{name}, it generates a command |\set|\meta{name}.
+% Used as |\set|\meta{name}\marg{pretitle}\marg{personname}\marg{posttitle}\marg{gender}, the newly created command assigns the supplied values to the corresponding internal variables |\thesistu@person@|\meta{name}|@|\textellipsis as given in the table below.
+% \begin{center}
+% \begin{tabular}{lllc}
+%   \toprule
+%   Argument & Internal Variable\\
+%   \midrule
+%                     & |\thesistu@person@|\meta{name}|@def|   \\
+%   \meta{pretitle}   & |\thesistu@person@|\meta{name}|@pretitle|  \\
+%   \meta{personname} & |\thesistu@person@|\meta{name}|@name|      \\
+%   \meta{posttitle}  & |\thesistu@person@|\meta{name}|@posttitle| \\
+%   \meta{gender}     & |\thesistu@person@|\meta{name}|@gender|    \\
+%   \bottomrule
+% \end{tabular}
+% \end{center}
+% The command |\thesistu@person@|\meta{name}|@def| is created to increase source code readability when verifying the existance of a specific person.
+% Furthermore, the command |\thesistu@person@|\meta{name}|@fullname| returns the person's name together with existing titles and correct whitespace in between.
+% The person's gender is either |\thesistu@person@male| or |\thesistu@person@female|, depending on the input.
+% See Section~\ref{sec:impl:data:declarations} for examples.
+%
+% \DescribeMacro{\AddLanguage}
+% Used as |\AddLanguage|\marg{lang}, it enables the language \meta{lang} to by used by polylingual expressions.
+% \meta{lang} has to be chosed from the languages of the |babel| package that is used by this class.
+% Currently, |thesistu| uses two languages, i.e., |english| for English expressions and |naustrian| for German expressions.
+%
+% \DescribeMacro{\CreatePolylingual}
+% Used as |\CreatePolylingual|\oarg{expressions}\marg{name}, it generates a command |\thesistu@polylingual@|\meta{name} that selects the approriate expression based on the current language at the time of use.
+% The argument \meta{expressions} is a list of elements of the form \meta{expr$_i$}, where each element defines the expression for a valid language, e.g., \meta{lang$_i$}=\meta{text$_i$}.
+% \meta{lang$_i$} has to be chosen from the languages that were defined via |\AddLanguage|.
+% As a convention, text that needs to start with an uppercase letter is assigned to a name that starts with an uppercase letter.
+% The same holds for uppercase words, e.g.,\\
+% |\CreatePolylingual[english=advisor,naustrian=Betreuer]{advisor}|\\
+% |\CreatePolylingual[english=Advisor,naustrian=Betreuer]{Advisor}|\\
+% |\CreatePolylingual[english=ADVISOR,naustrian=BETREUER]{ADVISOR}|.\\
+% See Section~\ref{sec:impl:data:declarations} for examples.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Layout}
+%
+% Several key elements in the layout of the frontmatter are encapsulated to allow a convenient extension of this functionality.
+%
+% \DescribeMacro{\SignatureFields}
+% Used as |\SignatureFields|\oarg{mode}\marg{center}\marg{right}, it creates a place and date description and/or one or two signature fields.
+% \meta{mode} can be set to |y|, which adds an entry with date and place to the left, to |h|, which adds the corresponding whitespace, or to |n|, which adds nothing.
+% If text is supplied to \meta{center}, it is added below a rule, right to the possible date and place entry.
+% If text is supplied to \meta{right}, it is added below a rule, right to the possible signature field created by \meta{center}.
+% This command ensures a uniform width and positioning of the signature fields on both the title pages and the statement of originality.
+%
+% \DescribeMacro{\SignatureBlock}
+% Used as |\SignatureBlock|, it generates the signature fields for both author and advisor.
+%
+% \DescribeMacro{\ReviewerBlock}
+% Used as |\ReviewerBlock|, it generates the signature fields for both reviewers.
+%
+% \DescribeMacro{\AdvisorBlock}
+% Used as |\AdvisorBlock|, it generates the name fields for both the advisor and the potential assistants.
+%
+% \DescribeMacro{\AddTitlePage}
+% Used as |\AddTitlePage|, it generates a title page in the current language.
+% This command contains the placement of the header graphics, the footer, the appropriate blocks, etc.
+%
+% \DescribeMacro{\AddStatementPage}
+% Used as |\AddStatementPage|, it generates a chapter with the statement of originality together with the author's signature field.
+%
+% \DescribeEnv{SFFont}
+% Alters the sans serif font inside the environment. Called with one mandatory argument as |\begin{SFFont}|\marg{family}, which determines the sans serif font family that should be used, e.g., |phv| for Helvetica.
+%
+% \StopEventually{}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Implementation}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Initialization}
+%
+% \subsubsection{Class Options}
+%
+% Pass the options to the underlying memoir class.
+%
+%    \begin{macrocode}
+\DeclareOption*{%
+  \PassOptionsToClass{\CurrentOption}{memoir}%
+}%
+\ProcessOptions\relax
+%    \end{macrocode}
+%
+% \subsubsection{Loaded Class and Packages}
+%
+% The |thesistu| class is based on the |memoir| class.
+%    \begin{macrocode}
+\LoadClass[a4paper,11pt]{memoir}%
+\chapterstyle{veelo}%
+%    \end{macrocode}
+% The following packages are required for the functionality and style of the document class.
+%    \begin{macrocode}
+\RequirePackage[scaled]{helvet}%
+\RequirePackage{lmodern}%
+\RequirePackage{courier}%
+\RequirePackage[T1]{fontenc}%
+\RequirePackage[english,naustrian]{babel}%
+\RequirePackage[nodayofweek]{datetime}%
+\RequirePackage{geometry}%
+\RequirePackage{calc}%
+\RequirePackage{etoolbox}%
+
+\RequirePackage{graphicx}%
+\graphicspath{{graphics/}}%
+%    \end{macrocode}
+%
+%To use subfolders for each section in the graphics directory each subfolder hase to be defind in the main thesis.tex file as a search path for latex eg: 
+% |\graphicspath{{../graphics/chapter01}{../graphics/chapter02/}}| where the .. is used, so that each chapter can be placed in a subfolder relative to the main thesis.tex
+% file and still find the correct path for the graphics.
+%
+% \subsubsection{Low-Level Functionality}
+%
+% This section provides low-level functionality for macro definitions and macro expansions.
+%
+% \begin{macro}{\@namexdef}
+% Globally defines a control sequence with an expanded argument.
+%    \begin{macrocode}
+\newcommand{\@namexdef}[1]{\expandafter\xdef\csname#1\endcsname}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\todo}
+% Comment for the final version, to raise errors.
+%	\begin{macrocode}
+\newcommand{\todo}[1]{{\color{red}\textbf{TODO: {#1}}}} 
+%	\end{macrocode}
+%\end{macro}
+%
+% \begin{macro}{\ifestrequal}
+% A variant of |\ifstrequal| that fully expands the first two arguments.
+%    \begin{macrocode}
+\newcommand{\ifestrequal}[4]{%
+  \begingroup
+    \edef\thesistu@tempa{{#1}}%
+    \edef\thesistu@tempb{{#2}}%
+    \expandafter\expandafter\expandafter\ifstrequal
+      \expandafter\thesistu@tempa\thesistu@tempb{#3}{#4}%
+  \endgroup
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsubsection{Fonts}
+%
+% \begin{macro}{\thesistu@HUGE}
+% \begin{macro}{\thesistu@huge}
+% \begin{macro}{\thesistu@LARGE}
+% \begin{macro}{\thesistu@Large}
+% \begin{macro}{\thesistu@large}
+% \begin{macro}{\thesistu@normalsize}
+% Initializes the font sizes.
+%    \begin{macrocode}
+\newcommand{\thesistu@HUGE}{\fontsize{30}{34}\selectfont}%
+\newcommand{\thesistu@huge}{\fontsize{20}{23}\selectfont}%
+\newcommand{\thesistu@LARGE}{\fontsize{17}{22}\selectfont}%
+\newcommand{\thesistu@Large}{\fontsize{14}{18}\selectfont}%
+\newcommand{\thesistu@large}{\fontsize{12}{14.5}\selectfont}%
+\newcommand{\thesistu@normalsize}{\fontsize{11}{13.6}\selectfont}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{environment}{SFFont}
+% Selects the given font family as sans serif font.
+%    \begin{macrocode}
+\newenvironment{SFFont}[1]{%
+%    \end{macrocode}
+% Stores the current sans serif font in |\thesistu@f@family@tmp| and changes to the given sans serif font.
+%    \begin{macrocode}
+  \begingroup
+    \sffamily
+    \global\let\thesistu@f@family@tmp=\f@family
+  \endgroup
+  \renewcommand{\sfdefault}{#1}%
+%    \end{macrocode}
+% In case the outer scope is already sans serif, the new font has to be activated.
+%    \begin{macrocode}
+  \ifdefstrequal{\f@family}{\thesistu@f@family@tmp}{\sffamily}{}%
+}{%
+%    \end{macrocode}
+% The scope of the font change is the environment itself. Thus, no cleanup code is required in case the outer scope was already sans serif.
+%    \begin{macrocode}
+  \renewcommand{\sfdefault}{\thesistu@f@family@tmp}%
+}%
+%    \end{macrocode}
+% \end{environment}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Data}
+%
+% \subsubsection{Dates}
+%
+% \begin{macro}{\setdate}
+% Creates the internal storage for the signing date.
+%    \begin{macrocode}
+\newcommand{\setdate}[3]{%
+  \newdate{thesistu@date@signing}{#1}{#2}{#3}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsubsection{Textual Data}
+%
+% \begin{macro}{\thesistu@def@data}
+% Creates the internal storage for simple data entries.
+%    \begin{macrocode}
+\newcommand{\thesistu@def@data}[2]{%
+  \@namedef{thesistu@data@#1@def}{}%
+  \@namedef{thesistu@data@#1}{#2}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\thesistu@def@data@invalid}
+% Initializes the internal storage with error messages.
+%    \begin{macrocode}
+\newcommand{\thesistu@def@data@invalid}[2]{%
+  \@namedef{thesistu@data@#1@error}{%
+    \ClassError{thesistu}{No #2 issued}{Set #1 with #2.}%
+  }%
+  \@namedef{thesistu@data@#1}{\@nameuse{thesistu@data@#1@error}}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\CreateData}
+% Issues the construction of a setter function for a |data| entry given by |\setdata|.
+%    \begin{macrocode}
+\newcommand{\CreateData}[1]{%
+  \@namedef{set#1}##1{%
+    \thesistu@def@data{#1}{##1}%
+  }%
+  \thesistu@def@data@invalid{#1}{\string\set#1}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsubsection{Persons}
+%
+% \begin{macro}{\thesistu@person@male}
+% \begin{macro}{\thesistu@person@female}
+% Two genders are differentiated for each person: |male| and |female|.
+%    \begin{macrocode}
+\newcommand{\thesistu@person@male}{male}%
+\newcommand{\thesistu@person@female}{female}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\ifmale}
+% \begin{macro}{\iffemale}
+% Convenience macros to determine the gender of a person.
+%    \begin{macrocode}
+\newcommand{\ifmale}[2]{%
+  \ifcsstring{thesistu@person@#1@gender}{\thesistu@person@male}{#2}{}%
+}%
+\newcommand{\iffemale}[2]{%
+  \ifcsstring{thesistu@person@#1@gender}{\thesistu@person@female}{#2}{}%
+}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\thesistu@def@person}
+% \changes{v1.4}{2015/08/01}{Added comma to separate posttitle.}
+% Creates the internal storage for a person's name, titles and gender.
+%    \begin{macrocode}
+\newcommand{\thesistu@def@person}[5]{%
+  \@namedef{thesistu@person@#1@def}{}%
+  \@namedef{thesistu@person@#1@pretitle}{#2}%
+  \@namedef{thesistu@person@#1@name}{#3}%
+  \@namedef{thesistu@person@#1@posttitle}{#4}%
+  \ifdefstring{\thesistu@person@male}{#5}{%
+    \@namedef{thesistu@person@#1@gender}{\thesistu@person@male}%
+  }{}%
+  \ifdefstring{\thesistu@person@female}{#5}{%
+    \@namedef{thesistu@person@#1@gender}{\thesistu@person@female}%
+  }{}%
+%    \end{macrocode}
+% For the full name, additional spaces have to be inserted depending on the presence of pre- or posttitles.
+%    \begin{macrocode}
+  \ifstrempty{#3}{%
+    \ifstrempty{#2}{%
+      \@namedef{thesistu@person@#1@fullname}{#4}%
+    }{%
+      \ifstrempty{#4}{%
+        \@namedef{thesistu@person@#1@fullname}{#2}%
+      }{%
+        \@namedef{thesistu@person@#1@fullname}{#2 #4}%
+      }%
+    }%
+  }{%
+    \ifstrempty{#2}{%
+      \ifstrempty{#4}{%
+        \@namedef{thesistu@person@#1@fullname}{#3}%
+      }{%
+        \@namedef{thesistu@person@#1@fullname}{#3, #4}%
+      }%
+    }{%
+      \ifstrempty{#4}{%
+        \@namedef{thesistu@person@#1@fullname}{#2 #3}%
+      }{%
+        \@namedef{thesistu@person@#1@fullname}{#2 #3, #4}%
+      }%
+    }%
+  }%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\thesistu@def@person@invalid}
+% Initializes the internal storage with error messages.
+%    \begin{macrocode}
+\newcommand{\thesistu@def@person@invalid}[2]{%
+  \@namedef{thesistu@person@#1@error}{%
+    \ClassError{thesistu}{No #2 issued}{Set #1 with #2.}%
+  }%
+  \@namedef{thesistu@person@#1@name}{%
+    \@nameuse{thesistu@person@#1@error}}%
+  \@namedef{thesistu@person@#1@pretitle}{%
+    \@nameuse{thesistu@person@#1@error}}%
+  \@namedef{thesistu@person@#1@posttitle}{%
+    \@nameuse{thesistu@person@#1@error}}%
+  \@namedef{thesistu@person@#1@gender}{%
+    \@nameuse{thesistu@person@#1@error}}%
+  \@namedef{thesistu@person@#1@fullname}{%
+    \@nameuse{thesistu@person@#1@error}}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\CreatePerson}
+% Issues the construction of a setter function for a |person| given by |\setperson|.
+%    \begin{macrocode}
+\newcommand{\CreatePerson}[1]{%
+  \@namedef{set#1}##1##2##3##4{%
+    \thesistu@def@person{#1}{##1}{##2}{##3}{##4}%
+  }%
+  \thesistu@def@person@invalid{#1}{\string\set#1}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsubsection{Polylingual Text}
+%
+% This class supports bi- and polylingual text via a key-value mechanism. See the |\CreatePolylingual| command further down for the actual definition of polylingual expressions.
+%
+% \begin{macro}{\AddLanguage}
+% Constructs the temporary variables and the permanent storage for polylingual text in the given language.
+%    \begin{macrocode}
+\newcommand{\AddLanguage}[1]{%
+%    \end{macrocode}
+% First, the key for the current language, given by its name in the |babel| package, is created. Keys of the |keyval| package are internally stored as |KV@|family|@|keyname, where we use |thesistu| as family name and the argument as key name. The value that is given to this key as part of a function argument is assigned to a temporary storage.
+%    \begin{macrocode}
+  \@namedef{KV@thesistu@#1}##1{%
+    \@namedef{thesistu@current@#1}{##1}%
+  }%
+%    \end{macrocode}
+% The key value is initialized as empty.
+%    \begin{macrocode}
+  \@nameuse{KV@thesistu@#1}{}%
+%    \end{macrocode}
+% The transfer from temporary to permanent storage is achieved by adding code to the already existing transfer routine. This causes each new language to issue the transfer for the previously defined language.
+%    \begin{macrocode}
+  \ifundef{\thesistu@allocate@polylingual}{%
+%    \end{macrocode}
+% Define the transfer function, if it has not been defined so far.
+%    \begin{macrocode}
+    \newcommand{\thesistu@allocate@polylingual}[1]{\@empty}%
+  }{}%
+%    \end{macrocode}
+% Store the current transfer function via |\let| to allow recursion.
+%    \begin{macrocode}
+  \@namelet{thesistu@allocate@polylingual@#1}%
+    \thesistu@allocate@polylingual
+%    \end{macrocode}
+% Define the transfer function to permanent storage.
+%    \begin{macrocode}
+  \renewcommand{\thesistu@allocate@polylingual}[1]{%
+%    \end{macrocode}
+% Call the transfer routine of the previously defined language.
+%    \begin{macrocode}
+    \@nameuse{thesistu@allocate@polylingual@#1}{##1}%
+%    \end{macrocode}
+% To define the permanent storage, |\@namexdef| is used the definition's scope has to be global.
+%    \begin{macrocode}
+    \@namexdef{thesistu@##1@#1}{%
+      \ifcsempty{thesistu@current@#1}{%
+%    \end{macrocode}
+% In draft mode we mark unassigned languages, i.e., polylingual expression that were not defined for a language that is in use when the polylingual expression is called.
+%    \begin{macrocode}
+        \ifdraftdoc{%
+          [Draft: No `#1' text for polylingual `##1'.]%
+        }\else{%
+          \relax
+        }\fi
+      }{%
+%    \end{macrocode}
+% The use of |\@namexdef| expands the content of the temporary storage before assigning it to the permanent one.
+%    \begin{macrocode}
+        \@nameuse{thesistu@current@#1}%
+      }%
+    }%
+  }%
+%    \end{macrocode}
+% At time of usage, the language, which is given as an argument, is checked against the currently active language.
+%    \begin{macrocode}
+  \ifundef{\thesistu@selectlanguage@polylingual}{%
+%    \end{macrocode}
+% Define the language selection function, if it has not been defined so far.
+%    \begin{macrocode}
+      \newcommand{\thesistu@selectlanguage@polylingual}[1]{\@empty}%
+  }{}%
+%    \end{macrocode}
+% Store the current selection function via |\let| to allow recursion.
+%    \begin{macrocode}
+  \@namelet{thesistu@selectlanguage@polylingual@#1}%
+    \thesistu@selectlanguage@polylingual
+%    \end{macrocode}
+% Define the selection function.
+%    \begin{macrocode}
+  \renewcommand{\thesistu@selectlanguage@polylingual}[1]{%
+%    \end{macrocode}
+% Call the selection routine of the previously defined language.
+%    \begin{macrocode}
+    \@nameuse{thesistu@selectlanguage@polylingual@#1}{##1}%
+%    \end{macrocode}
+% The currently active language is given by |\languagename|. If it matches the language, which was supplied as the argument, the content of the current permanent storage is returned.
+%    \begin{macrocode}
+    \ifdefstring{\languagename}{#1}{\@nameuse{thesistu@##1@#1}}{}%
+  }%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\CreatePolylingual}
+% Creates the actual polylingual expressions.
+%    \begin{macrocode}
+\newcommand{\CreatePolylingual}[2][]{%
+  \begingroup
+%    \end{macrocode}
+% The key-value pairs of the optional argument define the text that is returned for the respective languages. We use |thesistu| as the family name for the keys.
+%    \begin{macrocode}
+    \setkeys{thesistu}{#1}%
+%    \end{macrocode}
+% Each key was already assigned a temporary storage, whose content has to be transfered to permanent storage.
+%    \begin{macrocode}
+    \thesistu@allocate@polylingual{#2}%
+  \endgroup
+%    \end{macrocode}
+% The mandatory argument \marg{arg} is used to define the macro that returns the appropriate text for the currently active language.
+%    \begin{macrocode}
+  \@namedef{thesistu@polylingual@#2}{%
+    \thesistu@selectlanguage@polylingual{#2}}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsubsection{Thesis Types}
+%
+% \begin{macro}{\thesistu@thesis@basetype@undergraduate}
+% \begin{macro}{\thesistu@thesis@basetype@graduate}
+% Two thesis categories are differentiated: |undergraduate| and |graduate|.
+%    \begin{macrocode}
+\newcommand{\thesistu@thesis@basetype@undergraduate}{%
+  thesistu@undergraduate}%
+\newcommand{\thesistu@thesis@basetype@graduate}{%
+  thesistu@graduate}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\ifundergraduate}
+% \begin{macro}{\ifgraduate}
+% Convenience macros to determine the category of the selected thesis type.
+%    \begin{macrocode}
+\newcommand{\ifundergraduate}[1]{%
+  \ifestrequal{\thesistu@thesis@basetype}{%
+    \thesistu@thesis@basetype@undergraduate
+  }{#1}{}%
+}%
+\newcommand{\ifgraduate}[1]{%
+  \ifestrequal{\thesistu@thesis@basetype}{%
+    \thesistu@thesis@basetype@graduate
+  }{#1}{}%
+}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\thesistu@thesis@doctortype@doctor}
+% \changes{v1.3}{2014/11/25}{Added to support multiple dissertation types. \issue{4}}
+% \begin{macro}{\thesistu@thesis@doctortype@phd}
+% \changes{v1.3}{2014/11/25}{Added to support multiple dissertation types. \issue{4}}
+% Two doctor thesis categories are differentiated: |doctor| and |phd|, where the latter is for dissertation in the context of the Vienna PhD School of Informatics.
+%    \begin{macrocode}
+\newcommand{\thesistu@thesis@doctortype@doctor}{%
+  thesistu@doctor}%
+\newcommand{\thesistu@thesis@doctortype@phd}{%
+  thesistu@phd}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\ifdoctor}
+% \changes{v1.3}{2014/11/25}{Added to support multiple dissertation types. \issue{4}}
+% \begin{macro}{\ifphd}
+% \changes{v1.3}{2014/11/25}{Added to support multiple dissertation types. \issue{4}}
+% Convenience macros to determine the category of the selected doctor thesis type. These need to be nested inside |\ifgraduate| conditions.
+%    \begin{macrocode}
+\newcommand{\ifdoctor}[1]{%
+  \ifestrequal{\thesistu@thesis@doctortype}{%
+    \thesistu@thesis@doctortype@doctor
+  }{#1}{}%
+}%
+\newcommand{\ifphd}[1]{%
+  \ifestrequal{\thesistu@thesis@doctortype}{%
+    \thesistu@thesis@doctortype@phd
+  }{#1}{}%
+}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\thesistu@thesis@basetype}
+% \begin{macro}{\thesistu@thesis@doctortype}
+% \changes{v1.3}{2014/11/25}{Added to support multiple dissertation types. \issue{4}}
+% \begin{macro}{\thesistu@thesis@thesisname}
+% \begin{macro}{\thesistu@thesis@degreename}
+% Initialize the thesis category, the type and the specific degree with error messages.
+%    \begin{macrocode}
+\newcommand{\thesistu@thesis@basetype}{%
+  \ClassError{thesistu}{No \string\setthesis \space issued}{%
+    Set thesis type with \string\setthesis.}%
+}%
+\newcommand{\thesistu@thesis@doctortype}{%
+  \ClassError{thesistu}{No \string\setthesis \space issued}{%
+    Set thesis type with \string\setthesis.}%
+}%
+\newcommand{\thesistu@polylingual@degreename}{%
+  \ClassError{thesistu}{No \string\setthesis \space issued}{%
+    Set thesis type with \string\setthesis.}%
+}%
+\newcommand{\thesistu@polylingual@thesisname}{%
+  \ClassError{thesistu}{No \string\setthesis \space issued}{%
+    Set thesis type with \string\setthesis.}%
+}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\thesistu@thesis@bachelor}
+% \begin{macro}{\thesistu@thesis@master}
+% \begin{macro}{\thesistu@thesis@doctor}
+% \begin{macro}{\thesistu@thesis@phd}
+% \changes{v1.3}{2014/11/25}{Added to support multiple dissertation types. \issue{4}}
+% Four main thesis types are differentiated: |bachelor|, |master|, |doctor|, and |phd-school|.
+%    \begin{macrocode}
+\newcommand{\thesistu@thesis@bachelor}{bachelor}%
+\newcommand{\thesistu@thesis@master}{master}%
+\newcommand{\thesistu@thesis@doctor}{doctor}%
+\newcommand{\thesistu@thesis@phd}{phd-school}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\@setthesisname}
+% \begin{macro}{\@setdegreename}
+% \begin{macro}{\@setgendereddegreename}
+% Internal convenience macros.
+%    \begin{macrocode}
+\newcommand{\@setthesisname}[1]{%
+  \renewcommand{\thesistu@polylingual@thesisname}{#1}}%
+\newcommand{\@setdegreename}[1]{%
+  \renewcommand{\thesistu@polylingual@degreename}{#1}}%
+\newcommand{\@setgendereddegreename}[2]{%
+  \ifmale{author}{\@setdegreename{#1}}%
+  \iffemale{author}{\@setdegreename{#2}}%
+}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\setthesis}
+% \changes{v1.3}{2014/11/25}{Altered to support multiple dissertation types. \issue{4}}
+% Sets the thesis type.
+%    \begin{macrocode}
+\newcommand{\setthesis}[1]{%
+  \ifdefstring{\thesistu@thesis@bachelor}{#1}{%
+%    \end{macrocode}
+% Initializes |bachelor| thesis type.
+%    \begin{macrocode}
+    \renewcommand{\thesistu@thesis@basetype}{%
+      \thesistu@thesis@basetype@undergraduate}%
+    \@setthesisname{\thesistu@polylingual@BACHELORTHESIS}%
+    \@setdegreename{\thesistu@polylingual@Bdeg}%
+  }{}%
+  \ifdefstring{\thesistu@thesis@master}{#1}{%
+%    \end{macrocode}
+% Initializes |master| thesis type.
+%    \begin{macrocode}
+    \renewcommand{\thesistu@thesis@basetype}{%
+      \thesistu@thesis@basetype@undergraduate}%
+    \@setthesisname{%
+      \ClassError{thesistu}{No \string\setmasterdegree \space issued}{%
+        Set masterdegree with \string\setmasterdegree.}%
+    }%
+    \@setdegreename{%
+      \ClassError{thesistu}{No \string\setmasterdegree \space issued}{%
+        Set master degree with \string\setmasterdegree.}%
+    }%
+  }{}%
+  \ifdefstring{\thesistu@thesis@doctor}{#1}{%
+%    \end{macrocode}
+% Initializes |doctor| thesis type.
+%    \begin{macrocode}
+   \renewcommand{\thesistu@thesis@basetype}{%
+     \thesistu@thesis@basetype@graduate}%
+   \renewcommand{\thesistu@thesis@doctortype}{%
+     \thesistu@thesis@doctortype@doctor}%
+   \@setthesisname{\thesistu@polylingual@DOCTORTHESIS}%
+   \@setdegreename{%
+     \ClassError{thesistu}{No \string\setdoctordegree \space issued}{%
+       Set doctor degree with \string\setdoctordegree.}%
+   }%
+  }{}%
+  \ifdefstring{\thesistu@thesis@phd}{#1}{%
+%    \end{macrocode}
+% Initializes |phd-school| thesis type.
+%    \begin{macrocode}
+   \renewcommand{\thesistu@thesis@basetype}{%
+     \thesistu@thesis@basetype@graduate}%
+   \renewcommand{\thesistu@thesis@doctortype}{%
+     \thesistu@thesis@doctortype@phd}%
+   \@setthesisname{\thesistu@polylingual@PHDTHESIS}%
+   \@setdegreename{\thesistu@polylingual@Pdeg}%
+  }{}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\thesistu@thesis@mdeg@dipl}
+% \begin{macro}{\thesistu@thesis@mdeg@master}
+% \begin{macro}{\thesistu@thesis@mdeg@rernat}
+% \begin{macro}{\thesistu@thesis@mdeg@rersocoec}
+% Four master degrees can be selected: |dipl.|, |master|, |rer.nat.|, and\\|rer.soc.oec.|.
+%    \begin{macrocode}
+\newcommand{\thesistu@thesis@mdeg@dipl}{dipl.}%
+\newcommand{\thesistu@thesis@mdeg@master}{master}%
+\newcommand{\thesistu@thesis@mdeg@rernat}{rer.nat.}%
+\newcommand{\thesistu@thesis@mdeg@rersocoec}{rer.soc.oec.}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\setmasterdegree}
+% Sets the specific master degree.
+%    \begin{macrocode}
+\newcommand{\setmasterdegree}[1]{%
+  \ifdefstring{\thesistu@thesis@mdeg@dipl}{#1}{%
+    \@setthesisname{\thesistu@polylingual@DIPLOMATHESIS}%
+    \@setgendereddegreename{%
+      \thesistu@polylingual@MdegDiplMale
+    }{%
+      \thesistu@polylingual@MdegDiplFemale
+    }%
+  }{}%
+  \ifdefstring{\thesistu@thesis@mdeg@master}{#1}{%
+    \@setthesisname{\thesistu@polylingual@MASTERTHESIS}%
+    \@setdegreename{\thesistu@polylingual@MdegMaster}%
+  }{}%
+  \ifdefstring{\thesistu@thesis@mdeg@rernat}{#1}{%
+    \@setthesisname{\thesistu@polylingual@MASTERTHESIS}%
+    \@setgendereddegreename{%
+      \thesistu@polylingual@MdegRerNatMale
+    }{%
+      \thesistu@polylingual@MdegRerNatFemale
+    }%
+  }{}%
+  \ifdefstring{\thesistu@thesis@mdeg@rersocoec}{#1}{%
+    \@setthesisname{\thesistu@polylingual@MASTERTHESIS}%
+    \@setgendereddegreename{%
+      \thesistu@polylingual@MdegRerSocOecMale
+    }{%
+      \thesistu@polylingual@MdegRerSocOecFemale
+    }%
+  }{}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\thesistu@thesis@ddeg@rernat}
+% \begin{macro}{\thesistu@thesis@ddeg@techn}
+% \begin{macro}{\thesistu@thesis@ddeg@rersocoec}
+% Three doctor degrees can be selected: |rer.nat.|, |techn.|, and |rer.soc.oec.|.
+%    \begin{macrocode}
+\newcommand{\thesistu@thesis@ddeg@rernat}{rer.nat.}%
+\newcommand{\thesistu@thesis@ddeg@techn}{techn.}%
+\newcommand{\thesistu@thesis@ddeg@rersocoec}{rer.soc.oec.}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\setdoctordegree}
+% Sets the specific doctor degree.
+%    \begin{macrocode}
+\newcommand{\setdoctordegree}[1]{%
+  \ifdefstring{\thesistu@thesis@ddeg@rernat}{#1}{%
+    \@setgendereddegreename{%
+      \thesistu@polylingual@DdegRerNatMale
+    }{%
+      \thesistu@polylingual@DdegRerNatFemale
+    }%
+  }{}%
+  \ifdefstring{\thesistu@thesis@ddeg@techn}{#1}{%
+    \@setgendereddegreename{%
+      \thesistu@polylingual@DdegTechnMale
+    }{%
+      \thesistu@polylingual@DdegTechnFemale
+    }%
+  }{}%
+  \ifdefstring{\thesistu@thesis@ddeg@rersocoec}{#1}{%
+    \@setgendereddegreename{%
+      \thesistu@polylingual@DdegRerSocOecMale
+    }{%
+      \thesistu@polylingual@DdegRerSocOecFemale
+    }%
+  }{}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsubsection{Declarations}
+%\label{sec:impl:data:declarations}
+%
+% \begin{macro}{Textual Data}
+% \changes{v1.3}{2014/11/25}{Updated to support external reviewer data. \issue{4}}.
+% \changes{v2.0}{2016/09/21}{added the abbility to change footer on titlepage}
+% Creates the required textual data entries.
+%    \begin{macrocode}
+\CreateData{address}%
+\CreateData{regnumber}%
+\CreateData{unizipcode}%
+\CreateData{unitelnr}%
+\CreateData{unistreet}%
+\CreateData{unicity}%
+\CreateData{uniwebsite}
+\CreateData{firstreviewerdata}%
+\CreateData{secondreviewerdata}%
+\CreateData{logo}%
+\CreateData{header}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{Persons}
+% \changes{v1.3}{2014/11/25}{Updated to support second advisor. Issue \issue{4}}
+% Creates the required person entries.
+%    \begin{macrocode}
+\CreatePerson{author}%
+\CreatePerson{advisor}%
+\CreatePerson{secondadvisor}%
+\CreatePerson{firstassistant}%
+\CreatePerson{secondassistant}%
+\CreatePerson{thirdassistant}%
+\CreatePerson{firstreviewer}%
+\CreatePerson{secondreviewer}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{Languages}
+% Adds the desired languages to the polylingual expressions. All added languages have to be given as arguments to the |babel| package.
+%    \begin{macrocode}
+\AddLanguage{english}%
+\AddLanguage{naustrian}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{PolyLinguals}
+% \changes{v1.3}{2014/11/25}{Added to support multiple dissertation types. \issue{4}}
+% \changes{v1.5}{2016/01/17}{Updated name of university to `TU Wien'.}
+% Creates the polylingual expressions.
+%    \begin{macrocode}
+\CreatePolylingual[
+  english=Advisor,
+  naustrian=Betreuung]{Advisor}%
+\CreatePolylingual[
+  english=Second advisor]{Secondadvisor}%
+\CreatePolylingual[
+  english=submitted in partial fulfillment of the requirements
+    for the degree of,
+  naustrian=zur Erlangung des akademischen Grades]{submission}%
+\CreatePolylingual[
+  english=in,
+  naustrian=im Rahmen des Studiums]{in}%
+\CreatePolylingual[
+  english=within the]{within}%
+\CreatePolylingual[
+  english=Vienna PhD School of Informatics]{School}%
+\CreatePolylingual[
+  english=by,
+  naustrian=eingereicht von]{by}%
+\CreatePolylingual[
+  english=Registration Number,
+  naustrian=Matrikelnummer]{Registrationnumber}%
+% \changes{v2.0}{2016/09/21}{added setfaculty setuniversity setinstitut}  
+\CreatePolylingual[
+  english=to the Faculty of ,
+  naustrian=an der Fakult\"at f\"ur ]{facultytext}%
+\CreatePolylingual[
+  english=at the ,
+  naustrian=der ]{universitytext}%
+\CreatePolylingual[
+  english= at the Institution of,
+  naustrian= am Institut f\"ur]{instituttext}%
+ % \changes{v2.1}{2016/12/08} 
+\CreatePolylingual[
+  english= from,
+  naustrian= aus]{lecturetext}% 
+\CreatePolylingual[
+  english=Assistance,
+  naustrian=Mitwirkung]{Assistance}%
+\CreatePolylingual[
+  english=The dissertation has been reviewed by:,
+  naustrian=Diese Dissertation haben begutachtet:]{Reviewed}%
+\CreatePolylingual[
+  english=External reviewers:]{Reviewers}%
+\CreatePolylingual[
+  english=Vienna,
+  naustrian=Wien]{Place}%
+\CreatePolylingual[
+  english=Declaration of Authorship,
+  naustrian=Erkl\"arung zur Verfassung der Arbeit]{StatementChapter}%
+\CreatePolylingual[
+  english={I hereby declare that I have written this Doctoral Thesis
+    independently, that I have completely specified the utilized
+    sources and resources and that I have definitely marked all parts
+    of the work - including tables, maps and figures - which belong
+    to other works or to the internet, literally or extracted, by
+    referencing the source as borrowed.},
+  naustrian={Hiermit erkl\"are ich, dass ich diese Arbeit
+    selbst\"andig verfasst habe, dass ich die verwendeten Quellen
+    und Hilfsmittel vollst\"andig angegeben habe und dass ich die
+    Stellen der Arbeit -- einschlie{\ss}lich Tabellen, Karten und
+    Abbildungen --, die anderen Werken oder dem Internet im Wortlaut
+    oder dem Sinn nach entnommen sind, auf jeden Fall unter Angabe
+    der Quelle als Entlehnung kenntlich gemacht habe.}]{Statement}%
+%    \end{macrocode}
+% Degree titles.
+%    \begin{macrocode}
+\CreatePolylingual[
+  english=Bachelor of Science,
+  naustrian=Bachelor of Science]{Bdeg}%
+\CreatePolylingual[
+  english=Master of Science,
+  naustrian=Master of Science]{MdegMaster}%
+\CreatePolylingual[
+  english=Diplom-Ingenieur,
+  naustrian=Diplom-Ingenieur]{MdegDiplMale}%
+\CreatePolylingual[
+  english=Diplom-Ingenieurin,
+  naustrian=Diplom-Ingenieurin]{MdegDiplFemale}%
+\CreatePolylingual[
+  english=Magister der Naturwissenschaften,
+  naustrian=Magister der Naturwissenschaften]{MdegRerNatMale}%
+\CreatePolylingual[
+  english=Magistra der Naturwissenschaften,
+  naustrian=Magistra der Naturwissenschaften]{MdegRerNatFemale}%
+\CreatePolylingual[
+  english=Magister der Sozial- und Wirtschaftswissenschaften,
+  naustrian=Magister der Sozial- und Wirtschaftswissenschaften]{%
+  MdegRerSocOecMale}%
+\CreatePolylingual[
+  english=Magistra der Sozial- und Wirtschaftswissenschaften,
+  naustrian=Magistra der Sozial- und Wirtschaftswissenschaften]{%
+  MdegRerSocOecFemale}%
+\CreatePolylingual[
+  english=Doktor der Naturwissenschaften,
+  naustrian=Doktor der Naturwissenschaften]{DdegRerNatMale}%
+\CreatePolylingual[
+  english=Doktorin der Naturwissenschaften,
+  naustrian=Doktorin der Naturwissenschaften]{DdegRerNatFemale}%
+\CreatePolylingual[
+  english=Doktor der Technischen Wissenschaften,
+  naustrian=Doktor der Technischen Wissenschaften]{DdegTechnMale}%
+\CreatePolylingual[
+  english=Doktorin der Technischen Wissenschaften,
+  naustrian=Doktorin der Technischen Wissenschaften]{DdegTechnFemale}%
+\CreatePolylingual[
+  english=Doktor der Sozial- und Wirtschaftswissenschaften,
+  naustrian=Doktor der Sozial- und Wirtschaftswissenschaften]{%
+  DdegRerSocOecMale}%
+\CreatePolylingual[
+  english=Doktorin der Sozial- und Wirtschaftswissenschaften,
+  naustrian=Doktorin der Sozial- und Wirtschaftswissenschaften]{%
+  DdegRerSocOecFemale}%
+\CreatePolylingual[
+  english=Doctor of Technical Sciences]{%
+  Pdeg}%
+%    \end{macrocode}
+% Thesis types.
+%    \begin{macrocode}
+\CreatePolylingual[
+  english=BACHELOR'S THESIS,
+  naustrian=BACHELORARBEIT]{BACHELORTHESIS}%
+\CreatePolylingual[
+  english=MASTER'S THESIS,
+  naustrian=MASTERARBEIT]{MASTERTHESIS}%
+\CreatePolylingual[
+  english=DIPLOMA THESIS,
+  naustrian=DIPLOMARBEIT]{DIPLOMATHESIS}%
+\CreatePolylingual[
+  english=DISSERTATION,
+  naustrian=DISSERTATION]{DOCTORTHESIS}%
+\CreatePolylingual[
+  english=PhD THESIS]{PHDTHESIS}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\settitle}
+% Sets the title of the thesis.
+%    \begin{macrocode}
+\newcommand{\settitle}[2]{%
+  \CreatePolylingual[english=#1,naustrian=#2]{Title}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\setsubtitle}
+% Sets the subtitle of the thesis.
+%    \begin{macrocode}
+\newcommand{\setsubtitle}[2]{%
+  \CreatePolylingual[english=#1,naustrian=#2]{Subtitle}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\setcurriculum}
+% Sets the curriculum name.
+%    \begin{macrocode}
+\newcommand{\setcurriculum}[2]{%
+  \CreatePolylingual[english=#1,naustrian=#2]{Curriculum}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \changes{v2.0}{2016/09/21}{added setuniversity, setfaculty, setinstitut}
+%
+% \begin{macro}{\setuniversity}
+% Sets the university name.
+%    \begin{macrocode}
+\newcommand{\setuniversity}[2]{%
+  \CreatePolylingual[english=#1,naustrian=#2]{university}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\setfaculty}
+% Sets the faculty name.
+%    \begin{macrocode}
+\newcommand{\setfaculty}[2]{%
+  \CreatePolylingual[english=#1,naustrian=#2]{faculty}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\setinstitut}
+% Sets the institut name.
+%    \begin{macrocode}
+\newcommand{\setinstitut}[2]{%
+  \CreatePolylingual[english=#1,naustrian=#2]{institut}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\setlecture}
+% Sets the lecture name.
+%    \begin{macrocode}
+\newcommand{\setlecture}[2]{%
+  \CreatePolylingual[english=#1,naustrian=#2]{lecture}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \changes{v2.1}{2016/12/08}{added appendix, added introduction, added lva in titlepage}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Layout}
+%
+% \subsubsection{Setup}
+%
+% \begin{macro}{\thesistu@squarebullet}
+% Set internal convenience macros.
+%    \begin{macrocode}
+\newcommand{\newsetlength}[2]{%
+  \newlength{#1}%
+  \setlength{#1}{#2}%
+}%
+\newcommand{\thesistu@squarebullet}{\rule[0.47ex]{0.4ex}{0.4ex}}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\thesistu@tmp@parindent}
+% \begin{macro}{\thesistu@tmp@baselineskip}
+% \begin{macro}{\thesistu@tmp@parskip}
+% Temporary storage for page layout lengths.
+%    \begin{macrocode}
+\newlength{\thesistu@tmp@parindent}%
+\newlength{\thesistu@tmp@baselineskip}%
+\newlength{\thesistu@tmp@parskip}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\thesistu@savelayout}
+% \begin{macro}{\thesistu@restorelayout}
+% Saves and restores relevant page layout lengths.
+%    \begin{macrocode}
+\newcommand{\thesistu@savelayout}{%
+  \setlength{\thesistu@tmp@parindent}{\parindent}%
+  \setlength{\thesistu@tmp@baselineskip}{\baselineskip}%
+  \setlength{\thesistu@tmp@parskip}{\parskip}%
+}%
+\newcommand{\thesistu@restorelayout}{%
+  \setlength{\parindent}{\thesistu@tmp@parindent}%
+  \setlength{\baselineskip}{\thesistu@tmp@baselineskip}%
+  \setlength{\parskip}{\thesistu@tmp@parskip}%
+}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \subsubsection{Title Page}
+%
+% Initialize the header graphics. The vertical placement of the header graphics on the title pages are given by |\thesistu@header@placement|, while the composition of the graphical elements are determined by the subsequent lengths, which constitute direct measurements of the graphics. If the header graphics are changed, these values have to be adapted.
+%    \begin{macrocode}
+\newsetlength{\thesistu@header@placement}{-41.49731pt}%
+\newsetlength{\thesistu@bar@width}{511bp}%
+\newsetlength{\thesistu@bar@height}{47bp}%
+\newsetlength{\thesistu@bar@pivot@x}{330.71bp}%
+\newsetlength{\thesistu@bar@pivot@y}{25.31bp}%
+\newsetlength{\thesistu@logo@height}{46bp}%
+\newsetlength{\thesistu@logo@pivot@x}{4.57bp}%
+\newsetlength{\thesistu@logo@pivot@y}{5.37bp}%
+\newsetlength{\thesistu@logo@offset@height}{\thesistu@logo@height
+  + \thesistu@bar@pivot@y - \thesistu@logo@pivot@y}%
+\newsetlength{\thesistu@logo@offset@x}{-\thesistu@bar@width
+  + \thesistu@bar@pivot@x - \thesistu@logo@pivot@x}%
+\newsetlength{\thesistu@logo@offset@y}{
+  - \thesistu@bar@pivot@y + \thesistu@logo@pivot@y}%
+%    \end{macrocode}
+%
+% \begin{macro}{\thesistu@header@titlepage}
+% Initialize header.
+% \changes{v2.0}{2016/09/21}{added abbility to set logo and header}
+%    \begin{macrocode}
+\newcommand{\thesistu@header@titlepage}{%
+  \centering
+  \begin{minipage}[b][\thesistu@logo@offset@height][t]{%
+      \thesistu@bar@width
+    }%
+	\includegraphics{\thesistu@data@header_header}%
+    \hspace*{\thesistu@logo@offset@x}%
+    \raisebox{\thesistu@logo@offset@y}{%
+      \includegraphics[scale=1]{\thesistu@data@logo_logo}%
+    }%
+  \end{minipage}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \changes{v2.0}{2016/09/21}{added ability to change footer of titlepage}
+%
+%
+% \begin{macro}{\thesistu@footer@titlepage}
+% Initialize footer.
+%    \begin{macrocode}
+\newcommand{\thesistu@footer@titlepage}{%
+  \centering
+  \begin{minipage}{\textwidth}%
+    \centering\thesistu@normalsize\sffamily
+    \thesistu@polylingual@university\\
+    \thesistu@data@unizipcode\space \thesistu@data@unicity\space \thesistu@squarebullet\space
+    \thesistu@data@unistreet\space \thesistu@squarebullet\space
+    Tel.\space \thesistu@data@unitelnr\space \thesistu@squarebullet\space
+    \thesistu@data@uniwebsite%
+  \end{minipage}%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{thesistu@pagestyle@titlepage}
+% Generate the title page style.
+%    \begin{macrocode}
+\makepagestyle{thesistu@pagestyle@titlepage}%
+\makerunningwidth{thesistu@pagestyle@titlepage}[\textwidth]{%
+  \thesistu@bar@width}%
+\makeheadposition{thesistu@pagestyle@titlepage}{%
+  center}{center}{center}{center}%
+\makeevenhead{thesistu@pagestyle@titlepage}{}{%
+  \thesistu@header@titlepage}{}%
+\makeoddhead{thesistu@pagestyle@titlepage}{}{%
+  \thesistu@header@titlepage}{}%
+\makefootrule{thesistu@pagestyle@titlepage}{%
+  \thesistu@pagestyle@titlepagefootrunwidth}{0.5pt}{\footruleskip}%
+\makeevenfoot{thesistu@pagestyle@titlepage}{}{%
+  \thesistu@footer@titlepage}{}%
+\makeoddfoot{thesistu@pagestyle@titlepage}{}{%
+  \thesistu@footer@titlepage}{}%
+%    \end{macrocode}
+% \end{macro}
+%
+% Set style element specifications.
+%    \begin{macrocode}
+\newsetlength{\thesistu@bigskipamount}{6mm}%
+%    \end{macrocode}
+% Helper functions.
+%    \begin{macrocode}
+\newcommand{\thesistu@bigskip}{\vspace{\thesistu@bigskipamount}}%
+%    \end{macrocode}
+%
+% \begin{macro}{\AdvisorBlock}
+% \changes{v1.3}{2014/11/25}{Updated to support second advisor. \issue{4}}
+% Generates a block with the advisor's name (and potential assistances' names). An error is thrown, if the advisors are not defined consecutively, starting with the first.
+%    \begin{macrocode}
+\newcommand{\AdvisorBlock}{%
+  \ifundergraduate{%
+    \begin{minipage}[t][2.5cm][t]{\textwidth}%
+      \thesistu@normalsize
+      \begin{tabular}{@{}l@{ }l}%
+        \thesistu@polylingual@Advisor: &
+        \thesistu@person@advisor@fullname\\
+        \ifdef{\thesistu@person@firstassistant@def}{%
+          \thesistu@polylingual@Assistance: &
+          \thesistu@person@firstassistant@fullname\\
+        }{}%
+        \ifdef{\thesistu@person@secondassistant@def}{%
+          \ifundef{\thesistu@person@firstassistant@def}{%
+            \thesistu@person@firstassistant@error
+          }{%
+            & \thesistu@person@secondassistant@fullname\\
+          }%
+        }{}%
+        \ifdef{\thesistu@person@thirdassistant@def}{%
+          \ifundef{\thesistu@person@firstassistant@def}{%
+            \thesistu@person@firstassistant@error
+          }{%
+            \ifundef{\thesistu@person@secondassistant@def}{%
+              \thesistu@person@secondassistant@error
+            }{%
+              & \thesistu@person@thirdassistant@fullname\\
+           }%
+         }%
+       }{}%
+      \end{tabular}%
+    \end{minipage}%
+  }%
+  \ifgraduate{%
+    \begin{minipage}[t][1.6cm][t]{\textwidth}%
+      \thesistu@normalsize
+      \thesistu@polylingual@Advisor:
+      \thesistu@person@advisor@fullname
+      \ifphd{%
+        \ifdef{\thesistu@person@secondadvisor@def}{%
+          \\
+          \thesistu@polylingual@Secondadvisor:
+          \thesistu@person@secondadvisor@fullname
+        }{}%
+      }%
+    \end{minipage}\par%
+  }%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\thesistu@signature@height}
+% \begin{macro}{\thesistu@signature@width}
+% \begin{macro}{\thesistu@placedate@width}
+% Set lengths of the signature blocks.
+%    \begin{macrocode}
+\newsetlength{\thesistu@signature@height}{25mm}%
+\newsetlength{\thesistu@signature@width}{51mm}%
+\newsetlength{\thesistu@placedate@width}{50mm}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\SignatureFields}
+% Generates a block with signatures and an optional place-date entry. The first argument is optional and adds an entry with date and place |[y]|, or adds corresponding whitespace |[h]| or adds nothing |[n]|, which is also the default value. The second arguments adds a rule and the given text below it, if a text is given, or the corresponding whitespace, if not. The third argument adds a rule and the given text below it, if a text is given.
+%    \begin{macrocode}
+\newcommand{\SignatureFields}[3][n]{%
+  {\thesistu@normalsize
+    \ifstrequal{#1}{y}{%
+      \begin{minipage}[b][\thesistu@signature@height]{%
+          \thesistu@placedate@width
+        }%
+        \thesistu@polylingual@Place,
+        \displaydate{thesistu@date@signing}\vspace*{\baselineskip}%
+      \end{minipage}%
+      \hfill
+    }{}%
+    \ifstrequal{#1}{n}{}{}%
+    \ifstrequal{#1}{h}{%
+      \hspace*{\thesistu@placedate@width}%
+      \hfill
+    }{}%
+    \ifstrempty{#2}{%
+      \hspace*{\thesistu@signature@width}%
+      \hfill
+    }{%
+      \begin{minipage}[b][\thesistu@signature@height]{%
+          \thesistu@signature@width
+        }%
+        \centering
+        \rule{\thesistu@signature@width}{0.5pt}\\
+        #2%
+      \end{minipage}%
+      \hfill
+    }%
+    \ifstrempty{#3}{}{%
+      \begin{minipage}[b][\thesistu@signature@height]{%
+          \thesistu@signature@width
+        }%
+        \centering
+        \rule{\thesistu@signature@width}{0.5pt}\\
+        #3%
+      \end{minipage}%
+    }%
+  }%
+}%
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\ReviewerBlock}
+% \changes{v1.3}{2014/11/25}{Updated to support external reviewers. \issue{4}}
+% Generates a block with the relevant signatures.
+%    \begin{macrocode}
+\newcommand{\ReviewerBlock}{%
+  \ifgraduate{%
+    \ifdoctor{%
+      {\thesistu@normalsize
+        \thesistu@polylingual@Reviewed\\
+        \SignatureFields[h]{%
+          \thesistu@person@firstreviewer@name
+        }{%
+          \thesistu@person@secondreviewer@name
+        }%
+      }%
+    }%
+    \ifphd{%
+      {\thesistu@normalsize
+        \thesistu@polylingual@Reviewers\\
+        \thesistu@person@firstreviewer@name.
+        \thesistu@data@firstreviewerdata.\\
+        \thesistu@person@secondreviewer@name.
+        \thesistu@data@secondreviewerdata.\\
+      }%
+    }%
+  }%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\SignatureBlock}
+% \changes{v1.3}{2014/11/25}{Updated to support multiple dissertation types. \issue{4}}
+% Generates a block with the relevant signatures.
+%    \begin{macrocode}
+\newcommand{\SignatureBlock}{%
+  \ifundergraduate{%
+    {\thesistu@normalsize
+      \SignatureFields[y]{%
+        \thesistu@person@author@name
+      }{%
+        \thesistu@person@advisor@name
+      }%
+    }%
+  }%
+  \ifgraduate{%
+    {\thesistu@normalsize
+      \ifdoctor{%
+        \SignatureFields[y]{}{%
+          \thesistu@person@author@name
+        }%
+      }%
+      \ifphd{%
+        \SignatureFields[y]{%
+          \thesistu@person@author@name
+        }{%
+          \thesistu@person@advisor@name
+        }%
+      }%
+    }%
+  }%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\AddTitlePage}
+% \changes{v1.3}{2014/11/15}{Added check for subtitle existance before usage. \issue{1}}
+% \changes{v1.3}{2014/11/25}{Updated to support PhD School mentioning and fixed the associated vertical overflow. \issue{4}}
+%   Generates the language-dependant title page. Multiline title and subtitle are supported.
+%    \begin{macrocode}
+\newcommand{\AddTitlePage}{
+  \thispagestyle{thesistu@pagestyle@titlepage}%
+%    \end{macrocode}
+% Set a new page geometry where the header separation length (|headsep|) places the header.
+% The actual header height (|head|) has to be large enough to contain the header content otherwise the underlying |memoir| class issues a warning.
+%    \begin{macrocode}
+  \newgeometry{%
+    left=2.4cm,right=2.4cm,bottom=2.5cm,top=2cm,
+    headsep=\thesistu@header@placement,
+    head=2\thesistu@logo@offset@height
+  }%
+%    \end{macrocode}
+% Save the current page layout lengths for later restoration.
+%    \begin{macrocode}
+  \thesistu@savelayout
+  \setlength{\parindent}{0pt}%
+  \setlength{\baselineskip}{13.6pt}%
+  \setlength{\parskip}{0pt plus 1pt}%
+%    \end{macrocode}
+% Set title page text to helvetica.
+%    \begin{macrocode}
+  \begin{SFFont}{phv}%
+    \sffamily
+    {\centering
+      \vspace*{0.8cm}\par
+%    \end{macrocode}
+% Title and subtitle are bottom aligned and grow upwards.
+%    \begin{macrocode}
+      \begin{minipage}[t][5cm][b]{\textwidth}%
+        \centering
+        \thesistu@HUGE{\bfseries\thesistu@polylingual@Title}\\
+        \bigskip
+        \thesistu@huge{\bfseries
+          \ifdef{\thesistu@polylingual@Subtitle}{%
+            \thesistu@polylingual@Subtitle}{%
+          }%
+        }%
+      \end{minipage}\par
+      \thesistu@bigskip\thesistu@bigskip
+      {\thesistu@LARGE\thesistu@polylingual@thesisname}\par
+	  \medskip	  {\thesistu@large{\thesistu@polylingual@lecturetext \space \thesistu@polylingual@lecture}}\par
+      \thesistu@bigskip
+      {\thesistu@large\thesistu@polylingual@submission}\par
+	  \medskip      \ifundergraduate{%
+        {\thesistu@LARGE{\bfseries\thesistu@polylingual@degreename}}\par
+        \thesistu@bigskip
+        {\thesistu@large\thesistu@polylingual@in}\par
+		\medskip        {\thesistu@Large{\bfseries\thesistu@polylingual@Curriculum}}\par
+      }%
+      \ifgraduate{%
+        {\thesistu@LARGE{\bfseries\thesistu@polylingual@degreename}}\par
+        \ifphd{%
+          \thesistu@bigskip
+          {\thesistu@large\thesistu@polylingual@within}\par
+		  \medskip          {\thesistu@LARGE{\bfseries\thesistu@polylingual@School}}\par
+        }%
+      }%
+      \thesistu@bigskip
+      {\thesistu@large\thesistu@polylingual@by}\par
+      \medskip      {\thesistu@Large{\bfseries\thesistu@person@author@fullname}}\par
+      \smallskip
+      {\thesistu@large\thesistu@polylingual@Registrationnumber\
+      \thesistu@data@regnumber}\par
+    }%
+    \thesistu@bigskip\thesistu@bigskip
+    \ifgraduate{\ifphd{\vspace*{-8mm}}}%
+    \begin{minipage}[b][1.8cm][c]{\textwidth}%
+      \thesistu@normalsize%
+	  \vspace{1mm}
+% \changes{v2.0}{2016/09/21}{added}
+      \thesistu@polylingual@facultytext \space \thesistu@polylingual@faculty\\
+	  \thesistu@polylingual@instituttext \space \thesistu@polylingual@institut\\
+      \thesistu@polylingual@universitytext \space \thesistu@polylingual@university\\
+    \end{minipage}
+	\vspace{1mm}
+    \AdvisorBlock\par
+%    \end{macrocode}
+% Add stretchable glue between the advisor block and the signatures.
+% This ensures that the signature part is always at the bottom of the page.
+%    \begin{macrocode}
+    \vfill
+    \ReviewerBlock\par
+    \SignatureBlock\par
+    \vspace*{1cm}%
+  \end{SFFont}%
+  \pagestyle{empty}%
+  \cleardoublepage
+  \thesistu@restorelayout
+  \restoregeometry
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsubsection{Front Matter Material}
+%
+% \begin{macro}{\AddStatementPage}
+% \changes{v1.3}{2014/11/25}{Updated to support multiple languages. \issue{4}}
+%   Generates the statement page.
+%    \begin{macrocode}
+\newcommand{\AddStatementPage}{
+%    \end{macrocode}
+% Set the same page geometry as for the titlepages.
+%    \begin{macrocode}
+%^^A  \newgeometry{%
+%^^A    left=2.4cm,right=2.4cm,bottom=2.5cm,top=2cm,
+%^^A    headsep=\thesistu@header@placement,
+%^^A    head=2\thesistu@logo@offset@height
+%^^A  }%
+%    \end{macrocode}
+% Save the current page layout lengths for later restoration.
+%    \begin{macrocode}
+  \thesistu@savelayout
+  \setlength{\parindent}{0pt}%
+  \setlength{\baselineskip}{13.6pt}%
+  \setlength{\parskip}{0pt plus 1pt}%
+  \begin{SFFont}{phv}%
+    \sffamily
+      \chapter*{\thesistu@polylingual@StatementChapter}%
+      \thesistu@person@author@fullname\\
+      \thesistu@data@address\par
+      \vspace{1.2cm}%
+      {\normalfont\thesistu@polylingual@Statement}\par
+      \vspace{1.2cm}%
+      \SignatureFields[y]{\thesistu@person@author@name}{}%
+  \end{SFFont}%
+  \cleardoublepage
+  \thesistu@restorelayout
+%^^A  \restoregeometry
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\addtitlepage}
+% Generates the titlepage in given language.
+%    \begin{macrocode}
+\newcommand{\addtitlepage}[1]{%
+  \selectlanguage{#1}%
+  \AddTitlePage
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\addstatementpage}
+% \changes{v1.3}{2014/11/25}{Updated to support english version. \issue{4}}
+% Generates the statement page.
+%    \begin{macrocode}
+\newcommand{\addstatementpage}{%
+  \selectlanguage{naustrian}%
+  \ifundergraduate{\AddStatementPage}%
+  \ifgraduate{%
+    \ifdoctor{\AddStatementPage}%
+    \ifphd{%
+      \selectlanguage{english}%
+      \AddStatementPage
+    }%
+  }%
+}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{environment}{acknowledgements}
+% Generates the English acknowledgement section.
+%    \begin{macrocode}
+\newenvironment{acknowledgements}{%
+  \selectlanguage{english}%
+  \chapter{Acknowledgements}%
+}{%
+  \cleardoublepage
+}%
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{acknowledgements*}
+% Generates the English acknowledgement section without an entry in the table of contents.
+%    \begin{macrocode}
+\newenvironment{acknowledgements*}{%
+  \selectlanguage{english}%
+  \chapter*{Acknowledgements}%
+}{%
+  \cleardoublepage
+}%
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{danksagung}
+% Generates the German acknowledgement section.
+%    \begin{macrocode}
+\newenvironment{danksagung}{%
+  \selectlanguage{naustrian}%
+  \chapter{Danksagung}%
+}{%
+  \cleardoublepage
+}%
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{danksagung*}
+% Generates the German acknowledgement section without an entry in the table of contents.
+%    \begin{macrocode}
+\newenvironment{danksagung*}{%
+  \selectlanguage{naustrian}%
+  \chapter*{Danksagung}%
+}{%
+  \cleardoublepage
+}%
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{abstract}
+% Generates the English abstract.
+%    \begin{macrocode}
+\renewenvironment{abstract}{%
+  \selectlanguage{english}%
+  \chapter{Abstract}%
+}{%
+  \cleardoublepage
+}%
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{abstract*}
+% Generates the English abstract without an entry in the table of contents.
+%    \begin{macrocode}
+\newenvironment{abstract*}{%
+  \selectlanguage{english}%
+  \chapter*{Abstract}%
+}{%
+  \cleardoublepage
+}%
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{kurzfassung}
+% Generates the German abstract without an entry in the table of contents.
+%    \begin{macrocode}
+\newenvironment{kurzfassung}{%
+  \selectlanguage{naustrian}%
+  \chapter{Kurzfassung}%
+}{%
+  \cleardoublepage
+}%
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{kurzfassung*}
+% Generates the German abstract.
+%    \begin{macrocode}
+\newenvironment{kurzfassung*}{%
+  \selectlanguage{naustrian}%
+  \chapter*{Kurzfassung}%
+}{%
+  \cleardoublepage
+}%
+%    \end{macrocode}
+% \end{environment}
+%
+%
+% \changes{v2.1}{2016/12/08}{added appendix, added introduction, added lva in titlepage}
+%
+% \begin{environment}{introduction}
+% Generates the English introduction without an entry in the table of contents.
+%    \begin{macrocode}
+\newenvironment{introduction}{%
+  \selectlanguage{english}%
+  \section{Introduction}%
+}{%
+  \clearpage
+}%
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{introduction*}
+% Generates the English introduction.
+%    \begin{macrocode}
+\newenvironment{introduction*}{%
+  \selectlanguage{english}%
+  \section*{Introduction}%
+}{%
+  \clearpage
+}%
+%    \end{macrocode}
+% \end{environment}
+%
+%
+%
+% \begin{environment}{einleitung}
+% Generates the German introduction without an entry in the table of contents.
+%    \begin{macrocode}
+\newenvironment{einleitung}{%
+  \selectlanguage{naustrian}%
+  \section{Einleitung}%
+}{%
+  \clearpage
+}%
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{einleitung*}
+% Generates the German introduction.
+%    \begin{macrocode}
+\newenvironment{einleitung*}{%
+  \selectlanguage{naustrian}%
+  \section*{Einleitung}%
+}{%
+  \clearpage
+}%
+%    \end{macrocode}
+% \end{environment}
+%
+%
+% \subsubsection{Page Style}
+%
+% \begin{macro}{thesistu@pagestyle@default}
+% Define the default page style of the thesis.
+%    \begin{macrocode}
+\makepagestyle{thesistu@pagestyle@default}%
+\makeevenfoot{thesistu@pagestyle@default}{\thepage}{}{}%
+\makeoddfoot{thesistu@pagestyle@default}{}{}{\thepage}%
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\frontmatter}
+% \begin{macro}{\mainmatter}
+% \changes{v1.4}{2015/08/01}{Added `Ruled' pagestyle.}
+% \begin{macro}{\backmatter}
+% Apply the default page style to the thesis.
+%    \begin{macrocode}
+\aliaspagestyle{chapter}{thesistu@pagestyle@default}%
+\aliaspagestyle{part}{thesistu@pagestyle@default}%
+\addto\frontmatter{\pagestyle{thesistu@pagestyle@default}}%
+\addto\mainmatter{\pagestyle{Ruled}}%
+\addto\backmatter{\pagestyle{thesistu@pagestyle@default}}%
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \Finale
+%
+% ^^A chapter numbering has to be activated for the glossary
+% \makeatletter\HD@numberedtrue\makeatother
+%
+% \PrintChanges ^^A compile glossary with `makeindex.exe -s gglo.ist -o %.gls %.glo'
+%
+% ^^A chapter numbering has to be deactivated for the index
+% \makeatletter\HD@numberedfalse\makeatother
+%
+% \PrintIndex ^^A compile index with `makeindex.exe -s gind.ist %.idx'
+%
+\endinput

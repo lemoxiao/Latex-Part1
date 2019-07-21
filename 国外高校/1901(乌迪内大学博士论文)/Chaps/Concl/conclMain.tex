@@ -1,0 +1,48 @@
+\chapter{Conclusions}\label{chap:concl}
+% \begin{chapref}
+% The references for this chapter are~\cite{tocl18,fsttcs16}.
+% \end{chapref}
+
+%\minitoc\mtcskip
+
+\lettrine[lines=3]{T}{he main topic} of this thesis is the MC problem for the interval temporal logic $\HS$.
+The first results we have established regard $\HS$ under the homogeneous semantics, interpreted over finite Kripke structures: on one hand, we have shown the decidability of the problem 
+in nonelementary time, and on the other, its $\EXPSPACE$-hardness.
+Then, we have studied many $\HS$ fragments under the homogeneity assumption, proposing, for each of these,
+ad-hoc MC algorithms that rest on concepts and techniques different from one another (e.g., small model properties, trace contractions, Boolean circuits with oracles, finite state automata,\ldots). The complexity of the MC problem for them ranges from $\EXPSPACE$ down to $\PSPACE$ and to some of the lowest levels of the polynomial time hierarchy. 
+Still under homogeneity, we have studied the expressive power of three semantic variants of $\HS$: we have compared such variants among themselves, and to the standard point-based logics $\LTL$, $\CTL$ and $\CTLStar$.
+
+Homogeneity readily enables us to interpret $\HS$ formulas over Kripke structures, which are inherently point-based models; however, it limits the expressive power of $\HS$. The first way of relaxing such an assumption, while still having Kripke structures as system models, is by adding regular expressions into $\HS$ formulas, in place of vanilla proposition letters. This gives us a means of selecting some traces fulfilling specific propositional patterns, and avoiding all the others. By an automata-theoretic approach, we have shown that MC for full $\HS$ extended with regular expressions retains the same complexity upper and lower bounds as those of the homogeneous case.
+As for the analyzed $\HS$ fragments, some of them, when extended with regular expressions, feature an increased computational complexity, while others do not.
+
+Finally, in the last chapter of the thesis
+we have replaced Kripke structures by timelines, a more expressive type of model with dense temporal domain, which can capture the interval-based behaviour and properties of systems.
+In order to finally deal with timeline-based MC, we have first considered
+the timeline-based planning problem,  
+identifying suitable restrictions on it, in order to overcome the undecidability of its general formulation.
+As for the language for specifying properties of timelines in MC, we have adopted the logic \MITL, which represents a sort of \lq\lq compromise solution\rq\rq , because a timed extension of $\HS$ over dense domains is not available from the literature.
+
+In this thesis we have completely worked out several problems; however, we now list some issues that remain still open from all previous chapters. 
+\begin{itemize}
+    \item The first noticeable one is the precise complexity of MC for full $\HS$ (and $\BE$)---with or without regular expressions. We conjecture the problem to be \emph{elementarily decidable} (and, maybe, $\EXPSPACE$-complete). The machinery presented in Chapter~\ref{chap:ICALP} for $\D$ does not generalize to $\BE$, and neither do the results of Section~\ref{sec:AAbarBBbarEbar} on $\AAbarBBbarEbar$/$\AAbarEBbarEbar$. 
+    \item MC for $\AAbarBBbarEbar$ and $\AAbarEBbarEbar$ under homogeneity is in $\LINAEXPTIME$, but only known to be $\PSPACE$-hard; hardness derives from that of $\Bbar$/$\Ebar$. We recall that, conversely, MC for $\AAbarBBbarEbar$/$\AAbarEBbarEbar$ with regular expressions is complete for $\LINAEXPTIME$ (Section~\ref{sec:AAbarBBbarEbarRegex}). It is not clear if removing regular expression from such fragments lowers the complexity from $\LINAEXPTIME$ to other classes \lq\lq above\rq\rq\ $\PSPACE$ (or to $\PSPACE$ itself).
+    \item MC for $\A$, $\Abar$, $\AAbar$, $\AbarB$, and $\AE$ under homogeneity has complexity in between $\Th$ and $\Thsq$. We do not know if the problem can be solved by less than $O(\log^2 n)$ queries to the $\NP$ oracle, or a tighter lower bound can be proved, or both (e.g., $\Theta(\log n \log\log n)$ queries may be needed).
+    \item It is not known whether the future timeline-based planning problem 
+    with unrestricted trigger rules is decidable, but we conjecture that this 
+    is \emph{not} the case. In Section~\ref{sec:DecisionProcedures} 
+    decidability has been shown only for \emph{simple} trigger rules, as they 
+    allow for translation into \MTL/\MITL\ formulas.
+\end{itemize}
+
+Now we would like to conclude the thesis by outlining possible future research directions and themes.
+\begin{itemize}
+    \item An interesting problem to study is MC for $\HS$ over \emph{visibly pushdown systems} (VPS) that,
+    given their infinite state (configuration) space, allow us to represent \emph{infinite state systems}, hence enabling us to deal, for instance, with \emph{recursive programs}.
+    In this case, $\HS$ may be extended with a \emph{binding} and an \emph{unbinding} operator---the former for restricting the valuation of its argument to the sub-intervals of the current context-interval (each interval being a computation trace of the VPS), and the latter for removing the current binding. Such logic may then be compared, as for its expressiveness, to the context-free linear-time $\LTL$ extensions  $\mathsf{CARET}$~\cite{AlurEM04}, $\mathsf{NWTL}$~\cite{AlurABEIL07}, and $\mathsf{CARET}$ with the \emph{within} modality~\cite{AlurABEIL07}.
+    \item The current semantic definition of $\HS$---either with or without regular expressions---does not allow us to express a meaningful property of intervals, the \emph{average}.
+    Adding proposition letters in $\HS$ such as $p_{\geq 0.5}$, having the intuitive meaning of \lq\lq $p$ holds true in at least half of the states of the interval being considered\rq\rq , would be fairly natural and give the possibility of expressing a peculiar interval-based property.
+    \item A \emph{timed} extension of $\HS$ \emph{over dense domains} would be naturally required by timelines, where time is a fundamental dimension. However, in the literature, only \emph{metric} extensions of $\HS$ have been proposed over the natural numbers~\cite{DBLP:journals/sosym/BresolinMGMS13}. Defining such an extension, and perhaps 
+    linking it with known results regarding other timed logics and/or timed automata, is an interesting research theme.
+    \item The \emph{synthesis} problem for $\HS$, a natural evolution of MC, useful, for example, for the development of digital sequential circuits, has already been studied in~\cite{DBLP:journals/corr/MontanariS14}, where the authors consider $\AAbarBBbar$ and $\AAbar\Bbar$ (with an equivalence relation). Synthesis for such fragments is either \emph{decidable and non-primitive recursive-hard}, or \emph{undecidable} (depending on the underlying linear orders).
+    Thus, suitable restrictions should be identified on the fragments, on the semantics, and/or on the models, in order for the results to be useful for practical purposes.
+\end{itemize}

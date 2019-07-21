@@ -1,0 +1,1807 @@
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION & BACKGROUND
+%----------------------------------------------------------------------------------------
+\pagenumbering{arabic}
+\setcounter{section}{0}
+\renewcommand*{\theHsection}{chX.\the\value{section}}
+
+\chapter{Introduction and literature review}
+\label{Introduction and literature review}
+
+\begin{quote}
+\begin{center}
+\textit{African sky blue \\
+African thunderstorm, your soldiers march through the air \\
+The African rain will fall and wash away all my tears \\
+African falling rain \\
+African falling rain, will you bless my life?}\\
+Johnny Clegg, African Sky Blue, 1981 
+\end{center}
+\end{quote}
+
+Understanding the atmosphere has been an endeavor of man since the ancient
+Greeks. In 340\gls{B.C}, Aristotle wrote the first know meteorological
+text, \textit{Meteorological}, speculating on the processes of various
+meteorological phenomenons \citep{frisinger1972aristotle}. This was to be
+the start of future endeavors that would shape our understanding of the
+earth's climate and weather systems. Centuries later the concept of
+anthropogenic climate change was formed by \cite{arrhenius1896xxxi} as he
+speculated that an increase in carbon dioxide may lead to an increase in
+the average temperature. He later stated, that \textit{"the advances of
+industry might noticeably increase the atmospheric concentration of
+carbon dioxide in the course of a few centuries"}
+\citep{arrhenius1908worlds}. Years later \cite{arrhenius1908worlds,
+arrhenius1896xxxi} theories would be proven correctly, the
+\cite{intergovernmental2007fourth, intergovernmental2014climate} found
+greenhouse emissions as the main cause of the increase in global
+temperature and severe weather events \citep{botzen2010climate,
+kapsch2012long}. These severe events, and more specifically severe
+hailstorms, form the basis of the study.  Hailstorms, which are by nature
+rare, seem to have increased in frequency \citep{wuebbles2014severe,
+hermida2015hailfall, changnon2009increasing, li2016hail}. The implications
+of such an increase could be dire for humans in regions prone to such
+events. Severe hail events have a devastating socio-economic impact on a
+region, numerous hail storms have resulted in unprecedented loss throughout
+history; from the origins French revolution to the complete destruction of
+agricultural regions, damage to property and automobiles and in the most
+extreme of cases the loss of human lives. South-Africa has not been spared
+from these severe hail events.  Recent storms over the Gauteng province,
+the economic hub of Africa, has been among the most costly of natural
+disasters the country experienced until now.  Extreme hail is a phenomena
+that can cause havoc and yet we understand little about this spatially and
+temporally rare event and how they are linked from the small scale
+convective environment to larger scale synoptic circulation. 
+
+The recent severe hailstorms over South-Africa has renewed interest in hail
+studies to build upon past research. During the 1960's - 1980's three major
+hail research programs existed in South-Africa. These programs were funded
+by both state and/or private organizations at the time
+\citep{kelbe1984cumulus, olivier1989some}. The first program, funded by the
+\gls{CSIR}, was a network of hail-pads set-up in Gauteng, the then
+Transvaal region, with around 800 volunteers in a 2800 $km^{2}$ area
+\citep{carte1967areal, held1974hail}. The presence of the hail-pad network
+assisted in various hail related research publications during this era
+\citep{schulze1965hail, carte1967areal, held1974hail, carte1978variability,
+held1979hailstorms, carte1979sustained}.  Other programs included a weather
+modification program established by the \gls{SAWS}, Sentraoes Insurance
+Co.\ and the \gls{WRC} in die 1970's. The program, known as \gls{BEWMEX},
+originally studied hail suppression but subsequently shifted its focus to
+rainfall research \citep{erasmus1980formulation}. Finally, the Program for
+the Augmentation of Atmospheric Water Supply \citep{mather1977analysis} in
+Nelspruit, Mpumalanga, was a privately funded hail suppression program
+established in the 1970's, but it also switched objectives towards rainfall
+studies later on.  \cite{mather1977analysis} research was such a
+breakthrough the time that a subsequent review published later by
+\cite{summers1978comments} noted that the work was an important step in
+hail suppression research as it was the first to directly seed the super
+cooled portion of clouds. \cite{mather1977analysis} also introduced the
+concept of \textit{a severity ratio} in his work; this is defined as the
+area damaged to 100\% divided by the area hit by hail
+\citep{summers1978comments}. The last major investigation of hail was by
+\cite{olivier1990thesis} in her PhD thesis where she examined the spatial,
+temporal and atmospheric characteristics of hail days over the Highveld
+while also investigating the impact on maize production across the
+Highveld. Later research by \cite{olivier1995links} investigated the links
+between \gls{SOI} and hail events, in their paper a correlation between the
+occurrence of hail and the \gls{SOI} was observed, noting that a increase
+in \gls{HDF} was accompanied with a low \gls{SOI}. Despite this history
+of hail research in South-Africa, in time focus has shifted towards
+rainfall due to the dependence on this resource in a water scares country
+like South-Africa. 
+
+
+\subsection{A brief outline of the study}
+
+The study aims to build on existing research by characterizing hailstorms
+across different atmospheric scales over the Highveld with the aim to
+answer the main research question; \textbf{What is the trend and cycles of
+hailstorms over the Highveld?} 
+
+The dissertation is divided into 6 major chapters, each addressing the main
+question related to this study in different ways.  First the background and
+introduction examines some of the impacts of severe weather events and also
+severe hailstorms with the aim of providing the reader an overview of the
+devastation that these events can have on our daily lives.  The chapter
+moves on to briefly discuss the climatology of South-Africa, which systems
+impact our daily weather followed by a brief hail climatology of
+South-Africa and Gauteng. The sections continues by providing a background
+of literature relating to \textit{the problem of scale}. First a review of
+\gls{NWP} is provided as related to micro and meso scale events in the
+atmosphere. This is followed by an overview of macroscale classification
+techniques used to understand the larger scale synoptic circulation.
+Chapter 2 - 5 deals with the data related to this study and the results
+obtained trough the numerical simulations, cluster analysis and trends
+analysis as described later on. The last chapter attempts to understand the
+how the links identified have changed in time and if there is a increased
+change of environments favored for hail producing storms. Additional
+datasets are used in this chapter. Radiosonde data from the \gls{IGRA} and
+historical media reports related to hail events is examined and a trend
+analysis is conducted over a period of $\ge 40$ years. 
+
+\section{The impacts of severe weather events}
+
+Anthropogenic climate change has become a mainstream topic worldwide. The
+Intergovernmental Panel on Climate Change (IPCC) has stated in its reports
+this is mainly due to human activities related to the burning of fossil
+fuels around the world \citep{intergovernmental2007fourth,
+intergovernmental2014climate, kruger2013trends}. There is already a large
+body of research examining the effects of anthropogenic climate change
+around the world and in South-Africa. \citep{schiesser1990hailfall}.
+\cite{changnon2009increasing} notes there is an increase in severe
+hailstorms over the \gls{USA} since the 1950's while
+\cite{rosenzweig2002increased} estimated that the annual loss due to severe
+weather is likely to increase by \gls{USD}3 billion per year. In China,
+\cite{li2016hail} found that hail days are likely to increase by 5\% from
+2030 onwards in some regions while \cite{brooks2013severe} predicts that
+environments suitable for severe storms will increase in the future.
+Predictions for South-Africa estimate an increase in extreme heat days
+\citep{kruger2013trends}, a decrease in extreme cold days
+\citep{new2006evidence} and an increase in extreme precipitation events and
+convective events \citep{roy2013spatial}. These predictions could be far
+reaching, impacting insurance, agriculture, health and water availability,
+especially the part of the population who are most vulnerable; the poor.
+According to the report by the World Health Organization (WHO)
+\citep{hales2003impacts} deaths related to extreme events in the 1980's and
+1990's numbered around 1.2 million. There is also a relationship between
+meteorological events and diseases, \cite{hales2003impacts} mentions the
+connection between rainfall and the presence of mosquitoes for instance.
+After heavy events an abundance of surface water could lead to an increase
+in infectious diseases such as malaria, yellow fever and dengue (all
+carried by mosquitoes). Other vectors such as rodents and ticks also thrive
+in certain climatological conditions, carrying more infections diseases
+\citep{hales2003impacts}. 
+
+The most vulnerable of the population -- those who live in rural areas and
+low income settlements, suffer economic hardship, lack government support
+and quality infrastructure -- are the people who will be most affected by
+this possible increase in severe events. The Intergovernmental Panel on
+Climate Change describes vulnerability as: 
+	
+\begin{quotation}\textit{"\ldots the degree to which geophysical,
+biological and socio-economic systems are susceptible to, and unable to
+cope with, adverse impacts of climate change"}
+\cite{intergovernmental2007fourth}.\end{quotation}
+
+According to \cite{okuyama2009impact} damages, from 1960 to 2007, as a
+result of natural disasters amount to USD742 billion while meteorological
+and climatological events make up 36\% (USD271 billion) of this damages.
+The importance of understanding such events is clearly crucial to minimize
+the possible damages and losses that can occur, this is however difficult
+for some countries faced with other economic and social issues 
+\citep{doswell2003societal}. Damage related to extreme events that
+occurs in countries with diverse, high to middle-income economies tend to
+have a major higher order economic impact compared to countries with a
+simple economic structure, however, these \textit{poor} countries tend to
+struggle with the aftermath of extreme damage while economically stronger
+countries can endure and successfully recover from such events
+\citep{okuyama2008critical, noy2009macroeconomic}.
+
+\cite{jahn2015economics} classifies the economic impact due to severe
+weather into, direct or indirect, non-market, time-horizon and positive
+impacts and  finally direct losses by sector and time.  \textit{Direct
+losses} refers to direct impact an event has, e.g. the physical destruction
+of property, whilst \textit{indirect losses} refers the losses of a third
+party affected by the direct losses.  \textit{Non-market effect} refers to
+any commodities damaged in the event of a storm, but the monetary value of
+such as losses is hard to asses.  \cite{jahn2015economics} uses the example
+of a attraction being damaged (e.g. religious statue), although the
+monetary value can be quantified the symbolic value of the original work
+not assessable. \textit{Time horizon and positive impacts} focuses on the
+spatio-temporal impacts. With the advent of an extreme event damage cost
+starts to accumulate, when the event ceases it can either yield economic
+gains or losses for two reasons, (1) stimulus effect, additional demand for
+a resource and (2) productivity effect, damaged goods are replaced by new
+goods \citep{jahn2015economics}. \cite{noy2010economics} found that
+natural disasters has a short term positive growth effect in developed
+regions but not in remote regions, \cite{jahn2015economics} emphasises that
+when there is no economic stimulus following a disaster, a region can fall
+into a poverty trap or cycle of long-term negative growth. Finally,
+\textit{direct losses by sector and time} examines the influence of an
+event on specific sectors contributing to the economy; these can be short
+term and or long term effects on critical sectors, while some events may
+have a positive effect for some sectors other events may lead to a loss in
+another sector, if a country can identify the possible impacts on various
+sectors and plan mitigation methods for when such events may occur,
+economically and social resilience can be improved.
+\citep{jahn2015economics}.  
+		 
+\subsection{Economics of severe hailstorms around the World}
+\label{sec:damageworld}
+
+The economic loss due to hailstorms can be extensive, especially when these
+storms occur over densely populated urban areas. Hail damage in the past has
+dominated the percentage of total insurance pay-outs within a specific area and
+year such as Munich, Germany 1984 (55\%), Denver, \gls{USA} 1990 (50\%) and Sydney,
+Australia 1990 (43\%) \citep{hohl2002use}. Severe hail
+storms have set some records related to insurance payouts; a severe hailstorm in Sydney,
+Australia caused damages of over 1.6 billion\gls{AUSD} in damages, exceeding the cost of
+any previous natural catastrophe in the country \citep{gero2006impact}. During
+2006 a hailstorm in the United States' Mid-West region broke the record for the
+most costly hailstorm; causing over \gls{USD}1.8 billion in damages to property;
+the specific event was also the most expensive catastrophe for the U.S in 2006
+\citep{changnon2009increasing}. A 2001 hailstorm in the same region lasted 8
+hours, covered over 550km and caused over \gls{USD}1.5 billion in damages in the
+states of Illinois and Missouri \citep{changnon2006severe}.
+Two separate hailstorms, on two different continents, resulted in the most costly
+day for insurers in 2013 -- in Europe a hailstorm amounted damages of EUR2.8
+billion \citep{punge2016hail} and in South-Africa damages amounted to
+over 1.6 billion \gls{ZAR} in the country's most costly insurance payout to date. 
+			
+Agriculture is another major sector impacted by hail events, but according to 
+\cite{punge2016hail} measuring the agricultural impact of hail is a
+difficult task as data over agricultural land is mostly recorded during growing
+season, events outside this frame mostly go unrecorded. In Europe, the most
+losses due to hailstorms on agricultural production occurs in Spain, followed by
+France and Italy \citep{sanchez2003analysis}. Insurance companies pay an
+estimated EUR100 million to crop losses in Spain's hail prone areas annually. In
+the Lleida valley located in Spain farmers pay an average of EUR15 million
+towards hail damage insurance \citep{aran2011atmospheric, sanchez2003analysis}.
+In Cyprus a total of EUR22.7 million was paid out by insurance companies to
+cover the damage on agricultural sectors from 1996-2006, 28.4\% of the
+total compensation paid in this period nationwide
+\citep{nicolaides2009impact}.  \cite{changnon1972examples} estimated the
+total crop loss due to hail in the \gls{USA} at \gls{USD}284 million (an
+estimated \gls{USD}1.6 billion in 2016) and about 1\% of total crop
+production. Argentina's Mendoza province records 10\% losses to agriculture
+from hailstorms \citep{rosenfeld2006aircraft}.
+
+\paragraph{Economics of severe hailstorms in South-Africa}
+\label{sec:damagesouthafrica}
+
+The history of hailstorms over South-Africa has been well documented in
+\cite{bureau1991history}; the first recorded hailstorm in South-Africa was in
+1692 off the Cape Town coast. Since then South-Africans have documented frequent
+severe hail events across the country. Hailstorms over the Gauteng Province have
+been documented as early as 1928 when a storm over Johannesburg caused \gls{ZAR}1
+million in damages -- a substantial amount at the time. In 1936 \textit{hailstones
+the size of coconuts} killed 10 people and an unknown amount of livestock in
+Northern Gauteng \citep{grobler2003framework, perry1995severe}. On 17 November
+1949 a storm so severe occurred over Pretoria it apparently damaged every
+building within the city, and resulted in the National Building Research
+Institute Council For Scientific and Industrial Research publishing a report on the hail resistance of
+South-Africa roofing material \citep{rigby1952hail, bureau1991history}. Another
+hailstorm in the region on 1 November 1985 was ranked as one of the worlds top
+10 most destructive hailstorms at the time, while a storm in 1992 resulted in
+the death of 14 people in East-Griekwaland \citep{perry1995severe}. 
+	
+The most expensive pay day for insurances in South-Africa occurred on 28
+November 2013 when a massive hailstorm over the Gauteng area caused over
+\gls{ZAR}1,6 billion in damages. More than a hundred houses were damaged in the
+suburbs Dobsonville, Bramfischerville, Emdeni and Soweto; trees in the suburbs of
+Florida and Roodepoort and Vereeniging were destroyed by the storm
+\citep{iol2013hail}. Power-lines across the province were damaged resulting in
+electricity problems \citep{ewn2013hail}. Earlier the month, on the 11th and the
+18th of November, several other severe storms occurred over the region resulting in damage to
+property. The combination of these events and the damage caused led to renowned 
+interest in hail research, especially over the Highveld where these storms caused
+the most damage. In 2014 there was session on hail in South-Africa hosted by the
+Insurance Institute of South-Africa, shedding light on the \gls{ZAR}1.6 billion
+in losses experienced by the public and insurers during these hail events. 
+
+South-Africa's agricultural regions aren't spared from these severe events.
+Early research by \cite{theron1973economic} on the agricultural impact of
+hailstorms in South-Africa estimated the hail events in this sector to
+amount to a 2,1\% loss in agriculture production.  \cite{olivier1992impact}
+estimated the annual loss could be as high 9\% of the total production.
+\cite{bureau1991history} has various details about storms impacting
+agriculture. In 1914 over 500 sheep where killed in a storm over Harding in
+KwaZulu-Natal, while a storm in 1946 killed 42 sheep and crops over a large
+part of the Free-State. On new years eve of 1959 one of the most
+devastating storms hit the farming sector, in addition to crops being
+destroyed, several thousand animals including sheep, poultry and game were
+killed. On 29 December 1997 a severe hail storm over the Free-State caused
+\gls{ZAR}15 million in damages to crops in the Reitz area
+\citep{de2000severe}. The impact of hail may not always be direct, after
+1986 a hail event in the Cape province a pine plantation became infected
+with \textit{Sphaeropsis sapinea}, a blight disease, and resulted in an
+estimated loss of 55\% of total potential production or an estimated
+\gls{ZAR}2.5 million \citep{zwolinski1990economic}
+
+\section{Scales in the atmosphere}
+\label{atmospherescale}
+
+Difficulties arise when trying to study severe events.
+\cite{wuebbles2014severe, hermida2015hailfall} notes there is a limited
+understanding of extreme events like hail, ice storms, tornadoes and strong
+winds -- events rare in their spatial and temporal extend
+\citep{carte1978variability}. This poses problems when trying to analyze
+the events on any scale, however, because extreme damage can often occur in
+a short period of time often without any warning a better understanding of
+these events is a necessity.
+
+Defining the spatio-temporal variation (scale) of different atmospheric
+phenomenons was first addressed by \citep{orlanski1975rational}. He defined
+the atmosphere into three major divisions, microscale (20m $\lessgtr$ 20m) <
+mesoscale (2km $\lessgtr$ 2000km) < macroscale (2000km +), subdivided in $\gamma,
+\beta$ and $\alpha$ scales respectively. Because the atmosphere is dynamic
+each scale also has a temporal element linked to it, microscale phenomenons
+are typically in the order of $\leq$ 1 hour, mesoscale phenomenons 1 hour
+$\lessgtr$ 1 week and finally macroscale phenomenons $\geq$ 1 week.
+According to \cite{dyson2013atmospheric}, mesoscale systems may produce
+extreme rainfall over South-Africa, thunderstorms associated with these
+mesoscale systems occur within the meso-$\gamma$ and upper micro-$\alpha$
+range, an important phenomena associated with hail events as discussed
+later in the chapter. Mesoscale systems are linked to larger scale
+circulation patterns defined as meso-$\alpha$, macro-$\beta$ and
+macro-$\alpha$, better known as synoptic circulation
+\cite{pielke1992comprehensive}. Similar scales exists in atmospheric
+modeling, discussed in \hyperref[subsec:modelscales]{page
+\pageref{subsec:modelscales}}. 
+
+\begin{table}[H]
+\centering
+\caption[Scales in the atmosphere]{Scales in the atmosphere after \cite{orlanski1975rational}}
+\label{tbl:scalesintheatmosphere}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{4}{|c|}{Macro -} & \multicolumn{3}{c|}{Meso -} & \multicolumn{3}{c|}{Micro -} \\ \hline
+\multicolumn{2}{|l|}{$\alpha$, $\geq$ 10,000km} & \multicolumn{2}{l|}{$\beta$, 2000km $\lessgtr$ 10,000km} & $\alpha$, 200km $\lessgtr$ 2000km & $\beta$, 20km $\lessgtr$ 200km & $\gamma$, 2km $\lessgtr$ 20km & $\alpha$, 2km $\lessgtr$ 200m & $\beta$, 200m $\lessgtr$ 20m & $\gamma$, $\le$ 20m \\ \hline
+\multicolumn{2}{|l|}{General circulation} & \multicolumn{2}{l|}{Synoptic cyclones} & Fronts & Mountain winds & Thunderstorm & Tornadoes & Plumes & Turbulance \\ \hline
+\multicolumn{4}{|c|}{$\geq$ 1 week} & \multicolumn{3}{c|}{1 week $\lessgtr$ 1 hour} & \multicolumn{3}{c|}{1 hour $\lessgtr$ 1 sec} \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+Each scale (macro, meso and micro) has characteristic features that
+influence surface weather. To understand the links between the
+meso-$\gamma$ scale features and surface weather meteorologists around the
+world launch weather balloons, also know as radiosondes, into the
+atmosphere on a daily basis to gather atmospheric data. The upper-air
+soundings allow meteorologist to form an idea of the current state of the
+atmosphere in a limited spacial and temporal area, not only can products
+such as tephigram, skew-t and hodographs be created from these soundings,
+describing the vertical state of the atmosphere, it also forms a crucial
+part in the collection of data used to initiate \gls{NWP} models.
+Unfortunately upper-air soundings only give scientists an idea of the
+atmospheric properties withing the meso-$\gamma$ and meso-$\beta$ scale.
+\gls{NWP} offers a alternitive method to understand the dynamic properties
+of the atmosphere over a larger spatial and temporal extent, however, this
+requires powerful computer resources, especially to resolve convection.
+Attempts to understand larger circulation (macro-$\beta$ scale) has similar
+limitations, and although simulating convection is less challenging on a
+synoptic scale with the use of parametrization schemes, it tends to
+increase uncertainty. Clustering is a well known as often used method that
+is computationally more efficient to understand large atmospheric
+circulation patterns \citep{cahynova2014atmospheric, garcia2011atmospheric,
+huth2008classifications, sheridan2011self}. This study attempts to use
+these two methods to link the small and large scale systems with each other
+and examine the relationship when extreme events are observed.
+
+\section{The structure of thunderstorms, thermodynamic derived indicators and
+wind shear}
+
+Thunderstorms, defined as; 
+
+\begin{quotation}
+\textit{"a high frequency mesoscale system associated with vigorous
+convection, giant towering and thundery cumulonimbus cloud, strong wind in
+the form of squall, lightning flashes, and heavy rain, sometimes
+accompanied with hail"} \citep{halder2015effect}, 
+\end{quotation}
+
+are small scale features that can invoke havoc on a regioni. A severe
+thunderstorm can produce heavy rain, hail, severe winds, tornadoes (a rare
+occurrence in South-Africa) and damaging lightning. Because these events
+are short lived and develop rapidly it poses a challenge for atmospheric
+scientists to understand the complex processes within these storms. The
+smallest of these are isolated, single cell thunderstorms followed by
+multicell storms; severe hail, lightning and rainfall is an possible
+occurrence when any these convection types are present. The
+most notable of thunderstorms is the supercell storm often extending over
+30km and reaching heights of over 15km, these storms result in most extreme
+weather related damage to regions \citep{rae2014supercell}. Thunderstorms
+are sustained by updrafts; warm, moist air that feeds the system. As this
+warm moist air rises latent heat is released and an air parcel buoyancy
+increases and this, along with sustained updrafts lifts saturated air high
+into the troposphere and lower stratosphere, in the process reaching
+freezing levels where ice particles and supercooled droplets start forming.
+The particles continue to grow in size until its weight exceeds the
+strength of the updraft when finally down bursts of hail and heavy rainfall 
+occur. \hyperref[fig:stormstructure]{Figure \ref{fig:stormstructure}}
+provides a simple illustration of the thunderstorm structure.
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{../figures/structure.png}
+\caption[Simplified illustration of thunderstorm development]{Thunderstorms
+form in a unstable atmosphere. As air rises, cools down, expands and
+condensates it releases latent heat, this and results in increased
+buoyancy of an air parcel. The increased buoyancy and strong updrafts
+carries air high into the atmosphere; in a supercell this can exceed
+20km in rare cases. As the saturated air rises it reaches freezing
+levels where supercooled droplets and ice form, with a strong updraft these
+particles remain suspended in the cloud and grow in size until the weight of
+the particle overcomes the strength of the updraft and falls to surface in
+the form of rain or hail.}
+\label{fig:stormstructure}
+\end{figure}
+
+Understanding the thermodynamics of convection plays an important part in
+understanding severe storm formation and through the use thermodynamic
+diagrams scientists have been able to represent processes in the atmosphere
+related to various atmospheric conditions including severe events such as
+hailstorms. Research related to sounding derived severe storm climatologies
+is relatively abundant for Europe
+\citep{sanchez2003analysis,sanchez2009assessing,
+berthet2013extreme,mohr2013recent,groenemeijer2007sounding} and
+North-America
+\citep{rasmussen1998baseline,dupilka2006forecasting,doswell2006use,allen2015empirical}.
+Over South-Africa less so, \cite{dyson2009heavy, dyson2013atmospheric,
+dyson2015baseline, rae2014supercell} work is the most extensive related to
+the topic. \cite{dyson2015baseline} study focused on the use of sounding
+derived parameters extended from 1977 - 2015, and found that severe
+convective indices was mostly recorded during summer months, as expected,
+with levels of \gls{CAPE} and wind shear comparable to that of severe
+events observed the \gls{USA}.  \citep{rae2014supercell} had a similar
+finding, showing that \gls{MUCAPE} values are the highest during Summer and
+also noting the sudden increase in observed \gls{MUCAPE} from September to
+October. Meteorological agencies typically lunch
+two weather balloons, also known as soundings, daily at certain points to
+gather atmospheric data, in South-Africa this occurs at Cape-Town and Irene
+on a daily basis, while other sites have reduced the frequency of launches.
+Indicators derived from these soundings are used to evaluate the
+thermodynamic structure of the atmosphere and the possibility of severe
+weather occurrence. \cite{sanchez2009assessing, johns1992severe} mentions
+three \textit{ingredients} that indicate an environment ideal for storm
+formation, this includes a moist deep layer in the low/mid troposphere,
+instability and an triggering mechanism. The basic movement of a parcel of
+air in an unstable environment can be summed up as follows: as a parcels is
+lifted through a region of stable atmosphere it becomes saturated and
+reaches the \gls{LCL} where clouds typically form. In an unstable
+environment the parcel continues lifting to its \gls{LFC}, to achieve this
+the parcel requires a certain amount of energy to \textit{break} trough the
+stable atmosphere, known as \gls{CIN}. If a parcel is unstable it will
+continue to rise to the \gls{EL}, where it has the same density to that of
+the surrounding environment. When this occurs a parcel is said to be
+positively buoyant, this represent by a function known as \gls{CAPE}.
+\hyperref[fig:thermodiagram]{Figure \ref{fig:thermodiagram}} shows a simple
+indication of how the thermodynamic properties of a rising parcel.
+Meteorologists use soundings to evaluate these \textit{ingredients} and
+this has led to the formation severe storm indices such as \gls{CAPE},
+\gls{LI}, \gls{SWEAT}, \gls{VT}, \gls{TT} and various other derived
+indices. Also measured from the soundings is vertical and horizontal wind
+shear, low and upper level vertical shear is important in the storm
+formation, however, strong shear can \textit{break} a storm and lead to its
+demise. \hyperref[fig:hodo_structure]{Figure \ref{fig:hodo_structure}} the
+use of an hodograph to plot and analyze the motion and shear in the
+atmosphere. A couple of the indices mentioned stand out, the are briefly
+discussed here (see \cite{groenemeijer2007sounding, sanchez2009assessing,
+kaltenbock2009evaluation, dyson2015baseline, grieser2012convection,
+de2000tornadic, tippett2015climate, litta2012numerical}). \gls{CAPE} is one
+of the most common derivatives of soundings is formulated as,
+
+\begin{equation}
+\label{eq:cape}
+CAPE = \int^{p_f}_{p_n} \left( a_p - a_e \right)dp,
+\end{equation}
+
+\gls{CAPE} is a theoretical measure of instability of the buoyancy of an
+air parcel with an increase in height as it is heated adiabatically
+(through the \gls{LCL}, \gls{LFC} until it reaches its \gls{EL}). If this
+buoyancy is positive an environment conducive to storm formation can be
+expected \citep{groenemeijer2007sounding, sanchez2009assessing}. \gls{CAPE}
+values are expressed as $\frac{J}{kg}$ and values $<1000$ indicates
+instability, although storms have been recorded in lower values. The
+importance of \gls{CAPE} has been emphasized by
+\cite{groenemeijer2007sounding, sanchez2009assessing,
+kaltenbock2009evaluation} where a strong relationship was found between
+\gls{CAPE}, thunderstorms and hail.  $\int^{p_f}_{p_n}$ represents the
+parcel rising from the pressure at the level of free convection (LFC -
+$p_f$), the pressure at the equilibrium level (\gls{EL} - $p_n$), $a_p$ the
+volume of a parcel moving upwards moist-adiabatically from the LFC and
+$a_e$ environment specific volume of the profile \citep{glossary2016ams}.
+Other \gls{CAPE} derived indices include, \gls{SBCAPE}, \gls{NCAPE},
+\gls{MLCAPE}, \gls{MUCAPE}, 3km \gls{CAPE} and integrated \gls{CAPE}.
+
+\gls{CIN} is known as negative \gls{CAPE} and is a measure of the energy
+that a parcel has overcome to rise above the stable inversion layer into the
+atmosphere and become positively buoyant. \gls{CIN} is written as;
+
+\begin{equation}
+\label{eq:cin}
+CIN = \int^{LFC}_{\text{source level}} B_T dz = \int^{EL}_{\text{source level}}
+\frac{T_v'}{\overline{T_v}} dz
+\end{equation}
+
+The \gls{SI} is a widely used severe storm evaluation index. The original
+\gls{SI} \citep{showalter1953stability}, which is perhaps the first major
+indicator derived from soundings \citep{doswell2006use}, is defined as the
+temperature difference of an air parcel lifted from 850hPa
+dry-adiabatically to its \gls{LCL} and then wet adiabtically to 500hPa.
+This can be written as,
+
+\begin{equation}
+SI = PT_{500} - PT_{P_{500}}
+\label{eq:si_i}
+\end{equation}
+
+where $PT_{P_{500}}$ is the parcel temperature at 500hPa when lifted
+dry-adiabatically from 850hPa to the \gls{LCL} and then wet adiabatically
+to 500mb. Positive \gls{SI} values ($\geq$0) indicate a stable atmosphere
+and negative values (< 0) an unstable atmosphere.
+\cite{tyson2000atmosphere} notes that a value of -3$\degree$C is
+\textit{defining} conditions for cumulus formation. Similar to the \gls{SI}
+is the \gls{LI} \citep{galway1956lifted} calculating the temperature
+difference of a parcel as it is lifted dry-adiabatically to the \gls{LCL}
+and the wet-adiabatically to 500hPa, but an important difference is the
+\gls{LI} is calculated between the surface ($z=0$) and 500hPa.
+	
+Two other important indicators are derived from temperature and humidity.
+First the \gls{TT} index; the \gls{TT} is formulated by combining the
+\gls{VT} and \gls{CT}. The \gls{VT} is defined as temperature difference
+between 850hPa and 500hPa while the CT is the difference between the 850hPa
+dew-point temperature ($T_{d,850}$) and 500hPa temperature ($2T_{500}$).
+The \gls{TT} can thus be written as \cite{grieser2012convection,
+miller1972notes},
+
+\begin{equation}
+TT = VT + TT = T_{850} + T_{d,850} - 2T_{500},
+\label{eq:TTI}
+\end{equation}
+
+when \gls{TT} values are $\geq$44K the environment has conditions that
+could result in thunderstorm formation. The K-Index is similar to the
+\gls{VT}, but includes temperature and dew-point temperature at 700hPa, the
+K-Index is written as,
+
+\begin{equation}
+\label{eq:ki}
+K = T_{850} - T_{500} + T_{d,850} - ( T_{700} + T_{d,700} )
+\end{equation}
+
+Another product derived from the upper air sounding and that has been shown
+to have particular importance in severe storm formations is wind shear.
+Wind shear is measure of the directional variations in the wind vector. The
+vertical wind shear is a function of the speed (vertical speed shear) and
+directional (vertical directional shear) changes of wind with an increase
+in height when a parcel of air is lifted, this is represented on a
+hodograph (see \hyperref[fig:hodo_structure]{figure
+\ref{fig:hodo_structure}}). The vertical wind shear is calculated as a
+magnitude of the vector difference between two pressure levels ($\Delta V =
+V_{top} - V_{bottom}$), while horizontal wind shear refers to the lateral
+change of wind direction at a given altitude \citep{barry2009atmosphere}.
+The most common products derived from the hodograph is bulk shear,
+represented ($\Delta V$) and mean shear ($\sum \Delta V$.
+The bulk shear is mostly used to evaluate the 0 - 6km
+levels. Another impact on storms is the direction wind shear. 
+This influences a storm rotation and subsequent
+lifting of air parcels, however, wind shear is not only related to storm
+formation but also storm destruction. Strong shear can prevent the
+evolution of cumulonimbus clouds by dispersing heat and moisture in the
+upper atmosphere, revered to as shearing. In the Southern Hemisphere shear
+associated with convective events typically have an counterclockwise
+rotation, also known as backing \citep{doswell1991review}. \gls{SRH} and
+\gls{EHI} are two other important indicators describing the wind
+environment of supercells, according to \cite{thompson2007effective}
+\gls{SRH} is the accepted driver of rotation within storms, the \gls{SRH}
+is generally represented  in a fixed level, usually 0 - 1km, 0 - 3km or 0 -
+6km, because \gls{SRH} is related to rotation it is mainly used to evaluate
+tornado probability. \gls{SRH} is represented as,
+
+\begin{equation}
+SRH = - \int^h_0 \overrightarrow{k} \cdot (\overrightarrow{v} (z) - \overrightarrow{c}) \times \frac{\partial \overrightarrow{v}z}{\partial z}dz
+\end{equation}	
+
+where $\overrightarrow{k}$ is vertical unit vector, $\overrightarrow{c}$
+moving velocity of the cell and $\overrightarrow{v}z$ the wind vector,
+generally values $\geq$ 150 $m^2/s^2$ is associated with rotation capable
+of generating thunderstorms, to represent the instability within these
+systems \gls{EHI} is used, \gls{EHI} is derived from \gls{CAPE} and
+\gls{SRH} as, 
+
+\begin{equation}
+EHI = \frac{CAPE \cdot SHR}{160,000},
+\end{equation}
+
+typically values > 1 indicates environment suitable for thunderstorm
+development. Related to the wind shear and \gls{CAPE} environment is the
+\gls{BRN}. The \gls{BRN} is a function of the buoyant energy (\gls{CAPE})
+and the wind shear relationship \citep{de2000tornadic,
+thompson2007effective}. The \gls{BRN} can be used to identity different
+thunderstorm types, the \gls{BRN} is written as,
+
+\begin{equation}
+BRN = \frac{CAPE}{\frac{1}{2}(v_1 - v_2)^2},
+\end{equation}
+
+where $v_1$ and  $v_2$ are wind speeds at 500m and 6km respectively
+\citep{grieser2012convection}. Ideal values for thunderstorm formation is
+between 10 and 45, a weak shear environment is unable to sustain a storm,
+while too high values can \textit{tear} a storm apart.
+
+\begin{figure}[!htb]
+\centering
+\begin{subfigure}[b]{0.495\textwidth}
+   \includegraphics[width=\linewidth]{../figures/hodo_discript.png}
+   \caption{}
+\end{subfigure}
+\begin{subfigure}[b]{0.495\textwidth}
+   \includegraphics[width=\linewidth]{../figures/hodo_shear.png}
+   \caption{}
+\end{subfigure}
+\begin{subfigure}[b]{\textwidth}
+   \includegraphics[width=\linewidth]{../figures/hail_storm_shear.png}
+   \caption{}
+\end{subfigure}
+\caption[The hodograph and relationship to storm motion]{The diagram
+indicates how hodographs are used to estimate storm motion, vorticity,
+direction and shear values. The hodograph represent shear, an important
+feature in storm formation and sustaining convective events. Diagram a and
+b indicates the hodograph from an event simulated in this study adapted
+from \cite{nws2014hodo}. The backing, or counterclockwise rotation, seen in
+storms in the Southern-Hemisphere is visible in this example.  The wind
+fields are represented as vectors from which bulk shear, total shear and
+mean shear can be calculated. Diagram c from \cite{browning1976airflow}
+illustrates how this wind environment is related to storm motion and the
+flow of winds within a convective event.} 
+\label{fig:hodo_structure}
+\end{figure}
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{../figures/thermodynamicdiagram.png}
+\caption[Thermodynamic structure of a thunderstorm]{A simplified thermodynamic
+structure of a typical thunderstorm adapted from \cite{cairo2011atmospheric}
+illustrates some of the key concepts that influence thunderstorm
+formation; as a parcel of air rises it reaches the \gls{LCL} where saturation
+occurs, the parcel is then lifted wet adiabtically.
+In an unstable atmosphere the parcel continues to rise to the \gls{LFC}.
+Between the \gls{LCL} and \gls{LFC} is a region of stable atmosphere,
+to \textit{break} through this stable region requires a certain amount of energy
+known as \gls{CIN}. Once the parcel breaks through this stable region it can continue to
+rise until it reaches the \gls{EL}. If it is positively buoyant \gls{CAPE}
+can be used as a measure of instability.}
+\label{fig:thermodiagram}
+\end{figure}
+
+Two major data sources exist where radiosonde data can be
+accessed, the \gls{UWYO} database is a well known resource containing
+realtime radiosonde data from across the world, the database allows for
+easy plotting of raw upper-air sounding data in the form of hodographs,
+thephigrams, skew-t or even the rarely used stuve diagram. The data does
+not undergo any quality control before release. A manual quality control
+procedure has to be undertaken before data is used. The other source is the
+\gls{IGRA} which contains historical radiosonde data for weather stations
+around the world. The \gls{IGRA} data undergoes a quality control procedure
+before released \citep{durre2008robust, durre2006overview}.
+\cite{dyson2013atmospheric} however cautions about the use of the
+\gls{IGRA} dataset as errors related to dew-point calculations have been
+noted.  
+
+The use of upper-air soundings allow meteorologist to form a better idea of the
+state of the atmosphere and evaluate the possibility of
+severe events probability. Although the use of indicators is
+valuable they they are prone to errors, some more than others. According to
+\cite{doswell2006use, markowski2003characteristics}, the combination of various
+indicators should be used as an assistance to meteorologist and not a
+replacement. 
+
+\section{Synoptic weather of South-Africa}
+\label{sec:southafricaclimate}
+
+South-Africa's location in the middle latitudes (22\degree – 35\degree S
+and 15\degree – 35\degree E) and the surrounding Indian and Atlantic ocean
+has a profound impact on circulation patterns occurring over the country.
+South-Africa has a dominantly semi-arid climate \citep{engelbrecht2013high,
+dyson2015baseline}.  According to the Köppen-Geiger Climate Classification
+System the majority of Gauteng falls into the Cwb climate region, warm
+temperate, winter dry and warm summer.  Smaller areas are classified into
+Cwa, warm temperate, winter dry and hot summer, and Bsh, arid, summer dry
+and hot arid, regions \citep{kottek2006world}.  The province receives
+between 600mm - 700mm rainfall per year, mostly during the summer from
+isolated convective thunderstorms \citep{dyson2009heavy, fatti2011science}.
+Gauteng is mostly in a state of fine and dry weather due to the prevailing
+continental high-pressure system \citep{tyson2000atmosphere,
+roy2013spatial} in winter month.  During summertime the systems gives way
+to the tropical low pressure from the \gls{ITCZ} which extends down central
+South Africa from late spring (October) until December. The \gls{ITCZ} is a
+source of deep convection, associated with thunderstorms and hailstorms
+\citep{de1998heavy}, these mesoscale weather systems often results in short
+lived, heavy, isolated rainfall in the region, accompanied by strong winds
+and hail \citep{dyson2009heavy}.  The three systems mentioned (continental
+anticyclone, \gls{ITCZ} and easterly wave circulation) have a profound
+impact on Gauteng's weather throughout the year.
+
+The weather and subsequent climate is dominated by a
+prevailing anticyclonic circulation at 850 hPa over the subcontinent that
+brings about strong subsidence over the interior of the country
+\citep{piketh1999lower}. Several circulation patterns that influence South
+Africa's weather and climate have a strong seasonal variation, with
+characteristic weather types during the summer and winter months (see
+\hyperref[fig:weathertypes]{figure \ref{fig:weathertypes}}).
+
+The continental anticyclone and the tropical easterly disturbances follow a
+clear seasonal cycle (\hyperref[fig:weathertypes]{figure \ref{fig:weathertypes},
+bottom right}). Summer weather is characterized by the presence of the
+South-Atlantic High and the South-Indian High surrounding mainland and
+a shallow heat low over the interior of the country. The \gls{ITCZ} shifts
+approximately 17\degree S during this time, resulting in tropical
+weather over the northern parts of the country. These systems lead to isolated
+convective systems, also known as easterly low pressure systems, \gls{TTT} or
+tropical disturbances in the easterlies
+\citep{dyson2002model}(\hyperref[fig:weathertypes]{figure
+\ref{fig:weathertypes}, top left}). With the advent of winter these systems move
+towards the equator and a prevailing high pressure system sets in over the
+interior of the country leading to fine and dry weather over the interior of
+South-Africa, which is brought about by the continental anticyclone
+(\hyperref[fig:weathertypes]{figure \ref{fig:weathertypes}, top right}), a
+synoptic system dominated by subsiding air \citep{tyson2000atmosphere,
+roy2013spatial, engelbrecht2013high}. Other synoptic systems which occur less
+frequently include westerly waves (\hyperref[fig:weathertypes]{figure
+\ref{fig:weathertypes}, middle left}), the ridging anticyclone
+(\hyperref[fig:weathertypes]{figure \ref{fig:weathertypes}, middle right})
+and cut-off lows (\hyperref[fig:weathertypes]{figure
+\ref{fig:weathertypes}, bottom left}) \citep{tyson2000atmosphere, tyson1986climatic}.
+
+\cite{tyson2000atmosphere, dyson2013atmospheric} identified westerly trough,
+cold fronts, southward extending tropical low or V-shaped trough, the cut-off
+low, tropical cyclones, ridging high and blocking high or long wave ridge as the
+most important systems that influence summer rainfall in South-Africa. During
+the winter the South Atlantic high pressure system and the associated westerly
+disturbances (mid-latitude fronts) results in winter rainfall over the southern
+point of the country. South Africa's climate and weather is also influenced by
+fronts originating in the temperate latitudes below its southern point
+\citep{preston1973note, tyson1986climatic, tyson2000atmosphere}, furthermore,
+the eastern escarpment, its abrupt rise and the \gls{SO}, which drives the El
+Nino and La Nina phenomena, are other well known factors impacting the country's
+climate and weather \citep{preston1973note, hastenrath1995prediction}. Climate
+change predictions for South-Africa estimate that there may be an increase in
+extreme convective events, resulting heavy rainfall, flooding and possibly more
+severe hailstorms, while a temperature increase of $4\degree$C is projected for
+Gauteng and the northern parts of the country \citep{engelbrecht2013high,
+piketh2014climate}.
+
+\begin{figure}[!htb]
+\centering
+\begin{subfigure}[b]{0.495\textwidth}
+   \includegraphics[width=\linewidth]{../figures/easterly.png}
+\end{subfigure}
+\begin{subfigure}[b]{0.495\textwidth}
+   \includegraphics[width=\linewidth]{../figures/continentalantic.png}
+\end{subfigure}
+\begin{subfigure}[b]{0.495\textwidth}
+   \includegraphics[width=\linewidth]{../figures/westerlywave.png}
+\end{subfigure}
+\begin{subfigure}[b]{0.495\textwidth}
+	\includegraphics[width=\linewidth]{../figures/ridigingantic.png}
+\end{subfigure}
+\begin{subfigure}[b]{0.495\textwidth}
+   \includegraphics[width=\linewidth]{../figures/cutoff.png}
+\end{subfigure}
+\begin{subfigure}[b]{0.495\textwidth}
+   \includegraphics[width=\linewidth]{../figures/circulationoccurance.png}
+\end{subfigure}
+\caption[The dominant circulation patterns of South-Africa]{The dominant
+circulation patterns of South-Africa adapted from \cite{tyson1986climatic}. The
+lower right graph shows the distinct cycle between the tropical easterlies
+(summer) and the continental anticyclone (winter) patterns. With the advent of
+summer the tropical easterlies reach South-Africa. This is associated with the
+easterly wave and low that brings warm moist air from the tropics to over the
+country and results in an increase of convective activity. The continental
+anticyclone is most dominant during the winter, when the Highveld weather is
+characterized by fine and dry weather.  The coastal low impact on Highveld
+weather is less profound; these systems mostly effect the coastal regions of
+South-Africa. The westerly wave brings cold, rainy weather to the Southern Cape
+during winter \citep{tyson1986climatic, tyson2000atmosphere}.}
+\label{fig:weathertypes}
+\end{figure}
+
+\subsection{Hailstorms over South-Africa}
+
+Often lasting only a few minutes and invoking havoc on a region, the high
+spatial and temporal variability of hailstorms has presented challenges for
+scientist studying these events \citep{carte1978variability,
+sanderson2015projected}. Part of this variability can be attributed to
+seasonality, topography, urban effects and altitude \citep{tyson2000atmosphere}.
+Understanding conditions leading up to hailstorms are important due to the
+devastation of these events.
+
+Cumulus and cumulonimbus clouds are generally associated with hail formation.
+The turbulent air currents in clouds force water particles in the clouds to move
+upwards to freezing levels and as soon as the water freezes the nucleus of the
+hailstone is formed. Gravity forces the hailstone downwards, if the hailstone
+are not heavy enough it may be carried upwards again and grow in size until the
+hailstones can no longer be upheld by updrafts and fall to the ground
+\citep{heymsfield1980hail, foote1984study}. 
+	
+Over Gauteng, hailstorms usually peak from October to December, but storms are
+observed as late as March and early April. Most severe thunderstorms are also
+observed during the October - December period \citep{olivier1992impact}.
+According to \cite{cecil2012toward} hail is observed on 38\% of days during a
+six-month hail season. While the region has around 75 thunderstorm days in this
+period there occurs aaround 5 hail days at anyone point per year. The average
+number of hail producing storm cells can exceed 7 on a hail day over Gauteng.
+The average time of an hail event over the Witwatersrand area around is 7.3
+minutes \citep{mader1986some, tyson2000atmosphere, tyson1986climatic}.
+
+To better understand the large scale influences on hail
+\cite{held1979hailstorms} looked at different synoptic situations giving
+rise to a variety of hailstorms during 1975 within the Johannesburg area.
+\cite{held1979hailstorms} found that the conditions for hail days were not
+much different from days with normal thunderstorm activity – usually
+characterized by a trough or low pressure system over central South-Africa,
+cyclonic conditions are favored during hail producing storms up to 500mb
+\citep{olivier1989some}.  \cite{held1979hailstorms} notes that
+high-pressure systems from the south-west following a cold front can result
+in even more severe hailstorms than normal thunderstorm producing
+conditions. According to \cite{olivier1989some} line storms along squall
+lines are linked with severe hail damage, but accounts for less hail fall
+than scattered and isolated thunderstorms over the Highveld.
+	
+The \gls{HDF}\footnote{\gls{HDF} refers to the probability of a hail event to
+occur on a certain point within a year} in South-Africa is at its highest
+between the latitudes of 25\degree E and 28\degree S, with \gls{HDF} lowering
+towards the tropics and the Antarctic. The two biggest cities at these latitudes
+are Johannesburg (26\degree E) and Pretoria (25\degree E)
+\citep{schulze1965hail, le1996modelling}. Johannesburg and Pretoria also have
+the most reported severe hailstorms in the country. Between 1911-2012
+Johannesburg and Pretoria ahd far more reports of severe hail events than any other
+city in the country \citep{bureau1991history}. \cite{cecil2012toward} makes an
+important note of an area's population density bias on hail reports; larger
+cities or metropolitan areas such as Johannesburg and Pretoria have a higher
+likelihood of hail actually being reported. Altitude and urban areas also
+influence the \gls{HDF}. Locations at higher altitudes have a higher \gls{HDF},
+even when these locations are in relative close proximity to each other e.g.
+Pretoria and Witwatersrand. The \gls{HDF} is greater in Witwatersrand than the
+lower-lying Pretoria \citep{held1979hailstorms}. Urban areas have a higher
+\gls{HDF} than the neighboring rural areas. Urban effects like may have an
+impact on \gls{HDF}, possibly more than the topographic changes between the rural and
+urban areas. Not much research exist on this topic and it could form the basis for future studies to understand the
+urban effects on severe storms in South-Africa \citep{carte1978variability,
+olivier1992impact}. \hyperref[fig:hdfolivier]{Figure \ref{fig:hdfolivier}}
+provides a well represented indication of the annual hail frequency. Isolated
+areas within the Highveld and the Eastern Cape also have a high \gls{HDF}, due
+to Gauteng's high population density and urban extend these storms cause more
+damage in the region. Although the damage in smaller towns and to farmers may be
+proportionally higher, media attention towards areas with an important social
+economic stance such as Johannesburg gives it a high \textit{reporting
+priority}.
+	
+There an important relationship between the occurrence of thunderstorms and
+hail events. Lesotho and the surrounding Drakensburg mountains experience
+the highest \gls{HDF} and thunderstorm events, exceeding 100 days per year
+\cite{tyson2000atmosphere}. These results are support by
+\cite{cecil2012toward} research into the worldwide distribution of hail by
+use of the \gls{AMSR-E} estimated a higher number of events during the
+South-African hail season around Lesotho while decreasing towards the
+Highveld. \cite{cecil2012toward} observations also supports that of
+\cite{olivier1992impact, held1979hailstorms, carte1978variability,
+schulze1965hail} whose findings show that most of South-Africa's hailstorms
+occur in October, November and December, when convective activity is at its
+highest over the Highveld. However, remote sensing data such as the
+\gls{AMSR-E} is prone to errors. According to \cite{li2016hail} data
+derived from satellites have a course temporal and spatial resolution
+leading to some distortion in the representation of hail distribution.
+Instances of hail in Western Cape region are also observed in the
+Mountainous areas around in the region, however, these events are not
+typically of a convective nature, such as Highveld events
+\citep{tyson2000atmosphere}. \cite{schulze1965hail, tyson2000atmosphere}
+(\hyperref[fig:hdfshulze]{figure \ref{fig:hdfshulze}} found a similar
+spatial distribution as that of \cite{le1996modelling} 
+(\hyperref[fig:hdfolivier]{figure \ref{fig:hdfshulze}}).
+
+\begin{figure}[!htb]
+\begin{subfigure}[b]{0.495\textwidth}
+	\includegraphics[width=\textwidth]{./thunderdays.png}
+\end{subfigure}
+\begin{subfigure}[b]{0.495\textwidth}
+	\includegraphics[width=\textwidth]{./haildays.png}
+\end{subfigure}
+\caption[\gls{HDF} and thunderstorms relationship over South-Africa]{\gls{HDF}
+and thunderstorm relationship adapted from \cite{schulze1965hail,
+tyson2000atmosphere}. The relationship between hail and thunderstorms is
+prominent, both events are associated with convective favouring and
+unstable atmosphere, as such they usually occur together.}
+\label{fig:hdfshulze}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{./hdfolivier1.png}
+\caption[\gls{HDF} over South-Africa]{\gls{HDF} map adapted from
+\cite{le1996modelling}. Data was recorded from rainfall stations around the
+country and shows that there is a high occurrence of hail over the interior of
+South-Africa. The highest \gls{HDF} is around the mountainous region of
+Lesotho, but the area has a low population density and storms typically result
+in less economic damage compared with the industrial Highveld.} 
+\label{fig:hdfolivier}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{./blankenship.png} \caption[Hail
+distribution from the ARMS-E remote sensing observations]{Time series
+distribution of hail around the world from ARMS-E remote sensing observations
+after \citep{cecil2012toward}. The figures are ordered monthly; a -
+January/February, b - March/April, c - May/June, d - July/August, e -
+September/October, f - November/December. The Bottom figure indicates the
+yearly average distribution. A high occurrence of hail is visible across
+central South-Africa and over the mountainous region of Lesotho, especially
+during November, December, January and February, this supports the spatial and
+temporal distributions observed by \cite{le1996modelling, schulze1965hail,
+tyson2000atmosphere}. The Highveld is economically important to South-Africa, as
+such the area is densely populated and hail events often result in extreme
+damage over the region. Locations in the tropics, South and Western Africa receive
+similar amounts of hail events, while other areas in the mid-latitudes in the Northern
+and Southern Hemisphere also exhibit a high \gls{HDF}}
+\label{fig:hdfblankenship_all}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{./thecloud.jpg}
+\caption[The Cumulonimbus cloud]{The highly convective Cumulonimbus cloud is
+the source of localized flooding and hail around many parts of the globe,
+including the Highveld. {\footnotesize Photo: Henno Havenga.}}
+\end{figure}
+
+\section{Applying NWP to predict mesos-$\gamma$ scale features}
+
+Although the idea behind \gls{NWP} was already conceptualized in 1904 by Vilhelm
+Bjerknes the lack of computational technology at the time limited development.
+Lewis Fry Richardson later theorized the workflow necessary for a
+\gls{NWP} system and developed a horizontal grid system similar to
+modern systems in use today \citep{kimura2002numerical}. Richardson envisioned
+\textit{"forecast factory"} where 64,000 people acting as calculators would form
+a \gls{NWP} system \citep{charlton2011lewis}. Luckily Richardson didn't have to
+find 64,000 people because in 1946 the Electronic Computer Project was put into
+place by John Von Neumann at the \gls{IAS} and by 1958 the first operational
+model, a single level barotropic model, was brought into service
+\citep{shuman1989history}. The following year (1959) Japan introduced it's own
+\gls{NWP} infrastructure \citep{kimura2002numerical} and these early advances set
+the tone for further development of \gls{NWP} infrastructure. South-Africa
+followed suit not long after, the first \gls{NWP} was in development in the 1960's
+and operational by 1970 \citep{triegaardt1962application,
+schulze2007atmospheric, triegaardt1965experimental}. More recently
+\cite{engelbrecht2007development} developed South-Africa's first nonhydrostatic
+model.
+
+In the most simplest of forms the prediction of weather can be represented by
+the equation
+
+\begin{equation}
+\frac{\partial X}{\partial t} = F(X)
+\end{equation}
+
+where $\partial X$ represents the change of a given variable at a specific point
+in space, $\partial t$ the change in time and $F(X)$ the cumulative effect of
+processes that change the value of $X$. From this basic equation we can calculate 
+meteorological change in time by including the variable's initial condition and calculating 
+the forcing acting upon the variable over a given time period, this is written as:
+
+\begin{equation}
+X^{forecast} = X^{initial} + F(X) \partial t
+\end{equation}
+
+The above mentioned equations form the most simplest of \gls{NWP} equations.
+Today most numerical models are based on the primitive equations describing the
+state and changes in the atmosphere by using equations for conservation of
+motion, energy, mass and moisture \citep{tyson2000atmosphere}. These can be
+written as,
+
+the equation for motion,
+
+\begin{equation}
+\frac{\partial u}{\partial t} = -u \frac{\partial u}{\partial x} -v \frac{\partial u}{\partial y} -w \frac{\partial u}{\partial p} -u \frac{\partial \phi}{\partial x} + fv + F_x,
+\end{equation}
+
+\begin{equation}
+\frac{\partial v}{\partial t} = -u \frac{\partial v}{\partial x} -v \frac{\partial v}{\partial y} -w \frac{\partial v}{\partial p} -u \frac{\partial \phi}{\partial y} - fv + F_x,
+\end{equation}		
+
+where $\frac{\partial u}{\partial t}$ and $\frac{\partial v}{\partial t}$
+describes the changes in vertical ($v$) and horizontal ($u$) velocity with
+respect to time ($t$). The equations are solved by using the equation for motion
+($-u \frac{\partial u}{\partial x} -v \frac{\partial u}{\partial y}$),
+calculating the local change of the $u$ and $v$ components of velocity with
+upward movement ($-w \frac{\partial u}{\partial p}$), the rate of change of the
+geopotential force in zonal and meridional directions ($\frac{\partial
+\phi}{\partial x}$), the Coriolis force also acting in the zonal and meridional
+direction ($f v$) and surface stress and the effects of eddy viscosity ($F_x$)
+\citep{tyson2000atmosphere}.
+		
+The hydrostatic equilibrium to calculate the change in vertical acceleration as,
+
+\begin{equation}
+\frac{\partial \phi}{\partial p} = - \frac{RT}{p},
+\end{equation}
+
+where $p$ refers to pressure, $RT$ the gas constant of dry air at a given
+temperature. 
+	
+The conservation of energy,
+
+\begin{equation}
+\frac{\partial T}{\partial t} = -u \frac{\partial T}{\partial x} -v \frac{\partial T}{\partial y} + w \left( \frac{R}{C_p} \frac{T}{p}	- \frac{\partial T}{\partial p} \right) + \frac{H}{C_p}
+\end{equation}
+
+calculates local changes in temperature ($\partial T$) as a function of
+horizontal advection ($\partial x$) and vertical changes ($\partial y$) as a
+result of surface heat, and diabatic latent-heat released during condensation
+over time ($\partial t$) \citep{tyson2000atmosphere}.
+
+Continuity,
+
+\begin{equation}
+\frac{\partial w}{\partial t} = - \left( \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} \right),
+\end{equation}
+
+relates to convergence and divergence of air parcels. According to
+\cite{tyson2000atmosphere} the continuity equations states that changes in the
+$u$ and $v$ components of wind must be balanced by an equal change in the $w$
+component in a $z$ direction. In this case ($\frac{\partial w}{\partial t}$)
+refers to the change of an air parcel over time and in the horizontal ($u$) and
+($v$) components for wind in the $x$ and $y$ direction.
+
+For moisture conservation,
+
+\begin{equation}
+\frac{\partial q}{\partial t} = w \frac{\partial q}{\partial p} + \left( u \frac{\partial q}{\partial x} + v \frac{\partial q}{\partial y} \right) + C = 0.
+\end{equation}	
+
+where ($w \frac{\partial q}{\partial p}$) is a function of convection and ($u
+\frac{\partial q}{\partial x}$), to advection with the inclusion of changes
+associated with condensation \citep{tyson2000atmosphere}
+	
+and sigma coordinates,
+	
+\begin{equation}
+\sigma = \frac{p}{p_s}.
+\end{equation}		
+	
+According to \cite{tyson2000atmosphere} a minimum of two levels is necessary to
+form a baroclinic model describing mid-latitude disturbances.
+
+The non-hydrostatic approach to weather and climate modeling is a relatively new
+and evolved with the advancement of computational resources. Non-hydrostatic
+equations allow \gls{NWP} models to simulate mesoscale phenomenons such as
+convection with better accuracy at high resolutions and retain a complete
+representation of the Coriolis force \citep{saito2007nonhydrostatic}. The basic
+equations can be written as, after \cite{saito2007nonhydrostatic},
+
+\begin{equation}
+\label{eq:momentum}
+\frac{\partial \textbf{v}}{\partial t} = - \frac{1}{\rho} \nabla p -g\textbf{k}
+\end{equation}
+
+\begin{equation}
+\label{eq:continuinty}
+\frac{\partial p}{\partial t} = - \rho \nabla \cdot \textbf{v}
+\end{equation}
+
+\begin{equation}
+\label{eq:thermodynamic}
+\frac{\partial \theta}{\partial t} = \frac{Q}{C_p \pi}
+\end{equation}
+	
+\begin{equation}
+\label{eq:state}
+p = \rho RT
+\end{equation}	
+	
+these equations omit the Coriolis force. $T$ is temperature, $p$ is pressure and
+$\rho$ is density. As with the primitive equations wind is represented by
+$u,v,w$. $\textbf{v}$ represents the wind vector and $g$ gravity acceleration,
+$R$ the gas constant for dry air, $Q$ adiabatic heating, $C_p$ specific heat of
+dry at constant pressure and $\textbf{k}$ unit vector in vertical direction
+\citep{saito2007nonhydrostatic}. $\pi$ represents the Exner
+equation\footnote{conservation of mass} as,
+
+\begin{equation}
+\label{eq:exnerstate}
+\pi = \left( \frac{p}{p_0} \right)^{R/Cp},
+\end{equation} 
+
+where $p_0$ is the reference pressure (100 hpa). $\theta$, potential temperature, is represented as;
+
+\begin{equation}
+\label{eq:potentiatemp}
+\theta = \frac{T}{\pi}.
+\end{equation}
+
+This allows momentum to be represented as
+
+\begin{equation}
+\frac{\partial \textbf{v}}{dt} = -C_p \theta \nabla \pi - g \textbf{k},
+\end{equation}
+
+with the relation
+
+\begin{equation}
+\frac{\partial A}{\partial t} = \frac{\partial A}{\partial t} + \textbf{v} \cdot \nabla A,
+\end{equation}
+
+the continuity equation is rewritten in flux form as,
+
+\begin{equation}
+\label{eq:conflux}
+\rho \frac{\partial A}{\partial t} = \frac{\partial_{\rho} A}{\partial t} + \nabla \cdot (\rho A \textbf{v})
+\end{equation}	
+
+With the integration of the momentum equation
+(\hyperref[eq:momentum]{\ref{eq:momentum}}), the continuity equation in flux
+form (\hyperref[eq:conflux]{\ref{eq:conflux}}) and the equation of state
+(\hyperref[eq:exnerstate]{\ref{eq:exnerstate}}), the momentum equation can be
+rewritten as,
+
+\begin{equation}
+\frac{\partial \rho \textbf{V}}{\partial t} + \textbf{adv} + \nabla p = - \rho g \textbf{k},
+\end{equation}		
+	
+where advection ($\textbf{adv}$) is represented in flux form. To retain large
+scale features within non-hydrostatic models the hydrostatic approximation
+run-time option is available \citep{skamarock2008description} and written as, 
+
+\begin{equation}
+\frac{\partial p}{\partial z} = - \rho g,
+\end{equation}	
+
+and replaces the vertical momentum equations.
+
+Throughout the development of \gls{NWP} models, \gls{RCM} came into development.
+\gls{RCM} allowed the for scientific research at a much higher resolution than
+other models \citep{prein2013added}. \gls{WRF} is the one of the most recent
+models to show success at regional and high resolution simulations and is
+implemented in this study to simulate case studies of extreme hail events.
+
+\subsection{The Weather Research and Forecasting Model}
+
+\gls{WRF} was developed as a community model by the \gls{NCAR} for the
+simulation and forecasting of regional weather
+\citep{bukovsky2009precipitation}. The model was created to improve the
+previously used \gls{MM5} and the Eta-\gls{NWP} model. The model is a
+non-hydrostatic, fully comprehensible and terrain following sigma coordinate
+model. \gls{WRF} can be used for idealized simulations, parameterization
+research, data assimilation, forecasting, real-time numerical weather
+prediction, hurricane research, air-quality modeling, ocean-atmosphere coupling
+and regional climate research \citep{skamarock2008description}.
+
+\gls{WRF} uses a terrain following hydrostatic pressure vertical
+coordinate ($\eta$) defined as:
+
+\begin{equation}
+\eta = \frac{(\rho_h - \rho_{ht})}{\mu},
+\end{equation}
+
+where
+
+\begin{equation}
+\mu = \rho_{hs} = \rho_{ht}.
+\end{equation}
+
+where $\rho_h$ represents the the hydrostatic component of pressure
+\citep{skamarock2008description}, $\rho_{hs}$ the hydrostatic surface values
+and $\rho_{ht}$ the hydrostatic values at the boundary top. \gls{WRF}'s
+governing equations are based on the flux-form Euler equations
+\citep{skamarock2008description}:
+
+\begin{equation}
+\label{eq:horizontalmomentum}
+\partial_t U + (\nabla \cdot \textbf{V}u) - \partial_x (\rho \phi_\eta) + \partial_\eta (\rho \phi_x) = F_U,
+\end{equation}
+
+\begin{equation}
+\label{eq:horizontalmomentum2}
+\partial_t V + (\nabla \cdot \textbf{V}v) - \partial_y (\rho \phi_\eta) + \partial_\eta (\rho \phi_y) = F_V,
+\end{equation}
+
+\begin{equation}
+\label{eq:vericalmomentum}
+\partial_t W + (\nabla \cdot \textbf{V}w) - g (\partial_{\eta \rho} - \mu) = F_W,
+\end{equation}
+
+\begin{equation}
+\label{eq:conservationoftemp}
+\partial_t \Theta + (\nabla \cdot \textbf{V} \theta) = F_\Theta,
+\end{equation}
+
+\begin{equation}
+\label{eq:conservationofdryair}
+\partial_t \mu + (\nabla \cdot \textbf{V}) = 0,
+\end{equation}		
+
+\begin{equation}
+\label{eq:geopotential}
+\partial_t \phi + \mu^{-1} [(V \cdot \nabla \phi) -gW] = 0,
+\end{equation}		
+
+\begin{equation}
+\label{eq:inverse}
+\partial_\mu \phi = - \alpha \mu,
+\end{equation}
+
+\begin{equation}
+\label{eq:WRFstate}
+\rho = \rho_0 (R_d \Theta / \rho_0 \alpha)^\gamma.
+\end{equation}		
+
+Equation \hyperref[eq:horizontalmomentum]{\ref{eq:horizontalmomentum}} and
+\ref{eq:horizontalmomentum2} are the horizontal momentum equations,
+\hyperref[eq:vericalmomentum]{\ref{eq:vericalmomentum}} the vertical momentum
+equation, \hyperref[eq:conservationoftemp]{\ref{eq:conservationoftemp}} the
+conservation of potential temperature,
+\hyperref[eq:conservationoftemp]{\ref{eq:conservationoftemp}} the conservation
+of dry air, \hyperref[eq:geopotential]{\ref{eq:geopotential}} geopotential,
+\hyperref[eq:inverse]{\ref{eq:inverse}} the equation of inverse density and
+\hyperref[eq:WRFstate]{\ref{eq:WRFstate}} the equation of state.
+\hyperref[eq:geopotential]{Equation \ref{eq:geopotential}} is the only
+non-conservative equation in governing equations. $\textbf{V}$, is the three
+dimensional coupled vector velocities, $F$ forcing term for $U$, $V$, $W$ and
+$\Theta$, $\rho$ pressure and $\rho_0$ sea-level reference pressure, $\alpha$
+the inverse density of dry air , $\mu$ pressure difference between the surface
+and model top, $\phi$ geoptential, $\Theta$ coupled potential temprature, $g$
+acceleration as a function of gravity, $\eta$ terrain following
+hydrostatic-pressure vertical coordinate, $R_d$ the gas constant for fry air,
+$\gamma$ heat capacity for dry air at a constant pressure (as a ratio), $U$, the
+coupled horizontal component of velocity in the x-direction, $V$ the coupled
+horizontal component of velocity in the y-direction, $W$ the coupled vertical
+component of velocity, $u$ the horizontal component of velocity in the
+x-direction, $v$ the horizontal component of velocity in the y-direction and $w$
+the vertical component of velocity \citep{skamarock2008description}. The
+variables are further redefined to include perturbation variables, map
+projections, parametrized physics and Coriolis terms that are subsequently
+solved by the \gls{WRF} model \citep{skamarock2008description}	
+
+Using \gls{WRF} to simulate severe storms has produced positive results in
+previous studies. \cite{kumar2008analysis} applied \gls{WRF} to simulate a
+severe rainfall event in Mumbai 2005 which led to large economic and human
+losses for the region. The operational models used couldn't provide an
+accurate forecast at the time and contributed to the loss suffered.
+\gls{WRF} was able to reproduce the storm and identify factors contributing
+to the development of the storm. \cite{berthet2013extreme} applied
+\gls{WRF} to examine the climatology of hail in the South-West of France
+and was able to successfully examine conditions leading up to hailstorms in
+the region – through \gls{WRF} \cite{berthet2013extreme} found simultaneous
+low-level, mid-level and high-level forcing and the presence of low
+pressure systems over Portugal and/or Ireland contributes to severe hail
+for the area. \gls{WRF} research over South-Africa has been more focused on
+rainfall, much like other meteorological research over South-Africa
+\citep{olivier1992impact}. Work by \cite{cretat2012uncertainties,
+ratnam2013dynamical, ratna2014performance, maisha2014WRF,
+nikulin2012precipitation} mainly focused on assessing the ability of
+\gls{WRF} to simulate precipitation over the sub-continent. The work of
+\cite{ratna2014performance} provides valuable insight into the way
+convective parameterizations are resolved over South-Africa. Because
+cumulus parameterizations are major source of error in models this is
+useful to understand the uncertainties associated with particular schemes.
+
+\gls{WRF} has several other advantages; the model has the ability to run at
+high resolutions, provided adequate computing resources. This allows the
+model resolve weather features at various scales. Various parameterization
+schemes are also available to users, and users have the advantage of using
+accessing \gls{WRF} source code and applying their own configurations as
+necessary.
+
+\subsubsection{WRF as a convective permitting model}
+\label{subsec:modelscales}
+
+Traditionally three major scales existed in atmospheric modeling; (1)
+global, (2) regional and (3) mesoscale models
+(\hyperref[fig:scalesinatmopshere]{Figure \ref{fig:scalesinatmopshere}}).
+These scales are also simulated by models baring a similar name; \gls{GCM},
+\gls{RCM} and \gls{MMM} respectively. Further improvement in computer
+resources led to the development of \gls{CPM}, where deep convection within
+the atmosphere is modeled explicitly without convective parameterization
+schemes. The method is applied on scales lower than 4km -- the lower
+meso-$\gamma$ and the upper micro-$\alpha$ as described by
+\citep{orlanski1975rational}. According to \cite{weisman1997resolution}
+parameterizing convection is a must when model resolutions exceed 20km.
+\cite{prein2013added, segele2013weather} states that at resolutions between
+8km - 12km convection is still reasonably well simulated by
+parameterization schemes, but under 4km resolutions deep convection
+parameterization schemes has been shown to account for large errors within
+models \citep{prein2015review, trapero2013numerical, segele2013weather}.
+Convective permitting models are key to accurately simulating storms that
+result in hail and as mentioned. Over South-Africa and other parts of the
+world hail is mostly formed during intense convective storms
+\citep{cao2008severe}, however, the field remains relatively
+unexplored in South-African research \citep{eckardt2013nature,
+halder2015effect, blamey2013role}.
+
+According to \cite{prein2015review} four types of \gls{CPM} models
+currently exist, each with its own approach and application to different
+scales in the atmosphere. The first approach, which is used in this study,
+is known as the limited area modeling; generally a specific area is
+selected for the simulation, this area is usually larger domain over a
+"smaller" region e.g. a province covering an municipality. This allows the
+model to downscale input data from the parent to the nested domain. This
+approach is particularly useful for simulations of severe weather events
+\citep{prein2015review}. The second approach is a global \gls{CPM}
+approach, with \textit{seamless} integration from the convective to global
+scale \citep{prein2015review}. Massive computational resources is required
+to run such as model which makes the cost outweigh the benefits.
+\citep{prein2015review} predicts that this may well change within the next
+decade. The third approach also attempts to incorporate \gls{CPM} into a
+global circulation model, but instead utilizes superparameterizations
+\citep{prein2015review}, the computational cost of this approach still
+exceeds more traditional GCM's but according to \cite{prein2015review} it
+is $10^6$ less computationally expensive than the second approach. Similar
+to the limited area modeling approach, the forth \gls{CPM} technique
+utilizes stretched-grid domains. This allows for an area with a higher
+grid-spacing to be nested within the model, the larger area is usually
+lower in resolution which increases computational efficiency.
+
+\gls{CPM} simulations have seen limited use in Africa and South-Africa.
+From a South-African perspective this could be due to the lack of computer
+resources before the recent introduction of the Center for High-Performance
+Computing in Cape-Town. \cite{prein2015review} mentions two \gls{CPM}
+studies over Africa, these were over Kilimanjaro \citep{molg2011new} and
+the second over Sub-Sahara West African Region \citep{lauwaet2010impact}.
+\cite{molg2011new} downscaled his model run from synoptic scale (39km) to a
+convective scale of 813m over the Kilimanjaro region. Although
+\cite{molg2011new} focused on glacier atmosphere interactions, the success
+of his study in encouraging for other areas of atmospheric research. Over
+South-Africa \cite{engelbrecht2007development} introduced the
+Non-hydrostatic Sigma Model (NSM) using convective parameterization schemes
+at resolutions where convection can be partially resolved. Convective scale
+assessments on severe storms over South-Africa is clearly a field with
+potential for research development to better understand severe weather
+events.
+
+\begin{figure}[!htb]
+\includegraphics[width=\linewidth]{../figures/scales.png}
+\caption[Scales in atmospheric modeling]{Adapted from \cite{prein2013added}, the
+figure shows the spatial and temporal scales within atmospheric
+modeling; \gls{GCM} (>100km), \gls{RCM} (>12km) and \gls{CPM} (<4km).
+Parameterizations play an important role in numerical models. When a feature
+occurs on a sub-gridscale within the model it is necessary to
+parametrize the feature to accurately represent it.
+With the improvement in computer resources the resolution that can be
+achieved with \gls{NWP} has increased. Convective permitting models are
+the most recent of these, when modeling at scales of less <4km  is is
+advantageous to turn cumulus parameterization off and model convection
+explicitly. The inserts in the figure indicate processes that typically
+occurs within a certain atmospheric scale, microscale turbulence, cumulus convection, cumulonimbus
+convection, cyclone waves and planetary waves}
+\label{fig:scalesinatmopshere}
+\end{figure}
+
+\paragraph{The role and interactions of parameterization schemes}
+
+Due to the complexity of the atmosphere the direct simulations of physical
+processes are difficult. Simplifications of these processes are made in
+order to make models computationally effective especially when these
+processes occur on a sub-grid scale. These \textit{simplification} are
+known as parameterization schemes \citep{tyson2000atmosphere,
+stensrud2009parameterization}. \gls{WRF} has a database of several schemes
+ranging from simple computationally inexpensive schemes to complicated,
+resource expensive schemes. Processes resolved by parameterization schemes
+in \gls{WRF} include microphysics, short and long wave radiation,
+convective processes, \gls{PBL} and land surface processes.
+
+The parameterization of hail requires some special considerations;
+parameterization schemes must be able to distinguish between hail, snow,
+freezing rain and other ice species. Progress has been made with the
+development of \gls{CPM} models and models are able to represent the
+different hydrometeor species better, however, hail usually associated with
+convective storms remains hard to simulate. According to
+\cite{sanderson2015projected} parameterization schemes usually over- or
+underestimate hail during severe storms as convective parameterizations are
+not able to distinguished hydrometeors at this scale accurately.
+Improvement is observed when omitting convective schemes and allowing
+models to explicitly simulate storms. Other parameterizations still need to
+be included all the parametrization schemes are interlinked with each other
+(\hyperref[fig:wrfparameterization]{figure \ref{fig:wrfparameterization}}).
+A brief description of the most important parameterizations and their basic
+functions follows in this section. The full physics of the schemes selected for this study
+is discussed in the data and methods section.
+
+\begin{figure}[!htb]
+\includegraphics[width=\linewidth]{../figures/wrfparameterization.png}
+\caption[Direct Interactions of parameterizations]{\gls{WRF} has a
+database of several parameterizations available to users. The most important of
+these are the microphysics, radiation, cumulus, land-surface and pla    netary
+boundary layer (\gls{PBL}) schemes. The parameterizations simplify processes
+within \gls{WRF} that occurs on a sub-gridscale and are not explicitly modeled,
+but, these parameterizations account for uncertainties within \gls{WRF} and
+other numerical models. The ability to explicitly model convection has improved
+models but there are still various other processes that occur on a sub-gridscale
+that requires parameterizing \citep{dudhia2014overview}.}
+\label{fig:wrfparameterization}
+\end{figure}
+
+\paragraph{Microphysics parametrization in WRF}
+
+Microphysics parameterization allow models to solve processes related to the
+evolution of particles such as ice, rain, snow, graupel and is able 
+represent aerosols impact on cloud formation. This plays an important role in
+the representation of short lived events such as convective storms, but the
+complicated nature of such events and the underlying processes account for
+a major source
+of uncertainty within models \citep{stensrud2009parameterization,
+halder2015effect, lee2005physical}. Differentiating between hail and other ice
+species is a complicated process based on assumptions on air temperature, 
+freezing levels, cloud levels and droplet size. Generally water vapor is allowed
+to change form following an auto-conversion table, depending
+on the temperature the water vapor can either condensate, freeze, sublimate or
+ice and water particles can coexist within a cloud. Depending on the
+vertical profile and position in a cloud various of these forms exists and
+consistently change form. Assumptions are then made on how these particles
+interact individually and with each other in different conditions. The
+microphysics scheme must be able to solve Bergeon process, coalescence-collision
+and the phase change from liquid to ice and back to liqiud again as the particle
+moves \citep{thompson2008explicit, wobrock2003comparison,
+stensrud2009parameterization}. A full explanation of the physics for the scheme
+used in the study is described in the data and methods section.
+	
+\gls{WRF} has a total of 17 Microphysics schemes included availible to the user,
+depending on the computational resources and processes the user is interested in
+simulating. Microphysical processes interact with the other physics in the
+model, changes in altitude, radiation, temperature and topography all have an
+effect on cloud forming processes \citep{skamarock2008description}.
+\hyperref[fig:microphysics]{Figure \ref{fig:microphysics}
+\citep{dudhia2014overview}} indicates various physical processes that the
+microphysics schemes have to resolve within models.
+
+\begin{figure}[!htb]
+\includegraphics[width=\linewidth]{../figures/microphysics.png}
+\caption[Microphysical processes parameterized in the WRF model]{A
+representation of the microphysical processes parameterized in the \gls{WRF}
+model after \cite{dudhia2014overview}. Microphysics parameterization are
+important to represent different particles, their formation and interaction with
+each other in the atmosphere. Particles are never in a fixed form and as such
+microphysics schemes have to be able to represent this form change, often
+multiple times over and back and forth.} 
+\label{fig:microphysics}
+\end{figure}
+	
+\paragraph{Short and long wave radiation parametrization in \gls{WRF}}
+
+According to \cite{stensrud2009parameterization} radiation is the main driver of
+atmospheric circulation patterns around the world. Along with
+microphysics parameterizations is computationally more expansive than other
+parametrized processes \citep{thompson2016explicitly}. \gls{WRF} allows the user
+to select between incoming shortwave and outgoing long wave radiation schemes,
+and has 8 and 6 schemes available to users respectively. The radiation schemes
+have to incorporate functions for absorption and scattering by different
+particles and aerosols present in the atmosphere. The radiation scheme also
+interacts with clouds, vegetation, snow and soil parameters to define albedo,
+absorption and scattering. This in return impacts surface heating and the
+evolution of \gls{PBL}, crucial to cloud formation and surface atmosphere
+interactions \citep{gero2006impact}.
+
+\begin{figure}[!htb]
+\includegraphics[width=\linewidth]{../figures/radiationbudget.png}
+\caption[The global energy budget]{The earth's energy budget adapted from
+\cite{intergovernmental2007fourth} indicates  the various processes resolved
+within the Radiation scheme. Incoming and outgoing radiations as well as their
+interaction with the land surface scheme and clouds, especially cumulus clouds,
+plays a crucial part in the formation of the \gls{PBL}'s diurnal variation and
+convective storms.}
+\label{fig:radiationbudget} 
+\end{figure}
+	
+\paragraph{Land surface model}
+	
+\gls{LSM} allows numerical models to include surface energy, water budget,
+vegetation, green fraction, soil, sub soil properties and their interaction with
+atmospheric processes in simulations. These processes influence radiation,
+evaporation, transpiration, surface temperature and albedo properties and play
+an vital role in general circulation as well as mesoscale and regional models
+\citep{chen2001couplingI}. Land-surface processes are crucial to the evolution
+of the \gls{PBL} and the diurnal heating and cooling and topography of the earth
+surface are factors that impact the \gls{PBL} \citep{burger2016aerosol}
+
+In \gls{WRF} the \gls{LSM} allows for inputs from radiation, the microphysics
+and convective schemes. Land surface processes play a major role in the
+realistic simulation of the \gls{PBL}; heat and moisture fluxes over land
+provides the lower boundary conditions for the vertical transport within the
+\gls{PBL}. \gls{WRF} has 7 \gls{LSM} options for users, ranging from simple schemes with
+only soil characteristics to advanced schemes providing hydrological, soil
+and vegetation output \citep{skamarock2008description}. \gls{WRF} also provides
+an urban canopy model to represent urban processes such as street canyons,
+building radiation and reflection and heat equations from roof wall and road
+surfaces \citep{skamarock2008description}.
+See \hyperref[fig:LSM]{figure \ref{fig:LSM} \citep{chen2010improving}}.
+
+\begin{figure}[!htb]
+\includegraphics[width=\linewidth]{../figures/LSM.png}
+\caption[Processes represented in land surface models]{Schematic representation
+of processes represented in \gls{LSM}, adapted from \cite{chen2010improving}.
+\gls{LSM} process play an important role in the formation of the \gls{PBL} due
+to diurnal surface heating and cooling and has to account for surface
+properties including variations in heating, cooling, absorption and albedo from
+different vegetations types and soils.}
+\label{fig:LSM} 
+\end{figure}
+
+\paragraph{Planetary boundary layer parametrization in WRF}
+
+The \gls{PBL} represents the first part of the troposphere in contact with
+the surface. In this layer convection, momentum, heat and moisture
+transport occurs from the land-surface to the atmosphere on various spatial
+and temporal timescales. The \gls{PBL} could be several kilometers deep to
+a few meters shallow depending on topography, albedo and moisture
+availability. Interactions between the surface and the \gls{PBL} occurs on
+a timescale of $=<$ 1 hour \citep{stensrud2009parameterization,
+cohen2015review, burger2016aerosol}. The \gls{PBL} plays an important role
+in initial formation of convection and subsequent thunderstorms from which
+hail usually occurs \citep{stull2012introduction, madala2014performance}.
+
+\gls{PBL} schemes parameterizes the vertical diffusion and vertical
+sub-grid scale fluxes due to eddy transports. The \gls{PBL} derives surface
+fluxes from the \gls{LSM} and determines the flux profiles within the mixed
+layer and the stable layer providing temperature and moisture tendencies
+within a vertical column \citep{skamarock2008description}. Because the
+\gls{PBL}'s temporal scale and interactions with the \gls{LSM} and other
+parameterizations is $<=$ 1 hour the diurnal cycle plays an integral part
+of the \gls{PBL}'s evolution, as illustrated in \hyperref[fig:PBL]{figure
+\ref{fig:PBL}}. It goes through various stable and unstable phases as the
+day passes, the layer is mostly stable during evenings as the surface
+begins to warm up after sunrise when heat and moisture fluxes start to
+\textit{"disturb"} the \gls{PBL}. As the day goes on this energy increases
+which increases the \gls{PBL} height, this layer within the \gls{PBL} is
+known as the \textit{"mixed layer"}. Above the mixed layer the temperature
+inversion usually occurs, that is, a increase in potential temperature with
+a increase in height \citep{stensrud2009parameterization,
+burger2016aerosol}.
+
+The \gls{PBL} is more stable over South-Africa during winter when there is
+a prevailing anticyclone over the subcontinent.  Simulating the processes
+of the \gls{PBL} requires parametrization within \gls{NWP} models, as many
+microscale phenomenons occur within this layer.  According to
+\citep{burger2016aerosol} some processes are modeled explicitly but small
+scale phenomenons such as turbulence is approximated within parametrization
+schemes instead. 
+
+\gls{WRF} has 13 \gls{PBL} parametrization schemes allowing the user to
+select between local and non-local schemes. Non-local schemes require more
+computer resources but have been shown to represent deep \gls{PBL} circulation
+with more accuracy than local schemes.
+
+\begin{figure}[!htb]
+\includegraphics[width=\linewidth]{../figures/pbl.png}
+\caption[The PBL structure and diurnal evolution]{Simplification of the diurnal
+evolution of the \gls{PBL} structure, adapted from
+\citep{stull2012introduction}. The \gls{PBL} represents the first part of the
+troposphere, this means the \gls{PBL} is in interaction with land-surface
+processes, which in return effects heating, cooling and fluxes within the
+layers. The \gls{PBL}'s temporal scale is in the order of $<1$ hour and the
+interactions with the land-surface means the \gls{PBL} plays and important role
+in convective formations.}
+\label{fig:PBL} 
+\end{figure}
+
+\paragraph{Cumulus/convective parameterization in WRF}
+
+Cumulus/Convective parameterizations was developed to represent convection at a
+scale where it could not be resolved explicitly within models
+\citep{skamarock2008description, engelbrecht2007development}, however,
+interactions between the cumulus scheme and other physical processes in the
+atmosphere resulted in large uncertainties withing models.
+\cite{arakawa2004cumulus} argues that clouds are perhaps the most important
+forcing in our atmosphere, the accurate parametrization of clouds and convection
+are important to describe the various climate system
+interactions. These interactions are a crucial in the accurate representation of
+convection. \hyperref[fig:clouds]{Figure \ref{fig:clouds}}
+\citep{arakawa2004cumulus} illustrates the different characteristics that have
+to be accounted for in cumulus parameterizations, this includes and is not
+limited to \gls{PBL} and microphysical processes such as lower level moisture
+convergence, turbulence mixing, heat exchange and radiative properties of clouds
+\citep{cretat2012uncertainties, fadnavis2014simulation,
+skamarock2008description}. According to \cite{arakawa2004cumulus} shallow clouds
+can be seen as part of convection process, \gls{PBL} and cumulus schemes must be
+unified accordingly to achieve greater results, but this is also the source of
+uncertainties within models \citep{arakawa2004cumulus}. According to
+\cite{dedekind2013modelling, nikulin2012precipitation} convective
+parameterization is not able to reproduce several key aspects related to
+rainfall over South-Africa accurately.
+	
+As discussed before a relatively new field of study is the use of \gls{CPM} to
+simulate events on a resolution of $\leq$4km (see
+\hyperref[fig:scalesinatmopshere]{figure \ref{fig:scalesinatmopshere}}),
+allowing for convective processes to be explicitly resolved by models. This
+removes some of the uncertainties related to the parameterization of convection
+\citep{prein2015review}. No study related to South-Africa has assessed cumulus
+parameterization's relation to severe storms, and subsequently no convection
+permitting studies have been done on hailstorms either. 
+
+\gls{WRF} includes 13 cumulus parameterization options for users to choose from.
+As one would expect, the combination of parameterizations play a major role in
+the representation of convection, \cite{cretat2012uncertainties} stresses that
+the choice of particular scheme can be counterbalanced by another, for instance
+the combination of different cumulus and \gls{PBL} schemes.
+
+\begin{figure}[!htb]
+\includegraphics[width=\linewidth]{../figures/clouds.png}
+\caption[Cumulus/convective parametrization: interactions and uncertainties]
+{A simplified adaption of convective processes from \cite{arakawa2004cumulus} 
+is shown in the above diagram. Parameterizing
+convection is a major source of uncertainty within models because these features
+are usually sub grid scale and have to rely on parameterizations, but it is
+possible to omit the parametrization in what is known as \gls{CPM}. The benefit
+of \gls{CPM} is that convection is modeled explicitly leading to greater
+results, but this means the resolution of models have be set to $\leq 4km$, which
+makes models computationally expensive.}
+\label{fig:clouds} 
+\end{figure}
+
+\section{An overview of macro-$\beta$ classification techniques}
+
+Weather and climate is dependent on large scale atmospheric circulation
+patterns. Understanding the relationship between these macro-$\beta$ circulation
+(synoptic) patterns and local weather experienced has been an important driver
+for forecasters and atmospheric researchers; this led to the development of synoptic
+classification techniques\footnote{Also known as weather typing and/or synoptic typing}
+to study synoptic scale links associated with surface meteorological events
+\citep{jiang2012two, demuzere2011cost733, cahynova2014atmospheric, garcia2011atmospheric}. 
+In the simplest of definitions synoptic clustering is the \textit{"grouping of
+entities so they share common features within each group"}
+\citep{huth2008classifications, sheridan2011self}. A distinction must be made
+between weather classification, air mass classification and synoptic
+classification. Weather classification and air mass classification are terms
+commonly mixed up. Weather classification refers to a method using only near
+surface variables from a single or a small number of sites. Air mass
+classification uses various data sets from different levels in the troposphere
+and the surface. Synoptic classification, as used in this study, 
+deals with circulation patterns over large areas on one or two levels in the
+atmosphere \citep{huth2008classifications}. It is also a useful tool for weather
+forecasting purposes and climate model validation
+\citep{philipp2014development}. The history of atmospheric circulation
+classification is well documented in a report by \cite{huth2008classifications}. 
+
+Various procedures exists to perform the synoptic classification and
+\cite{huth2008classifications} divides these into three basic groups,
+namely subjective (manual) mixed (hybrid) and objective (automated,
+computer assisted). Although \cite{huth2008classifications} uses the term
+\textit{computer assisted} the author notes the term is not adequate as a
+number of subjective decisions have to be made when an objective cluster
+analysis is compiled \citep{huth2008classifications, sheridan2011self}. A
+generalization of the work flow used during objective cluster analysis
+process is described in \hyperref[fig:clusterexample]{figure
+\ref{fig:clusterexample}}, adapted from \cite{aran2011atmospheric}. Two
+clustering procedures are generally used, first a principal component
+analysis to reduce the data dimensions followed by the user selected
+clustering method, in \cite{aran2011atmospheric} a k-means method.
+
+Due to the high variability of hailstorms there has been limited research on
+synoptic weather classifications of hail days. Attempts to understand specific
+synoptic links resulting in hailstorms over the Highveld has been made by
+\cite{held1979hailstorms, olivier1992impact}, but did not use specific
+clustering methods. Over South-Africa \gls{SOM}s and objective synoptic typing
+have been used to understand rainfall \citep{dyson2009heavy,
+dyson2013atmospheric, dyson2015baseline} and fog \citep{van2013climatological}.
+Recent research by \cite{garcia2011atmospheric, aran2011atmospheric,
+hermida2015hailfall} examined atmospheric circulation patterns associated with
+hail days in Spain. Synoptic classification can be used to examine the trends of
+synoptic scale circulation patterns as in the case of \cite{kapsch2012long} who examined the
+occurrence of hailstorms over Germany and also possible future trends.
+\hyperref[tbl:clustersetup]{Table \ref{tbl:clustersetup}} details the indicators
+used for examination of atmospheric patterns associated with hail in literature.
+
+\begin{table}[ht]
+\caption[Clustering setup in hail research]{Clustering setup in hail research as
+applied in previous research by \cite{aran2011atmospheric,
+garcia2011atmospheric, kapsch2012long, li2016hail}. Values are recorded from
+upperair soundings conducted near the cite of the storm to accurately describe
+the state of the atmosphere.} 
+\label{tbl:clustersetup}
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+\hline
+\cite{aran2011atmospheric} & \cite{garcia2011atmospheric} & \cite{kapsch2012long} & \cite{li2016hail} \\ 
+\hline 
+\gls{MSLP} & Geopotential at 500mb \& Temprature at 500mb & Mean flow at 700hpa - calculated from wind direction & \gls{MSLP} \\ 
+\hline 
+Geopotenti7al at 500mb & Geopotential at 850mb\& Temprature 850mb & Cyclonality in middle troposphere - calculated from the geostrophic vorticity in the pressure vertical coordinates & Geopotential height \\ 
+\hline 
+Temprature at 500mb & Relative Humidity at 850mb & Humidity Index - calculated from precipitable water at 1000 and 500hpa & - \\ 
+\hline 
+\end{tabularx} 
+\end{table}
+
+Recently the COST733class (hereafter COST733) software package was created
+to compare, visualize and evaluate weather and circulation type
+classifications \citep{philipp2014development}. The software was developed
+for the \textit{"Harmonisation and Applications of Weather Types
+Classifications for European Regions”} \citep{beck2010evaluation,
+demuzere2011cost733}. \cite{schiemann2010circulation} evaluated the
+software to resolve heavy rainfall events in the Swiss Alps and Cost733class
+automatic classifications yielded superior results compared to manual
+classifications, however, limited research on the application of Cost733class on
+hail exists presently, in one such study by \cite{li2016hail} Cost733class was
+used to examine atmospheric circulation patterns associated with hail days
+over China. COST733 application dominates Europe with limited research in
+other regions, see \citep{prein2016running, li2016hail} for Cost733class related
+studies outside of Europe.  The objective selection of certain variables
+described in literature as relevant to hail formation can greatly influence
+the output of the results.  Synoptic classifications is a simplification of
+complex reality and no classification method should be considered an
+absolute truth \citep{jacobeit2010classifications, huth2008classifications}.
+
+\begin{figure}[H]
+\centering
+\begin{forest}
+      for tree={
+        line width=1pt,
+        if={level()<2}{
+          my rounded corners,
+          draw=linecol,
+        }{},
+        fit=rectangle,
+        edge={color=linecol, >={Triangle[]}, ->},
+        if level=0{%
+          l sep+=1.5cm,
+          for descendants={%
+            calign=first,
+          },
+          align=center,
+          anchor=south,
+          tikz={
+            \draw (!1.north |- .south) +(0,-5pt) coordinate (a) [out=-30, in=-150] to node [midway, above=5pt] {ERA-Intermin Data} (!l.north |- a);
+          },
+        }{%
+          if level=1{%
+            parent anchor=south west,
+            child anchor=north,
+            tier=three ways,
+            align=center,
+            for descendants={%
+              child anchor=west,
+              parent anchor=west,
+              align=left,
+              anchor=west,
+              xshift=-20pt,
+              edge path={
+                \noexpand\path[\forestoption{edge}]
+                (!to tier=three ways.parent anchor) |-
+                (.child anchor)\forestoption{edge label};
+              },
+            },
+          }{}%
+        },
+      }
+      [Synoptic Classification
+        [Step 1\\Selection of variables
+          [Geopotential at\\500mb
+            [Mean Sea Level\\Pressure\\\gls{MSLP}
+              [Temprature at\\850mb]
+            ]
+          ]
+        ]
+        [Step 2\\Principal\\Component\\Analysis
+          [Data\\Dimension\\Reduction
+            [\gls{PCA} 1
+              [\gls{PCA} 2
+                [\gls{PCA}(..)]
+              ]
+            ]
+          ]
+        ]
+        [Step 3\\Cluster Analysis
+          [User defined
+            [Clustering\\of \gls{PCA}\\data
+              [Cluster 1
+                 [Cluster 2
+                   [Cluster (10)]
+                 ]
+              ]
+            ]
+          ]
+        ]
+        [Step 4: Validation\\and\\visualization
+          [Discriminant\\analysis
+            [Visualizations:\\Synoptic maps]
+          ]
+        ] 
+      ]      
+\end{forest}
+\caption[Cluster analysis work-flow]{The diagram indicates the steps followed
+when performing a cluster analysis. The selection of variables forms the first
+step. To achieve accurate results the cluster runs must be applied multiple
+times with different indicators until most observed days fall within one
+cluster. Adapted from \citep{aran2011atmospheric}.}
+\label{fig:clusterexample}
+\end{figure}
+
+\subsection{Trend analysis of severe hail events}
+
+Due to hailstorm's extreme spatial and temporal variability it poses a
+problem for researchers when attempting to accurately analyze trends.
+Several attempts have however been made to overcome this and to some degree
+of success, Although most studies focus on precipitation trends, the methods
+used in them can still be useful towards hail studies.
+\cite{hermida2015hailfall, cao2008severe} applied the Mann-Kendall
+\citep{kendall1955rank} test to analyze probable patterns related to hail
+events. Similarly \cite{mohr2013recent} also applied the Mann-Kendall test
+on the selected convective parameters and an criteria was setup to asses
+hail insurance claims and their relationship with convective parameters
+recorded on specific days. \cite{hermida2015hailfall} in comparison made
+use of the following hail variables: hail days per year, annual hail
+frequency and annual hail intensity to examine the trends of hail events
+over France.

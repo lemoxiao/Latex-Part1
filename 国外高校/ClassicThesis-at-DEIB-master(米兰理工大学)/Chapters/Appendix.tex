@@ -1,0 +1,34 @@
+%********************************************************************
+% Appendix
+%*******************************************************
+% If problems with the headers: get headings in appendix etc. right
+\markboth{\spacedlowsmallcaps{Appendix}}{\spacedlowsmallcaps{Appendix}}
+%************************************************
+\chapter{Appendix example}
+
+\begin{flushright}{\slshape    
+    We have seen that computer programming is an art, \\ 
+    because it applies accumulated knowledge to the world, \\ 
+    because it requires skill and ingenuity, and especially \\
+    because it produces objects of beauty.} \\ \medskip
+    --- \citeauthor{knuth:1974}, \citetitle{knuth:1974},
+\citeyear{knuth:1974} 
+\end{flushright}
+
+\section{The \texttt{listings} package to include source code}
+Source code is usually not part of the text of a thesis, but if it is an original contribution it makes sense to le the code speak by itself instead of describing it. The package \verb!listings! provide the proper layout tools. Refer to its manual if you need to use it, an example is given in listing \ref{lst:probCounter}.
+
+\lstinputlisting[
+	firstline=1,
+	lastline=47,
+	float=tb,
+	language=C++,
+	tabsize=2,
+	numbers=left,
+	numberstyle=\tiny,
+	stepnumber=2,
+	numbersep=5pt,
+	caption={Code snippet with the recursive function to evaluate the pdf of the sum $Z_N$ of $N$ random variables equal to $X$.}, 
+	captionpos=t,
+	label=lst:probCounter
+	]{CodeFiles/probabilityCounter.cpp}

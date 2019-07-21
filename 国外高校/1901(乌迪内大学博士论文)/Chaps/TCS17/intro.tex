@@ -1,0 +1,24 @@
+\lettrine[lines=3]{I}{n this chapter,} we prove that MC for the $\HS$ fragment $\AAbarBBbar$ (resp., $\AAbarEEbar$), that allows one to express properties of future and past intervals, interval prefixes (resp., suffixes), and right (resp., left) interval extensions,
+%at the same time, 
+is in $\PSPACE$ (under homogeneity).
+Since MC for the $\HS$ fragment featuring only one modality for right (resp., left) interval extensions $\Bbar$ (resp., $\Ebar$) can be shown to be $\PSPACE$-hard (Appendix~\ref{sect:BbarHard}), $\PSPACE$-completeness immediately follows. 
+Moreover, if we restrict $\HS$ to modalities either for interval prefixes $\B$ or for interval suffixes $\E$ only, MC turns out to be $\co\NP$-complete.
+
+These results are proved by a small-model property based on the notion of \emph{induced trace}: given a trace $\rho$ in a finite Kripke structure and a formula $\varphi$ of $\AAbarBBbar$/$\AAbarEEbar$, it is always possible to build, by iteratively contracting $\rho$, another (\lq\lq induced\rq\rq ) trace, 
+whose length is \emph{polynomially bounded} in the size of $\varphi$ and of the Kripke structure, which preserves the satisfiability of  $\varphi$  with respect to  $\rho$.
+%
+%indistinguishable from the (possibly) longer original trace $\rho$ as for the satisfiability of the given formula. 
+
+The lower bound for $\BE$ MC (recall Section \ref{sec:BEhard}) shows that there is no way to provide an MC algorithm for the extension of $\AAbarBBbar$ with $\E$ (resp., of $\AAbarEEbar$ with $\B$)  with a \lq\lq good\rq\rq{} computational complexity. 
+%
+The picture is not so clear for the extension of $\AAbarBBbar$ with $\Ebar$ (resp., $\AAbarEEbar$ with $\Bbar$):
+membership of $\AAbarBBbarEbar$ (resp., $\AAbarEBbarEbar$) to $\EXPSPACE$  was already shown in~\cite{MMP15} and the $\PSPACE$-hardness of MC for $\Bbar$ (resp., $\Ebar$) currently gives the best (unmatching) complexity lower bound.
+In this chapter we provide a much more understandable proof of membership to $\EXPSPACE$ of the MC problem for $\AAbarBBbarEbar$ (w.r.t. the one given in~\cite{MMP15}), which makes use of (a suitable extension of) the notion of induced trace, which we exploit in the proof of the small model property for $\AAbarBBbar$.
+
+\paragraph*{Organization of the chapter.} 
+\begin{itemize}
+	\item In Section~\ref{sec:AAbarEEbar}, we first introduce the notion of induced trace and then we
+    prove, via a contraction technique, a polynomial small-model property for $\AAbarBBbar$ and $\AAbarEEbar$ (Section~\ref{subsec:polyAAbarEEbar}), which allows us to devise a $\PSPACE$ MC algorithm for them (Section~\ref{subsec:MCpolyAAbarEEbar}). In addition we consider the one-modality fragments $\B$ and $\E$, and prove their $\co\NP$-completeness (Section~\ref{sec:TheFragmentE}).
+	\item In Section~\ref{sec:AAbarBBbarEbar}, we focus on the fragment $\AAbarBBbarEbar$ and the symmetric fragment $\AAbarEBbarEbar$. We first define the equivalence relation of \emph{trace bisimilarity}, and then we introduce the    
+    notion of \emph{prefix sampling}. With these tools, we prove an exponential small-model property for $\AAbarBBbarEbar$ (and $\AAbarEBbarEbar$), resulting into an easier proof of membership of the two fragments to $\EXPSPACE$.
+\end{itemize}

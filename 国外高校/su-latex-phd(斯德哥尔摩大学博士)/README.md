@@ -1,0 +1,3 @@
+This repository contains the (unofficial) LaTeX template for a PhD thesis at Stockholm University. 
+
+It is based on Harish Bhanderi's PhD/MPhil template, then University of Cambridge. Corrected and extended in 2007 by Jakob Suckale, then MPI-CBG PhD programme and made available through OpenWetWare.org. Modified for Stockholm University by Andreas Solders in 2011. Additional bug fixes and made available on GitHub by Samuel Bohman in 2017.

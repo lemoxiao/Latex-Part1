@@ -1,0 +1,241 @@
+\chapter{Introduction}
+\label{chapter:introduction}
+
+The web has come a long way since its inception when it functioned as a
+global interconnected system for document sharing amongst researchers
+\citep[\p{82}]{bernerslee92}. We've
+seen the coming of an increasingly more social web as
+\postquote[\p{44}]{backstrom06}{%
+  the digital domain has seen a significant growth in the scale and richness
+  of on-line communities}
+There have been
+an increase from 18\% to 45\%
+\begin{sparkline}{3}
+  %Name  Size Unit
+  %2005  16%  .356
+  %2007  45%  1
+  \sparkspike .25  .356
+  \sparkspike .75  1
+\end{sparkline}
+in blog usage by the general public%
+\sidenote[1]{%
+  Represented with a total of 6,545 respondents
+  to a survey conducted in Canada, France, Germany, Japan,
+  the United Kingdom, and the United States
+  by \citet[ch.~1, \p{2}]{rosa07}.
+}
+in an 18 month period from 2005 to 2007.
+It has been argued that web citizens'
+familiarity with blogging laid the groundwork for the explosion we are seeing
+in user participation in web communities
+\citedouble{\p{20}}{weiss05}{\para{2.2}}{beer07}.
+
+At the same time advances in hardware and web development tools have made it
+easier and cheaper to create new web sites. We're now seeing an
+abundance of new offerings in this field.
+It has been argued that many of the concepts this modern web brings are
+evolutionary instead of revolutionary \citep[\p{45}]{yakovlev07}.
+\citet[\p{17}]{treese06} also witnesses a continuous evolution, but with
+exploratory innovations as he notes that most technological changes are
+incremental.%
+\sidenote[-3]{
+  \prequote{knuth07}{%
+    also believes innovation in computer science is incremental:}{%
+      I firmly believe that computer science advances by thousands of people
+      solving small problems, which go together and create a massive edifice.
+      Every year that goes by, hardly anything is done that appears to be a
+      milestone worthy of mass attention; yet after five or ten years pass,
+      the whole field has changed significantly}
+}
+\begin{fullquote}[\p{18}]{weiss05}{have noticed this trend}
+  When we consider a hot, buzz-worthy Web site of the new Internet evolution
+  [\ldots]
+  they are at the same time incredibly innovative and yet\dash{}not.
+\end{fullquote}
+
+What we're experiencing
+today with the World Wide Web and social/collaborative software systems was
+envisioned several decades ago by \citet{licklider68} and \citet{bush45}.
+
+During the initial studies of our research we frequented
+many of these modern web sites. Our impression is that
+this area of the web infamously coined \term{Web 2.0}\dash{}an
+increment in version opposed to the age when the Web was in its
+infancy\dash{}is bringing interesting innovations. While they might not be
+groundbreaking, we justify a closer look at them in this thesis.
+
+\section{Focus}
+
+This thesis have a focus on navigational problems and only those
+which are of a social type.%
+\sidenote[-1]{%
+  Take a look at \sectionref{social.navigation.social.navigation}
+  to learn more about navigational systems with social characteristics.
+}
+Navigation in context of computer systems is
+essentially a metaphor based on how people find their way in the physical
+world. So just as a compass and map can be crucial in your ability to find a
+cabin deep in the woods during a hike\dash{}reliable and efficient
+navigational systems on the web is of uttermost importance when you're trying
+to locate a certain electronic object containing valuable information.
+
+In addition to only focusing on \term{social navigation} we're only concerned
+which such types of navigation on the Web.
+On the Web we're using hyperlinks \citep[\p{90}]{nelson65} to provide users
+with navigational choices. We're only focusing on the use of such hyperlinks
+within web browsers and not navigation support in auxiliary tools as email
+clients, instant messaging clients, and so on. Our focus is further refined by
+targeting our research  only on what happens inside various web pages. This
+means that other navigation forms supported by the browser itself or third
+party extensions or plugins is outside of our scope, as detailed in
+\sectionref{social.navigation.navigation.navigation.on.the.web}.
+
+While we're aware that search is an important part of peoples every day
+navigational behavior we've introduced additional confinements and decided to
+only concentrate on browsing behavior (see
+\sectionref{social.navigation.navigation.navigation.on.the.web} for details).
+
+When studying various web pages it became apparent that some use of
+social navigation mechanisms implies pretty large privacy concerns. By mining
+users' previous actions specific user profiles can be generated. One can then
+represent very sensitive characteristics of individuals such as sexual
+orientation, political status, and religious beliefs.
+We feel this subject area of social navigation in relation to privacy warrants
+a master thesis on its own. Discussion of privacy concerns have therefore
+been excluded from our research so that we can look more closely at the
+navigational characteristics of social navigation.
+
+\section{Motivation}
+
+\sidetable[Social Navigation in Academia]{%
+           Social navigation in academia, by content.
+           When collecting these statistics we encountered similar articles
+           by the same authors discussing the same problems and systems. In
+           such circumstances the collection of two or more similar articles
+           was counted as one.
+           \label{table:social.navigation.academia}}{%
+  \begin{tabular}{lr}
+
+    & Articles \\
+
+    \cmidrule(lr){2-2}
+
+    Modern Web & 5 \\
+    Other & 21 \\
+
+  \end{tabular}
+}
+
+Social navigation are as we'll see in
+\sectionref{social.navigation.social.navigation}
+a well defined term within the academic community.
+During our literature review we collected to the best of our abilities all
+academic articles where social navigation was discussed. Our approach was to
+use keyword search and citation search in the databases listed in
+\tablepageref{literature.databases}.%
+\sidenote[7]{
+  For more about our literature collection method, see
+  \sectionref{literature.search}.
+}
+\tableref{social.navigation.academia} shows the metrics of articles
+we found about social navigation in context of the modern web as captured by
+the Web 2.0 term (social network sites, folksonomies, and wikis) and other
+areas of computer science (classic web, general user interfaces, security, and
+so on).
+
+Our current area of Web 2.0 in relation to navigational problems have in our
+view (based on our literature findings) little coverage in academia.
+\prequote{beer07}{notes that}{%
+ \,`internet time' now runs at at a clock speed several orders
+ of magnitude faster than that of academic research}
+We described earlier the growth we're seeing of web sites with social
+aspects and we believe that some of these provide for novel examples of social
+navigation. It would therefore be interesting to look at some of the
+state-of-the-art social web sites and look at what contributions they have
+made to the field of social navigation.
+
+\section{Objective}
+
+We'll first try to give an overview of the disparate field of social
+navigation as found in academic literature. Here we'll look at what social
+navigation is, different characteristics of social navigation, and finally
+provide an overview of different types of social navigation.
+
+Based on the concepts we introduce in this overview of social navigation we'll
+collect examples of social navigational implementations in the wild
+and analyzing them. In doing this we hope to give a clearer
+view of how social navigation is used in the Social Web.
+As we are unaware of any established technique for
+conducting such a study on real world navigation systems we create our own
+method as we go\dash{}fine tuning it as we learn from our experiences.
+
+We try to improve an existing web site by implementing a navigational
+prototype using the knowledge we gained from collecting social navigation
+examples from real world web sites.
+The navigational technique we
+decided on implementing is a so called \term{activity stream}.%
+\sidenote{
+  See
+  \sectionref{analysis.facebook.news.feed} and
+  \sectionref{implementation.design.activity.stream}
+  for more information about this particular social navigation technique.
+}
+
+The Norwegian Broadcasting Corporation's joint
+\abbr{TV}, radio, and internet project \project{\urort{}}\dash{}a site where
+artists upload their demos and get valuable playtime on radio and \abbr{TV} if
+their products are judged to be of sufficient quality\dash{}was
+the candidate for implementing a navigational prototype.
+Our focus was on the \urort{} web community%
+\sidenote{
+  Available at \url{http://nrk.no/urort}.
+}
+where users can interact in a social manner, listen to other people's songs,
+and upload their own creations.
+
+We decided to build our application in an unobtrusive manner on top of the
+web site \urort{} offered.%
+\sidenote{
+  The rationale for such a decision can be found in
+  \sectionref{implementation.building.on.top.of.the.web}.
+}
+Based on our prototypical implementation of an activity stream for \urort{}
+we'll provide a discussion of the technical feasibility of such an approach.
+
+With our technical solution in place we were able to test how it performed in
+practice by conducting an empirical study with real world users. The insights
+into activity streams as a social navigation technique will be shared, as well
+as our experience with providing our technical prototype solution to real world
+users.
+
+\section{Contributions}
+
+Contributions from our research on social navigation is threefold:
+
+\begin{enum}
+  \item Informing navigational design by giving a structured overview of
+    various social navigational schemes used in academia and the real world.
+  \item Exemplifying transparent prototyping methods by sharing experiences
+    with creating an unobtrusive shell of navigational designs on top of an
+    existing web site.
+  \item Applicability of a activity streams as a particular social navigation
+    technique by discussing findings from an experiment of its real world
+    usage.
+\end{enum}
+
+\section{Outline}
+
+This thesis is composed of two parts:
+
+\begin{enum}
+  \iterm{Social Navigation on the Social Web}. In this part we first give you
+    background information about social navigation before
+    we analyze social navigation in two modern social web sites.
+  \iterm{Unobtrusive Prototype of Social Navigation}. The second part starts
+    with an account of how we created an unobtrusive social navigation
+    prototype before we go through an empirical study of the prototype
+    implementation.
+\end{enum}
+
+After these two parts we conclude our work and give pointers to future work
+in \chapterref{conclusion}.

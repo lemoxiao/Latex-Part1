@@ -1,0 +1,116 @@
+\thispagestyle{empty}
+
+\begin{center}
+\bfseries \abstractname 
+\end{center}
+
+\emph{Formal methods} are structured methodologies that support the development of critical systems---whose safety and reliability are fundamental requirements---with the aim of 
+establishing system correctness with mathematical rigor,
+providing effective verification techniques and tools, and reducing verification time while simultaneously increasing coverage.
+
+\emph{Model checking} (MC) is a family of formal methods that have been accepted by industry and are becoming integral part of standards and of system development cycles. 
+In MC, some properties of a finite-state transition system are expressed in suitable specification languages and then verified over a model of the system itself (usually a finite Kripke structure) through \emph{exhaustive enumeration of all the reachable states}. This technique is \emph{fully automatic} and every time the design violates a desired property, a \emph{counterexample} is produced, which illustrates a behavior falsifying such a property: this is extremely useful for debugging.
+
+The most famous MC techniques---just to mention a few, \emph{partial order reduction}, \emph{symbolic} and \emph{bounded} MC---were developed starting from the late 80s, bearing in mind the well-known ``point-based'' temporal logics \LTL\ and \CTL. However, while the expressiveness of such logics is beyond doubt,
+there are some properties we may want to check that are inherently ``interval-based'' and thus cannot be expressed by point-based temporal logics, e.g., ``the proposition $p$ has to hold in at least an average number of system states in a given computation sector''. Here \emph{interval temporal logics} (ITLs) come into play, providing an alternative setting for 
+reasoning about time. Such logics deal with intervals, instead of points, as their primitive entities: this feature gives them the ability of 
+expressing temporal properties, such as actions with duration, accomplishments, and temporal aggregations, which cannot be dealt with in standard point-based logics.
+
+The \emph{Halpern
+and Shoham's modal logic of time intervals} (\HS, for short) is one of the most famous ITLs:
+it features one modality for each of the 13 possible ordering
+relations between pairs of intervals, apart from equality.
+In this thesis we focus our attention on MC based on \HS , in the role of property specification language,
+for which a little work has been done if compared to MC for point-based temporal logics.
+The idea is to evaluate \HS\ formulas on finite Kripke structures, making it
+possible to check the correctness of the behavior of systems with respect to 
+meaningful interval properties.
+To this end, we interpret each one of the (possibly infinitely many) finite paths of a Kripke structure as an interval, 
+and we define its atomic properties on the basis of the properties of the states composing it,
+at first assuming the \emph{homogeneity principle}: the latter enforces an atomic property to hold over an interval if and only if it holds over all its subintervals.
+%
+% Formally, we will show that finite Kripke structures can be suitably mapped into
+% interval-based structures, called \emph{abstract interval models}, over which 
+% HS formulas can be interpreted. Such models have in general an \emph{infinite} domain, 
+% because finite Kripke structures may have loops and thus infinitely many tracks.
+% In order to devise a model checking procedure for HS over finite Kripke
+% structures, we prove a \emph{small model theorem} showing that, given an HS 
+% formula $\psi$ and a finite Kripke structure $\mathpzc{K}$, there exists a \emph{finite}
+% interval model which is equivalent to the one induced by $\mathpzc{K}$ with respect 
+% to the satisfiability of $\psi$.
+We prove that MC for \HS\ interpreted over finite Kripke structures is a \emph{decidable} problem (whose computational complexity has a nonelementary upper bound), and
+then we show it to be \EXPSPACE-hard.
+
+Since the problem provably admits no polynomial-time decision procedure, we also focus on \HS\ fragments, which 
+feature considerably better complexities---from \EXPSPACE, down to \Psp\ and to low levels of the polynomial hierarchy---yet retaining the ability to capture meaningful interval properties of state transition systems.
+Several MC algorithms are presented, tailored to the specific fragments being considered, and founded on concepts and techniques different from each other.
+
+Moreover, we study the expressive power of $\HS$ in MC, in comparison with that of the standard point-based logics $\LTL$, $\CTL$ and $\CTLStar$, still under the homogeneity principle, which is then relaxed showing how this impacts on the complexity of MC for \HS\ and its fragments, and on the expressiveness of the logic.
+
+Finally, we consider a possible replacement of Kripke structures by a more expressive model, which allows us to directly  describe systems in terms of their \emph{interval-based behaviour and properties}, thus paving the way for a more general interval-based MC.
+
+\bigskip
+\noindent\hrulefill
+\bigskip
+
+\begin{center}
+\begin{tabular}{rl}
+    \textbf{Keywords:} & Model checking, interval temporal logics, \\
+    & timelines, computational complexity \\ 
+    \rule[-1ex]{0pt}{4.5ex} \textbf{2010 MSC:} & 03B70, 68Q60 \\ 
+    \rule[-1ex]{0pt}{4.5ex} \textbf{ACM classes:} & F.4.1, D.2.4 \\ 
+\end{tabular}
+\end{center}
+
+\cleardoublepage
+\thispagestyle{empty}
+%\enlargethispage{2\baselineskip}
+\selectlanguage{italian}
+\begin{center}
+\bfseries \abstractname 
+\end{center}
+
+I \emph{metodi formali} sono metodologie strutturate che supportano lo sviluppo di sistemi critici---la sicurezza ed affidabilità dei quali sono requisiti fondamentali---allo scopo di dimostrare la correttezza di tali sistemi con rigore matematico, fornendo tecniche e strumenti di verifica efficaci, e riducendo il tempo del processo di verifica, aumentando contemporaneamente il grado di copertura.
+
+Il \emph{model checking} (MC)
+è una famiglia di metodi formali che sono stati accettati dal mondo dell'industria e stanno diventando parte integrante di standard e dei cicli di sviluppo dei sistemi.
+Nel contesto del MC, alcune proprietà di un sistema di transizione a stati finiti vengono espresse mediante linguaggi di specifica e, successivamente, queste sono verificate su un modello del sistema stesso (di solito una struttura di Kripke finita), tramite \emph{l'enumerazione completa di tutti gli stati raggiungibili}.
+Questa tecnica è \emph{totalmente automatica} ed ogni volta che viene violata una proprietà desiderata, viene fornito un \emph{controesempio} che illustra un comportamento che falsifica tale proprietà: ciò è estremamente utile per il processo di debugging.
+
+Le più famose tecniche di MC, come la \emph{partial order reduction}, il \emph{symbolic} ed il \emph{bounded} MC,
+furono sviluppate verso la fine degli anni 80 prendendo in considerazione le famose logiche temporali \LTL\ e \CTL, che sono basate su punti. Tuttavia, nonostante l'indubbia espressività di tali logiche, esistono alcune proprietà che potremmo voler verificare che hanno inerentemente una semantica intervallare e quindi non possono essere espresse da logiche puntuali, per esempio: ``la proposizione $p$ deve valere in almeno un dato numero medio di stati del sistema, in un settore di computazione specifico''.
+%
+Le logiche temporali intervallari entrano in gioco in questi casi, permettendoci di ragionare su aspetti temporali in modo diverso: esse adottano gli intervalli, invece dei punti, come loro entità primitive.
+Questa caratteristica dà loro l'abilità di esprimere proprietà intervallari, come azioni con durata, conseguimenti di obiettivi e aggregazioni temporali, che non possono essere trattate nelle logiche puntuali standard.
+
+La \emph{logica modale degli intervalli temporali di Halpern e Shoham} (\HS\  in breve) è una delle più famose logiche intervallari: essa possiede una modalità per ognuna delle 13 possibili relazioni di ordinamento fra coppie di intervalli, eccetto l'uguaglianza.
+In questa tesi viene considerato il problema del MC basato su \HS , come linguaggio di specifica delle proprietà, il quale ha ricevuto ben poca attenzione in letteratura in confronto al MC per logiche temporali puntuali.
+%
+L'idea è quella di valutare formule di \HS\  su strutture di Kripke finite, per riuscire a verificare la correttezza del comportamento di un sistema rispetto a proprietà intervallari.
+A questo scopo, ognuno dei percorsi finiti di una struttura di Kripke (i quali possono essere presenti in quantità infinita) è interpretato come un intervallo, e le proprietà atomiche che valgono su quest'ultimo sono definite sulla base di quelle degli stati che lo costituiscono, inizialmente secondo il \emph{principio di omogeneità}: esso prevede che una proprietà atomica valga su un intervallo se e solo se vale su tutti i suoi sottointervalli. 
+% Mostreremo infatti che le strutture di Kripke possono essere mappate in certe strutture intervallari, chiamate \emph{abstract interval models}, sulle quali le formule di HS vengono interpretate; esse hanno in generale un dominio \emph{infinito}, perché le strutture di Kripke possono avere cicli e quindi infinite tracce. Al fine di sviluppare una procedura di model checking per HS su strutture di Kripke finite, proviamo uno \emph{small model theorem} che dimostra che data una formula di HS $\psi$ e una struttura di Kripke finita $\mathpzc{K}$, esiste un interval model \emph{finito} che è equivalente a quello indotto da $\mathpzc{K}$ rispetto alla soddisfacibilità di $\psi$.
+Dimostriamo innanzitutto che il MC per \HS\  interpretata su strutture di Kripke finite è un problema \emph{decidibile} (la sua complessità computazionale ha un upper bound non-elementare); poi mostriamo che esso è \EXPSPACE-hard.
+
+Poiché il problema non ammette procedure di decisione di complessità polinomiale, 
+consideriamo anche frammenti di \HS, i quali si caratterizzano per complessità notevolmente migliori---da
+\EXPSPACE, giù fino a \Psp\ e a livelli bassi della gerarchia polinomiale---pur tuttavia mantenendo l'abilità di esprimere
+proprietà intervallari significative dei sistemi di transizione. Presentiamo svariati algoritmi di MC, costruiti ad-hoc per gli specifici frammenti considerati, e fondati su concetti e tecniche diversi fra loro.
+
+Inoltre studiamo il potere espressivo di \HS\ in confronto a quello delle logiche puntuali standard $\LTL$, $\CTL$ e $\CTLStar$, sempre sotto l'ipotesi di omogeneità, la quale viene poi rilassata mostrando quali implicazioni ha questo sulla complessità del MC per \HS\ ed i suoi frammenti, e sull'espressività della logica stessa.
+
+Infine consideriamo una possibile alternativa alle strutture di Kripke: studiamo un modello di sistemi più espressivo, che ci permette di descrivere gli stessi direttamente in termini delle loro proprietà intervallari. Questo apre la strada a un MC basato su intervalli più generale.
+
+\bigskip
+\noindent\hrulefill
+\bigskip
+
+\begin{center}
+\begin{tabular}{rl}
+    \textbf{Parole chiave:} & Model checking, logiche temporali intervallari, \\
+    & timeline, complessità computazionale \\ 
+    \rule[-1ex]{0pt}{4.5ex} \textbf{2010 MSC:} & 03B70, 68Q60 \\ 
+    \rule[-1ex]{0pt}{4.5ex} \textbf{Classi ACM:} & F.4.1, D.2.4 \\ 
+\end{tabular}
+\end{center}
+
+\selectlanguage{english}

@@ -1,0 +1,370 @@
+\typeout{Stylblad vir artikels in ORiON:  01/01/2004}
+
+
+
+\usepackage[twoside,headsep=0.4cm]{geometry}
+\geometry{papersize={190mm,259mm},top=19mm,bottom=20mm,right=15mm,left=25mm}
+
+
+
+\usepackage{subfig}
+
+\usepackage[ruled,linesnumbered,vlined]{algorithm2e}
+
+% some preliminaries for algorithm2e
+% if you have more than 99 lines of pseudocode, add 0.5 to values below
+\setlength{\algomargin}{1.5em}
+%\setalcaphskip{0.5em}
+
+\usepackage[table]{xcolor}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{colortbl,hhline}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{rotating}
+%\usepackage{bbm}
+\usepackage{amssymb}
+\usepackage{fmtcount}
+\usepackage{url}
+\usepackage{multirow}
+
+\usepackage{pgf,tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{decorations}
+\usetikzlibrary{patterns}
+
+
+\setenumerate{topsep = 0.5ex,itemsep = -0.8\parsep}
+\setitemize{topsep = 0.5ex,itemsep = -0.8\parsep}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\ul}{\underline}
+
+\newcommand{\pages}{}
+
+
+%\toprule[2pt]
+%\bottomrule[2pt]
+
+%Definieer omgewings
+\newtheorem{theorem}{Theorem}
+\newtheorem{axiom}{Axiom}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{heuristic}{Heuristic}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+
+%Definieer afrikaanse omgewings
+\newtheorem{stelling}{Stelling}
+\newtheorem{afleiding}{Afleiding}
+\newtheorem{definisie}{Definisie}
+\newtheorem{heuristiek}{Heuristiek}
+\newtheorem{proposisie}{Proposisie}
+\newtheorem{voorbeeld}{Voorbeeld}
+
+
+
+\parskip 2mm plus 1pt
+
+
+%Maak die artikel tweekantig
+\@twosidetrue \@mparswitchtrue
+
+%Maak artikel een kolom
+\onecolumn
+
+%Geen indent
+\parindent 0mm
+
+%Inligting op die eerste bladsy
+%Datum ontvang, hersien en aanvaar.
+%\def\volume#1{\gdef\@volume{#1}}
+% \def\vnumber#1{\gdef\@vnumber{#1}}
+% \def\pages#1{\gdef\@pages{#1}}
+\def\received#1{\gdef\@received{#1}}
+\def\revised#1{\gdef\@revised{#1}}
+\def\accepted#1{\gdef\@accepted{#1}}
+\newcommand{\datesRRA}{\vspace{-1cm}\begin{center} {\footnotesize \em Received: \@received ; Revised: \@revised ; Accepted: \@accepted} \end{center}}
+\newcommand{\datesRA}{\vspace{-1cm}\begin{center} {\footnotesize \em Received: \@received ; Accepted: \@accepted} \end{center}}
+\newcommand{\datumsRRA}{\vspace{-1cm}\begin{center} {\footnotesize \em Ontvang: \@received ; Hersien: \@revised ; Aanvaar: \@accepted} \end{center}}
+\newcommand{\datesSetswanaRRA}{\vspace{-1cm}\begin{center} {\footnotesize \em Amogetswe: \@received ; Boeleditswe: \@revised ; Dumeletswe: \@accepted} \end{center}}
+
+%Definieer 'n nuwe omgewing vir opsomming
+\newenvironment{ops}[1]{ \footnotesize
+ \begin{center}%
+  {\bfseries #1 \vspace{-.5em}\vspace{\z@}}%
+ \end{center}%
+ \vspace{-1cm}
+ \quotation
+ \parindent 0mm}
+ {\endquotation}
+
+
+
+%Maak abstract
+\newcommand\abst{Abstract}
+\newenvironment{Abstract}{\begin{ops}{\abst}\noindent}{\end{ops}}
+
+%Maak opsomming
+\newcommand\opsom{Opsomming}
+\newenvironment{opsomming}{\begin{ops}{\opsom}\noindent}{\end{ops}}
+
+% setswana abstract
+\newcommand\abstset{Kakaretso}
+\newenvironment{abstractSetswana}{\begin{ops}{\abstset}\noindent}{\end{ops}}
+
+%Maak Sleutelwoorde
+\newcommand\sleut{Sleutelwoorde}
+\newenvironment{sleutelwoorde}{\footnotesize {\bf \sleut: \ \ }}{\vspace*{-0.2cm}}
+
+%Maak Key words
+\newcommand\keywordsname{Key words}
+\newenvironment{keywords}{\footnotesize {\bf \keywordsname: \ \ }}{\vspace*{-0.2cm}}
+
+\newcommand\keywordsnameSet{Mareo}
+\newenvironment{keywordsSetswana}{\footnotesize {\bf \keywordsnameSet: \ \ }}{\vspace*{-0.2cm}}
+
+%Maak running heads
+\def\shortauthor#1{\gdef\@shortauthor{#1}}
+\def\shorttitle#1{\gdef\@shorttitle{#1}}
+\renewcommand{\ps@plain}{\let\@mkboth\@gobbletwo%
+  \renewcommand{\@oddhead}{}%
+  \renewcommand{\@evenhead}{}%
+  \renewcommand{\@evenfoot}{\hfil\footnotesize\textrm{\thepage}\hfil}%
+  \renewcommand{\@oddfoot}{\@evenfoot}}
+
+    \def\ps@headings{%
+      \let\@oddfoot\@empty\let\@evenfoot\@empty
+      \def\@evenhead{\rlap{\thepage}\hfil%\upshape\small \em \@shotauthor
+      \hfil}%          %%@
+%!
+      \def\@oddhead{\hbox{}\hfil{\upshape\small \em\@shorttitle}
+      \hfil\llap{\thepage}}% %%@
+%!
+      \let\@mkboth\markboth
+      \def\sectionmark##1{%
+        \markboth {\uppercase{\ifnum \c@secnumdepth >\z@
+            \thesection.\hskip 1em\relax\fi
+            ##1}}{}}%
+      \def\subsectionmark##1{%
+        \markright {\ifnum \c@secnumdepth >\@ne
+            \thesubsection\hskip 1em\relax \fi
+            ##1}}}
+
+\def\ps@myheadings{%
+    \let\@oddfoot\@empty\let\@evenfoot\@empty
+    \def\@evenhead{\rlap{\thepage}\hfil\upshape\small\em\@shortauthor\hfil}%          %%@
+%!
+    \def\@oddhead{\hbox{}\hfil{\upshape\small\em\@shorttitle}\hfil\llap{\thepage}}% %!
+    \let\@mkboth\@gobbletwo
+    \let\sectionmark\@gobble
+    \let\subsectionmark\@gobble
+    }
+
+
+%Maak bold in Wiskunde
+\def\bold#1{\mbox{\boldmath$#1$\unboldmath}}
+\def\Bold#1{\mbox{\boldmath$\displaystyle #1$\unboldmath}}
+
+
+%\renewcommand\section{\@startsection{section}{1}{\z@}%
+%                       {-18\p@ \@plus -4\p@ \@minus -4\p@}%
+%                       {12\p@ \@plus 4\p@ \@minus 4\p@}%
+%                       {\normalfont\large\bfseries\boldmath
+%                        \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
+
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {1.5ex \@plus .1ex}%
+                                   {\normalfont\Large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {.1ex \@plus .1ex}%
+                                     {\normalfont\large\bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {.1ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                    {3.25ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                       {3.25ex \@plus1ex \@minus .2ex}%
+                                       {-1em}%
+                                      {\normalfont\normalsize\bfseries}}
+
+%Kies die regte blasyopskrifte
+\pagestyle{myheadings}
+
+%Figuur se opskrif
+\setlength\abovecaptionskip{-5\p@}
+\long\def\@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{{\bf #1:} {\small \textsl{ #2}}}%
+  \ifdim \wd\@tempboxa >\hsize
+    {\bf #1:} {\small \textsl{ #2}}\par
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
+
+%Maak onderkante gelyk
+\flushbottom
+
+%Maak die opskrifte skoon:
+\title{???}
+\received{??Geen datum??}
+\revised{??Geen datum??}
+\accepted{??Geen datum??}
+\shorttitle{??Geen verkorte titel??}
+\shortauthor{??Geen verkorte outeurs??}
+% \volume{???}
+% \vnumber{???}
+% \pages{???}
+
+%Definieer die appendix
+  \renewcommand\appendix{\par
+  \setcounter{section}{0}%
+  \setcounter{subsection}{0}%
+  \gdef\thesection{Appendix}}
+  %\setcounter{section}{0}%
+  %\setcounter{subsection}{0}%
+  %\gdef\thesection{Appendix~\@Alph\c@section:}}
+
+%Laateblad
+\newcommand{\skoonblad}{\pagestyle{headings} \cleardoublepage}
+
+%Laateblad
+\newcommand{\heelskoonblad}{\pagestyle{empty} \cleardoublepage}
+
+%Boodskap aan outeurs
+\newcommand{\outeur}[1]{\texttt{\color{red} ??#1??}} 
+
+
+%%%%% Set up the coloured tables %%%%%
+\colorlet{tableheadcolor}{gray!25} % Table header colour = 25% gray
+\colorlet{tablerowcolor}{gray!10} % Table row separator colour = 10% gray
+\newcommand{\headcol}{\rowcolor{tableheadcolor}}
+\newcommand{\rowcol}{\rowcolor{tablerowcolor}}
+
+% The top-most line of a table
+\newcommand{\topline}{\arrayrulecolor{black}\specialrule{0.1em}{\abovetopsep}{0pt}%
+	\arrayrulecolor{tableheadcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+	
+% The top-most line of a table using rowcolor instead of headcolor
+\newcommand{\toplinerc}{\arrayrulecolor{black}\specialrule{0.1em}{\abovetopsep}{0pt}%
+	\arrayrulecolor{tablerowcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+            
+% The line between the headings and the table body
+\newcommand{\midline}{\arrayrulecolor{tableheadcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+	\arrayrulecolor{white}\specialrule{\belowrulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+	
+% A line for when the upper row is rowcolor and the next line is white
+\newcommand{\midlinecbw}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+ 	\arrayrulecolor{white}\specialrule{\belowrulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+	
+% A line for when the upper row is rowcolor and the next line is heading colour
+\newcommand{\midlinech}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+ 	\arrayrulecolor{tableheadcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+	
+% A line for when the upper row is white and the next line is heading colour
+\newcommand{\midlinewh}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+ 	\arrayrulecolor{tableheadcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+	
+% A line with no black, to further separate a rowcolor row and a white row
+\newcommand{\midlinecw}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{tablerowcolor}\specialrule{\lightrulewidth}{0pt}{0pt}%
+	\arrayrulecolor{white}\specialrule{\belowrulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+	
+% A line for when the upper row is white and the next line is rowcolor
+\newcommand{\midlinewbc}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+	\arrayrulecolor{tablerowcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+	
+% A line for when the upper row is rowcolor and the next line is headcolor
+\newcommand{\midlinecbh}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+	\arrayrulecolor{tableheadcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+	
+	% A line for when the upper row is white and the next line is headcolor
+\newcommand{\midlinewbh}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+	\arrayrulecolor{tableheadcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+	
+	
+% A line with no black, to further separate a white row and a rowcolor row
+\newcommand{\midlinewc}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{white}\specialrule{\lightrulewidth}{0pt}{0pt}%
+	\arrayrulecolor{tablerowcolor}\specialrule{\belowrulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}}
+	
+% A line for the bottom of the table, when the last row is white
+\newcommand{\bottomline}{\arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\specialrule{\heavyrulewidth}{0pt}{\belowbottomsep}}%
+	
+% A line for the bottom of the table, when the last row is rowcolor
+\newcommand{\bottomlinec}{\arrayrulecolor{tablerowcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\specialrule{\heavyrulewidth}{0pt}{\belowbottomsep}}%
+
+\newcommand{\bottomlinect}{\arrayrulecolor{tableheadcolor}\specialrule{\aboverulesep}{0pt}{0pt}%
+	\arrayrulecolor{black}\specialrule{\heavyrulewidth}{0pt}{\belowbottomsep}}%
+%%%%% Set up the coloured tables %%%%%
+
+
+\newcommand{\papertitle}[3]{
+\setcounter{footnote}{0}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+% \thispagestyle{plain}
+  \ \raisebox{0.3cm}{\includegraphics[height=18mm]{../../pdflogo}} \hspace{-4mm}
+\hfill
+\raisebox{1.2cm}{\begin{tabular}{c}
+{\footnotesize Volume \volume$\:$(\vnumber), pp.\ \pages} \\[-2pt]
+{\footnotesize \texttt{http:/$\!$/www.orssa.org.za}}
+\end{tabular}}
+\hfill
+\raisebox{1.2cm}{\begin{minipage}{3cm}
+\footnotesize \begin{tabular}{r} \toprule[2pt] \hline
+  {\LARGE \sl ORiON\rule{0pt}{15pt}}\\ {ISSN 0529-191-X} \\ \copyright 2013 \\[2pt] \hline \bottomrule[2pt]
+\end{tabular} \end{minipage}} \hspace{1mm} \\
+\vspace*{-0.5cm}
+\begin{center}
+{\huge #1 \par}%
+\vskip 1.5em%
+{\large
+\lineskip .5em%
+\begin{tabular}[t]{c}%
+#2
+\end{tabular}\par
+}
+\end{center}
+\par
+\vskip 1.5em
+#3
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{footnote}{0}
+}

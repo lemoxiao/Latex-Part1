@@ -1,0 +1,88 @@
+\chapter{The logic of sub-intervals $\D$}\label{chap:ICALP}
+\begin{chapref}
+The reference for this chapter is \cite{icalp17}.
+\end{chapref}
+
+\minitoc\mtcskip
+
+\newcommand{\CL}{\mathsf{CL}}
+\newcommand{\REQ}{\mathsf{REQ}}
+\newcommand{\obsD}{\cO bs_D}
+\newcommand{\reqD}{\cR eq_D}
+\newcommand{\rank}{rank}
+\newcommand{\row}{row}
+\newcommand{\orow}{\overline{row}}
+\newcommand{\Atoms}{\cA_{\varphi}}
+\newcommand{\Rows}{\cR ows_{\varphi}}
+
+\newcommand{\bbD}{\mathbb{S}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbP}{\mathbb{P}}
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cV}{\mathpzc{V}}
+\newcommand{\hA}{\hat{A}}
+\newcommand{\hn}{\hat{n}}
+\newcommand{\hm}{\hat{m}}
+
+\newcommand{\om}{\overline{m}}
+
+\newcommand{\bM}{\mathbf{M}}
+
+\newcommand{\subint}{\sqsubset}
+\newcommand{\subinteq}{\sqsubseteq}
+\newcommand{\ssubint}{{\text{$\sqsubset$\llap{$\;\cdot\;$}}}}
+\newcommand{\Dphi}{\mathrel{D_\varphi}}
+\newcommand{\Dref}{\textsf{D$_\subinteq$}\xspace}
+\newcommand{\Dirr}{\textsf{D$_\subint$}\xspace}
+\newcommand{\Dstr}{\textsf{D$_\ssubint$}\xspace}
+\newcommand{\Dsim}{\textsf{D$_\circ$}\xspace}
+
+
+\newcommand{\genDphi}{\begin{tikzpicture}
+\node(A)[inner sep=0pt]{$\scriptstyle\Dphi$};
+\node[inner sep=0pt](B) at (0.45,0){};
+\node[inner sep=0pt](C) at (-0.4,0){};
+\draw[double](C) -- (A);
+ \draw[double,->](A) --(B); 
+\end{tikzpicture}}
+
+\newcommand{\rownext}{\begin{tikzpicture}
+\node(A)[inner sep=0pt]{$\scriptstyle row_{\varphi}$};
+\node[inner sep=0pt](B) at (0.6,0){};
+\node[inner sep=0pt](C) at (-0.5,0){};
+\draw[double](C) -- (A);
+ \draw[double,->](A) --(B); 
+\end{tikzpicture}}
+
+\newcommand{\genDphiS}{\begin{tikzpicture}
+\node(A)[inner sep=0pt]{$\scriptstyle{\Dphi\ssubint}$};
+\node[inner sep=0pt](B) at (0.7,0){};
+\node[inner sep=0pt](C) at (-0.6,0){};
+\draw[double](C) -- (A);
+\draw[double,->](A) --(B); 
+\end{tikzpicture}}
+
+\newcommand{\rownextS}{\begin{tikzpicture}
+\node(A)[inner sep=0pt]{$\scriptstyle row_{\varphi}\ssubint$};
+\node[inner sep=0pt](B) at (0.8,0){};
+\node[inner sep=0pt](C) at (-0.7,0){};
+\draw[double](C) -- (A);
+\draw[double,->](A) --(B); 
+\end{tikzpicture}}
+
+\newcommand{\hsDhom}{\D}%{\textup{D}$|_{\cH om}$}
+
+
+\input{Chaps/ICALP_D/intro}
+\input{Chaps/ICALP_D/preliminaries}
+\input{Chaps/ICALP_D/compass}
+\input{Chaps/ICALP_D/decidability}
+\input{Chaps/ICALP_D/D_modelchecking}
+\input{Chaps/ICALP_D/Psp_hard}
+\input{Chaps/ICALP_D/concl}

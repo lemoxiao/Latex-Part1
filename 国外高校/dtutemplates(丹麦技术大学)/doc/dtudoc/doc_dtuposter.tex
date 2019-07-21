@@ -1,0 +1,185 @@
+%======================================================================
+%===  dtuposter - a class to make posters tha comply with the DTU CI
+%
+% Written and maintained in 2011-2014 
+% by Jorrit Wronski (jowr@mek.dtu.dk)
+%
+%
+%==========================================
+%===  details and poster setup
+\documentclass[
+%    ,title     = {{Title test}}
+%    ,author    = {{ThisIs MyName}}
+%    ,subject   = {{This is the subject of my work}}
+%    ,bgcolor   = dtulightgreen
+%    ,highlight = dtuyellow
+%    ,toplogo   = {{tex_dtu_aqua_b_uk}}
+%    ,botlogo   = {{tex_dtu_bibliotek_b_uk}}
+%    ,papersize = {{a0paper}}
+%    ,colcount  = {{1column}}
+%    ,longtitle
+%    ,largecaption
+%    ,draft
+%    ,nocrop
+%    ,english        % language
+%    ,fleqn          % equations on the left
+]{dtuposter}
+%
+%
+%======================================================================
+%===  Continue with packages
+\usepackage[T1]{fontenc}        % special characters
+%
+%\usepackage[ansinew]{inputenc}  % Windows
+%\usepackage[applemac]{inputenc} % MacOS
+\usepackage[utf8x]{inputenc}    % Unicode, Linux
+%
+% 
+%======================================================================
+%=== Font definitions, DTU recommends Arial for posters
+\usepackage{cmbright}
+\usepackage{arevmath}
+%\usepackage[scaled]{uarial} %Arial clone, set as default sf font - use "ua1" for direct access
+\usepackage{uarial} %Arial clone, set as default sf font - use "ua1" for direct access
+%\usepackage[typeface=default,
+%            sanstypeface=urwarial,
+%            mathtypeface=arevmath
+%           ]{typeface}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{enumitem}
+\setlist{nosep,leftmargin=*}
+%
+% 
+%======================================================================
+%=== Other useful packages
+\usepackage{booktabs}
+\usepackage{siunitx}
+%
+% 
+%======================================================================
+%=== The actual content starts here
+\begin{document}
+%
+%
+%======================================================================
+%===  Make header for poster (title and authors)
+\begin{dtuposterhead} %
+\dtuposterauthor{First Author\textsuperscript{1,*}, Second Author\textsuperscript{2}}
+\dtuposteraffil{\textsuperscript{1} Technical University of Denmark, Department of Mechanical Engineering, Kgs. Lyngby, Denmark}
+\dtuposteraffil*{\textsuperscript{*} Corresponding author, Tel.: +45 4525 0000, Fax: +45 4588 0000, Email: name@mek.dtu.dk}
+\dtuposteraffil{\textsuperscript{2} RWTH Aachen University, E.ON Energy Research Center, Aachen, Germany}
+\end{dtuposterhead}
+%
+%
+%======================================================================
+%===  ... and the rest of the content
+\begin{dtupostercontent}
+\section{Introduction}
+In general, it should be straight forward to use this poster class. Please
+have a close look at this example file. I tried to exploit all special 
+features and left a lot of comments in the code. After reading this 
+guide, you are able to produce decent posters in the DTU layout with
+just a few lines of \LaTeX\ code. 
+
+\section{Basic Options}
+When loading this poster class, you can pass some options to adapt the 
+file to your needs. There are two groups of options, key-value options 
+and simple options. Key-value options are used by writing the option 
+name, the key, followed by the value as in the examples below. 
+Unfortunately, you have to
+wrap it with curly brackets. Due to some problems with the option 
+processing, it is highly recommended to use pairs of two curly brackets
+for this purpose. The available key-value options and their 
+default values are:
+\begin{itemize}
+\item \texttt{title     = \{\{This is the Poster Title\}\}}
+\item \texttt{author    = \{\{This Ismyname\}\}}
+\item \texttt{subject   = \{\{Subject of the Poster\}\}}
+\item \texttt{bgcolor   = \{\{dtucoolgrey\}\}}
+\item \texttt{highlight = \{\{dtured\}}
+\item \texttt{toplogo   = \{\{tex\_dtu\_mekanik\_b\_uk\}}
+\item \texttt{botlogo   = \{\{tex\_dtu\_elektro\_b\_uk\}\}}
+\item \texttt{papersize = \{\{a0paper\}\}}
+\item \texttt{colcount  = \{\{3columns\}\}}
+\end{itemize}
+
+\texttt{title}, \texttt{author} and \texttt{subject} just take text or
+\LaTeX\ commands as inputs. \texttt{bgcolor} and \texttt{highlight} take 
+names of colours, make sure to use a colour that has already been defined.
+As the name suggests, \texttt{toplogo} and \texttt{botlogo} are interpreted
+as names of image files. \texttt{toplogo} is the image in the top left 
+corner and \texttt{botlogo} is the one that appears four times at the bottom.
+\texttt{papersize} can have the values \texttt{a0paper}, \texttt{a1paper}, 
+\texttt{a2paper}, \texttt{a3paper} or \texttt{a4paper}. Please note that the 
+font size will be changed accordingly. You can use this template for posters
+with up to three columns, \texttt{colcount} can be \texttt{3columns}, 
+\texttt{2columns} or \texttt{1column}. If you use less than three columns, 
+the test font size will be slightly increased.
+
+The other options are activated by passing them to the class without any value.
+The option \texttt{longtitle} decreases the font font the title and is 
+particularly useful for posters with a long title, hence the name. 
+\texttt{largecaption} does the opposite with the captions for tables and figures 
+since I think that the default size of \SI{15}{pt} is quite small for a poster. 
+Passing \texttt{draft} to the class disables the inclusion of graphics and draws 
+a grid with \SI{2}{\centi\metre} spacing on top of the poster. The last option
+is \texttt{nocrop}. This disables the cropmarks and produces output that 
+exactly matches with dimensions specified in the \texttt{papesize} option. 
+
+\begin{table}
+\caption{An example caption. Please note that there still is a bug that keeps the 
+caption from being centered if it is only a single line. It should work with multiple
+lines though}\label{tab:example}
+
+\begin{tabular}{llr}
+\toprule
+\multicolumn{2}{c}{Item} \\
+\cmidrule(r){1-2}
+Animal    & Description & Price (\$) \\
+\midrule
+Gnat      & per gram    & 13.65      \\
+          & each        & 0.01       \\
+Gnu       & stuffed     & 92.50      \\
+Emu       & stuffed     & 33.33      \\
+Armadillo & frozen      & 8.99       \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Special Environments}
+Please use the custom environments \texttt{dtuposterhead} and 
+\texttt{dtupostercontent}. You can format the list of authors and 
+their affiliations with the new commands \texttt{\textbackslash dtuposterauthor}
+and \texttt{\textbackslash dtuposteraffil}. Both commands have a starred version, 
+\texttt{\textbackslash dtuposterauthor*} and \texttt{\textbackslash dtuposteraffil*}, 
+which reduces the spacing. This can be used to show that two lines belong together, as
+done in this example file.
+
+Figures and tables have gotten their own custom tags \texttt{table} and 
+\texttt{figure}, which define the caption style for you. With the \texttt{booktabs}
+package, you can show tabular data like in the example \autoref{tab:example}.
+
+For figures like \autoref{fig:example} and \autoref{fig:example2}, everything is 
+similar, just that the caption should be below the figure. 
+
+\begin{figure}
+\includegraphics[width=.5\linewidth,angle=90,origin=c]{tex_dtu_logo}
+\caption{An example caption. This figure supports transparency and looks fine on 
+the coloured background}\label{fig:example}
+\end{figure}
+
+If you have a figure with white background or one that does not support transparency,
+you should draw a box around it to make it appear less alien on the coloured background.
+
+\begin{figure}
+  \begin{fadebox}\begin{center}
+    \includegraphics[width=.5\linewidth,angle=-90,origin=c]{tex_dtu_logo}
+  \end{center}\end{fadebox}
+  \caption{An example caption. Figures can be wrapped in the \texttt{fadebox} 
+environment to provide them with a white background. Note that you have to align the 
+figure again.}\label{fig:example2}
+\end{figure}
+
+\end{dtupostercontent}
+
+\end{document}

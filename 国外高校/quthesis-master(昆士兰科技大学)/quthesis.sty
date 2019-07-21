@@ -1,0 +1,495 @@
+% ----------------------------------------------------------------------------
+%
+% quthesis.sty
+% A PhD thesis style class for the Queensland University of Technology
+%
+% Hilton Bristow
+% 2014
+%
+% Options:
+%   print:
+%       Print binding offsets of 0.3in are added to the inner edge, and
+%       hyperlink coloring is disabled
+%   onehalfspacing:
+%       Increase line spacing in the mainmatter
+%   strict (default):
+%       Comply with the QUT style guidelines
+%   relaxed:
+%       Remove material that isn't of interest to the reader, but also
+%		breaks compliance with the official QUT guidelines
+%   calendas:
+%       Use the Calendas font for headings, or a similar fallback if
+%       Calendas is not available
+%   nonumber:
+%       Remove numbering from sections and subsections (more suitable
+%       for historical/literature theses)
+%   footnotebackref:
+%       Backreferences on footnotes (patched to allow \footnotemark)
+%   verse:
+%       Enable custom verbatim verse environment
+%
+% ----------------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{quthesis}[01/09/14 QUT PhD Thesis Style]
+
+
+% ----------------------------------------------------------------------------
+% Required Packages
+% ----------------------------------------------------------------------------
+\RequirePackage[usenames,dvipsnames]{xcolor}
+\RequirePackage{environ}
+\RequirePackage{etoolbox}
+\RequirePackage{fancyhdr}
+\RequirePackage{graphicx}
+\RequirePackage{ifthen}
+\RequirePackage{ifxetex}
+\RequirePackage{longtable}
+\RequirePackage{pgffor,pgfmath}
+\RequirePackage{scrextend}
+\RequirePackage{setspace}
+\RequirePackage{wrapfig}
+\RequirePackage{xparse}
+\RequirePackage{xspace}
+\PassOptionsToPackage{hyphens}{url}
+\RequirePackage[text={4.9in,8.6in},centering,bindingoffset=0in]{geometry}
+\RequirePackage[pagebackref=true,bookmarks=true,breaklinks=true]{hyperref}
+\hypersetup{
+    % Colors
+    colorlinks=true,
+    linkcolor=RoyalBlue,
+    citecolor=RedViolet,
+    urlcolor=RoyalBlue,
+    % PDF Viewer
+    bookmarksopen=true,
+    bookmarksopenlevel=2
+}
+\RequirePackage{caption}
+\urlstyle{rm}
+
+
+% ----------------------------------------------------------------------------
+% Conditionals
+% ----------------------------------------------------------------------------
+\newif\ifprint\printfalse
+\newif\ifstrict\stricttrue
+\newif\ifcalendas\calendasfalse
+\newif\ifdropcaps\dropcapsfalse
+\newif\ifnonumber\nonumberfalse
+\newif\iffootnotebackref\footnotebackreffalse
+\newif\ifverse\versefalse
+
+
+% ----------------------------------------------------------------------------
+% Options
+% ----------------------------------------------------------------------------
+\DeclareOption{print}{
+    \newgeometry{text={4.9in,8.6in},centering,bindingoffset=0.3in}
+    \hypersetup{
+        colorlinks=false,
+        allcolors=black
+    }
+    \printtrue
+}
+
+\DeclareOption{onehalfspacing}{\onehalfspacing}
+\DeclareOption{calendas}{\calendastrue}
+\DeclareOption{dropcaps}{\dropcapstrue}
+\DeclareOption{footnotebackref}{\footnotebackreftrue}
+\DeclareOption{nonumber}{\nonumbertrue}
+\DeclareOption{relaxed}{\strictfalse}
+\DeclareOption{strict}{\stricttrue}
+\DeclareOption{verse}{\versetrue}
+
+\ProcessOptions\relax
+
+
+% ----------------------------------------------------------------------------
+% Author Information
+% ----------------------------------------------------------------------------
+\makeatletter
+\newcommand\subtitle[1]{\renewcommand\@subtitle{#1\xspace}}
+\newcommand\@subtitle{}
+\newcommand\flourish[1]{\renewcommand\@flourish{#1}}
+\newcommand\@flourish{}
+\newcommand\logo[1]{\renewcommand\@logo{#1}}
+\newcommand\@logo{}
+\newcommand\email[1]{\renewcommand\@email{\href{mailto:#1}{#1}\xspace}}
+\newcommand\@email{}
+\newcommand\university[1]{\renewcommand\@university{#1\xspace}}
+\newcommand\@university{}
+\newcommand\department[1]{\renewcommand\@department{#1\xspace}}
+\newcommand\@department{}
+\newcommand\qualifications[1]{\renewcommand\@qualifications{#1\xspace}}
+\newcommand\@qualifications{}
+\newcommand\degree[1]{\renewcommand\@degree{#1\xspace}}
+\newcommand\@degree{}
+\newcommand\supervisor[1]{\renewcommand\@supervisor{#1\xspace}}
+\newcommand\@supervisor{}
+\newcommand\keywords[1]{\renewcommand\@keywords{#1}}
+\newcommand\@keywords{}
+
+
+% ----------------------------------------------------------------------------
+% PDF Metadata
+% ----------------------------------------------------------------------------
+\AtBeginDocument{
+    \hypersetup{
+        pdftitle=\@title,
+        pdfauthor=\@author,
+        pdfsubject=\degree\xspace Dissertation,
+        pdfkeywords=\@keywords
+    }
+}
+
+
+% ----------------------------------------------------------------------------
+% Fonts
+% ----------------------------------------------------------------------------
+\ifxetex
+    \RequirePackage[bf]{titlesec}
+    \RequirePackage{fontspec}
+    \ifcalendas
+        % Calendas Font
+        \newfontfamily\calendas{Calendas Plus}
+    \else
+        % Hoefler Text fallback (OS X), Windows users should change this to Georgia
+        \newfontfamily\calendas{Hoefler Text}
+    \fi
+    \titleformat*{\chapter}{\singlespacing\LARGE\calendas}
+    \titleformat*{\section}{\singlespacing\LARGE\calendas}
+    \titleformat*{\subsection}{\singlespacing\Large\calendas}
+    \titleformat*{\subsubsection}{\singlespacing\large\calendas}
+\else
+    % fallback to bold Computer Modern
+    \newcommand{\calendas}{\bf}
+\fi
+
+
+% ----------------------------------------------------------------------------
+% Title
+% ----------------------------------------------------------------------------
+\renewcommand{\maketitle}{
+
+    \thispagestyle{empty}
+    \begin{center}
+    \begin{singlespace}
+        \topskip0pt
+        \ifstrict\@logo\par\fi
+        \vspace*{\fill}\vspace{-30mm}
+        {\Huge \calendas \@title\par}\vspace{5mm}
+        {\LARGE \calendas \@subtitle\par}
+        \@flourish
+        \ifstrict
+            \vspace{12mm}
+            \large{\emph{by}\\\medskip \textbf{\@author}}\\
+            \@qualifications
+            \medskip\\\@department\\\@university\\
+            \vspace*{\fill}
+            A dissertation submitted in partial fulfilment\\ of the requirements for the degree of\\\@degree\\
+            \medskip
+            \normalsize
+            \@date
+        \else
+            \vspace{2in}
+            \Large{\calendas \@author\\\vspace{0.2in} \the\year}
+            \vspace*{\fill}
+        \fi
+    \end{singlespace}
+    \end{center}
+    \clearpage
+
+    \thispagestyle{empty}
+    \begin{center}
+        \vspace*{\fill}
+        \ifstrict
+            \textbf{Keywords:} \@keywords.
+        \else
+            A thesis submitted for the degree of \@degree at\\\@university
+        \fi
+    \end{center}
+    \clearpage
+}
+
+
+% ----------------------------------------------------------------------------
+% Section Numbering Style
+% ----------------------------------------------------------------------------
+\ifnonumber
+    \renewcommand{\thesection}{}
+    \renewcommand{\thesubsection}{}
+\fi
+
+% strip empty space in un-numbered section headers
+\def\@seccntformat#1{\if\csname the#1\endcsname\relax\else\csname the#1\endcsname\quad\fi}
+
+% strip empty space in un-numbered TOC entries
+\let\latex@numberline\numberline
+\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+
+
+
+% ----------------------------------------------------------------------------
+% Header Style
+% ----------------------------------------------------------------------------
+\fancypagestyle{custom}{
+    \fancyhf{}
+    \fancyhf[HLO]{\slshape\nouppercase{\leftmark}}
+    \fancyhf[HLE,HRO]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+\pagestyle{custom}
+
+
+% ----------------------------------------------------------------------------
+% Custom Chapter Style
+% ----------------------------------------------------------------------------
+\newcounter{alphachapter}
+\newcommand{\noformat}[1]{\begingroup\def\\{}#1\endgroup}
+\RenewDocumentCommand{\chapter}{ som }{
+    % open new page
+    \if@openright\cleardoublepage\else\clearpage\fi
+    \thispagestyle{plain}%
+    \global\global\@topnum\z@
+    \@afterindentfalse
+    \IfBooleanTF#1{
+        % starred version
+        % \chapter*{Title}
+        \refstepcounter{alphachapter}
+        \begingroup\def\centering{}\pdfbookmark{#3}{#3}\endgroup
+        \@makeschapterhead{\raggedright #3}
+    }{
+        % regular version
+        \IfNoValueTF{#2}{
+            % \chapter{Title}
+            \refstepcounter{chapter}
+            \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}\noformat{#3}}
+            \@makechapterhead{\raggedright #3}
+        }{
+            % \chapter[Subtitle]{Title}
+            \ifthenelse{\equal{#2}{}}{\def\prefix{}}{\def\prefix{#2: }}
+            \refstepcounter{alphachapter}
+            \def\@chapapp{}
+            \def\thechapter{#2}
+            \def\thesection{}
+            \def\thesubsection{}
+            \@makechapterhead{\raggedright #3}
+            \addcontentsline{toc}{chapter}{\prefix\noformat{#3}}
+            \def\thechapter{}
+        }
+    }
+    % Insert headers
+    \begingroup\def\\{}\def\centering{}\@mkboth{#3}{#3}\endgroup
+    \@afterheading
+}
+
+% patch commands that call chapter*
+\patchcmd{\tableofcontents}{\@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}}{}{}{}
+\patchcmd{\listoffigures}{\@mkboth{\MakeUppercase\listfigurename}{\MakeUppercase\listfigurename}}{}{}{}
+\patchcmd{\listoftables}{\@mkboth{\MakeUppercase\listtablename}{\MakeUppercase\listtablename}}{}{}{}
+
+
+% ----------------------------------------------------------------------------
+% Bibliography
+% ----------------------------------------------------------------------------
+\renewenvironment{thebibliography}[1]
+{
+    \chapter[]{\bibname}% Correctly register in TOC and PDF index
+    \list{\@biblabel{\@arabic\c@enumiv}}%
+         {\settowidth\labelwidth{\@biblabel{#1}}%
+          \leftmargin\labelwidth
+          \advance\leftmargin\labelsep
+          \@openbib@code
+          \usecounter{enumiv}%
+          \let\p@enumiv\@empty
+          \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+    \sloppy
+    \clubpenalty4000
+    \@clubpenalty \clubpenalty
+    \widowpenalty4000%
+    \sfcode`\.\@m
+}{
+    \def\@noitemerr
+        {\@latex@warning{Empty `thebibliography' environment}}%
+    \endlist
+}
+
+
+% ----------------------------------------------------------------------------
+% Automatic Dropcaps
+% ----------------------------------------------------------------------------
+\ifdropcaps
+    \RequirePackage{lettrine}
+    \setlength{\DefaultNindent}{0em}
+    \renewcommand{\LettrineFontHook}{\calendas}
+\fi
+
+
+% ----------------------------------------------------------------------------
+% Code environment
+% ----------------------------------------------------------------------------
+\RequirePackage{listings}
+\lstset{
+  basicstyle=\ttfamily,
+  backgroundcolor=\color{gray!2},
+  basewidth={0.5em,0.45em},
+  frame=single,
+  framerule=0pt,
+  emph={},
+  emphstyle=\bfseries
+}
+
+% rename environments
+\let\codeblock\lstlisting
+\let\code\lstinline
+
+
+% ----------------------------------------------------------------------------
+% Tight Itemize Environment
+% ---------------------------------------------------------------------------
+\newenvironment{tightemize}
+{
+    \begin{itemize}
+    \setlength{\itemsep}{2pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+}{
+    \end{itemize}
+}
+
+
+% ----------------------------------------------------------------------------
+% Vertical Centering
+% ----------------------------------------------------------------------------
+\newenvironment{verticenter}
+{
+    \vspace*{\fill}\vspace{-30mm}
+}{
+    \vspace*{\fill}
+}
+
+
+% ----------------------------------------------------------------------------
+% Quote Environment
+% ----------------------------------------------------------------------------
+\newlength{\theparindent}
+\DeclareDocumentEnvironment{quote}{ O{} O{center} }
+{
+    \let\doindent\indent
+    \setlength{\theparindent}{\parindent}
+    \def\indent{\begingroup\setlength{\parindent}{\theparindent}\doindent\endgroup}
+    \begin{#2}
+    \begin{minipage}{0.8\textwidth} \itshape
+}{
+    \ifthenelse{\equal{#1}{}}{}{\par\raggedleft\textsc{-- #1}}
+    \end{minipage}\end{#2}
+    \par\aftergroup\@afterindentfalse\aftergroup\@afterheading
+}
+
+
+% ----------------------------------------------------------------------------
+% Verse Environment
+% ----------------------------------------------------------------------------
+\ifverse
+    \renewenvironment{verse}
+    {
+        \parindent=0pt
+        \obeyspaces\obeylines
+        \begingroup\lccode`~=`\^^M
+        \lowercase{\endgroup\def~{\@ifnextchar~{\\}{\\*}}}
+        \vspace{-2mm}
+        \begin{longtable}{l}
+    }{
+        \end{longtable}
+        \par\aftergroup\@afterindentfalse\aftergroup\@afterheading
+    }
+\fi
+
+
+% ----------------------------------------------------------------------------
+% Biography Environment
+% ----------------------------------------------------------------------------
+\NewEnviron{biography}[1][]{
+    % Open left
+    \renewcommand{\cleardoublepage}{
+        \clearpage\if@twoside\ifodd\c@page \hbox{}\newpage\if@twocolumn\hbox{}%
+        \newpage\fi\fi\fi
+    }
+    % Insert non-empty biography
+    \ifthenelse{\equal{\BODY}{}}{}{
+        \chapter*{\centering Author Biography}
+        \thispagestyle{empty}
+        % \begin{biography}[figures/portrait] usage
+        \ifthenelse{\equal{#1}{}}{}{
+            \begin{wrapfigure}{L}{0.3\columnwidth}
+                \vspace{-0.9\baselineskip}
+                \includegraphics[width=0.3\columnwidth]{#1}
+                \vspace{-\baselineskip}
+            \end{wrapfigure}
+        }
+        \BODY
+    }
+}
+
+
+% ----------------------------------------------------------------------------
+% Footnotes
+% ----------------------------------------------------------------------------
+\iffootnotebackref
+    \RequirePackage{footnotebackref}
+
+    \let\std@footnotemark\@footnotemark
+    \renewcommand*{\@footnotemark}{%
+        \refstepcounter{BackrefHyperFootnoteCounter}%
+        \xdef\BackrefFootnoteTag{bhfn:\theBackrefHyperFootnoteCounter}%
+        \label{\BackrefFootnoteTag}%
+        \std@footnotemark
+    }
+\fi
+
+\deffootnote{1.5em}{1em}{\textsuperscript{\thefootnotemark}\,}
+\renewcommand{\footnotesize}{\scriptsize}
+\addtolength{\skip\footins}{\baselineskip}
+
+
+% ----------------------------------------------------------------------------
+% Abbreviations
+% ----------------------------------------------------------------------------
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
+\newcommand{\abbreviation}[1]{\emph{#1}\onedot}
+\newcommand{\ie}{\abbreviation{i.e}}
+\newcommand{\eg}{\abbreviation{e.g}}
+\newcommand{\cf}{\abbreviation{c.f}}
+\newcommand{\etc}{\abbreviation{etc}}
+\newcommand{\wrt}{\abbreviation{w.r.t}}
+\newcommand{\dof}{\abbreviation{d.o.f}}
+\newcommand{\etal}{\abbreviation{et al}}
+
+
+% ----------------------------------------------------------------------------
+% References
+% ----------------------------------------------------------------------------
+\newcounter{reftype@N}
+\NewDocumentCommand{\reftype}{ m m m O{s} }{%
+    \def\thesis@labels{#3}%
+    \def\thesis@delimiter{}%
+    \setcounter{reftype@N}{-1}%
+    \foreach \lab in \thesis@labels {\stepcounter{reftype@N}}%
+    #1\ifthenelse{\equal{\value{reftype@N}}{0}}{}{#4}
+    \foreach \lab [count=\n] in \thesis@labels {%
+        \thesis@delimiter\ref{#2:\lab}%
+        \ifthenelse{\equal{\value{reftype@N}}{\n}}{%
+            \gdef\thesis@delimiter{ and }%
+        }{%
+            \gdef\thesis@delimiter{, }%
+        }%
+    }%
+}
+
+\newcommand{\chap}[1]{\reftype{Chapter}{chap}{#1}}
+\renewcommand{\sec}[1]{\reftype{Section}{sec}{#1}}
+\newcommand{\subsec}[1]{\reftype{Section}{subsec}{#1}}
+\newcommand{\app}[1]{\reftype{Appendix}{app}{#1}[]}
+\newcommand{\fig}[1]{\reftype{Figure}{fig}{#1}}
+\newcommand{\eq}[1]{\reftype{Equation}{eq}{#1}}

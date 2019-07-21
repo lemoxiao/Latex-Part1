@@ -1,0 +1,58 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% UCF Electronic Dissertation and Thesis (ETD) Template
+% (C) Copyright 2007-2013 Daniel Gallagher,
+%
+% https://bitbucket.org/dgallagher/ucf-thesis-latex-template
+%
+% Main file - Use: ``pdflatex thesis''
+%
+% Note:
+%  - Chapter Titles must be ALL CAPS per UCF
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Preliminary Files
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input preamble
+\input intropages
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CHAPTERS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Chapters may be separated into individual .tex files for simplicity
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Chapter 1
+\input{chapters/introduction}
+% Chapter 2
+\input{chapters/chapter2}
+% Chapter 3
+%\input{chapters/chapter3}
+% Chapter 4
+%\input{chapters/chapter4}
+% Chapter 5
+%\input{chapters/chapter5}
+% Chapter 6
+%\input{chapters/ch_conclusions}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+%\input{Appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TO DOs -- List to do items and fixmes in toc fashion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\chapter{To Do List...}
+%\todos % Requires proper package in preamble
+%\listoffixmes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% REFRERENCES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GATHER{thesis.bib} %%% WinEdt specific command
+\bibliography{thesis}
+% \bibliography{IEEEfull,thesis}% ,IEEEabrv,thesis}
+% IEEEfull and IEEEabrv provide abbreviated journal names; provided by IEEE
+%
+\end {document} \bye

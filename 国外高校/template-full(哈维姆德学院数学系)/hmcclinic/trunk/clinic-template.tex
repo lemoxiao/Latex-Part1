@@ -1,0 +1,392 @@
+%%% Template File for Use with the hmcclinic.cls.
+%%%
+%%% C.M. Connelly <cmc@math.hmc.edu>
+%%%  $Id: clinic-template.tex 368 2011-08-01 18:53:50Z cmc $
+%%%
+%%%  Tag: $Name$
+
+
+%%% !!! HMC STUDENTS SHOULD REMOVE THE FOLLOWING COPYRIGHT NOTICE FROM
+%%% !!! FINAL SUBMISSIONS.
+
+%%% Copyright (C) 2004-2010 Department of Mathematics, Harvey Mudd College.
+
+%%% See the COPYING document, which should accompany this
+%%% distribution, for information about distribution and modification
+%%% of the document and its components.
+
+%%% !!! END COPYRIGHT NOTICE.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Note that for your Clinic report, you should remove any        %%%
+%%% comments that aren't relevant to your report.  You should also %%%
+%%% remove the copyright notice assigning copyright to the         %%%
+%%% department (depending on your sponsor, you may need to assign  %%%
+%%% copyright to the sponsoring organization.                      %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Preamble.
+
+%%% The top part of your document is called the preamble.  You supply
+%%% some basic information about the document (such as its title and
+%%% author) in a form that LaTeX can understand here.
+
+
+%%% The first active line in your LaTeX document is the \documentclass
+%%% command, which loads a LaTeX class file.  Class files generally
+%%% define the appearance of a document, and include a variety of
+%%% structural commands.
+
+%%% Clinic reports use the clinic class, which should be located
+%%% somewhere in TeX's search path.
+
+%%% For midyear reports, include the midyear option, as in
+%%%   \documentclass[midyear]{hmcclinic}
+\documentclass{hmcclinic}
+
+%%% You can also load additional LaTeX packages, or style files, that
+%%% affect the way that the document is laid out, typeset, or supply
+%%% additional commands or environments.  If you choose to load
+%%% additional packages, make sure that they appear *before* the
+%%% line loading hyperref; hyperref changes pieces of other
+%%% packages, so it's important that it be loaded last.
+
+% \usepackage{graphicx}           % More control over graphic inclusion.
+% \usepackage{amsthm}             % AMS theorem styles
+
+
+%%% Load all other packages before this point.
+
+%%% Load hyperref.
+\usepackage[breaklinks=true,
+  bookmarks,
+  pdfpagemode=UseOutlines,
+  pdfpagelayout=SinglePage]{hyperref}
+
+
+%%% The preamble can also be used to define your own commands and
+%%% environments, set some constants that will be used throughout your
+%%% document, and so on.
+
+%%% As you may have guessed, LaTeX's comment character is the percent
+%%% sign.  Any line that starts with a % will be ignored.  You can
+%%% also use the comment character to add comments to the end of a
+%%% line that will be parsed by TeX.
+
+%%% The optional \includeonly command allows you to specify the names
+%%% of chapters that you want to typeset.  It is useful for debugging
+%%% or for working intensely on one particular part of your document
+%%% when you don't want to take the time to retypeset the entire document.
+
+
+%%% This optional command provides additional context around an error.
+%%% It can be helpful when tracking down a problem. 
+%\setcounter{errorcontextlines}{1000}
+
+
+%%% Information about this document.
+
+%%% I find it most useful to put identifying information about a
+%%% document near the top of the preamble.  Technically, this
+%%% information must precede the \maketitle command, which often
+%%% appears immediately after the beginning of the document 
+%%% environment.  Placing it near the top of the document makes it
+%%% easier to identify the document, and keeps it from getting
+%%% mixed up with the content of your document.
+
+%%% So, some questions.
+
+%% What is the name of the company or organization sponsoring your project?
+\sponsor{The Juvenile Corporation}
+
+%% What is the title of your report?
+\title{Our Clinic Report}
+
+%% Who are the authors of the report (your team members)?  (Separate
+%% names with \and.)
+\author{Student A \and Student B \and Student C \and Student D~(Project Manager)}
+
+%% What is your faculty advisor's name?  (Again, separate names with
+%% \and, if necessary.)
+\advisor{Joseph Bloggs}
+
+%% Liaison's name or names?
+\liaison{Samuel Neal}
+
+%% Did you have an outside consultant help you with this project?  Put
+%% their names in the \consultant command.
+\consultant{Roger Jones}
+
+%% By not specifying a date with the \date command, the date the
+%% document is typeset will be added.
+
+%% If you need to put in a specific date, do so with
+%%  \date{May 13, 2004}
+%% You probably shouldn't, however.
+
+%%% End of information section.
+
+
+%%% New commands and environments.
+
+%%% You can define your own commands and environments here.  If you
+%%% have a lot of material here, you might want to consider splitting
+%%% the commands and environments into a separate ``style'' file that
+%%% you load with \usepackage.
+
+% \newcommand{\coolcommand}[1]{#1 is cool.} % Lets everyone know that
+                                % the person or thing that you provide
+                                % as the argument to the command is
+                                % cool.
+
+% \newcounter{cms}
+
+
+%%% Some theorem-like command definitions.
+
+%%% The \newtheorem command comes from the amsthm package.  That
+%%% package is *not* loaded by the class file, so if you choose
+%%% to use these commands, you'll need to load the package above.
+
+% \newtheorem{thm}{Theorem}[chapter]
+% \newtheorem{lem}{Lemma}[chapter]
+
+
+%%% If you find that some words in your document are being hyphenated
+%%% incorrectly, you can specify the correct hyphenation using the
+%%% \hyphenation command.  Note that words are separated by
+%%% whitespace, as shown below.
+
+\hyphenation{ap-pen-dix wer-ther-i-an}
+
+
+%%% The start of the document!
+
+%% The document environment is the main environment in any LaTeX
+%% document.  It contains other environments, as well as your text.
+
+\begin{document}
+
+%%% The front matter of a large document includes the title page or
+%%% pages, tables of contents, lists of figures or tables, and so on,
+%%% your abstract, a preface or introduction, and so on.  It's
+%%% delineated with the \frontmatter command.
+
+\frontmatter
+
+
+%%% One of the things that the \frontmatter does is make page
+%%% numbers appear as lowercase Roman numerals---i, vi, xii, and so
+%%% on.
+
+%%% The first thing in the front matter is your title page.  The title
+%%% page is formatted by commands in the document class file, so you
+%%% don't need to worry about what it looks like -- just putting the
+%%% \maketitle command in your document (and filling in the necessary
+%%% information for the identification commands above) is enough.
+
+\maketitle
+
+
+%%% Abstract
+
+\begin{abstract}
+  Your abstract should be a \emph{brief} summary of the contents of
+  your report.  Don't go into excruciating detail here---there's
+  plenty of room for that later.
+
+  If possible, limit your abstract to a single paragraph, as your
+  abstract may be used in promotional materials for the Clinic.
+\end{abstract}
+
+
+%%% Table of Contents, List of Figures, and List of Tables.
+%%% 
+%%% If you don't have any figures or tables in your report, you
+%%% should comment out the appropriate command.  If you don't,
+%%% you'll get an extra, mostly blank, page in your typeset report.
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+
+
+%%% Acknowledgments.
+
+\begin{acknowledgments}
+%% Thank some people here, if you like.
+\end{acknowledgments}
+
+%%% End of the front matter.
+
+
+%%% Beginnning of the main matter.
+
+%% The main part of your report consists of normal, numbered
+%% chapters as well as any appendices.  Bibliographies, indexes, and
+%% so on are part of the back matter.  The main matter is opened with the
+%% \mainmatter command.
+
+\mainmatter
+
+
+%%% Content.
+
+%%% For smaller documents---especially those you're writing by
+%%% yourself---you might write your entire report using a single LaTeX
+%%% source file.  For larger documents, we recommend that you split
+%%% the source file into several separate, smaller files.  The smaller
+%%% files are ``included'' into your main, or ``master'' document
+%%% using \include commands.
+
+%%% Splitting your source has several advantages.  First, if you're
+%%% working on a document with a group of people, it allows you to
+%%% have more than one person working on different parts of the
+%%% document at the same time (although we still recommend that you
+%%% use CVS or a similar revision-control system!).  Second, smaller
+%%% document chunks allow you to reorganize your document more
+%%% easily.  If you later decide that Chapter 8 would be better as
+%%% Chapter 4, all you have to do is swap the \include commands
+%%% around.  For that reason, you should give your separate chapters
+%%% meaningful names, such as ``introduction'', ``background'', or
+%%% ``conclusions'' rather than calling them ``chapter1'',
+%%% ``chapter2'', and so on.
+
+%%% Finally, splitting the document allows you to concentrate on a
+%%% particular section without being distracted by other
+%%% sections---all you have to do is comment out the \include line for
+%%% the sections you're not working on.  This technique can be
+%%% especially useful when you're trying to track down a problem by
+%%% allowing you to easily locate the file with the problem by
+%%% ruling out the other sections.
+
+%%% In our example document, we define several chapters that have
+%%% useful information about writing Clinic or thesis reports or
+%%% using LaTeX.  Here, we'll just use placeholders (but not
+%%% chapter1, chapter2, etc!).  .
+
+
+%%% Chapter 1
+
+\include{a_chapter}
+
+%%% Chapter 2
+
+\include{another_chapter}
+
+%%% Chapter 3
+
+\include{still_another_chapter}
+
+%%% Chapter 4
+
+\include{yet_another_chapter}
+
+%%% Chapter 5
+
+\include{one_more_chapter}
+
+%%% Chapter 6
+
+\include{possibly_the_last_chapter}
+
+
+%%% Appendices.
+
+%%% Appendices are just like chapters, only they're generally
+%%% lettered rather than numbered (although that depends on your
+%%% document class, of course).
+
+%%% The appendices are delineated with the \appendix command.
+%%% Individual appendices are begun with the standard \chapter or
+%%% \section commands.  In our example, we'll \include them just as
+%%% we did other chapters.
+
+%%% If you don't have any appendices, comment out the \appendix
+%%% command.
+
+\appendix
+
+\include{our_appendix}
+
+\include{our_source_code}
+
+
+%%% Back matter.
+
+%%% The back matter of a document is where the bibliography, index,
+%%% glossary, and other unnumbered chapters or sections occur.  It
+%%% starts, not surprisingly, with the \backmatter command.
+
+\backmatter
+
+
+%%% Bibliography.
+
+%%% BibTeX is the tool to use for citations and layout of your
+%%% bibliography.  Instead of having to type ``[5]'' or ``(Jones,
+%%% 1968)'' (and keep track of which citation is which and renumber
+%%% them as you add more references to your bibliography), you use
+%%% special commands that allow BibTeX and LaTeX to automatically put
+%%% the correct information in the right place.
+
+%%% Depending on your field, it may or may not be appropriate to list
+%%% references for which you haven't included specific citations.  If
+%%% your field sanctions such practices, or if you just want to get an
+%%% idea of what you have in your bibliography file, you can include
+%%% everything with the \nocite{*} command.
+\nocite{*} 
+
+
+%%% The appearance of your bibliography and citations in your text are
+%%% defined by a combination of any bibliography-related LaTeX
+%%% packages (such as natbib, harvard, or chicago) and the particular
+%%% bibliography style file that you load with the \bibliographystyle
+%%% command.  Bibliography-style files end in .bst; you can find them
+%%% by searching your file system using whatever tools you have for
+%%% doing searches.  (On most modern Unices, ``locate .bst'' will give
+%%% you an idea of what's available.)
+
+% Standard bibliography style.
+\bibliographystyle{hmcmath}
+
+% Annotated bibliography style.
+% \bibliographystyle{hmcmathannote}
+
+
+%%% The particular bibliography data file or files that you want to
+%%% use are specified with the \bibliography file.  Multiple files are
+%%% separated by commas.
+
+%%% You might want to use multiple bibliography (or ``bib'') files if
+%%% you had a master bib file containing references you use again and
+%%% again, and another containing only records for references for a
+%%% particular project.
+
+%%% Many people create a single, large bib file that they use for
+%%% everything they write.  That approach requires you to \cite every
+%%% reference that you want to use in your document -- using
+%%% \nocite{*} with a huge bibliography database will give you a large
+%%% bibliography containing many references you haven't consulted for
+%%% your particular document!
+
+\bibliography{our_bib_file}
+
+
+%%% Glossary or Index.
+
+%%% If you were going to include a glossary or index in your document,
+%%% the relevant commands would appear here.
+
+%%% If you think that you would like to include such features, talk
+%%% with someone who's worked with LaTeX a lot very early in your
+%%% writing process.  These commands require you to do a bit of
+%%% thinking about what you would want to index or gloss in
+%%% advance---going back though a completed document to add \index
+%%% commands is *not fun*.
+
+
+\end{document}
+
+

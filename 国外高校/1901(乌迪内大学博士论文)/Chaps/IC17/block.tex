@@ -1,0 +1,126 @@
+\begin{tikzpicture}
+\draw (0,0) -- (10,0) -- (8,4) -- (2,4) -- (0,0);
+\draw  [style={inner sep=1,outer sep=0}](0.5,3.2) node (x1) {{\huge $B$}};
+
+\draw (2,1.5) node (f1) [draw] {\scriptsize $\exists V_1.F_1(Y,V_1)$}; \draw (1.3,2) node {{\scriptsize $G_1$}};
+\draw (4.3,1.5) node (f2) [draw] {\scriptsize $\exists V_2.F_2(Y,V_2)$}; \draw (3.6,2) node {{\scriptsize $G_2$}};
+\draw (6.2,1.5) node {$\cdots$};
+\draw (8,1.5) node (fp) [draw] {\scriptsize $\exists V_p.F_p(Y,V_p)$}; \draw (7.3,2) node {{\scriptsize $G_p$}};
+
+\draw  [style={inner sep=1,outer sep=0}](2,2.2) node (x1) {$x_1$};
+\draw  [style={inner sep=1,outer sep=0}](4.3,2.2) node (x2) {$x_2$};
+\draw  [style={inner sep=1,outer sep=0}](8,2.2) node (xp) {$x_p$};
+
+\draw [-] (f1) -- (x1);
+\draw [-] (f2) -- (x2);
+\draw [-] (fp) -- (xp);
+
+\draw (3,3.5) node [draw] (e1) {\small $E_1(X)$};
+\draw (4.5,3.5) node [draw] (e2) {\small $E_2(X)$};
+\draw (5.75,3.5) node {$\cdots$};
+\draw (7,3.5) node [draw] (ek) {\small $E_k(X)$};
+
+\draw  [style={inner sep=1,outer sep=0}](2,4.3) node {$\boldsymbol{z:}$};
+\draw  [style={inner sep=1,outer sep=0}](3,4.3) node (z1) {$z_1$};
+\draw  [style={inner sep=1,outer sep=0}](4.5,4.3) node (z2) {$z_2$};
+\draw  [style={inner sep=1,outer sep=0}](7,4.3) node (zk) {$z_k$};
+
+\draw  (e1) edge (z1);
+\draw  (e2) edge (z2);
+\draw  (ek) edge (zk);
+
+\node at (1,-0.5) {$\boldsymbol{y^1}$:};
+\node (v2) at (1.5,-0.5) {$y_1^1$};
+\node (v4) at (2,-0.5) {$y_2^1$};
+\node at (2.5,-0.5) {$\cdots$};
+\node (v6) at (3,-0.5) {$y_k^1$};
+
+\node [style={inner sep=0,outer sep=0}] (v1) at (1.5,0.2) {};
+\node [style={inner sep=0,outer sep=0}] (v3) at (2,0.2) {};
+\node  [style={inner sep=0,outer sep=0}](v5) at (3,0.2) {};
+
+\node at (4.8,-0.5) {$\cdots$};
+
+\node (v8) at (7,-0.5) {$y_1^m$};
+\node (v10) at (7.5,-0.5) {$y_2^m$};
+\node at (8,-0.5) {$\cdots$};
+\node (v12) at (8.5,-0.5) {$y_k^m$};
+\node at (6.4,-0.5) {$\boldsymbol{y^m}$:};
+
+\node [style={inner sep=0,outer sep=0}] (v7) at (7,0.2) {};
+\node [style={inner sep=0,outer sep=0}] (v9) at (7.5,0.2) {};
+\node [style={inner sep=0,outer sep=0}] (v11) at (8.5,0.2) {};
+
+\draw  (v1) edge (v2);
+\draw  (v3) edge (v4);
+\draw  (v5) edge (v6);
+\draw  (v7) edge (v8);
+\draw  (v9) edge (v10);
+\draw  (v11) edge (v12);
+\draw  (v1) edge (f2.south);
+\draw  (v3) edge (f2.south);
+\draw  (v5) edge (f2.south);
+\draw  (v7) edge (f2.south);
+\draw  (v9) edge (f2.south);
+\draw  (v11) edge (f2.south);
+
+\node [style={inner sep=0,outer sep=0}] (v13) at (2,3) {};
+\node [style={inner sep=0,outer sep=0}] (v16) at (7,3) {};
+\node [style={inner sep=0,outer sep=0}] (v19) at (3.5,2.5) {};
+\node [style={inner sep=0,outer sep=0}] (v18) at (7.5,2.5) {};
+\node [style={inner sep=0,outer sep=0}] (v17) at (8,2.5) {};
+\node [style={inner sep=0,outer sep=0}] (v14) at (3,3) {};
+\node [style={inner sep=0,outer sep=0}] (v15) at (4.5,3) {};
+\draw  (x1) edge (v13);
+\draw  (v13) edge (v14);
+\draw  (v14) edge (v15);
+\draw  (v15) edge (v16);
+\draw  (v16) edge (ek);
+\draw  (v15) edge (e2);
+\draw  (e1) edge (v14);
+\draw  (xp) edge (v17);
+\draw  (v17) edge (v18);
+\draw  (v18) edge (v19);
+\node [style={inner sep=0,outer sep=0}] (v21) at (5,2.5) {};
+\node [style={inner sep=0,outer sep=0}] (v20) at (3.5,3.2) {};
+\node [style={inner sep=0,outer sep=0}] (v22) at (5,3.2) {};
+\node [style={inner sep=0,outer sep=0}] (v23) at (7.5,3.2) {};
+\draw  (v19) edge (v20);
+\draw  (v21) edge (v22);
+\draw  (v18) edge (v23);
+
+\node [style={inner sep=0,outer sep=0}] (v25) at (3.25,2.75) {};
+\node [style={inner sep=0,outer sep=0}] (v27) at (4.75,2.75) {};
+\node [style={inner sep=0,outer sep=0}] (v29) at (7.25,2.75) {};
+\node [style={inner sep=0,outer sep=0}] (v24) at (3.25,3.2) {};
+\node [style={inner sep=0,outer sep=0}] (v28) at (4.75,3.2) {};
+\node [style={inner sep=0,outer sep=0}] (v30) at (7.25,3.2) {};
+\node [style={inner sep=0,outer sep=0}] (v26) at (4.3,2.75) {};
+\draw  (v24) edge (v25);
+\draw  (v25) edge (v26);
+\draw  (v26) edge (v27);
+\draw  (v27) edge (v28);
+\draw  (v27) edge (v29);
+\draw  (v29) edge (v30);
+\draw  (v26) edge (x2);
+\draw [dashed] (f1.south) edge (v1);
+\draw [dashed] (f1.south) edge (v3);
+\draw [dashed] (f1.south) edge (v5);
+\draw [dotted] (fp.south) edge (v7);
+\draw [dotted] (fp.south) edge (v9);
+\draw [dotted] (fp.south) edge (v11);
+\node (v32) at (2.7,0.9) {};
+\node (v33) at (2.8,1) {};
+\node (v31) at (7.2,0.7) {};
+\node (v34) at (6.8,0.8) {};
+\draw [dashed] (v32) edge (f1.south);
+\draw [dashed] (v33) edge (f1.south);
+\draw [dotted] (v34) edge (fp.south);
+\draw [dotted] (fp.south) edge (v31);
+\node (v35) at (4,0.3) {};
+\node (v36) at (4.5,0.3) {};
+\node (v37) at (5,0.3) {};
+\draw (f2.south) edge (v35);
+\draw (f2.south) edge (v36);
+\draw (v37) edge (f2.south);
+\end{tikzpicture}

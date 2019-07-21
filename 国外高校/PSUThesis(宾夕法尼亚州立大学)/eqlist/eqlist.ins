@@ -1,0 +1,20 @@
+\def\batchfile{eqlist.ins}
+\input docstrip.tex
+\keepsilent
+\nopreamble
+\generateFile{eqlist.sty}{f}{\from{eqlist.dtx}{eqlist}}
+\generateFile{eqlist.tex}{f}{\from{eqlist.dtx}{driver}}
+%%\generateFile{eqlist.ins.dup}{f}{\from{eqlist.dtx}{insfile}}
+
+\Msg{***************************************************************}
+\Msg{*}
+\Msg{* To finish the installation, you have to move the}
+\Msg{* file 'eqlist.sty' in a directory searched by TeX.}
+\Msg{*}
+\Msg{*}
+\Msg{* Run the file 'eqlist.tex' through LaTeX to produce the}
+\Msg{* documentation}
+\Msg{*}
+\Msg{*}
+\Msg{***************************************************************}
+\endbatchfile

@@ -1,0 +1,110 @@
+% =============================================================
+% For the title page
+% =============================================================
+% Report
+\newcommand{\reportTitle}{Titre du rapport de stage}
+\newcommand{\reportSubject}{Petite description du rapport de stage}
+\newcommand{\reportType}{Rapport Final - Stage de fin d'études}
+\newcommand{\reportShortName}{TFE 2017}
+\newcommand{\reportDates}{01-04-2017 - 29-09-2017}
+\newcommand{\reportAuthor}{Nom Prénom}
+
+% Author
+\newcommand{\authorFirstName}{Prénom}
+\newcommand{\authorLastName}{Nom}
+\newcommand{\authorEmail}{prenom.nom@gmail.com}
+
+% School
+\newcommand{\schoolName}{\'Ecole Centrale de Lyon}
+\newcommand{\schoolPlace}{\'Ecully}
+\newcommand{\schoolLogo}{logo-ecl.pdf}
+
+% School Tutor
+\newcommand{\schoolTutorFirstName}{Prénom}
+\newcommand{\schoolTutorLastName}{Nom}
+\newcommand{\schoolTutorEmail}{nom.prenom@ec-lyon.fr}
+
+% Company
+\newcommand{\companyName}{Nom de l'entreprise}
+\newcommand{\companyPlace}{Ville}
+\newcommand{\companyLogo}{logo-cnrs.pdf}
+
+% Company Tutors
+\newcommand{\companyTutorFirstName}{Prénom}
+\newcommand{\companyTutorLastName}{Nom}
+\newcommand{\companyTutorEmail}{nom.prenom@entreprise.com}
+% =============================================================
+
+
+% =============================================================
+% Other variables
+% =============================================================
+% changes the default title for the nomenclature
+\newcommand{\nomenlaturename}{Liste des symboles}
+\newcommand{\bibliographyname}{Bibliographie}
+\newcommand{\listoffiguresname}{Table des Figures}
+\newcommand{\listingscaptionname}{Code source}
+\newcommand{\listoflistingsname}{Liste des codes sources}
+% =============================================================
+
+
+% =============================================================
+% Path
+% =============================================================
+% Graphic Path
+\graphicspath{%
+    {../ressources/}%
+    {../ressources/pdf/}%
+    {../ressources/images/}%
+    {../ressources/logos/}%
+    {../ressources/tikz/}%
+}
+
+% Source code Path
+\newcommand{\codefolder}[1]{../ressources/code/#1}
+% =============================================================
+
+% =============================================================
+% Colors
+% =============================================================
+\usepackage{xcolor}% Color extension
+
+\definecolor{colorblack}{rgb}{0, 0, 0}
+\definecolor{colorblue}{rgb}{0, 0.4470, 0.7410}
+\definecolor{colorred}{rgb}{0.8500, 0.3250, 0.0980}
+\definecolor{coloryellow}{rgb}{0.9290, 0.6940, 0.1250}
+\definecolor{colorpurple}{rgb}{0.4940, 0.1840, 0.5560}
+\definecolor{colorgreen}{rgb}{0.4660, 0.6740, 0.1880}
+\definecolor{colorcyan}{rgb}{0.3010, 0.7450, 0.9330}
+\definecolor{colorbordeau}{rgb}{0.6350, 0.0780, 0.1840}
+
+% Main color
+\definecolor{maincolor}{RGB}{89, 9, 38}
+\definecolor{secondcolor}{RGB}{20, 9, 89}
+% =============================================================
+
+
+% =============================================================
+% Some variable to customize theme
+% =============================================================
+% toogletrue to have a "fancy chapter" tooglefalse to don't
+\newtoggle{fancychapter}
+\toggletrue{fancychapter}
+
+% toogletrue to put section numbering into margin tooglefalse to don't
+\newtoggle{sectionmargin}
+\toggletrue{sectionmargin}
+
+% toogletrue to have a mini toc for each chapter tooglefalse to don't
+\newtoggle{minitocchapter}
+\toggletrue{minitocchapter}
+
+% toogletrue to print "Confidentiel"
+\newtoggle{isconfidential}
+\toggletrue{isconfidential}
+\newcommand{\confidential}{\color{colorred}\textsc{confidentiel}}
+
+% value for paragraph indentation
+\setlength{\parindent}{0em}
+% =============================================================
+

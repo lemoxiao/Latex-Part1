@@ -1,0 +1,50 @@
+%-------------------------------------------------------------------
+%	TITLE PAGE
+%-------------------------------------------------------------------
+\newgeometry{top=2.5cm,bottom=0.25cm,right=2.5cm,left=2.5cm}
+
+\begin{titlepage}
+\begingroup
+{\fontfamily{ptm}\selectfont 
+
+\begin{tikzpicture}[remember picture, overlay]
+  \draw[lightgray][line width = 0.5pt] ($(current page.north west) +
+  (0.37cm,-0.40cm)$) rectangle ($(current page.south east) + (-0.37cm,0.40cm)$);
+\end{tikzpicture}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.0mm}}
+\center % Center everything on the page
+
+% Title of your document
+\HRule \\[0.5cm]
+{\fontsize{32}{10}\selectfont \bfseries Support open source developments such
+as \LaTeX}\\[0.2cm]
+\HRule \\[1.25cm]
+
+{\huge \bfseries Name Lastname}\\[0.2cm]
+{\huge \bfseries ORCiD No:} \\[2.20cm]
+
+{\LARGE Dissertation submitted in fulfilment of the requirements for
+the degree {\color{cyan!85} \textit{Magister Scientiae}} in
+{\color{cyan!85} {Environmental Sciences}} at the Potchefstroom Campus
+of the North-West University}\\[1.70cm]
+
+\raggedright 
+\LARGE Supervisor: \hspace{24mm} Bakkies Botha \\
+\LARGE Co-supervisor: \hspace{16mm} Victor Matfield \\
+\LARGE Assistant supervisor: \hspace{1.5mm} Piet Pompies\\[1.5cm]
+
+\LARGE Examination DATE\\
+\LARGE 12345678\\
+
+% University logo
+\vspace*{\fill}
+\noindent
+\begin{center}
+\makebox[\textwidth]{\includegraphics[width=20.2cm]{nwu_title.png}} 
+\end{center}
+
+}
+\endgroup
+\end{titlepage}
+\restoregeometry

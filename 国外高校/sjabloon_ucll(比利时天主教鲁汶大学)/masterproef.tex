@@ -1,0 +1,405 @@
+\documentclass[master=ucll,11pt,dutch,twoside]{kulemt}
+%\documentclass[master=ucll,11pt,dutch,twoside]{ucllfilip}
+
+%master is hetgene dat gedefinieerd staat in de .cfg file
+%masteroption is hetgene bij ELT gedeelte staat als optie
+%and command is voor een 2de lijn bij te voegen
+%%  author={Filip Vanden Eynde \and R0363898 \and 3TX/1},
+\setup{
+	title={Beste masterproef ooit al geschreven},
+  author={Filip Vanden Eynde \and R0363898 \and 3TX/1},
+  promotor={Filip Promotor},
+ assessor={Filip Assessor},
+  company={Otago Polytechnic},
+  location={Dunedin, Nieuw-Zeeland},
+  textsubject={Eindwerk voorgedragen tot het behalen van mijn eindcijfer voor het vak Beleggen anders bekeken voor het diploma},
+  assistant={Filip Assistent}
+  }
+  
+\newcommand{\stagebegeleider}{Griet Barrezeele}
+\newcommand{\stagementoreen}{Torleif West}
+\newcommand{\stagementortwee}{Siau-juin Lim}
+\newcommand{\stagebedrijf}{Otago Polytechnic}
+\newcommand{\stagelocatie}{Dunedin, Nieuw-Zeeland}
+\newcommand{\exactadresofinternshiplocation}{Forth Street, Private Bag 1910, Dunedin, 9054, New Zealand}
+\newcommand{\quotes}[1]{``#1''}
+  
+% De volgende \setup mag verwijderd worden als geen fiche gewenst is.
+%\setup{filingcard,
+ % translatedtitle={The best master's thesis ever},
+ % udc=621.3,
+  %keywords={Stageverslag, Dunedin, Nieuw-Zeeland, UCLL, schooljaar 2016-2017, Filip Vanden Eynde},
+  %shortabstract={Hier komt een heel bondig abstract van hooguit 500
+   % woorden. \LaTeX\ commando's mogen hier gebruikt worden. Blanco lijnen
+   % (of het commando \texttt{\string\pa r}) zijn wel niet toegelaten!
+   % \endgraf \lipsum[2]}}
+	
+% Verwijder de "%" op de volgende lijn als je de kaft wil afdrukken
+%\setup{coverpageonly}
+%\write18{pdflatex masterproefcoverpage -aux-directory=outputfoldercoverpage}
+%\write18{pdflatex masterproefcoverpage}
+
+\newcommand{\kleurlinkstableofcontents}{blue}
+
+% Kies de fonts voor de gewone tekst, bv. Latin Modern
+%\setup{font=palatino}
+
+\setup{font=utopia}
+
+\setup{inputenc=utf8}
+
+\usepackage{ifthen}
+\newboolean{pdfoutput}
+\setboolean{pdfoutput}{true}
+%\setboolean{pdfoutput}{false}
+
+% Hier kun je dan nog andere pakketten laden of eigen definities voorzien
+
+\usepackage{kulemtx}
+\chapterstyle{kulemtman}
+\kulemtmanToC{}
+
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{subcaption}
+
+%\usepackage{geometry}
+%\usepackage{pdflscape}
+
+
+
+%\begin{comment}
+
+%for bibliography
+\usepackage[backend=biber,
+%%style=alphabetic,
+style=numeric,
+%%style=ieee,
+%%style=ieee-alphabetic,
+citestyle=numeric,
+%%refsection=chapter,
+%refsegment=chapter,
+%defernumbers=true,
+%%sorting=ynt,
+sorting=nty,
+sortcites, % Dit zorgt ervoor dat als je meerdere referenties toont zoals [9,1] dat dit wordt getoond als [1,9] dus numeriek gesorteerd
+]{biblatex}
+\addbibresource{referentiesstage.bib}
+
+%\defbibheading{subbibliography}{%
+%	\section*{References for Chapter \ref{refsection:
+%			,→ \therefsection}}}
+
+
+%\end{comment}
+
+
+
+% Dit stylet de bibliografie heading
+\begin{comment}
+
+
+\defbibheading{bibliography}[\bibname]{%
+	\section{#1}%
+	\markboth{#1}{#1}}
+\end{comment}
+
+
+%indexes
+%voor indexen te maken
+\usepackage{imakeidx}
+\makeindex[
+%columns=3, % geeft layout van 3 kolommen
+title=Alphabetical Index, % verandert de default title = index
+intoc] % voegt de indexpagina aan de inhoudsopgave toe
+
+\usepackage{import}
+\usepackage{enumitem}
+\usepackage{pdfpages}
+%\usepackage{todo}
+\usepackage{todonotes}
+
+%provides the multicols environment which typesets text into multiple columns.
+\usepackage{multicol}
+\usepackage[official]{eurosym}
+
+%-------------------------------------------------------------------------------------------------------------------------
+% pas plaats voor en na headings aan gebruikmakend van package titlesec
+%-------------------------------------------------------------------------------------------------------------------------
+
+\usepackage{titlesec}
+%\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+%\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+%------------------------------------------------------------------------
+
+% Define a set of colours for syntax highlighting
+
+\definecolor{MyColor1}{rgb}{0.2,0.4,0.6} %mix personal color
+\definecolor{azure(colorwheel)}{rgb}{0.0, 0.5, 1.0}
+\newcommand{\textb}{\color{Black} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\blue}{\color{MyColor1} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\blueb}{\color{MyColor1} \usefont{OT1}{lmss}{b}{n}}
+\definecolor{purpleexcel}{rgb}{0.4392156862745,0.18823529,0.62745098039}
+\definecolor{dkgreen}{rgb}{0,.6,0}%
+\definecolor{dkblue}{rgb}{0,0,.6}%
+\definecolor{dkyellow}{cmyk}{0,0,.8,.3}%
+\definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}%
+\definecolor{darkgray}{rgb}{0.4, 0.4, 0.4}%
+\definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}%
+\definecolor{editorOcher}{rgb}{1, 0.5, 0}%
+\definecolor{editorGreen}{rgb}{0, 0.5, 0}%
+\definecolor{orange}{rgb}{1,0.45,0.13}%
+\definecolor{olive}{rgb}{0.17,0.59,0.20}%
+\definecolor{brown}{rgb}{0.69,0.31,0.31}%
+\definecolor{purple}{rgb}{0.38,0.18,0.81}%
+\definecolor{lightblue}{rgb}{0.1,0.57,0.7}%
+\definecolor{lightred}{rgb}{1,0.4,0.5}%
+\definecolor{ChapBlue}{rgb}{0.00,0.65,0.65}
+
+%hier komen alle commando's en constante variabelen voor in de opdracht te gebruiken.
+
+\graphicspath{{images/}} % Set the default folder for images
+%I usually write something like this, so the entry is hyperlinked for onscreen reading but there's also a footnote to the URL for paper output.
+\newcommand\fnurl[2]{%
+	\href{#2}{#1}\footnote{\url{#2}}%
+}
+%\setlist[itemize,1]{leftmargin=*,topsep=0pt}
+%\setlist[enumerate,1]{leftmargin=*,topsep=0pt}
+\setlist{nosep}
+%\newcommand{\tabelgeometry}{%
+%\newgeometry{total={7.7in, 9.5in},top=0.7in,bottom=0.7in}
+%}
+
+\renewcommand\mempostaddapppagetotochook{\cftinserthook{toc}{BREAK}}
+\cftinsertcode{BREAK}{\changetocdepth{-10}}
+\let\normalchangetocdepth\changetocdepth % needed for later
+
+\makeatletter
+\newcommand\appendixtableofcontents{
+	\begingroup
+	\let\changetocdepth\@gobble
+	\normalchangetocdepth{-10}
+	\cftinsertcode{BREAK}{\normalchangetocdepth{3}}
+	\renewcommand\contentsname{Appendices overzicht}
+	\tableofcontents*
+	\endgroup
+}
+\makeatother
+
+
+%\chapterstyle{BlueBox}
+
+\ifthenelse {\boolean{pdfoutput}}
+	{
+	\usepackage[
+	%hidelinks = true,
+	%urlcolor=magenta,
+    pdfusetitle,colorlinks,urlcolor=blue,linkcolor=\kleurlinkstableofcontents,
+	plainpages=false,bookmarks=true,bookmarksnumbered,linktoc=all,pdffitwindow=true,
+	pdftex,pdfauthor={\theauthor},pdftitle={\thetitle},pdfsubject={\thesubject},
+	pdfkeywords={\thekeywords},pdfproducer={\theauthor},pdfcreator={\theauthor}
+	]{hyperref}	
+	}{
+
+\usepackage[
+    pdfusetitle,
+    colorlinks,
+    %urlcolor=blue,
+    urlcolor=black,
+    %linkcolor=\kleurlinkstableofcontents,
+    linkcolor=black,
+    citecolor=black,
+	plainpages=false,
+	bookmarks=true,
+	bookmarksnumbered,
+	linktoc=all,
+	pdffitwindow=true,
+	pdftex,
+	pdfauthor={\theauthor},
+	pdftitle={\thetitle},
+	pdfsubject={\thesubject},
+	pdfkeywords={\thekeywords},
+	pdfproducer={\theauthor},
+	pdfcreator={\theauthor}
+	]{hyperref}	
+
+}
+
+%for plural forms of acronyms
+\usepackage{acronym}
+
+\usepackage{xparse}
+\DeclareDocumentCommand{\newdualentry}{ O{} O{} m m m m } {
+	\newglossaryentry{gls-#3}{name={#5},text={#5\glsadd{#3}},
+		description={#6},#1
+	}
+	\makeglossaries
+	\newacronym[see={[Glossary:]{gls-#3}},#2]{#3}{#4}{#5\glsadd{gls-#3}}
+}
+
+\usepackage[acronym, toc]{glossaries}
+\usepackage{glossary-mcols}
+\makeglossaries
+\import{./}{glossary.tex}
+\import{./}{acronyms.tex}
+%\import{glossary}
+
+
+%%%%%%%
+% Om wat tekst te genereren wordt hier het lipsum pakket gebruikt.
+% Bij een echte masterproef heb je dit natuurlijk nooit nodig!
+\IfFileExists{lipsum.sty}%
+ {\usepackage{lipsum}\setlipsumdefault{11-13}}%
+ {\newcommand{\lipsum}[1][11-13]{\par Hier komt wat tekst: lipsum ##1.\par}}
+%%%%%%%
+
+%\includeonly{hfdst-n}
+\begin{document}
+
+\begin{preface}
+  Dit is mijn dankwoord om iedereen te danken die mij bezig gehouden heeft.
+  Hierbij dank ik mijn promotor, mijn begeleider en de voltallige jury.
+  Ook mijn familie heeft mij erg gesteund natuurlijk.
+  %\quotes{Otago Polytechnic}
+  %stagebegeleider \stagebegeleider
+\end{preface}
+
+\tableofcontents*
+
+\begin{abstract}
+  In dit \texttt{abstract} environment wordt een al dan niet uitgebreide
+  samenvatting van het werk gegeven. De bedoeling is wel dat dit tot
+  1~bladzijde beperkt blijft.
+
+  \lipsum[1]
+    \todo[inline]{Samenvatting schrijven}
+
+\end{abstract}
+
+% Een lijst van figuren en tabellen is optioneel
+%\listoffigures
+%\listoftables
+% Bij een beperkt aantal figuren en tabellen gebruik je liever het volgende:
+\listoffiguresandtables
+%\todo[inline]{Nakijken of alle labels van figuren en tabellen uniek en duidelijk gedefinieerd zijn?}
+
+% De lijst van symbolen is eveneens optioneel.
+% Deze lijst moet wel manueel aangemaakt worden, bv. als volgt:
+\chapter{Lijst van afkortingen en symbolen}
+\section*{Afkortingen}
+\begin{flushleft}
+  \renewcommand{\arraystretch}{1.1}
+  \begin{tabularx}{\textwidth}{@{}p{12mm}X@{}}
+    LoG   & Laplacian-of-Gaussian \\
+    MSE   & Mean Square error \\
+    PSNR  & Peak Signal-to-Noise ratio \\
+  \end{tabularx}
+\end{flushleft}
+\section*{Symbolen}
+\begin{flushleft}
+  \renewcommand{\arraystretch}{1.1}
+  \begin{tabularx}{\textwidth}{@{}p{12mm}X@{}}
+    42    & ``The Answer to the Ultimate Question of Life, the Universe,
+            and Everything'' volgens de \cite{h2g2} \\
+    $c$   & Lichtsnelheid \\
+    $E$   & Energie \\
+    $m$   & Massa \\
+    $\pi$ & Het getal pi \\
+  \end{tabularx}
+\end{flushleft}
+
+%\todo[inline]{Op het einde de list of todos verwijderen.}
+%\listoftodos
+
+% Nu begint de eigenlijke tekst
+\mainmatter
+
+%allemaal new stuff
+\clearforchapter
+
+%end allemaal new stuff
+
+%----------------------------------------
+
+%origineel
+%\include{inleiding}
+
+%\include{texfiles/inleiding/inleiding}
+%\import{texfiles/include-chapter1/}{chapter1.tex}
+
+\include{hfdst-1}
+\include{hfdst-2}
+% ... en zo verder tot
+\include{hfdst-n}
+\include{besluit}
+
+% Indien er bijlagen zijn:
+\appendixpage*          % indien gewenst
+\appendix
+
+%allemaal new stuff
+
+%\appendixpage          % indien gewenst
+%\appendixtableofcontents
+%end allemaal new stuff
+
+%nieuw
+%\import{bijlagen/}{bijlage1_opdrachtenlijst.tex}
+
+\include{app-A}
+% ... en zo verder tot
+\include{app-n}
+
+%\includepdf[pages=-]{bijlagen/website_audit_filip_eline_belgian_interns.pdf}
+
+
+\backmatter
+% Na de bijlagen plaatst men nog de bibliografie.
+% Je kan de  standaard "abbrv" bibliografiestijl vervangen door een andere.
+%\bibliographystyle{abbrv}
+%\bibliography{referenties}
+
+\pagestyle{afterbackmatterf}
+
+%\chapter{Bibliografie}
+
+
+%for bibLatex
+%\printbibliography[heading=bibintoc,title={Whole bibliography}] %Prints the entire bibliography with the titel "Whole bibliography"
+
+%hiermee worden alle entries getoond, zelfs als ze niet vermeld worden in de tekst.
+%\nocite{*}
+
+%Filters bibliography
+%\printbibliography
+\printbibliography[title={Referenties}]
+\pagestyle{afterbackmatterf}
+
+
+%\printbibliography[heading=subbibintoc,type=online,title={Sites only}]
+%\todo[inline]{Gebruikte bronnen en sites nog als bibliografie toevoegen achteraan.}
+
+%\printbibliography[heading=subbibintoc,type=article,title={Articles only}]
+%\printbibliography[heading=subbibintoc,type=book,title={Books only}]
+
+%op aparte pagina zo schrijven dan
+%\printbibliography[type=book,title={Books only}]
+%\printbibliography[keyword={physics},title={Physics-related only}]
+%\printbibliography[keyword={latex},title={\LaTeX-related only}]
+
+\chapter{Glossaries}
+
+\import{./}{importglossariesvolledig.tex}
+
+\chapter{Index}
+
+\printindex
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

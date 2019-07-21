@@ -1,0 +1,532 @@
+% Package pour ecrire des theses francaises (c) Eddy Fromentin 1996
+% légèrement trafiqué par Florent de Dinechin 1997
+% légèrement trafiqué en octobre 97 pour repondre a la scol
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\typeout{}
+\typeout{(Jingle jingle) Style these.sty fourni par l'ADOC (jingle jingle)}
+\typeout{}
+%
+% Packages Nécéssaires
+%
+\RequirePackage{latexsym} % anciens symboles latex
+\RequirePackage{makeidx}
+\RequirePackage{calc}
+\RequirePackage{ifthen}
+\RequirePackage{float}
+\RequirePackage[frenchb]{babel}
+\RequirePackage{epsfig}
+\usepackage{vmargin}
+\usepackage{textpos}
+\usepackage{color}
+\usepackage{letterspace}
+
+
+%
+% Définition des commandes utiles
+%
+% page de titre
+\newcommand{\NOORDRE}{000}
+\newcommand{\PRESENTATION}{présentée}
+\newcommand{\SOUTENUE}{À soutenir}
+
+\newcommand{\AUTp}{Jean}
+\newcommand{\AUTn}{\textsc{Dupont}}
+\newcommand{\LABO}{HAPPY}
+\newcommand{\LABOEXT}{How Are Pears Painted in Yellow ?}
+\newcommand{\COMPU}{IFSIC}
+\newcommand{\PRESp}{P.}
+\newcommand{\PRESn}{\textsc{Dugland}}
+\newcommand{\PRESq}{gargamel}
+\newcommand{\ADVp}{S.}
+\newcommand{\ADVn}{\textsc{Dublair}}
+\newcommand{\ADVq}{grand schtroumpf}
+\newcommand{\RAPpi}{X.}
+\newcommand{\RAPni}{\textsc{Dupont}}
+\newcommand{\RAPqi}{schtroumpf farceur}
+\newcommand{\RAPti}{rapporteur}
+\newcommand{\EXApi}{X.}
+\newcommand{\EXAni}{\textsc{Durant}}
+\newcommand{\EXAqi}{schtroumpf faineant}
+\newcommand{\EXAti}{\'Examinateur}
+\newcommand{\Mpres}{M}
+\newcommand{\TPres}{Président}
+\newcommand{\Mrap}{M}
+\newcommand{\TRap}{Rapporteur}
+\newcommand{\Mexa}{MM}
+\newcommand{\TExa}{Examinateurs}
+\newcommand{\TailleJury}{\large{}}
+
+\newcommand{\authorspacing}{ / }
+
+\newcommand{\TITRE}{{\Large\textsl{La vie prodigieuse des Escargots}}}
+\newcommand{\DATE}{1\ier{} Janvier 0000}
+\newcommand{\LIEU}{Rennes}
+\newcommand{\MENTION}{Ma discipline}
+
+\newcommand{\pnqRAP}[1]{%
+\csname RAPp#1\endcsname\ \csname RAPn#1\endcsname, \csname RAPq#1\endcsname}
+\newcommand{\pnqEXA}[1]{%
+\csname EXAp#1\endcsname\ \csname EXAn#1\endcsname, \csname EXAq#1\endcsname}
+
+\newcommand{\Ladv}[1]{%
+{\vspace{-1mm}\TailleJury\bfseries{\csname ADVp#1\endcsname} \textsc{\csname ADVn#1\endcsname}\newline}%
+{\vspace{-1mm}\small\csname ADVq#1\endcsname}\authorspacing\mbox{\textit{\small\csname ADVt#1\endcsname}}\vspace{1mm}%
+}
+\newcommand{\Lrap}[1]{%
+{\vspace{-1mm}\TailleJury\bfseries{\csname RAPp#1\endcsname} \textsc{\csname RAPn#1\endcsname}\newline}
+{\vspace{-1mm}\small\csname RAPq#1\endcsname}\authorspacing\mbox{\textit{\small\csname RAPt#1\endcsname}}\vspace{1mm}%
+}
+\newcommand{\Lexa}[1]{%
+{\vspace{-1mm}\TailleJury\bfseries{\csname EXAp#1\endcsname} \textsc{\csname EXAn#1\endcsname}\newline}%
+{\vspace{-1mm}\small\csname EXAq#1\endcsname}\authorspacing\mbox{\textit{\small\csname EXAt#1\endcsname}}\vspace{1mm}%
+}
+
+\newcommand{\newAdv}[5]{%
+\expandafter\def\csname ADVp#1\endcsname{#2}%
+\expandafter\def\csname ADVn#1\endcsname{\textsc{#3}}%
+\expandafter\def\csname ADVq#1\endcsname{#4}%
+\expandafter\def\csname ADVt#1\endcsname{#5}%
+}
+
+\newcommand{\newExam}[5]{%
+\expandafter\def\csname EXAp#1\endcsname{#2}%
+\expandafter\def\csname EXAn#1\endcsname{\textsc{#3}}%
+\expandafter\def\csname EXAq#1\endcsname{#4}%
+\expandafter\def\csname EXAt#1\endcsname{#5}%
+}
+
+\newcommand{\newRap}[5]{%
+\expandafter\def\csname RAPp#1\endcsname{#2}%
+\expandafter\def\csname RAPn#1\endcsname{\textsc{#3}}%
+\expandafter\def\csname RAPq#1\endcsname{#4}%
+\expandafter\def\csname RAPt#1\endcsname{#5}%
+}
+
+\newcommand{\JURY}{
+{\vspace{-1mm}\bfseries\TailleJury\PRESp~\PRESn\vspace{-1mm}\newline}
+{\small\PRESq\authorspacing\mbox{\small\textit{\TPres}}\\}
+\Lrap{i}\\
+\setcounter{III}{1}%
+\whiledo{{\value{III}<\value{nrap}}}{\stepcounter{III}\Lrap{\roman{III}}\\}%
+\setcounter{III}{0}%
+\whiledo{{\value{III}<\value{nexa}}}{\stepcounter{III}\Lexa{\roman{III}}\\}%
+\setcounter{III}{0}%
+\whiledo{{\value{III}<\value{nadv}}}{\stepcounter{III}\Ladv{\roman{III}}\\}%
+}
+
+
+
+\newcommand{\makethese}[1]{
+    \thispagestyle{empty}
+    \ifthenelse{\equal{#1}{rennes1}}{ %if rennes1
+	\maketheserennes
+    }{
+    \ifthenelse{\equal{#1}{insa}}{ %if insa
+	\maketheseinsa
+    }{
+    \maketheserennes  %else rennes 1 as standard
+    }} %endif
+    \fontfamily{cms}
+%  \whitepage
+}
+
+
+% \newlength{\plarg}
+% \setlength{\plarg}{7.2cm}
+% \newlength{\glarg}
+% \setlength{\glarg}{14cm}
+% \newlength{\Glarg}
+% \setlength{\Glarg}{16cm}
+
+
+
+%page de garde de Rennes 1
+\newcommand{\maketheserennes}{
+\fontfamily{phv}
+\hspace{-0.7cm}\begin{minipage}{15.3cm}
+\vspace{-10.5cm}
+\large N$^o$ d'ordre  : \NOORDRE
+\hfill
+ANN\'EE \the\year
+\end{minipage}
+
+\vspace{-4.0cm}\hspace{-1cm}
+ \begin{tabular}[th!]{ccc}
+\epsfig{figure=rennes1,height=30mm} & \hspace{1.5cm} &\epsfig{figure=ueb,height=30mm} 
+\end{tabular}
+
+\vspace{1.5cm}
+\begin{center}
+\begin{minipage}{16cm}
+\centering{\Large\bfseries TH\`ESE / UNIVERSIT\'E DE RENNES 1}\\ \vspace{0mm}\emph{\Large sous le sceau de l'Universit\'e Europ\'eenne de Bretagne}\\
+\vspace{0.5cm}
+{\Large pour le grade de}\\ \vspace{2mm}
+{\Large\bfseries  DOCTEUR DE L'UNIVERSIT\'E DE RENNES 1}\\ \vspace{0.4cm}
+\emph{\Large Mention : \MENTION}\\ \vspace{2mm}
+{\Large\bfseries  \'Ecole doctorale Matisse}\\ \vspace{0.5cm}
+{\Large pr\'esent\'ee par} \\ \vspace{3mm}
+{\Huge\bfseries \AUTp~\AUTn}\\ \vspace{0.6cm}
+{\Large pr\'epar\'ee \`a l'unit\'e de recherche \LABO\\\LABOEXT}
+{\Large\vspace{0.00cm}\COMPU\\}
+\end{minipage}
+\vspace{0.5cm}
+
+\begin{textblock}{0}(-0.5,0)
+\hrule width 17.3cm
+\begin{tabular}{p{8cm}p{9cm}}
+\begin{minipage}[t]{8cm}
+\vspace{0.5cm}
+\baselineskip=35pt
+\TITRE
+\end{minipage}
+&
+\begin{minipage}[t]{9cm}
+\vspace{0.5cm}
+{\bfseries\TailleJury{}Th\`ese soutenue \`a \LIEU\newline}
+{\bfseries\TailleJury{}le \DATE\vspace{2mm}\newline}
+{\small devant le jury compos\'e de : \vspace{2mm}}
+
+\JURY
+\end{minipage}
+\end{tabular}
+\end{textblock}
+
+
+\end{center}
+\fontfamily{times}
+}
+
+%page de garde INSA
+\newcommand{\maketheseinsa}{
+\renewcommand{\TailleJury}{\small{}}
+\fontfamily{cmss}
+\hspace{-3.25cm}
+\begin{minipage}{21cm}
+\vspace{-6.8cm}
+\epsfig{figure=insa,width=21.05cm}
+\end{minipage}
+
+\vspace{-3.3cm}
+\begin{minipage}{16cm}
+\hspace{-2.0cm}\begin{tabular}{rl}
+\begin{minipage}{9cm}
+\begin{flushright}
+{\color{white}\Large\bfseries TH\`ESE INSA Rennes}
+
+\vspace{-0.1cm}{\color{white}\textit{sous le sceau de l'Universit\'e Europ\'eenne de Bretagne}}
+
+\vspace{0.1cm}{\color{white}\normalsize{}pour obtenir le grade de}
+
+\vspace{0.1cm}{\color{white}\bfseries DOCTEUR DE L'INSA DE RENNES}
+
+{\color{white}\textit{Spécialité~: \MENTION}}
+\end{flushright}
+\end{minipage}
+
+&
+\begin{minipage}{9cm}
+
+{\color{white}\normalsize{}pr\'esent\'ee par}
+\vspace{0.1cm}
+
+{\color{white}\huge\bfseries\AUTp~\AUTn}
+\vspace{0.1cm}
+
+{\color{white}\bfseries\'ECOLE DOCTORALE~: MATISSE}
+
+{\color{white}\bfseries LABORATOIRE~: \LABO}
+\end{minipage}
+\end{tabular}
+\end{minipage}
+
+\vspace{0.2cm}\hspace{-2.1cm}
+\begin{textblock}{18}(-1.88,0)
+	\begin{tabular}{p{9.5cm}p{10cm}}
+	\begin{minipage}[t]{9.5cm}
+	\vspace{0.5cm}
+	\baselineskip=20pt
+	\begin{flushright}
+	\vspace{-2mm}\TITRE
+	\end{flushright}
+	
+	\end{minipage}
+	&
+	\begin{minipage}[t]{10cm}
+	\vspace{0.5cm}
+	{\bfseries  Th\`ese soutenue le \DATE\newline}
+	{\small devant le jury compos\'e de : \vspace{2mm}}
+	
+	\JURY
+	\end{minipage}
+	\end{tabular}
+\end{textblock}
+
+
+
+
+% \end{center}
+\fontfamily{times}
+}
+
+\newcommand{\remerciements}[1]{%
+\thispagestyle{empty}
+\section*{Remerciements}
+Je remercie \PRESp\ \PRESn, \PRESq, qui me fait l'honneur 
+de présider ce jury.\\[\baselineskip]
+
+Je remercie %
+\setcounter{III}{1}%
+\whiledo{\value{III}<\value{nrap}}{%
+\pnqRAP{\roman{III}}%
+\stepcounter{III}%
+\ifthenelse{\value{III}=\value{nrap}}{, et }{, }%
+}\pnqRAP{\roman{nrap}}, d'avoir bien voulu accepter la charge 
+de rapporteur.\\[\baselineskip]
+
+Je remercie %
+\setcounter{III}{1}%
+\whiledo{\value{III}<\value{nexa}}{%
+\pnqEXA{\roman{III}}%
+\stepcounter{III}%
+\ifthenelse{\value{III}=\value{nexa}}{, et }{, }%
+}\pnqEXA{\roman{nexa}}, d'avoir bien voulu juger ce travail.\\[\baselineskip]
+
+Je remercie enfin \ADVp\ \ADVn, \ADVq, 
+qui  a dirigé ma thèse.\\[\baselineskip]
+
+#1 
+\vfill
+}
+\setlength{\hoffset}{0mm}
+\setlength{\voffset}{0mm}
+\setlength{\paperheight}{297mm}
+\setlength{\paperwidth}{210mm}
+\setlength{\textwidth}{145mm}
+\setlength{\marginparwidth}{0mm}
+\setlength{\headheight}{2\baselineskip}
+\setlength{\textheight}{210mm}
+%default left margin is 1inch=2.54cm
+%\setlength{\evensidemargin}{19.2mm} %even page extra left margin
+%\setlength{\oddsidemargin}{0mm} %odd page extra left margin
+\setlength{\evensidemargin}{0mm}%
+\setlength{\oddsidemargin}{15mm}%
+%\setlength{\parskip}{1mm}% extra espace entre paragraphes
+
+%% A4= 21: odd: 2.54+14.5+4.46       even:2.54+1.92+14.5+2.54
+
+\renewcommand{\ps@plain}{%
+\renewcommand{\@oddhead}{}%
+\renewcommand{\@evenhead}{}%
+\renewcommand{\@evenfoot}{\hfil\textrm{\thepage}\hfil}%
+\renewcommand{\@oddfoot}{\@evenfoot}%
+}
+
+\renewcommand{\ps@headings}{%
+\renewcommand{\@oddhead}{\parbox{210mm}{\leftmark\hfil\thepage}}%
+\renewcommand{\@evenhead}{\parbox{210mm}{\thepage\hfil\rightmark}}%
+\renewcommand{\@evenfoot}{}%
+\renewcommand{\@oddfoot}{\@evenfoot}%
+}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % remember chapter title
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+
+\addtocounter{secnumdepth}{1}
+\AtBeginDocument{%
+% definition d'algorithmes
+% commente 04.06.02 par D.Fredouille la fripouille
+%\floatstyle{plain}
+%\newfloat{algorithm}{t}{algs}[chapter]
+%\floatname{algorithm}{\textsc{Alg}}
+%\floatplacement{algorithm}{tbp}
+\makeindex
+\def\uppercase{}
+\newcounter{nadv}
+\setcounter{nadv}{0}
+\newcounter{nrap}
+\setcounter{nrap}{0}
+\newcounter{nexa}
+\setcounter{nexa}{0}
+\newcounter{III}
+}
+
+\AtEndDocument{%
+}
+
+%====================< Commandes Utilisateur >========================
+
+% ignore le texte en parametre
+\newcommand{\ignore}[1]{} 
+% remarque, lors de l'ecriture de la these
+\newcommand{\rmq}[1]{{\noindent\texttt{\textbf{Remarque:}#1}}}
+% interdit les cesures
+\newcommand{\nohyphens}{\hyphenpenalty=10000\exhyphenpenalty=10000\relax}
+% insere une page blanche
+\newcommand{\whitepage}{\newpage\thispagestyle{empty}\addtocounter{page}{-1}~\vspace*{3cm}~\vfill~\newpage}
+
+% Insere un mot dans le texte en l'ajoutant dans la table des index
+%\newcommand{\idx}[2][*]{%
+%#2%
+%\ifthenelse{\equal{#1}{*}}{%
+%\index{#2}%
+%}{%
+%\index{#1!#2}%
+%}%
+%}
+
+%
+% Theoremes , etc
+%
+
+\newtheorem{definition}{Définition}[chapter]
+%\@addtoreset{Definition}{}
+\newtheorem{propriete}{Propriété}[chapter]
+%\@addtoreset{Propriete}{}
+\newtheorem{theoreme}{Théorème}[chapter]
+%\@addtoreset{Theoreme}{}
+\newtheorem{corollaire}{Corollaire}[chapter]
+%\@addtoreset{Corollaire}{}
+\newtheorem{remarque}{Remarque}[chapter]
+%\@addtoreset{Remarque}{}
+\newtheorem{lemme}{Lemme}[chapter]
+\@addtoreset{Lemme}{}
+%\@addtoreset{figure}{}
+
+%\newenvironment{definition}{%
+%\begin{Definition}%
+%}{%
+%\hfill$\Box$\\%
+%\end{Definition}%
+%}
+
+%\newenvironment{propriete}{%
+%\begin{Propriete}%
+%}{%    
+%\hfill$\Box$\\%
+%\end{Propriete}%
+%}
+
+%\newenvironment{theoreme}{%
+%\begin{Theoreme}%
+%}{%
+%\hfill$\Box$\\%
+%\end{Theoreme}%
+%}
+
+%\newenvironment{corollaire}{%
+%\begin{Corollaire}%
+%}{%
+%\hfill$\Box$\\%
+%\end{Corollaire}%
+%}
+
+%\newenvironment{remarque}{%
+%\begin{Remarque}%
+%}{%  
+%\hfill$\Box$\\%
+%\end{Remarque}%
+%}
+
+%\newenvironment{preuve}{%
+%\paragraph{Preuve}%
+%}{%
+%\hfill$\Box$\\%
+%}
+
+
+%
+% Divers utilitaires pratiques
+%
+% sauve et restore le numero d'une footnote
+\newcommand{\footlab}[1]{\label{foot:#1}}
+\newcommand{\footref}[1]{\raisebox{1ex}{\footnotesize\protect\ref{foot:#1}}}
+
+% Commandes pour la première page uniquement
+% Cette commande doit etre presente si la these est soutenue
+\newcommand{\soutenue}{% 
+\renewcommand{\PRESENTATION}{Présentée devant}%
+\renewcommand{\SOUTENUE}{soutenue}%
+}
+
+% titre de la these
+\newcommand{\titre}[1]{%
+\renewcommand{\TITRE}{{\Huge\textbf{#1}}}%
+}
+
+% Date de soutenance
+\newcommand{\datesout}[1]{%
+\renewcommand{\DATE}{#1}%
+}
+
+% Lieu de soutenance
+\newcommand{\lieusout}[1]{%
+\renewcommand{\LIEU}{#1}%
+}
+
+% Mention : informatique, électronique, traitement du signal...
+\newcommand{\Mention}[1]{%
+\renewcommand{\MENTION}{#1}%
+}
+
+% Prenom Nom de l'auteur
+\newcommand{\Auteur}[2]{%
+\renewcommand{\AUTp}{#1}%
+\renewcommand{\AUTn}{\textsc{#2}}%
+}
+
+% Equipe et composante universitaire
+\newcommand{\Labo}[1]{%
+\renewcommand{\LABO}{#1}%
+}
+\newcommand{\LaboEtendu}[1]{%
+\renewcommand{\LABOEXT}{#1}%
+}
+\newcommand{\ComposanteUniversitaire}[1]{%
+\renewcommand{\COMPU}{#1}%
+}
+
+% Prenom Nom Qualite du president du jury
+\newcommand{\President}[4][M]{%
+\renewcommand{\Mpres}{#1}%
+\ifthenelse{\equal{#1}{Mme}}{\renewcommand{\TPres}{Présidente}}{}%
+\renewcommand{\PRESp}{#2}%
+\renewcommand{\PRESn}{\textsc{#3}}%
+\renewcommand{\PRESq}{#4}%
+}
+
+\newcommand{\Advisor}[4][M]{%
+\stepcounter{nadv}%
+\ifthenelse{\equal{\value{nadv}}{1}}{
+\ifthenelse{\equal{#1}{Mme}}{\newAdv{\roman{nadv}}{#2}{#3}{#4}{Directrice de thèse}}{\newAdv{\roman{nadv}}{#2}{#3}{#4}{Directeur de thèse}}%
+}{
+\ifthenelse{\equal{#1}{Mme}}{\newAdv{\roman{nadv}}{#2}{#3}{#4}{Co-directrice de thèse}}{\newAdv{\roman{nadv}}{#2}{#3}{#4}{Co-directeur de thèse}}%
+}
+}
+
+
+% [Civilé] Prenom Nom Qualite d'un rapporteur
+\newcommand{\Rapporteur}[4][M]{%
+\stepcounter{nrap}%
+\ifthenelse{\equal{#1}{Mme}}{\newRap{\roman{nrap}}{#2}{#3}{#4}{Rapporteuse}}{\newRap{\roman{nrap}}{#2}{#3}{#4}{Rapporteur}}%
+}
+
+% [Civilé] Prenom Nom Qualite d'un examinateur
+\newcommand{\Examinateur}[4][M]{%
+\stepcounter{nexa}%
+\ifthenelse{\equal{#1}{Mme}}{\newExam{\roman{nexa}}{#2}{#3}{#4}{Examinatrice}}{\newExam{\roman{nexa}}{#2}{#3}{#4}{Examinateur}}%
+}
+
+% Numero Ordre
+\newcommand{\ordre}[1]{%
+\renewcommand{\NOORDRE}{#1}%
+}
+
+
+\newcommand{\alignquatriemedecouv}{
+\newpage\thispagestyle{empty}~
+\ifodd\value{page}
+\newpage\thispagestyle{empty}
+\else
+\newpage\thispagestyle{empty}~\newpage\thispagestyle{empty}
+\fi
+}

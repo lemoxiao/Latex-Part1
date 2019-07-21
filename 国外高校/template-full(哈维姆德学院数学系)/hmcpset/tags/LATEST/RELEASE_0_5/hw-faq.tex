@@ -1,0 +1,122 @@
+% HMC Math dept HW template FAQ
+% v0.04 by Eric J. Malm, 10 Mar 2005
+\documentclass[12pt,letterpaper,noheader]{hmcpset}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+% commands for printing LaTeX structure
+% in part stolen from sample HMC thesis document
+\newcommand{\bslash}{\symbol{'134}}%backslash
+\newcommand{\bsl}{{\texttt{\bslash}}}
+\newcommand{\cmd}[1]{\bsl\texttt{#1}}
+\newcommand{\pkg}[1]{\textsf{#1}}
+\newcommand{\env}[1]{\texttt{#1}}
+
+\begin{document}
+
+\problemlist{\LaTeX\ Questions and Examples}
+
+\begin{problem}
+How can I put formatting in text?
+\end{problem}
+
+\begin{solution}
+\LaTeX\ supports plenty of text formatting capabilities: for example, text can be \emph{emphasized} or \textbf{bold} or in \textsc{small caps}. Text can also be made {\large bigger} or {\small smaller}. You can even switch to a \textsf{sans-serif} or \texttt{typewriter} font face. This document uses the \pkg{mathpple} package to make Palatino its serifed font rather than the default Computer Modern. Other packages are available to switch to different font families: \pkg{times}, for example, changes the default font to Adobe Times.
+\end{solution}
+
+\begin{problem}
+How do I write math and equations?
+\end{problem}
+
+\begin{solution}
+\LaTeX\ supports two general categories of math environments. The first is \emph{inline} math, which stays in the line of the text and is accessed with
+\verb#\( y \)# or, more commonly, \verb#$z$# to produce \( y \) and $z$. The other type of math environment is \emph{display} math, in which the math is displayed on its own separate line. For a display math environment without any equation numbering, write \verb#\[ #(your math here)\verb# \]# to produce something set like
+\[
+  \sin \alpha \cos \beta + \sin \beta \cos \alpha = \sin (\alpha + \beta).
+\]
+The above equation also demonstrates that \LaTeX\ recognizes special functions such as $\sin$ and $\tan$ and $\det$ as well as the characters of the Greek alphabet. In most cases, the command name is simply the name of the function or letter. \LaTeX\ also has commands for many different mathematical symbols and constructs, such as fractions, integrals, radicals, sums, and products, so it's easy to write expressions such as
+\[
+  \Lambda(a, \gamma) = \sqrt{\sum_{n = 1}^\infty \left (\frac{1}{2} \prod_{k = 1}^n \int_{\sqrt[5]{a}}^{\arctan \gamma} x^{-k} \, dx \right)}
+\]
+\end{solution}
+
+\begin{problem}
+What if I want to refer to an equation somewhere else in my text?
+\end{problem}
+
+\begin{solution}
+If you want to refer to an equation later, use the \env{equation} environment and include a \cmd{label} command. For example, the famous \emph{class equation} from abstract algebra states that, for a finite group $G$, 
+\begin{equation} \label{eq:class-equation}
+  |G| = |Z(G)| + \sum_{i = 1}^r |G : C_G(g_i)|.
+\end{equation}
+To refer to the equation later, use the \cmd{ref} command: Equation~\ref{eq:class-equation} is one classy equation. The \cmd{label}-\cmd{ref} syntax allows references to many other \LaTeX\ structures, such as sectioning commands, tables, and figures.
+\end{solution}
+
+\begin{problem}
+How do I get displayed equations to line up? 
+\end{problem}
+
+\begin{solution}
+To align equations, use the \pkg{amsmath} package's \env{align} environment, like so:
+\begin{align}
+  3x + 4y &= 8 \\
+  6x + y &= 12
+\end{align}
+If you don't want the equations numbered, use \env{align*}. 
+\end{solution}
+
+\begin{problem}
+How do I make a matrix and other matrix-like things?
+\end{problem}
+
+\begin{solution}
+Although you can use the \env{array} environment with automatically sizing delimiters to make matrices, \pkg{amsmath} provides matrix environments that are much easier to use:
+\[
+  \begin{pmatrix} 1 & 0  \end{pmatrix} 
+  \begin{pmatrix} 1 & 0 & 2 \\ 3 & -3 & 5 \end{pmatrix}
+  = \begin{pmatrix} 1 & 0 & 2 \end{pmatrix}
+\]
+The above matrices use \env{pmatrix}, but if you prefer brackets, use \env{bmatrix}. For determinants, use \env{vmatrix}. The \pkg{amsmath} package also provides a \env{cases} environment for case-by-case definitionS:
+\[
+  f(x) = \begin{cases} 1 & x > 0, \\ 0 & x \leq 0. \end{cases}
+\]
+\end{solution}
+
+\begin{problem}
+What about putting boxes around solutions?
+\end{problem}
+
+\begin{solution}
+If you want to box something in text, use the \cmd{fbox} command, \fbox{like this.} The \pkg{amsmath} package provides the \cmd{boxed} command for math-mode boxing:
+\[
+  J(z) = \frac{1}{2} \left( e^{i\theta} + e^{-i\theta} \right)
+  = \boxed{\cos \theta.}
+\]
+If you need to make an empty box of a particular size, pass the desired width of the box as the optional argument to \cmd{framebox} and put a zero-width \cmd{rule} of the desired height inside the box. Thus, the command \verb#\framebox[1in]{\rule{0pt}{1cm}}# creates a box one inch wide and one cm tall\footnote{Actually, because of the internal padding in a framebox, the specified box will be slightly taller than the height you specify.}: \framebox[1in]{\rule{0in}{1cm}} If you want to make these boxes ``display-set,'' put them in a centered \env{tabular} environment, like so:
+\begin{center}
+\begin{tabular}{*{3}{c}}
+  \framebox[4cm]{\rule{0pt}{2cm}} & \framebox[4cm]{\rule{0pt}{2cm}} & \framebox[4cm]{\rule{0pt}{2cm}} \\
+  part (a) & part (b) & part (c) \\
+\end{tabular}
+\end{center}
+The \env{tabular} environment then also makes it easy to add a small caption for each box.
+\end{solution}
+
+\begin{problem}
+Where else can I go for help on \LaTeX?
+\end{problem}
+
+\begin{solution}
+A lot of information on \LaTeX\ is available online, including many tutorials and example documents as well as documentation for packages. 
+\begin{itemize}
+  \item The Math Dept hosts a tips-and-tricks document as well as links to several useful online references and to a list of recommended books at \url{http://www.math.hmc.edu/computing/support/tex/}. Another useful departmental site is the sample thesis page, \url{http://www.math.hmc.edu/seniorthesis/tools/samplethesis/}.
+  
+  \item A popular tutorial is The Not So Short Introduction to \LaTeXe, available in PDF format at \url{http://www.ctan.org/tex-archive/info/lshort/english/lshort.pdf}.
+  
+  \item If you're looking for documentation on a particular package, it may be available in the \texttt{doc/latex/} directory of your \TeX\ installation. 
+\end{itemize}
+Also, plenty of people on campus use \LaTeX\ themselves, so try asking around for help. In addition, you may wish to subscribe to the HMC \LaTeX\ mailing list, \texttt{latex-l@hmc.edu}.
+\end{solution}
+
+\end{document}

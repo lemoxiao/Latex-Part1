@@ -1,0 +1,126 @@
+% ***************************************************
+% A Classic Thesis Style
+% An Homage to The Elements of Typographic Style
+%
+% Copyright (C) 2012 Andr\'e Miede http://www.miede.de
+%
+% If you like the style then I would appreciate a postcard. My
+% address can be found in the file ClassicThesis.pdf. A collection
+% of the postcards I received so far is available online at 
+% http://postcards.miede.de
+%
+% License:
+% This program is free software; you can redistribute it and/or
+% modify it under the terms of the GNU General Public License as
+% published by the Free Software Foundation; either version 2 of
+% the License, or (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public
+% License along with this program; see the file COPYING.  If not,
+% write to the Free Software Foundation, Inc., 59 Temple Place -
+% Suite 330, Boston, MA 02111-1307, USA.
+%
+% ***************************************************************
+% Note:
+%    * You must not use "u etc. in strings/commands that will be
+%      spaced out (use \"u or real umlauts instead)
+%    * New enumeration (small caps): \begin{aenumerate}
+%      \end{aenumerate}
+% 	 * For margin notes: \marginpar or \graffito{}
+%    * Do not use bold fonts in this style, it is designed around
+%      them
+%    * Use tables as in the examples
+%    * See classicthesis-preamble.sty for useful commands
+% ****************************************************************
+
+\documentclass[ twoside, 
+			openright,
+			% letterpaper a4paper
+			titlepage, 
+			numbers=noenddot,
+			headinclude, %1headlines
+            footinclude=true, 
+			cleardoublepage=empty,
+			abstractoff, % <--- obsolete, remove (todo)
+			BCOR=5mm,
+			paper=a4, 
+			fontsize=11pt, %11pt,
+			]{scrreprt}
+
+%*****************************************************************
+% Note: Make all your adjustments in here
+%*****************************************************************
+
+\usepackage[backref, backend=biber]{biblatex}
+\bibliography{Bibliography}	
+
+\input{classicthesis-config}
+
+%*****************************************************************
+% Hyphenation
+%*****************************************************************
+\hyphenation{put-here-the-words-latex-cannot-hyphenate}
+
+\begin{document}
+
+	% initial, local settings
+	\numberwithin{equation}{chapter}
+	\frenchspacing
+	\raggedbottom
+	\selectlanguage{american} % american/italian
+	\pagenumbering{roman}
+	\pagestyle{plain}
+	
+	%*************************************************************
+	% Frontmatter
+	%*************************************************************
+
+	% Uncomment the following line to add the ''copertina'' to the pdf
+	% \include{FrontBackmatter/Copertina}
+	\include{FrontBackmatter/Frontespizio}
+	\include{FrontBackmatter/FrontespizioIT}
+	\include{FrontBackmatter/RetroFrontespizio} % a.k.a. the colophon
+	\cleardoublepage\include{FrontBackmatter/Dedication}
+	% \cleardoublepage\include{FrontBackmatter/Publication}
+	\cleardoublepage\include{FrontBackmatter/Acknowledgments}
+	\cleardoublepage\include{FrontBackmatter/AutoParts/Contents}
+	\cleardoublepage\include{FrontBackmatter/Abstract}
+	\cleardoublepage\include{FrontBackmatter/Estratto}
+	\cleardoublepage\include{FrontBackmatter/Preface}
+
+	\pagestyle{scrheadings}	
+		
+	%*************************************************************
+	% Mainmatter
+
+	%*************************************************************
+	\pagenumbering{arabic}
+	%\setcounter{page}{90}
+	% use \cleardoublepage here in case of problems with pdfbookmark
+
+	\cleardoublepage\ctparttext{You can put some informational part preamble text here.}
+	\part{Writing a Master thesis}
+
+	\include{Chapters/Introduction}
+	% \include{Chapter/MyOtherChapter}
+	
+	\cleardoublepage\ctparttext{Another informational part preamble text here.}
+	\part{Using this Latex template}
+	
+	\include{Chapters/Conclusion} 
+	
+	% ************************************************************
+	% Backmatter
+	%*************************************************************
+	\cleardoublepage\include{FrontBackmatter/AutoParts/Bibliography}
+	\appendix
+	\cleardoublepage\part{Appendix}
+	\include{Chapters/Appendix}
+
+\end{document}
+% ****************************************************************

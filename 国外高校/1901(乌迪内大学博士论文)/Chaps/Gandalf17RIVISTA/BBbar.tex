@@ -1,0 +1,218 @@
+\subsection{$\Psp$ MC algorithm for $\B\Bbar$}\label{sect:PspAlgo}
+In this section, to start with, we describe a $\Psp$ MC algorithm for $\B\Bbar$ formulas, extended with regular expressions.  W.l.o.g., we assume that the processed formulas do not contain occurrences of the universal modalities $\hsBu$ and $\hsBtu$. Moreover, for a formula $\psi$, we denote by $\subfB(\psi)=\{\varphi\mid \hsB\varphi \text{ is a subformula of } \psi\}$. In such an algorithm, $\Phi$ represents the overall formula to be checked, while the parametric formula $\psi$ ranges over its subformulas. 
+
+Due to the result of the previous section, the algorithm can consider only traces having length bounded by the exponential small-model property. Note that
+an algorithm required to work in polynomial space cannot explicitly
+store the $\DFA$s for the regular expressions occurring in $\Phi$
+(their states are \emph{exponentially} many in the length of the associated regular expressions). 
+For this reason, while checking a formula against a trace, the algorithm just stores the \emph{current states} of the computations of the $\DFA$s associated with the regular expressions in $\Phi$, from the respective initial states 
+(in the following such states are denoted---with a little abuse of notation---again by $\Du(\Phi)$, and called the \emph{\lq\lq current configuration\rq\rq{} of the $\DFA$s}) and calculates on-the-fly the successor states in the $\DFA$s, once they have read some state of $\Ku$ used to extend the considered trace 
+(this can be done by %computing the next state in a standard way, by 
+exploiting a \emph{succinct} encoding of the $\NFA$s for the regular expressions of $\Phi$, see again Remark~\ref{remk:nfa} in Section~\ref{sect:backgrRegex}).
+
+A call to the recursive procedure \texttt{Check}$(\Ku,\psi,s,G,\Du(\Phi))$ (Algorithm~\ref{Check}) verifies the satisfiability of a subformula $\psi$ of $\Phi$ w.r.t.\ any trace $\rho$ fulfilling the next conditions:
+\begin{enumerate}
+    \item $G \subseteq \subfB(\psi)$ is the set of formulas that hold true on at least a prefix of $\rho$;
+    \item after reading $\Lab(\rho(1,|\rho|-1))$ the current configuration of the $\DFA$s for the regular expressions of $\Phi$ is $\Du(\Phi)$; 
+    \item the last state of $\rho$ is $s$.
+\end{enumerate}
+
+\begin{algorithm}[tp]
+    \caption{\texttt{Check}$(\Ku,\psi,s,G,\Du(\Phi))$}\label{Check}
+    \begin{algorithmic}[1]
+        \If{$\psi=r$}\Comment{$r$ is a regular expression}
+            \If{the current state of the $\DFA$ for $r$ in \texttt{advance}$(\Du(\Phi),\mu(s))$ is final}
+                \Return{$\top$}
+            \Else
+                \Return{$\bot$}
+            \EndIf
+        \ElsIf{$\psi=\neg\psi'$}
+            \Return{\textbf{not} \texttt{Check}$(\Ku,\psi',s,G,\Du(\Phi))$}
+        \ElsIf{$\psi=\psi_1\wedge \psi_2$}
+            \Return{\texttt{Check}$(\Ku,\psi_1,s,G\cap \subfB(\psi_1),\Du(\Phi))$ \textbf{and} \texttt{Check}$(\Ku,\psi_2,s,G\cap \subfB(\psi_2),\Du(\Phi))$}
+        \ElsIf{$\psi=\hsB\psi'$}
+            \If{$\psi'\in G$}
+                \Return{$\top$}
+            \Else
+                \Return{$\bot$}
+            \EndIf
+        \ElsIf{$\psi=\hsBt\psi'$}
+            \For{each $b\in\{1,\ldots ,|\States|\cdot (2|\psi'|+1)\cdot 2^{2\sum_{\ell=1}^u |r_\ell|} -1 \}$ and each $(G',\Du(\Phi)',s')\in\conf(\Ku,\psi)$}\Comment{$r_1,\ldots ,r_u$ are the regular expressions of $\psi'$}
+                \If{\texttt{Reach}$(\Ku,\psi',(G,\Du(\Phi),s),(G',\Du(\Phi)',s'),b)$ \textbf{and}
+                    \texttt{Check}$(\Ku,\psi',\allowbreak s',G',\allowbreak \Du(\Phi)')$}
+                    \Return{$\top$}
+                \EndIf
+            \EndFor
+            \Return{$\bot$}
+        \EndIf
+    \end{algorithmic}
+\end{algorithm}
+
+Intuitively, since the algorithm cannot store the already checked portion of a
+trace (whose length could be exponential), the relevant information is \emph{summarized} in a triple $(G,\Du(\Phi),s)$. 
+Hereafter, the set of all possible summarizing triples $(\overline{G},\overline{\Du(\Phi)},\overline{s})$, where $\overline{G}\subseteq\subfB(\psi)$, $\overline{\Du(\Phi)}$ is any current configuration of the $\DFA$s for the regular expressions of $\Phi$, and $\overline{s}$ is a state of $\Ku$, is denoted 
+by $\conf(\Ku,\psi)$.
+
+Let us consider in detail the body of the procedure.
+First, \texttt{advance}($\Du(\Phi),\Lab(s)$), invoked at line 2, updates the current configuration of the $\DFA$s after reading the symbol $\Lab(s)$. 
+If $\psi$ is a regular expression $r$ (lines 1--5), we just check whether the (computation of the) $\DFA$ associated with $r$ is in a final state (i.e., the summarized trace is accepted).
+Boolean connectives are easily dealt with recursively (lines 6--9).
+If $\psi$ has the form $\hsB\psi'$ (lines 10--14), then $\psi'$ has to hold over a proper prefix of the summarized trace, i.e. $\psi'$ must belong to $G$.
+%we exploit the $\DFA$s for the first, just the definition for the second and third, and the set $G$ for the fourth.
+
+The only involved case is $\psi=\hsBt\psi'$ (lines 15--19): we have to unravel the Kripke structure $\Ku$ to find an \emph{extension} $\rho'$ of $\rho$, summarized by the triple $(G',\Du(\Phi)',s')$, satisfying $\psi'$. The idea is 
+checking whether there exists a summarized 
+trace $(G',\Du(\Phi)',s')$, suitably extending $(G,\Du(\Phi),s)$, namely, such that:
+\begin{enumerate}
+\item $\Du(\Phi)'$ and $s'$ are \emph{synchronously} reachable from $\Du(\Phi)$ and $s$, respectively; 
+\item $G'\supseteq G$ contains any formula of $\subfB(\psi')$ satisfied by a prefix of the extension; 
+\item the extension
+$(G',\Du(\Phi)',s')$ satisfies $\psi'$.
+\end{enumerate}
+
+In order to check $(1.)$, i.e., synchronous reachability,
+we can exploit the exponential small-model property and 
+consider only the unravelling of $\Ku$ starting from $s$ having depth at most $|\States|\cdot (2|\psi'|+1)\cdot 2^{2\sum_{\ell=1}^u |r_\ell|} -1$\footnote{
+The factor 2 of $|\psi'|$ is added since the exponential small-model for $\AAbarBBbar$ requires a formula to be in \nnf .
+}.
+The verification of $(1.)$ and $(2.)$ is performed by the procedure
+\texttt{Reach} (Algorithm~\ref{Reach}), which accepts as input two summarized traces and a bound $b$ on the depth of the unravelling of $\Ku$.
+The proposed reachability algorithm is reminiscent of  the binary reachability technique of Savitch's theorem~\cite{Garey79}. 
+
+\begin{algorithm}[tp]
+    \caption{\texttt{Reach}($\Ku,\psi,(G_1,\Du(\Phi)_1,s_1),(G_2,\Du(\Phi)_2,s_2),b$)}\label{Reach}
+    \begin{algorithmic}[1]
+        \If{$b=1$}
+            \Return{\texttt{Compatible}($\Ku,\psi,(G_1,\Du(\Phi)_1,s_1),(G_2,\Du(\Phi)_2,s_2)$)}
+        \Else\Comment{$b\geq 2$}
+            \State{$b'\gets \lfloor b/2\rfloor$}
+            \For{each $(G_3,\Du(\Phi)_3,s_3)\in\conf(\Ku,\psi)$}
+                \If{\texttt{Reach}($\Ku,\psi,(G_1,\Du(\Phi)_1,s_1),(G_3,\Du(\Phi)_3,s_3),b'$) \textbf{and} \texttt{Reach}($\Ku,\psi,\allowbreak (G_3,\Du(\Phi)_3,s_3),\allowbreak (G_2,\Du(\Phi)_2,s_2),b-b'$)}
+                    \Return{$\top$}
+                \EndIf
+            \EndFor
+            \Return{$\bot$}
+        \EndIf
+    \end{algorithmic}
+\end{algorithm}
+
+The procedure \texttt{Reach} proceeds recursively (lines 3--8) by halving at each step the value $b$ of the length bound, until it gets called over two states $s_1$ and $s_2$ which are
+adjacent in a trace. At each halving step, an intermediate summarizing triple is generated to be associated with the split point.
+%
+At the base of recursion (for $b=1$, lines 1--2), the auxiliary procedure \texttt{Compatible} (Algorithm~\ref{Compatible}) is invoked. 
+
+\begin{algorithm}[tp]
+    \caption{\texttt{Compatible}($\Ku,\psi,(G_1,\Du(\Phi)_1,s_1), (G_2,\Du(\Phi)_2, s_2)$)}\label{Compatible}
+    \begin{algorithmic}[1]        
+        \If{$(s_1,s_2)\in \Edges$ \textbf{and} \texttt{advance}$(\Du(\Phi)_1,\mu(s_1))=\Du(\Phi)_2$ \textbf{and} $G_1\subseteq G_2$}
+            \For{each $\varphi\in (G_2\setminus G_1)$}
+                \State{$G\gets G_1\cap\subfB(\varphi)$}
+                \If{\texttt{Check}$(\Ku,\varphi,s_1,G,\Du(\Phi)_1)=\bot$}
+                    \Return{$\bot$}
+                \EndIf
+            \EndFor
+            \For{each $\varphi\in (\subfB(\psi)\setminus G_2)$}
+                \State{$G\gets G_1\cap\subfB(\varphi)$}
+                \If{\texttt{Check}$(\Ku,\varphi,s_1,G,\Du(\Phi)_1)=\top$}
+                    \Return{$\bot$}
+                \EndIf
+            \EndFor
+            \Return{$\top$}
+        \Else
+            \Return{$\bot$}
+        \EndIf
+    \end{algorithmic}
+\end{algorithm}
+
+At line 1, \texttt{Compatible} checks whether there is an edge between  $s_1$ and $s_2$ ($(s_1,s_2)\in \Edges$), and if, at the considered step,
+the current configuration of the $\DFA$s $\Du(\Phi)_1$ is transformed into the configuration $\Du(\Phi)_2$   (i.e., $s_2$ and  $\Du(\Phi)_2$ are synchronously reachable from $s_1$ and  $\Du(\Phi)_1$). 
+%
+At lines 2--9, \texttt{Compatible} checks that each formula $\varphi$ in $(G_2\setminus G_1)$, where $G_2\supseteq G_1$, is satisfied by 
+a trace summarized by $(G_1,\Du(\Phi)_1,s_1)$ (lines 2--5). Intuitively, $(G_1,\Du(\Phi)_1,s_1)$ summarizes the maximal prefix of 
+$(G_2,\Du(\Phi)_2,s_2)$, and thus a subformula satisfied by a 
+prefix of a trace summarized by $(G_2,\Du(\Phi)_2,s_2)$ either belongs to $G_1$ or it is satisfied by the trace summarized by $(G_1,\Du(\Phi)_1,s_1)$.
+Moreover, (lines 6--9) \texttt{Compatible} checks that $G_2$ is maximal (i.e., no subformula that must be in $G_2$ has been forgotten).
+%moreover
+%several recursive calls to \texttt{Check} are performed (lines 2--10) to ensure that 
+%the sets of subformulas $G_1$ and $G_2$ are consistent between $s_1$ and $s_2$ as well. 
+%
+Note that by exploiting this binary reachability technique,
+%(which mimics the reachability technique in the proof of Savitch's theorem) 
+the recursion depth of \texttt{Reach} is logarithmic in the length of the trace to be visited, hence it can use only polynomial space.
+
+Theorem~\ref{corrComplCheckBBbar}, proved in Appendix~\ref{proof:corrComplCheckBBbar}, establishes the soundness of \texttt{Check}.
+
+\begin{theorem}\label{corrComplCheckBBbar}
+Let $\Phi$ be a $\B\Bbar$ formula, $\psi$ be a subformula of $\Phi$, and $\rho\in\Trk_{\Ku}$ be a trace with $s=\lst(\rho)$. Let $G$ be the subset of formulas in $\subfB(\psi)$ that hold on some proper prefix of $\rho$.
+Let $\Du(\Phi)$ be the current configuration of the $\DFA$s associated with the regular expressions in $\Phi$ after reading $\mu(\rho(1,|\rho|-1))$.
+%(i.e., $\mu(\rho)$ but the last symbol).
+%
+Then $\texttt{Check}(\Ku,\psi,s,G,\Du(\Phi))=\top \!\iff\! \Ku,\rho\models \psi$.
+\end{theorem}
+
+\begin{algorithm}[tp]
+    \caption{\texttt{CheckAux}($\Ku,\Phi$)}\label{CheckAux}
+    \begin{algorithmic}[1]        
+        \State{$\texttt{create}(\Du(\Phi)_0)$}\Comment{Creates the (succinct) $\NFA$s and the initial states of the $\DFA$s for all the $\RE$s in $\Phi$}
+        \If{\texttt{Check}$(\Ku,\neg\Phi,\sinit,\emptyset,\Du(\Phi)_0)$ \textbf{or}                 \texttt{Check}$(\Ku,\hsBt\neg\Phi,\sinit,\emptyset,\Du(\Phi)_0)$}
+            \Return{$\bot$}
+        \Else
+            \Return{$\top$}  
+        \EndIf
+    \end{algorithmic}
+\end{algorithm}
+
+Algorithm~\ref{CheckAux} reports the main MC procedure \texttt{CheckAux}($\Ku,\Phi$) for $\B\Bbar$.  It starts constructing the $\NFA$s and the initial states of the $\DFA$s for the regular expressions of $\Phi$ (line 1). Then \texttt{CheckAux} invokes the procedure \texttt{Check} two times (line 2): the former to check the special case of the trace $\sinit$ consisting of the initial state of $\Ku$ only, and the latter for all right-extensions of $\sinit$ (i.e., the initial traces having length at least 2). 
+Notice that the $\NFA$s and $\DFA$s for the regular expressions of $\hsBt\neg\Phi$, $\neg\Phi$ and $\Phi$ are the same (i.e. $\Du(\Phi)_0=\Du(\hsBt\neg\Phi)_0=\Du(\neg\Phi)_0$), allowing us to simultaneously apply the result of Theorem~\ref{corrComplCheckBBbar} for both the invocations of \texttt{Check} at line 2.
+
+The next theorem, proved in Appendix~\ref{proof:corrCheckAux}, establishes the soundness and completeness of \texttt{CheckAux}.
+\begin{theorem}\label{corrCheckAux}
+    Let $\Ku=\KuDef$ be a finite Kripke structure, and $\Phi$ be a $\B\Bbar$ formula. Then, \texttt{CheckAux}$(\Ku,\Phi)=\top\iff\Ku\models\Phi$.
+\end{theorem}
+
+
+The next corollary states the upper bound to the complexity of MC for $\B\Bbar$.
+\begin{corollary}
+The MC problem for $\B\Bbar$ formulas extended with regular expressions over finite Kripke structures is in $\Psp$.
+\end{corollary}
+\begin{proof}
+    The procedure \texttt{CheckAux} decides the problem using \emph{polynomial working space} basically due to two facts. 
+    The first one is the number of simultaneously active recursive calls of \texttt{Check}, which is $O(|\Phi|)$.
+    The second is the space (in bits) used for any call of \texttt{Check}, that is,
+        % \[  O\Big(\alpha + \underbrace{\log (\alpha)}_{(1)} +
+        %  \underbrace{\alpha}_{(2)}\cdot\underbrace{\log (\alpha)}_{(3)}\Big) \]
+        \begin{multline*}
+            O\Big(|\Phi| + |\States| + \sum_{\ell=1}^u |r_\ell| + \underbrace{\log (|\States|\cdot |\Phi|\cdot 2^{2\sum_{\ell=1}^u |r_\ell|})}_{(1)} +\\
+            \underbrace{(|\Phi| + |\States| + \sum_{\ell=1}^u |r_\ell|)}_{(2)}\cdot\underbrace{\log (|\States|\cdot |\Phi|\cdot 2^{2\sum_{\ell=1}^u |r_\ell|})}_{(3)}\Big),
+        \end{multline*}
+        %  where  $\alpha = |\Phi| + |\States| + \sum_{\ell=1}^u |r_\ell|$, 
+        %  $r_1,\ldots, r_u$ are the regular expressions of $\Phi$, and $\States$ the states of $\Ku$.
+         
+        In particular, $(1)$~$O(\log (|\States|\cdot |\Phi|\cdot 2^{2\sum_{\ell=1}^u |r_\ell|}))$ bits are used for the bound $b$ on the trace length, $(3)$~for \emph{each subformula} $\hsBt\psi'$ of $\Phi$ at most $O(\log (|\States|\cdot |\Phi|\cdot 2^{2\sum_{\ell=1}^u |r_\ell|}))$ recursive calls of \texttt{Reach} may be simultaneously active (the recursion depth of \texttt{Reach} is logarithmic in $b$), and $(2)$~each call of \texttt{Reach} requires $O(|\Phi| + |\States| + \sum_{\ell=1}^u |r_\ell|)$ bits.\qedhere
+ %  \end{itemize}
+%    
+\end{proof}
+
+Finally, since a Kripke structure can be unravelled against the direction of its edges,
+and a language $\lang$ is regular if and only if its reversed version $\lang^{\text{Rev}}=\{w(|w|)\cdots w(1)\mid w\in\lang\}$ is, the proposed algorithm can be easily modified to deal with the symmetric fragment $\E\Ebar$, proving that also the MC problem for $\E\Ebar$ is in $\Psp$.
+
+%Let us now move on to the bigger fragments $\AAbarBBbar$ and $\AAbarEEbar$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Let us now focus on $\AAbarBBbar$. 
+% \texttt{CheckAux} can be used iteratively as a basic engine to check formulas $\Phi$ of $\AAbarBBbar$:  
+% at each iteration, we select an occurrence of a subformula of $\Phi$, either of the form $\hsA\psi$ or $\hsAt\psi$, without \emph{internal} occurrences of $\hsA$ and $\hsAt$. For such an occurrence, say $\hsA\psi$ ($\hsAt\psi$ is symmetric), we compute the set $S_{\hsA\psi}$ of states of $\Ku$ s.t., for any $\rho\in\Trk_{\Ku}$, $\Ku,\rho\models\hsA\psi$  iff $\lst(\rho)\in S_{\hsA\psi}$.
+% %
+% To this aim we run \texttt{CheckAux}($\Ku,\neg\psi$) using each $s\in S$ as the initial state (in place of $\sinit$): we have $s\in S_{\hsA\psi}$ iff the procedure returns $\bot$.
+% %
+% Then we replace $\hsA\psi$ in $\Phi$ with a fresh reg.\ expr.\ $r_{\hsA\psi}:=\top^*\cdot\big( \bigcup_{s'\in S_{\hsA\psi}} q_{s'}\big)$---where $q_{s'}$ is an auxiliary letter labeling $s'\in S$ only---obtaining  a formula $\Phi'$.
+% If $\Phi'$ is in $\B\Bbar$ the conversion is completed, otherwise we proceed with another iteration.
+
+% %%%%%%%%%%%%%%%%%%%%%%%
+% Finally, the pure propositional fragment $\HSprop$ can be proved $\Psp$-hard 
+% by a reduction from the $\Psp$-complete \emph{universality problem for regular expressions}: such lower bound immediately propagates
+% to all other \HS\ fragments. %The next theorem summarizes all the achieved results.
+
+% \begin{theorem}\label{th:glob}
+% The MC problem for formulas of any (proper or improper) sub-fragment of $\AAbarBBbar$ (and $\AAbarEEbar$) on finite Kripke structures is $\Psp$-complete.
+% \end{theorem}

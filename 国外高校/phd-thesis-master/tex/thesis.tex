@@ -1,0 +1,133 @@
+\documentclass[twoside,openright,titlepage,numbers=noenddot,headinclude,%
+               footinclude=true,cleardoublepage=empty,abstractoff,BCOR=5mm,%
+               paper=a4,fontsize=11pt,ngerman,american]{scrreprt}
+
+% Custom config ===============================================================
+
+% Classic thesis
+\usepackage{amssymb}
+\input{classicthesis-config}
+
+% Theorems and definitions
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}
+
+\newtheorem{algorithm}{Algorithm}
+\usepackage{algpseudocode}
+
+% Counters
+\renewcommand{\labelenumi}{{\color{halfgray}(\alph{enumi})}}
+\renewcommand{\labelenumii}{\color{halfgray}{\roman{enumii}.}}
+\renewcommand{\labelitemi}{{\color{halfgray}-}}%\raisebox{0.3ex}{\tiny$\blacksquare$}}}
+
+\numberwithin{theorem}{chapter}
+\numberwithin{definition}{chapter}
+\numberwithin{algorithm}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
+
+% Maths
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\numberwithin{equation}{chapter}
+\allowdisplaybreaks
+
+% Shaded boxes
+\usepackage{framed}
+\newenvironment{remark}[1]{%
+  \definecolor{shadecolor}{gray}{0.9}%
+  \begin{shaded}{\color{Maroon}\noindent\textsc{#1}}\\%
+}{%
+  \end{shaded}%
+}
+
+% Code snippets
+\usepackage{minted}
+\definecolor{rulecolor}{rgb}{0.80,0.80,0.80}
+\definecolor{bgcolor}{rgb}{1.0,1.0,1.0}
+\newminted{python}{bgcolor=bgcolor}
+
+% Todo
+\newcommand{\todo}[1]{\textcolor{red}{[TODO] #1}}
+
+% PS pictures
+\usepackage{pstricks,auto-pst-pdf}
+
+% Landscape tables
+\usepackage{rotating}
+
+% Checkmarks
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+% Wide tables
+\usepackage{ltablex}
+
+
+% -----------------------------------------------------------------------------
+
+\begin{document}
+\frenchspacing
+\raggedbottom
+\selectlanguage{american}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+
+% Front pages =================================================================
+\include{frontback/titlepage}
+%\cleardoublepage\include{frontback/disclaimer}
+\cleardoublepage\include{frontback/jury}
+\cleardoublepage\include{frontback/abstract}
+%\cleardoublepage\include{frontback/publications}
+\cleardoublepage\include{frontback/acknowledgments}
+\pagestyle{scrheadings}
+\cleardoublepage\include{frontback/toc}
+
+
+% Content =====================================================================
+\pagenumbering{arabic}
+
+\cleardoublepage
+\include{chapters/chapter01}\cleardoublepage
+
+%\ctparttex{}
+\part{Growing Decision Trees}\label{part:1}
+\include{chapters/chapter02}\cleardoublepage
+\include{chapters/chapter03}\cleardoublepage
+\include{chapters/chapter04}\cleardoublepage
+\include{chapters/chapter05}\cleardoublepage
+
+%\ctparttex{}
+\part{Interpreting Random Forests}\label{part:2}
+\include{chapters/chapter06}\cleardoublepage
+\include{chapters/chapter07}\cleardoublepage
+
+%\ctparttex{}
+\part{Subsampling data}\label{part:3}
+\include{chapters/chapter08}
+
+\addtocontents{toc}{\protect\vspace*{\baselineskip}\protect}
+\cleardoublepage
+\makeatletter
+\def\toclevel@chapter{-1}
+\makeatother
+\include{chapters/chapter09}
+
+
+% Back pages ==================================================================
+\appendix
+\cleardoublepage
+\part{Appendix}
+
+\cleardoublepage\include{frontback/notations}
+\cleardoublepage\include{frontback/bibliography}
+
+
+\end{document}

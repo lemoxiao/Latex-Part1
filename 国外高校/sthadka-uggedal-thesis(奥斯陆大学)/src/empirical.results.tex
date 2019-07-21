@@ -1,0 +1,1720 @@
+\begin{figure}
+  \begin{whole}
+    \includegraphics{fig_experiment_mortality}
+    \reducecaption{10}
+    \caption[Experiment Non-Achievement Rates]{
+      Non-achievement rates for the various parts of the experiment.
+      The sample $N$ of 171 \urort{} users were given a pretest and
+      a sample $n_1$ of 123 completes the pretest.
+      By randomization a sample $E_1$ of 35 were given a treatment while
+      a sample $C_1$ of 36 were given a placebo.
+      The sample $n_1$ were given a follow-up questionnaire for checking
+      how the installation of the prototypes went. $n_2$ completed the follow-up
+      questionnaire.
+      A sample $E_2$ of 25 and a sample $C_2$ of 20 managed to install
+      the treatment and placebo prototype respectively.
+      Of those, a sample $E_3$ of 14 from the treatment sample $E_2$ and
+      a sample $C_3$ of 11 from the placebo sample $C_2$ completed
+      a posttest.
+    }
+    \label{figure:fig.experiment.mortality}
+  \end{whole}
+\end{figure}
+
+\section{Results}
+\label{section:empirical.results}
+
+\figureref{fig.experiment.mortality} gives an overview of how many respondents
+we had to our pretest, posttest, and follow-up questions. As seen in the
+figure the non-achievement rate was quite high from the initial sample $N$ to
+the respondents of our pretest $n_1$. The non-achievement
+rates was more or less constant from pretest respondents $n_1$ to treatment
+$E_1$ and placebo $C_1$ obtention, to successful treatment $E_2$ and placebo
+$C_2$ installation, and finally to posttest respondents $E_3$ and $C_3$.
+The non-achievement rate for going through
+all steps from a pretest ($n = 123$) to the posttest ($n = 14 + 11 = 25$)
+\begin{sparkline}{3}
+  %Name  Size Unit
+  %pre   100%  1
+  %post 20.3%  .203
+  \sparkspike .25  1
+  \sparkspike .75  .203
+\end{sparkline}
+is quite high at 79.7\%.
+
+\begin{table}
+  \begin{whole}
+  \begin{tabular}{rrrrrrrrrrl}
+
+    &
+    &
+    \multicolumn{2}{c}{Gender (\%)} \\
+
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{female} &
+    \multicolumn{1}{c}{male} &
+    \multicolumn{1}{c}{$\overline{Age}$} &
+    \multicolumn{1}{c}{$\sigma$} &
+    &
+    \multicolumn{1}{c}{$U$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (2-tailed)} \\
+
+    \cmidrule(lr){2-10}
+
+    $E$ &
+    13 &
+    14.3 &
+    85.7 &
+    26.23 &
+    10.902 &
+    \multirow{3}{*}{\threeguides} &
+    68.5 &
+    -0.174 &
+    0.876 &
+    $E$\dash{}$C$ \\
+
+    $C$ &
+    11 &
+    --- &
+    100.0 &
+    24.55 &
+    7.917 &
+    &
+    580.0 &
+    -0.468 &
+    0.645 &
+    $E$\dash{}Rest \\
+
+    Rest &
+    97 &
+    8.2 &
+    91.8 &
+    26.81 &
+    9.324 &
+    &
+    475.0 &
+    -0.595 &
+    0.559 &
+    $C$\dash{}Rest \\
+
+  \end{tabular}
+  \reducecaption{3}
+  \caption[Respondents Gender and Age, Between Groups]{%
+    Respondents gender and age. Comparison of age between
+    experiment group, control group, and those not given treatment
+    or placebo.
+  }
+  \label{table:respondents.profile.gender.age}
+  \end{whole}
+\end{table}
+
+\tablepageref{respondents.profile.gender.age} shows the gender distribution
+and mean age of both our experiment group, control group, and the respondents
+which never got a treatment or placebo. The age differences between groups are
+unnoticeable and far from statistically significant.
+The data shows that the majority of respondents were male.
+
+In addition to gather characteristics about age and gender we also
+investigated how frequent respondents used Firefox as their browser,
+how often they used \urort{}, and how often they used \urort{} in an
+authenticated state.
+Based on the questions:
+\begin{items}
+  \item Do you use Firefox{}?
+  \item Do you sign-in (with user name and password) when using
+    \urort{}?
+\end{items}
+
+we graded respondents answers as follows:
+
+\begin{items}
+  \item Always: 5
+  \item Regularly: 4
+  \item Sometimes: 3
+  \item Seldom/never: 2
+\end{items}
+
+Based on the question:
+\q{How often do you use \urort{}?}
+we graded respondents answers as follows:
+
+\begin{items}
+  \item Daily: 5
+  \item Several times a week: 4
+  \item Weekly: 3
+  \item Monthly: 2
+  \item Seldom/never: 1
+\end{items}
+
+\begin{table}
+  \begin{whole}
+  \begin{tabular}{rrrrrrrrll}
+
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{1}{c}{$Rng$} &
+    &
+    \multicolumn{1}{c}{$U$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (2-tailed)} \\
+
+    \cmidrule(lr){2-8}
+
+    $E$ &
+    14 &
+    5 &
+    3 &
+    \multirow{3}{*}{\threeguides} &
+    70.5 &
+    -0.407 &
+    0.707 &
+    $E$\dash{}$C$ &
+    \multirow{3}{*}{Firefox usage} \\
+
+    $C$ &
+    11 &
+    5 &
+    2 &
+    &
+    668.0 &
+    -0.181 &
+    0.887 &
+    $E$\dash{}Rest \\
+
+    Rest &
+    98 &
+    5 &
+    3 &
+    &
+    508.5 &
+    -0.352 &
+    0.748 &
+    $C$\dash{}Rest \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    14 &
+    3 &
+    4 &
+    \multirow{3}{*}{\threeguides} &
+    47.5 &
+    -1.757 &
+    0.085 &
+    $E$\dash{}$C$ &
+    \multirow{3}{*}{\urort{} usage} \\
+
+    $C$ &
+    11 &
+    4 &
+    2 &
+    &
+    653.5 &
+    -0.294 &
+    0.773 &
+    $E$\dash{}Rest \\
+
+    Rest &
+    98 &
+    3 &
+    4 &
+    &
+    353.5 &
+    -1.918 &
+    0.055 &
+    $C$\dash{}Rest \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    14 &
+    4 &
+    3 &
+    \multirow{3}{*}{\threeguides} &
+    63.5 &
+    -0.774 &
+    0.462 &
+    $E$\dash{}$C$ &
+    \multirow{3}{*}{Authenticated usage} \\
+
+    $C$ &
+    11 &
+    3 &
+    3 &
+    &
+    572.5 &
+    -1.035 &
+    0.306 &
+    $E$\dash{}Rest \\
+
+    Rest &
+    98 &
+    3 &
+    3 &
+    &
+    527.5 &
+    -0.125 &
+    0.920 &
+    $C$\dash{}Rest \\
+
+  \end{tabular}
+  \reducecaption{3}
+  \caption[Respondents Firefox and \urort{} Usage, Between Groups]{%
+    Respondents Firefox and \urort{} usage. Comparison between
+    experiment group, control group, and those not given treatment
+    or placebo.
+  }
+  \label{table:respondents.profile.usage}
+  \end{whole}
+\end{table}
+
+The data in
+\tableref{respondents.profile.usage}
+shows little difference in Firefox usage between
+groups\dash{}the differences are
+far from statistically significant. The same trend can be observed for
+whether the respondents are authenticated when they use \urort{}.
+
+In actual \urort{} usage, we observe that control group respondents had
+higher usage frequencies, both compared to experiment respondents and
+respondents which never were given a treatment or placebo. The difference is
+close to statistically significant, compared between the control group and
+those without treatment or placebo (respondents not having tried to install
+our prototype).
+
+\subsection{%
+  \rp[1]{
+    Do users perceive social navigation through activity streams as helpful in
+    order to keep up-to-date on favorites' activities on \urort{}?
+  }
+}
+
+Our $H_0$ stated that we would not see any positive change in how easy
+respondents felt it was to keep up-to-date on favorite's activities
+after introducing an activity steam. Our $H_A$ said that we
+would indeed observe a change in how respondents rated this task.
+
+\subsubsection{Activities in general}
+
+Based on the statement
+\q{It's easy to keep up-to-date on what my favorites are doing
+on \urort{}} we graded respondents answers as follows: 
+
+\begin{items}
+  \item Fully disagree: 1
+  \item Somewhat disagree: 2
+  \item Neither agree nor disagree: 3
+  \item Somewhat agree: 4
+  \item Fully agree: 5
+\end{items}
+
+First we compared how easy respondents felt it was to keep up-to-date on
+favorites' activities after they were given a treatment (an activity stream)
+or a placebo.
+See
+\tableref{up.to.date.favorite.activities.between} for the results.
+
+\begin{table}
+  \begin{tabular}{rrrclrrrr}
+
+    &
+    &
+    &
+    \multicolumn{2}{c}{$Mdn_{\sum{E}}$} \\
+
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{C}}$} &
+    \multicolumn{1}{c}{$Rng$} &
+    \multicolumn{1}{c}{$U$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    12 &
+    5 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{1} &
+    4 &
+    \multirow{2}{*}{45} &
+    \multirow{2}{*}{-1.353} &
+    \multirow{2}{*}{0.089}\\
+
+    $C$ &
+    11 &
+    4 &
+    &
+    &
+    3 \\
+
+  \end{tabular}
+  \caption[Up-to-date on Favorites' Activities, Between Groups]{%
+    Up-to-date on favorites' activities. Comparison between
+    experiment and control group for the posttest.
+  }
+  \label{table:up.to.date.favorite.activities.between}
+\end{table}
+
+The results show a tendency towards higher acceptance scores for experiment
+respondents having used an activity stream, than
+control respondents with a placebo. This difference is however
+not statistically significant.
+
+Then we tested if there was a change in acceptance within the respondent
+groups from before they were given a treatment or placebo and after.
+The results can be seen in
+\tableref{up.to.date.favorite.activities.within}.
+
+\begin{table}
+  \begin{whole}
+  \begin{tabular}{rrrrccclrrrr}
+
+    &
+    &
+    &
+    &
+    \multicolumn{2}{c}{Post} &
+    \multicolumn{2}{c}{$Mdn_{\sum{E}}$} \\
+
+    &
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{2}{c}{$-$ Pre} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{C}}$} &
+    \multicolumn{1}{c}{$Rng$} &
+    \multicolumn{1}{c}{$T$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
+
+    \cmidrule(lr){3-12}
+
+    \multirow{2}{*}{$E$} &
+    Pre &
+    14 &
+    3 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{2} &
+    \multirow{4}{*}{\fourguides} &
+    \multirow{4}{*}{1} &
+    4 &
+    \multirow{2}{*}{10} &
+    \multirow{2}{*}{-1.513} &
+    \multirow{2}{*}{0.086}\\
+
+    &
+    Post &
+    12 &
+    5 &
+    &
+    &
+    &
+    &
+    4 \\
+
+    \multirow{2}{*}{$C$} &
+    Pre &
+    11 &
+    3 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{1} &
+    &
+    &
+    3 &
+    \multirow{2}{*}{16} &
+    \multirow{2}{*}{-0.787} &
+    \multirow{2}{*}{0.258}\\
+
+    &
+    Post &
+    11 &
+    4 &
+    &
+    &
+    &
+    &
+    3 \\
+
+  \end{tabular}
+  \reducecaption{9}
+  \caption[Up-to-date on Favorites' Activities, Within Groups]{%
+    Up-to-date on favorites' activities.  Comparison between
+    pretest and posttest within the experiment and control group.
+  }
+  \label{table:up.to.date.favorite.activities.within}
+  \end{whole}
+\end{table}
+
+The data shows a tendency towards higher acceptance rates from the pretest to
+the posttest for both experiment and control respondents. The acceptance of
+the statement about how easy it was to keep up-to-date on favorites'
+activities have risen more for the respondents having used an activity stream
+than those with a placebo. Neither of these increases
+are statistically significant.
+
+\subsubsection{Specific activities}
+
+\addline
+
+We'll now look at respondents answers to more specific statements about
+keeping up-to-date on activities.
+Based on the statements:
+\begin{items}
+  \item It's easy to keep up-to-date on whether my favorites publishes
+    new songs on \urort{}.
+  \item It's easy to keep up-to-date on whether my favorites publishes
+    new blog posts on \urort{}.
+  \item It's easy to keep up-to-date on whether my favorites are
+    performing at concerts.
+  \item It's easy to keep up-to-date on the reactions other users at
+    \urort{} have towards my favorite artists' songs.
+\end{items}
+
+we graded respondents answers as follows:
+
+\begin{items}
+  \item Fully disagree: 1
+  \item Somewhat disagree: 2
+  \item Neither agree nor disagree: 3
+  \item Somewhat agree: 4
+  \item Fully agree: 5
+\end{items}
+
+We compared how easy respondents felt it was to keep up-to-date on
+favorites' specific activities after they are given a treatment
+or a placebo.
+See
+\tableref{up.to.date.favorite.specific.activities.between} for the results.
+
+\begin{table}
+  \begin{whole}
+  \begin{tabular}{rrrclrrrrl}
+
+    &
+    &
+    &
+    \multicolumn{2}{c}{$Mdn_{\sum{E}}$} \\
+
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{C}}$} &
+    \multicolumn{1}{c}{$Rng$} &
+    \multicolumn{1}{c}{$U$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    12 &
+    5 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{1,0} &
+    4 &
+    \multirow{2}{*}{59} &
+    \multirow{2}{*}{-0.479} &
+    \multirow{2}{*}{0.340} &
+    \multirow{2}{*}{Song}\\
+
+    $C$ &
+    11 &
+    4 &
+    &
+    &
+    2 \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    12 &
+    4.5 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{1.5} &
+    4 &
+    \multirow{2}{*}{59} &
+    \multirow{2}{*}{-0.460} &
+    \multirow{2}{*}{0.289} &
+    \multirow{2}{*}{Blog}\\
+
+    $C$ &
+    11 &
+    3 &
+    &
+    &
+    2 \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    12 &
+    3.5 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{-0.5} &
+    4 &
+    \multirow{2}{*}{66} &
+    \multirow{2}{*}{0.000} &
+    \multirow{2}{*}{0.517} &
+    \multirow{2}{*}{Concert}\\
+
+    $C$ &
+    11 &
+    4 &
+    &
+    &
+    3 \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    12 &
+    3.5 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{0.5} &
+    4 &
+    \multirow{2}{*}{60} &
+    \multirow{2}{*}{-0.385} &
+    \multirow{2}{*}{0.372} &
+    \multirow{2}{*}{Review}\\
+
+    $C$ &
+    11 &
+    3 &
+    &
+    &
+    3 \\
+
+  \end{tabular}
+  \reducecaption{11}
+  \caption[Up-to-date on Specific Activities, Between Groups]{%
+    Up-to-date on favorites' specific activities. Comparison between
+    experiment and control group for the posttest.
+  }
+  \label{table:up.to.date.favorite.specific.activities.between}
+  \end{whole}
+\end{table}
+
+The reported degree of how easy it is to keep up-to-date
+on new songs, blogs posts, and reviews is higher for those
+which used an activity stream than those without. Respondents using
+and activity stream reported a lower values of how easy it was
+to keep up-to-date on concerts compared to those without such treatment.
+Neither the tendencies towards increases and decreases in degrees of keeping
+up-to-date, from the
+control group to the experiment group, were statically significant.
+
+As for general activities, we also tested whether respondents perception
+of how easy it was to keep up-to-date on specific activities from
+favorites had changed from before a treatment or placebo was given, to after.
+See 
+\tablepageref{up.to.date.favorite.specific.activities.within}
+for the results of the
+in group comparisons.
+
+\begin{table}
+  \begin{whole}
+  \begin{tabular}{rrrrccclrrrrl}
+
+    &
+    &
+    &
+    &
+    \multicolumn{2}{c}{Post} &
+    \multicolumn{2}{c}{$Mdn_{\sum{E}}$} \\
+
+    &
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{2}{c}{$-$ Pre} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{C}}$} &
+    \multicolumn{1}{c}{$Rng$} &
+    \multicolumn{1}{c}{$T$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
+
+    \cmidrule(lr){3-12}
+
+      \multirow{2}{*}{$E$} &
+        Pre &
+        14 &
+        4 &
+        \multirow{2}{*}{\twoguides} &
+        \multirow{2}{*}{1} &
+        \multirow{4}{*}{\fourguides} &
+        \multirow{4}{*}{0} &
+        4 &
+        \multirow{2}{*}{8.0} &
+        \multirow{2}{*}{-1.780} &
+        \multirow{2}{*}{0.049} &
+        \multirow{4}{*}{Song} \\
+
+        &
+        Post &
+        12 &
+        5 &
+        &
+        &
+        &
+        &
+        4 \\
+
+      \multirow{2}{*}{$C$} &
+        Pre &
+        11 &
+        3 &
+        \multirow{2}{*}{\twoguides} &
+        \multirow{2}{*}{1} &
+        &
+        &
+        3 &
+        \multirow{2}{*}{4.0} &
+        \multirow{2}{*}{-1.709} &
+        \multirow{2}{*}{0.055} &
+        \\
+
+        &
+        Post &
+        11 &
+        4 &
+        &
+        &
+        &
+        &
+        2 \\
+
+    \cmidrule(lr){2-12}
+
+      \multirow{2}{*}{$E$} &
+        Pre &
+        14 &
+        3 &
+        \multirow{2}{*}{\twoguides} &
+        \multirow{2}{*}{1.5} &
+        \multirow{4}{*}{\fourguides} &
+        \multirow{4}{*}{1.5} &
+        3 &
+        \multirow{2}{*}{9.5} &
+        \multirow{2}{*}{-1.872} &
+        \multirow{2}{*}{0.039} &
+        \multirow{4}{*}{Blog} \\
+
+        &
+        Post &
+        12 &
+        4.5 &
+        &
+        &
+        &
+        &
+        4 \\
+
+      \multirow{2}{*}{$C$} &
+        Pre &
+        11 &
+        3 &
+        \multirow{2}{*}{\twoguides} &
+        \multirow{2}{*}{0} &
+        &
+        &
+        3 &
+        \multirow{2}{*}{13.0} &
+        \multirow{2}{*}{-1.150} &
+        \multirow{2}{*}{0.166} &
+        \\
+
+        &
+        Post &
+        11 &
+        3 &
+        &
+        &
+        &
+        &
+        2 \\
+
+    \cmidrule(lr){2-12}
+
+      \multirow{2}{*}{$E$} &
+        Pre &
+        14 &
+        3 &
+        \multirow{2}{*}{\twoguides} &
+        \multirow{2}{*}{0.5} &
+        \multirow{4}{*}{\fourguides} &
+        \multirow{4}{*}{-0.5} &
+        3 &
+        \multirow{2}{*}{7.5} &
+        \multirow{2}{*}{-1.127} &
+        \multirow{2}{*}{0.188} &
+        \multirow{4}{*}{Concert} \\
+
+        &
+        Post &
+        12 &
+        3.5 &
+        &
+        &
+        &
+        &
+        4 \\
+
+      \multirow{2}{*}{$C$} &
+        Pre &
+        11 &
+        3 &
+        \multirow{2}{*}{\twoguides} &
+        \multirow{2}{*}{1} &
+        &
+        &
+        3 &
+        \multirow{2}{*}{5.5} &
+        \multirow{2}{*}{-1.063} &
+        \multirow{2}{*}{0.203} &
+        \\
+
+        &
+        Post &
+        11 &
+        4 &
+        &
+        &
+        &
+        &
+        3 \\
+
+    \cmidrule(lr){2-12}
+
+      \multirow{2}{*}{$E$} &
+        Pre &
+        13 &
+        3 &
+        \multirow{2}{*}{\twoguides} &
+        \multirow{2}{*}{0.5} &
+        \multirow{4}{*}{\fourguides} &
+        \multirow{4}{*}{1.5} &
+        4 &
+        \multirow{2}{*}{4.5} &
+        \multirow{2}{*}{-1.298} &
+        \multirow{2}{*}{0.125} &
+        \multirow{4}{*}{Review} \\
+
+        &
+        Post &
+        12 &
+        3.5 &
+        &
+        &
+        &
+        &
+        4 \\
+
+      \multirow{2}{*}{$C$} &
+        Pre &
+        11 &
+        4 &
+        \multirow{2}{*}{\twoguides} &
+        \multirow{2}{*}{-1} &
+        &
+        &
+        3 &
+        \multirow{2}{*}{9.5} &
+        \multirow{2}{*}{-0.780} &
+        \multirow{2}{*}{0.281} &
+        \\
+
+        &
+        Post &
+        11 &
+        3 &
+        &
+        &
+        &
+        &
+        3 \\
+
+  \end{tabular}
+  \reducecaption{3}
+  \caption[Up-to-date on Specific Activities, Within Groups]{%
+    Up-to-date on favorites' specific activities. Comparison between
+    pretest and posttest within the experiment and control group.
+  }
+  \label{table:up.to.date.favorite.specific.activities.within}
+  \end{whole}
+\end{table}
+
+The within group data shows that experiment respondents and control
+respondents find it easier to keep up-to-date on recent songs
+and concert performances after the treatment or placebo was given.
+The increases are of the same order for both those which used an
+activity stream and those without. Neither of the two groups increases
+for concerts is statistically significant.
+The experiment groups' increase is significant for songs while the control
+groups' increase for songs is insignificant.
+Note that the difference between $p$ values for the two groups related to
+songs are marginal.
+
+Respondents having used an activity stream saw an increase in median
+response from \q{neither agree or disagree} to \q{fully agree} regarding
+how easy it was to keep up-to-date on blog posts of favorites.
+This difference is statistically significant.
+The control group saw no such increase after they were given a placebo.
+
+On the topic of how easy respondents could keep up-to-date on
+reviews of favorites' songs the experiment group saw no change
+after treatment while the control group saw a decrease after having used
+a placebo. This decrease is not statistically significant.
+
+\subsubsection{Perceived usefulness}
+
+Like \citet{davis89} we asked respondents about the perceived usefulness
+of the prototype they were given (an activity stream or a placebo) in relation
+to keeping up-to-date on favorites. Based on the statements:
+
+\begin{items}
+  \item \latest{} would enable me to keep up-to-date on my favorites in an
+    efficient manner.
+  \item \latest{} would enable me to keep up-to-date on more favorites.
+  \item \latest{} would make it easier to keep up-to-date on favorites.
+  \item \latest{} would be useful for keeping up-to-date on favorites.
+\end{items}
+
+were graded respondents answers as follows: 
+
+\begin{items}
+  \item Extremely unlikely: 1
+  \item Unlikely: 2
+  \item Slight unlikely: 3
+  \item Neutral: 4
+  \item Slight likely: 5
+  \item Likely: 6
+  \item Extremely Likely: 7
+\end{items}
+
+As these statements were only given in the
+posttest we compared how efficient, quantifiable, easy, and useful respondents
+felt it was to
+keep up-to-date on favorites' specific activities after they had used
+an activity stream or a placebo. In other words we compared the difference
+between the experiment and control group.
+See
+\tableref{up.to.date.favorite.perceived.usefulness.between} for the results.
+
+\begin{table}
+  \begin{whole}
+  \begin{tabular}{rrrclrrrrl}
+
+    &
+    &
+    &
+    \multicolumn{2}{c}{$Mdn_{\sum{E}}$} \\
+
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{C}}$} &
+    \multicolumn{1}{c}{$Rng$} &
+    \multicolumn{1}{c}{$U$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    12 &
+    6.5 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{0.5} &
+    3 &
+    \multirow{2}{*}{58.0} &
+    \multirow{2}{*}{-0.547} &
+    \multirow{2}{*}{0.355} &
+    \multirow{2}{*}{Effective}\\
+
+    $C$ &
+    11 &
+    6 &
+    &
+    &
+    2 \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    12 &
+    6 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{0} &
+    3 &
+    \multirow{2}{*}{62.0} &
+    \multirow{2}{*}{-0.270} &
+    \multirow{2}{*}{0.387} &
+    \multirow{2}{*}{More}\\
+
+    $C$ &
+    11 &
+    6 &
+    &
+    &
+    2 \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    12 &
+    6.5 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{0.5} &
+    3 &
+    \multirow{2}{*}{55.5} &
+    \multirow{2}{*}{-0.707} &
+    \multirow{2}{*}{0.286} &
+    \multirow{2}{*}{Easier}\\
+
+    $C$ &
+    11 &
+    6 &
+    &
+    &
+    2 \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    12 &
+    6 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{0} &
+    3 &
+    \multirow{2}{*}{60.5} &
+    \multirow{2}{*}{-0.370} &
+    \multirow{2}{*}{0.400} &
+    \multirow{2}{*}{Useful}\\
+
+    $C$ &
+    11 &
+    6 &
+    &
+    &
+    2 \\
+
+  \end{tabular}
+  \reducecaption{10}
+  \caption[Perceived Usefulness, Between Groups]{%
+    Perceived usefulness of \latest{}. Comparison between
+    experiment and control group for the posttest.
+  }
+  \label{table:up.to.date.favorite.perceived.usefulness.between}
+  \end{whole}
+\end{table}
+
+The data shows no differences in ranking regarding \latest{}
+perceived ability for enabling respondents to keep up-to-date on more
+favorites and general usefulness for keeping up-to-date on favorites,
+between the experiment and control group.
+The experiment group shows a small increase in the ranking of
+\latest{} effectiveness and easefulness for keeping up-to-date on favorites
+compared to the control group. These differences is not statistically
+significant.
+
+\subsubsection{Perceived ease of use}
+
+Borrowing from the works of \citet{davis89} again,
+we asked respondents about the perceived ease of use
+of the prototype they were given (an activity stream or a placebo).
+Based on the statements:
+\begin{items}
+  \item It would be easy to learn to use \latest{}.
+  \item It would be easy to make \latest{} do what I want.
+  \item It would be easy to become skillful at using \latest{}.
+  \item \latest{} would be easy to use.
+\end{items}
+
+were graded respondents answers as follows:
+
+\begin{items}
+  \item Extremely unlikely: 1
+  \item Unlikely: 2
+  \item Slight unlikely: 3
+  \item Neutral: 4
+  \item Slight likely: 5
+  \item Likely: 6
+  \item Extremely Likely: 7
+\end{items}
+
+Just as the perceived usefulness statements, these statements were only
+given in the posttest. We compared the responses to these statements
+between the experiment and control group to see if the introduction
+of an activity stream or placebo made a difference in how easy
+the respondents perceived \latest{} would be to use.
+See
+\tableref{up.to.date.favorite.perceived.ease.of.use.between} for the results.
+
+\begin{table}
+  \begin{whole}
+  \begin{tabular}{rrrclrrrrl}
+
+    &
+    &
+    &
+    \multicolumn{2}{c}{$Mdn_{\sum{E}}$} \\
+
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{C}}$} &
+    \multicolumn{1}{c}{$Rng$} &
+    \multicolumn{1}{c}{$U$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    12 &
+    6 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{0} &
+    3 &
+    \multirow{2}{*}{57.5} &
+    \multirow{2}{*}{-0.561} &
+    \multirow{2}{*}{0.320} &
+    \multirow{2}{*}{Easy to learn}\\
+
+    $C$ &
+    11 &
+    6 &
+    &
+    &
+    3 \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    12 &
+    5.5 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{-0.5} &
+    3 &
+    \multirow{2}{*}{50.5} &
+    \multirow{2}{*}{-1.025} &
+    \multirow{2}{*}{0.177} &
+    \multirow{2}{*}{Flexible}\\
+
+    $C$ &
+    11 &
+    6 &
+    &
+    &
+    4 \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    12 &
+    6 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{0} &
+    3 &
+    \multirow{2}{*}{58.5} &
+    \multirow{2}{*}{-0.486} &
+    \multirow{2}{*}{0.343} &
+    \multirow{2}{*}{Become skillful}\\
+
+    $C$ &
+    11 &
+    6 &
+    &
+    &
+    3 \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    12 &
+    6 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{0} &
+    4 &
+    \multirow{2}{*}{59.5} &
+    \multirow{2}{*}{-0.429} &
+    \multirow{2}{*}{0.372} &
+    \multirow{2}{*}{Easy to use}\\
+
+    $C$ &
+    11 &
+    6 &
+    &
+    &
+    3 \\
+
+  \end{tabular}
+  \reducecaption{7}
+  \caption[Perceived Ease of Use, Between Groups]{%
+    Perceived ease of use for \latest{}. Comparison between
+    experiment and control group for the posttest.
+  }
+  \label{table:up.to.date.favorite.perceived.ease.of.use.between}
+  \end{whole}
+\end{table}
+
+The ease of use data shows little differences between the groups. The
+respondents perception of how flexible \latest{} would be in use are
+actually higher for the control group\dash{}does not using an activity stream
+but a placebo. This difference is not statistically significant.
+
+\subsubsection{Activity stream as standard feature}
+
+We wanted to measure how well perceived the prototype was,
+by asking if people would want the functionality we provided to be a standard
+feature on the \urort{} web site. Based on the question:
+
+\begin{items}
+  \item Do you think \latest{} should be a standard feature of \urort{}?
+\end{items}
+
+we graded respondents answers as follows:
+
+\begin{items}
+  \item Fully disagree: 1
+  \item Somewhat disagree: 2
+  \item Neither agree nor disagree: 3
+  \item Somewhat agree: 4
+  \item Fully agree: 5
+\end{items}
+
+This question was naturally only asked in the posttest after usage.
+\tableref{up.to.date.standard.feature.between} compares responses between the
+experiment and control group.
+
+\begin{table}
+  \begin{tabular}{rrrclrrrr}
+
+    &
+    &
+    &
+    \multicolumn{2}{c}{$Mdn_{\sum{E}}$} \\
+
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{C}}$} &
+    \multicolumn{1}{c}{$Rng$} &
+    \multicolumn{1}{c}{$U$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    11 &
+    5 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{0} &
+    1 &
+    \multirow{2}{*}{55.0} &
+    \multirow{2}{*}{-0.607} &
+    \multirow{2}{*}{0.500}\\
+
+    $C$ &
+    11 &
+    5 &
+    &
+    &
+    1 \\
+
+  \end{tabular}
+  \caption[The Prototype as a Standard Feature,
+           Between Groups]{%
+    The prototype as a standard feature. Comparison
+    between experiment and control group for the posttest.
+  }
+  \label{table:up.to.date.standard.feature.between}
+\end{table}
+
+The standard feature data shows equally positive results for both groups.
+There is no significant difference in the results.
+
+\subsection{%
+  \rp[2]{
+    Does social navigation through activity streams lead users to more often
+    keep up-to-date on favorites' activities on \urort{}?
+  }
+}
+
+Our $H_0$ stated that we would not see any increase in how frequent
+experiment respondents kept up-to-date on favorites' activities after giving
+them an activity stream. The alternative $H_A$ contradicted this and said
+an activity stream would increase the frequency of how often experiment
+respondents were keeping up-to-date.
+
+\subsubsection{Keeping up-to-date frequency}
+
+Based on the question
+\q{How often do you update yourself on what your favorites on \urort{}
+   are doing?}
+we graded respondents answers as follows: 
+
+\begin{items}
+  \item Daily: 5
+  \item Several times a week: 4
+  \item Weekly: 3
+  \item Monthly: 2
+  \item Seldom/never: 1
+\end{items}
+
+First we compared how frequent respondents having used an activity stream kept
+up-to-date with those which hadn't used an activity stream. The results are
+displayed in \tableref{up.to.date.favorite.activities.frequency.between}.
+
+\begin{table}
+  \begin{tabular}{rrrclrrrr}
+
+    &
+    &
+    &
+    \multicolumn{2}{c}{$Mdn_{\sum{E}}$} \\
+
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{C}}$} &
+    \multicolumn{1}{c}{$Rng$} &
+    \multicolumn{1}{c}{$U$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    13 &
+    2 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{-1} &
+    2 &
+    \multirow{2}{*}{24.5} &
+    \multirow{2}{*}{-2.955} &
+    \multirow{2}{*}{0.002}\\
+
+    $C$ &
+    11 &
+    3 &
+    &
+    &
+    2 \\
+
+  \end{tabular}
+  \caption[Up-to-date on Activities Frequency,
+           Between Groups]{%
+    Frequency of keeping up-to-date on favorites' activities. Comparison
+    between experiment and control group for the posttest.
+  }
+  \label{table:up.to.date.favorite.activities.frequency.between}
+\end{table}
+
+As can be seen from the data, respondents which had used an activity stream
+reported lower frequencies of use than those which had used a placebo.
+This difference is highly significant.
+
+As for our previous two research questions and hypotheses we've also checked
+if there were changes in the frequency of keeping up-to-date within the
+experiment and control groups from before they were given a treatment or
+placebo, to after.
+The results can be seen in
+\tableref{up.to.date.favorite.activities.frequency.within}.
+
+\begin{table}
+  \begin{whole}
+  \begin{tabular}{rrrrccclrrrr}
+
+    &
+    &
+    &
+    &
+    \multicolumn{2}{c}{Post} &
+    \multicolumn{2}{c}{$Mdn_{\sum{E}}$} \\
+
+    &
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{2}{c}{$-$ Pre} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{C}}$} &
+    \multicolumn{1}{c}{$Rng$} &
+    \multicolumn{1}{c}{$T$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
+
+    \cmidrule(lr){3-12}
+
+    \multirow{2}{*}{$E$} &
+    Pre &
+    13 &
+    1 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{1} &
+    \multirow{4}{*}{\fourguides} &
+    \multirow{4}{*}{1} &
+    2 &
+    \multirow{2}{*}{10} &
+    \multirow{2}{*}{-1.941} &
+    \multirow{2}{*}{0.046}\\
+
+    &
+    Post &
+    13 &
+    2 &
+    &
+    &
+    &
+    &
+    2 \\
+
+    \multirow{2}{*}{$C$} &
+    Pre &
+    11 &
+    3 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{0} &
+    &
+    &
+    2 &
+    \multirow{2}{*}{8} &
+    \multirow{2}{*}{-1.134} &
+    \multirow{2}{*}{0.227}\\
+
+    &
+    Post &
+    11 &
+    3 &
+    &
+    &
+    &
+    &
+    2 \\
+
+  \end{tabular}
+  \reducecaption{9}
+  \caption[Up-to-date on Activities Frequency, Within Groups]{%
+    Frequency of keeping up-to-date on favorites' activities. Comparison
+    between pretest and posttest within the experiment and control group.
+  }
+  \label{table:up.to.date.favorite.activities.frequency.within}
+  \end{whole}
+\end{table}
+
+\removeline
+
+The results show a different picture than the between group posttest results.
+Here we see that the frequency of keeping up-to-date have increased over time
+for those respondents which used an activity stream. Those respondents with a
+placebo show a stagnation in the frequency of keeping up-to-date.
+The increase for experiment respondents is statistically significant.
+
+\subsubsection{Prototype usage frequency}
+
+\begin{table}
+  \begin{tabular}{rrrclrrrr}
+
+    &
+    &
+    &
+    \multicolumn{2}{c}{$Mdn_{\sum{E}}$} \\
+
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{C}}$} &
+    \multicolumn{1}{c}{$Rng$} &
+    \multicolumn{1}{c}{$U$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    12 &
+    3 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{1} &
+    2 &
+    \multirow{2}{*}{40.0} &
+    \multirow{2}{*}{-1.771} &
+    \multirow{2}{*}{0.056}\\
+
+    $C$ &
+    11 &
+    2 &
+    &
+    &
+    2 \\
+
+  \end{tabular}
+  \caption[Usage of Prototype Frequency,
+           Between Groups]{%
+    Frequency of using \latest{}. Comparison
+    between experiment and control group for the posttest.
+  }
+  \label{table:up.to.date.prototype.frequency.between}
+\end{table}
+
+We did also collect information in the posttest of how frequent respondents
+had used the prototype. Based on the question:
+
+\begin{items}
+  \item How frequently have you used \latest{} when you are
+    signed-in on \urort{}?
+\end{items}
+
+we rated respondents answers as follows:
+
+\begin{items}
+  \item Have not used: 1
+  \item Only a few times: 2
+  \item almost every time: 3
+  \item every time: 4
+\end{items}
+
+\tableref{up.to.date.prototype.frequency.between} lists an comparison
+between the experiment and control group for this question and ratings.
+
+The data shows that the experiment respondents used the prototype more
+frequently when they were logged in to \urort{} than the control respondents.
+This difference is however not statistically significant.
+
+\subsection{%
+  \rp[3]{
+    Does social navigation through activity streams lead users to make
+    more artists on \urort{} their favorites?
+  }
+}
+
+Our $H_0$ hypothesized that the amount of favorites would be greater for the
+experiment group (due to their activity stream usage) in comparison to
+the control group. First we looked at the differences
+between the experiment and control group,
+as can be seen in
+\tableref{up.to.date.favorite.amount.between}.
+
+\begin{table}
+  \begin{tabular}{rrrclrrrr}
+
+    &
+    &
+    &
+    \multicolumn{2}{c}{$Mdn_{\sum{E}}$} \\
+
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{C}}$} &
+    \multicolumn{1}{c}{$Rng$} &
+    \multicolumn{1}{c}{$U$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
+
+    \cmidrule(lr){2-9}
+
+    $E$ &
+    13 &
+    8 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{0} &
+    49 &
+    \multirow{2}{*}{68.5} &
+    \multirow{2}{*}{-0.174} &
+    \multirow{2}{*}{0.438}\\
+
+    $C$ &
+    11 &
+    8 &
+    &
+    &
+    38 \\
+
+  \end{tabular}
+  \caption[Number of Favorites, Between Groups]{%
+    Number of favorites. Comparison
+    between experiment and control group for the posttest.
+  }
+  \label{table:up.to.date.favorite.amount.between}
+\end{table}
+
+The data shows no notable nor significant difference between the amount of
+favorites for the two groups. The range of favorites are greater for the
+experiment group, but their medians are equal.
+
+We also looked at differences in the amount of favorites within both the
+control and experiment group from the pretest to the posttest. The data
+is summarized in
+\tableref{up.to.date.favorite.amount.within}.
+
+\begin{table}
+  \begin{whole}
+  \begin{tabular}{rrrrccclrrrr}
+
+    &
+    &
+    &
+    &
+    \multicolumn{2}{c}{Post} &
+    \multicolumn{2}{c}{$Mdn_{\sum{E}}$} \\
+
+    &
+    &
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{$Mdn$} &
+    \multicolumn{2}{c}{$-$ Pre} &
+    \multicolumn{2}{c}{$- Mdn_{\sum{C}}$} &
+    \multicolumn{1}{c}{$Rng$} &
+    \multicolumn{1}{c}{$T$} &
+    \multicolumn{1}{c}{$Z$} &
+    \multicolumn{1}{c}{$p$ (1-tailed)} \\
+
+    \cmidrule(lr){3-12}
+
+    \multirow{2}{*}{$E$} &
+    Pre &
+    13 &
+    8 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{0} &
+    \multirow{4}{*}{\fourguides} &
+    \multirow{4}{*}{-2} &
+    50 &
+    \multirow{2}{*}{39.0} &
+    \multirow{2}{*}{0} &
+    \multirow{2}{*}{0.515}\\
+
+    &
+    Post &
+    13 &
+    8 &
+    &
+    &
+    &
+    &
+    49 \\
+
+    \multirow{2}{*}{$C$} &
+    Pre &
+    11 &
+    6 &
+    \multirow{2}{*}{\twoguides} &
+    \multirow{2}{*}{2} &
+    &
+    &
+    35 &
+    \multirow{2}{*}{22.0} &
+    \multirow{2}{*}{-0.059} &
+    \multirow{2}{*}{0.5}\\
+
+    &
+    Post &
+    11 &
+    8 &
+    &
+    &
+    &
+    &
+    38 \\
+
+  \end{tabular}
+  \reducecaption{8}
+  \caption[Number of Favorites, Within Groups]{%
+    Number of favorites. Comparison
+    between pretest and posttest within the experiment and control group.
+  }
+  \label{table:up.to.date.favorite.amount.within}
+  \end{whole}
+\end{table}
+
+The within group data shows that there have been minimal development in the
+amount of favorites for the experiment group after the activity stream was
+used. The control group have seen an increase in the median amount of
+favorites. This change is far from statistically significant.
+
+\subsection{%
+  \rp[4]{
+    Can prototyping with Greasemonkey be considered a
+    viable technical option when testing user behavior in an
+    established web site?
+  }
+}
+
+We collected responses about how the prototype installation process went in a
+separate survey, in between the pretest and posttest. The results can be seen
+in \tableref{prototype.installation.success}.
+
+\begin{table}
+  \begin{tabular}{rrl}
+
+    \multicolumn{1}{c}{$N$} &
+    \multicolumn{1}{c}{\%} \\
+
+    \cmidrule(lr){1-2}
+
+    26 &
+    68.4 &
+    Yes, it was an easy and quick process \\
+
+    3 &
+    7.9 &
+    Yes, but I experienced small problems \\
+    
+    0 &
+    0.0 &
+    Yes, but I experienced large problems \\
+    
+    9 &
+    23.7 &
+    No\dash{}I gave up \\
+
+  \end{tabular}
+  \caption[Prototype Installation Success]{%
+    Successful and non-successful installation of the prototype.
+  }
+  \label{table:prototype.installation.success}
+\end{table}
+
+The data shows that $26 + 3 = 29$ of $38$ respondents (76.3 \%)
+to this particular survey managed to install the prototype.
+
+Another data source for how respondents fared when trying to install our
+prototype are the non-accomplish rates found in
+\figurepageref{fig.experiment.mortality}. This data
+shows that of the 71 ($E_1 + C_1$) respondents which bothered trying
+installing the prototype, only 45 ($E_2 + C_2$) managed to do so. This equates
+to 63.4\% of the participants.
+\tableref{prototype.installation.drop.off} shows a comparison of the
+actual non-accomplishment rates and the follow-up survey.
+
+\begin{table}
+  \begin{tabular}{rrr}
+
+    &
+    \multicolumn{1}{c}{Successful (\%)} &
+    \multicolumn{1}{c}{Failed (\%)} \\
+
+    \cmidrule(lr){2-3}
+
+    Follow-up questions &
+    76.3 &
+    23.7 \\
+
+    Actual non-accomplishment rates &
+    63.4 &
+    36.6 \\
+
+  \end{tabular}
+  \caption[Prototype Installation Drop Off]{%
+    Drop off for installation of the prototype.
+  }
+  \label{table:prototype.installation.drop.off}
+\end{table}

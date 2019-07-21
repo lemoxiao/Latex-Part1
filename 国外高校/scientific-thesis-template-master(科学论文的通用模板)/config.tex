@@ -1,0 +1,1083 @@
+% EN: This file includes basic packages and sets options. The order of package
+%     loading is important
+% DE: In dieser Datei werden zuerst die benoetigten Pakete eingebunden und
+%     danach diverse Optionen gesetzt. Achtung Reihenfolge ist entscheidend!
+
+
+%%%
+% EN: Styleguide:
+% - English comments are prefixed with "EN", German comments are prefixed with "DE"
+% - Prefixed headings define the language for the subsequent paragraphs
+% - It is tried to organize packages in blocks. One block starts with %%%, then
+%   % <heading>, then the options and more text. % followed by %%% end a block.
+%
+% DE: Styleguide:
+%
+% Ein sehr kleiner Styleguide. Packages werden in Blöcken organisiert.
+% Ein Block beginnt mit drei % in einer Zeile, dann % <Blocküberschrift>, dann
+% eine Liste der möglichen Optionen und deren Einstellungen, Gründe und Kommentare
+% eine % Zeile in der sonst nichts steht und dann wieder %%% in einer Zeile.
+%
+% Zwischen zwei Blöcken sind 2 Leerzeilen!
+% Zu jedem Paket werden soviele Optionen wie möglich/nötig angegeben
+%
+%%%
+
+%%%
+% EN: Required for recent version of komascript, as this template does not use the most recent commands of KOMAScript
+\usepackage{scrhack}
+%%%
+
+%%%
+% DE: Codierung
+%
+% Wir sind im 21 Jahrhundert, utf-8 löst so viele Probleme.
+%
+% Mit UTF-8 funktionieren folgende Pakete nicht mehr. Bitte beachten!
+%   * fancyvrb mit §
+%   * easylist -> http://www.ctan.org/tex-archive/macros/latex/contrib/easylist/
+\ifluatex
+%no package loading required
+\else
+\usepackage[utf8]{inputenc}
+\fi
+%
+%%%
+
+%%%
+% DE: Parallelbetrieb tex4ht und pdflatex
+\makeatletter
+\@ifpackageloaded{tex4ht}{\def\iftex4ht{\iftrue}}
+                         {\def\iftex4ht{\iffalse}}
+\makeatother
+%%%
+
+
+%%%
+%Farbdefinitionen
+\usepackage[hyperref,dvipsnames]{xcolor}
+%
+
+%%%
+% EN: Required for custom acronyms/glossaries style.
+%     Left aligned Columns in tables with fixed width.
+%     See http://tex.stackexchange.com/questions/91566/syntax-similar-to-centering-for-right-and-left
+\usepackage{ragged2e}
+%%%
+
+%%%
+% Abkürzungsverzeichnis
+\usepackage{scrwfile} % Wichtig, ansonsten erscheint "No room for a new \write"
+% siehe http://www.dickimaw-books.com/cgi-bin/faq.cgi?action=view&categorylabel=glossaries#glsnewwriteexceeded
+\usepackage[acronym,indexonlyfirst,nomain]{glossaries}
+\ifdeutsch
+\renewcommand*{\acronymname}{Abkürzungsverzeichnis}
+\else
+\renewcommand*{\acronymname}{List of Abbreviations}
+\fi
+\renewcommand*{\glsgroupskip}{}
+%
+% Removed Glossarie as a table as a quick fix to get the template working again
+% see http://tex.stackexchange.com/questions/145579/how-to-print-acronyms-of-glossaries-into-a-table
+%
+\makenoidxglossaries
+%%%
+
+
+%%%
+% DE: Neue deutsche Rechtschreibung und Literatur statt "Literature"
+%     Die folgende Einstellung ist der Nachfolger von ngerman.sty
+\ifdeutsch
+% DE: letzte Sprache ist default, Einbindung von "american" ermöglicht \begin{otherlanguage}{amercian}...\end{otherlanguage} oder \foreignlanguage{american}{Text in American}
+%     Siehe auch http://tex.stackexchange.com/a/50638/9075
+\usepackage[american,ngerman]{babel}
+% Ein "abstract" ist eine "Kurzfassung", keine "Zusammenfassung"
+\addto\captionsngerman{%
+	\renewcommand\abstractname{Kurzfassung}%
+}
+\else
+%
+%
+% EN: if you are writing in English
+%     last language is the default language
+\usepackage[ngerman,american]{babel}
+\fi
+%
+%%%
+
+%%%
+% Anführungszeichen
+% Zitate in \enquote{...} setzen, dann werden automatisch die richtigen Anführungszeichen verwendet.
+\usepackage{csquotes}
+%%%
+
+
+%%%
+% erweitertes Enumerate
+\usepackage{paralist}
+%
+%%%
+
+
+%%%
+% fancyheadings (nicht nur) fuer koma
+\usepackage[automark]{scrlayer-scrpage}
+%
+%%%
+
+
+%%%
+%Mathematik
+%
+\usepackage[]{amsmath} % Viele Mathematik-Sachen: Doku: /usr/share/doc/texmf/latex/amsmath/amsldoc.dvi.gz
+\PassOptionsToPackage{fleqn,leqno}{amsmath} % options must be passed this way, otherwise it does not work with glossaries
+%fleqn (=Gleichungen linksbündig platzieren) funktioniert nicht direkt. Es muss noch ein Patch gemacht werden:
+%\addtolength\mathindent{1em}%work-around ams-math problem with align and 9 -> 10. Does not work with glossaries, No visual changes.
+\usepackage{mathtools} %fixes bugs in AMS math
+%
+%for theorems, replacement for amsthm
+\usepackage[amsmath,hyperref]{ntheorem}
+\theorempreskipamount 2ex plus1ex minus0.5ex
+\theorempostskipamount 2ex plus1ex minus0.5ex
+\theoremstyle{break}
+\newtheorem{definition}{Definition}[section]
+%
+%%%
+
+
+%%%
+% Intelligentes Leerzeichen um hinter Abkürzungen die richtigen Abstände zu erhalten, auch leere.
+% siehe commands.tex \gq{}
+\usepackage{xspace}
+%Macht \xspace und \enquote kompatibel
+\makeatletter
+\xspaceaddexceptions{\grqq \grq \csq@qclose@i \} }
+\makeatother
+%
+%%%
+
+
+%%%
+% Anhang
+\usepackage{appendix}
+%[toc,page,title,header]
+%
+%%%
+
+%%%
+% Grafikeinbindungen
+\usepackage{graphicx}%Parameter "pdftex" unnoetig
+\graphicspath{{\getgraphicspath}}
+\newcommand{\getgraphicspath}{graphics/}
+%
+%%%
+
+
+%%%
+% Enables inclusion of SVG graphics - 1:1 approach
+% This is NOT the approach of http://www.ctan.org/tex-archive/info/svg-inkscape,
+% which allows text in SVG to be typeset using LaTeX
+% We just include the SVG as is
+\usepackage{epstopdf}
+\epstopdfDeclareGraphicsRule{.svg}{pdf}{.pdf}{%
+  inkscape -z -D --file=#1 --export-pdf=\OutputFile
+}
+%
+%%%
+
+
+%%%
+% Enables inclusion of SVG graphics - text-rendered-with-LaTeX-approach
+% This is the approach of http://www.ctan.org/tex-archive/info/svg-inkscape,
+\newcommand{\executeiffilenewer}[3]{%
+\IfFileExists{#2}
+{
+%\message{file #2 exists}
+\ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+{\pdffilemoddate{#2}}>0%
+{\immediate\write18{#3}}
+\else
+{%\message{file up to date #2}
+}
+\fi%
+}{
+%\message{file #2 doesn't exist}
+%\message{argument: #3}
+%\immediate\write18{echo "test" > xoutput.txt}
+\immediate\write18{#3}
+}
+}
+\newcommand{\includesvg}[1]{%
+\executeiffilenewer{#1.svg}{#1.pdf}%
+{
+inkscape -z -D --file=\getgraphicspath#1.svg %
+--export-pdf=\getgraphicspath#1.pdf --export-latex}%
+\input{\getgraphicspath#1.pdf_tex}%
+}
+
+
+%%%
+\usepackage{siunitx}
+%%%
+
+%%%
+% Tabellenerweiterungen
+\usepackage{array} %increases tex's buffer size and enables ``>'' in tablespecs
+\usepackage{longtable}
+\usepackage{dcolumn} %Aligning numbers by decimal points in table columns
+\ifdeutsch
+	\newcolumntype{d}[1]{D{.}{,}{#1}}
+\else
+	\newcolumntype{d}[1]{D{.}{.}{#1}}
+\fi
+
+%
+%%%
+
+%%%
+% Eine Zelle, die sich über mehrere Zeilen erstreckt.
+% Siehe Beispieltabelle in Kapitel 2
+\usepackage{multirow}
+%
+%%%
+
+%%%
+%Fuer Tabellen mit Variablen Spaltenbreiten
+%\usepackage{tabularx}
+%\usepackage{tabulary}
+%
+%%%
+
+
+%%%
+% Links verhalten sich so, wie sie sollen
+\usepackage{url}
+%
+%Use text font as url font, not the monospaced one
+%see comments at http://tex.stackexchange.com/q/98463/9075
+\urlstyle{same}
+%
+%Hint by http://tex.stackexchange.com/a/10419/9075
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+%
+%%%
+
+
+%%%
+% Index über Begriffe, Abkürzungen
+%\usepackage{makeidx} makeidx ist out -> http://xindy.sf.net verwenden
+%
+%%%
+
+%%%
+%lustiger Hack fuer das Abkuerzungsverzeichnis
+%nach latex durchlauf folgendes ausfuehren
+%makeindex ausarbeitung.nlo -s nomencl.ist -o ausarbeitung.nls
+%danach nochmal latex
+%\usepackage{nomencl}
+%    \let\abk\nomenclature %Deutsche Ueberschrift setzen
+%          \renewcommand{\nomname}{List of Abbreviations}
+%        %Punkte zw. Abkuerzung und Erklaerung
+%          \setlength{\nomlabelwidth}{.2\hsize}
+%          \renewcommand{\nomlabel}[1]{#1 \dotfill}
+%        %Zeilenabstaende verkleinern
+%          \setlength{\nomitemsep}{-\parsep}
+%    \makenomenclature
+%
+%%%
+
+%%%
+% Logik für Tex
+\usepackage{ifthen} %fuer if-then-else @ commands.tex
+%
+%%%
+
+
+%%%
+%
+\usepackage{listings}
+%
+%%%
+
+
+%%%
+%Alternative zu Listings ist fancyvrb. Kann auch beides gleichzeitig benutzt werden.
+\usepackage{fancyvrb}
+%\fvset{fontsize=\small} %Groesse fuer den Fliesstext. Falls deaktiviert: \normalsize
+%Funktioniert mit UTF-8 nicht mehr
+%\DefineShortVerb{\§} %Somit kann im Text ganz einfach |verbatim| text gesetzt werden.
+\RecustomVerbatimEnvironment{Verbatim}{Verbatim}{fontsize=\footnotesize}
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}{fontsize=\footnotesize}
+%
+%%%
+
+
+%%%
+% Bildunterschriften bei floats genauso formatieren wie bei Listings
+% Anpassung wird unten bei den newfloat-Deklarationen vorgenommen
+% https://www.ctan.org/pkg/caption2 is superseeded by this package.
+\usepackage{caption}
+%
+%%%
+
+
+%%%
+% Ermoeglicht es, Abbildungen um 90 Grad zu drehen
+% Alternatives Paket: rotating Allerdings wird hier nur das Bild gedreht, während bei lscape auch die PDF-Seite gedreht wird.
+%Das Paket lscape dreht die Seite auch nicht
+\usepackage{pdflscape}
+%
+%%%
+
+
+%%%
+% Fuer listings
+% Wird für fancyvrb und für lstlistings verwendet
+\usepackage{float}
+
+%\usepackage{floatrow}
+%% zustäzlich für den Paramter [H] = Floats WIRKLICH da wo sie deklariert wurden paltzieren - ganz ohne Kompromisse
+% floatrow ist der Nachfolger von float
+% Allerdings macht floatrow in manchen Konstellationen Probleme. Deshalb ist das Paket deaktiviert.
+%
+%%%
+
+
+
+%%%
+% Fuer Abbildungen innerhalb von Abbildungen
+% Ersetzt das Paket subfigure
+%
+% Due to bug #24 in the caption package we need to update caption3.sty at the moment manualy to use subfig.
+% Bug #24: http://sourceforge.net/p/latex-caption/tickets/24/
+% corrected caption3.sty: http://sourceforge.net/p/latex-caption/code/HEAD/tree/branches/3.3/tex/caption3.sty
+%
+\usepackage[caption=false, lofdepth=1, lotdepth, margin=5pt]{subfig}
+%
+%%%
+
+
+
+
+%%%
+% Fußnoten
+%
+%\usepackage{dblfnote}  %Zweispaltige Fußnoten
+%
+% Keine hochgestellten Ziffern in der Fußnote (KOMA-Script-spezifisch):
+%\deffootnote[1.5em]{0pt}{1em}{\makebox[1.5em][l]{\bfseries\thefootnotemark}}
+%
+% Abstand zwischen Fußnoten vergrößern:
+%\setlength{\footnotesep}{.85\baselineskip}
+%
+%
+%
+%Folgendes Kommando deaktiviert die Trennlinie zur Fußnote
+%\renewcommand{\footnoterule}{}
+%
+\addtolength{\skip\footins}{\baselineskip} % Abstand Text <-> Fußnote
+%
+% Fußnoten immer ganz unten auf einer \raggedbottom-Seite
+% fnpos kommt aus dem yafoot package
+\usepackage{fnpos}
+\makeFNbelow
+\makeFNbottom
+%
+%%%
+
+
+%%%
+%
+\raggedbottom     % Variable Seitenhöhen zulassen
+%
+%%%
+
+
+%%%
+% Falls die Seitenzahl bei einer Referenz auf eine Abbildung nur dann angegeben werden soll,
+% falls sich die Abbildung nicht auf der selben Seite befindet...
+\iftex4ht
+%tex4ht does not work well with vref, therefore we emulate vref behavior
+\newcommand{\vref}[1]{\ref{#1}}
+\else
+\ifdeutsch
+\usepackage[ngerman]{varioref}
+\else
+\usepackage{varioref}
+\fi
+\fi
+%%%
+
+%%%
+% Noch schoenere Tabellen als mit booktabs mit http://www.zvisionwelt.de/downloads.html
+\usepackage{booktabs}
+%
+%\usepackage[section]{placeins}
+%
+%%%
+
+
+%%%
+%Fuer Graphiken. Allerdings funktioniert es nicht zusammen mit pdflatex
+%\usepackage{gastex} % \tolarance kann dann nicht mehr umdefiniert werden
+%
+%%%
+
+
+%%%
+%
+%\usepackage{multicol}
+%\usepackage{setspace} % kollidiert mit diplomarbeit.sty
+%
+%http://www.tex.ac.uk/cgi-bin/texfaq2html?label=floats
+%\usepackage{flafter} %floats IMMER nach ihrer Deklaration platzieren
+%
+%%%
+
+
+%%%
+%biblatex statt bibtex
+\usepackage[
+  backend       = biber, %biber does not work with 64x versions alternative: bibtex8
+						 %minalphanames only works with biber backend
+  sortcites     = true,
+  bibstyle      = alphabetic,
+  citestyle     = alphabetic,
+  firstinits    = true,
+  useprefix     = false, %"von, van, etc." will be printed, too. See below.
+  minnames      = 1,
+  minalphanames = 3,
+  maxalphanames = 4,
+  maxbibnames   = 99,
+  maxcitenames  = 3,
+	natbib        = true,
+	eprint        = true,
+	url           = true,
+  doi           = true,
+  isbn          = true,
+  backref       = true]{biblatex}
+
+% enable more breaks at URLs. See https://tex.stackexchange.com/a/134281.
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+  
+\bibliography{bibliography}
+%\addbibresource[datatype=bibtex]{bibliography.bib}
+
+%Do not put "vd" in the label, but put it at "\citeauthor"
+%Source: http://tex.stackexchange.com/a/30277/9075
+\makeatletter
+\AtBeginDocument{\toggletrue{blx@useprefix}}
+\AtBeginBibliography{\togglefalse{blx@useprefix}}
+\makeatother
+
+%Thin spaces between initials
+%http://tex.stackexchange.com/a/11083/9075
+\renewrobustcmd*{\bibinitdelim}{\,}
+
+%Keep first and last name together in the bibliography
+%http://tex.stackexchange.com/a/196192/9075
+\renewcommand*\bibnamedelimc{\addnbspace}
+\renewcommand*\bibnamedelimd{\addnbspace}
+
+%Replace last "and" by comma in bibliography
+%See http://tex.stackexchange.com/a/41532/9075
+\AtBeginBibliography{%
+  \renewcommand*{\finalnamedelim}{\addcomma\space}%
+}
+
+\DefineBibliographyStrings{ngerman}{
+  backrefpage  = {zitiert auf S\adddot},
+  backrefpages = {zitiert auf S\adddot},
+  andothers    = {et\ \addabbrvspace al\adddot},
+  %Tipp von http://www.mrunix.de/forums/showthread.php?64665-biblatex-Kann-%DCberschrift-vom-Inhaltsverzeichnis-nicht-%E4ndern&p=293656&viewfull=1#post293656
+  bibliography = {Literaturverzeichnis}
+}
+
+%enable hyperlinked author names when using \citeauthor
+%source: http://tex.stackexchange.com/a/75916/9075
+\DeclareCiteCommand{\citeauthor}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \usebibmacro{prenote}}
+  {\ifciteindex
+     {\indexnames{labelname}}
+     {}%
+   \printtext[bibhyperref]{\printnames{labelname}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+%natbib compatibility
+%\newcommand{\citep}[1]{\cite{#1}}
+%\newcommand{\citet}[1]{\citeauthor{#1} \cite{#1}}
+%Beginning of sentence - analogous to cleveref - important for names such as "zur Muehlen"
+%\newcommand{\Citep}[1]{\cite{#1}}
+%\newcommand{\Citet}[1]{\Citeauthor{#1} \cite{#1}}
+%%%
+
+
+%%%
+% Blindtext. Paket "blindtext" ist fortgeschritterner als "lipsum" und kann auch Mathematik im Text (http://texblog.org/2011/02/26/generating-dummy-textblindtext-with-latex-for-testing/)
+% kantlipsum (https://www.ctan.org/tex-archive/macros/latex/contrib/kantlipsum) ist auch ganz nett, aber eben auch keine Mathematik
+% Wird verwendet, um etwas Text zu erzeugen, um eine volle Seite wegen Layout zu sehen.
+\usepackage[math]{blindtext}
+%%%
+
+%%%
+% Neue Pakete bitte VOR hyperref einbinden. Insbesondere bei Verwendung des
+% Pakets "index" wichtig, da sonst die Referenzierung nicht funktioniert.
+% Für die Indizierung selbst ist unter http://xindy.sourceforge.net
+% ein gutes Tool zu erhalten
+%%%
+
+
+%%%
+%
+% hier also neue packages einbinden
+%
+%%%
+
+
+%%%
+% ggf.in der Endversion komplett rausnehmen. dann auch \href in commands.tex aktivieren
+% Alle Optionen nach \hypersetup verschoben, sonst crash
+%
+\usepackage[]{hyperref}%siehe auch: "Praktisches LaTeX" - www.itp.uni-hannover.de/~kreutzm
+%
+%% Da es mit KOMA 3 und xcolor zu Problemen mit den global Options kommt MÜSSEN die Optionen so gesetzt werden.
+%
+
+% Eigene Farbdefinitionen ohne die Namen des xcolor packages
+\definecolor{darkblue}{rgb}{0,0,.5}
+\definecolor{black}{rgb}{0,0,0}
+
+\hypersetup{
+    breaklinks=true,
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=1,
+    breaklinks=true,
+    colorlinks=true,
+    pdfstartview=Fit,
+    pdfpagelayout=SinglePage, % Alterntaive: TwoPageRight -- zweiseitige Darstellung: ungerade Seiten rechts im PDF-Viewer - siehe auch http://tex.stackexchange.com/a/21109/9075
+    filecolor=darkblue,
+    urlcolor=darkblue,
+    linkcolor=black,
+    citecolor=black
+}
+%
+%%%
+
+
+%%%
+% cleveref für cref statt autoref, da cleveref auch bei Definitionen funktioniert
+\ifdeutsch
+\usepackage[ngerman,capitalise,nameinlink,noabbrev]{cleveref}
+\else
+\usepackage[capitalise,nameinlink,noabbrev]{cleveref}
+\fi
+%%%
+
+
+%%%
+% Zur Darstellung von Algorithmen
+% Algorithm muss nach hyperref geladen werden
+\usepackage[chapter]{algorithm}
+\usepackage[]{algpseudocode}
+%
+%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\automark[section]{chapter}
+\setkomafont{pageheadfoot}{\normalfont\sffamily}
+\setkomafont{pagenumber}{\normalfont\sffamily}
+%
+%\setheadsepline[.4pt]{.4pt} %funktioniert nicht: Alle Linien sind hier weg
+%
+%%%
+
+%%%
+% Fuer deutsche Texte: Weniger Silbentrennung, mehr Abstand zwischen den Woertern
+\ifdeutsch
+\setlength{\emergencystretch}{3em} % Silbentrennung reduzieren durch mehr frei Raum zwischen den Worten
+\fi
+%%%
+
+%Symbole
+%--------
+%\usepackage[geometry]{ifsym} % \BigSquare
+%\usepackage{mathabx}
+%\usepackage{stmaryrd} %fuer \ovee, \owedge, \otimes
+%\usepackage{marvosym} %fuer \Writinghand %patched to not redefine \Rightarrow
+%\usepackage{mathrsfs} %mittels \mathscr{} schoenen geschwungenen Buchstaben erzeugen
+%\usepackage{calrsfs} %\mathcal{} ein bisserl dickeren buchstaben erzeugen - sieht net so gut aus.
+                      %durch mathpazo ist das schon definiert
+\usepackage{amssymb}
+
+%For \texttrademark{}
+\usepackage{textcomp}
+
+%name-clashes von marvosym und mathabx vermeiden:
+\def\delsym#1{%
+%  \expandafter\let\expandafter\origsym\expandafter=\csname#1\endcsname
+%  \expandafter\let\csname orig#1\endcsname=\origsym
+  \expandafter\let\csname#1\endcsname=\relax
+}
+
+%\usepackage{pifont}
+%\usepackage{bbding}
+%\delsym{Asterisk}
+%\delsym{Sun}\delsym{Mercury}\delsym{Venus}\delsym{Earth}\delsym{Mars}
+%\delsym{Jupiter}\delsym{Saturn}\delsym{Uranus}\delsym{Neptune}
+%\delsym{Pluto}\delsym{Aries}\delsym{Taurus}\delsym{Gemini}
+%\delsym{Rightarrow}
+%\usepackage{mathabx} - Ueberschreibt leider zu viel - und die \le-Zeichen usw. sehen nicht gut aus!
+
+
+%Fallback-Schriftart
+\usepackage{lmodern}  % Latin Modern Fonts sind die Nachfolger von Computer Modern, den LaTeX-Standardfonts
+%Quelle: http://homepage.ruhr-uni-bochum.de/Georg.Verweyen/pakete.html
+%Allerdings sieht diese Schritart in Diplomarbeiten fuer Fliesstext auch nicht besonders schoen aus.
+%Trotzdem ist sie fuer Programmcode gut geeignet
+
+%Schriftart fuer die Ueberschriften - ueberschreibt lmodern
+\ifdeutsch
+\usepackage[scaled=.95]{helvet}
+\else
+\usepackage{helvet}
+\fi
+
+% Für Schreibschrift würde tun, muss aber ned
+%\usepackage{mathrsfs} %  \mathscr{ABC}
+
+%Schriftart fuer den Fliesstext - ueberschreibt lmodern
+%
+\ifdeutsch
+%
+%Linux Libertine, siehe http://www.linuxlibertine.org/
+%Packageparamter [osf] = Minuskel-Ziffern
+%rm = libertine im Brottext, Linux Biolinum NICHT als serifenlose Schrift, sondern helvet (von oben) beibehalten
+\usepackage[rm]{libertine}
+%
+%Alternative Schriftart: Palantino, Packageparamter [osf] = Minuskel-Ziffern
+%\usepackage{mathpazo} %ftp://ftp.dante.de/tex-archive/fonts/mathpazo/ - Tipp aus DE-TEX-FAQ 8.2.1
+%
+\else
+%
+\usepackage{charter} %Charter fuer englische Texte
+\linespread{1.05} % Durchschuss für Charter leicht erhöhen
+%
+%\usepackage{mathptmx} %Times fuer englische Texte. Sieht nicht sooo gut aus.
+%
+%Fallback ist lmodern, die oben eingebunden wurde
+\fi
+
+%Schriftart fuer Programmcode - ueberschreibt lmodern
+%Falls auskommentiert, wird die Standardschriftart lmodern genommen
+%\usepackage[scaled=.92]{luximono} % Fuer schreibmaschinenartige Schluesselwoerter in den Listings - geht bei alten Installationen nicht, da einige Fontshapes (<>=) fehlen
+%\usepackage{courier}
+\usepackage[scaled=0.83]{beramono} %BeraMono als Typewriter-Schrift, Tipp von http://tex.stackexchange.com/a/71346/9075
+
+%%%
+%
+% EN: Modern font encoding
+\ifluatex
+\else
+\usepackage[T1]{fontenc}
+\fi
+%
+%%%
+
+%%
+% EN: Character protrusion and font expansion. See http://www.ctan.org/tex-archive/macros/latex/contrib/microtype/
+% DE: Optischer Randausgleich und Grauwerktkorrektur
+%     Falls bei einer Silbentrennung ploetzlich eine ganze Zeile fehlt (passiert unter Windows XP mit MikTex 2.5 und foxit reader als pdfreader oder \usepackage{pdfcprot}
+%     ausprobieren. Dieses erzeugt allerdings nur für Palatino (in dieser Vorlage die Default-Schrift) einen guten optischen Randausgleich
+%     Falls alle Stricke reissen, muss leider auf den optischen Randausgleich verzichtet werden.
+\usepackage[babel=true]{microtype}
+%
+%DE: fuer microtype
+%DE: tracking=true muss als Parameter des microtype-packages mitgegeben werden
+%DE: Deaktiviert, da dies bei Algorithmen seltsam aussieht
+%
+%\DeclareMicrotypeSet*[tracking]{my}{ font = */*/*/sc/* }%
+%\SetTracking{ encoding = *, shape = sc }{ 45 }
+%DE: Hier wird festgelegt,
+%    dass alle Passagen in Kapitälchen automatisch leicht
+%    gesperrt werden.
+%    Quelle: http://homepage.ruhr-uni-bochum.de/Georg.Verweyen/pakete.html
+%
+%%%
+
+%%%
+% Links auf Gleitumgebungen springen nicht zur Beschriftung,
+% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/oberdiek/hypcap.pdf
+% sondern zum Anfang der Gleitumgebung
+\usepackage[all]{hypcap}
+%%%
+
+
+%%%
+% Deckblattstyle
+%
+\ifdeutsch
+	\PassOptionsToPackage{language=german}{uni-stuttgart-cs-cover}
+\else
+	\PassOptionsToPackage{language=english}{uni-stuttgart-cs-cover}
+\fi
+
+
+%%%
+%Bugfixes packages
+%\usepackage{fixltx2e} %Fuer neueste LaTeX-Installationen nicht mehr benoetigt - bereinigte einige Ungereimtheiten, die auf Grund von Rueckwaertskompatibilitaet beibahlten wurden.
+%\usepackage{mparhack} %Fixt die Position von marginpars (die in DAs selten bis gar nicht gebraucht werden}
+%\usepackage{ellipsis} %Fixt die Abstaende vor \ldots. Wird wohl auch nicht benoetigt.
+%
+%%%
+
+
+%%%
+% Margins
+%Viele Moeglichkeiten, die Raender im Dokument einzustellen.
+%Satzspiegel neu berechnen. Dokumentation dazu ist in "scrguide.pdf" von KOMA-Skript zu finden
+%  Optionen werden bei \documentclass[] in ausarbeitung.tex mitgegeben.
+\typearea[current]{current} %neu berechnen, da neue Schrift eingebunden
+
+%\usepackage{a4}
+%\usepackage{a4wide}
+%\areaset{170mm}{277mm} %a4:29,7hochx21mbreit
+
+%Wer die Masse direkt eingeben moechte:
+%Bei diesem Beispiel wird die Regel nicht beachtet, dass der innere Rand halb so gross wie der aussere Rand und der obere Rand halb so gross wie der untere Rand sein sollte
+%\usepackage[inner=2.5cm, outer=2.5cm, includefoot, top=3cm, bottom=1.5cm]{geometry}
+
+
+%%%
+% Optionen
+%
+\captionsetup{
+  format=hang,
+  labelfont=bf,
+  justification=justified,
+  %single line captions should be centered, multiline captions justified
+  singlelinecheck=true
+}
+%
+%neue float Umgebung fuer Listings, die mittels fancyvrb gesetzt werden sollen
+\floatstyle{ruled}
+\newfloat{Listing}{tbp}{code}[chapter]
+\crefname{Listing}{Listing}{Listings}
+\newfloat{Algorithmus}{tbp}{alg}[chapter]
+\ifdeutsch
+\crefname{Algorithmus}{Algorithmus}{Algorithmus}
+\else
+\crefname{Algorithmus}{Algorithm}{Algorithms}
+\floatname{Algorithmus}{Algorithm}
+\fi
+%
+%amsmath
+%\numberwithin{equation}{section}
+%\renewcommand{\theequation}{\thesection.\Roman{equation}}
+%
+%pdftex
+\pdfcompresslevel=9
+%
+%Tabellen (array.sty)
+\setlength{\extrarowheight}{1pt}
+%
+%
+%%%
+
+%%%
+% unterschiedliche Chapter-Styles
+% u.a. Paket fncychap
+
+% Andere Kapitelueberschriften
+% falls einem der Standard von KOMA nicht gefaellt...
+% Falls man zurück zu KOMA moechte, dann muss jede der vier folgenden Moeglichkeiten deaktiviert sein.
+
+% 1. Moeglichkeit
+%\usepackage[Sonny]{fncychap}
+%oder
+%\usepackage[Bjarne]{fncychap}
+%oder
+%\usepackage[Lenny]{fncychap}
+
+% 2. Moeglichkeit
+\iffalse
+\usepackage[Bjarne]{fncychap}
+\ChNameVar{\Large\sf} \ChNumVar{\Huge} \ChTitleVar{\Large\sf}
+\ChRuleWidth{0.5pt} \ChNameUpperCase
+\fi
+
+%Variante der 2. Moeglichkeit
+\iffalse
+\usepackage[Rejne]{fncychap}
+\ChNameVar{\centering\Huge\rm\bfseries}
+\ChNumVar{\Huge}
+ \ChTitleVar{\centering\Huge\rm}
+\ChNameUpperCase
+\ChTitleUpperCase
+\ChRuleWidth{1pt}
+\fi
+
+% 3. Moeglichkeit
+\iffalse
+\usepackage{fncychap}
+\ChNameUpperCase
+\ChTitleUpperCase
+\ChNameVar{\raggedright\normalsize} %\rm
+\ChNumVar{\bfseries\Large}
+\ChTitleVar{\raggedright\Huge}
+\ChRuleWidth{1pt}
+\fi
+
+% 4. Moeglichkeit
+% Zur Aktivierierung "\iffalse" und "\fi" auskommentieren
+% Innen drin kann man dann noch zwischen
+%   * serifenloser Schriftart (eingestellt)
+%   * serifenhafter Schriftart (wenn kein zusaetzliches Kommando aktiviert ist) und
+%   * Kapitälchen wählen
+\iffalse
+\makeatletter
+%\def\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
+
+%Fuer Kapitel mit Kapitelnummer
+\def\@makechapterhead#1{%
+  \vspace*{10\p@}%
+  {\parindent \z@ \raggedright \reset@font
+			%Default-Schrift: Serifenhaft (gut fuer englische Dokumente)
+            %A) Fuer serifenlose Schrift:
+            \fontfamily{phv}\selectfont
+			%B) Fuer Kapitaelchen:
+			%\fontseries{m}\fontshape{sc}\selectfont
+            %C) Fuer ganz "normale" Schrift:
+            %\normalfont
+			%
+			\Large \@chapapp{} \thechapter
+        \par\nobreak\vspace*{10\p@}%
+        \interlinepenalty\@M
+    {\Huge\bfseries\baselineskip3ex
+	%Fuer Kapitaelchen folgende Zeile aktivieren:
+	%\fontseries{m}\fontshape{sc}\selectfont
+	#1\par\nobreak}
+    \vspace*{10\p@}%
+\makebox[\textwidth]{\hrulefill}%    \hrulefill alone does not work
+    \par\nobreak
+    \vskip 40\p@
+  }}
+
+  %Fuer Kapitel ohne Kapitelnummer (z.B. Inhaltsverzeichnis)
+  \def\@makeschapterhead#1{%
+  \vspace*{10\p@}%
+  {\parindent \z@ \raggedright \reset@font
+            \normalfont \vphantom{\@chapapp{} \thechapter}
+        \par\nobreak\vspace*{10\p@}%
+        \interlinepenalty\@M
+    {\Huge \bfseries %
+	%Default-Schrift: Serifenhaft (gut fuer englische Dokumente)
+    %A) Fuer serifenlose Schrift folgende Zeile aktivieren:
+    \fontfamily{phv}\selectfont
+	%B) Fuer Kapitaelchen folgende Zeile aktivieren:
+	%\fontseries{m}\fontshape{sc}\selectfont
+	#1\par\nobreak}
+    \vspace*{10\p@}%
+\makebox[\textwidth]{\hrulefill}%    \hrulefill does not work
+    \par\nobreak
+    \vskip 40\p@
+  }}
+%
+\makeatother
+\fi
+%%%
+
+%%%
+%Minitoc-Einstellungen
+%\dominitoc
+%\renewcommand{\mtctitle}{Inhaltsverzeichnis dieses Kapitels}
+%
+% Disable single lines at the start of a paragraph (Schusterjungen)
+\clubpenalty = 10000
+%
+% Disable single lines at the end of a paragraph (Hurenkinder)
+\widowpenalty = 10000 \displaywidowpenalty = 10000
+%
+%http://groups.google.de/group/de.comp.text.tex/browse_thread/thread/f97da71d90442816/f5da290593fd647e?lnk=st&q=tolerance+emergencystretch&rnum=5&hl=de#f5da290593fd647e
+%Mehr Infos unter http://www.tex.ac.uk/cgi-bin/texfaq2html?label=overfull
+\tolerance=2000
+\setlength{\emergencystretch}{3pt}   % kann man evtl. auf 20 erhoehen
+\setlength{\hfuzz}{1pt}
+%
+%%%
+
+
+%%%
+% Fuer listings.sty
+\lstset{language=XML,
+        showstringspaces=false,
+        extendedchars=true,
+        basicstyle=\footnotesize\ttfamily,
+        commentstyle=\slshape,
+        stringstyle=\ttfamily, %Original: \rmfamily, damit werden die Strings im Quellcode hervorgehoben. Zusaetzlich evtl.: \scshape oder \rmfamily durch \ttfamily ersetzen. Dann sieht's aus, wie bei fancyvrb
+        breaklines=true,
+        breakatwhitespace=true,
+        columns=flexible,
+        aboveskip=0mm, %deaktivieren, falls man lstlistings direkt als floating object benutzt (\begin{lstlisting}[float,...])
+        belowskip=0mm, %deaktivieren, falls man lstlistings direkt als floating object benutzt (\begin{lstlisting}[float,...])
+        captionpos=b
+}
+\ifdeutsch
+\renewcommand{\lstlistlistingname}{Verzeichnis der Listings}
+\fi
+%
+%%%
+
+
+%%%
+%fuer algorithm.sty: - falls Deutsch und nicht Englisch.
+\ifdeutsch
+\floatname{algorithm}{Algorithmus}
+\renewcommand{\listalgorithmname}{Verzeichnis der Algorithmen}
+\fi
+%
+%%%
+
+
+%%%
+% Das Euro Zeichen
+% Fuer Palatino (mathpazo.sty): richtiges Euro-Zeichen
+% Alternative: \usepackage{eurosym}
+\newcommand{\EUR}{\ppleuro}
+%
+%%%
+
+
+%%%
+%
+% Float-placements - http://dcwww.camd.dtu.dk/~schiotz/comp/LatexTips/LatexTips.html#figplacement
+% and http://people.cs.uu.nl/piet/floats/node1.html
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75}
+%\setcounter{totalnumber}{5}
+%
+%%%
+
+%%%
+%
+% Bei Gleichungen nur dann die Nummer zeigen, wenn die Gleichung auch referenziert wird
+%
+% Funktioniert mit MiKTeX Stand 2012-01-13 nicht. Deshalb ist dieser Schalter deaktiviert.
+%
+%\mathtoolsset{showonlyrefs}
+%
+%%%
+
+
+%%%
+%ensure that floats covering a whole page are placed at the top of the page
+%see http://tex.stackexchange.com/a/28565/9075
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+%%%
+
+
+%%%
+%Optischer Randausgleich
+\usepackage{microtype}
+%%%
+
+%%%
+%Package geometry to enlarge on page
+%
+%Source: http://www.howtotex.com/tips-tricks/change-margins-of-a-single-page/
+%
+%Normally, geometry should not be used as the typearea package calculates the margins perfectly for printing
+%However, we want better screen-readable documents where the content does not "jump"
+%Thus, we fix the margins left and right to the same value
+\usepackage[
+  left=3cm,right=3cm,top=2.5cm,bottom=2.5cm,
+  headsep=18pt,
+  footskip=30pt,
+  includehead,
+  includefoot
+]{geometry}
+%%%
+
+
+%%%
+%schoene TODOs
+\ifdeutsch
+\usepackage[colorinlistoftodos,ngerman]{todonotes}
+\else
+\usepackage[colorinlistoftodos]{todonotes}
+\fi
+\setlength{\marginparwidth}{2,5cm}
+
+\let\xtodo\todo
+\renewcommand{\todo}[1]{\xtodo[inline,color=black!5]{#1}}
+\newcommand{\utodo}[1]{\xtodo[inline,color=green!5]{#1}}
+\newcommand{\itodo}[1]{\xtodo[inline]{#1}}
+%
+%%%
+
+%%%
+% footnotes in tables
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+\makesavenoteenv{table}
+% Reuse of footnotes
+% Reuse of Footnotes, see http://tex.stackexchange.com/questions/10102/multiple-references-to-the-same-footnote-with-hyperref-support-is-there-a-bett
+\crefformat{footnote}{#2\footnotemark[#1]#3}
+%%%
+
+%%%
+% pgfplots (optional if the ppackage is installed)
+% PGFPlots draws high-qual­ity func­tion plots in nor­mal or log­a­rith­mic scal­ing
+\IfFileExists{pgfplots.sty}{
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.12}
+}{}
+%%%
+
+%%%
+% tikz (optional if the package is installed)
+% Package for creating graphics programmatically
+\IfFileExists{tikz.sty}{
+\usepackage{tikz}
+}{}
+%%%
+
+%Der untere Rand darf "flattern"
+\raggedbottom
+
+%%%
+% Wie tief wird das Inhaltsverzeichnis aufgeschlüsselt
+% 0 --\chapter
+% 1 --\section % fuer kuerzeres Inhaltsverzeichnis verwenden - oder minitoc benutzen
+% 2 --\subsection
+% 3 --\subsubsection
+% 4 --\paragraph
+\setcounter{tocdepth}{1}
+%
+%%%
+
+
+%Angaben in die PDF-Infos uebernehmen
+\makeatletter
+\hypersetup{
+            pdftitle={}, %Titel der Arbeit
+            pdfauthor={}, %Author
+            pdfkeywords={}, % CR-Klassifikation und ggf. weitere Stichworte
+            pdfsubject={}
+}
+\makeatother

@@ -1,0 +1,36 @@
+* Changes Needed
+** TODO Don't redefine the \year command
+
+The tikz package, which is part of the pgf package, which is, in
+turn, part of beamer, uses the LaTeX \year counter as part of the
+seed for its random-number generator function.  As we define \year
+as a standard macro, it blows up.  We need to define \posteryear
+or similar instead.
+
+** TODO Make type larger
+
+As things stand, it's too easy to put huge amounts of text into
+the poster.  We should probably up the type size.
+
+** TODO Rework header
+
+The poster header is currently done by using fancyhdr.  Which is
+great, but if the content is too large (e.g., long titles), the
+header pushes the rest of the poster down the page, which is
+problematic.
+
+Not sure what the best solution here is, but maybe we should
+rework the header as a standalone box.  We might also want to make
+the box more configurable; for example, allow the end user to
+affect the size of the title font without having to edit the class
+file.
+
+** TODO Overall redesign
+
+If we want to push for larger graphical elements, we might want to
+rethink even more about the way the poster class works.  For
+example, we might define the class to build a poster with a header
+box and a footer, but leave formatting the content block up to the
+user.  We would, of course, need to come up with several example
+posters with different ``good'' designs so people would know how
+to handle the challenge.

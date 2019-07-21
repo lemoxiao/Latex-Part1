@@ -1,0 +1,177 @@
+\documentclass{article}
+\usepackage[top=1in,bottom=1in,left=1in,right=1in,letterpaper]{geometry}
+\usepackage{verbatim}
+
+\title{Using the \texttt{ndsu-thesis} class}
+\author{Aaron Feickert and Jonathan Totushek \\ \texttt{jonathan.totushek@ndsu.edu}}
+\date{29 February 2015}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+The \texttt{ndsu-thesis} class generates disquisitions intended to comply with the disquisition requirements of the North Dakota State University (NDSU) Graduate School; however, this class is not officially endorsed by NDSU or the NDSU Graduate School. Since disquisition requirements are subject to change at any time, the user is advised that the most current disquisition style policies supersede this class. To ensure compliance with all NDSU Graduate School requirements, the user is encouraged to consult the NDSU Graduate School for detailed requirements and guidance.
+
+Modification of the class file's code may result in unexpected behavior, and is at the user's own risk.
+
+\section{Options}
+By default, this class assumes the document is a Ph.D. dissertation. Providing a degree option will accommodate other available degree and disquisition types:
+\begin{center}
+\begin{tabular}{lll}
+Option & Degree & Disquisition type \\
+\hline
+\texttt{[phd]} & Ph.D. & dissertation \\
+\texttt{[ms-thesis]} & M.S. & thesis \\
+\texttt{[ms-paper]} & M.S. & paper \\
+\texttt{[ma-thesis]} & M.A. & thesis \\
+\texttt{[ma-paper]} & M.A. & paper \\
+\end{tabular}
+\end{center}
+
+You can use the \texttt{[draft]} option to place the disquisition into draft mode. In this mode, margin overflows are marked with a heavy black box to draw your attention to them; additionally, images are replaced by a placeholder. If you import other packages in your disquisition, they may also change their behavior when in draft mode. It goes without saying that you should remove this option before submitting the disquisition.
+
+\section{Preamble information}
+Before issuing the \texttt{\textbackslash begin\{document\}} command, several pieces of preamble information are available.
+\subsection{Title}
+Include the title of the disquisition using the \texttt{\textbackslash title\{...\}} command. This is required.
+
+\subsection{Author}
+Include the full name of the disquisition author using the \texttt{\textbackslash author\{...\}} command. This is required.
+
+\subsection{Department}
+Include the name of the major department using the \texttt{\textbackslash department\{...\}} command. This is required.
+
+\subsection{Degree option}
+If the major department has a degree option, indicate this using the \texttt{\textbackslash degreeoption\{...\}} command. This is optional.
+
+\subsection{Date}
+Include the date of disquisition approval using the \texttt{\textbackslash date\{...\}} command. As of this writing, the accepted format of this date is \textit{month year}: $$\texttt{\textbackslash date\{February 2015\}}$$ This is required.
+
+\subsection{Examining committee}
+Include the chair and members of the examining committee using separate commands. The \texttt{\textbackslash cchair\{...\}} command is used to indicate the committee chair. Use the \texttt{\textbackslash cmemberX\{...\}} to indicate other committee members, where \texttt{X} is \texttt{a}, \texttt{b}, \texttt{c}, or \texttt{d}. Use only as many of these commands as needed to list all committee members. This class does not support a committee of more members. The \texttt{\textbackslash cchair} command is required.
+
+\subsection{Approval information}
+Use the \texttt{\textbackslash approvaldate\{...\}} command to include the full date of disquisition approval (i.e. day, month, and year). As of this writing, no particular format for this date is specified. Use \texttt{\textbackslash approver\{...\}} to include the department chair who approved the disquisition. Both commands are required.
+
+\subsection{Abstract}
+Use the \texttt{\textbackslash abstract\{...\}} command to include the disquisition abstract. This is required.
+
+\subsection{Acknowledgements}
+If the disquisition includes acknowledgements, include them using the \texttt{\textbackslash acknowledgements\{...\}} command. This is optional.
+
+\subsection{Dedication}
+If the disquisition includes a dedication, include it using the \texttt{\textbackslash dedication\{...\}} command. This is optional.
+
+\subsection{Preface}
+If the disquisition includes a preface, include it using the \texttt{\textbackslash preface\{...\}} command. This is optional.
+
+\subsection{Other \LaTeX\ packages}
+If your disquisition requires the use of additional \LaTeX\ packages, macro files, or other commands, include them in the preamble.
+
+\section{Beginning the document}
+After including the necessary preamble information, use \texttt{\textbackslash begin\{document\}} to start the document. This command automatically generates the necessary cover pages and table of contents; do not issue a \texttt{\textbackslash maketitle} command.
+
+\section{Headings}
+Major headings (e.g. chapters) are issued using the \texttt{\textbackslash heading\{...\}} command. This command supersedes the usual \texttt{\textbackslash chapter} command, which should not be used. The following shows the hierarchy of headings:
+\begin{center}
+\begin{tabular}{l}
+\texttt{\textbackslash heading\{...\}} \\
+\texttt{\textbackslash section\{...\}} \\
+\texttt{\textbackslash subsection\{...\}} \\
+\texttt{\textbackslash subsubsection\{...\}}
+\end{tabular}
+\end{center}
+Each \texttt{\textbackslash heading} command starts a new page and entry in the table of contents. Instances of \texttt{\textbackslash subsubsection} do not appear in the table of contents, though they are included in the document itself.
+
+\section{Figures and tables}
+Use the usual \texttt{figure} and \texttt{table} environments to generate figures and tables. These are automatically included in the lists of figures and tables that appear after the table of contents.
+
+Note that to maintain proper spacing before and after a figure or table, use the \texttt{\textbackslash centering} command inside these environments instead of a \texttt{center} environment. Using the \texttt{center} environment adds extra space below the figure or table, while the \texttt{\textbackslash centering} command does not.
+
+\subsection{Captions}
+Because of the way spacing is handled, captions in \texttt{table} environments must appear at the top of the table, while captions in \texttt{figure} environments must appear at the bottom of the figure. If you use both \texttt{\textbackslash caption} and \texttt{\textbackslash label} commands in these environments, the \texttt{\textbackslash caption} command must come before the \texttt{\textbackslash label} command to ensure the environment is numbered correctly.
+
+\section{References}
+The authors recommend \textsc{Bib}\TeX\ for bibliography management, though the user is free to use other packages. However, only \textsc{Bib}\TeX\ has been tested with this class. The usual way to include this is to issue the following commands:
+\begin{center}
+\begin{tabular}{l}
+\texttt{\textbackslash bibliographystyle\{\textit{style}\}} \\
+\texttt{\textbackslash bibliography\{\textit{name-of-bib-file}\}}
+\end{tabular}
+\end{center}
+The style of bibliography entries (typically \texttt{plain}), is controlled by the first command; the user is referred to the \textsc{Bib}\TeX\ manual for formatting details and other available styles. The name used in the second command must be the same as the name of the bibliography (\texttt{.bib}) file, but with the extension removed. These commands (or equivalent commands if the user uses a different bibliography management system) are optional, but are required if the disquisition includes references.
+
+\section{Appendix}
+If the disquisition includes an appendix, it must follow the references (if the disquisition includes references), and one of two commands must be used to introduce it. If the appendix is named, use the \texttt{\textbackslash namedappendix\{...\}} command to begin it. If the appendix is not named, use the \texttt{\textbackslash appendix} command to begin it. These commands are optional, but are required if the disquisition includes an appendix.
+
+Note that this class does not support the use of multiple appendices.
+
+\subsection{Appendix figures and tables}
+If the appendix contains figures or tables, use the \texttt{appendixfigure} and \texttt{appendixtable} environments to generate them. These special environments ensure that the figures and tables appear in separate tables that appear after the table of contents. The usual \texttt{figure} and \texttt{table} environments should not be used in the appendix.
+
+The same rules for centering, captions, and labels used in normal \texttt{figure} and \texttt{table} environments apply to \texttt{appendixfigure} and \texttt{appendixtable} environments.
+
+
+\section{Example}
+Below is a brief example of an M.S. thesis that includes all required and (many) optional elements. In this example, the examining committee includes the committee chair and only two additional committee members. For this example, \textsc{Bib}\TeX\ was used to manage references, which would be included in a file named \texttt{my-bib-file.bib} separately. 
+
+\begin{verbatim}
+\documentclass[ms-thesis]{ndsu-thesis}
+\title{The Title of My M.S. Thesis}
+\author{Samuel Quincy Student}
+\date{February 2015}
+\department{Mathematics}
+
+\cchair{Prof. John Adams}
+\cmembera{Prof. Abraham Lincoln}
+\cmemberb{Prof. George Washington}
+\approvaldate{29 February 2015}
+\approver{Prof. James Garfield}
+
+\abstract{This is the abstract for my thesis.}
+\acknowledgements{I acknowledge people here.}
+\dedication{This thesis is dedicated to my cat, Mr. Fluffles.}
+\preface{You can put a preface here.}
+
+\begin{document}
+
+\heading{The First Chapter}
+\section{Introduction}
+This is a section of my thesis.
+
+\heading{The Second Chapter}
+\section{Excellent results}
+This is another section of my thesis.
+\subsection{Minor results}
+This is a subsection of my thesis.
+
+\begin{table}[h]
+\centering
+\caption{Table captions go at the top of the table}
+\begin{tabular}{rl}
+Number & Month \\
+\hline
+1 & January \\
+2 & February \\
+3 & March
+\end{tabular}
+\end{table}
+
+
+\bibliographystyle{plain}
+\bibliography{my-bib-file}
+
+\appendix
+I can include appendix material here. See Figure \ref{figure_a} below.
+
+\begin{appendixfigure}
+\centering
+You could include a figure here.
+\caption{Figure captions go at the bottom of the figure}
+\label{figure_a}
+\end{appendixfigure}
+
+\end{document}
+\end{verbatim}
+
+\end{document}

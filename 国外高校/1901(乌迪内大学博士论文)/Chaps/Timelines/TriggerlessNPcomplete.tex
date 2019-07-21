@@ -1,0 +1,196 @@
+\section{TP with trigger-less rules only is \NP-complete}\label{sec:NPtriggerless}
+
+In this section we describe a TP algorithm,
+for planning domains where only trigger-less rules are allowed,
+which requires a polynomial number of (non-deterministic) computation steps.
+We recall that trigger-less rules are useful, for instance, to express initial, intermediate conditions and reachability goals.
+
+We want to start with the following example, with which we highlight that there is no \emph{polynomial-size} plan for some problem instances/domains. Thus, an explicit enumeration of all tokens of a multi-timeline \emph{does not} represent a suitable polynomial-size certificate.
+
+\begin{example}
+Let us consider the following planning domain.
+We denote by $p(i)$ the $i$-th prime number, assuming $p(1)=1$, $p(2)=2$, $p(3)=3$, $p(4)=5$,\dots .
+We define, for $i=1,\ldots,n$, the state variables $x_i=(\{v_i\},\{(v_i,v_i)\},D_{x_i})$ with $D_{x_i}(v_i)=\mathopen[p(i),p(i)\mathclose]$.
+The following rule
+\[
+\true\to \exists o_1[x_1=v_1] \cdots \exists o_n[x_n=v_n].\bigwedge_{i=1}^{n-1} o_i\leq_{[0,0]}^{\mathsf{e},\mathsf{e}} o_{i+1}
+\]
+is asking for the existence of a \lq\lq synchronization point\rq\rq , where $n$ tokens (one for each variable) have their ends aligned.
+Due to the allowed token durations, the first such time point is $\prod_{i=1}^{n} p(i)\geq 2^{n-1}$.
+Hence, in any plan, the timeline for $x_1$ features at least $2^{n-1}$ tokens: no explicit polynomial-time enumeration of such tokens is possible.
+\end{example}
+%
+As a consequence, there exists no trivial guess-and-check \NP\ algorithm.
+Conversely, one can easily prove the following result.
+\begin{theorem}
+The TP problem with trigger-less rules only is \NP-hard, even with one state variable (under polynomial-time reductions).
+\end{theorem}
+\begin{proof}
+There is a trivial reduction from the problem of the existence of a Hamiltonian path in a directed graph.
+
+Given a directed graph $G=(V,E)$, with $|V|=n$, 
+we define the state variable $x=(V,E,D_x)$, where $D_x(v)=[1,1]$ for each $v\in V$.
+We add the following trigger-less rules, one for each $v\in V$:
+\[
+\true \to \exists o[x=v]. o\geq ^{\mathsf s}_{[0,n-1]} 0 .
+\]
+The rule for $v\in V$ requires that there is a token $(x,v,1)$ along the timeline for $x$, which starts no later than $n-1$.
+It is easy to check that $G$ contains a Hamiltonian path if and only if there exists a plan for the defined planning domain.
+\end{proof}
+
+We now present the aforementioned non-deterministic polynomial-time algorithm, proving that timeline-based planning with trigger-less rules is in \NP.
+
+We preliminarily have to derive a \emph{finite horizon} (namely, the end time of the last token) for the plans of a (any) instance of TP with trigger-less rules. That is, 
+if an instance $P=(SV,R)$ admits a plan, then $P$ also has a plan whose horizon is no greater than a given bound. Analogously, we have to calculate a \emph{bound to the maximum number of tokens} in a plan.
+Both can be obtained from 
+the constructions of the \TA s described in the proof of 
+Theorem~\ref{theorem:UpperBounds}:
+since only trigger-less rules are now allowed,
+we disregard the construction of the \MTL\ formula $\varphi_\forall$,
+and restrict our attention to the \TA\  
+$\Au_P$ (i.e., the intersection between $\Au_{SV}$ for the state variables in $SV$ from Proposition~\ref{prop:AtutomataForMultiTimeline} and $\Au_{_\exists}$ for the trigger-less rules in $R$ from Proposition~\ref{prop:TATriggerLessRules}), which has $\alpha_s=2^{O(N_q+\sum_{x\in SV} |V_x|)}$ states, $\alpha_c=O(N_q+|SV|)$ clocks and maximum constant $\alpha_K=O(K_p)$, where
+$N_q$  is the overall number of quantifiers   in the trigger-less  rules of $R$, 
+and accepts all and only the encodings $w_\Pi$ of multi-timelines $\Pi$ of $SV$ satisfying all the trigger-less rules in $R$.
+
+The language emptiness checking algorithm for \TA s executed over $\Au_P$ visits the (untimed) region automaton for $\Au_P$~\cite{ALUR1994183},
+which features $\alpha=\alpha_s\cdot O(\alpha_c!\cdot 2^{\alpha_c}\cdot 2^{2 N_q^2}\cdot (2\alpha_K +2)^{\alpha_c})$
+states%
+\footnote{The factor $2^{2 N_q^2}$ is present due to diagonal clock constraints in $\Au_P$.}%
+, trying to find a path, from the initial state to a final state, whose length can clearly be bounded by the number of states.
+%
+We observe that each edge/transition of the region automaton in such a path corresponds, in the worst case, to the start point of a token for each timeline for the variables in $SV$ (i.e., assuming that all these tokens start simultaneously).
+This yields a bound on the number of tokens, which is $\alpha \cdot |SV|$.
+We can also derive a bound on the horizon of the plan, which is $\alpha \cdot |SV| \cdot (\alpha_K+1)$, as every transition taken in $\Au_P$ may let at most $\alpha_K+1$ time units pass, as $\alpha_K$ accounts in particular for the maximum constant to which a (any) clock is compared.\footnote{Clearly, and unbounded quantity of time units may pass, but after $\alpha_K+1$ the last region of the region automaton will certainly have been reached.}
+
+Having this pair of bounds, 
+we are now ready to describe the two main phases of the algorithm, corresponding to the following pair of observations.
+On the one hand, $(i)$~each trigger-less rule requires, as we said,
+the existence of an \emph{a priori bounded number} of temporal events satisfying mutual temporal relations (namely, in the worst case, the start time and end time of all tokens associated with the quantifiers of one of its existential statements).
+On the other hand, $(ii)$~timelines for different state variables evolve independently of each other.
+In order to deal with $(i)$, we non-deterministically position such temporal events along timelines; as for $(ii)$, we enforce a correct evolution of each timeline between pairs of \lq\lq positioned\rq\rq\ events, completely independently of the other timelines.
+
+% \paragraph{Preprocessing}
+% As a preliminary preprocessing phase, we consider all rational values occurring in the input planning problem $P=(SV,S)$---be either 
+% upper/lower bounds of an interval of a token duration, a time constant in an atom, or 
+% upper/lower bounds ($u$ or $\ell$) at the subscript of an atom---and make them integers by multiplying them
+% by the least common multiple $\gamma$ of all denominators. This involves a quadratic blowup in the input size, being all constants encoded in binary. 
+
+% It is routine to check that, having a plan for $P'$---where all values are integers---we can obtain one for the original $P$, by dividing the start/end times of all tokens in each timeline by $\gamma$.
+
+\paragraph{Non-deterministic token positioning.}
+The algorithm starts by non-determin\-istically selecting, for every trigger-less rule in $R$, a disjunct---and deleting all the others. Then, for every (left) quantifier $o_i[x_i=v_i]$, it generates the integer part of both the start and the end time of the token for $x_i$ to which $o_i$ is mapped. We call such time instants, respectively, $\mathsf{s}_{int}(o_i)$ and $\mathsf{e}_{int}(o_i)$.\footnote{We can assume w.l.o.g.\ that all quantifiers refer to distinct tokens. As a matter of fact, the algorithm can non-deterministically choose to make two (or more) quantifiers $o_i[x_i=v_i]$ and $o_j[x_i=v_i]$ over the same variable and value \lq\lq collapse\rq\rq\ to the same token just by rewriting all occurrences of $o_j$ as $o_i$ in the atoms of the rules.} We observe that all start/end time $\mathsf{s}_{int}(o_i)$ and $\mathsf{e}_{int}(o_i)$, being less or equal to $\alpha \cdot |SV| \cdot (\alpha_K+1)$ (the finite horizon bound), have an integer part that can be encoded with polynomially many bits (and thus can be generated in polynomial time). 
+%Let $\xi$ denote the number of quantifiers of all rules. 
+
+Let us now consider the fractional parts of the start/end time of the tokens associated with quantifiers. We denote them by $\mathsf{s}_{frac}(o_i)$ and $\mathsf{e}_{frac}(o_i)$. The algorithm non-deterministically generates an \emph{order} of all such fractional parts. In particular we have to specify, for every token start/end time, whether it is integer ($\mathsf{s}_{frac}(o_i)=0$, $\mathsf{e}_{frac}(o_i)=0$) or not ($\mathsf{s}_{frac}(o_i)>0$, $\mathsf{e}_{frac}(o_i)>0$).
+%There are $2^{2\xi}\cdot 2^{2\xi}\cdot (2\xi)!$ such possibilities, and each one can be encoded in binary.
+Every such possibility can be generated in polynomial time.
+
+Some trivial tests should now be performed, namely that, for all $o_i$, $\mathsf{s}_{int}(o_i)\leq \mathsf{e}_{int}(o_i)$, each token is assigned an end time equal or greater than its start time, and no two tokens for the same variable are overlapping.
+
+It is routine to check that, if we change the start/end time of (some of the) tokens associated with quantifiers, 
+but we leave unchanged $(i)$~all the integer parts, $(ii)$~zeroness/non-zeroness of fractional parts, and $(iii)$~the fractional parts' order,
+then the satisfaction of the (atoms in the) trigger-less rules does not change. This is due to all the constants being integers.%
+%, as a result of the preprocessing step.
+\footnote{We may observe that, by leaving unchanged all the integer parts and the fractional parts' order, the region of the region graph of the timed automaton does not change.} Therefore we can now check whether all rules are satisfied.
+
+\paragraph{Enforcing legal token durations and timeline evolutions.}
+
+We now continue by checking that: $(i)$ all tokens associated with a quantifier have a legal duration, and that $(ii)$ there exists a legal timeline evolution between pairs of adjacent such tokens over the same variable (here \emph{adjacent} means that there is no other token associated with a quantifier in between). 
+We will enforce all these requirements as constraints of a \emph{linear problem}, which can be solved in deterministic polynomial time (e.g., using the ellipsoid algorithm).
+When needed, we use \emph{strict inequalities}, which are not allowed in linear programs. We shall show later how to convert these into non-strict ones.
+
+We start by associating non-negative variables $\alpha_{o_i,s}, \alpha_{o_i,e}$ with the fractional parts of the start/end times $\mathsf{s}_{frac}(o_i)$, $\mathsf{e}_{frac}(o_i)$ of every token for a quantifier $o_i[x_i=v_i]$.
+First, we add the linear constraints
+\begin{equation*}
+    0\leq \alpha_{o_i,s}<1,\quad 0\leq \alpha_{o_i,e}<1.
+\end{equation*}
+Then, we also need to enforce that the values of $\alpha_{o_i,s}, \alpha_{o_i,e}$ respect the decided order of the fractional parts: for example,
+\begin{equation*}
+    0=\alpha_{o_i,s}=\alpha_{o_j,s}<\alpha_{o_k,s}<\ldots <\alpha_{o_j,e}<\alpha_{o_i,e}=\alpha_{o_k,e}<\ldots
+\end{equation*}
+%
+To enforce requirement $(i)$, we set, for all $o_i[x_i=v_i]$,
+\begin{equation*}
+    a\leq (\mathsf{e}_{int}(o_i)+\alpha_{o_i,e})-(\mathsf{s}_{int}(o_i)+\alpha_{o_i,s})\leq b
+\end{equation*}
+where $D_{x_i}(v_i)=\mathopen[a,b\mathclose]$. Clearly, strict ($<$) inequalities must be used for a left/right open interval.
+
+To enforce requirement $(ii)$, namely that there exists a legal timeline evolution between each pair of adjacent tokens for the same state variable, say $o_i[x_i=v_i]$ and $o_j[x_i=v_j]$, we proceed as follows (for a correct evolution between $t=0$ and the first token, analogous considerations can be made).
+
+Let us consider each state variable $x_i=(V_i,T_i,D_i)$ as a directed graph $G=(V_i,T_i)$ where 
+$D_i$ is a function associating with each vertex $v\in V_i$ a duration range.
+We have to decide whether or not there exist
+\begin{itemize}
+    \item a path in $G$, possibly with repeated vertices and edges, $v_0 \cdot v_1 \cdots v_{n-1}\cdot v_n$, where $v_0\in T_i(v_i)$ and $v_n$ with $v_j\in T_i(v_n)$ are non-deterministically generated, and
+    \item a list of non-negative real values $d_0,\ldots,d_n$,
+such that 
+\[\sum_{t=0}^n d_t = (\mathsf{s}_{int}(o_j)+\alpha_{o_j,s}) - (\mathsf{e}_{int}(o_i)+\alpha_{o_i,e}),\]
+and for all $s=0,\ldots, n$, $d_s\in D_i(v_s)$.
+\end{itemize}
+%  -  
+%  - 
+
+% Intuitively, we have to find a path in $G$, possibly where we get to the same vertices/edges also more than once, and where we remain in each vertex a non-negative rational amount of time allowed by the minimum/maximum duration function, such that the overall time of the path equals $h$.
+
+We guess 
+a set of integers $\{\alpha'_{u,v}\mid (u,v)\in T_i\}$.
+Intuitively, $\alpha'_{u,v}$ is the number of times the solution path
+traverses $(u,v)$. Since every time an edge is traversed a new token starts, each $\alpha'_{u,v}$ is bounded by the number of tokens, i.e., by $\alpha \cdot |SV|$. Hence the binary encoding of $\alpha'_{u,v}$ can be generated in polynomial time.
+
+We then perform the following deterministic steps.
+\begin{enumerate}
+\item We consider the subset $E'$ of edges of $G$, $E'=\{(u,v)\in T_i\mid \alpha'_{u,v}>0\}$. We check whether $E'$ induces a strongly (undirected) connected subgraph of $G$.
+\item We check whether 
+    \begin{itemize}
+        \item $\sum_{(u,v)\in E'} \alpha'_{u,v}=\sum_{(v,w)\in E'} \alpha'_{v,w}$, for all $v \in V_i\setminus\{v_0,v_n\}$;
+        \item $\sum_{(u,v_0)\in E'} \alpha'_{u,v_0}=\sum_{(v_0,w)\in E'} \alpha'_{v_0,w}-1$;
+        \item $\sum_{(u,v_n)\in E'} \alpha'_{u,v_n}=\sum_{(v_n,w)\in E'} \alpha'_{v_n,w}+1$.
+    \end{itemize}
+
+\item For all $v \in V_i\setminus\{v_0\}$, we define $y_v=\sum_{(u,v)\in E'} \alpha'_{u,v}$ ($y_v$ is the number of times the solution path gets into $v$). Moreover, 
+$y_{v_0} = \sum_{(v_0,u)\in E'} \alpha'_{v_0,u}$.
+\item We define the real non-negative variables $z_v$, for every $v \in V_i$ ($z_v$ is the total waiting time of the path on the node $v$), subject to the following constraints:
+\[a\cdot y_v \leq z_v \leq b\cdot y_v,\]
+where $D_i(v)=[a,b]$ (an analogous constraint should be written for open intervals). Finally we set:
+\[\sum_{v \in V_i} z_v = (\mathsf{s}_{int}(o_j)+\alpha_{o_j,s}) - (\mathsf{e}_{int}(o_i)+\alpha_{o_i,e}).\]
+\end{enumerate}
+
+Steps (1.) and (2.) together check that the values $\alpha'_{u,v}$ for the arcs specify
+a directed Eulerian path from $v_0$ to $v_n$ in a multigraph. Indeed,
+the following theorem holds.
+\begin{theorem}\cite{Jung}
+Let $G'=(V',E')$ be a directed multigraph ($E'$ is a multiset).
+$G'$ has a (directed) Eulerian path from $v_0$ to $v_n$ if and only if:
+\begin{itemize}
+    \item the undirected version of $G'$ is connected, and
+    \item $|\{(u,v)\in E'\}| =| \{(v,w)\in E'\}|$, for all $v \in V'\setminus\{v_0,v_n\}$;
+    \item $|\{(u,v_0)\in E'\}|=|\{(v_0,w)\in E'\}|-1$;
+    \item $|\{(u,v_n)\in E'\}|=|\{(v_n,w)\in E'\}|+1$.
+\end{itemize}
+\end{theorem}
+
+Steps (3.) and (4.) evaluate the waiting times of the path in some
+vertex $v$ with duration interval $\mathopen[a,b\mathclose]$.
+If the solution path visits the vertex $y_v$ times, then every single
+visit must take at least $a$ and at most $b$ units of time.
+Hence the overall visitation time is in between $a\cdot y_v$ and
+$b\cdot y_v$.
+Vice versa, if the total visitation time is in between $a\cdot y_v$ and
+ $b\cdot y_v$, then it can be slit into $y_v$ intervals, each one falling into $\mathopen[a,b\mathclose]$. 
+
+The algorithm concludes by solving the linear program given by the variables $\alpha_{o_i,s}$ and $\alpha_{o_i,e}$ for each quantifier $o_i[x_i=v_i]$, and for each pair of adjacent tokens in the same timeline for $x_i$, for each $v\in V_i$, the variables $z_v$ subject to their constraints.
+
+Finally, in order to conform to linear programming, we have to replace all strict inequalities with non-strict ones.
+It is straightforward to observe that all constraints involving strict inequalities we have written so far are of
+(or can easily be converted into) the following forms: 
+$\xi s<\eta q+k$ or $\xi s>\eta q+k$, where $s$ and $q$ are variables, and $\xi$, $\eta$, $k$ are constants.
+We replace them, respectively, by $\xi s-\eta q-k+\beta_t\leq 0$ and $\xi s-\eta q-k-\beta_t\geq 0$, where $\beta_t$ is an additional fresh non-negative variable, which is \emph{local} to a single constraint. 
+We observe that the original inequality and the new one are equivalent if and only if $\beta_t$ is a small enough \emph{positive} number.
+Moreover, we add another non-negative variable, say $r$, which is subject to a constraint $r\leq \beta_t$, for each of the introduced variables $\beta_t$ (i.e., $r$ is less than or equal to the minimum of all $\beta_t$'s). Finally, we maximize the value of $r$ when solving the linear program. We have that $\max r>0$ if and only if there is an admissible solution where the values of all $\beta_t$'s are positive (and thus the original strict inequalities hold true). 
+
+This ends the description of the planning algorithm. We can thus conclude the section with the main result.
+\begin{theorem}
+The TP problem with trigger-less rules only is \NP-complete.
+\end{theorem}
+
+In the next section, using the results on the variants of the TP problem, we shall study MC over timelines.

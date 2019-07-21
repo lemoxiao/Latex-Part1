@@ -1,0 +1,55 @@
+%% Example GayaUKM thesis in English
+\documentclass[english]{GayaUKM}
+
+\usepackage{graphicx}
+
+\title{<Your Thesis Title>}
+\author{<Your Name>}
+\authorid{<P00000 ID No.>}
+\faculty{<Your Faculty>}
+\submissiondate{2 October 2013}
+\submissionyear{2013}
+\degreetype{Doctor of Philosophy}
+\campus{Bangi}
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+\declaration
+
+% Acknolwedgements from ack.tex
+\input{ack}
+
+% English abstract from abstract-en.tex
+\input{abstract-en}
+
+% Malay Abstract from abstrak-ms.tex
+\input{abstrak-ms}
+
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+% List of Symbols may be prepared as in symbols.tex
+\input{symbols}
+
+
+\mainmatter
+% Each chapter from a separate file
+\input{chap-intro}
+\input{chap-fibonacci}
+\input{chap-goldenratio}
+
+
+
+% references are listed in refs.bib
+\bibliography{refs}
+
+\appendix
+% Each appendix chapter from a separate file
+\input{app-details}
+\input{app-code}
+\end{document}

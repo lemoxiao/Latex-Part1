@@ -1,0 +1,44 @@
+\input{chapters/header}
+
+\hypersetup{
+    pdfauthor = {Voornaam Naam},
+    pdftitle = {Titel bachelorproef},
+    pdfsubject = {Scriptie voorgelegd tot het behalen van de graad van Professionele Bachelor in de elektronica-ICT, juni 2012}
+    pdfkeywords={Voornaam Naam bachelorproef elektronica-ICT 2012}
+}
+
+%\input{chapters/woordenlijst}
+%-----------====== Titelpagina's ======--------------------
+
+\input{chapters/titlepage-scriptie}
+
+
+\input{chapters/intro}          %dankwoord, abstract en table-of-contents
+
+%-----------====== Chapters ======--------------------
+
+\mainmatter                     % related to chappg numbering
+
+\input{chapters/1_inleiding}    % Situering: wat heb je gedaan?
+\input{chapters/2_beschrijving} % Beschrijving gepresteerde werk (main text of thesis): hoe heb je het gedaan?
+\input{chapters/3_resultaten}   % Resultaten: wat heb je ontdekt?
+\input{chapters/4_besluit}      % Besluit: welke nieuwe informatie heb je uit je ontdekkingen gehaald?
+
+%-----------====== Appendix ======--------------------
+\appendix
+\input{chapters/5_app1}
+\input{chapters/6_app2}
+
+%-----------====== Bibliografie ======--------------------
+\bibliographystyle{plain}
+\bibliography{bibliografie}
+
+
+% Lege pagina op het einde:
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+
+\end{document}
+

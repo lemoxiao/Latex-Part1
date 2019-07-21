@@ -1,0 +1,37 @@
+\begin{figure}[tp]
+    \centering
+\begin{tikzpicture}[->,>=stealth,thick,shorten >=1pt,auto,node distance=1.6cm,every node/.style={ellipse,draw}]
+			\node[double] (v0) {$s_0$};
+			\node (v1) at (0,-1) {$s_0s_1$};
+			\node (v01) at (-1,-2) {$s_0s_1s_0$};
+			\node (v11) at (1,-2) {$s_0s_1s_1$};
+			\node (v02) at (-1,-3) {$s_0s_1s_0s_1$};
+			\node (v022) at (1,-3) {$s_0s_1s_1s_0$};
+			\node (v12) at (3,-3) {$s_0s_1s_1s_1$};
+% 			\node (v03) [below of=v02] {$s_1$};
+% 			\node (v53) [left of=v03] {$s_0$};
+% 			\node (v023) at (v03 -| v11) {$s_1$};
+			
+% 			\node (v92) [below of=v12] {$s_0$};
+% 			\node (v93) [right of=v92] {$s_1$};
+			
+			
+			\node (v30) [draw=none, below =0.2cm of v02] {\Large $\cdots$};
+			\node (v31) [draw=none, below left =0.21cm and 0.09cm of v12] {\Large $\cdots$};
+			
+			
+			\draw (v0) to (v1);
+			\draw (v1) to (v01); \draw (v1) to (v11);
+			\draw (v01) to (v02);
+			\draw (v11) to (v022);
+% 			\draw (v02) to (v03);
+% 			\draw (v02) to (v53);
+% 			\draw (v022) to (v023);
+			\draw (v11) to (v12);
+% 			\draw (v12) to (v92);
+% 			\draw (v12) to (v93);
+		\end{tikzpicture}
+	\vspace{-0.3cm}
+    \caption{Computation tree $\mathpzc{C}(\mathpzc{K})$ of a finite Kripke structure $\Ku=\KuDef$ with $\States=\{s_0,s_1\}$ and $\Edges=\{(s_0,s_1),(s_1,s_1),(s_1,s_0)\}$.}
+    \label{fig:unr}
+\end{figure}

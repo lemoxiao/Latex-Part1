@@ -1,0 +1,368 @@
+\documentclass[male, authorStatement, indexNumber, fileVersion, keywords, thanks]{lib/uekthesis}
+\usepackage[utf8]{inputenc}
+
+%##############################################################################
+% Zmienne Globalne !!! - ważne by kodowanie UTF-8 było wstawione przed nimi
+%
+% To zmiennne do modyfikacji przez użytkownika
+%
+\globalFullAuthor{Jan Kowalski}                     % Pełna nazwa autora pracy
+\globalShortAuthor{J. Kowalski}                     % Autor - zwięzła forma wydruku
+\globalFullTitle{Przygotowanie pracy dyplomowej \\[2mm] wraz z systemem LaTeX}  % Pełny tytuł pracy
+\globalShortTitle{Praca dyplomowa w systemie \LaTeXe}     % Krótki, zwięzły tytuł pracy
+\globalFullUniversity{Uniwersytet Ekonomiczny w Krakowie} % Pełna nazwa uniwersytetu
+\globalShortUniversity{UEK}                           % Skrócona nazwa uniwersytetu
+\globalDepartment{Wydział Zarządzania}                % Wydział
+\globalDegreeprogramme{Informatyka Stosowana}         % Kierunek studiów
+\globalThesisType{Praca dyplomowa}                    % Typ pracy dyplomowej
+\globalUnderTheSupervisonOf{pod kierunkiem}
+\globalSupervisor{prof. n. dr hab. Jana Iksińskiego}  % Promotor
+\globalAcknowledgements{Dla moich rodziców oraz najbliższych przyjaciół za niezłomną wiarę w~moje zwycięstwo.}   % Podziękowania
+\globalFileVersion{0.1.0}   % wersja pliku
+\globalIndexNumber{123456}  % wersja pliku
+\globalCity{Kraków}         % miasto
+\globalYear{2014}           % rok powstania pracy
+\globalKeywords{nauka, komputery, praca dyplomowa, latex, uczelnia, student} % słowa kluczowe dla pracy
+
+%##############################################################################
+%
+\setlength{\cftsecnumwidth}{10mm}
+
+%##############################################################################
+% Zmienia przypisy na ciągłe w całym dokumencie - używa do tego pakietu "chngcntr"
+\counterwithout{footnote}{chapter}
+
+%##############################################################################
+% Ustawienia dla bibliografii
+\DeclareQuoteAlias{croatian}{polish}
+\usepackage[
+  language=polish,  % Ustawienie języka
+  %urldate=long,     % Wyświetlenie długiego formatu w datach
+  style=numeric,    % numeric, alphabetic, authoryear,
+  sorting=nty,      % Sortowanie: nAME, tITLE, yEAR
+  isbn=true,        % zgodnie z nowym rozporządzeniem  pole obowiązkowe
+  firstinits=true,  % will render all first and middle names as initials.
+  abbreviate=true,
+  autolang=hyphen,
+  backend=biber,]{biblatex}
+\addbibresource{bibliography.bib}  % dołączenie pliku bibliografii
+
+%##############################################################################
+% pakiet dla podpisów np: dla lstlintings
+\usepackage[
+  font=small,
+  format=hang,
+  labelformat=simple,
+  justification=justified,
+  singlelinecheck=false,
+  labelsep=colon
+]{caption}
+
+\usepackage{lipsum}
+
+%##############################################################################
+% Dodanie komendy dla caption + source
+\newcommand*{\captionsource}[2]{%
+  \caption[{#1}]{%
+    #1%
+    \\\hspace{\linewidth}%
+    {Źródło:} #2%
+  }%
+}
+
+%##############################################################################
+% zmiana nazw opisu dla tabel i rysunków i innych elementów
+\addto\captionspolish{%
+    \renewcommand{\figurename}{Rysunek}%urename}{Spis rysuneczków}%  nazwa testowa ;)
+    \renewcommand{\tablename}{Tabela}%
+    \renewcommand{\listtablename}{Spis tabel}%
+    % \renewcommand\lstlistingname{Kod źródłowy}
+    \renewcommand\lstlistlistingname{Spis kodów źródłowych}
+}
+
+%##############################################################################
+% Zdefiniowanie nowego, dodatkowego jezyka
+\lstdefinelanguage{Biblatex}{
+    basicstyle=\ttfamily,
+    keywords={@Manual, @Book, @Article, @Book, @Online, },%
+    keywordstyle=\color{blue}\bfseries,%
+    ndkeywords={title, subtitle, author,year, month, day, version, language, url, number, volume, pages, journaltitle, isbn, address, publisher},%
+    ndkeywordstyle=\color{Emerald}\bfseries,%
+    %identifierstyle=\color{yellow},%
+    sensitive=false,%
+    commentstyle=\color{Gray}\ttfamily,%
+    comment=[l]{\%},%
+    stringstyle=\color{BrickRed}\ttfamily,%
+    morestring=[b]",%
+    morestring=[s]{\{}{\}},%
+    morestring=[s][\color{black}]{\{Kun}{,},% dla strongów od '{Kun' do ','
+    morestring=[s][\color{black}]{\{Popper84}{,},% dla strongów od '{Popp:' do ','
+    morestring=[s][\color{black}]{\{man:}{,},% dla strongów od '{man:' do ','
+    morestring=[s][\color{black}]{\{url:}{,}% dla strongów od '{url:' do ','
+}
+
+%##############################################################################
+% Zdefiniowanie nowego stylu LaTeX2e
+\lstdefinestyle{LaTeX2e}{
+  language=[LaTeX]TeX,
+  keywordstyle=\color{Red},
+  basicstyle=\ttfamily,
+  alsoletter={\#},
+  morekeywords={chapter},
+  morestring=[b][\color{ForestGreen}]\$,
+  morestring=[b][\color{ForestGreen}]\$\$
+}
+
+%##############################################################################
+% Zdefiniowanie nowego stylu Bash - poprawiającego wyświetlanie niektórych komend
+\lstdefinestyle{Bash}{
+  language=Bash,
+  keywordstyle=\color{MidnightBlue},
+  basicstyle=\ttfamily,
+  alsoletter={-},
+  sensitive=false,
+  morekeywords={sudo, wget, chmod, dpkg, git},
+  %literate={\$}{{\textcolor{MidnightBlue}{\$}}}1
+  %         {-}{{\textcolor{MidnightBlue}{-}}}1
+  %         {~}{{\textcolor{MidnightBlue}{\textasciitilde}}}1,
+}
+
+%##############################################################################
+% Ustawienie opcji dla wyświetlania kodów źródłowych
+% Wiecej: pakiet listings s. 26
+\lstset{
+    %extendedchars=true, % celowo wyłączone
+    inputencoding=utf8,
+    basicstyle=\footnotesize\ttfamily,
+    numberstyle=\footnotesize,
+    captionpos=t,
+    tabsize=2,
+    frame=tb,
+    numbers=left,
+    breaklines=true,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    %language=[LaTeX]TeX,   % domyślny język wyłączony
+    style=LaTeX2e,          % domyślny styl dla listingów = LaTeX2e
+    keywordstyle=\color{MidnightBlue},
+    commentstyle=\color{OliveGreen},
+    stringstyle=\color{Red},
+    emph={label},
+    literate={ą}{{\k{a}}}1
+             {ć}{{\'c}}1
+             {ę}{{\k{e}}}1
+             {ó}{{\'o}}1
+             {ń}{{\'n}}1
+             {ł}{{\l{}}}1
+             {ś}{{\'s}}1
+             {ź}{{\'z}}1
+             {ż}{{\.z}}1
+             {Ą}{{\k{A}}}1
+             {Ć}{{\'C}}1
+             {Ę}{{\k{E}}}1
+             {Ó}{{\'O}}1
+             {Ń}{{\'N}}1
+             {Ł}{{\L{}}}1
+             {Ś}{{\'S}}1
+             {Ź}{{\'Z}}1
+             {Ż}{{\.Z}}1,
+}
+
+% jednolity wygląd jak pozostałych spisów - tabel, rysunków, bibliografii
+\makeatletter
+\begingroup\let\newcounter\@gobble\let\setcounter\@gobbletwo
+  \globaldefs\@ne \let\c@loldepth\@ne
+  \newlistof{listings}{lol}{\lstlistlistingname}
+\endgroup
+\let\l@lstlisting\l@listings
+\let\my@chapter\@chapter
+\renewcommand*{\@chapter}{%
+  \addtocontents{lol}{\protect\addvspace{10pt}}%
+  \my@chapter}
+\makeatother
+\renewcommand{\lstlistoflistings}{\listoflistings}
+
+% odstępy dla poszczególnych wierszy
+\makeatletter
+% 1.5em - odstęp od początku lewej strony tekstu
+% 2em - odstęp po numerze odwołującym sie do elementu (np: 4.3)
+\def\l@lstlisting#1#2{\@dottedtocline{1}{1.5em}{2.3em}{#1}{#2}}
+\makeatother
+
+
+%##############################################################################
+% Zdefiniowanie własnych nazw dla poszczególnych definicji, twierdzeń itp
+\theoremstyle{plain}
+\newtheorem{thm}{Twierdzenie}[section]
+\newtheorem{lem}[thm]{Lemat}      % w matematyce twierdzenie pomocnicze
+\newtheorem{prop}[thm]{Założenie}
+\newtheorem*{cor}{Wniosek}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definicja}
+\newtheorem{conj}{Przypuszczenie}[section]
+\newtheorem{exmp}{Przykład}[section]
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Spostrzeżenie}
+\newtheorem*{note}{Notka}
+
+%##############################################################################
+% Defninicja komendy zmieniająca początkowy duży znak litery na mały w odnośniku do tego rozdziału, sekcji, podsekcji, ect.
+
+% Lowercase \nameref = \lnameref
+\newcommand{\lnameref}[1]{%
+\bgroup
+\let\nmu\MakeLowercase
+\nameref{#1}\egroup}
+
+% First UpperCase then lowercase = \fnameref
+\newcommand{\fnameref}[1]{%
+\bgroup
+\def\nmu{\let\nmu\MakeLowercase}%
+\nameref{#1}\egroup}
+
+% helper for lowercase newcommands
+\newcommand{\nmu}{}
+
+%##############################################################################
+% Ustawienia dla pakietu biblatex
+\renewcommand*{\newunitpunct}{\addcomma\space}
+%\renewbibmacro*{in:}{}
+\renewbibmacro{in:}{}
+
+\xpatchbibdriver{book}{%
+\newunit
+\iffieldundef{maintitle}
+{\printfield{volume}%
+\printfield{part}}
+{}%
+}
+{%
+}{}{}
+
+\xpatchbibdriver{book}{%
+\usebibmacro{publisher+location+date}%
+}
+{%
+\usebibmacro{publisher+location+date}%
+\newunit
+\printfield{volume}%
+\printfield{part}
+\usebibmacro{finentry}
+}{}{}
+
+\DeclareFieldFormat*{volume}{tom\addnbspace #1}
+\DeclareFieldFormat{journaltitle}{\mkbibquote{#1}}
+\DeclareFieldFormat[article,periodical]{number}{nr~#1}% number of a journal
+
+\DeclareFieldFormat
+[article,inbook,incollection,inproceedings,patent,thesis,unpublished]
+{title}{\mkbibemph{#1}}
+%
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+  \setunit{\addcomma\space}%
+  \printfield{number}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}}
+
+\renewbibmacro*{journal+issuetitle}{%
+  \usebibmacro{journal}%
+  \setunit*{\addspace}%
+  \iffieldundef{series}
+  {}
+  {
+    \newunit
+    \printfield{series}%
+    \setunit{\addspace}}%
+    \usebibmacro{issue+date}%
+    \setunit{\addspace}%
+    \usebibmacro{issue}%
+    \setunit{\addspace}%
+    \usebibmacro{volume+number+eid}%
+    \newunit
+}
+
+\renewbibmacro*{issue+date}{%
+  \iffieldundef{issue}
+  {\usebibmacro{date}}
+  {
+     \printfield{issue}%
+     \setunit*{\addspace}%
+     \usebibmacro{date}
+  }%
+  \newunit
+}
+
+\renewbibmacro*{publisher+location+date}{%
+  \printlist{publisher}%
+  \iflistundef{publisher}
+  {\setunit*{\addcomma\space}}
+  {\setunit*{\addcomma\space}}%
+  \printlist{location}%
+  \setunit*{\addspace}%
+  \usebibmacro{date}%
+  \newunit
+}
+
+%##############################################################################
+% Definicje własnych, nowych makr - makra wymagają pakietu 'xcolor'
+\newcommand{\red}[1]{{\color{RedOrange}{#1}}}
+\newcommand{\yellow}[1]{{\color{Dandelion}{#1}}}
+\newcommand{\green}[1]{{\color{LimeGreen}{#1}}}
+\newcommand{\RED}[1]{{\colorbox{RedOrange}{#1}}}
+\newcommand{\YELLOW}[1]{{\colorbox{Dandelion}{#1}}}
+\newcommand{\GREEN}[1]{{\colorbox{LimeGreen}{#1}}}
+
+
+
+%##############################################################################
+% Koniec preambuły i rozpoczęcie treści właściwej dokumentu
+\begin{document}
+\nocite{*}
+
+\titlepages
+\tableofcontents
+\clearpage
+
+\include{chap_1_chapter_one}
+\include{chap_2_chapter_two}
+\include{chap_3_chapter_three}
+
+% Załączniki
+% \appendix
+% \include{dodatekA}
+% \include{dodatekB}
+% itd.
+
+%##############################################################################
+% Poniżej odnajdziesz spisy dołączane do dokumentu (w tym do spisu treści).
+% Jesli nie chcesz wykorszystać któregoś z nich w pracy, zakomentuj go
+
+% Spis tabel
+\clearpage
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+
+% Spis rysunków
+\clearpage
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+
+% Spis kodów źródłowych
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\lstlistlistingname}
+\lstlistoflistings
+
+% Bibliografia
+\clearpage
+\printbibliography[heading=bibintoc]
+
+\end{document}

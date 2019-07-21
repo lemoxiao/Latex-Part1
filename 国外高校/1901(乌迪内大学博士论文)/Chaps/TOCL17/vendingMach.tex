@@ -1,0 +1,122 @@
+\subsection{An example: a vending machine}\label{subs:vendingMach}
+In this section, we give an example highlighting the differences among the $\HS$ semantic variants $\HS_\stat$, $\HS_\LinearPast$, and $\HS_\LinearTime$.
+
+\begin{figure}[tp]
+\centering
+\resizebox{\textwidth}{!}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,semithick]
+  \tikzstyle{every state}=[inner sep=1pt, outer sep=0pt, minimum size = 40pt]
+
+  \node[accepting,state] (A0)                    {$\stackrel{s_0}{p_\text{\$=0}}$};
+  \node[state]         (B2) [below of=A0] {$\stackrel{s_2}{p_\text{\$=2}}$};
+  \node[state]         (B1) [left of=B2] {$\stackrel{s_1}{p_\text{\$=1}}$};
+  \node[state]         (B05) [right of=B2] {$\stackrel{s_3}{p_\text{\$=0.50}}$};
+  \node[state]         (C1) [below of=B1] {$\stackrel{s_4}{p_\text{candy}}$};
+  \node[state]         (C2) [below of=B2] {$\stackrel{s_5}{p_\text{hotdog}}$};
+  \node[state]         (C05) [below of=B05] {$\stackrel{s_6}{p_\text{water}}$};
+  \node[state]         (D) [below of=C2] {$\stackrel{s_7}{p_\text{change}}$};
+  
+  \node[state]         (M1) [right of=C05] {$\stackrel{s_8}{p_\text{maint}}$};
+  \node[state]         (M2) [right of=B05] {$\stackrel{s_9}{p_\text{maint\_end}}$};
+  
+  \path (A0) edge  [swap]  node {ins\_\$2} (B2)
+            edge  [bend right,swap]  node {ins\_\$1} (B1)
+            edge  [bend left,swap]  node {ins\_\$0.50} (B05)
+        (B2) edge  [near start]  node {sel} (C2)
+             edge  [near end]  node {sel} (C1)
+             edge   node {sel} (C05)
+        (B1) edge   node {sel} (C1)
+             edge  [very near start]  node {sel} (C05)
+        (B05) edge  [near end]  node {sel} (C05)
+        (C1) edge   [bend right,very near start]  node {dispensed} (D)
+        (C2) edge  [swap]  node {dispensed} (D)
+        (C05) edge  [bend left,swap]  node {dispensed} (D)
+        (D) edge   [bend right,swap]  node {change\_given} (M1)
+        (D) edge   [out=200,in=160,looseness=1.7]  node {change\_given} (A0)
+        (M1) edge  [near end]  node {maint\_ongoing} (M2)
+        (M2) edge [bend left] node {maint\_failed} (M1)
+        (M2) edge   [bend right,swap]  node {maint\_success} (A0);
+        
+\draw (-3.6,1) [dashed] rectangle (3.6,-9.5);
+\draw (4.5,-1.5) [dashed] rectangle (6.8,-7);
+\node (P1) at (4.3,1) {$p_\text{operative}$};
+\node (P2) at (7,-1.3) {$\neg p_\text{operative}$};
+\end{tikzpicture}
+}
+\vspace{-1cm}
+\caption{Kripke structure representing a vending machine.}\label{fig:vending}
+\end{figure}
+
+The Kripke structure of Figure~\ref{fig:vending} represents a \emph{vending machine}, which can dispense water, hot dogs, and candies.
+In state $s_0$ (the initial one), no coin has been inserted into the machine (hence, the proposition letter $p_\text{\$=0}$ holds there).
+Three edges, labelled by \lq\lq ins\_\$1\rq\rq, \lq\lq ins\_\$2\rq\rq, and \lq\lq ins\_\$0.50\rq\rq{}, connect $s_0$ to $s_1$, $s_2$, and $s_3$, respectively. 
+Edge labels do not convey semantic value (they are neither part of the structure definition nor associated with proposition letters) and are simply used for an easy reference to edges. 
+In $s_1$ (resp., $s_2$, $s_3$) the proposition letter $p_\text{\$=1}$ (resp., $p_\text{\$=2}$, $p_\text{\$=0.50}$) holds, representing the fact that 1 Dollar (resp., 2, 0.50 Dollars) has been inserted into the machine.
+The cost of a bottle of water (resp., a candy, a hot dog) is \$0.50 (resp., \$1, \$2). A state $s_i$, for $i=1,2,3$, is connected to a state $s_j$, for $j=4,5,6$, only if the available credit allows one to buy the corresponding item.
+Then, edges labelled by \lq\lq dispensed\rq\rq{} connect $s_4,s_5$, and $s_6$ to $s_7$. In $s_7$, the machine gives change, and  can nondeterministically move back to $s_0$ (ready for dispensing another item), or to $s_8$, where it begins an automatic maintenance activity ($p_\text{maint}$ holds there). Afterwards, state $s_9$ is reached, where maintenance ends. From there, if the maintenance activity fails (edge \lq\lq maint\_failed\rq\rq ), $s_8$ is reached again (another maintenance cycle is attempted); otherwise, maintenance concludes successfully (\lq\lq maint\_success\rq\rq ) and $s_0$ is reached. Since the machine is operating in states $s_0,\ldots,s_7$, and under maintenance in $s_8$ and $s_9$, $p_\text{operative}$ holds over the former, and it does not on the latter.
+
+In the following, we will make use of the $\B$ formulas $\Length_{n}$, with $n\geq 1$, presented in Example~\ref{example:length}.
+
+We now give some examples of properties we can formalize under all, or some, of the $\HS$ semantic variants $\HS_\stat$, $\HS_\LinearPast$, and $\HS_\LinearTime$.
+
+\begin{itemize}
+    \item In any run of length 50, during which the machine never enters maintenance mode, it dispenses at least a hotdog, a bottle of water and a candy. 
+    \begin{multline*}
+        \Ku\not\models (p_\text{operative} \wedge \Length_{50})\longrightarrow\\ \big((\hsB\hsE p_\text{hotdog}) \wedge  (\hsB\hsE p_\text{water}) \wedge (\hsB\hsE p_\text{candy}) \big)
+    \end{multline*}
+    Clearly this property is false, as the machine can possibly dispense only one or two kinds of items.
+    We start by observing that the above formula is equivalent in all of the three semantic variants of $\HS$: since modalities $\hsB$ and $\hsE$ only allow one to \lq\lq move\rq\rq{} from an interval to its subintervals, $\B\E_\LinearTime$, $\B\E_\stat$, and $\B\E_\LinearPast$ coincide (for this reason, we have omitted the subscript from the symbol $\models$). 
+    %
+    Homogeneity plays a fundamental role here: asking $p_\text{operative}$ to be true implies that such a letter is true along the whole trace (thus $s_8$ and $s_9$ are always avoided).
+    
+    It is worth observing that the same property can be expressed in $\LTL$, for instance as follows:
+    \[
+    \smashoperator{\bigwedge_{i\in\{0,\ldots,49\}}}\Next^i p_\text{operative} \wedge\smashoperator[r]{\bigvee_{i,j,k\in\{1,\ldots,48\}, i\neq j\neq k\neq i}} (\Next^i p_\text{hotdog}) \wedge (\Next^j p_\text{water}) \wedge (\Next^k p_\text{candy}).
+    \]
+    The length of this $\LTL$ formula is \emph{exponential} in the number of items (in this case, 3), whereas the length of the above $\HS$ one is only linear. As a matter of fact, we will prove (Theorem~\ref{theo:succinctnessHSlin}) that $\B\E$ is at least exponentially more succinct than $\LTL$.
+    
+    \item If the credit is \$0.50, then no hot dog or candy may be provided.
+    \[
+        \Ku\models (\hsE p_\text{\$=0.50})\longrightarrow \neg \hsA (\Length_{2} \wedge \hsE (p_\text{hotdog} \vee p_\text{candy})) 
+    \]
+    We observe that a trace satisfies $\hsE p_\text{\$=0.50}$ if and only if it ends in $s_3$.
+    This property is satisfied under all of the three semantic variants, even though the nature of future differs among them (recall Figure~\ref{fig:ST}, \ref{fig:CT}, and \ref{fig:LN}). As we have already mentioned, a linear setting (rather than branching) is suitable for the specification  of dynamic behaviors, because it considers states \emph{of a computation}; conversely, a branching approach focuses on machine states (and thus on the structure of a system).
+    
+    In this case, only the state $s_6$ can be reached from $s_3$, regardless of the nature of future. For this reason, $\HS_\stat$, $\HS_\LinearPast$, and $\HS_\LinearTime$ behave in the same way. 
+    
+    \item Let us exemplify now a difference between $\HS_\stat$ (and $\HS_\LinearPast$) and $\HS_\LinearTime$.
+    \[
+        \begin{array}{l}
+            \Ku\models_\stat \\
+            \Ku\models_\LinearPast  \\
+            \Ku\not\models_\LinearTime
+        \end{array}
+        (\hsE p_\text{maint\_end})\longrightarrow \hsA\hsE p_\text{operative}
+    \]
+    This is a structural property, requiring that when the machine enters state $s_9$ (where maintenance ends), it can become again operative reaching state $s_0$ ($s_9$ is not a lock state for the system). This is clearly true when future is branching and it is not when future is linear: $\HS_\LinearTime$ refers to system computations, and some of these may ultimately loop between $s_8$ and $s_9$.
+    
+    \item 
+    Conversely, some properties make sense only if they are predicated over computations. This is the case, for instance, of fairness.
+    \[
+        \begin{array}{l}
+            \Ku\models_\stat \\
+            \Ku\models_\LinearPast  \\
+            \Ku\not\models_\LinearTime
+        \end{array}
+        (\hsAu\hsA\hsE p_\text{maint})\longrightarrow \hsAu\hsA\hsE p_\text{operative}
+    \]
+    Assuming the trace-based semantics, the property requires that if a system computation enters infinitely often into maintenance mode, it will infinitely often enter operation mode.
+    Again, this is not true, as some system computations may ultimately loop between $s_8$ and $s_9$ (hence, they are not fair). On the contrary, such a property is trivially true under $\HS_\stat$ or $\HS_\LinearPast$, as, for any initial trace $\rho$, it holds that $\Ku,\rho\models \hsA\hsE p_\text{operative}$.
+    
+    \item We conclude with a property showing the difference between linear and branching \emph{past}, that is, between $\HS_\stat$ and $\HS_\LinearTime$ (and $\HS_\LinearPast$).
+    The requirement is the following: the machine may dispense water with any amount of (positive) credit.
+    \[
+        \begin{array}{l}
+            \Ku\models_\stat \\
+            \Ku\not\models_\LinearPast  \\
+            \Ku\not\models_\LinearTime
+        \end{array}
+         (\hsE p_\text{water})\longrightarrow \hsE\big(p_\text{water}\wedge\smashoperator[r]{\bigwedge_{p\in\{p_\text{\$=2},p_\text{\$=1},p_\text{\$=0.50}\}}}\hsAt(\Length_{2} \wedge\hsB p)\big)
+    \]
+    Again, this one is a structural property, that cannot be expressed in $\HS_\LinearTime$ or $\HS_\LinearPast$, as these refer to a specific computation in the past. Conversely, it is true under $\HS_\stat$, since $s_6$ is backward reachable in one step by $s_1$, $s_2$, and $s_3$.
+\end{itemize}

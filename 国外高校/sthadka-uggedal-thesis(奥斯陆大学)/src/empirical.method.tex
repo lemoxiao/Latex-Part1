@@ -1,0 +1,366 @@
+\section{Method}
+\label{section:empirical.methodology}
+
+This section outlines the methodology we used for testing our research
+hypotheses. We wanted to test our hypotheses in a real usage situation, while
+having control of effects that could influence the results. We therefore
+decided to conduct a real world experiment with a pretest and posttest, in
+addition to using a control group.
+We'll dive into the design of the experiment, how we collected
+the data, and how data was analyzed.
+
+\subsection{Experiment design}
+\label{section:empirical.methodology.experiment.design}
+
+\citet[\p{78}]{robson93} describes an experiment as a process where:
+
+
+\begin{items}
+  \item The experimenter assigns subjects to different conditions.
+  \item The experimenter manipulates one or more variables.
+    These variables are \term{independent variables}.
+  \item The experimenter measures the effect of the manipulation of
+    the independent variables on other variables. These other
+    variables are \term{dependent variables}.
+\end{items}
+
+We are conducting a real world experiment, meaning that our subjects
+are studied in their natural habitat\dash{}not in a laboratory.
+The advantages of a real world experiments are firstly that it's easier to
+generalize results to a wider real world population since one does not have
+an artificial setting as found in laboratories. Secondly, real world
+experiments are not as prone to gaming by its participants. Lastly, it may be
+easier to find willing subjects in the real world.
+
+Real world experiments have some shortcomings compared to laboratory
+experiments. Seemingly most important is the lack of control of various
+variables which could interfere with the independent variables.
+For more information about the merits and disadvantages of real world
+experiments see \citet[\pp{80}{87}]{robson93}.
+
+In addition to a real world experiment we're using a two-group experiment
+design with a test before and after the independent variables are
+manipulated through a \term{treatment}.
+The two groups are:
+
+\begin{items}
+  \item An \term{experiment group}: $E$. This group are given a treatment by
+    manipulating an independent variable.
+  \item A \term{control group}: $C$. This group are not given a treatment but
+    are instead given a \term{placebo} which does not manipulate the
+    independent variable.
+\end{items}
+
+Using two groups means that we can measure the difference between those that
+underwent treatment and those that were given a placebo. This gives us a way
+to measure any difference induced by the actual treatment since we can detect
+possible \term{placebo effects} or \term{observer effects}.
+We will then be able to see if respondents are answering positively simply
+because they are given something new or since they know they are
+observed.
+
+By using a before and after design we are also able to use pre-post
+differences as a basis for measuring the effect of treatment or no
+treatment.
+
+In our case the treatment is analogous with the prototype implementation with
+an activity stream for \urort{} as described in
+\sectionref{implementation.design.activity.stream}.
+The placebo on the other hand is the 
+prototype implementation with a favorite list as seen in
+\sectionref{implementation.design.favorite.list}.
+The favorite list is an integrated part of the treatment implementation.
+This means that the only difference between the two prototype versions are
+the activity stream\dash{}the independent variable we as experimenters are
+manipulating (by introducing the feature).
+
+\begin{figure}
+  \includegraphics{fig_experiment_setup}
+  \caption[Experiment Overview]{
+    Overview of the various parts of the experiment. The sample $N$
+    are given a pretest. $n_1$ completes the pretest. $E_1$ are given
+    an treatment prototype while $C_1$ is given a placebo
+    prototype by randomization.
+    After one of the two types of prototypes are provided, respondents are
+    followed-up to check if they had problems installing the prototype
+    software. $n_2$ answers the follow-up questions.
+    $E_2$ successfully installed the treatment prototype and $C_2$
+    successfully installed the placebo prototype. Both $E_2$ and $C_2$ are
+    given a posttest.
+    $E_3$ of the treatment sample $E_2$ and accordingly $C_3$ of the
+    placebo sample $C_2$ completes the posttest.
+  }
+  \label{figure:fig.experiment.setup}
+\end{figure}
+
+Bearing in mind the details of our experiment design,
+\figureref{fig.experiment.setup} gives an overview of how the experiment
+process was carried out. In addition to the pretest and posttest we
+conducted a follow-up survey of our respondents to gauge whether they managed
+to install our prototype implementation. The timeline of the various parts
+of the experiment were as follows:
+
+\begin{enum}
+  \item Pretest: day 1
+  \item Follow-up: day 2
+  \item Posttest: day 11
+\end{enum}
+
+\subsection{Subjects}
+\label{section:empirical.methodology.subjects}
+
+The subjects were the 789 latest users of \urort{} which had
+signed in with their user name and password on the \urort{} page as of when
+the experiment was started.
+
+We wanted about 200 participants to answer our pretest and guessed that
+100 would be bothered to install our prototype. Through randomization
+that would amount to 50 users in the experiment group and 50 users
+in the control group.
+
+Since we were only concerned with users of the Firefox web browser we had to
+contact a fairly high number of potential respondents to yield a sufficient
+number of respondents using this particular browser. We had read that a little
+more than 13\% of world wide internet users use Firefox \citep{onestat08}.
+
+\subsection{Data collection}
+
+\removeline
+
+We collected all our data through questionnaires. An online survey system was
+used for creating a pretest, posttest, and follow-up questionnaire.
+The various
+questionnaires can be found in their original language and wording in
+\appendixref{questionnaire}. What follows are translations to English
+of the most important questions and the response options.
+
+\subsubsection{Pretest \oldand posttest questions}
+
+These questions were asked both in the pretest and posttest. First we asked
+questions to investigate the usage of favorites on \urort{} by our
+respondents:
+
+\begin{items}
+  \item How many favorites do you have on \urort{}?\dash{}we expected
+    a numerical value of the amount of favorites the respondent had.
+  \item How often do you update yourself on what your favorites on \urort{}
+    are doing?\dash{}the respondents could select between the following
+    frequency categories: daily, several times a week, weekly, monthly,
+    and seldom/never.
+\end{items}
+
+Then we asked the respondents to qualify several statements which investigated
+how easy it was for them to keep up-to-date on favorites.
+These statements
+was to be rated on a 5-point Likert scale \citep{likert32}:
+
+\begin{items}
+  \item Fully disagree
+  \item Somewhat disagree
+  \item Neither agree nor disagree
+  \item Somewhat agree
+  \item Fully agree
+\end{items}
+
+With the statements:
+
+\begin{items}
+  \item It's easy to keep up-to-date on what my favorites are doing
+    on \urort{}.
+  \item It's easy to keep up-to-date on whether my favorites publishes
+    new songs on \urort{}.
+  \item It's easy to keep up-to-date on whether my favorites publishes
+    new blog posts on \urort{}.
+  \item It's easy to keep up-to-date on whether my favorites are
+    performing at concerts.
+  \item It's easy to keep up-to-date on the reactions other users at
+    \urort{} have towards my favorite artists' songs.
+\end{items}
+
+\subsubsection{Pretest-only questions}
+
+These questions were asked only in the pretest. Here we asked questions to
+get an impression of our pretest respondents:
+
+\begin{items}
+  \item Age{}?\dash{}a numerical value was expected.
+  \item Gender{}?\dash{}either male or female.
+  \item Firefox user{}?\dash{}selection between the following frequency of use
+    categories: always, regularly, sometimes, and seldom/never.
+  \item How often do you use \urort{}?\dash{}selection between the following
+    frequency categories: daily, several times a week, weekly, monthly,
+    and seldom/never.
+  \item Do you sign-in (with user name and password) when using
+    \urort{}?\dash{}selection between the following frequency
+    categories: always, regularly, sometimes, and seldom/never.
+\end{items}
+
+\subsubsection{Posttest-only questions}
+
+These questions were asked only in the posttest. First we asked specifically
+about usage of the prototype implementation.
+
+\begin{items}
+  \item How frequently have you used \latest{} when you are
+    signed-in on \urort{}?\dash{}selection between the following
+    frequency of use categories: have not used, only a few times, almost
+    every time, and every time.
+\end{items}
+
+Next we wanted to investigate the perceived usefulness and ease of use for
+our prototype implementation. This well tested approach for conveying
+technological acceptance was introduced by \citet{davis89}.
+Like \citet[\p{340}]{davis89} we used a 7-point scale as possible answers:
+
+\begin{items}
+  \item Extremely unlikely
+  \item Unlikely
+  \item Slight unlikely
+  \item Neutral
+  \item Slight likely
+  \item Likely
+  \item Extremely Likely
+\end{items}
+
+We shorted the statements of perceived usefulness down to four alternatives
+which we felt made sense for our implementation:
+
+\begin{items}
+  \item \latest{} would enable me to keep up-to-date on my favorites in an
+    efficient manner.
+  \item \latest{} would enable me to keep up-to-date on more favorites.
+  \item \latest{} would make it easier to keep up-to-date on favorites.
+  \item \latest{} would be useful for keeping up-to-date on favorites.
+\end{items}
+
+The statement for perceived ease of use was also shorted down to four
+alternatives:
+
+\begin{items}
+  \item It would be easy to learn to use \latest{}.
+  \item It would be easy to make \latest{} do what I want.
+  \item It would be easy to become skillful at using \latest{}.
+  \item \latest{} would be easy to use.
+\end{items}
+
+\removeline
+
+Lastly we wanted to investigate if respondents would like \latest{} to be a
+standard feature on \urort{}.
+We used a 5-point Likert scale \citep{likert32} to gauge respondents
+reactions to our question:
+
+\begin{items}
+  \item Fully disagree
+  \item Somewhat disagree
+  \item Neither agree nor disagree
+  \item Somewhat agree
+  \item Fully agree
+\end{items}
+
+With the specific question:
+
+\begin{items}
+  \item Do you think \latest{} should be a standard feature of \urort{}?
+\end{items}
+
+\subsubsection{Follow-up questions}
+
+We also asked the participants to answer a short questionnaire regarding
+how the installation process went. This was done to investigate how easy or
+hard installation of Greasemonkey based prototypes were:
+
+\begin{items}
+  \item Did you manage to install \latest{}?\dash{}the respondent had to
+  choose between these categories: yes\dash{}it was an easy and quick process,
+  yes\dash{}but I experienced small problems, yes\dash{}but I experienced
+  large problems, and no\dash{}I gave up.
+\end{items}
+
+\subsection{Data analysis}
+
+We used two statistical tests for analyzing the data we collected.
+Since our sample sizes were fairly small we could not make any claims
+about the forms of the distribution for the \urort{} population
+from where our sample was drawn.
+This makes it suitable to use
+\term{non-parametric} statistical tests as they don't make any
+assumptions about the distribution of the variables to be tested
+\citep[\p{34}]{siegel88}.
+
+Most of our data are of an ordinal measurement\dash{}meaning that one can
+infer the rating of variables, but not the distance between ratings.
+To represent the central tendency of our data we'll therefore use the median
+\citep[\p{27}]{siegel88}.
+Ordinal data is another characteristic where non-parametric tests
+are best suited \citep[\p{35}]{siegel88}.
+
+\subsubsection{Mann-Whitney U-test}
+
+The Mann-Whiteney U-test is a non-parametric test for comparing two
+independent conditions and can be seen as the non-parametric alternative to
+the independent t-test \citep[\p{522}]{field05}.
+More formally the Mann-Whiteney U-test can
+\postquote[\p{128}]{siegel88}{%
+  be used to test whether two independent groups have been drawn from
+  the same population}
+According to \citet[\chap{11a}]{lowry08} the assumptions of the
+Mann-Whitney U-test are:
+
+\begin{enum}
+  \item The two samples under test should be randomly and independently drawn.
+  \item The dependent variable should be intrinsically continuous.
+  \item The measures of the two samples should be at least of an ordinal scale.
+\end{enum}
+
+We used the Mann-Whitney U-test when comparing differences between our
+experiment group and control group.
+
+\subsubsection{Wilcoxon signed-rank test}
+
+The Wilcoxon signed-rank test is a non-parametric test for comparing two
+related conditions and is a non-parametric alternative to the
+dependent t-test \citep[\p{534}]{field05}.
+The assumptions of the Wilcoxon signed-rank test are similar to those
+of the Mann-Whitney U-test \citep[\chap{12a}]{lowry08}:
+
+\begin{enum}
+  \item The paired values of $X_A$ and $X_B$
+    should be randomly and independently drawn.
+  \item The dependent variable should be intrinsically continuous.
+  \item The measures of the paired values $X_A$ and $X_B$
+    should be at least of an ordinal scale.
+\end{enum}
+
+The Wilcoxon signed-rank test was used for comparing differences within
+groups between the pretest and posttest.
+
+\subsubsection{Level of significance}
+\label{section:empirical.method.data.analysis.level.of.significance}
+
+For the two statistical test we've described we decided on a level
+of significance $\alpha$ of $p \leq 0.05$.
+This is the level for $\alpha$ we worked with based on
+our sample size and the importance of the results which will be obtained
+\citep[\pp{8}{9}]{siegel88}.
+
+\subsubsection{Outliers}
+
+We went through the collected data looking for outliers
+\dash{}\postquote[\p{84}]{coolidge06}{%
+  deviant scores that [\ldots] are uncommon score or they
+  range far from the central tendency of the data set}
+We were only concerned with such numerical outliers for ratio values
+(age, number of favorites) where it would be meaningful to talk about means.
+For ordinal values we were not concerned with such outliers as we operated
+with medians for conveying the center of a distribution.
+If outliers were found, the value was simply deleted from the sample.
+
+Another form of outliers can be respondents which respond very
+monotonous\dash{}indicating that they just tick off questions without any
+thought. In such cases the respondents motivation is to complete the
+questionnaire as fast as possible. We did not eliminate such responses from
+the sample as it's hard to know the exact motivations of the respondents.
+In addition we don't have a particular large set of values for each respondent
+to base such analysis on. It would therefore be hard to distinguish such
+outliers.

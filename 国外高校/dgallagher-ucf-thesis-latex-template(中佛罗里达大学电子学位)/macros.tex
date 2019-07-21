@@ -1,0 +1,36 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% UCF Electronic Dissertation and Thesis (ETD) Template
+% (C) Copyright 2007-2013 Daniel Gallagher,
+%
+% https://bitbucket.org/dgallagher/ucf-thesis-latex-template
+%
+% Example macro file
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Note:
+%     To include a space after a macro use backslash at end ie. ``This is a \LaTeX\ document.''
+%     Else a tilde must be in macro definition to prevent text forming together.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MATH MACROS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sinc}[1]{\ensuremath{\frac{\sin\left({#1}\right)}{{#1}}}} % Sampling Function
+%\newcommand{\sinc}[1]{\ensuremath{\textrm{sinc} \left({#1}\right)}} % Sampling Function
+\newcommand{\rect}[2]{\ensuremath{ \textrm{rect} \left( {\frac{#1}{#2}} \right)}}% rect function with fractional arguments
+
+% MATH -----------------------------------------------------------
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\Real}{\mathbb R}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\BX}{\mathbf{B}(X)}
+\newcommand{\A}{\mathcal{A}}
+%%% --------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TEXT MACROS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\degC}{$^\circ C$} % Or use \textcelsius with \usepackage{textcomp}
+\newcommand{\fo}{\ensuremath{f_0}} 

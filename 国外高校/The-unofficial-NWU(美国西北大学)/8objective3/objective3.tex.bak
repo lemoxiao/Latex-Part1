@@ -1,0 +1,819 @@
+%----------------------------------------------------------------------------------------
+%	Spatial and temporal trends of Hailstorms over the Highveld
+%----------------------------------------------------------------------------------------
+\chapter{Trends of hailstorms over the Highveld}
+\label{sec:trends} 
+
+The chapter analyzes the trends of thermodynamic indicators associated with
+hailstorms and severe convective activity by examining data from historical
+media records \citep{bureau1991history} and the \gls{IGRA} database. The
+data provides insight into the reporting frequency of hail events and an
+alternative perspective into the spatial distribution of events across
+South-Africa. \cite{schulze1965hail, le1996modelling} \gls{HDF} map is also
+reevaluated by using these data sources. Building on the numerical
+simulations of the selected case studies, which focussed on simulating the
+thermodynamic profile of the severe storm days, additional sounding derived
+indices are evaluated from a historical context. Data from the \gls{IGRA}
+is used to analyze \gls{CAPE}, \gls{CIN}, K-index, \gls{TT}, \gls{LI} and
+\gls{SI} from the Irene weather station. The data is reevaluated and
+analyzed similar to that of \cite{dyson2013atmospheric}. The seasonal and
+long term variation of the thermodynamic indicators are evaluated by the
+use of a Theil-sen slope analysis. Only the 12:00 UTC sounding was used for
+the analysis; a similar method was adopted in the chapter 3 to represent
+the spatial distribution of \gls{CAPE} and \gls{CIN} as convection mostly
+occurs in the afternoon. The data underwent a minimum sanity check where
+missing and erroneous values where removed before the analysis was started.
+The chapter concludes by examining the trends and cycles of the synoptic
+circulation patterns, first by investigating the long term trends of the
+patterns associated with hail and then investigating their relationship to
+\gls{SOI}.
+
+\section{Media coverage of hail events and a new hailday frequency map}
+
+Using media coverage to analyze the trends of hail events has some biases
+that need to be considered, and this is discussed later on. These reports
+still provide an value source of data to assess the trends and the
+historical relevance of key hail events. These reports go as far back as
+the late 1600's \citep{bureau1991history}. One of the first notable weather
+events in South-Africa's documented weather history was a hail event in
+1692 \citep{bureau1991history} affecting ships along the Cape province.
+Weather events have been relatively well documented in modern times due to
+their impact on society. Some sites, especially rural areas have no
+official weather record and media reports serve as an alternative way to
+get data from events data caused damage but may have gone unnoticed.
+However the interest some weather events get may be proportionally out of
+line compared to based on factors such as location and population density,
+for example \cite{de2000tornadic} noted how several tornadic events in 1998
+and 1999 generated above average interest in tornadoes during the time
+period, the same could be said for other severe events; the media interest
+in particular storm could have a influence on how it is reported and
+consequently perceived by the public. It should also be noted that the
+small spatial extend of severe events could that many events occur in
+unpopulated areas and go unreported.  \cite{punge2016hail} also supported
+this notion as he states there is an higher chance of storms begin reported
+during the growing season in agricultural regions.  With these
+uncertainties and biases in mind,
+\hyperref[fig:hailinmedia_100years]{figure \ref{fig:hailinmedia_100years}}
+shows the reporting frequency for hail events over the last century. Some
+subjectivity was used to classify severe and non serve events, for an event
+to be classified as severe some loss of life (human or livestock) occurred,
+or damage to property was emphasized in the report.  In
+\hyperref[fig:hailinmedia_100years]{Figure \ref{fig:hailinmedia_100years}}
+an increase in reported hail events from the 1980's onwards is observed,
+however, there seems to be a drop in reported severe hailstorms from 2000 -
+2015. 
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{hail-reports-tseries.png}
+\caption[Severe hail reports as seen in media over the last 100 years]{The 
+diagram represents media reports on hail over the last 100 years.  The data
+is mostly from \cite{bureau1991history}, while additional data was gathered
+from media reports in popular newspapers. This was used as sources to to
+update \cite{bureau1991history} reports. As seen, the number of reports has steadily
+increased from 1900's, this could mainly be due to the fact that the extend
+of media coverage has increased and more news outlets are in existence,
+another factor is the increase in weather monitoring sites, population
+density and industries affected by hail storms.}
+\label{fig:hailinmedia_100years}
+\end{figure}
+
+\hyperref[fig:hailinmedia_annual]{Figure \ref{fig:hailinmedia_annual}}
+represents the annual distribution of hail reports over the whole
+South-Africa. The diagram shows a similar trend as the seasonal cycle of
+hail, thunderstorm and severe rainfall events associated with summer
+convection. The seasonal cycle is discussed again later as related to the
+thermodynamic profile of the atmosphere.  
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{hail-reports-annual.png}
+\caption[Annual distribution of hail reports as seen in media]{The annual
+distribution of hail media reports and is in general agreement with the
+annual distribution of hail over South-Africa, we can see that October and
+November have a proportionally higher reporting instances.}
+\label{fig:hailinmedia_annual}
+\end{figure}
+
+To represent the spatial distribution of the media reports seen in
+\hyperref[fig:hailinmedia_annual]{figure \ref{fig:hailinmedia_annual}} the
+data is plotted spatially over South-Africa in
+\hyperref[fig:hailreportinmedia]{figure \ref{fig:hailreportinmedia}}.  The
+\hyperref[fig:hailreportinmedia]{figure} illustrates the high prevalence of
+hail reports in populated places, and this could be expected.  Densely
+populated places will have an higher chance of hail being reported compared
+to rural or unpopulated areas. Around the Drakensburg there is also high
+frequency of hail events, the area is mostly rural with some midsize
+towns. In \cite{schulze1965hail, le1996modelling} \gls{HDF} map
+it is clear that this area also has a high \gls{HDF}. Several reports over the
+Western Cape are visible and these events usually occur in the mountainous
+regions in the form of soft hail or ice \citep{tyson2000atmosphere}. 
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{hailreportinmedia.png}
+\caption[Spatial distribution of severe hail reports in media]{The spatial
+distribution of severe hail events according to media reports correlates
+with the distribution of hail over South-Africa as described by
+\cite{schulze1965hail, le1996modelling, cecil2012toward}. The number of
+severe hail reports are higher over Gauteng, mainly due to the area's high
+population and infrastructure density}
+\label{fig:hailreportinmedia}
+\end{figure}
+
+A alternative \gls{HDF} is illustrated in
+\hyperref[fig:newhdfmap]{figure \ref{fig:newhdfmap}} by the combination of
+media and historical weather data for South-Africa. The new \gls{HDF} map
+shows similar a similar distribution of hail events to that of
+\cite{schulze1965hail, le1996modelling, cecil2012toward}. The map does not
+interpolate the data spatially but instead shows the \gls{HDF} as reported at an
+specific site. The figure illustrates that the Highveld area consisting of parts
+of Mpumalanga, Free-State, Gauteng and North-West shows a high density of hail
+events. Parts of the Northern Eastern-Cape around Lesotho also have a high
+density of events compared with the Southern parts of the province. 
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{hdf_annual.png}
+\caption[A new hailday frequency map]{A new hail day frequency map created from
+\cite{bureau1986climate} data and \cite{bureau1991history} reports. The HDF
+map is in agreement with that of \cite{schulze1965hail, le1996modelling,
+cecil2012toward}, a high HDF is observed around the Lesotho highlands, the
+Highveld region as a whole has a HDF between 2 - 4, while Johannesburg
+metropolitan area has a HDF between 4 - 6 per year. As noted by
+\cite{tyson2000atmosphere} the mountains around the Western Cape region
+receives hail too, which is evident in the above figure,but this is usually
+in the form of soft hail and ice rain.} 
+\label{fig:newhdfmap}
+\end{figure}
+
+Some limitations of using the above dataset has already been mentioned.
+Arguments can be made that media reports are biased towards reporting
+storms that resulted in extreme damage and as such many storms that are
+deemed insignificant from a economic or social perspective may never to be
+heard of again in the media. However, we can see that the annual reports of
+hail is generally in agreement with the known seasonal distribution of
+severe weather and hail events occurring form early October to late
+February. Winter hail events could be disproportionally reported because of
+the rare nature of these events. The biases in the media is well
+understood, however the data can be useful to understand the perception and
+impact of hail events in certain areas. 
+
+\section{Overview of thermodynamic indices and the seasonal and long term
+trends}
+
+Chapter 3 provided insight into the spatio-temporal extend of variables
+associated with severe hail storms. In the chapter five case studies where
+simulated on \gls{CPM} scale. These cases are not representative of all
+hailstorms over the Highveld or Gauteng, but was used to evaluate the
+thermodynamic properties of severe hailstorms on the small meso-$\gamma$
+scale. The results shows the prominence of some thermodynamic variables in
+the simulations of severe events. \gls{CAPE}, \gls{CIN} showed a inverse
+correlation while the \gls{SI} values associated with severe events were
+within the threshold of values associated with thunderstorms in all the
+cases. In the following section these thermodynamic variables are evaluated
+to examine seasonality and the long term trends, the \gls{IGRA} radiosonde
+dataset was used in this section as the data goes back to 1975 and
+undergoes a quality control procedure.
+
+The \gls{IGRA} \citep{durre2006overview} database contains radiosonde data
+from weather stations around the world. The Irene dataset is included in
+this database and was used to analyze the trend of the thermodynamic
+indicators associated with severe events. Radiosonde data is prone to
+failures, however and within the scope of this study the data underwent a
+minimum sanity check as the \gls{IGRA} already has a quality control
+procedure \citep{durre2006overview}. \cite{dyson2013atmospheric} advises
+against the use of the \gls{IGRA} database as data for some periods is
+missing and erroneous dew point are could impact soundings on convective
+days. A inspection on the database did show missing data otherwise the data
+was relatively complete. After an extra sanity check for missing or
+erroneous values the soundings were used for analysis.  Each of the indices
+derived from the sounding and the associated \textit{value} with severe
+weather events is briefly discussed below.  \cite{dyson2013atmospheric}
+emphasizes that thermodynamic variables and values associated convection
+may differ across geographic locations. The values discussed serve as
+baseline and is not specific to the Highveld. The values associated with
+severe events are briefly discussed here again.
+
+\paragraph{CAPE and CIN}
+\gls{CAPE} (see equation \hyperref[eq:cape]{\ref{eq:cape}}) is well known
+indicator associated with severe storms. The variable serves as a
+indication of a lifting parcels buoyancy. \gls{CAPE} values $\geq 1000$
+J/kg are associated with a high possibility of severe weather events
+occurring. In the case studies from chapter 3 high \gls{CAPE} was observed
+spatially and temporally. The simulations also indicated that \gls{CIN}
+(see equation \hyperref[eq:cin]{\ref{eq:cin}}) has an inverse correlation
+with \gls{CAPE}. This is expected as \gls{CIN} is also known as negative
+\gls{CAPE}. \gls{CIN} refers to the negative energy a parcel has to
+overcome in order to break through the CAP and lift to its \gls{EL}.
+
+\begin{table}[H]
+\centering
+\caption[CAPE and CIN values associated with convective events]{CAPE and CIN
+values associated with convective events \citep{grieser2012convection}}
+\label{tbl:CAPE_CIN_1}
+\begin{tabular}{ll|ll}
+\hline
+\multicolumn{2}{c|}{CAPE (J/kg)} & \multicolumn{2}{c}{CIN (J/kg)} \\ \hline
+Weak instability & 0 - 1000 & $\leq -15$ & Minor convection  (early formation) \\
+Moderate instability & $\geq 1000$ \& $\leq 2500$ & $\geq - 15$ \& $\leq - 50$ & Possible singlecell storms \\
+Strong instability & $\geq 2500$ \& $\leq 4000$ & $\geq - 50$ \& $\leq - 200$ & Possible multicell storms \\
+Extreme instability & $\geq 4000$ & $\geq - 200$ & No convection (stability to high) \\ \hline
+\end{tabular}
+\end{table}
+
+\paragraph{The Showalter and lifted index}
+
+The \gls{SI} provides an indication of the instability in the atmosphere
+\citep{showalter1953stability}, see \hyperref[eq:si_i]{equation
+\ref{eq:si_i}} \footnote{According to \cite{tyson2000atmosphere} the
+\gls{SI} has been configured for use over South-Africa by the
+\gls{SAWS}, this method is however not used and the \gls{IGRA}
+derived \gls{SI} is used in its original form}. Table
+\hyperref[tbl:si_index_1]{\ref{tbl:si_index_1}} indicates the values of the
+indices and the associated convective event.  \cite{dyson2013atmospheric}
+found that the lowest average \gls{SI} value occurs during December over
+the Highveld (-2$\degree$C). The \gls{LI} \citep{galway1956lifted} is
+similar to the above mentioned \gls{SI}. According to
+\cite{groenemeijer2007sounding} the \gls{LI} shows considerable skill to
+forecast severe convective events associated with hail. The index
+represents a parcel as it is lifted from the surface to the \gls{LCL}
+whereas (\gls{SI} calculates a parcel lifting from 850 hPa). Because of
+this similarity between \gls{SI} and \gls{LI}
+\hyperref[tbl:si_index_1]{table \ref{tbl:si_index_1}} similar thresholds
+exist.
+
+\begin{table}[H]
+\centering
+\caption[SI-Index and LI values associated with convective events]{SI-Index
+and LI values associated with convective events ($\degree$C) \citep{showalter1953stability}}
+\label{tbl:si_index_1}
+\begin{tabular}{ll}
+\hline
+Showalter Index \\ \hline
+\multicolumn{1}{l|}{Weak instability \& little to no rain} & $\geq 0$ \\
+\multicolumn{1}{l|}{Moderate instability \& thunderstorm activity} & 0 to - 3 \\
+\multicolumn{1}{l|}{Strong instability \& severe thunderstorm activity} & $\leq - 3$ \\ \hline
+\end{tabular}
+\end{table}
+
+\paragraph{The K-Index}
+
+The K-index \citep{george2014weather} is another thermodynamic derived product
+used to evaluate instability in the atmosphere. The index (see
+\hyperref[eq:ki]{equation \ref{eq:ki}}), is based on the vertical temperature
+gradient between 850hPa and 500hPa. Table
+\hyperref[tbl:k_index]{\ref{tbl:k_index}} indicates the values of the indices
+and the associated level of instability. According to
+\cite{dyson2013atmospheric} the \gls{KI} index over South-Africa is $\geq
+30\degree$C during the South-African thunderstorm season. January has the
+highest average \gls{KI} at $37\degree$C, well above the threshold used to
+evaluate the possibility of thunderstorm occurrences. The \gls{KI} may also be prone to
+erroneous values as dry air at 700 hPa could falsely indicate instability. 
+
+\begin{table}[H]
+\centering
+\caption[K-Index values associated with convective events]{K-Index values
+associated with convective events ($\degree$C) \citep{george2014weather}}
+\label{tbl:k_index}
+\begin{tabular}{ll}
+\hline
+& K-Index \\ \hline
+\multicolumn{1}{l|}{Weak instability} & $\leq 20$ \\
+\multicolumn{1}{l|}{Moderate instability} & 20 - 30 \\
+\multicolumn{1}{l|}{Strong instability} & $\geq 30$ \\ \hline
+\end{tabular}
+\end{table}
+
+\paragraph{The total totals index}
+The \gls{TT}, is a sum of the \gls{VT} and \gls{CT}, see
+\hyperref[eq:TTI]{equation \ref{eq:TTI}}. Along with providing a measure of
+instability the indicator can also provide an estimate of storm strength
+\citep{miller1972notes}. \hyperref[tbl:tt_index]{Table
+\ref{tbl:tt_index}} shows the \gls{TT} values and the associated
+convection in the atmosphere. \cite{dyson2013atmospheric} found that
+the \gls{TT} values are the highest in December. The variation
+between the \gls{TT} values in October, November, December and January
+differs minimally. In \cite{de2000tornadic} study of the 15 November
+1998 and 18 January 1999 tornadic events only \gls{TT} met the threshold
+for the indication of a possible severe event on both occasions. 
+
+\begin{table}[H]
+\centering
+\caption[Total Totals Values (C$\degree$) associated with convective
+events]{Total Totals Values (C$\degree$) associated with convective
+events\citep{miller1972notes}} 
+\label{tbl:tt_index}
+\begin{tabular}{ll}
+\hline
+& Total Totals Values \\ \hline
+\multicolumn{1}{l|}{Weak instability \& little to no rain} & $\leq 40$ \\
+\multicolumn{1}{l|}{Possible thunderstorm activity} & 40 to 50 \\
+\multicolumn{1}{l|}{Severe thunderstorm activity} & $\geq 50$ \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Seasonal trends of thermodynamic indicators}
+
+The \gls{IGRA} dataset for the Irene weather station was used to analyze
+the trends of thermodynamic indicators for a period of 45 years. Each
+indicator was analyzed for season and long term trends. The section is
+similar to \cite{dyson2013atmospheric} analysis of heavy rainfall events
+using sounding derived indicators, also heavily influenced by summer
+convection. The exception is that \cite{dyson2013atmospheric} used
+radiosonde data from the \gls{UWYO} database. The \gls{IGRA} database is
+instead used here A Theil-sen slope analysis is used to determine the
+trends of the selected parameters along with the 95\% confidence interval
+of the slopes. In the analysis seasons is defined as summer (December,
+January \& February), autumn (March, April \& May), winter (June, July \&
+August) and finally spring (September, October \& November).
+
+\hyperref[fig:cape_ts_m]{Figure \ref{fig:cape_ts_m}} shows a clear
+indication of the seasonal variation observed in \gls{CAPE}. Spring and
+summer months are associated with the highest average \gls{CAPE} values,
+with summer averages slightly over 1000 $j/kg$. This is ideal for the
+formation of convective storms. The high values is expected as the
+circulation over South-Africa during summer is associated warm tropical
+circulation, which is highly unstable and increases the amount of buoyant
+energy in the atmosphere. There is a significant upward trend in the
+buoyant energy available in the atmosphere over the last 40 + years,
+particularly in the spring and summer months. The Thiel-Sen slope analysis
+indicates a significant trend of 0.59 and 0.46 for the spring and summer
+months respectively. No significant trend is observed in the autumn and
+winter months and \gls{CAPE} values seem to be relatively stable. These
+observations supports \cite{dyson2013atmospheric} findings that \gls{CAPE}
+values peak in December and January. The positive seasonal trend that is
+observed in the \gls{CAPE} values indicate that the atmosphere is becoming
+increasingly favorable for the formation of severe events associated with
+convection. 
+
+The inverse correlation between \gls{CIN} and \gls{CAPE} has been discussed
+previously in chapter 2. In \hyperref[fig:cin_ts_m]{Figure
+\ref{fig:cin_ts_m}} we see that the seasonal trend is less pronounced then
+that of \gls{CAPE}. The lowest values of \gls{CIN} is observed during the
+summer months from November to February, with only a marginal difference
+between the seasons. The fine balance between \gls{CIN} and \gls{CAPE} is
+emphasized again, if the \gls{CIN} is to low severe storms will not appear
+and only cumulus clouds will form while high \gls{CIN} can completely
+prevent storm formation. According to \cite{grieser2012convection} values
+of $-15 \lessgtr -200$ is favorable for convective activity. The values
+remain stable throughout the year and no significant difference is observed
+between the seasons.
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{dcomp/cape/Irene_CAPE_decomp.png}
+\caption[The seasonal distribution of CAPE]{The
+seasonal distribution of CAPE}
+\label{fig:cape_ts_m}
+\end{figure}
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{dcomp/cin/Irene_CIN_decomp.png}
+\caption[The seasonal distribution of CIN]{The seasonal
+distribution of CIN}
+\label{fig:cin_ts_m}
+\end{figure}
+
+The \gls{KI}, based on the vertical temperature gradient between 850hPa and
+500hPa, has a well defined seasonal variation, see
+\hyperref[fig:ki_ts_m]{figure \ref{fig:ki_ts_m}}. The highest \gls{KI}
+values are observed in the summer months and there is also a observed
+positive trend in this value indicating a increasingly convective favoring
+atmosphere over during summer months. A positive trend is also observed
+during spring months, although not significant. Autumn and winter months
+show no significant positive trend, we can see however that the winter
+months show a trend towards a more stable atmosphere with a slight
+decreasing trend. This is similar to that observed by
+\cite{dyson2013atmospheric}.
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{dcomp/ki/Irene_KI_decomp.png}
+\caption[The seasonal distribution of the K-Index]{The
+seasonal distribution of the K-Index} 
+\label{fig:ki_ts_m}
+\end{figure}
+
+The \gls{SI} was well represented in each of the case studies simulated in
+chapter 3. In \hyperref[fig:si_ts_m]{figure \ref{fig:si_ts_m}} the \gls{SI}
+shows a well defined seasonal variation. The summer months have a average
+of $-3\degree C$ indicating an unstable atmosphere favoring convection,
+however, this is only observed in the summer months. In autumn, winter and
+spring all \gls{SI} values are slightly positive (stable atmosphere). The
+\gls{SI} values also show no significant trend towards a convective
+favoring atmosphere in any of the seasons. The \gls{LI}, \hyperref[fig:li_ts_m]{figure
+\ref{fig:li_ts_m}}, shows a similar seasonal variation to the \gls{SI},
+however there is a significant trend seen in summer, spring and autumn
+months towards a more unstable atmosphere. Winter \gls{LI} values show no
+significant trend that indicating that the atmosphere has remains
+relatively stable during this season based.
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{dcomp/si/Irene_SI_decomp.png}
+\caption[The seasonal distribution of the Showalter index]{The seasonal distribution of the Showalter index}
+\label{fig:si_ts_m}
+\end{figure}
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{dcomp/li/Irene_LI_decomp.png}
+\caption[The seasonal distribution of the Lifted index]{The seasonal distribution of the Lifted index}
+\label{fig:li_ts_m}
+\end{figure}
+
+The \gls{TT} values observed at the Irene weather station show a clear
+seasonal variation, similar to the indicators already discussed. The
+\gls{TT} value is useful in that it provides a measure of possible storm
+intensity as well as instability \citep{grieser2012convection}. In \hyperref[fig:tti_ts_m]{figure
+\ref{fig:tti_ts_m}} no significant trend is observed in the \gls{TT}
+values. The seasonal variation between spring and summer is minimal, while
+the winter conditions is stable, as expected. According to
+\cite{dyson2013atmospheric} summer highs are in the order of $\pm 53\degree$C,
+however \hyperref[fig:tti_ts_m]{Figure \ref{fig:tti_ts_m}} indicates marginally lower
+values then found by \cite{dyson2013atmospheric}. 
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{dcomp/tti/Irene_TTI_decomp.png}
+\caption[The seasonal distribution of the total totals index trends
+]{The seasonal distribution of the total totals index
+trends}
+\label{fig:tti_ts_m}
+\end{figure}
+
+In this section the seasonal trends and variations of selected
+sounding derived variables were evaluated. Data was used from the
+\gls{IGRA} database that undergoes a quality control procedure before
+public release. The Thiel-sen slope analysis was used to evaluate the
+seasonal trends of the selected indicators from 1975 to 2016. The Thiel-Sen
+analysis is robust and depends on the median slope of the data, this means
+that outliers influence the data less. Furthermore, only the 12:00 UTC
+sounding was extracted from the dataset as convective storms mostly occur
+within the early to later afternoon. Six thermodynamic variables were
+analyzed, this included \gls{CAPE}, \gls{CIN}, \gls{KI}, \gls{SI}, \gls{LI}
+and \gls{TT}. Three indicators showed a significant trend towards an
+convective a favoring atmosphere, this was \gls{CAPE}, \gls{KI} and \gls{LI}.
+\gls{CAPE} was also used in the previous two chapters, first as a variable
+to evaluate the meso-$\gamma$ scale environment associated with severe
+weather events and then as a variable to drive the cluster analysis.
+A significant increase in \gls{CAPE} is observed during spring and summer
+months while winter and autumn remain stable. The \gls{KI} was only showed
+a significant trend during summer months. The last indicator that
+showed a significant trend was the \gls{LI} where spring, summer and autumn
+had a significant trend towards a more unstable atmosphere. \gls{CIN} also
+showed a significant trend positive trend, however, the indicator is
+difficult to evaluate as there is a balance between the stable layer
+represented by \gls{CIN} and buoyancy represented by \gls{CAPE}. If
+\gls{CIN} values are to low $\leq -15$ only minor convection will occur and
+storms could form to early to result in significant events, however, high
+\gls{CIN}, $\geq -200$ could prevent lifting and convection might not occur
+either. If \gls{CIN} is evaluated along with the increasing \gls{CAPE}
+observed during spring and summer, it could be that the positive \gls{CIN}
+trend observed shows a atmosphere where lifting is increasingly favoured.
+The \gls{SI} and \gls{TT} show no significant trend in the seasonal
+analysis.
+
+\subsection{Long term thermodynamic trends of thermodynamic indicators}
+
+Over South-Africa scientists have stated that climate change could result
+in a increase in extreme events associated with heavy rainfall, flooding
+and possibly more severe hailstorms. The $4\degree$C increase projected
+would have an strong effect on convective nature of the atmosphere
+\citep{engelbrecht2013high, piketh2014climate}. More heat allows the
+atmosphere to hold more moisture and also increases the amount of
+convective energy. In the following section the long term trend of
+\gls{CAPE}, \gls{CIN}, \gls{KI}, \gls{SI}, \gls{LI} and \gls{TT} is
+evaluated from the \gls{IGRA} dataset. As with the seasonal analysis a
+Thiel-Sen slope analysis is used as the method is robust and insensitive to
+outliers. Only the 12:00 UTC was used in the analysis as convection is most
+likely to occur in the afternoon and later afternoon. 
+
+\hyperref[fig:cape_longterm]{Figure \ref{fig:cape_longterm}} indicates that \gls{CAPE}
+has increased significantly over the last three decades (0.36). The
+increased \gls{CAPE} supports the climate change predictions of
+\citep{engelbrecht2013high, piketh2014climate} as the variable is a
+function of the energy in the atmosphere, which effects the convection type
+and intensity. When the seasonal analysis is considered we can see that
+most of the increased \gls{CAPE} occurs within the spring and summer
+months. This would mean that although there is an overall trend towards a
+convective favoring atmosphere most an increase in convective storms is
+expected to be mostly in these seasons while winter and autumn remain
+stable. 
+
+\gls{CIN} importance has been throughout discussed in the previous
+sections. The variable plays a fine balancing act in the stability of the
+atmosphere. Too high stability would prevent unstable lifting of air, while
+too little stability would result in convection triggering to early and
+possibly no storms. The long term trends from the \gls{IGRA} dataset
+indicate that \gls{CIN} is significantly decreasing (-0.46)
+(\hyperref[fig:cin_longterm]{figure \ref{fig:cin_longterm}}). The decreasing
+\gls{CIN} value is still within the thunderstorm threshold as described by
+\cite{grieser2012convection}. However the \gls{CIN} value should be
+evaluated concurrent to \gls{CAPE}. The increasing \gls{CAPE} value along
+with the observed \gls{CIN} value could indicate that the conditions for
+thunderstorm formation is becoming more favorable, the \gls{CIN} is not
+increasing to a level where convection is completely halted neither do we
+observe low \gls{CIN} where convection is triggered to early. 
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{dcomp/cape/Irene_CAPE_decomp_y.png}
+\caption[The long term trends of CAPE]{The long term trend of CAPE
+based on the IGRA dataset and an Thiel-Sen slope analysis} 
+\label{fig:cape_longterm}
+\end{figure}
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{dcomp/cin/Irene_CIN_decomp_y.png}
+\caption[The long term trends of CIN]{The long term trend of CIN
+based on the IGRA dataset and an Thiel-Sen slope analysis}
+\label{fig:cin_longterm}
+\end{figure}
+
+The \gls{SI} showed skill in the simulations discussed in chapter 2, in all
+five case studies the \gls{SI} was simulated within thunderstorm
+thresholds. \hyperref[fig:si_longterm]{Figure \ref{fig:si_longterm}}
+indicates that the long value of the \gls{SI} shows a slightly decreasing
+trend (lower \gls{SI} values is associated with severe weather) over the
+last three decades. This decreasing \gls{SI} supports the \gls{CAPE}
+observations that an increasingly unstable atmosphere is ever more present
+over Guateng.  However, the trend is marginal and by referring back to the
+seasonal variation of the \gls{SI} index this can also be seen. The slight
+decreasing value is however important to observe and when the rare
+spatio-temporal nature of severe events is taken into account this trend is
+significant. The \gls{LI} is similar to the \gls{SI}, however a stronger
+trend towards convective favoring atmosphere is observed with a
+Theil-Sen slope of -2.61 (\hyperref[fig:li_longterm]{figure
+\ref{fig:li_longterm}}). 
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{dcomp/si/Irene_SI_decomp_y.png}
+\caption[The long term trends of SI]{The long term trend of SI
+based on the IGRA dataset and an Thiel-Sen slope analysis}
+\label{fig:si_longterm}
+\end{figure}
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{dcomp/li/Irene_LI_decomp_y.png}
+\caption[The long term trends of LI]{The long term trend of LI
+based on the IGRA dataset and an Thiel-Sen slope analysis}
+\label{fig:li_longterm}
+\end{figure}
+
+The \gls{KI} (\hyperref[fig:ki_longterm]{figure \ref{fig:ki_longterm}})
+also indicates a marginal increase towards a slightly more convective
+favoring atmosphere, the Thiel-Sen slope analysis indicates that a positive
+trend of 0.18 over the last three decades. The seasonal analysis of the
+\gls{KI} shows that this increase is mostly observe in spring and summer
+months, similar to \gls{CAPE}, \gls{SI} and \gls{LI} variables. 
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{dcomp/ki/Irene_KI_decomp_y.png}
+\caption[The long term trends of KI]{The long term trend of KI
+based on the IGRA dataset and an Thiel-Sen slope analysis}
+\label{fig:ki_longterm}
+\end{figure}
+
+The \gls{TT} does not show the same significant trend towards an convective
+favoring atmosphere, no significant trend is observed in the \gls{TT}
+Thiel-Sen analysis. The seasonal analysis of the \gls{TT} shows the is in
+agreement, although a slight increase in the seasonal analysis is observed,
+it is insignificant. The long term analysis indicates a value of 0.01
+increase, also not significant.
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{dcomp/tti/Irene_TTI_decomp_y.png}
+\caption[The long term trends of TTI]{The long term trend of TTI
+based on the IGRA dataset and an Thiel-Sen slope analysis}
+\label{fig:tti_longterm}
+\end{figure}
+
+The section investigated the long term trends of thermodynamic indicators
+associated with severe events usually occurring along with convective
+storms. The Thiel-Sen slope analysis was used to investigate the trends and
+was chosen due to the robustness and the how the method handles outlier
+values. Six indicators where selected, this was \gls{CAPE}, \gls{CIN},
+\gls{SI}, \gls{LI}, \gls{KI} and \gls{TT}. Each of the chosen variables are
+popular derivatives of sounding data used to evaluate the possibly of
+severe storm occurrences, the data was gathered from the \gls{IGRA}
+database and starting in 1975 until early 2017. The long term trend
+analysis indicated that the atmosphere is increasingly becoming favorable for
+convective storms. \gls{CAPE} shows the most significant increase with a
+Thiel-Sen value of 0.36. \gls{CAPE} is significant in the formation of
+severe events and the increase indicates a environment where convection
+is becoming more prominent. The seasonal analysis, discussed in the
+previous section, shows that this increase is mainly in the spring and
+summer months while winter months have remained relatively stable over the
+observation period. \gls{CIN} shows a marginal decrease, however, the value
+is still within the thresholds for thunderstorm formation and when analyzed
+concurrently with \gls{CAPE} we can see a atmosphere increasingly suitable
+for convective activity. The next three variables analyzed all showed the
+same trend towards a marginally more unstable atmosphere. The \gls{SI} and
+\gls{LI} again indicated a trend towards a convective favoring environment.
+The \gls{LI} value showed a significant trend towards this, while the
+\gls{SI} marginally less so. As with \gls{CAPE} this increase is mainly
+observed in the spring and summer months. The last index, the \gls{TT} did
+not indicate a significant increase or decrease, this was also observed in
+the seasonal observations.
+
+
+\section{The trends and cycles of synoptic patterns associated with hail
+events}
+
+In the previous section the trends of specific thermodynamic indicators
+were evaluated for a 40 year time span, the results indicated that the
+atmosphere is becoming more favorable for the development of convective
+storms, especially in the summer months. Moving on towards the larger scale
+synoptic circulation. The following section investigates the trends and
+cycles of the macro-$\beta$ scale environment. Data from chapter 4 is used
+in this analysis, here it was observed that hail events occur within
+synoptic patterns that are most prominent in spring and summer months,
+characterised by a low pressure system over the interior of South-Africa
+and a well defined area of \gls{CAPE} over a large part of the country.
+As in the previous trend analysis a Thiel-Sen slope analysis is used to
+evaluate the long term occurrence of hail related synoptic environments,
+while the next analysis investigates the correlation between the synoptic
+environments and the \gls{SOI}.
+
+\subsection{Long term trends of synoptic patterns associated with
+hail}
+
+In chapter 4 an analysis of the macro-$\beta$ scale circulation patterns
+associated with hail events was conducted, three patterns showed a high
+frequency of occurrence during the hail season and also a high number of
+reported events, namely cluster 11, 7 and 3 (see figure
+\ref{fig:cluster_reports}). The following analysis used the data from the
+above results, each cluster's monthly occurrence was counted for the 35
+year time period and then a Thiel-Sen slope analysis was applied. The
+analysis was only conducted on cluster 11, 7 and 3 respectively as these
+cluster where most prominent during the known hail season and also had more
+reported events occurring in them.
+
+Most severe hail events seen in media reports occurred within cluster 11
+while the annual distribution of the cluster also falls within the
+\textit{traditional} November, December, January and February hail season 
+(see figure \ref{fig:cluster_reports}, \ref{fig:cluster_freq}). The
+circulation in this cluster is similar to the easterly wave described by
+\cite{tyson2000atmosphere}. A low pressure system (\gls{TTT}) originating from the
+tropics is visible over the central, northern-western parts of the country, the
+\gls{TTT} brings warm, moist air from the \gls{ITCZ} and leeds to
+characteristic summer convective events. \gls{CAPE} observed in this cluster is evenly
+distributed across the country, it appears as if no exceptionally high
+\gls{CAPE} is associated with the cluster, due to the local, small scale nature of severe
+events this can be expected. In \hyperref[fig:cluster11_thiel]{figure
+\ref{fig:cluster11_thiel}} the long term trend and occurrence of cluster 11
+is examined. The results yielded no statistically significant indication of
+an increase of days related to this circulation over the 35 year period.
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{cluster_11_thiel.png}
+\caption[The long term trend of hail related synoptic
+patterns, cluster 11]{Cluster 11 had the most related hail media reports.
+The cluster showed a characteristic Summer peak that is generally
+associated with hail events as seen in previous literature, however, the
+Thiel-sen analysis did not indicate any increase in
+days associated with this pattern being observed over South-Africa.}
+\label{fig:cluster11_thiel}
+\end{figure}
+
+Similar to cluster 11, cluster 7 is characterised by \gls{TTT} extending
+over the central, north-western interior bring about warm moist air from
+the \gls{ITCZ}. Cluster 7 annual cycle shows a more evenly distributed
+pattern with some occurrences in autumn and winter months, however the
+peaks are still observed during the hail season. The counted cluster
+occurrence per month and the subsequent Thiel-sen analysis again indicated
+no significant trend towards more hail favouring days occurring over the
+time period, see (\hyperref[fig:cluster_7_thiel]{figure
+\ref{fig:cluster_7_thiel}})
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{cluster_7_thiel.png}
+\caption[The long term trend of hail related synoptic
+patterns, cluster 7]{The Thiel-Sen analysis of days associated with cluster
+7's synoptic pattern associated with hail events did not show a increase in
+prevalence over the last 35 years}
+\label{fig:cluster7_thiel}
+\end{figure}
+
+In cluster 3 a pattern emerges which is only observed during the
+spring/summer months associated with hail events (see
+\hyperref[fig:cluster_freq]{figure \ref{fig:cluster_freq}}). Absent from
+cluster 3 is the prominent \gls{TTT} extending over the interior of the
+country, however, the cluster is characterised by high \gls{CAPE} over the
+eastern seaboard. The resulting synoptic pattern is similar to a easterly
+low as described by \cite{tyson2000atmosphere}, where the Indian ocean
+high extends over the eastern coast and rainfall originates from the
+northerly direction. The synoptic pattern is characteristic of summer
+months, showing the highest occurrence in November - January. as seen in 
+\hyperref[fig:cluster_3_thiel]{figure \ref{fig:cluster_3_thiel}} the Thiel-sen
+analysis again showed no significant trend towards a increase in the
+observed pattern.
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{cluster_3_thiel.png}
+\caption[The long term trend of hail related synoptic
+patterns, cluster 3]{The long term trend of cluster 3 hail related synoptic
+pattern showed no significant increase in days associated with this type
+of large scale circulation}
+\label{fig:cluster_3_thiel}
+\end{figure}
+
+The Thiel-sen was used in the section to evaluate the trends of hail
+related synoptic days, because of the convective nature of hail events the
+results also have a correlation to severe thunderstorms and rainfall days.
+In chapter 4 three characteristic clusters, indicative of synoptic days,
+stood out. These clusters where counted as the occurred per month over a
+time period  of 35 years. As with the analysis of the thermodynamic
+indicators the Thiel-sen slope analysis was applied on the data. The
+results indicate that none of the three hail related clusters showed a
+significant increase in frequency. The spatio-temporal nature of convective
+do impact the analysis on a synoptic scale, however, the key synoptic
+features observed do provide a general idea of the dominant circulation
+patterns associated with these events. The results mentioned here are in
+agreement with observations related to the synoptic patterns of South-Africa by
+\cite{tyson2000atmosphere,taljaard1981upper,taljaard1986change,dyson2013atmospheric}.
+
+\subsection{The relationship between hail related synoptic patterns and the
+SOI}
+
+Literature regarding the relationship between \gls{ENSO} and severe events
+over South-Africa is rare. This was however addressed in an recent
+investigation by \cite{blamey2016climatology}, the authors looked at
+potential days favoring severe events which was in turn based on \gls{CAPE}
+and 0 - 6km bulk shear. Days identified to be favoring severe events showed
+no relationship according to \gls{ENSO} \cite{blamey2016climatology}.  In
+this study the correlation is investigated for the occurrence of synoptic
+patterns identified in chapter 4. The specific synoptic patterns are also
+similar to the synoptic patterns identified by
+\cite{tyson2000atmosphere,taljaard1981upper,taljaard1986change,dyson2013atmospheric}
+related to summer rainfall and convective activities.
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{SOI_11.png}
+\caption[The relationship between the SOI and hail related synoptic
+patterns, cluster 11]{The relationship between the SOI and hail related synoptic
+patterns, cluster 11}
+\label{fig:cluster11_SOI}
+\end{figure}
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{SOI_7.png}
+\caption[The relationship between the SOI and hail related synoptic
+patterns, cluster 7]{The relationship between the SOI and hail related synoptic
+patterns, cluster 7}
+\label{fig:cluster7_SOI}
+\end{figure}
+
+\begin{figure}[!htb]
+\includegraphics[width=\textwidth]{SOI_3.png}
+\caption[The relationship between the SOI and hail related synoptic
+patterns, cluster 3]{The relationship between the SOI and hail related synoptic
+patterns, cluster 3}
+\label{fig:cluster_3_SOI}
+\end{figure}
+
+\section{A discussion on the temporal variation of hail indicators} 
+
+In the section severe hailstorms were investigated by using data sources
+that included media reports and radiosonde data. In the first part the
+media reports was analyzed from the \cite{bureau1991history} and by
+investigating media reports from regional and local media outlets. The
+media reports were examined for long term and seasonal distribution. The
+long term distribution indicated that there is an increase in hail reports
+as seen in print media (\hyperref[fig:hailinmedia_100years]{figure
+\ref{fig:hailinmedia_100years}}). \hyperref[fig:hailinmedia_annual]{Figure
+\ref{fig:hailinmedia_annual}} indicates the annual distribution of hail
+reports as seen in the media. The reporting distribution follows the same
+pattern as the annual hail frequency observed where events are most
+frequently reported in the spring and summer months.  It should be noted
+that there is various factors affecting this. The increase in the
+population of Gauteng and the subsequent increase in print media outlets
+made it possible to report more storms. The population distribution also
+impacts the reporting of hailstorms, as populated cities expand, there is
+an higher chance of incidence reports. Following this a temporal analysis
+of hail reports was conducted. A map representing the spatial distribution
+of media reports were created to for the whole of South-Africa
+(\hyperref[fig:hailreportinmedia]{figure \ref{fig:hailreportinmedia}})
+indicating a high concentration of reports in the Guateng area. Based on
+the media reports a \gls{HDF} map (\hyperref[fig:newhdfmap]{figure
+\ref{fig:newhdfmap}}) was constructed similar to that of
+\cite{schulze1965hail, le1996modelling}. The new map indices an high HDF in
+over the Lesotho highlands and Guateng, as observed in previous studies
+mentioned. 
+
+Data from \gls{IGRA} show a clear seasonal trend between the selected
+thermodynamic indicators. In all cases the thermodynamic variables
+associated with convection is most prominent during November, December and
+January. Apart from the \gls{TT} index, all the sounding derived variables
+indicated a trend towards conditions favoring convective environment. The
+effects of severe events will especially be felt by those in impoverished
+areas where infrastructure and emergency services are least prepared to
+handle events such as severe hailstorms and flash flooding, associated with
+convective weather, which according to data could become a more frequent
+occurrence.
+
+The last part of the study investigated the synoptic patterns associated
+with hail events as examined in chapter 4. Here the long term trends of
+hail related synoptic circulation was investigated by using a Thiel-sen
+analysis. The second part of the section investigated the relationship
+between the synoptic patterns and \gls{ENSO} and the \gls{SOI}. The results
+indicated that there was no significant increase in synoptic patterns
+associated with hail events, although the synoptic patterns themself were
+well defined similar to other research conducted. The link with
+\gls{ENSO}/\gls{SOI} also showed no statistical correlation. The difference
+in the results between the small scale trends and the synoptic scale trends
+is most likely due to the small/local nature of convective events, not
+always captured accurately by large scale synoptic analysis.
+

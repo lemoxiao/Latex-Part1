@@ -1,0 +1,494 @@
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2007.5.18)  6 JUN 2007 12:20
+entering extended mode
+\write18 enabled.
+ %&-line parsing enabled.
+**YourName-Dissertation.tex
+(./YourName-Dissertation.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(./psuthesis.cls
+Document Class: psuthesis 2006/04/12 v2.3.1 psuthesis class
+(/usr/local/texlive/2007/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2007/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/local/texlive/2007/texmf-dist/tex/latex/base/bk12.clo
+File: bk12.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2007/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2005/08/06 v4.2 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count88
+\calc@Bcount=\count89
+\calc@Adimen=\dimen103
+\calc@Bdimen=\dimen104
+\calc@Askip=\skip43
+\calc@Bskip=\skip44
+LaTeX Info: Redefining \setlength on input line 75.
+LaTeX Info: Redefining \addtolength on input line 76.
+\calc@Ccount=\count90
+\calc@Cskip=\skip45
+)
+(/usr/local/texlive/2007/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2000/12/01 6.7 Contributed and Supported LaTeX2e package
+
+Package: `setspace' 6.7 <2000/12/01>
+) (/usr/local/texlive/2007/texmf-dist/tex/latex/tocloft/tocloft.sty
+Package: tocloft 2003/09/26 v2.3c parameterised ToC, etc., typesetting
+
+
+Package tocloft Note: The document has chapter divisions.
+
+\cftparskip=\skip46
+\cftbeforetoctitleskip=\skip47
+\cftaftertoctitleskip=\skip48
+\cftbeforepartskip=\skip49
+\cftpartnumwidth=\skip50
+\cftpartindent=\skip51
+\cftbeforechapskip=\skip52
+\cftchapindent=\skip53
+\cftchapnumwidth=\skip54
+\cftbeforesecskip=\skip55
+\cftsecindent=\skip56
+\cftsecnumwidth=\skip57
+\cftbeforesubsecskip=\skip58
+\cftsubsecindent=\skip59
+\cftsubsecnumwidth=\skip60
+\cftbeforesubsubsecskip=\skip61
+\cftsubsubsecindent=\skip62
+\cftsubsubsecnumwidth=\skip63
+\cftbeforeparaskip=\skip64
+\cftparaindent=\skip65
+\cftparanumwidth=\skip66
+\cftbeforesubparaskip=\skip67
+\cftsubparaindent=\skip68
+\cftsubparanumwidth=\skip69
+\cftbeforeloftitleskip=\skip70
+\cftafterloftitleskip=\skip71
+\cftbeforefigskip=\skip72
+\cftfigindent=\skip73
+\cftfignumwidth=\skip74
+\c@lofdepth=\count91
+\c@lotdepth=\count92
+\cftbeforelottitleskip=\skip75
+\cftafterlottitleskip=\skip76
+\cftbeforetabskip=\skip77
+\cfttabindent=\skip78
+\cfttabnumwidth=\skip79
+)
+\mylength=\skip80
+\mylonglength=\skip81
+\tempbox=\box26
+\psu@sigoptionskip=\skip82
+\psu@sigafteroptionskip=\skip83
+\psu@intersigspace=\skip84
+) (/usr/local/texlive/2007/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip85
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2007/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/local/texlive/2007/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks14
+\ex@=\dimen105
+))
+(/usr/local/texlive/2007/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen106
+)
+(/usr/local/texlive/2007/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count93
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count94
+\leftroot@=\count95
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count96
+\DOTSCASE@=\count97
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
+\big@size=\dimen107
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count98
+\c@MaxMatrixCols=\count99
+\dotsspace@=\muskip10
+\c@parentequation=\count100
+\dspbrk@lvl=\count101
+\tag@help=\toks15
+\row@=\count102
+\column@=\count103
+\maxfields@=\count104
+\andhelp@=\toks16
+\eqnshift@=\dimen108
+\alignsep@=\dimen109
+\tagshift@=\dimen110
+\tagwidth@=\dimen111
+\totwidth@=\dimen112
+\lineht@=\dimen113
+\@envbody=\toks17
+\multlinegap=\skip86
+\multlinetaggap=\skip87
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/local/texlive/2007/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2002/01/22 v2.2d
+
+(/usr/local/texlive/2007/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2001/10/25 v2.2f
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+))
+(/usr/local/texlive/2007/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2004/08/06 v2.20
+\thm@style=\toks19
+\thm@bodyfont=\toks20
+\thm@headfont=\toks21
+\thm@notefont=\toks22
+\thm@headpunct=\toks23
+\thm@preskip=\skip88
+\thm@postskip=\skip89
+\thm@headsep=\skip90
+\dth@everypar=\toks24
+)
+(/usr/local/texlive/2007/texmf-dist/tex/latex/base/exscale.sty
+Package: exscale 1997/06/16 v2.1g Standard LaTeX package exscale
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 52.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 52.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 52.
+\big@size=\dimen114
+)
+(/usr/local/texlive/2007/texmf-dist/tex/latex/amsfonts/eucal.sty
+Package: eucal 2001/10/01 v2.2d Euler Script fonts
+LaTeX Font Info:    Overwriting math alphabet `\EuScript' in version `bold'
+(Font)                  U/eus/m/n --> U/eus/b/n on input line 55.
+)
+(/usr/local/texlive/2007/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 137.
+LaTeX Info: Redefining \bm on input line 203.
+)
+(/usr/local/texlive/2007/texmf-dist/tex/latex/eqlist/eqlist.sty
+eqlist.sty by M. Vaeth: Revision 2.1
+Package: eqlist 2002/08/15 v2.1
+(/usr/local/texlive/2007/texmf-dist/tex/latex/eqparbox/eqparbox.sty
+Package: eqparbox 2004/08/02 v2.1 Create equal-widthed parboxes
+\eqp@tempdima=\skip91
+\eqp@tempdimb=\skip92
+
+(/usr/local/texlive/2007/texmf-dist/tex/latex/tools/array.sty
+Package: array 2005/08/23 v2.4b Tabular extension package (FMi)
+\col@sep=\dimen115
+\extrarowheight=\dimen116
+\NC@list=\toks25
+\extratabsurround=\skip93
+\backup@length=\skip94
+))
+\eql@cnt=\count105
+)
+(/usr/local/texlive/2007/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2007/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks26
+)
+(/usr/local/texlive/2007/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2007/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2007/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 90.
+
+(/usr/local/texlive/2007/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2007/04/17 v0.04g Graphics/color for pdfTeX
+\Gread@gobject=\count106
+))
+\Gin@req@height=\dimen117
+\Gin@req@width=\dimen118
+)
+(/usr/local/texlive/2007/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2007/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+
+(/usr/local/texlive/2007/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+(/usr/local/texlive/2007/texmf-dist/tex/latex/fncychap/fncychap.sty
+Package: fncychap 2004/09/21 v1.33 LaTeX package (Revised chapters)
+\RW=\skip95
+\mylen=\skip96
+\myhi=\skip97
+\px=\skip98
+\py=\skip99
+\pyy=\skip100
+\pxx=\skip101
+)
+(./SupplementaryMaterial/UserDefinedCommands.tex) (./YourName-Dissertation.aux
+(./Chapter-1/Chapter-1.aux) (./Chapter-2/Chapter-2.aux)
+(./Chapter-3/Chapter-3.aux) (./Chapter-4/Chapter-4.aux)
+(./Chapter-5/Chapter-5.aux) (./Appendix-A/Appendix-A.aux)
+(./Appendix-B/Appendix-B.aux))
+\openout1 = `YourName-Dissertation.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 324.
+LaTeX Font Info:    ... okay on input line 324.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 324.
+LaTeX Font Info:    ... okay on input line 324.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 324.
+LaTeX Font Info:    ... okay on input line 324.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 324.
+LaTeX Font Info:    ... okay on input line 324.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 324.
+LaTeX Font Info:    ... okay on input line 324.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 324.
+LaTeX Font Info:    ... okay on input line 324.
+
+(/usr/local/texlive/2007/texmf-dist/tex/context/base/supp-pdf.tex
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count107
+\scratchdimen=\dimen119
+\scratchbox=\box29
+\nofMPsegments=\count108
+\nofMParguments=\count109
+\MPscratchCnt=\count110
+\MPscratchDim=\dimen120
+\MPnumerator=\count111
+\everyMPtoPDFconversion=\toks27
+)
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 350.
+
+ (/usr/local/texlive/2007/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 350.
+ [1
+
+
+{/usr/local/texlive/2007/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    External font `cmex7' loaded for size
+(Font)              <6> on input line 355.
+LaTeX Font Info:    Try loading font information for U+msa on input line 355.
+
+(/usr/local/texlive/2007/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 355.
+
+(/usr/local/texlive/2007/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+) [2]
+(./SupplementaryMaterial/Abstract.tex) [3
+
+] (./YourName-Dissertation.toc
+[4
+
+])
+\tf@toc=\write3
+\openout3 = `YourName-Dissertation.toc'.
+
+ [5] (./YourName-Dissertation.lof)
+\tf@lof=\write4
+\openout4 = `YourName-Dissertation.lof'.
+
+ [6
+
+
+] (./YourName-Dissertation.lot)
+\tf@lot=\write5
+\openout5 = `YourName-Dissertation.lot'.
+
+
+[7
+
+
+] (./SupplementaryMaterial/ListOfSymbols.tex
+
+LaTeX Warning: Reference `' on page viii undefined on input line 5.
+
+
+LaTeX Warning: Reference `' on page viii undefined on input line 8.
+
+
+LaTeX Warning: Reference `' on page viii undefined on input line 11.
+
+
+LaTeX Warning: Reference `' on page viii undefined on input line 14.
+
+
+LaTeX Warning: Reference `' on page viii undefined on input line 17.
+
+
+LaTeX Warning: Reference `' on page viii undefined on input line 20.
+
+
+LaTeX Warning: Reference `' on page viii undefined on input line 23.
+
+
+LaTeX Warning: Reference `' on page viii undefined on input line 26.
+
+) [8
+
+
+] (./SupplementaryMaterial/Acknowledgments.tex) [9
+
+]
+(./SupplementaryMaterial/Dedication.tex) [10
+
+]
+\openout2 = `Chapter-1/Chapter-1.aux'.
+
+ (./Chapter-1/Chapter-1.tex
+Chapter 1.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 2.
+(/usr/local/texlive/2007/texmf-dist/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+)
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 2.
+
+(/usr/local/texlive/2007/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+) [1
+
+
+
+]) [2]
+[3]
+\openout2 = `Chapter-2/Chapter-2.aux'.
+
+ (./Chapter-2/Chapter-2.tex
+Chapter 2.
+) [4
+
+
+
+] [5]
+\openout2 = `Chapter-3/Chapter-3.aux'.
+
+ (./Chapter-3/Chapter-3.tex
+Chapter 3.
+) [6
+
+
+
+] [7]
+\openout2 = `Chapter-4/Chapter-4.aux'.
+
+ (./Chapter-4/Chapter-4.tex
+Chapter 4.
+) [8
+
+
+
+] [9]
+\openout2 = `Chapter-5/Chapter-5.aux'.
+
+ (./Chapter-5/Chapter-5.tex
+Chapter 5.
+) [10
+
+
+
+] [11]
+\openout2 = `Appendix-A/Appendix-A.aux'.
+
+ (./Appendix-A/Appendix-A.tex
+Appendix A.
+) [12
+
+
+
+] [13]
+\openout2 = `Appendix-B/Appendix-B.aux'.
+
+ (./Appendix-B/Appendix-B.tex
+Appendix B.
+) [14
+
+
+
+] [15] (./YourName-Dissertation.bbl [16
+
+
+] [17]) [18]
+(./SupplementaryMaterial/Vita.tex) [19
+
+] (./YourName-Dissertation.aux
+(./Chapter-1/Chapter-1.aux) (./Chapter-2/Chapter-2.aux)
+(./Chapter-3/Chapter-3.aux) (./Chapter-4/Chapter-4.aux)
+(./Chapter-5/Chapter-5.aux) (./Appendix-A/Appendix-A.aux)
+(./Appendix-B/Appendix-B.aux))
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3093 strings out of 94073
+ 41528 string characters out of 1162984
+ 96269 words of memory out of 1500000
+ 6225 multiletter control sequences out of 10000+50000
+ 17774 words of font info for 56 fonts, out of 1200000 for 2000
+ 645 hyphenation exceptions out of 8191
+ 29i,8n,27p,1860b,295s stack positions out of 5000i,500n,6000p,200000b,5000s
+{/usr/local/texlive/2007/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2007/texmf-dist/fonts/type1/bluesky/cm/cmbx10.pfb></usr/local/texlive/20
+07/texmf-dist/fonts/type1/bluesky/cm/cmbx12.pfb></usr/local/texlive/2007/texmf-
+dist/fonts/type1/bluesky/cm/cmcsc10.pfb></usr/local/texlive/2007/texmf-dist/fon
+ts/type1/bluesky/cm/cmmi12.pfb></usr/local/texlive/2007/texmf-dist/fonts/type1/
+bluesky/cm/cmr10.pfb></usr/local/texlive/2007/texmf-dist/fonts/type1/bluesky/cm
+/cmr12.pfb></usr/local/texlive/2007/texmf-dist/fonts/type1/bluesky/cm/cmssbx10.
+pfb></usr/local/texlive/2007/texmf-dist/fonts/type1/bluesky/cm/cmsy10.pfb></usr
+/local/texlive/2007/texmf-dist/fonts/type1/bluesky/cm/cmsy8.pfb></usr/local/tex
+live/2007/texmf-dist/fonts/type1/bluesky/cm/cmti12.pfb></usr/local/texlive/2007
+/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2007/texmf-
+dist/fonts/type1/urw/times/utmr8a.pfb>
+Output written on YourName-Dissertation.pdf (29 pages, 122938 bytes).
+PDF statistics:
+ 144 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

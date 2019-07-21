@@ -1,0 +1,126 @@
+\begin{thebibliography}{10}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{Melnikov-1963-On-the-Stabilit-a}
+\textsc{Melnikov, V.~K.} (1963) \enquote{On the Stability of the Center for
+  Time-Periodic Perturbations,} \emph{Transactions of the Moscow Mathematical
+  Society}, \textbf{12}, pp. 1--56.
+
+\bibitem{DaviesMoon-1993-3-D-Spatial-Cha-0}
+\textsc{Davies, M.~A.} and \textsc{F.~C. Moon} (1993) \enquote{3-D Spatial
+  Chaos in the Elastica and the Spinning Top: Kirchhoff Analogy,} \emph{Chaos},
+  \textbf{3}(1), pp. 93--99.
+
+\bibitem{Tonkin-1980-A-Basic-Attitud-0}
+\textsc{Tonkin, S.~W.} (1980) \enquote{A Basic Attitude Instability of
+  Spacecraft with Imperfect Momentum Wheels,} \emph{Automatica}, \textbf{16},
+  pp. 415--418.
+
+\bibitem{Matsumoto-1984-A-Chaotic-Attra-0}
+\textsc{Matsumoto, T.} (1984) \enquote{A Chaotic Attractor from Chua's
+  Circuit,} \emph{IEEE Transactions on Circuits and Systems},
+  \textbf{CAS-31}(12), pp. 1055--1058.
+
+\bibitem{MacKay-1988-A-Criterion-for-0}
+\textsc{MacKay, R.~S.} (1988) \enquote{A Criterion for Non-Existence of
+  Invariant Tori for Hamiltonian Systems,} in \emph{Conference on Nonlinear
+  Dynamics} (G.~Turchetti, ed.), World Scientific, Bologna, Italy, pp. 44--56.
+
+\bibitem{FreundNix-1996-A-Critical-Thic-0}
+\textsc{Freund, L.~B.} and \textsc{W.~D. Nix} (1996) \enquote{A Critical
+  Thickness Condition for a Strained Compliant Substrate/Epitaxial Film
+  System,} \emph{Applied Physics Letters}, \textbf{69}(2), pp. 173--175.
+
+\bibitem{MarsdenHolmes-1979-A-Horseshoe-in--0}
+\textsc{Marsden, J.} and \textsc{P.~J. Holmes} (1979) \enquote{A Horseshoe in
+  the Dynamics of a Forced Beam,} in \emph{International Conference on
+  Nonlinear Dynamics} (R.~H.~G. Helleman, ed.), vol. 357, Annals of the New
+  York Academy of Sciences, New York, pp. 313--321.
+
+\bibitem{Koiller-1984-A-Mechanical-Sy-0}
+\textsc{Koiller, J.} (1984) \enquote{A Mechanical System with a ``Wild''
+  Horseshoe,} \emph{Journal of Mathematics and Physics}, \textbf{25}(5), pp.
+  1599--1604.
+
+\bibitem{TsiotrasLonguski-1995-A-New-Parameter-0}
+\textsc{Tsiotras, P.} and \textsc{J.~M. Longuski} (1995) \enquote{A New
+  Parameterization of the Attitude Kinematics,} \emph{The Journal of the
+  Astronautical Sciences}, \textbf{43}(3), pp. 243--262.
+
+\bibitem{ShimadaNagashima-1979-A-Numerical-App-0}
+\textsc{Shimada, I.} and \textsc{T.~Nagashima} (1979) \enquote{A Numerical
+  Approach to Ergodic Problem of Dissipative Dynamical Systems,} \emph{Progress
+  of Theoretical Physics}, \textbf{61}(6), pp. 1605--1616.
+
+\bibitem{SmithDavenport-1988-A-Perturbation--0}
+\textsc{Smith, P.} and \textsc{N.~M. Davenport} (1988) \enquote{A Perturbation
+  Method for Saddle Connections and Homoclinic Bifurcation in Duffing's
+  Equation,} \emph{Dynamics and Stability of Systems}, \textbf{2}(4), pp.
+  167--182.
+
+\bibitem{Ketema-1992-A-Physical-Inte-0}
+\textsc{Ketema, Y.} (1992) \enquote{A Physical Interpretation of Melnikov's
+  Method,} \emph{International Journal of Bifurcation and Chaos},
+  \textbf{2}(1), pp. 1--9.
+
+\bibitem{GraesserCozzarelli-1994-A-Proposed-Thre-0}
+\textsc{Graesser, E.~J.} and \textsc{F.~A. Cozzarelli} (1994) \enquote{A
+  Proposed Three-Dimensional Constitutive Model for Shape Memory Alloys,}
+  \emph{Journal of Intelligent Material Systems and Structures}, \textbf{5},
+  pp. 78--89.
+
+\bibitem{RichardsonMitchell-1999-A-Simplified-Va-0}
+\textsc{Richardson, D.~L.} and \textsc{J.~W. Mitchell} (1999) \enquote{A
+  Simplified Variation of Parameters Approach to Euler's Equations,}
+  \emph{Journal of Applied Mechanics}, \textbf{66}, pp. 273--276.
+
+\bibitem{MitchellRichardson-1999-A-Simplified-Va-0}
+\textsc{Mitchell, J.~W.} and \textsc{D.~L. Richardson} (1999) \enquote{A
+  Simplified Variation of Parameters Solution for the Motion of an
+  Arbitrarily-Torqued Asymmetric Rigid Body,} in \emph{AAS/AIAA Astrodynamics
+  Specialist Conference}, Girdwood, Alaska.
+
+\bibitem{Parks-1967-A-Stability-Cri-0}
+\textsc{Parks, P.~C.} (1967) \enquote{A Stability Criterion for a Panel Flutter
+  Prolem via the Second Method of Liapunov,} in \emph{Differential Equations
+  and Dynamical Systems} (J.~K. Hale and J.~P. Lasalle, eds.), University of
+  Puerto Rico, pp. 287--298.
+
+\bibitem{HsuLee-1971-A-Stability-Stu-0}
+\textsc{Hsu, C.~S.} and \textsc{T.~H. Lee} (1971) \enquote{A Stability Study of
+  Continuous Systems under Parametric Excitation via Liapunov's Direct Method,}
+  in \emph{IUTAM Symposium, Instability of Continuous Systems} (H.~Leipholz,
+  ed.), Springer-Verlag, Herrenalb, Germany, pp. 112--118.
+
+\bibitem{BhattacharyaJames-1999-A-Theory-of-Thi-0}
+\textsc{Bhattacharya, K.} and \textsc{R.~D. James} (1999) \enquote{A Theory of
+  Thin Films of Martensitic Materials with Applications to Microactuators,}
+  \emph{Journal of the Mechanics and Physics of Solids}, \textbf{47}, pp.
+  531--576.
+
+\bibitem{RimrottJanabi-Sharifi-1992-A-Torque-Free-F-0}
+\textsc{Rimrott, F. P.~J.} and \textsc{F.~Janabi-Sharifi} (1992) \enquote{A
+  Torque-Free Flexible Model Gyro,} \emph{Journal of Applied Mechanics},
+  \textbf{59}, pp. 7--15.
+
+\bibitem{Muller-PfeifferKranenburg-1992-A-Two-Dimension-0}
+\textsc{M{\"u}ller-Pfeiffer, S.}, \textsc{H.~van Kranenburg}, and \textsc{J.~C.
+  Lodder} (1992) \enquote{A Two-Dimensional Monte Carlo Model for Thin Growth
+  by Oblique Evaporation: Simulation of Two-Component Systems for the Example
+  of Co-Cr,} \emph{Thin Solid Films}, \textbf{213}, pp. 143--153.
+
+\bibitem{HashinShtrikman-1963-A-Variational-A-0}
+\textsc{Hashin, Z.} and \textsc{S.~Shtrikman} (1963) \enquote{A Variational
+  Approach to the Theory of the Elastic Bahaviour of Multiphase Materials,}
+  \emph{Journal of the Mechanics and Physics of Solids}, \textbf{11}, pp.
+  127--140.
+
+\bibitem{Junkins-1997-Adventures-on-t-0}
+\textsc{Junkins, J.~L.} (1997) \enquote{Adventures on the Interface of Dynamics
+  and Control,} in \emph{Aerospace Sciences Meeting}, vol.~20, Reno, Nevada,
+  pp. 1058--1071.
+
+\end{thebibliography}

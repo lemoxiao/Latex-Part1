@@ -1,0 +1,105 @@
+\chapter{Conclusion}
+\label{chapter:conclusion}
+
+The results of the research which we have provided in this thesis can be
+categorized into three venues:
+
+\begin{enum}
+  \item We have given a structured overview of the field of social navigation
+    as seen both in academic literature and in some noticeable social web
+    sites.
+  \item We have provided details of how one can implement unobtrusive
+    prototypes in established spaces and the feasibility of such a technical
+    approach.
+  \item We have contributed knowledge of how activity streams functions as
+    a social navigation technique on the \urort{} web site.
+\end{enum}
+
+Based on these three venues we'll provide the most important lessons to take
+away from our research before we discuss possible future work in these fields.
+
+\section{Lessons Learnt}
+
+We believe there are both some theoretical and practical lessons to take away
+from our research.
+
+\subsection{Social navigation}
+
+Social navigation can mean different things as viewed in academic literature.
+We proposed a new definition of social navigation based on our belief in the
+importance of peers in a social navigation system.%
+\sidenote{
+  The definition can be found in
+  \sectionref{flickr.facebook.discussion.peers}.
+}
+This means that the information given from other people which guide navigation
+have to come from peers within the system where navigation are conducted to be
+considered social navigation.
+
+Information given by the creators or editors of a web site
+when used for navigational purposes are therefore not social navigation.
+The creators can however implement structures in their web pages where users
+of the system can impose information which can be used for social navigation.
+One example of this divide can be found in recommender systems. Content based
+recommendations is not social navigation since the information used
+in the navigational process are given by the editors of the web page.
+Recommendations given by collaborative filtering is on the other hand social
+navigation since the navigational information is given by peers in the system.
+
+\subsection{Unobtrusive prototyping}
+
+Creating unobtrusive prototypes with Greasemonkey have its advantages and
+disadvantages when used in real world experiments.
+
+Greasemonkey is best fitted for situations where one don't have access to the
+established web site one are prototyping on. If one have access to the inner
+workings of a web site, it would probably be more efficient and easier to
+implement the prototype within the established implementation. Another benefit
+of modifying the web site implementation itself is the elimination of the
+Greasemonkey and user-script installation process, in addition to wider
+browser support.
+
+We found the major disadvantage of using Greasemonkey in a real world
+experimental setting to be this complicated installation process and limited
+browser support. We contribute this as the major factors for the high
+non-accomplish rates we witnessed. Having conducted experiments in a
+laboratory setting where users used pre-configured web browsers would have
+mediated this problem.
+
+\subsection{Activity streams}
+
+Based on our experiment with activity streams on \urort{} we have provided
+inconclusive findings of the success of such a social navigation technique.
+We take our results as indications of the usefulness of activity streams.
+Further research is needed to abandon the idea or recommend its usage.
+Since we did not find any noticeable negative results towards activity streams
+we can recommend implementations or prototypes of this feature in web sites
+with similar dynamics to \urort{}.
+
+\section{Future Work}
+
+Our new definition of social navigation in light of the essentialness of peers
+were based on cursory observations and more detailed analysis of two social
+web sites. We regard our findings of how social navigation is used in social
+web sites as early work in this area which needs to be expanded on. More
+widespread collection and analysis of social navigation in modern web sites is
+needed to see if our observations holds true.
+
+We've described social navigation as a disparate field. We hope our work to
+some extent can remedy this problem. One venue for further work to make social
+navigation a better understood term would be to create a taxonomy of social
+navigation types. A set of design patterns for when, where, how, and why these
+various types of social navigation should be used could accompanying such a
+taxonomy.
+
+In light of the problems we experienced with adopting sufficient number of
+experiment participants we see the need for a laboratory study of activity
+streams. Had time permitted in our master thesis work its quite plausible that
+we had conducted an in-lab experiment where factors as technological ability
+of the respondents would not interfere with the generalizability of our study.
+
+There should also be studies conducted of the use of activity streams over a
+longer period than 11 days as for our study. Its possible that activity
+streams become more useful (or perhaps annoying and intrusive) after prolonged
+use. We would also like to see what effects longer usage periods could have
+on the importance of favorites on the \urort{} web site.

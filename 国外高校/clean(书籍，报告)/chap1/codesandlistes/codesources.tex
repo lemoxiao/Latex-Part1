@@ -1,0 +1,34 @@
+\subsection{Exemples de code source}%
+\label{sec:codessources}
+
+\blindtext[1]
+\begin{listing}[H]
+\begin{pythoncode}
+def get_path_leaf(path):
+    """ return the leaf of a path. """
+    if not isinstance(path, str):
+        path = str(path)
+    head, tail = ntpath.split(path)
+    return tail or ntpath.basename(head)
+\end{pythoncode}
+\caption{SPARQL Endpoint}%
+\label{lst:SPARQL Endpoint}
+\end{listing}
+
+\blindtext[2]
+
+
+\begin{listing}[H]
+\begin{minted}[linenos]{python}
+a = 2
+\end{minted}
+\caption{caption}%
+\label{lst:label}%
+\end{listing}
+
+\begin{listing}[H]
+\pythonfile{\codefolder{hello-world.py}}
+\caption{This piece of code is an included file}%
+\label{lst:included-code}%
+\end{listing}
+

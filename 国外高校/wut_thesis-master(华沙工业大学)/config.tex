@@ -1,0 +1,109 @@
+\documentclass[a4paper, twoside, 11pt, openright]{book}
+\usepackage[english,polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+
+\usepackage[left=3.0cm, right=2.0cm, top=2.5cm, bottom=2.5cm]{geometry}
+
+% PERSONAL data about the thesis
+\newcommand{\myTitle}{Bardzo poważny i długi tytuł pracy inżynierskiej poruszającej ambitny temat żuczków i innych takich}
+\newcommand{\myName}{Jan Nowak}
+\newcommand{\myNumber}{123456}
+\newcommand{\myThesisType}{Praca dyplomowa inżynierska}
+\newcommand{\myCourse}{Lotnictwo i kosmonautyka}
+\newcommand{\mySpecialization}{Szpiegostwo przemysłowe}
+\newcommand{\myProf}{prof. dr hab. inż. Piotr Rubik}
+\newcommand{\myFaculty}{Wydział Mechaniczny Energetyki i Lotnictwa}
+\newcommand{\myDepartment}{Instytut Techniki Lotniczej i Mechaniki Stosowanej}
+\newcommand{\myUni}{Politechnika Warszawska}
+\newcommand{\myLocation}{Warszawa}
+\newcommand{\myYear}{2016}
+\newcommand{\myKeywords}{some, keywords, in, english}
+\newcommand{\myKeywordsPL}{jakieś, słowa, kluczowe, po polsku}
+
+% apply config to document settings
+\title{\myTitle}
+\author{\myName}
+\usepackage[unicode, hidelinks]{hyperref}
+\hypersetup{
+	pdftitle={\myTitle},
+	pdfauthor = {\myName},
+	pdfsubject={\myThesisType},
+	pdfproducer={LaTeX},
+	pdfcreator={pdflatex},
+	colorlinks=false
+}
+
+% BIBLIOGRAPHY
+\usepackage[backend=biber,
+			style=authoryear,
+			backref, % shows (backreferences) where publication was cited
+			backrefstyle=none % each occurence separately backreferenced
+			]{biblatex}
+\usepackage{csquotes}
+\DeclareQuoteStyle[quotes]{polish}
+{\quotedblbase}
+{\textquotedblright}
+[0.05em]
+{\quotesinglbase}
+{\fixligatures\textquoteright}
+\DeclareQuoteAlias[quotes]{polish}{polish}
+\DeclareQuoteOption{polish}
+
+% DOCUMENT settings
+
+
+\usepackage{graphicx}
+\usepackage[font=footnotesize, % equivalent to 9 pt font
+			labelfont=bf, 
+			justification=justified, 
+			singlelinecheck=false]{caption} 
+\usepackage[justification=centering]{subcaption} % two images side by side captions
+\usepackage{booktabs} % pretty LaTeX tables
+\usepackage{siunitx} % units SI e.g. \SI{10}{\kilogram\per\meter\square}
+\usepackage{mathtools} % amsmath, symbols such as brackets, arrows, equation numbering only for referrenced eqs.
+%\usepackage[parfill]{parskip} % spacing between paragraphs instead of indent
+%\parfillskip 0pt plus 0.75\textwidth % get rid of widows at the end of paragraphs
+\frenchspacing % for "Polish" spaces after the sentence
+\usepackage{polski} % Polish rules of hyphenation
+\usepackage{dashrule} % for dotted lines in declarations page
+\usepackage{emptypage} % removes headers on empty pages
+\usepackage{fancyhdr} % header and footer settings
+\pagestyle{fancy}
+\fancyhf{}
+\newcommand{\fncyfront}{%
+	\fancyhead[RO]{}
+	\fancyfoot[RO]{}
+	\fancyhead[LE]{}
+	\fancyfoot[LE]{}
+	\fancyhead[RE,LO]{}
+	\fancyfoot[C]{}
+	\renewcommand{\headrulewidth}{0pt}}
+\newcommand{\fncymain}{%
+	\fancyhead[RO]{{\footnotesize \rightmark}}
+	\fancyfoot[RO]{\thepage}
+	\fancyhead[LE]{{\footnotesize \leftmark}}
+	\fancyfoot[LE]{\thepage}
+	\fancyfoot[C]{}
+	\renewcommand{\headrulewidth}{0.3pt}}
+
+% ABSTRACT
+\newenvironment {abstract}%
+{\null \vfill \begin{center}%
+	\bfseries \abstractname \end{center}}%
+{\vfill\null\newpage}
+
+
+% FONT settings
+\usepackage[T1]{fontenc}
+\usepackage{uarial} % you can change to 'helvet' for Helvetica clone, 'uarial' for Arial clone, 'lmodern' for Latin Modern
+\renewcommand{\familydefault}{\sfdefault} % change font to sans serif
+\usepackage{amsfonts} % mathematical fonts
+\usepackage{inconsolata} % monospaced font in urls and \texttt
+%\usepackage{url}
+%\urlstyle{same}
+
+% DEBUG
+\usepackage{lipsum}
+\usepackage{etoolbox} % removes page number in table of contents
+\patchcmd{\chapter}{plain}{empty}{}{}

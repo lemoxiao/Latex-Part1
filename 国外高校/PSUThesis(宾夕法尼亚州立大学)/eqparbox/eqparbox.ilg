@@ -1,0 +1,14 @@
+This is makeindex, version 2.13 [07-Mar-1997] (using kpathsea).
+Scanning style file /usr/local/teTeX/share/texmf/makeindex/gind.ist..........
+** Input style error (file = /usr/local/teTeX/share/texmf/makeindex/gind.ist, line = 75):
+   -- Unknown specifier lethead_prefix.
+** Input style error (file = /usr/local/teTeX/share/texmf/makeindex/gind.ist, line = 76):
+   -- Unknown specifier lethead_suffix.
+** Input style error (file = /usr/local/teTeX/share/texmf/makeindex/gind.ist, line = 77):
+   -- Unknown specifier lethead_flag.
+...done (13 attributes redefined, 3 ignored).
+Scanning input file eqparbox.idx....done (51 entries accepted, 0 rejected).
+Sorting entries....done (316 comparisons).
+Generating output file eqparbox.ind....done (50 lines written, 0 warnings).
+Output written in eqparbox.ind.
+Transcript written in eqparbox.ilg.

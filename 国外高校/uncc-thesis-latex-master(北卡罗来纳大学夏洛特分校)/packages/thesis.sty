@@ -1,0 +1,76 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%
+% This package contains all commands (including \usepackage commands)that are %
+% needed for the thesis document. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%
+
+\usepackage{packages/unccspecs}
+ 
+% This package contains commands that format the document
+% according to UNCC thesis manual specifications.
+
+%\usepackage[dvips]{graphicx} 
+% This allows for creating and manipulating graphics.
+
+% Scott - For Windows and LEd compatibitility, PSTricks was separated from the node and tree packages, and [pdf] was added (so pdflatex command can compile). Also, auto-pst-pdf allows postscript-to-pdf conversion of the tree- creating macros mentioned below. See this thread for more info: http://tex.stackexchange.com/questions/8413/how-to-use-pstricks-in-pdflatex
+\usepackage[pdf]{pstricks}
+\usepackage[off]{auto-pst-pdf}
+\usepackage{pst-node,pst-tree} 
+
+% This allows for tree- creating macros
+% from the pstricks graphics package.
+
+\usepackage{pst-plot} 
+% This allows for data plotting macros from the pstricks
+% package.
+
+
+\usepackage{amsmath} % This allows more mathematical formatting macros.
+\usepackage{amsfonts} % This allows more mathematical fonts.
+
+\usepackage{verbatim} 
+% This allows files contents to be printed in the latex
+% document as is (without latex formatting).
+
+% A new command to be used in the bibliography environment. It will label each
+% bibitem using a counter so that the order of bibitems can be changed without
+% renumbering bibitems.
+\newcounter{bibitemcounter} % The counter to be used to label bibitems.
+\newcommand*{\bibliographyitem}[1]{\addtocounter{bibitemcounter}{1}
+\bibitem[\thebibitemcounter]{#1}}
+
+% This command shows a grid. For use when making figures in order
+% to estimate x and y coordinate values.
+\newpsobject{showgrid}{psgrid}
+{subgriddiv=1,griddots=10,gridlabels=6pt}
+
+
+% This command comes from pg. 49 of Latex Graphics Companion. For making spanning
+% braces to be placed in unusual ways.
+% #1, #2 allow for moving the middle of the brace horizontally or vertically by a number of points.
+% #3 is rotation angle for large brace in degrees.
+% #4 is total height of the brace in points.
+\newcommand{\Bpara}[4]{%
+\begin{picture}(0,0)%
+\setlength{\unitlength}{1pt}%
+\put(#1,#2){\rotatebox{#3}{\raisebox{0mm}[0mm][0mm]{%
+\makebox[0mm]{$\left. \rule{0mm}{#4pt}\right\}$}}}}%
+\end{picture}}
+
+% This command goes with \Bpara. Its used to place text next to the spanning brace.
+% #1, #2 allow for moving the text horizontally or vertically by a number of points.
+% #3 is rotation angle for text in degrees.
+% #4 is the text to be placed.
+\newcommand{\Bparatext}[4]{
+\begin{picture}(0,0)
+\setlength{\unitlength}{1pt}
+\put(#1,#2){\rotatebox{#3}{\raisebox{0mm}[0mm][0mm]{
+\makebox[0mm]{$#4$}}}}
+\end{picture}}
+
+
+% These counters are used to save a step number in an enumerate environment.
+\newcounter{savedstepone}
+\newcounter{savedsteptwo}
+\newcounter{chapter}

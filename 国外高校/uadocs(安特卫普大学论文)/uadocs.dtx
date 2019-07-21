@@ -1,0 +1,1915 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2013 by Paul Levrie  <paul.levrie@ua.ac.be>
+%                    and Walter Daems <walter.daems@ua.ac.be>
+%
+% This work may be distributed and/or modified under the conditions of
+% the LaTeX Project Public License, either version 1.3 of this license
+% or (at your option) any later version.  The latest version of this
+% license is in:
+% 
+%    http://www.latex-project.org/lppl.txt
+% 
+% and version 1.3 or later is part of all distributions of LaTeX version
+% 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Walter Daems.
+%
+% This work consists of the files listed in the file manifest.txt.
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{uadocs.dtx}
+%</driver>
+%<ct|mt>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<ct>\ProvidesClass{uacoursetext}
+%<mt>\ProvidesClass{uamasterthesis}
+%<ct|mt>    [2013/05/21 v1.1 .dtx skeleton file]
+%
+\def\fileversion{1.1}
+\def\filedate{2013/05/29}
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{makeidx}
+\usepackage{alltt}
+\usepackage{booktabs}
+\IfFileExists{tocbibind.sty}{\usepackage{tocbibind}}{}
+\IfFileExists{hyperref.sty}{\usepackage[bookmarksopen]{hyperref}}{}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{uadocs.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{0}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+%
+% \changes{v1.0}{2013/05/11}{\@ Consolidated uacoursetext class}
+% \changes{v1.1}{2013/05/29}{\@ Small bugfixes and 'filled' option}
+%
+% \DoNotIndex{\newcommand,\newenvironment}
+% \setlength{\parindent}{0em}
+% \addtolength{\parskip}{0.5\baselineskip}
+%
+% \title{The \textsf{uacoursetext} class\thanks{This document
+%   corresponds to \textsf{uacoursetext}~\fileversion, dated \filedate.}}
+% \author{Paul Levrie (\texttt{paul.levrie@ua.ac.be})\\
+%         Walter Daems (\texttt{walter.daems@ua.ac.be})}
+% \date{\filedate}
+%
+% \maketitle
+%
+% \section{Introduction}
+%
+% This package implements the house style of Universiteit Antwerpen
+% for course texts and master's theses except for the font. Computer
+% Modern Bright is used instead of the non-free Auto1.
+% Using these class files will make it easy for you to make and keep
+% your course texts and master's theses compliant to this version and
+% future versions of the UA house style.
+%
+% If you think
+% \begin{itemize}
+%   \item there's an error in compliancy w.r.t. the house style,
+%   \item there's a feature missing in this class file,
+%   \item there's a bug in this class file,
+% \end{itemize}
+% please, contact us through e-mail (|walter.daems@ua.ac.be|).
+% We'll provide you with an answer
+% and if (and as soon as) possible with a solution to the problem
+% you spotted.
+%
+% Do you like these class files? You're welcome to send us beer, wine,
+% or just kind words.
+%
+% \section{Synopsis}
+% The |uacoursetext| and |uamasterthesis| classes are an extension
+% to the standard \LaTeX{} |book| class.
+% It is intended to be used for writing course texts and master's
+% theses. It provides a title page that is compliant to the UA house
+% style, and it also typesets the rest of your document
+% appropriately.
+%
+% It requires (and uses) the following packages:
+% \begin{itemize}
+%   \item the |ifthen| package
+%   \item the |mtarg| package
+%   \item the |geometry| package
+%   \item the |hyperref| package
+%   \item the |cmbright| package
+%   \item the |graphicx| package
+%   \item the |eso-pic| package
+%   \item the |color| package
+%   \item the |tikz| package
+%   \item the |fancyhdr| package
+%   \item the |pst-barcode| package
+%   \item the |auto-pst-pdf| package
+% \end{itemize}
+% and optionally
+% \begin{itemize}
+%   \item the |varioref| package.
+% \end{itemize}
+% So make sure these packages are available to your
+% \LaTeX{} compiler.
+%
+% \section{Portability}
+% This class file should be ready to use with all common \LaTeX{}
+% compilers (PDF\LaTeX{}, \LaTeX{}, Xe\LaTeX{},\ldots) from the major
+% \TeX{}-distributions (TeTeX, TexLive, MikTeX). If you experience
+% problems, please inform the authors.
+%
+% \section{Usage}
+%
+% \subsection{Basic Usage}
+%
+% \subsubsection{\texttt{uacoursetext} class}
+% Use the following harness for your \LaTeX{} course text:
+% \begin{verbatim}
+% \documentclass[a4paper]{uacoursetext}
+%
+% \usepackage{<include any packages you require here>}
+%
+% \facultyacronym{<put your faculty's acronym here}
+%
+% \title{<put your title here>}
+% \subtitle{<put your subtitle here>}
+% \author{<put your name here>}
+%
+% \courseversion{<put a version identifier here>}
+% \versionyear{<the publication date of the course here>}
+% 
+% \lecturer{<person teaching the course>}
+% \programme{<descriptor of first programme>}
+% \course{<course code>}{<name of the course>}% 
+%
+% \academicyear{<XXXX-YYYY>}
+%
+% \begin{document}
+%
+%   \maketitle
+%
+%   % put your LaTeX code here
+%
+%   \finalpage
+%
+% \end{document}
+% \end{verbatim}
+%
+% \subsubsection{\texttt{uamasterthesis} class}
+% Use the following harness for your \LaTeX{} master's thesis:
+% \begin{verbatim}
+% \documentclass[a4paper]{uamasterthesis}
+%
+% \usepackage{<include any packages you require here>}
+%
+% \facultyacronym{<put your faculty's acronym here>}
+%
+% \title{<put your title here>}
+% \author{<put your name here>}
+% \supervisori{<put the first supervisor's name(s) here}
+% \supervisorii<put the first supervisor's name(s) here}
+% \supervisoriii{<put the first supervisor's name(s) here}
+% \supervisoriv{<put the first supervisor's name(s) here}
+%
+% % classmarker
+% \academicyear{<XXXX-YYYY>}
+%
+% \begin{document}
+%
+%   \maketitle
+%
+%   % put your LaTeX code here
+%
+%   \finalpage
+%
+% \end{document}
+% \end{verbatim}
+%
+% 
+% \subsection{The class options explained}
+%
+% The class has several options. They are listed below.
+% After every option, it has been indicated to which class the option
+% applies (between square brackets).
+% \changes{v1.1}{2013/05/28}{Added option user documentation}
+%
+% \DescribeMacro{copyright} [uacoursetext]\\
+%   This option forces printing a watermark on every page. For the paper
+%   version of your document, this is inappropriate, but for any e-copy
+%   you make available, this may be appropriate;
+%
+% \DescribeMacro{filled} [uacoursetext / uamasterthesis]\\
+%   This option causes the text to be filled (simultaneous left and right
+%   alignment). Though this setting is not recommended, it is provided
+%   because the default |\raggedright| cannot be undone. The |filled|
+%   option prevents the |\raggddright| from being issued. However, if
+%   you care about the readability of your text, you shouldn't use this
+%   option.
+%
+% \DescribeMacro{titlepagenoartwork} [uacoursetext / uamasterthesis]\\
+%   This option forces the title pages to be typeset without circle graphics and
+%   logo. This allows for printing on a pre-printed color sheet that
+%   already contains circle graphics and logo;
+%
+% \DescribeMacro{titlepagetableonly} [uacoursetext / uamasterthesis]\\
+%   This option forces the title-page data to be printed in table form
+%   as first page. Some publishers require the manuscript to be
+%   delivered in this form. They perform the entire typesetting of the
+%   title page.
+%
+% \DescribeMacro{qr} [uacoursetext]\\
+%   This option allows you to generate a QR code containing the details of
+%   the course on the title page (or the table-only) title page. For
+%   this option to work, the package pstricks is loaded. It will not
+%   work with pdf\LaTeX{} unless you enable shell escape. Read your
+%   pdf\LaTeX{}-package documentation on how to do that.
+%
+% Common sets of options depend on the purpose:
+% \begin{itemize}
+% \item to make a text ready for electronic distribution:
+% |a4paper|, |copyright|.
+% \item to make a camera-ready text (for printing) in case
+% the cover is printed on a pre-printed color artwork cover sheet is:
+% |a4paper|, |qr|, |titlepagenoartwork|.
+% \item to make a camera-ready text (for printing) in case the cover
+% is typeset based on table data:
+% |a4paper|, |qr|, |titlepagetableonly|. 
+% \end{itemize}
+%
+% \subsection{The macros explained}
+%
+% After every macro, it has been indicated to which class the macro
+% applies (between square brackets), and whether it is mandatory or not.
+%
+% \DescribeMacro{\facultyacronym} [uacoursetext / uamasterthesis] (mandatory)\\
+% This macro sets the acronym of the faculty.
+% This macro also sets the faculty name according to the specified
+% acronym.
+% If you're missing an faculty or institute, please ask the
+% authors to complete the list.
+% 
+% The available acronyms are:
+% \begin{center}
+% \begin{tabular}{cl}
+%   \toprule
+%   Acronym & Faculty name \\
+%   \midrule
+%   CPG
+%   & Centrum Pieter Gillis\\
+%   FBD 
+%   & Faculteit Farmaceutische, Biomedische en Diergeneeskundige Wetenschappen\\
+%   GGW    
+%   & Faculteit Geneeskunde en Gezondheidswetenschappen\\
+%   IOB
+%   & Instituut voor Ontwikkelingsbeleid- en beheer\\
+%   IOIW
+%   & Instituut voor Onderwijs- en Informatiewetenschappen\\
+%   LW
+%   & Faculteit Letteren en Wijsbegeerte\\
+%   OW
+%   & Faculteit Ontwerpwetenschappen\\
+%   PSW
+%   & Faculteit Politieke en Sociale Wetenschappen\\
+%   REC
+%   & Faculteit Rechten\\
+%   TEW
+%   & Faculteit Toegepaste Economische Wetenschappen\\
+%   TI     
+%   & Faculteit Toegepaste Ingenieurswetenschappen\\
+%   WET    
+%   & Faculteit Wetenschappen\\
+%   \bottomrule
+% \end{tabular}
+% \end{center}
+%
+% \DescribeMacro{\title} [uacoursetext / uamasterthesis] (mandatory)\\
+% This macro sets the title of the document.
+% It also sets the |pdftitle| tag of the hyperref package, so that
+% the PDF-document meta-information is correct.
+%
+% \DescribeMacro{\subtitle} [uacoursetext] (optional)\\
+% This macro sets the title of the document. You may use this 
+% \begin{itemize}
+% \item to further clarify the title
+% \item to indicate the nature of this document
+% \end{itemize}
+% The latter is to be considered when you want to provide multiple
+% documents as parts of the full course text (e.g., Course Notes,
+% Formula Collection, Exercise Book, Solution Book).
+% This macro also sets the |subject| tag of the hyperref package,
+% so that the PDF-document meta-information is correct.
+%
+% \DescribeMacro{\author} [uacoursetext / uamasterthesis] (mandatory)\\
+% This macro sets the author of the document.
+% It also sets the |pdfauthor| tag of the hyperref package, so that
+% the PDF-document meta-information is correct.
+%
+% \DescribeMacro{\publisher} [uacoursetext] (mandatory)\\
+% This macro sets the publisher information of the document.
+% It is printed on the front page. It defaults to Universitas
+% printing, one of the standard printing service of Universiteit
+% Antwerpen.
+%
+% \DescribeMacro{\publishercode} [uacoursetext] (mandatory)\\
+% This macro sets the publisher code of the document.
+% It is printed on the front page. This is code that the publisher
+% uses for its internal administration. It may be a proprietary code,
+% or an ISBN number.
+%
+% \DescribeMacro{\courseversion} [uacoursetext] (optional)\\
+% This macro indicates which version of the course this is.
+% You may use your own versioning system that puts things clear for you.
+%
+% \DescribeMacro{\versionyear} [uacoursetext] (mandatory)\\
+% This is to be the year in which you published the current version of
+% the course in the form YYYY.
+%
+% \DescribeMacro{\lecturer} [uacoursetext] (mandatory)\\
+% This is the name of the person that actually teaches the course (in
+% Dutch: titularis). If there are mutliple persons, please, use the
+% macros |\lectureri|, |\lecturerii|, |\lectureriii|,
+% |\lectureriv|. 
+%
+% \DescribeMacro{\programme} [uacoursetext] (mandatory)\\
+% This macro takes three arguments:
+% \begin{itemize}
+% \item the type of the programme: BA, SP, VP or MA
+% \item the domain of the programme: IW
+% \item the qualifier of the programme: BK, CH, BCH, EM, EI
+% \end{itemize}
+% If you need more programme classes or qualifiers, ask the authors to
+% complete the available codes.
+% Correct usage of the macro will result in error-free descriptions on
+% your title page.
+% You can overrule the standard descriptions, by specifying 'FREE' as
+% frist argument and a free text description as second, leaving the third
+% one empty. However, we strongly advise against taking this route.
+% Instead, ask the authors to copmlete the available codes.
+%
+% \DescribeMacro{\supervisor} [uamasterthesis] (mandatory)\\
+% This is the name of the person that promotes the thesis.
+% If there are mutliple persons, please, use the
+% macros |\supervisori|, |\supervisorii|, |\supervisoriii|,
+% |\supervisoriv|. 
+%
+% \DescribeMacro{\course} [uacoursetext] (mandatory)\\
+% Code (first argument) and name (second argument) of the curriculum
+% course this coursematerial belongs to. The code should be of the form:\\
+% |TNNNFFFAAA|,
+% with:
+% \begin{center}
+%   \begin{tabular}{cp{10cm}}
+%     \toprule
+%       Code & Explanation \\
+%     \midrule
+%       |T|    & a number indicating the type of programme \\
+%              & (1 for Bachelor courses, 2 for Master courses , 5 for
+%                specific courses of preparatory programmes) \\
+%       |NNN|  & a number assigned by the Faculty's administration\\
+%       |FFF|  & the acronym of your Faculty, e.g., FTI\\
+%       |AAA|  & an alphanumeric code assigned by the Faculty's
+%                administration \\
+%     \bottomrule
+%   \end{tabular}
+% \end{center}
+%
+% An example of such a code: 1001FTIWIS, for the first-semester
+% mathematics course of the Faculty of Applied Engineering.
+%
+% The name should be of the form |x-YYYYYYYY| with |x| the number of the
+% semester and |YYYYYYYY| the official name of the course.
+%
+% \DescribeMacro{\course} [uacoursetext] (mandatory)\\
+% In case the course's name contains accented characters, one should
+% also provide a qr version, containing utf8-characters only.
+% The macro for this purpose takes only one argument, i.e. the
+% course's name! This is to avoid inconsistencies in the course codes.
+%
+% \DescribeMacro{\academicyear} [uacoursetext / uamasterthesis] (mandatory)\\
+% Use this macro to specify the academicyear in full, i.e. in the form
+% |XXXX-YYYY|. 
+% 
+% \DescribeMacro{\diploma} [uamasterthesis] (mandatory)\\
+% This must be the official title, in Dutch. To avoid errors, we chose
+% to use specific codes, that will expand to the correct description.
+% \begin{center}
+%   \begin{tabular}{lp{10cm}}
+%     \toprule
+%     Code & Description (in Dutch!) \\
+%     \midrule
+%     |MA-IW-BK| 
+%     & Master of Science in de industri\"ele wetenschappen: bouwkunde\\
+%     |MA-IW-BCH| 
+%     & Master of Science in de industri\"ele wetenschappen: biochemie\\
+%     |MA-IW-CH|
+%     & Master of Science in de industri\"ele wetenschappen: chemie\\
+%     |MA-IW-EI|
+%     & Master of Science in de industri\"ele wetenschappen: elektronica-ICT\\
+%     |MA-IW-EI-AE|
+%     & Master of Science in de industri\"ele wetenschappen: elektronica-ICT,
+%     afstudeerrichting, Automotive Engineering\\
+%     |MA-IW-EI-ICT|
+%     & Master of Science in de industri\"ele wetenschappen: elektronica-ICT,
+%     afstudeerrichting ICT\\
+%     |MA-IW-EM-AE|
+%     & Master of Science in de industri\"ele wetenschappen: Elektromechanica,
+%     afstudeerrichting Automotive Engineering\\
+%     |MA-IW-EM-AU|
+%     & Master of Science in de industri\"ele wetenschappen: Elektromechanica,
+%     afstudeerrichting Automatisering\\
+%     |MA-IW-EM-EM|
+%     & Master of Science in de industri\"ele wetenschappen: Elektromechanica,
+%     afstudeerrichting Elektromechanica\\
+%     \bottomrule
+%   \end{tabular}
+% \end{center}
+% 
+% \DescribeMacro{\defensedate} [uamasterthesis] (mandatory)\\
+% Date of the defense in Dutch, in the form 'month year', e.g. ``juni 2012''.
+% 
+% \DescribeMacro{\defenselocation} [uamasterthesis] (optional)\\
+% Location of the defense. Defaults to ``Antwerpen''.
+% 
+% \DescribeMacro{\copyrightnotices} [uacoursetext] (optional)\\
+% Use this macro to specify additional copyright notice messages to
+% appear in het copyright notice on the bottom of page 2 of your
+% course text.
+% 
+% 
+% \subsection{Examples}
+% \subsubsection{\texttt{uacoursetext}}
+% 
+% \begin{verbatim}
+%<*ct-example> 
+\documentclass[a4paper,11pt,oneside,openright,english,qr]{uacoursetext}
+
+\usepackage[english,dutch]{babel}
+\selectlanguage{english}
+
+\title{Z\'agen, zoeken en zuchten}
+\qrtitle{Zágen, zoeken en zuchten}
+\subtitle{Cursusnota's}
+\author{Walter Daems en Paul Levrie}
+
+\courseversion{1.3}
+\versionyear{2013}
+
+\lectureri{Zoltan Zoekers}
+\qrlectureri{Zoltan Zoëkers}
+\lecturerii{Siana Sigh}
+\lectureriii{Zeger de Zager}
+\qrlectureriii{Zeger de Záger}
+
+\facultyacronym{TI}
+\programme{MA}{IW}{EI}
+\coursei{2023FTIZZZ}{5-Zoekmachines in een zaagperspectief}
+\courseii{2045FTIIII}{6-Zaagmachines in \'e\'en zuchtperspectief}
+\qrcourseii{6-Zaagmachines in één zuchtperspectief}
+
+\academicyear{2012-2013}
+
+\publisher{Cursusdienst\\UNIVERSITAS\\
+Prinsesstraat 16\\
+2000 Antwerpen\\
+T +32 3 233 23 72\\
+F +32 3 233 65 81\\
+E info@cursusdienst.be\\
+W www.universitas.be}
+
+\publishercode{C11111102}
+
+\copyrightnotices{
+  The graphics in this document have been typeset using \texttt{TikZ}.\\
+  This document has been \TeX-ed on a GNU/Linux workstation.
+}
+
+\begin{document}
+\selectlanguage{dutch} % or english if your text is in English
+
+\maketitle
+
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+\chapter*{Inleiding}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+aliquip ex ea commodo consequat. Duis aute irure dolor in
+reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum.
+
+
+\chapter{Onzin voor dummies}
+
+\section{Een beetje Cicero}
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+ab illo inventore veritatis et quasi architecto beatae vitae dicta
+sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
+qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
+quia non numquam eius modi tempora incidunt ut labore et dolore magnam
+aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
+ea voluptate velit esse quam nihil molestiae consequatur, vel illum
+qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+\begin{equation}
+  e^{-j\pi} + 1 = 0
+\end{equation}
+
+At vero eos et accusamus et iusto odio dignissimos ducimus qui
+blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
+et quas molestias excepturi sint occaecati cupiditate non provident,
+similique sunt in culpa qui officia deserunt mollitia animi, id est
+laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
+distinctio. Nam libero tempore, cum soluta nobis est eligendi optio
+cumque nihil impedit quo minus id quod maxime placeat facere possimus,
+omnis voluptas assumenda est, omnis dolor repellendus. Temporibus
+autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
+eveniet ut et voluptates repudiandae sint et molestiae non
+recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut
+reiciendis voluptatibus maiores alias consequatur aut perferendis
+doloribus asperiores repellat.
+
+\section{En waartoe het geleid heeft}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+aliquip ex ea commodo consequat. Duis aute irure dolor in
+reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum.
+
+\subsection{Herhaling}
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+ab illo inventore veritatis et quasi architecto beatae vitae dicta
+sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
+qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
+quia non numquam eius modi tempora incidunt ut labore et dolore magnam
+aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
+ea voluptate velit esse quam nihil molestiae consequatur, vel illum
+qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+\subsection{Begint vervelend te worden}
+At vero eos et accusamus et iusto odio dignissimos ducimus qui
+blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
+et quas molestias excepturi sint occaecati cupiditate non provident,
+similique sunt in culpa qui officia deserunt mollitia animi, id est
+laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
+distinctio. Nam libero tempore, cum soluta nobis est eligendi optio
+cumque nihil impedit quo minus id quod maxime placeat facere possimus,
+omnis voluptas assumenda est, omnis dolor repellendus. Temporibus
+autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
+eveniet ut et voluptates repudiandae sint et molestiae non
+recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut
+reiciendis voluptatibus maiores alias consequatur aut perferendis
+doloribus asperiores repellat.
+
+\newpage
+
+\subsection{Begint echt vervelend te worden}
+At vero eos et accusamus et iusto odio dignissimos ducimus qui
+blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
+et quas molestias excepturi sint occaecati cupiditate non provident,
+similique sunt in culpa qui officia deserunt mollitia animi, id est
+laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
+distinctio. Nam libero tempore, cum soluta nobis est eligendi optio
+cumque nihil impedit quo minus id quod maxime placeat facere possimus,
+omnis voluptas assumenda est, omnis dolor repellendus. Temporibus
+autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
+eveniet ut et voluptates repudiandae sint et molestiae non
+recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut
+reiciendis voluptatibus maiores alias consequatur aut perferendis
+doloribus asperiores repellat.
+
+
+\chapter{Besluit}
+
+\backmatter
+\appendix
+
+\chapter{Symbolen}
+\chapter{Romeinse sprekers}
+\chapter{Referentielijst}
+
+\makefinalpage
+
+\end{document}
+%</ct-example> 
+% \end{verbatim}
+% 
+% 
+% \subsubsection{\texttt{uamasterthesis}}
+% 
+% \begin{verbatim}
+%<*mt-example> 
+\documentclass[a4paper,11pt,twoside,openright,english]{uamasterthesis}
+
+\usepackage[english,dutch]{babel}
+
+\selectlanguage{english}
+
+\title{Minimax optimisatie voor performantieruimtemodellering}
+\author{Bert Bibber}
+
+\supervisori{Prof. dr. ir. Kumulus (Universiteit Antwerpen)}
+\supervisorii{Prof. dr. Hilarius Warwinkel (TNT-Bang, N.V.)}
+\supervisoriii{ing. Piet Pienter (POM)}
+
+\facultyacronym{TI}
+\academicyear{2012-2013}
+\diploma{MA-IW-EI-ICT}
+\defenselocation{Antwerpen}
+\defensedate{juni 2012}
+
+\begin{document}
+\selectlanguage{dutch} % or english if your text is in English
+
+\maketitle
+
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+\chapter*{Inleiding}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+aliquip ex ea commodo consequat. Duis aute irure dolor in
+reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum.
+
+\chapter{Onderzoeksvraag}
+
+\section{Een beetje Cicero}
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+ab illo inventore veritatis et quasi architecto beatae vitae dicta
+sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
+qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
+quia non numquam eius modi tempora incidunt ut labore et dolore magnam
+aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
+ea voluptate velit esse quam nihil molestiae consequatur, vel illum
+qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+\begin{equation}
+  e^{-j\pi} + 1 = 0
+\end{equation}
+
+At vero eos et accusamus et iusto odio dignissimos ducimus qui
+blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
+et quas molestias excepturi sint occaecati cupiditate non provident,
+similique sunt in culpa qui officia deserunt mollitia animi, id est
+laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
+distinctio. Nam libero tempore, cum soluta nobis est eligendi optio
+cumque nihil impedit quo minus id quod maxime placeat facere possimus,
+omnis voluptas assumenda est, omnis dolor repellendus. Temporibus
+autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
+eveniet ut et voluptates repudiandae sint et molestiae non
+recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut
+reiciendis voluptatibus maiores alias consequatur aut perferendis
+doloribus asperiores repellat.
+
+\chapter{Literatuurstudie}
+
+\chapter{Theoretische achtergrond}
+
+\chapter{Eigen realisatie}
+
+\chapter{Besluit}
+
+\backmatter
+\appendix
+
+\chapter{Symbolen}
+\chapter{Referentielijst}
+
+\makefinalpage
+
+\end{document}
+%</mt-example> 
+% \end{verbatim}
+% 
+% 
+% \StopEventually{\PrintChanges\PrintIndex}
+% 
+% \section{Implementation}
+% 
+% \subsection{Class inheritance}
+% 
+% 
+% For simplicity, we'll derive everything from the standard |book|
+% class.
+% 
+% \changes{v1.0}{2013/05/11}{Added option titlepagetableonly}
+% \changes{v1.0}{2013/05/11}{Added option titlepagenoartwork}
+% \changes{v1.0}{2013/05/11}{Added option qr}
+%
+% Before loading the class, we provide the extra options.
+% 
+%    \begin{macrocode}
+%<*ct>      
+\newif\if@copyright
+\DeclareOption{copyright}{\@copyrighttrue}
+\newif\if@qr
+\DeclareOption{qr}{\@qrtrue}
+%</ct>
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+%<*ct|mt>
+\newif\if@titlepagenoartwork
+\DeclareOption{titlepagenoartwork}{\@titlepagenoartworktrue}
+\newif\if@titlepagetableonly
+\DeclareOption{titlepagetableonly}{\@titlepagetableonlytrue}
+\newif\if@filled
+\DeclareOption{filled}{\@filledtrue}
+%</ct|mt>
+%    \end{macrocode}
+%
+% We execute some standard options:
+% We load the |book| class.
+%    \begin{macrocode}
+%<*ct|mt> 
+\ExecuteOptions{a4paper,11pt,final,oneside,openright}
+\ProcessOptions
+\LoadClassWithOptions{book}
+%</ct|mt> 
+%    \end{macrocode}
+% 
+% \subsection{Modern typesetting}
+% Let's force some modern typesetting without paragraph indentation
+% and with a decent paragraph spacing.
+% 
+%    \begin{macrocode}
+%<*ct|mt>      
+\setlength{\parindent}{0pt}
+\addtolength{\parskip}{0.75\baselineskip}
+\setcounter{secnumdepth}{3}
+%</ct|mt> 
+%    \end{macrocode}
+% 
+% \subsection{Auxiliary packages}
+% Reinventing the wheel is a waste of time, let's preload some
+% appropriate auxiliary packages that have proven their value.
+%
+% \subsubsection{Geometry}
+% Let's reduce the margins to 1 inch each.
+%    \begin{macrocode}
+%<*ct|mt>      
+\RequirePackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+%</ct|mt> 
+%    \end{macrocode}
+% 
+% \subsubsection{Font packages}
+% The utf8 stuff has been disabled because of the barcode package that
+% screws up on that encoding.
+%    \begin{macrocode}
+%<*ct|mt>      
+\RequirePackage{cmbright}
+\RequirePackage{ifluatex}
+\RequirePackage{ifxetex}
+\ifluatex
+\RequirePackage{fontspec}
+%\setmainfont{Calibri}
+%\setsansfont{Calibri}
+\else
+\ifxetex
+\RequirePackage{fontspec}
+%\setmainfont{Calibri}
+%\setsansfont{Calibri}
+\else
+\usepackage[final,expansion=true,protrusion=true,spacing=true,kerning=true]{microtype}
+\fi
+\fi
+%</ct|mt>
+%    \end{macrocode}
+%
+% \subsubsection{Boilerplate packages}
+% 
+% Some boilerplate packages and an empty macro to test against (using|\ifx|)
+%    \begin{macrocode}
+%<*ct|mt>      
+\RequirePackage{ifthen}
+\RequirePackage{ifmtarg}
+\newcommand{\@emptymacro}{}
+%</ct|mt> 
+%    \end{macrocode}
+% 
+% \subsubsection{Graphics packages}
+% 
+% Graphics packages that are required for the title page, but may come
+% in handy for regular use as well.
+%
+% Some packages for coursetext and masterthesis:
+%    \begin{macrocode}
+%<*ct|mt>      
+\RequirePackage{graphicx}
+\RequirePackage{eso-pic}
+\RequirePackage{color}
+\RequirePackage{tikz}
+%</ct|mt>
+%    \end{macrocode}
+%
+% In uacoursetext we also want to generate a qr code.
+% Therefore we load the |pst-barcode| and |auto-pst-pdf| package.
+%
+%    \begin{macrocode}
+%<*ct>
+\if@qr
+\RequirePackage{pst-barcode}
+\RequirePackage{auto-pst-pdf}
+\fi
+%</ct>
+%    \end{macrocode}
+%
+% \subsubsection{Header/Footer}
+% 
+% The de-facto standard for headers and footers:
+%    \begin{macrocode}
+%<*ct|mt>      
+\RequirePackage{fancyhdr}
+%</ct|mt> 
+%    \end{macrocode}
+% 
+% \subsection{Colors}
+%
+%    \begin{macrocode}
+%<*ct|mt> 
+\definecolor{uacorpbord}{cmyk}     {0.00,1.00,0.60,0.37}
+\definecolor{uacorpblue}{cmyk}     {1.00,0.25,0.00,0.50}
+\definecolor{uacorplightblue}{cmyk}{1.00,0.00,0.08,0.13}
+\definecolor{uacorporange}{cmyk}   {0.00,0.32,1.00,0.09}
+\definecolor{uaftifresh}{cmyk}     {0.34,1.00,0.00,0.00}
+\definecolor{uaftisober}{cmyk}     {0.10,1.00,0.00,0.49}
+\definecolor{lightgray}{cmyk}      {0.00,0.00,0.00,0.05}
+%</ct|mt>
+%    \end{macrocode}
+%
+% \subsection{Tags}
+% 
+% \begin{macro}{\facultyacronym}
+%   The |facultyacronym| sets the faculty acronym tag
+%   |\@facultyacronym| that is used in the header/footer
+%   information. The correct acronym also sets the faculty's name
+%   correctly.
+%
+%    \begin{macrocode}
+%<*ct|mt>      
+\newcommand{\@facultyacronym}{}
+\newcommand{\@faculty}{}
+\newcommand{\@qrfaculty}{}
+\newcommand{\facultyacronym}[1]{
+  \renewcommand{\@facultyacronym}{#1}
+  \ifthenelse{\equal{#1}{CPG}}{\renewcommand\@faculty{Centrum
+      Pieter Gillis}}{
+  \ifthenelse{\equal{#1}{FBD}}{\renewcommand\@faculty{Faculteit
+      Farmaceutische, Biomedische en Diergeneeskundige Wetenschappen}}{
+  \ifthenelse{\equal{#1}{GGW}}{\renewcommand\@faculty{Faculteit
+      Geneeskunde en Gezondheidswetenschappen}}{
+  \ifthenelse{\equal{#1}{IOB}}{\renewcommand\@faculty{Instituut
+      voor Ontwikkelingsbeleid- en beheer}}{
+  \ifthenelse{\equal{#1}{IOIW}}{\renewcommand\@faculty{Instituut
+      voor Onderwijs- en Informatiewetenschappen}}{
+  \ifthenelse{\equal{#1}{LW}}{\renewcommand\@faculty{Faculteit
+      Letteren en Wijsbegeerte}}{
+  \ifthenelse{\equal{#1}{OW}}{\renewcommand\@faculty{Faculteit
+      Ontwerpwetenschappen}}{
+  \ifthenelse{\equal{#1}{PSW}}{\renewcommand\@faculty{Faculteit
+      Politieke en Sociale Wetenschappen}}{
+  \ifthenelse{\equal{#1}{REC}}{\renewcommand\@faculty{Faculteit
+      Rechten}}{
+  \ifthenelse{\equal{#1}{TEW}}{\renewcommand\@faculty{Faculteit
+      Toegepaste Economische Wetenschappen}}{
+  \ifthenelse{\equal{#1}{TI}}{\renewcommand\@faculty{Faculteit
+      Toegepaste Ingenieurswetenschappen}}{
+  \ifthenelse{\equal{#1}{WET}}{\renewcommand\@faculty{Faculteit
+      Wetenschappen}}{
+    \errmessage{Error: wrong faculty acronym; choose one of FBD, GGW,
+      LW, OW, PSW, REC, TEW, TI, WET}}}}}}}}}}}}}}
+%</ct|mt>
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\title}
+%   The |title| tag is native to \LaTeX{}. It sets the |\@title| tag
+%   that will be used on the title page.
+%   However, in view of the qr trouble, we fiddle a little with it.
+%   In case the title contains accented characters, you also
+%   need to provide a qr version in full unicode (so without the
+%   traditional \LaTeX{} accented characters.
+%
+%    \begin{macrocode}
+%<*ct>      
+\newcommand{\@qrtitle}{}
+\renewcommand{\title}[1]{%
+  \renewcommand\@title{#1}
+  \ifx\@qrtitle\@emptymacro
+  \renewcommand\@qrtitle{#1}
+  \fi
+}
+\newcommand{\qrtitle}[1]{%
+  \renewcommand\@qrtitle{#1}
+}
+%</ct> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\subtitle}
+%   This macro sets the |\@subtitle| tag that later will be used on
+%   the title page, in the header/footer and to set the appropriate
+%   |hyperref| tag.
+%    \begin{macrocode}
+%<*ct>      
+\newcommand{\@subtitle}{}
+\newcommand{\@qrsubtitle}{}
+\newcommand{\subtitle}[1]{%
+  \renewcommand\@subtitle{#1}
+  \ifx\@qrsubtitle\@emptymacro
+    \renewcommand\@qrsubtitle{#1}
+  \fi
+}
+\newcommand{\qrsubtitle}[1]{%
+  \renewcommand\@qrsubtitle{#1}
+}
+%</ct> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\author}
+%   The |author| tag is native to \LaTeX{}. It sets the |\@author|
+%   tag that will be used on the title page.
+%   However, in view of the qr trouble, we fiddle a little with it.
+%   In case the title contains accented characters, you also
+%   need to provide a qr version in full unicode (so without the
+%   traditional \LaTeX{} accented characters.
+%
+%    \begin{macrocode}
+%<*ct>      
+\newcommand{\@qrauthor}{}
+\renewcommand{\author}[1]{%
+  \renewcommand\@author{#1}
+  \ifx\@qrauthor\@emptymacro
+  \renewcommand\@qrauthor{#1}
+  \fi
+}
+\newcommand{\qrauthor}[1]{%
+  \renewcommand\@qrauthor{#1}
+}
+%</ct> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\courseversion}
+%   This macro sets the |\@courseversion| tag that later will be used
+%   on the title page and in the header/footer.
+%    \begin{macrocode}
+%<*ct>      
+\newcommand{\@courseversion}{}
+\newcommand{\courseversion}[1]{\renewcommand{\@courseversion}{#1}}
+%</ct> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\versionyear}
+%   This macro sets the |\@versionyear| tag that later will be used on
+%   the title page and in the copyright message.
+%    \begin{macrocode}
+%<*ct>      
+\newcommand{\@versionyear}{}
+\newcommand{\versionyear}[1]{\renewcommand{\@versionyear}{#1}}
+%</ct> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\publisher}
+%   This macro sets the |\@publisher| tag that later will be used on
+%   the title page.
+%    \begin{macrocode}
+%<*ct>      
+\newcommand{\@publisher}{Cursusdienst\\
+UNIVERSITAS\\
+Prinsesstraat 16\\
+2000 Antwerpen\\
+T +32 3 233 23 72\\
+F + 32 3 233 65 81\\
+E info@cursusdienst.be\\
+W www.cursusdienst.be}
+\newcommand{\publisher}[1]{\renewcommand{\@publisher}{#1}}
+%</ct> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\publishercode}
+%   This macro sets the |\@publishercode| tag that later will be used on
+%   the title page.
+%    \begin{macrocode}
+%<*ct>      
+\newcommand{\@publishercode}{}
+\newcommand{\publishercode}[1]{\renewcommand{\@publishercode}{#1}}
+%</ct> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\lecturer}
+%   This macro sets many |\@lecturer| tags (max. 4) that later will be used on
+%   the title page. If there is only one teaching lecturer one can
+%   use the convenient shorthand without counter.
+%   In case the lecturer's name contains accented characters, you also
+%   need to provide a qr version in full unicode (so without the
+%   traditional \LaTeX{} accented characters.
+%    \begin{macrocode}
+%<*ct>
+\newcommand{\@lectureri}{}
+\newcommand{\@lecturerii}{}
+\newcommand{\@lectureriii}{}
+\newcommand{\@lectureriv}{}
+\newcommand{\@qrlectureri}{}
+\newcommand{\@qrlecturerii}{}
+\newcommand{\@qrlectureriii}{}
+\newcommand{\@qrlectureriv}{}
+\newcommand{\lecturer}[1]{
+  \renewcommand{\@lectureri}{#1}
+  \ifx\@qrlectureri\@emptymacro
+  \renewcommand\@qrlectureri{#1}
+  \fi
+}
+\newcommand{\qrlecturer}[1]{
+  \renewcommand\@qrlectureri{#1}
+}
+\newcommand{\lectureri}[1]{
+  \renewcommand{\@lectureri}{#1}
+  \ifx\@qrlectureri\@emptymacro
+  \renewcommand\@qrlectureri{#1}
+  \fi
+}
+\newcommand{\qrlectureri}[1]{
+  \renewcommand\@qrlectureri{#1}
+}
+\newcommand{\lecturerii}[1]{
+  \renewcommand{\@lecturerii}{#1}
+  \ifx\@qrlecturerii\@emptymacro
+  \renewcommand\@qrlecturerii{#1}
+  \fi
+}
+\newcommand{\qrlecturerii}[1]{
+  \renewcommand\@qrlecturerii{#1}
+}
+\newcommand{\lectureriii}[1]{
+  \renewcommand{\@lectureriii}{#1}
+  \ifx\@qrlectureriii\@emptymacro
+  \renewcommand\@qrlectureriii{#1}
+  \fi
+}
+\newcommand{\qrlectureriii}[1]{
+  \renewcommand\@qrlectureriii{#1}
+}
+\newcommand{\lectureriv}[1]{
+  \renewcommand{\@lectureriv}{#1}
+  \ifx\@qrlectureriv\@emptymacro
+  \renewcommand\@qrlectureriv{#1}
+  \fi
+}
+\newcommand{\qrlectureriv}[1]{
+  \renewcommand\@qrlectureriv{#1}
+}
+%</ct> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\supervisor}
+%   This macro sets many |\@supervisor| tags (max. 4) that later will be used on
+%   the title page. If there is only one supervisor one can
+%   use the convenient shorthand without counter.
+%    \begin{macrocode}
+%<*mt>      
+\newcommand{\@supervisori}{}
+\newcommand{\@supervisorii}{}
+\newcommand{\@supervisoriii}{}
+\newcommand{\@supervisoriv}{}
+\newcommand{\supervisor}[1]{\renewcommand{\@supervisori}{#1}}
+\newcommand{\supervisori}[1]{\renewcommand{\@supervisori}{#1}}
+\newcommand{\supervisorii}[1]{\renewcommand{\@supervisorii}{#1}}
+\newcommand{\supervisoriii}[1]{\renewcommand{\@supervisoriii}{#1}}
+\newcommand{\supervisoriv}[1]{\renewcommand{\@supervisoriv}{#1}}
+%</mt> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% 
+% \begin{macro}{\programme}
+%   This macro sets the |\@programme| tags that later will
+%   be used on the title page. The involved way of repeatedly calling
+%   the renewcommand to set the tags is required for inclusion of the
+%   data as QR data.
+%
+%    \begin{macrocode}
+%<*ct>      
+\newcommand{\@programmet}{} % type
+\newcommand{\@programmec}{} % class
+\newcommand{\@programmecqr}{} % class for qr code
+\newcommand{\@programmes}{} % class
+\newcommand{\@programmeq}{} % qualifier
+\newcommand{\programme}[3]{%
+    \ifthenelse{\equal{#1}{BA}}%
+    {\renewcommand{\@programmet}{Bachelor of Science in de }}{%
+    \ifthenelse{\equal{#1}{MA}}%
+    {\renewcommand{\@programmet}{Master of Science in de }}{%
+    \ifthenelse{\equal{#1}{VP}}%
+    {\renewcommand{\@programmet}{Voorbereidingsprogramma voor Master of Science in de }}{%
+    \ifthenelse{\equal{#1}{SP}}%
+    {\renewcommand{\@programmet}{Schakelprogramma voor Master of Science in de }}{%
+    \ifthenelse{\equal{#1}{FREE}}%
+    {}{
+    \errmessage{Error in 1st arg of macro programme[3]: invalid
+      programme type!}}}}}}%
+    %
+    \ifthenelse{\equal{#2}{IW}}%
+    {\renewcommand{\@programmec}{industri\"ele wetenschappen}
+     \renewcommand{\@programmecqr}{industriële wetenschappen}}{
+    \ifthenelse{\equal{#2}{}}%
+    {}{
+    \errmessage{{Error in 2nd arg of macro programme[3]: invalid 
+      programme class! }}}}%
+    %
+    \ifthenelse{\equal{#3}{BK}}%
+    {\renewcommand{\@programmeq}{bouwkunde}}{%
+    \ifthenelse{\equal{#3}{CH}}%
+    {\renewcommand{\@programmeq}{chemie}}{%
+    \ifthenelse{\equal{#3}{BCH}}%
+    {\renewcommand{\@programmeq}{biochemie}}{%
+    \ifthenelse{\equal{#3}{EM}}%
+    {\renewcommand{\@programmeq}{elektromechanica}}{%
+    \ifthenelse{\equal{#3}{EI}}%
+    {\renewcommand{\@programmeq}{elektronica-ICT}}{%
+    \ifthenelse{\equal{#3}{}}%
+    {}{%
+    \ifthenelse{\equal{#1}{FREE}}
+    {\renewcommand{\@programmeq}{#3}}{
+    \errmessage{Error in 3rd arg to macro programme[3]: invalid
+      programme qualifier}}}}}}}}% 
+    %
+    \ifthenelse{\equal{#2}{IW}\and\not\equal{#3}{}}
+    {\renewcommand{\@programmes}{: }}{}
+}
+%</ct> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\course}
+%   This macro sets many |\@coursecode| and |\@course| tags (max. 4)
+%   that later will 
+%   be used on the title page. If there is only one course code
+%   one can use the convenient shorthand without counter.
+%    \begin{macrocode}
+%<*ct>      
+\newcommand{\@coursecodei}{}
+\newcommand{\@coursecodeii}{}
+\newcommand{\@coursecodeiii}{}
+\newcommand{\@coursecodeiv}{}
+\newcommand{\@coursei}{}
+\newcommand{\@courseii}{}
+\newcommand{\@courseiii}{}
+\newcommand{\@courseiv}{}
+\newcommand{\@qrcoursei}{}
+\newcommand{\@qrcourseii}{}
+\newcommand{\@qrcourseiii}{}
+\newcommand{\@qrcourseiv}{}
+\newcommand{\course}[2]{
+  \renewcommand{\@coursecodei}{#1}
+  \renewcommand{\@coursei}{#2}
+  \ifx\@qrcoursei\@emptymacro
+  \renewcommand{\@qrcoursei}{#2}
+  \fi
+}
+\newcommand{\qrcourse}[1]{
+  \renewcommand{\@qrcoursei}{#1}
+}
+\newcommand{\coursei}[2]{
+  \renewcommand{\@coursecodei}{#1}
+  \renewcommand{\@coursei}{#2}
+  \ifx\@qrcoursei\@emptymacro
+  \renewcommand{\@qrcoursei}{#2}
+  \fi
+}
+\newcommand{\qrcoursei}[1]{
+  \renewcommand{\@qrcoursei}{#1}
+}
+\newcommand{\courseii}[2]{
+  \renewcommand{\@coursecodeii}{#1}
+  \renewcommand{\@courseii}{#2}
+  \ifx\@qrcourseii\@emptymacro
+  \renewcommand{\@qrcourseii}{#2}
+  \fi
+}
+\newcommand{\qrcourseii}[1]{
+  \renewcommand{\@qrcourseii}{#1}
+}
+\newcommand{\courseiii}[2]{
+  \renewcommand{\@coursecodeiii}{#1}
+  \renewcommand{\@courseiii}{#2}
+  \ifx\@qrcourseiii\@emptymacro
+  \renewcommand{\@qrcourseiii}{#2}
+  \fi
+}
+\newcommand{\qrcourseiii}[1]{
+  \renewcommand{\@qrcourseiii}{#1}
+}
+\newcommand{\courseiv}[2]{
+  \renewcommand{\@coursecodeiv}{#1}
+  \renewcommand{\@courseiv}{#2}
+  \ifx\@qrcourseiv\@emptymacro
+  \renewcommand{\@qrcourseiv}{#2}
+  \fi
+}
+\newcommand{\qrcourseiv}[1]{
+  \renewcommand{\@qrcourseiv}{#1}
+}
+%</ct> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\diploma}
+%   This macro sets the |\@diploma| tags that later will
+%   be used on the title page. 
+%   \changes{v1.1}{2013/05/21}{Fixed typo on programme's name (e-umlaut)}
+%    \begin{macrocode}
+%<*mt>
+\newcommand{\@diploma}{ERROR}
+\newcommand{\diploma}[1]{
+  \newcommand{\MoSIW}{Master of Science in de industri\"ele wetenschappen}
+  \renewcommand{\@diploma}{
+    \ifthenelse{\equal{#1}{MA-IW-BK}}
+                          {\MoSIW: bouwkunde}{
+    \ifthenelse{\equal{#1}{MA-IW-BCH}}
+                          {\MoSIW: biochemie}{
+    \ifthenelse{\equal{#1}{MA-IW-CH}}
+                          {\MoSIW: chemie}{
+    \ifthenelse{\equal{#1}{MA-IW-EI}}
+                          {\MoSIW: elektronica-ICT}{
+    \ifthenelse{\equal{#1}{MA-IW-EI-AE}}
+                          {\MoSIW:\\elektronica-ICT, afstudeerrichting automotive engineering}{
+    \ifthenelse{\equal{#1}{MA-IW-EI-ICT}}
+                          {\MoSIW:\\elektronica-ICT, afstudeerrichting ICT}{
+    \ifthenelse{\equal{#1}{MA-IW-EM-AE}}
+                          {\MoSIW:\\elektromechanica, afstudeerrichting automotive engineering}{
+    \ifthenelse{\equal{#1}{MA-IW-EM-AU}}
+                          {\MoSIW\\elektromechanica, afstudeerrichting automatisering}{
+    \ifthenelse{\equal{#1}{MA-IW-EM-EM}}
+                          {\MoSIW\\elektromechanica, afstudeerrichting elektromechanica}
+    {\errmessage{Error in argument to macro diploma: must be one of MA-IW-XXX with XXX one of BCH, CH, EI, EI-AE, EI-ICT, EM-AE, EM-AU, EM-EM! <<}}}}}}}}}}
+}
+}
+%</mt> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\defensedate}
+%   This macro sets the |\@defensedate| tags that later will
+%   be used on the title page. 
+%    \begin{macrocode}
+%<*mt>      
+\newcommand{\@defensedate}{ERROR}
+\newcommand{\defensedate}[1]{\renewcommand{\@defensedate}{#1}}
+%</mt> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\defenselocation}
+%   This macro sets the |\@defenselocation| tags that later will
+%   be used on the title page. 
+%    \begin{macrocode}
+%<*mt>      
+\newcommand{\@defenselocation}{Antwerpen}
+\newcommand{\defenselocation}[1]{\renewcommand{\@defenselocation}{#1}}
+%</mt> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\academicyear}
+%   This macro sets the |\@academicyear| tag that later will be used on
+%   the title page.
+%    \begin{macrocode}
+%<*ct|mt>      
+\newcommand{\@academicyear}{XXX-YYYY}
+\newcommand{\academicyear}[1]{\renewcommand{\@academicyear}{#1}}
+%</ct|mt> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\copyrightnotices}
+%    \begin{macrocode}
+%<*ct>      
+\newcommand{\@copyrightnotices}{}
+\newcommand{\copyrightnotices}[1]{\renewcommand{\@copyrightnotices}{#1}}
+%</ct> 
+%    \end{macrocode}
+% \end{macro}
+% 
+% \subsection{Header and Footer}
+% The |fancyhdr| package is used to make a decent header ander footer.
+% The header and footer of the |uacoursetext| package are defined to be:
+%    \begin{macrocode}
+%<*ct>      
+\if@twoside
+\lhead[\thepage]{\slshape\rightmark}
+\chead[]{}
+\rhead[\slshape\leftmark]{\thepage}
+\lfoot[Universiteit Antwerpen -- \@facultyacronym]{\@courseversion}
+\cfoot[]{}
+\rfoot[]{\@title{}\@ifmtarg{\@subtitle}{}{ ---- \@subtitle}}
+\else
+\lhead[]{\leftmark}
+\chead[]{}
+\rhead[]{\thepage}
+\lfoot[]{\@courseversion}
+\cfoot[]{UA--\@facultyacronym}
+\rfoot[]{\@title{}}
+\fi
+%</ct> 
+%    \end{macrocode}
+% 
+% The header and footer of the |uamasterthesis| package are defined to be:
+%    \begin{macrocode}
+%<*mt>
+\if@twoside
+  \lhead[\thepage]{\slshape\rightmark}
+  \chead[]{}
+  \rhead[\slshape\leftmark]{\thepage}
+  \lfoot[Universiteit Antwerpen -- \@facultyacronym]{}
+  \cfoot[]{}
+  \rfoot[]{\@title{}}
+\else
+  \lhead[]{\leftmark}
+  \chead[]{}
+  \rhead[]{\thepage}
+  \lfoot[]{}
+  \cfoot[]{UA--\@facultyacronym}
+  \rfoot[]{\@title{}}
+\fi
+%</mt>
+%    \end{macrocode}
+%
+% Some common code remains:
+% \changes{v1.1}{2013/05/28}{Made raggedright conditional on option
+% 'filled', because it can't be undone}
+%    \begin{macrocode}
+%<*ct|mt>
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\pagestyle{fancy}
+\if@filled\else
+  \raggedright
+\fi
+\raggedbottom
+\pagenumbering{arabic}
+\onecolumn
+%</ct|mt>
+%    \end{macrocode}
+%
+% \subsection{Copyright notice}
+%
+% \begin{macro}{\@crnotice}
+%    \begin{macrocode}
+%<*ct>
+\newcommand{\@crnotice}{
+  This document has been typeset using \LaTeX{} and the
+  \texttt{uacoursetext} class.\\
+  \@copyrightnotices
+
+  \@courseversion
+
+  CONFIDENTIAL AND PROPRIETARY.
+
+  \copyright{} \@versionyear{} Universiteit Antwerpen, All rights reserved.
+}
+%</ct>
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \subsection{Title page}
+%
+% \begin{macro}{\maketitle}
+% The title page is generated using the |\maketitle| command. As the
+% book class from which we inherit already defines this command, we
+% need to renew it.
+%
+% The UA house style works with large-radius circles.
+% We need some math in order to calculate center points an radiuses
+% 
+% \paragraph{Header circle:} the blue header-circle on top of the
+% page. We calculate the center point and the radius based on:
+% \begin{itemize}
+% \item the fact that the center point is above the page's left edge;
+% \item the distance of the intersection points at the left and right
+%   edge of the page with respect to the top of the page, $X$ and $Y$
+%   respectively;
+% \item the width of the page $W$.
+% \end{itemize}
+% Some simple trigonometry leads to the elevation of the center point
+% above the top of the page $Q$ and the radius $R$:
+% \begin{eqnarray}
+%   R &=& \frac{W^2 + (X-Y)^2}{2(X-Y)}\\
+%   Q &=& R - X
+% \end{eqnarray}
+% We labeled the variables in the code below with a prefix
+% |ua@| and a suffix h (from 'header'). We also took the paperheight into account (the page's
+% coordinate system origins at the left bottom.
+% Therefore:
+%    \begin{macrocode}
+%<*ct|mt>
+\pgfmathsetmacro{\ua@Wh}{\paperwidth}
+\pgfmathsetmacro{\ua@Xh}{0.2\paperheight}
+\pgfmathsetmacro{\ua@Yh}{0.125\paperheight}
+\pgfmathsetmacro{\ua@XMYh}{\ua@Xh-\ua@Yh}
+\pgfmathsetmacro{\ua@Rh}{0.5*\ua@Wh/\ua@XMYh*\ua@Wh+0.5*\ua@XMYh}
+\pgfmathsetmacro{\ua@Qh}{\ua@Rh-\ua@Xh+\paperheight}
+%</ct|mt>
+%    \end{macrocode}
+%
+% \paragraph{Bottom circle A:} the bottom circle with the largest
+% radius. We calculate the center point and the radius based on:
+% \begin{itemize}
+% \item the fact that the center point is at a distance of 3/5 page
+% width from the right page edge. We denote that distance as $W$;
+% \item the fact that the horizontal bottom tangent line of the circle
+% is at a specific height above the bottom page edge, labeled $S$;
+% \item the distance of the intersection points at the right edge of
+% the page with respect to the horizontal bottom tangent line of the
+% circle, denoted as $X-Y$.
+% \end{itemize}
+% Given these definitions, almost the same equations as for the header
+% circle hold:
+% \begin{eqnarray}
+%   R &=& \frac{W^2 + (X-Y)^2}{2(X-Y)}\\
+%   Q &=& R + S
+% \end{eqnarray}
+% with $R$ the circle's radius, and $Q$ the elevation of the center
+% point above the page's bottom.
+%
+% We labeled the variables in the code below with a prefix
+% |ua@| and a suffix ba (from 'bottom a').
+% Therefore:
+%    \begin{macrocode}
+%<*ct|mt>
+\pgfmathsetmacro{\ua@Wba}{0.4*\paperwidth}
+\pgfmathsetmacro{\ua@Sba}{0.125*\paperheight}
+\pgfmathsetmacro{\ua@XMYba}{0.02\paperheight}
+\pgfmathsetmacro{\ua@Rba}{0.5*\ua@Wba/\ua@XMYba*\ua@Wba+0.5*\ua@XMYba}
+\pgfmathsetmacro{\ua@Qba}{\ua@Rba+\ua@Sba}
+%</ct|mt>
+%    \end{macrocode}
+%
+%
+% \paragraph{Bottom circle B:} the bottom circle with the smallest
+% radius. The same reasoning leads to:
+%
+%    \begin{macrocode}
+%<*ct|mt>
+\pgfmathsetmacro{\ua@Wbb}{0.65*\paperwidth}
+\pgfmathsetmacro{\ua@Sbb}{0.14*\paperheight}
+\pgfmathsetmacro{\ua@XMYbb}{0.06\paperheight}
+\pgfmathsetmacro{\ua@Rbb}{0.5*\ua@Wbb/\ua@XMYbb*\ua@Wbb+0.5*\ua@XMYbb}
+\pgfmathsetmacro{\ua@Qbb}{\ua@Rbb+\ua@Sbb}
+%</ct|mt>
+%    \end{macrocode}
+%
+% \paragraph{Text alignment':} The text is aligned around an imaginary
+% vertical line around 2/5 page width distance from the left edge.
+%  
+%    \begin{macrocode}
+%<*ct|mt>
+\pgfmathsetmacro{\ua@ll}{0.15*\paperwidth}
+\pgfmathsetmacro{\ua@l}{0.4*\paperwidth}
+\pgfmathsetmacro{\ua@d}{0.1in}
+\pgfmathsetmacro{\ua@rr}{0.85*\paperwidth}
+%</ct|mt>
+%    \end{macrocode}
+%
+% Below, one can find the code for the title page of the
+% |uacoursetext| class:
+%    \begin{macrocode}
+%<*ct>
+\newcommand\sprtr{ / }
+\newcommand\myqrdata{
+I: Universiteit Antwerpen\string\n
+F: \@qrfaculty\string\n 
+P: \@programmet  \@programmecqr  \@programmeq\string\n
+C: \@coursecodei  \@qrcoursei  
+\sprtr
+\@coursecodeii  \@qrcourseii  
+\sprtr
+\@coursecodeiii  \@qrcourseiii 
+\sprtr
+\@coursecodeiv  \@cqrourseiv 
+\string\n
+Y: \@academicyear\string\n
+T: \@qrtitle\string\n
+S: \@qrsubtitle\string\n
+A: \@qrauthor\string\n
+L: \@qrlectureri
+\sprtr
+\@qrlecturerii
+\sprtr
+\@qrlectureriii
+\sprtr
+\@qrlectureriv}
+\newsavebox{\myqrcode}
+\renewcommand\maketitle{%
+  \pagestyle{empty}
+  \begin{titlepage}
+    \if@qr
+    \savebox{\myqrcode}[2.7in][t]{
+      \begin{pspicture}(2.7in,2.7in)
+        \psbarcode{\myqrdata}{version=22 encoding=byte eclevel=M}{qrcode}
+      \end{pspicture}
+    }
+    \else
+    \savebox{\myqrcode}[2.7in][t]{}
+    \fi
+    \if@titlepagetableonly
+    Dit is een cursustekst van Universiteit Antwerpen.\\
+    Het titelblad dient opgemaakt te worden met de volgende gegevens:
+    \begin{center}
+      \begin{tabular}{|l|l|}
+        \hline
+        \bfseries I & Universiteit Antwerpen \\\hline
+        \bfseries F & \@faculty \\\hline
+        \bfseries P & \parbox[t]{14cm}{\@programmet
+          \@programmec\@programmes \@programmeq}  \\\hline
+        \bfseries C & \parbox[t]{14cm}{
+          \texttt{\@coursecodei} \@coursei\\
+          \texttt{\@coursecodeii} \@courseii\\
+          \texttt{\@coursecodeiii} \@courseiii\\
+          \texttt{\@coursecodeiv} \@courseiv} \\\hline
+        \bfseries Y & \@academicyear \\\hline
+        \bfseries T & \parbox[t]{14cm}{\@title}\\\hline
+        \bfseries S & \parbox[t]{14cm}{\@subtitle}\\\hline
+        \bfseries A & \parbox[t]{14cm}{\@author}\\\hline
+        \bfseries L & \parbox[t]{14cm}{\@lectureri\\
+                                       \@lecturerii\\
+                                       \@lectureriii\\
+                                       \@lectureriv} \\\hline
+      \end{tabular}
+    \end{center}
+    ~\\
+    Waarbij: I = instelleng, F = faculteit, P = programma, C =
+    cursusmodule, T = titel, S = subtitel, A = auteur(s), L =
+    lesgever(s)\\~\\
+    Deze informatie is ook gecodeerd in de onderstaande QR-code.\\
+    \if@qr
+    \vspace*{1cm}
+    \usebox{\myqrcode}
+    \fi
+    \else
+    \AddToShipoutPicture*{%
+      \setlength{\unitlength}{1cm}
+      \put(0,0){%
+        \begin{tikzpicture}[inner sep=0pt]
+          \clip (0,0) rectangle(\paperwidth,\paperheight);
+          \if@titlepagenoartwork\else
+          \filldraw [uacorpbord] (0.55\paperwidth,\ua@Qba pt) circle (\ua@Rba pt);
+          \filldraw [white] (0.35\paperwidth,\ua@Qbb pt) circle (\ua@Rbb pt);
+          \filldraw [uacorpblue] (0,\ua@Qh pt) circle (\ua@Rh pt);
+          \path 
+          (0.95\paperwidth,0.1\paperheight) 
+          node [anchor=north east] {
+            \includegraphics[width=0.25\paperwidth]{ua_color}};
+          \fi
+          \path
+          (\ua@l pt -\ua@d pt,0.77\paperheight) 
+          node [anchor=north east, text width=0.35\paperwidth] {
+            \begin{flushright}
+              UNIVERSITEIT ANTWERPEN\\~\\
+              Academiejaar \@academicyear
+            \end{flushright}}
+          (\ua@l pt +\ua@d pt,0.65\paperheight)
+          node [anchor = north west, text width = 0.55\paperwidth] {
+            {\large \@faculty{}}\\[0.05\paperheight]
+            {\huge \bf \@title{}}\\[2ex]
+            {\Large \bf \@subtitle{}}\\[3ex]
+            {\Large \bf \@author{}}}
+          (\ua@l pt +\ua@d pt,0.45\paperheight)
+          node [anchor = north west, text width = 0.55\paperwidth] {
+            \@lectureri~\\
+            \@lecturerii~\\
+            \@lectureriii~\\
+            \@lectureriv}
+          (\ua@l pt +\ua@d pt,0.35\paperheight)
+          node [anchor = north west, text width = 0.55\paperwidth] {
+            {\bf \@programmet \\ \@programmec\@programmes  \@programmeq}}
+          (\ua@l pt +\ua@d pt,0.30\paperheight)
+          node [anchor = north west, text width = 0.55\paperwidth] {
+            \texttt{\@publishercode}~\\~\\
+            \texttt{\@coursecodei{}} \@coursei~\\
+            \texttt{\@coursecodeii{}} \@courseii~\\
+            \texttt{\@coursecodeiii{}} \@courseiii~\\
+            \texttt{\@coursecodeiv{}} \@courseiv}
+          (\ua@l pt - 2\ua@d pt, 0.368\paperheight)
+          node [anchor = north east, text width = 0.35\paperwidth] {
+            {\normalsize\begin{flushright}
+                \@publisher{}
+              \end{flushright}}};
+        \end{tikzpicture}
+      }
+    }%
+    \phantom{Do not remove: this causes an empty title page to be
+      generated}
+    \fi
+  \end{titlepage}%
+  \clearpage
+  \if@copyright
+  \AddToShipoutPicture{
+    \put(0,0){%
+      \begin{tikzpicture}[inner sep=0pt]
+        \clip (0,0) rectangle(\paperwidth,\paperheight);
+        \path 
+        (0.5\paperwidth,0.5\paperheight)
+        node [anchor=center, rotate=55, color=lightgray] {
+          \Huge Copyright Universiteit Antwerpen, All Rights Reserved
+        };
+      \end{tikzpicture}
+    }
+  }
+  \fi
+  \vspace*{\stretch{1}}
+  \@crnotice
+  \clearpage
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax
+  \global\let\maketitle\relax
+  \global\let\@thanks\@empty
+  \global\let\title\relax
+  \global\let\author\relax
+  \global\let\date\relax
+  \global\let\and\relax
+  \pagestyle{fancy}
+  \thispagestyle{empty}
+}
+%</ct> 
+%    \end{macrocode}
+%
+% Below, one can find the code for the final page of the |uacoursetext| class:
+%    \begin{macrocode}
+%<*ct>
+\newcommand\makefinalpage{
+  \if@titlepagetableonly
+  \else
+  \if@qr
+  \savebox{\myqrcode}{
+    \begin{pspicture}(2.7in,2.7in)
+      \psbarcode{\myqrdata}{version=22 encoding=byte eclevel=M}{qrcode}
+    \end{pspicture}
+  }
+  \else
+  \savebox{\myqrcode}[2.7in][t]{}
+  \fi
+  \cleardoublepage
+  \thispagestyle{empty}
+  \AddToShipoutPicture*{%
+    \setlength{\unitlength}{1cm}
+    \put(0,0){%
+      \begin{tikzpicture}[inner sep=0pt]
+        \clip (0,0) rectangle(\paperwidth,\paperheight);
+        \if@titlepagenoartwork\else
+        \filldraw [uacorpblue] (\paperwidth,\ua@Qh pt) circle (\ua@Rh pt);
+        \fi
+        \path 
+        (0.1\paperwidth,0.1\paperheight)
+        node [anchor = south west, text width = 0.6\paperwidth] {
+          CONFIDENTIAL AND PROPRIETARY\\~\\
+          \copyright{} \@versionyear{} Universiteit Antwerpen, 
+          All rights reserved.}
+        (0.9\paperwidth,0.1\paperheight)
+        node [anchor = south east] {
+          \if@qr
+          \usebox{\myqrcode}
+          \fi
+        };
+      \end{tikzpicture}
+    }
+  }
+  \phantom{Do not remove: this causes an empty final page to be
+    generated}
+  \fi
+}
+%</ct> 
+%    \end{macrocode}
+% 
+% And next, the code for the title page of the |uamasterthesis| class:
+%    \begin{macrocode}
+%<*mt>      
+\renewcommand\maketitle{%
+  \pagestyle{empty}
+  \begin{titlepage}
+    \AddToShipoutPicture*{%
+      \setlength{\unitlength}{1cm}
+      \put(0,0){%
+        \begin{tikzpicture}[inner sep=0pt]
+          \clip (0,0) rectangle(\paperwidth,\paperheight);
+          \if@titlepagenoartwork\else
+          \filldraw [lightgray] (0.55\paperwidth,\ua@Qba pt) circle (\ua@Rba pt);
+          \filldraw [white] (0.35\paperwidth,\ua@Qbb pt) circle (\ua@Rbb pt);
+          \filldraw [lightgray] (0,\ua@Qh pt) circle (\ua@Rh pt);
+          \path 
+          (0.95\paperwidth,0.1\paperheight) 
+          node [anchor=north east] {
+            \includegraphics[width=0.25\paperwidth]{ua_color}};
+          \fi
+          \path
+          (\ua@ll pt,0.77\paperheight) 
+          node [anchor=north west, text width=0.7\paperwidth] {
+            UNIVERSITEIT ANTWERPEN\\~\\
+            Academiejaar \@academicyear\\~\\
+            {\large \@faculty{}}\\~\\
+            Masterproef\\[0.05\paperheight]
+            {\Large \bf \@title{}}}
+          (\ua@ll pt,0.55\paperheight)
+          node [anchor = north west, text width = 0.7\paperwidth] {
+            {\large \bf \@author{}}\\~\\~\\
+            \begin{tabular}{@{}p{2.5cm}p{11cm}}
+              \textbf{Promotoren:} 
+              & \@supervisori \\
+              & \@supervisorii \\
+              & \@supervisoriii \\
+              & \@supervisoriv
+            \end{tabular}
+          }
+          (\ua@ll pt,0.3\paperheight) node [anchor=north west, text width = 0.7\paperwidth]{%
+            Proefschrift tot het behalen van de graad van\\
+            \@diploma\\
+            \@defenselocation, \@defensedate
+          };
+        \end{tikzpicture}
+      }
+    }%
+    \phantom{Do not remove: this causes an empty title page to be
+      generated}
+  \end{titlepage}%
+  \clearpage
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax
+  \global\let\maketitle\relax
+  \global\let\@thanks\@empty
+  \global\let\title\relax
+  \global\let\author\relax
+  \global\let\date\relax
+  \global\let\and\relax
+  \pagestyle{fancy}
+  \thispagestyle{empty}
+  %       \end{tikzpicture}
+  %     }
+  %   }%
+  %   \phantom{Do not remove: this causes an empty title page to be generated}
+  % \end{titlepage}%
+  % \if@twoside
+  % \cleardoublepage
+  % \else
+  % \clearpage
+  % \fi
+  % \setcounter{footnote}{0}%
+  % \global\let\thanks\relax
+  % \global\let\maketitle\relax
+  % \global\let\@thanks\@empty
+  % \global\let\title\relax
+  % \global\let\author\relax
+  % \global\let\date\relax
+  % \global\let\and\relax
+  % \pagestyle{fancy}
+  % \thispagestyle{empty}
+  }
+%</mt>
+%    \end{macrocode}
+% \end{macro}
+%
+% Below, one can find the code for the final page of the |uamasterthesis| class:
+%    \begin{macrocode}
+%<*mt>
+\newcommand\makefinalpage{
+  \cleardoublepage
+  \thispagestyle{empty}
+  \AddToShipoutPicture*{%
+    \setlength{\unitlength}{1cm}
+    \put(0,0){%
+      \begin{tikzpicture}[inner sep=0pt]
+        \clip (0,0) rectangle(\paperwidth,\paperheight);
+        \if@titlepagenoartwork\else
+        \filldraw [lightgray] (\paperwidth,\ua@Qh pt) circle (\ua@Rh pt);
+        \fi
+      \end{tikzpicture}
+    }
+  }
+  \phantom{Do not remove: this causes an empty final page to be
+    generated}
+}
+%</mt> 
+%    \end{macrocode}
+%
+%
+% \subsection{References}
+%    \begin{macrocode}
+%<*ct|mt>
+\IfFileExists{varioref.sty}{\RequirePackage{varioref}}{}
+%</ct|mt>
+%
+%<*ct>
+\IfFileExists{hyperref.sty}{
+    \RequirePackage{hyperref}
+    \hypersetup{
+      backref=true,
+      breaklinks=true,
+      colorlinks=true,
+      citecolor=black,
+      filecolor=black,
+      hyperindex=true,
+      linkcolor=black,
+      pageanchor=true, 
+      pagebackref=true,
+      pagecolor=black,
+      pdfpagemode=UseOutlines,
+      urlcolor=black
+    }
+    \AtBeginDocument{
+      \hypersetup{
+        pdftitle={\@title},
+        pdfsubject={\@subtitle},
+        pdfauthor={\@author}
+      }
+    }
+}{}
+%</ct>
+%
+%
+%<*mt>
+\IfFileExists{hyperref.sty}{
+    \RequirePackage{hyperref}
+    \hypersetup{
+      backref=true,
+      breaklinks=true,
+      colorlinks=true,
+      citecolor=black,
+      filecolor=black,
+      hyperindex=true,
+      linkcolor=black,
+      pageanchor=true, 
+      pagebackref=true,
+      pagecolor=black,
+      pdfpagemode=UseOutlines,
+      urlcolor=black
+    }
+    \AtBeginDocument{
+      \hypersetup{
+        pdftitle={\@title},
+        pdfsubject={Master's Thesis},
+        pdfauthor={\@author}
+      }
+    }
+}{}
+%</mt> 
+%    \end{macrocode}
+%
+% \Finale
+\endinput

@@ -1,0 +1,675 @@
+%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+% This package contains formatting commands for uncc thesis specifications. %
+% It defines the following commands: %
+% 1) \bodychapter - to be used to create chapters in the bodytext. %
+% 2) \bodysection, \bodysubsection \bodysubsubsection \bodysubsubsubsection- create section subsection, subsubsection and %
+% subsubsubsection in body text. %
+% 3) \appendixchapter, \appendixsection, \appendixsubsection - create appendix chapters, %
+% sections, and subsections. %
+% 4) \startbibliography, \finishbibliography - begin and end the bibliography environment.%
+% 5) \author, \title, \doctype, \degree, \major, \publicationyear, \advisor, \committeeMember,
+%    and \abstract - user-defined variables for setting up the preliminary pages.
+% 6) \startprelim and \startbody - manages the correct page numbering for the preliminaries
+%    and the body.
+% 7) \maketitlepage, \makecopyright, \abstract - generates the appropriate preliminary pages.
+% The original source of this file is unknown, although I found it posted online by
+% John Vannoy, so I assume he had a hand in it at some point.  This file included
+% commands 1-4 as described above with the exception of subsubsubsections added in 2013.
+% Automatic generation of preliminary pages (5-7) added in 2008 by Caroline Ziemkiewicz.
+% Additional corrections added in 2009 by Evan Suma and Rich Nguyen.
+% Search for DOSINGLE in this file to print your thesis single spaced for review purposes added 2013 by Dr. Erin Carroll.
+% Subsubsubsection added in 2013 by Andrew Besmer.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+
+
+% Use this package for double spacing.
+\usepackage[nodisplayskipstretch]{setspace}
+
+% These 2 packages work together to format sectioning commands
+% and format the table of contents.
+% Note: to get table of contents to work correctly, you must
+% run latex twice.
+\usepackage[rm,md,up,tiny,center,compact]{titlesec}
+\usepackage[dotinlabels]{titletoc}
+
+% This package is for conditional statements.
+\usepackage{ifthen}
+\usepackage{psfrag}
+
+
+% Make the top margin (from top edge of paper to top of header) be 3/4inch. This is
+% needed to set the page number (which will be inside the header).
+%\setlength{\topmargin}{-0.625in}
+
+% Negative value because top margin= \topmargin + 1 inch (orig {-0.625in})
+
+\setlength{\topmargin}{-0.425in}
+
+% Negative value because top margin = \topmargin + 1 inch
+% (The amount .625 = .25 + .375 which accounts thedistance
+% between the top of the pagenumber and the top ofthe header
+% region.)
+
+% Make the left margin (from left edge of paper to left edge of body)be 1.5 inches.
+\setlength{\oddsidemargin}{.5in} % Left margin = \oddsidemargin + 1 inch
+
+% Make the top body margin (from top edge of paper to top of body) be1 inch.
+\setlength{\headheight}{0.25in} % Header height will 1/4 inch.
+%\setlength{\headheight}{0in}
+
+%\setlength{\headsep}{0.375in} % \headsep is the distance between topof body and bottom of header. (orig {0.375in})
+\setlength{\headsep}{0.175in} % \headsep is the distance between topof body and bottom of header.
+% This is not 0 to correct for the smaller \topmargin.
+
+% Make the right body margin (from right edge of paper to right edge of body) be 1 inch.
+
+\setlength{\textwidth}{6in}
+
+% Total paper width = 8.5 inches so 6 in.+ 1.5 in. = 7.5 in
+% which leaves 1 inch for the right margin.
+
+% Make the bottom body margin (from bottom edge of paper to bottomedge of body) be 1 inch.
+\setlength{\footskip}{0in} % No footer region needed.
+\setlength{\textheight}{9in}
+% Total paper height = 11 inches so 9 in.+ 1 in. = 10 in.
+% which leaves 1 inch for the bottom body margin.
+
+
+%DOSINGLE Comment next line out  to single space for review purposes
+\doublespacing
+% command from setspace package to invoke doublespacing
+
+\pagestyle{myheadings}
+% This makes my own style headings (withpagenumber in upper rt. corner).
+
+\markright{}
+% This will put page number in right corner without anyother text in header.
+% (Footer will be blank.)
+
+
+
+% Increase the section number depth and the toc depth (the depth ofsections which get numbered
+% and put in the table of contents). This is necessary to allow thenew titleclasses to be
+% numbered correctly and put in the toc.
+\setcounter{secnumdepth}{5}
+%\setcounter{tocdepth}{5}
+
+% Make a new titleclass called "bodychapter" which will be used forchapters in the body text.
+\titleclass{\bodychapter}[0]{top}
+\newcounter{bodychapter}
+\newcommand{\bodychaptertitlename}{CHAPTER}
+\newcommand{\figuretitlename}{FIGURE}
+\newcommand{\tabletitlename}{TABLE}
+
+% Make a new titleclass called "bodysection" which will be used forsections in the body text.
+\titleclass{\bodysection}{straight}[\bodychapter]
+\newcounter{bodysection}
+\renewcommand{\thebodysection}{\arabic{bodychapter}.\arabic{bodysection}}
+
+% Make a new titleclass called "bodysubsection" which will be used for subsections in the body text.
+\titleclass{\bodysubsection}{straight}[\bodysection]
+\newcounter{bodysubsection}
+\renewcommand{\thebodysubsection}{\arabic{bodychapter}.\arabic{bodysection}.\arabic{bodysubsection}}
+
+% Make a new titleclass called "bodysubsubsection" which will be used for subsections in the body text.
+\titleclass{\bodysubsubsection}{straight}[\bodysubsection]
+\newcounter{bodysubsubsection}
+\renewcommand{\thebodysubsubsection}{\arabic{bodychapter}.\arabic{bodysection}.\arabic{bodysubsection}.\arabic{bodysubsubsection}}
+
+% Make a new titleclass called "bodysubsubsubsection" which will be used for subsections in the body text.
+\titleclass{\bodysubsubsubsection}{straight}[\bodysubsubsection]
+\newcounter{bodysubsubsubsection}
+\renewcommand{\thebodysubsubsubsection}{\arabic{bodychapter}.\arabic{bodysection}.\arabic{bodysubsection}.\arabic{bodysubsubsection}.\arabic{bodysubsubsubsection}}
+
+% Make commands for appendix chapters, sections, and subsections as aliases for chapter, section,
+% and subsection. This is not necessary but makes for a uniform scheme in which body chapters, etc.
+% use \bodychapter section command and appendix chapters use \appendixchapter section command.
+\newcommand*{\appendixchapter}[1]{\chapter{#1}\addcontentsline{toc}{bodychapter}{#1}\par}
+\newcommand*{\appendixsection}[1]{\section{#1}\addcontentsline{toc}{bodysection}{#1}\par}
+\newcommand*{\appendixsubsection}[1]{\subsection{#1}\addcontentsline{toc}{bodysubsection}{#1}\par}
+
+%% Format the title page.
+
+\renewcommand{\title}[1]{\newcommand{\calltitle}{#1}}
+\renewcommand{\author}[1]{\newcommand{\callauthor}{#1}}
+
+\newcommand{\doctype}[1]{\newcommand{\calldoctype}{#1}}
+\newcommand{\degree}[1]{\newcommand{\calldegree}{#1}}
+\newcommand{\major}[1]{\newcommand{\callmajor}{#1}}
+\newcommand{\publicationyear}[1]{\newcommand{\callyear}{#1}}
+\newcommand{\advisor}[1]{\newcommand{\calladvisor}{#1}}
+
+
+
+\newcommand{\committeeMember}[1]{
+
+\ifthenelse{\isundefined{\sigone}}
+{\newcommand{\sigone}{#1}}
+{
+\ifthenelse{\isundefined{\sigtwo}}
+{\newcommand{\sigtwo}{#1}}
+{
+\ifthenelse{\isundefined{\sigthree}}
+{\newcommand{\sigthree}{#1}}
+{
+\ifthenelse{\isundefined{\sigfour}}
+{\newcommand{\sigfour}{#1}}
+{
+\ifthenelse{\isundefined{\sigfive}}
+{\newcommand{\sigfive}{#1}}
+{}}}}}
+
+}
+
+
+\newcommand{\maketitlepage}
+{
+
+\begin{titlepage}
+
+\begin{singlespace}
+
+\begin{center}
+
+\MakeUppercase{\calltitle}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+by
+\vspace{\baselineskip}
+
+\callauthor
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+A \calldoctype~submitted to the faculty of\\
+The University of North Carolina at Charlotte\\
+in partial fulfillment of the requirements\\
+for the degree of \calldegree~in\\
+\callmajor
+\vspace{\baselineskip}
+
+Charlotte
+\vspace{\baselineskip}
+
+\callyear
+
+\end{center}
+
+\vspace{\baselineskip}
+
+
+\@ifundefined{sigthree}{
+% There are three committee members.
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\hspace{380pt}
+
+\begin{flushright}
+
+\begin{minipage}{200pt}
+
+\begin{flushleft}
+
+Approved by:\\
+\vspace{\baselineskip}
+\hrulefill \\
+\calladvisor\\
+\vspace{\baselineskip}
+\hrulefill \\
+\sigone\\
+\vspace{\baselineskip}
+\hrulefill \\
+\sigtwo
+}{\@ifundefined{sigfour}{
+% There are three committee members.
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\hspace{380pt}
+
+\begin{flushright}
+
+\begin{minipage}{200pt}
+
+\begin{flushleft}
+
+Approved by:\\
+\vspace{\baselineskip}
+\hrulefill \\
+\calladvisor\\
+\vspace{\baselineskip}
+\hrulefill \\
+\sigone\\
+\vspace{\baselineskip}
+\hrulefill \\
+\sigtwo\\
+\vspace{\baselineskip}
+\hrulefill \\
+\sigthree
+}{\@ifundefined{sigfive}{
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\hspace{380pt}
+
+\begin{flushright}
+
+\begin{minipage}{200pt}
+
+\begin{flushleft}
+
+Approved by:\\
+\vspace{\baselineskip}
+\hrulefill \\
+\calladvisor\\
+\vspace{\baselineskip}
+\hrulefill \\
+\sigone\\
+\vspace{\baselineskip}
+\hrulefill \\
+\sigtwo\\
+\vspace{\baselineskip}
+\hrulefill \\
+\sigthree\\
+\vspace{\baselineskip}
+\hrulefill \\
+\sigfour}{
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\hspace{380pt}
+
+\begin{flushright}
+
+\begin{minipage}{200pt}
+
+\begin{flushleft}
+
+Approved by:\\
+\vspace{\baselineskip}
+\hrulefill \\
+\calladvisor\\
+\vspace{\baselineskip}
+\hrulefill \\
+\sigone\\
+\vspace{\baselineskip}
+\hrulefill \\
+\sigtwo\\
+\vspace{\baselineskip}
+\hrulefill \\
+\sigthree\\
+\vspace{\baselineskip}
+\hrulefill \\
+\sigfour\\
+\vspace{\baselineskip}
+\hrulefill \\
+\sigfive}}}
+
+
+\end{flushleft}
+
+\end{minipage}
+
+\end{flushright}
+
+
+\end{singlespace}
+
+\end{titlepage}
+
+\setcounter{page}{2}
+
+}
+
+
+\newcommand{\makecopyright} {
+
+\begin{centering}
+
+\begin{singlespace}
+
+\vspace*{540pt}
+
+\copyright \callyear\\
+\callauthor\\
+ALL RIGHTS RESERVED
+
+\end{singlespace}
+
+\end{centering}
+
+\newpage
+
+}
+
+\renewcommand{\abstract}[1] {
+
+\begin{centering}
+
+\begin{singlespace}
+
+ABSTRACT\\
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\MakeUppercase{\callauthor}. \calltitle. (Under the direction of \MakeUppercase{\calladvisor})
+
+\vspace{\baselineskip}
+%\vspace{\baselineskip}
+
+\end{singlespace}
+\end{centering}
+
+#1
+
+\newpage
+}
+
+\newcommand{\acknowledgments}[1] {
+
+\begin{centering}
+
+\begin{singlespace}
+
+ACKNOWLEDGMENTS\\
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\end{singlespace}
+\end{centering}
+
+#1
+\newpage
+}
+
+\newenvironment{publications}
+{
+  \newpage
+  \begin{singlespace}
+  \renewcommand*{\refname}{
+    PUBLICATIONS
+    \vspace{\baselineskip}
+    \vspace{\baselineskip}
+  }
+  \begin{thebibliography}{99}
+}
+{
+\end{thebibliography}
+\end{singlespace}
+\renewcommand*{\refname}{
+REFERENCES
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+}
+}
+
+\newcommand{\pubitem}[1]{\bibitem{} #1}
+
+% The following commands will be used for formatting the bibliography.
+\renewcommand*{\refname}{
+REFERENCES
+\vspace{2ex}
+\vspace{\baselineskip}
+}
+
+
+% Redefines the title of the bibliography.
+%\newcommand{\startbibliography}{\begin{thebibliography}{999}
+%\addcontentsline{toc}{chapter}{\bibname}}
+%\newcommand{\finishbibliography}{\end{thebibliography}}
+
+\newcommand{\startbib}{
+\newpage
+\begin{singlespace}
+\addcontentsline{toc}{bodychapter}{REFERENCES}
+\bibliographystyle{abbrv}
+}
+
+\newcommand{\finishbib}{\end{singlespace}}
+
+
+% This redefines the table of contents title.
+\renewcommand*{\contentsname}{TABLE OF CONTENTS}
+
+\renewcommand*{\listtablename}{LIST OF TABLES \vspace*{2ex}\addcontentsline{toc}{bodychapter}{LIST OF TABLES}}
+\renewcommand*{\listfigurename}{LIST OF FIGURES \vspace*{2ex}\addcontentsline{toc}{bodychapter}{LIST OF FIGURES}}
+
+
+
+% The following 2 commands come from titlesec package.
+% titleformat formats the chapter sectioning command.
+% titlespacing formats the spacing for chapters (spacing above and below chapter titles).
+% Note: these commands will format the toc and reference pages because they get displayed as
+% if they were chapters by default. Appendix chapters will also use the chapter formatting.
+% For body chapters, a new titleclass is made that has its own formatting.
+
+\titleformat{\chapter}[block]{\normalfont\mdseries\centering}
+{\MakeUppercase{\chaptertitlename} \thechapter :}
+{.25em}{\MakeUppercase\mdseries}[\thispagestyle{myheadings}]
+
+\titlespacing{\chapter}{0pt}{-0.375in}{.1875in}
+
+
+% Parameter -.25in isneeded to reduce the 1.25in space from top edge
+% of paper to chapter title that alreadyexists to make space = 1in.
+
+% Format \section command
+\titleformat{\section}[block]{\normalfont\mdseries\centering}
+{\thesection}
+{1.5em}{\normalfont\mdseries}
+\titlespacing{\section}{0pt}{.0625in}{.0625in}
+
+% Format \subsection command
+\titleformat{\subsection}[block]{\normalfont\mdseries\centering}
+{\thesubsection}
+{1.5em}{\normalfont\mdseries}
+\titlespacing{\subsection}{0pt}{.0625in}{.0625in}
+
+% Format \subsubsection command
+\titleformat{\subsubsection}[block]{\normalfont\mdseries\centering}
+{\thesubsubsection}
+{1.5em}{\normalfont\mdseries}
+\titlespacing{\subsubsection}{0pt}{.0625in}{.0625in}
+
+% Format \subsubsubsection command
+\titleformat{\subsubsubsection}[block]{\normalfont\mdseries\centering}
+{\thesubsubsubsection}
+{1.5em}{\normalfont\mdseries}
+\titlespacing{\subsubsubsection}{0pt}{.0625in}{.0625in}
+
+% This macro is used to increment the chapter counter and resetcounters associated with figures, tables,
+% and equations. This is necessary because titleclass \bodychapter isused to generate new chapters instead
+% of the standard \chapter command (which would do these things automatically). This macro will be used
+% in the formatting of \bodychapter command to allow figures, tables, and equations to be numbered correctly.
+
+\newcommand{\setfigurecounters}{\addtocounter{chapter}{1}
+\setcounter{figure}{0} \setcounter{table}{0}
+\setcounter{equation}{0}}
+
+
+
+% Format the new titleclass \bodychapter
+\titleformat{\bodychapter}[block]{\normalfont\mdseries\centering\singlespacing}
+{\bodychaptertitlename ~\thebodychapter :}
+% The first line removes page numbers on the first page of a new chapter. The second line displays them. UNCC hasn't made up their mind on this, so you might have to change it.
+{.25em}{\normalfont\mdseries\MakeUppercase}[\thispagestyle{empty} % no page number
+%{.25em}{\normalfont\mdseries\MakeUppercase}[\thispagestyle{myheadings} % yes page number
+\setcounter{bodysection}{0} \setcounter{bodysubsection}{0}
+\setcounter{bodysubsubsection}{0}
+\setcounter{bodysubsubsubsection}{0}
+\addtocontents{lof}{\vspace*{-10pt}}
+\addtocontents{lot}{\vspace*{-10pt}}
+]
+
+\titlespacing{\bodychapter}{0pt}{.575in}{.1875in}
+%\titlespacing{\bodychapter}{0pt}{0.625in}{.1875in}
+% Parameter .75in is needed to increase the 1.25in space from top edge
+% of paper to chapter title that already exists to make space = 2in.
+
+
+
+% Format \bodysection command
+\titleformat{\bodysection}[block]{\normalfont\mdseries\centering}
+{\thebodysection}
+{1.5em}{\normalfont\mdseries}[\setcounter{bodysubsection}
+{0}\setcounter{bodysubsubsection}{0}\setcounter{bodysubsubsubsection}{0}] %\setfigurecounters]
+\titlespacing{\bodysection}{0pt}{.0625in}{.0625in}
+
+
+
+% Format \bodysubsection command
+\titleformat{\bodysubsection}[block]{\normalfont\mdseries\centering}
+{\thebodysubsection}
+{1.5em}{\normalfont\mdseries}
+[\setcounter{bodysubsubsection}{0}\setcounter{bodysubsubsubsection}{0}] %\setfigurecounters]
+\titlespacing{\bodysubsection}{0pt}{.0625in}{.0625in}
+
+
+
+% Format \bodysubsubsection command
+\titleformat{\bodysubsubsection}[block]{\normalfont\mdseries\centering}
+{\thebodysubsubsection}
+{1.5em}{\normalfont\mdseries}[\setcounter{bodysubsubsubsection}{0}] %[\setfigurecounters]
+\titlespacing{\bodysubsubsection}{0pt}{.0625in}{.0625in}
+
+% Format \bodysubsubsubsection command
+\titleformat{\bodysubsubsubsection}[block]{\normalfont\mdseries\centering}
+{\thebodysubsubsubsection}
+{1.5em}{\normalfont\mdseries} %[\setfigurecounters]
+\titlespacing{\bodysubsubsubsection}{0pt}{.0625in}{.0625in}
+
+% The following commands format the table of contents (from titletoc package).
+% Note: the toc formatting for chapter below will be used for formatting the
+% References and appendix chapters. Note: \appendixname is used in toc title
+% in order to get the correct name for appendix chapters. References still
+% comes out correctly because \addcontentsline{toc}{chapter}{\bibname} was
+% used for putting the title `REFERENCES' in the toc.
+
+\titlecontents{chapter}[0pt]{\normalfont\mdseries}
+{\MakeUppercase{\appendixname} \thecontentslabel :\hspace{.25em}}
+{}{\titlerule*[1pc]{}\contentspage}
+
+\titlecontents{section}[4em]{}{\contentslabel{2.3em}}{}
+{\titlerule*[1pc]{.}\contentspage}
+
+% Format \subsection's toc entry.
+\titlecontents{subsection}[8em]{}{\contentslabel{4em}}{}
+{\titlerule*[1pc]{.}\contentspage}
+
+% Format \subsubsection's toc entry.
+\titlecontents{subsubsection}[12em]{}{\contentslabel{4em}}{}
+{\titlerule*[1pc]{.}\contentspage}
+
+% Format \subsubsubsection's toc entry.
+\titlecontents{subsubsubsection}[16em]{}{\contentslabel{4em}}{}
+{\titlerule*[1pc]{.}\contentspage}
+
+\newcommand{\uncctocformat}[4]{
+  \titlecontents{#1}[#2]{\normalfont\mdseries\singlespacing}
+  {\hspace*{2em}\begin{tabular}[t]{@{}p{#3}}\hspace*{-2em}#4}
+  {\hspace*{2em}\begin{tabular}[t]{@{}p{#3}}\hspace*{-2em}}
+  {\end{tabular}\hfill\contentspage}
+}
+
+% TOC formatting for chapter, section levels
+\uncctocformat{bodychapter}{0pt}{350pt}{\bodychaptertitlename~\thecontentslabel:~}
+\uncctocformat{bodysection}{48pt}{302pt}{\contentslabel{2em}}
+\uncctocformat{bodysubsection}{96pt}{254pt}{\contentslabel{4em}}
+\uncctocformat{bodysubsubsection}{144pt}{206pt}{\contentslabel{4em}}
+
+
+% TOC formatting for figure, table
+\uncctocformat{figure}{0pt}{350pt}{\figuretitlename~\thecontentslabel:~}
+\uncctocformat{table}{0pt}{350pt}{\tabletitlename~\thecontentslabel:~}
+
+
+% Command to continue appendix chapter headings correctly when each appendix chapter is contained in a
+% different file. This will be used instead "\appendix" command for all appendix chapters after the 1st.
+% (Using "\appendix" causes each new appendix chapter to be labelled as "A" which is incorrect.)
+\newcommand{\continueappendixchapterheadings}
+{\renewcommand{\thechapter}{\Alph{chapter}}
+\renewcommand*{\chaptertitlename}{Appendix}}
+
+
+% Commands to allow enumerate environment to be used with correct  spacing for uncc requirements.
+\setlength{\parindent}{.17in} % Set the paragraph's indent to match the indent of the enumerate environment.
+\newcommand{\startenum}{\begin{enumerate}}
+\newcommand{\finishenum}{\ifthenelse{\value{enumii} = 0} % Check if in 1st level nesting.
+{\vspace{-7pt} \end{enumerate}} % 1st level nesting, reduce vertical space by 7pt.
+% before \end{enumerate}.
+{\ifthenelse{\value{enumiii} = 0} % Not in 1st level, check if in 2nd level.
+{\vspace{-2pt} \end{enumerate}} % 2nd level nesting, reduce vertical space by 2pt.
+% before \end{enumerate}.
+{\end{enumerate}} % Not in 2nd level nesting, no reduction of vertical space needed
+% before \end{enumerate}.
+} %end Not in 1st level.
+} %end \finishenum
+\newcommand{\enumitem}{\ifthenelse{\value{enumii} = 0} % Check if in 1st level nesting.
+{\vspace{-7pt} \item} % 1st level nesting, reduce vertical space by 7pt. before \item.
+{\ifthenelse{\value{enumiii} = 0} % Not in 1st level, check if in 2nd level.
+{\vspace{-2pt} \item} % 2nd level nesting, reduce vertical space by 2pt. before \item.
+{\item} % Not in 2nd level nesting, no reduction of vertical space needed before \item.
+} %end Not in 1st level.
+} %end \enumitem
+
+
+% Command to place adequate space between a figure or table and preceding body text of the document.
+\newcommand{\tablespace}{\vspace{10pt}}
+
+% Command to place adequate space between a figure or table and its caption.
+\newcommand{\captionspace}{\vspace{-10pt}}
+
+
+%Get LaTeX to Double-Space
+%DOSINGLE Comment next line out  to single space for review purposes
+\renewcommand{\baselinestretch}{2}
+
+
+\newcommand{\startprelim}{
+
+\pagenumbering{roman}
+
+}
+
+\newcommand{\listofcontentsfigurestables}{
+\lefthyphenmin=2
+\righthyphenmin=3
+\newpage
+\vspace*{-32pt}
+\tableofcontents
+\newpage
+\vspace*{-32pt}
+\listoffigures
+\newpage
+\vspace*{-32pt}
+\listoftables
+}
+
+\newcommand{\startbody}{
+
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+} 

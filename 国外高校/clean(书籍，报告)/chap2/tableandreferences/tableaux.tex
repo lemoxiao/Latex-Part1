@@ -1,0 +1,43 @@
+\subsection{Sous section avec des tableaux}%
+\label{sec:subsectiontableau}
+
+\subsubsection{Tableau simple}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ |c|c|c| } 
+        \hline
+        cell1 & cell2 & cell3 \\ 
+        cell4 & cell5 & cell6 \\ 
+        cell7 & cell8 & cell9 \\ 
+        \hline
+    \end{tabular}
+    \caption{Tableau simple}%
+    \label{table:tableausimple}
+\end{table}
+
+
+\subsubsection{Tableau plus complexe}
+
+\begin{table}[h!]
+    \begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
+        \hline
+        \multicolumn{4}{|c|}{Country List} \\
+        \hline
+        Country Name     or Area Name& ISO ALPHA 2 Code &ISO ALPHA 3 Code&ISO numeric Code\\
+        \hline
+        Afghanistan   & AF    &AFG&   004\\
+        Aland Islands&   AX  & ALA   &248\\
+        Albania &AL & ALB&  008\\
+        Algeria    &DZ & DZA&  012\\
+        American Samoa&   AS  & ASM&016\\
+        Andorra& AD  & AND   &020\\
+        Angola& AO  & AGO&024\\
+        \hline
+    \end{tabular}
+    \centering
+    \caption{Tableau un peu plus complexe}%
+    \label{table:tableaucomplexe}
+\end{table}
+
+

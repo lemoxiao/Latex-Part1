@@ -1,0 +1,370 @@
+% $Id: numeric.bbx,v 1.7 2011/11/13 19:09:07 lehman stable $
+
+\ProvidesFile{numeric.bbx}
+[\abx@bbxid $Id: numeric.bbx,v 1.7 2011/11/13 19:09:07 lehman stable $]
+
+\RequireBibliographyStyle{standard}
+\ExecuteBibliographyOptions{labelnumber}
+
+\providebool{bbx:subentry}
+
+\DeclareBibliographyOption{subentry}[true]{%
+  \setbool{bbx:subentry}{#1}}
+
+\DeclareNameAlias{author}{default}
+\DeclareNameAlias{editor}{default}
+\DeclareNameAlias{translator}{default}
+
+
+\DeclareFieldFormat{bibentrysetcount}{\mkbibparens{\mknumalph{#1}}}
+\DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
+\DeclareFieldFormat{shorthandwidth}{\mkbibbrackets{#1}}
+
+\defbibenvironment{bibliography}
+  {\list
+     {\printtext[labelnumberwidth]{%
+	\printfield{prefixnumber}%
+	\printfield{labelnumber}}}
+     {\setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+      \renewcommand*{\makelabel}[1]{\hss##1}}
+  {\endlist}
+  {\item}
+
+\defbibenvironment{shorthands}
+  {\list
+     {\printfield[shorthandwidth]{shorthand}}
+     {\setlength{\labelwidth}{\shorthandwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}%
+      \renewcommand*{\makelabel}[1]{\hss##1}}}
+  {\endlist}
+  {\item}
+
+\DeclareBibliographyDriver{set}{%
+  \entryset
+    {\ifbool{bbx:subentry}
+       {\printfield[bibentrysetcount]{entrysetcount}%
+	\setunit*{\addnbspace}}
+       {}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{setpageref}%
+  \finentry}
+
+\renewcommand{\bibinitperiod}{}
+\renewcommand{\bibinitdelim}{}
+\renewcommand{\bibnamedelimi}{}
+\renewcommand{\newunitpunct}{, }
+
+\def\uppercasesingleletter#1{\uppercase{#1}}
+
+\DeclareNameFormat{author}{\ifthenelse{\value{listcount}>1}{\ifthenelse{\value{listcount}<\value{liststop}}{, }{ \& }}{}\sc\ifblank{#5}{}{\uppercasesingleletter#5 }#1\ifblank{#4}{}{ #4}}
+\DeclareNameFormat{editor}{\ifthenelse{\value{listcount}>1}{\ifthenelse{\value{listcount}<\value{liststop}}{, }{ \& }}{}\sc #1\ifblank{#4}{}{ #4}\ifthenelse{\value{listcount}=\value{liststop}}{\ifthenelse{\value{liststop}=1}{ ({\sc Ed})}{ ({\sc Eds})}}{}}
+
+\newcommand{\January}{January}
+\newcommand{\February}{February}
+\newcommand{\March}{March}
+\newcommand{\April}{April}
+\newcommand{\May}{May}
+\newcommand{\June}{June}
+\newcommand{\July}{July}
+\newcommand{\August}{August}
+\newcommand{\September}{September}
+\newcommand{\October}{October}
+\newcommand{\November}{November}
+\newcommand{\December}{December}
+
+\DeclareFieldFormat[article,inbook,thesis,inproceedings,unpublished,misc]{title}{\emph{#1}}
+\DeclareFieldFormat[article]{journaltitle}{#1}
+\DeclareFieldFormat[article]{volume}{\bf #1}
+\DeclareFieldFormat[article]{number}{\ifblank{#1}{}{\bf (#1)}}
+\DeclareFieldFormat[article]{day}{#1 }
+\DeclareFieldFormat[article]{month}{%
+\ifthenelse{#1=01}{\January}{}%
+\ifthenelse{#1=02}{\February}{}%
+\ifthenelse{#1=03}{\March}{}%
+\ifthenelse{#1=04}{\April}{}%
+\ifthenelse{#1=05}{\May}{}%
+\ifthenelse{#1=06}{\June}{}%
+\ifthenelse{#1=07}{\July}{}%
+\ifthenelse{#1=08}{\August}{}%
+\ifthenelse{#1=09}{\September}{}%
+\ifthenelse{#1=10}{\October}{}%
+\ifthenelse{#1=11}{\November}{}%
+\ifthenelse{#1=12}{\December}{}}
+\DeclareFieldFormat[article]{pages}{pp.\ #1}
+
+\DeclareFieldFormat[book]{edition}{%
+\ifthenelse{#1=1}{#1\numst}{}%
+\ifthenelse{#1=2}{#1\numnd}{}%
+\ifthenelse{#1=3}{#1\numrd}{}%
+\ Edition}
+
+\DeclareFieldFormat[inbook]{pages}{pp.\ #1 in }
+
+\DeclareFieldFormat[article]{pages}{pp.~#1}
+
+\DeclareBibliographyDriver{article}%
+{\ifnameundef{author}{%
+\printfield{title}%
+\newunit\newblock%
+\printfield{year}%
+\newunit\newblock%
+\printfield{journaltitle}%
+\newunit\newblock%
+\printfield{volume}%
+\printfield{number}%
+\newunit\newblock%
+\printfield{day}%
+\printfield{month}%
+\newunit\newblock%
+\printfield{pages}%
+\finentry}{%
+\printnames{author}%
+\newunit\newblock%
+\printfield{year}%
+\newunit\newblock%
+\printfield{title}%
+\newunit\newblock%
+\printfield{journaltitle}%
+\newunit\newblock%
+\printfield{volume}%
+\printfield{number}%
+\newunit\newblock%
+\printfield{month}%
+\newunit\newblock%
+\printfield{pages}%
+\finentry}}
+
+\DeclareBibliographyDriver{book}{%
+\ifnameundef{author}{%
+\ifnameundef{editor}{%
+\printfield{title}%
+\newunit\newblock%
+\printfield{year}%
+\newunit\newblock%
+\printfield{edition}%
+\newunit\newblock%
+\printlist{publisher}%
+\newunit\newblock%
+\printlist{location}%
+\finentry}{%
+\printnames{editor}%
+\newunit\newblock%
+\printfield{year}%
+\newunit\newblock%
+\printfield{title}%
+\newunit\newblock%
+\printfield{edition}%
+\newunit\newblock%
+\printlist{publisher}%
+\newunit\newblock%
+\printlist{location}%
+\finentry}}{%
+\printnames{author}%
+\newunit\newblock%
+\printfield{year}%
+\newunit\newblock%
+\printfield{title}%
+\newunit\newblock%
+\printfield{edition}%
+\newunit\newblock%
+\printlist{publisher}%
+\newunit\newblock%
+\printlist{location}%
+\finentry}}
+
+\DeclareBibliographyDriver{inbook}{%
+\printnames{author}%
+\newunit\newblock%
+\printfield{year}%
+\newunit\newblock%
+\printfield{title}%
+\newunit\newblock%
+\printfield{pages}%
+\newblock%
+\printnames{editor}%
+\newunit\newblock%
+\printfield{booktitle}%
+\newunit\newblock%
+\printlist{publisher}%
+\newunit\newblock%
+\printlist{location}%
+\finentry}
+
+\DeclareBibliographyDriver{thesis}{%
+\printnames{author}%
+\newunit\newblock%
+\printfield{year}%
+\newunit\newblock%
+\printfield{title}%
+\newunit\newblock%
+\printfield{type}%
+\newunit\newblock%
+\printlist{institution}%
+\newunit\newblock%
+\printlist{location}%
+\finentry}
+
+\DeclareFieldFormat[online]{month}{%
+[Online], [Cited %
+\ifthenelse{#1=01}{\January}{}%
+\ifthenelse{#1=02}{\February}{}%
+\ifthenelse{#1=03}{\March}{}%
+\ifthenelse{#1=04}{\April}{}%
+\ifthenelse{#1=05}{\May}{}%
+\ifthenelse{#1=06}{\June}{}%
+\ifthenelse{#1=07}{\July}{}%
+\ifthenelse{#1=08}{\August}{}%
+\ifthenelse{#1=09}{\September}{}%
+\ifthenelse{#1=10}{\October}{}%
+\ifthenelse{#1=11}{\November}{}%
+\ifthenelse{#1=12}{\December}{} }
+
+\newcommand{\numst}{$^\mathrm{st}$}
+\newcommand{\numnd}{$^\mathrm{nd}$}
+\newcommand{\numrd}{$^\mathrm{rd}$}
+\newcommand{\numth}{$^\mathrm{th}$}
+
+\DeclareFieldFormat[online]{day}{%
+\ifthenelse{#1=1}{#1\numst}{}%
+\ifthenelse{#1=2}{#1\numnd}{}%
+\ifthenelse{#1=3}{#1\numrd}{}%
+\ifthenelse{#1=4}{#1\numth}{}%
+\ifthenelse{#1=5}{#1\numth}{}%
+\ifthenelse{#1=6}{#1\numth}{}%
+\ifthenelse{#1=7}{#1\numth}{}%
+\ifthenelse{#1=8}{#1\numth}{}%
+\ifthenelse{#1=9}{#1\numth}{}%
+\ifthenelse{#1=10}{#1\numth}{}%
+\ifthenelse{#1=11}{#1\numth}{}%
+\ifthenelse{#1=12}{#1\numth}{}%
+\ifthenelse{#1=13}{#1\numth}{}%
+\ifthenelse{#1=14}{#1\numth}{}%
+\ifthenelse{#1=15}{#1\numth}{}%
+\ifthenelse{#1=16}{#1\numth}{}%
+\ifthenelse{#1=17}{#1\numth}{}%
+\ifthenelse{#1=18}{#1\numth}{}%
+\ifthenelse{#1=19}{#1\numth}{}%
+\ifthenelse{#1=20}{#1\numth}{}%
+\ifthenelse{#1=21}{#1\numst}{}%
+\ifthenelse{#1=22}{#1\numnd}{}%
+\ifthenelse{#1=23}{#1\numrd}{}%
+\ifthenelse{#1=24}{#1\numth}{}%
+\ifthenelse{#1=25}{#1\numth}{}%
+\ifthenelse{#1=26}{#1\numth}{}%
+\ifthenelse{#1=27}{#1\numth}{}%
+\ifthenelse{#1=28}{#1\numth}{}%
+\ifthenelse{#1=29}{#1\numth}{}%
+\ifthenelse{#1=30}{#1\numth}{}%
+\ifthenelse{#1=31}{#1\numst}{}%
+, }
+
+\DeclareFieldFormat[online]{urlyear}{#1]}
+
+\DeclareFieldFormat[online]{url}{\renewcommand{\UrlBreaks}{\do\/\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z}Available from \url{#1}}
+
+\DeclareBibliographyDriver{online}{%
+\ifnameundef{author}{%
+\printfield{title}%
+\newunit\newblock%
+\printfield{year}%
+\newunit\newblock%
+\printfield{note}%
+\newunit\newblock%
+\printfield{month}%
+\printfield{day}%
+\printfield{urlyear}%
+\newunit\newblock%
+\printfield{url}%
+\finentry}{%
+\printnames{author}%
+\newunit\newblock%
+\printfield{year}%
+\newunit\newblock%
+\printfield{title}%
+\newunit\newblock%
+\printfield{note}%
+\newunit\newblock%
+\printfield{month}%
+\printfield{day}%
+\printfield{urlyear}%
+\newunit\newblock%
+\printfield{url}%
+\finentry}}
+
+\DeclareFieldFormat[inproceedings]{booktitle}{ #1}
+\DeclareFieldFormat[inproceedings]{number}{ #1\numth}
+
+\DeclareBibliographyDriver{inproceedings}{%
+\printnames{author}%
+\newunit\newblock%
+\printfield{year}%
+\newunit\newblock%
+\printfield{title}%
+, Proceedings of the%
+\iffieldundef{number}{}{%
+\printfield{number}%
+}%
+\printfield{booktitle}%
+\newunit\newblock%
+\printlist{location}%
+\newunit\newblock%
+\printfield{pages}%
+\finentry}
+
+\DeclareFieldFormat[report]{number}{(Unpublished) Technical Report #1}
+
+\DeclareBibliographyDriver{report}{%
+\printnames{author}%
+\newunit\newblock%
+\printfield{year}%
+\newunit\newblock%
+\printfield{title}%
+\newunit\newblock%
+\printfield{number}%
+\iffieldundef{number}{%
+, (Unpublished) Technical Report%
+}{}%
+\newunit\newblock%
+\printlist{institution}%
+\newunit\newblock%
+\printlist{location}%
+\finentry}
+
+\DeclareBibliographyDriver{unpublished}{%
+\printnames{author}%
+\newunit\newblock%
+\printfield{year}%
+\newunit\newblock%
+\printfield{title}%
+\newunit\newblock%
+\printfield{note}%
+\finentry}
+
+\DeclareListFormat[communication]{organization}{ at \emph{#1}, [Personal Communication]}
+\DeclareFieldFormat[communication]{url}{Contactable at \url{#1}}
+
+\DeclareBibliographyDriver{misc}{%
+\printnames{author}%
+\newunit\newblock%
+\printfield{year}%
+\newunit\newblock%
+\printfield{title}%
+\newunit\newblock%
+\printfield{note}%
+\newblock%
+\printlist{organization}%
+\newunit\newblock%
+\printfield{url}%
+\finentry}
+
+\endinput

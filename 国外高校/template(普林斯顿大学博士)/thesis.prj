@@ -1,0 +1,306 @@
+275 Patch Control
+
+0
+0
+1
+thesis.tex
+88
+18
+5
+
+
+
+
+
+
+thesis.tex
+TeX
+152055803 0 -1 8889 -1 8896 110 145 819 684 0 278 459 -1 -1 0 0 162 -1 -1 162 1 0 8896 -1   0
+ch-appendicies\printing.tex
+TeX
+1060859 0 -1 1182 -1 1182 198 261 726 801 0 390 340 -1 -1 0 0 -1 -1 -1 -1 1 0 1182 -1   0
+ch-pastwork\chapter-pastwork.tex
+TeX
+17838075 0 -1 429 -1 371 516 0 774 267 0 214 136 -1 -1 0 0 0 -1 -1 0 1 0 371 -1   0
+ch-pastwork\topic2.tex
+TeX
+1060859 0 -1 2721 -1 2329 0 0 528 559 0 310 325 -1 -1 0 0 16 -1 -1 16 1 0 2329 -1   0
+ch-intro\chapter-intro.tex
+TeX
+1060859 1 -1 716 -1 757 0 0 739 536 0 286 221 -1 -1 0 0 0 -1 -1 0 1 0 757 -1   0
+abstract.tex
+TeX
+286273531 0 -1 428 -1 813 22 29 731 568 0 518 255 -1 -1 0 0 522 -1 -1 522 1 0 813 -1   0
+ch-intro\intro_contributions.tex
+TeX
+1060859 0 -1 1065 -1 1096 132 174 872 711 0 190 272 -1 -1 0 0 0 -1 -1 0 1 0 1096 -1   0
+ch-pastwork\topic1.tex
+TeX
+1060859 0 -1 51 -1 540 198 261 726 820 0 278 221 -1 -1 0 0 17 -1 -1 17 1 0 540 -1   0
+C:\Files\My Dropbox\01 - Research\2009-thesis\tex\ch-authsp\auth_arch.tex
+TeX
+1060859 1 -1 6636 -1 4197 176 232 704 772 0 22 748 -1 -1 0 0 -1 -1 -1 -1 1 0 4197 -1   0
+ch-appendicies\implementation.tex
+TeX
+1060859 0 -1 2116 -1 576 0 0 528 559 0 278 170 -1 -1 0 0 -1 -1 -1 -1 1 0 576 -1   0
+thesis.bib
+BibTeX
+1049586 0 25 31 11 9 22 29 731 568 0 86 187 -1 -1 0 0 1 0 0 1 3 0 9 11  1 1 0  2 1 0   0
+acknowledgements.tex
+TeX
+17838075 0 -1 522 -1 648 0 0 709 539 0 310 153 -1 -1 0 0 0 -1 -1 0 1 0 648 -1   0
+ch-conclusion\chapter-conclusion.tex
+TeX
+1060859 0 -1 142 -1 142 66 87 806 624 0 22 85 -1 -1 0 0 0 -1 -1 0 1 0 142 -1   0
+ch-conclusion\conclusion.tex
+TeX
+17838075 0 -1 0 -1 95 88 116 828 653 0 206 17 -1 -1 0 0 96 -1 -1 96 1 0 95 -1   0
+ch-conclusion\futurework.tex
+TeX
+1060859 0 -1 23 -1 338 154 203 893 740 0 22 119 -1 -1 0 0 21 -1 -1 21 1 0 338 -1   0
+ch-usage\chapter-usage.tex
+TeX
+17838075 0 -1 2294 -1 519 176 232 704 791 0 286 168 -1 -1 0 0 0 -1 -1 0 1 0 519 -1   0
+ch-usage\usage_options.tex
+TeX
+1060859 0 -1 2301 -1 445 66 87 594 627 0 382 221 -1 -1 0 0 17 -1 -1 17 1 0 445 -1   0
+puthesis.cls
+DATA:UNIX
+5341426 0 190 1 189 1 88 116 797 655 1 70 442 -1 -1 0 0 1 0 0 1 1 0 1 189   0
+C:\Files\My Dropbox\01 - Research\2009-thesis\tex\ch-testingframework\test-framework.tex
+TeX
+269496315 1 -1 4974 -1 4656 88 116 616 675 0 22 442 -1 -1 0 0 -1 -1 -1 -1 1 0 4656 -1   0
+C:\Files\My Dropbox\01 - Research\2009-thesis\tex\ch-testingframework\validation.tex
+TeX
+269496315 2 -1 33418 -1 33424 44 58 572 617 0 158 391 -1 -1 0 0 -1 -1 -1 -1 1 0 33424 -1   0
+C:\Files\My Dropbox\01 - Research\2009-thesis\tex\ch-tf-appendicies\tf-hypercalls.tex
+TeX
+269496315 0 -1 0 -1 588 22 29 550 588 0 150 -3277 -1 -1 0 0 -1 -1 -1 -1 1 0 588 -1   0
+C:\Files\My Dropbox\01 - Research\2009-thesis\tex\thesis.bib
+BibTeX
+269485042 0 1275 1 1332 24 176 232 704 791 0 206 408 -1 -1 0 0 -1 -1 -1 -1 1 0 24 1332   0
+C:\Files\My Dropbox\01 - Research\2009-thesis\others\cosmology\PrincetonThesis.cls
+DATA:UNIX
+273776882 0 0 1 171 1 66 87 594 627 1 70 -6509 -1 -1 0 0 -1 -1 -1 -1 1 0 1 171   0
+C:\Files\My Dropbox\01 - Research\2009-thesis\others\pacm\puthesis_2008.cls
+DATA:UNIX
+273776882 0 0 1 0 1 44 58 572 598 1 70 0 -1 -1 0 0 -1 -1 -1 -1 1 0 1 0   0
+C:\Files\My Dropbox\01 - Research\2009-thesis\others\katie\puthesis2.sty
+TeX:DTX
+273690619 0 -1 12262 -1 11593 22 29 550 569 0 62 510 -1 -1 0 0 -1 -1 -1 -1 1 0 11593 -1   0
+C:\Files\My Dropbox\01 - Research\2009-thesis\others\katie\thesis.tex
+TeX
+269496315 0 -1 0 -1 0 0 0 528 540 0 22 0 -1 -1 0 0 -1 -1 -1 -1 1 0 0 -1   0
+C:\Files\My Dropbox\01 - Research\2009-thesis\tex1.5\ch-embedded\summary.tex
+TeX
+269496315 0 -1 0 -1 0 22 29 629 589 0 22 0 -1 -1 0 0 -1 -1 -1 -1 1 0 0 -1   0
+C:\Files\My Dropbox\01 - Research\2009-thesis\tex1.5\ch-spenhancements\spsummary.tex
+TeX
+269496315 0 -1 0 -1 898 66 87 673 647 0 126 306 -1 -1 0 0 -1 -1 -1 -1 1 0 898 -1   0
+C:\Files\My Dropbox\01 - Research\2006-05 Authority Mode\2007-08 CCS final submission\tex\sig-alternate.cls
+DATA
+273678578 0 133 7 0 3 88 116 694 655 1 86 0 -1 -1 0 0 34 0 0 34 1 0 3 0   0
+C:\Program Files\WinEdt Team\WinEdt\Dict\English\ise.dic
+DATA:UNIX
+273776883 0 2 40 10 8 0 0 628 549 1 126 170 -1 -1 0 0 -1 -1 -1 -1 1 0 8 10   0
+C:\Program Files\WinEdt Team\WinEdt\Dict\English\eng_com.dic
+DATA:UNIX
+273776882 0 80599 9 80598 10 22 29 628 568 1 150 374 -1 -1 0 0 -1 -1 -1 -1 1 0 10 80598   0
+ch-embedded\summary.tex
+TeX
+1060859 0 -1 2335 -1 2385 0 0 641 532 0 470 578 -1 -1 0 0 17 -1 -1 17 1 0 2385 -1   0
+ch-testingframework\chapter-tf.tex
+TeX
+1060859 0 -1 339 -1 470 66 87 755 610 0 750 187 -1 -1 0 0 0 -1 -1 0 1 0 470 -1   0
+ch-testingframework\implementation.tex
+TeX
+1060859 0 -1 8 -1 8 22 29 731 587 0 22 0 -1 -1 0 0 0 -1 -1 0 1 0 8 -1   0
+thesis.toc
+DATA
+273678578 0 0 113 0 1 516 267 774 534 1 70 0 -1 -1 0 0 67 0 0 67 1 0 1 0   0
+thesis.log
+DATA
+307233010 0 1490 33 1569 1 44 58 666 595 1 70 765 -1 -1 0 0 110 0 0 110 2 0 1 1569  1 11 313   0
+thesis.bbl
+DATA
+273678578 3 42 1 37 1 66 87 863 429 1 70 238 -1 -1 0 0 29 0 0 29 1 0 1 37   0
+ch-spenhancements\chapter-spenhancements.aux
+DATA
+273678578 0 0 1 0 1 0 0 797 361 1 70 0 -1 -1 0 0 8 0 0 8 1 0 1 0   0
+thesis.lot
+DATA
+273678578 3 21 154 21 1 22 29 819 371 1 70 357 -1 -1 0 0 -1 -1 -1 -1 1 0 1 21   0
+C:\Program Files\WinEdt Team\WinEdt\Doc\History.txt
+ASCII
+307242875 0 0 1 0 1 132 174 841 713 0 22 0 -1 -1 0 0 -1 -1 -1 -1 1 0 1 0   0
+ch-embedded\chapter-embedded.tex
+TeX
+1060859 2 -1 150 -1 156 0 0 740 537 0 358 119 -1 -1 0 0 0 -1 -1 0 1 0 156 -1   0
+C:\Files\My Dropbox\Princeton\EULA enforcability\fair-use paper\DwoskinEULA.tex
+TeX
+269496315 0 -1 4059 -1 4062 154 203 863 761 0 166 731 -1 -1 0 0 -1 -1 -1 -1 1 0 4062 -1   0
+C:\Files\My Dropbox\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\virt-test.bib
+BibTeX
+269485042 1 12 3 3 1 198 261 815 801 0 22 51 -1 -1 0 0 -1 -1 -1 -1 1 0 1 3   0
+C:\Program Files\MiKTeX 2.7\tex\latex\hyperref\hyperref.sty
+TeX:DTX:UNIX
+5353467 2 -1 55267 -1 55271 88 116 827 652 0 86 374 -1 -1 0 0 -1 -1 -1 -1 1 0 55271 -1   0
+C:\Program Files\MiKTeX 2.7\miktex\config\update-2010-01-14-11-24.log
+DATA
+273678578 0 0 1 1239 1 44 58 783 594 1 70 731 -1 -1 0 0 -1 -1 -1 -1 1 0 1 1239   0
+C:\Files\My Dropbox\01 - Research\2006-12 Sensor-mode SP\2009-12  Nov 30 Sensor Networks Book\key_establishment-v3Jeff.tex
+TeX:UNIX
+269594619 0 -1 31616 -1 32310 154 203 893 740 0 174 391 -1 -1 0 0 -1 -1 -1 -1 1 0 32310 -1   0
+C:\Files\My Dropbox\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\virt-test.tex
+TeX
+269496315 0 -1 0 -1 0 154 203 893 740 0 22 0 -1 -1 0 0 -1 -1 -1 -1 1 0 0 -1   0
+ch-authsp\auth_related.tex
+TeX
+1060859 0 -1 1915 -1 55 154 203 843 726 0 30 51 -1 -1 0 0 22 -1 -1 22 1 0 55 -1   0
+C:\Files\My Dropbox\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\2009-11 ISCA submission (tex)\2009-11-16m yu-yuan submitted 2\isca10_security_validation_framework\security_metric\security_metric.tex
+TeX:UNIX
+269594619 1 -1 50858 -1 51066 154 203 894 740 0 846 544 -1 -1 0 0 -1 -1 -1 -1 1 0 51066 -1   0
+C:\Files\My Dropbox\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\2009-11 ISCA submission (tex)\2009-11-16h jeff\security_metric.tex
+TeX:UNIX
+269594619 0 -1 22790 -1 22788 22 29 762 566 0 158 527 -1 -1 0 0 -1 -1 -1 -1 2 0 22788 -1  1 46735 -1   0
+C:\Files\My Dropbox\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\2009-11 ISCA submission (tex)\2009-11-16d jeff\security_metric-20091116e-jeff.tex
+TeX:UNIX
+269594619 0 -1 24877 -1 24877 176 232 916 769 0 318 -1377 -1 -1 0 0 -1 -1 -1 -1 1 0 24877 -1   0
+C:\Files\My Dropbox\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\2009-11 ISCA submission (tex)\2009-11-16d jeff\security_metric-20091116d-jeff.tex
+TeX:UNIX
+269594619 0 -1 21872 -1 21613 132 174 872 711 0 110 425 -1 -1 0 0 -1 -1 -1 -1 1 0 21613 -1   0
+C:\Files\My Dropbox\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\2009-11 ISCA submission (tex)\2009-11-15c jeff\security_metric-20091115d-jeff.tex
+TeX:UNIX
+269594619 0 -1 0 -1 0 154 203 894 740 0 22 -1700 -1 -1 0 0 -1 -1 -1 -1 1 0 0 -1   0
+C:\Files\My Dropbox\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\2009-11 ISCA submission (tex)\2009-11-15c jeff\security_metric-20091115c-jeff.tex
+TeX:UNIX
+269594619 0 -1 57000 -1 57006 132 174 872 711 0 558 191 -1 -1 0 0 -1 -1 -1 -1 1 0 57006 -1   0
+C:\Files\My Dropbox\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\2009-11 ISCA submission (tex)\2009-11-14a jeff\security_metric-20091114a-jeff.tex
+TeX:UNIX
+269594619 0 -1 28183 -1 28206 132 174 872 711 0 302 561 -1 -1 0 0 -1 -1 -1 -1 1 0 28206 -1   0
+C:\Files\My Dropbox\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\2009-11 ISCA submission (tex)\2009-11-13b jeff\security_metric-20091113b-jeff.tex
+TeX:UNIX
+269594619 0 -1 14910 -1 14913 132 174 872 711 0 94 374 -1 -1 0 0 -1 -1 -1 -1 1 0 14913 -1   0
+thesis.blg
+DATA
+307233010 0 41 36 14 30 132 174 754 692 1 302 238 -1 -1 0 0 -1 -1 -1 -1 1 0 30 14   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2006-12 Sensor-mode SP\2007-07 globecom final paper\spkey-submission-2\spkey.tex
+TeX
+269496315 0 -1 0 -1 0 176 232 865 755 0 22 0 -1 -1 0 0 -1 -1 -1 -1 1 0 0 -1   0
+C:\Program Files\MiKTeX 2.7\tex\latex\base\article.cls
+DATA
+273678578 1 450 38 447 1 66 87 755 610 1 70 374 -1 -1 0 0 -1 -1 -1 -1 1 0 1 447   0
+C:\Program Files\MiKTeX 2.7\tex\latex\base\report.cls
+DATA
+273678578 2 536 18 536 26 44 58 733 581 1 270 391 -1 -1 0 0 3 0 0 3 1 0 26 536   0
+C:\Program Files\MiKTeX 2.7\bibtex\bst\base\plain.bst
+DATA:UNIX
+273776882 0 0 1 0 1 22 29 711 571 1 70 0 -1 -1 0 0 -1 -1 -1 -1 1 0 1 0   0
+ch-authsp\AuthorityMode.tex
+TeX:UNIX
+269594619 1 -1 658 -1 636 44 58 711 590 0 22 170 -1 -1 0 0 75 -1 -1 75 1 0 636 -1   0
+C:\Program Files\Tivoli\TSM\baclient\dsmsched.log
+DATA
+273678578 1 3224889 66 3224889 53 22 29 758 588 1 502 10149 -1 -1 0 0 -1 -1 -1 -1 1 0 53 3224889   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2009-thesis\others\math\puthesis.cls
+DATA:UNIX
+273776882 1 48 5 48 16 88 116 824 675 1 190 476 -1 -1 0 0 4 0 0 4 1 0 16 48   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\virt-test.tex
+TeX
+420491259 2 -1 2005 -1 2010 0 0 576 559 0 166 238 -1 -1 0 0 2 -1 -1 2 1 0 2010 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\background.tex
+TeX
+269496315 0 -1 3253 -1 4133 44 58 620 617 0 22 799 -1 -1 0 0 60 -1 -1 60 1 0 4133 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\test-framework.tex
+TeX
+286273531 2 -1 2325 -1 2330 132 174 708 733 0 374 374 -1 -1 0 0 53 -1 -1 53 1 0 2330 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\intro.tex
+TeX
+269496315 0 -1 316 -1 317 66 87 642 646 0 694 68 -1 -1 0 0 22 -1 -1 22 1 0 317 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\title.tex
+TeX:UNIX
+269594619 0 -1 170 -1 169 110 145 686 704 0 198 34 -1 -1 0 0 67 -1 -1 67 1 0 169 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\sparch.tex
+TeX
+269496315 2 -1 21682 -1 21687 22 29 598 588 0 686 799 -1 -1 0 0 57 -1 -1 57 1 0 21687 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\virt-test.bib
+BibTeX
+269485042 0 321 23 321 23 0 0 736 559 0 198 374 -1 -1 0 0 43 0 0 43 1 0 23 321   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\validation.tex
+TeX
+286273531 0 -1 13707 -1 17892 154 203 730 762 0 22 663 -1 -1 0 0 45 -1 -1 45 1 0 17892 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\related.tex
+TeX
+269496315 2 -1 107 -1 112 176 232 752 791 0 542 51 -1 -1 0 0 22 -1 -1 22 1 0 112 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\conclusion.tex
+TeX
+269496315 2 -1 1365 -1 1370 198 261 774 820 0 454 289 -1 -1 0 0 42 -1 -1 42 1 0 1370 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\abstract.tex
+TeX:UNIX
+269594619 0 22 635 -1 987 88 116 664 675 0 22 204 -1 -1 0 0 16 -1 -1 16 1 0 987 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\usenix-submit-sample.tex
+TeX:UNIX
+269594619 0 -1 0 -1 869 22 29 758 588 0 254 646 -1 -1 0 0 -1 -1 -1 -1 1 0 869 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\virt-test.log
+DATA
+307233010 1 743 50 727 41 44 58 780 617 1 390 -3481 -1 -1 0 0 -1 -1 -1 -1 1 0 41 727   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\2009-01-29-mgomathi attack section\attacks.tex
+TeX
+269496315 0 -1 0 -1 0 22 29 598 588 0 22 0 -1 -1 0 0 27 -1 -1 27 1 0 0 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2007-02 VMWare and testing framework\2008-10 testing framework paper\tex\2009-01-29-mgomathi attack section\validation.tex
+TeX
+269496315 0 -1 0 -1 0 0 0 576 559 0 22 -4760 -1 -1 0 0 -1 -1 -1 -1 1 0 0 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2008-05 SecureCore integration paper\2008-10 TRUST submission\2009-01 camera ready\paper-v4b-Jeff\paper.tex
+TeX:UNIX
+403812347 0 -1 50930 -1 51575 44 58 587 617 0 22 544 -1 -1 0 0 0 -1 -1 0 6 0 51575 -1  1 18748 -1  2 21312 -1  3 22553 -1  4 25508 -1  5 43676 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2008-05 SecureCore integration paper\2008-10 TRUST submission\2009-01 camera ready\paper-v4b-Jeff\paper.log
+DATA
+307233010 0 0 1 131 21 66 87 609 646 1 230 -642 -1 -1 0 0 -1 -1 -1 -1 1 0 21 131   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2008-05 SecureCore integration paper\2008-10 TRUST submission\2009-01 camera ready\paper-v3b-Jeff\paper.tex
+TeX:UNIX
+403812347 0 -1 19353 -1 19588 22 29 713 588 0 54 459 -1 -1 0 0 0 -1 -1 0 3 0 19588 -1  1 8060 -1  2 14015 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2008-05 SecureCore integration paper\2008-10 TRUST submission\2009-01 camera ready\paper-v3b-Jeff\paper.log
+DATA
+307233010 0 0 1 0 1 22 29 565 588 1 70 -6048 -1 -1 0 0 -1 -1 -1 -1 1 0 1 0   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2008-05 SecureCore integration paper\2008-10 TRUST submission\2009-01 camera ready\paper-v2b-Jeff\paper.tex
+TeX:UNIX
+403812347 5 -1 60366 -1 60368 22 29 713 588 0 150 578 -1 -1 0 0 0 -1 -1 0 1 0 60368 -1   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2008-05 SecureCore integration paper\2008-10 TRUST submission\2009-01 camera ready\paper-v2b-Jeff\paper.log
+DATA
+307233010 0 0 1 0 1 44 58 735 617 1 70 0 -1 -1 0 0 108 0 0 108 1 0 1 0   0
+C:\Documents and Settings\jdwoskin\My Documents\01 - Research\2008-05 SecureCore integration paper\2008-10 TRUST submission\2009-01 camera ready\paper-v2-Tim\paper.tex
+TeX:UNIX
+269594619 0 -1 0 -1 0 0 0 691 559 0 22 0 -1 -1 0 0 -1 -1 -1 -1 1 0 0 -1   0
+C:\Files\Downloads\duplicate removers\CloneSpy\cspy233\CloneSpy.log
+DATA
+273678578 0 12805 90 2 1 22 29 713 588 1 70 34 -1 -1 0 0 -1 -1 -1 -1 1 0 1 2   0
+C:\Documents and Settings\jdwoskin\My Documents\PALMS\website\backups\2008-11-05publications.bib
+BibTeX:UNIX
+269583346 0 0 1 0 1 0 0 484 522 0 22 0 -1 -1 0 0 -1 -1 -1 -1 1 0 1 0   0
+
+*thesis.tex
+>
+*abstract
+*acknowledgements
+*ch-intro/chapter-intro
+>
+*ch-intro/intro_contributions
+<
+*ch-pastwork/chapter-pastwork
+>
+*ch-pastwork/topic1
+*ch-pastwork/topic2
+<
+*ch-usage/chapter-usage
+>
+*ch-usage/usage_options
+<
+*ch-conclusion/chapter-conclusion
+>
+*ch-conclusion/conclusion
+*ch-conclusion/futurework
+<
+*ch-appendicies/implementation
+*ch-appendicies/printing
+*thesis.bib
+<

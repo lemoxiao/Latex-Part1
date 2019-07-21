@@ -1,0 +1,101 @@
+%**********************************************************************
+%* Niets toevoegen aan dit bestand zonder toestemming van uw promotor *
+%**********************************************************************
+\documentclass[12pt,a4paper,oneside]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Volgende regel activeren voor eReader output:
+%\usepackage[papersize={130mm,180mm},margin=2mm]{geometry}
+
+%% Volgende regel activeren voor A4 output (bovenstaande terug afzetten)
+\usepackage{a4wide} % Iets meer tekst op een bladzijde
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Packages %%
+\usepackage{a4wide}                     % Iets meer tekst op een bladzijde
+\usepackage[dutch]{babel}               % Voor nederlandstalige woordsplitsing (en chapter hoofdingen)
+\usepackage{amsmath}                    % Uitgebreide wiskundige mogelijkheden
+\usepackage{url}                        % Om urls te verwerken
+\usepackage{graphicx}                   % Om figuren te kunnen verwerken
+\usepackage[latin1]{inputenc}           % Om niet ascii karakters te kunnen typen
+\usepackage[pagebackref=true]{hyperref}
+\usepackage{listings}                   % improve the code environments
+%\usepackage{lmodern}
+%\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{pdfpages}                   % Om pdf documenten in te kunnen voegen (titelpagina)
+\usepackage{lipsum}                     % Om lorem ipsum in te voegen
+\usepackage{sty/eukdate}                % Om de datum in te voegen 
+\usepackage[DoggensLenny]{sty/fncychap} % Added for nicer formatting: (kaders rond titels)
+\usepackage{fix-cm}
+\usepackage{parskip}                    % Geen inspringing aan het begin van een alinea
+%\usepackage{sectsty}
+\usepackage{mdwlist}
+\usepackage{sty/eukdate}                % Om data in te voegen
+\usepackage{caption}
+\usepackage{float}                      % Om afbeelding geforceerd op een plek te plaatsten met 'H' parameter
+\restylefloat{figure}
+\usepackage{multirow}                   % Weergave van complexere tabellen
+\usepackage[scaled]{sty/inconsolata}    % Instelling lettertype
+\usepackage{verbatim}
+
+\hypersetup{                            % Markup for links in text, final versie enkel met zwarte links!!  %%
+    colorlinks = false,                 %false=rode kaders rond tekst, true=links in de tekst zelf in kleur
+    linkcolor = black,
+    anchorcolor = black,
+    citecolor = blue,
+    filecolor = black,
+    urlcolor = black
+}
+
+\renewcommand*\familydefault{\sfdefault}                        % Only if the base font of the document is to be sans serif
+%\allsectionsfont{\usefont{OT1}{phv}{bc}{n}\selectfont}
+  
+\hyphenpenalty=5000                                             % Minder snel woorden splitsen
+  \tolerance=1000
+
+%% Custom commands %%
+\newcommand{\npar}{\par \vspace{2.3ex plus 0.3ex minus 0.3ex}}  % Enkele mm vertikale ruimte openlaten
+\newcommand{\ntpar}{\par \vspace{1.3ex plus 0.3ex minus 0.3ex}}
+\newcommand{\nhpar}{\par \vspace{4.3ex plus 0.3ex minus 0.3ex}}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}                   % Horizontale lijn
+
+\setcounter{tocdepth}{2}                                        % weergeven tot subsection in table of contents
+
+% \usepackage[final]{sty/TODO}           %TODO package (build error als er nog een todo in het document staat)
+%\usepackage[silent]{sty/TODO}           %TODO package (geen output, om een tussentijdse draft zonder de 'todos' te maken)
+\usepackage{sty/TODO}                    %TODO package (standaard modus)
+
+
+\usepackage{eso-pic}
+\newcommand\BackgroundPic{%
+\put(0,0){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+% \includegraphics[width=\paperwidth,height=\paperheight]{figures/titelpagina_ap_lowestres.jpg}
+% \includegraphics[width=\paperwidth,height=\paperheight]{figures/titelpagina_ap_lowres.jpg}
+\includegraphics[width=\paperwidth,height=\paperheight]{figures/titelpagina_ap_mediumres.jpg}
+
+\vfill
+}}\hfill
+}
+
+\newcommand\BackgroundPicAP{%
+\put(220,-372){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=0.44\paperwidth,height=0.075\paperheight,keepaspectratio]{figures/AP.png}
+\vfill
+}}
+\hfill
+}
+
+%*************************************************************************************
+%* Plaats eventuele extra toegevoegde packages hier (na toestemming van uw promotor) *
+%*************************************************************************************
+
+
+

@@ -1,0 +1,55 @@
+%% Contoh tesis GayaUKM dalam Bahasa Melayu
+\documentclass[bahasam]{GayaUKM}
+
+\usepackage{graphicx}
+
+\title{<Tajuk Tesis Anda>}
+\author{<Nama Anda>}
+\authorid{<P00000 No.~ID>}
+\faculty{<Fakulti Anda>}
+\submissiondate{2 Oktober 2013}
+\submissionyear{2013}
+\degreetype{Doktor Falsafah}
+\campus{Bangi}
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+\declaration
+
+% penghargaan dari penghargaan.tex
+\input{penghargaan}
+
+% abstrak dlm Bahasa Melayu dari abstrak-ms.tex
+\input{abstrak-ms}
+
+% abstrak dlm Bahasa Inggeris dari abstract-en.tex
+\input{abstract-en}
+
+
+\tableofcontents\clearpage
+\listoffigures\clearpage
+\listoftables\clearpage
+
+% Senari simbol dll boleh disediakan seperti
+% dalam senaraisimbol.tex
+\input{senaraisimbol}
+
+
+\mainmatter
+% Setiap satu bab dari fail berasingan
+\input{bab-pengenalan}
+\input{bab-latarbelakang}
+\input{bab-fibonacci}
+\input{bab-goldenratio}
+
+% rujukan tersenarai dlm refs.bib
+\bibliography{refs}
+
+\appendix
+% Setiap satu bab apendiks dari fail berasingan
+\input{ap-huraian}
+\input{ap-perisian}
+\end{document}

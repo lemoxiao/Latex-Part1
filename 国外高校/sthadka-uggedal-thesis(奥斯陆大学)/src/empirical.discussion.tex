@@ -1,0 +1,535 @@
+\section{Discussion}
+\label{section:empirical.discussion}
+
+This section will discuss our various research questions in relation
+to the results we've presented. We'll start with looking at
+several aspects of activity streams as a social navigation
+mechanism before we discuss prototyping with Greasemonkey on
+an established web site.
+
+As stated earlier, we worked with a level of significance
+$\alpha$ of $p \leq 0.05$.%
+\sidenote{
+  See \sectionref{empirical.method.data.analysis.level.of.significance}
+  for details.
+}
+\prequote[\p{1277}]{rosnow89}{argues that}{%
+  surely, God loves the .06 nearly as much as the .05}
+We are therefore going to discuss results with values of $p$ approaching
+$\alpha$ in a flexible fashion in this section.
+
+Based on our profiling of the respondents%
+\sidenote{
+  See 
+  \tablepageref{respondents.profile.usage}
+  for details.
+}
+we found the two groups which were using our implementation to be
+representative of the general sample in all aspects, except in how
+frequent they used \urort{}. The control group used \urort{} more
+frequent than than both the general sample and the experiment group
+with a probability of 0.055 compared to the general sample.
+We argue that this makes the control group more experienced
+\urort{} users than the experiment group.
+This is an important aspect which we'll try to keep in mind in
+the discussion about activity streams which follows.
+
+\subsection{%
+  \rp[1]{
+    Do users perceive social navigation through activity streams as helpful in
+    order to keep up-to-date on favorites' activities on \urort{}?
+  }
+}
+
+We hypothesized that usage of activity streams would improve the level
+of which participants could keep up-to-date on what their favorites
+on \urort{} were doing.
+
+\subsubsection{Activities in general}
+
+Comparing how easy respondents felt it was to keep up-to-date on activities
+within the experiment and control group,%
+\sidenote{
+  See \tablepageref{up.to.date.favorite.activities.within} for details.
+}
+we observed a higher increase in agreement for the experiment group. The
+increase of agreement for the control group could be explained as
+a placebo effect.
+Since the probability of making a type I error are
+$p = 0.086$, we simply take this result as an indication and not as hard proof
+for validating our alternative hypothesis.
+
+In addition the comparison within
+groups, we also compared the differences between the two groups. We observed
+similar positive results for activity streams with $p$ approaching $\alpha$
+with 0.089.
+We take the higher increase of agreement for the experiment
+group as an indication of the appropriateness of an activity stream for keeping
+up to date on activities.
+Due to lack of significant evidence we
+can not reject $H1_0$ regarding keeping up-to-date on activities in general.
+
+\subsubsection{Specific activities}
+
+When asking participants to qualify more specific statements of how
+easy they felt they could keep up-to-date on different types of activities,
+we observed differences between%
+\sidenote{
+  See
+  \tablepageref{up.to.date.favorite.specific.activities.between}
+  for details.
+}
+the groups and within the groups%
+\sidenote[2]{
+  See
+  \tablepageref{up.to.date.favorite.specific.activities.within}
+  for details.
+}.
+The between group data showed no significant nor borderline significant
+differences between groups. This contradicts the borderline significant
+results we found with the same comparison on activities in general.
+
+When comparing within groups, the only notable and significant difference
+appeared for activities relating to publishing new blog posts.
+Based on this evidence we reject $H1_0$ in favor
+of $H1_A$ for specifically keeping up-to-date on blog posts.
+
+We did find significant evidence
+of a an increase in ease of keeping up-to-date on songs for respondents
+which used an activity stream while those without had insignificant
+increases. The difference of significance were quite small, so $H_0$
+stands accepted for songs.
+
+We found no significant differences while using an activity stream
+for both concerts and reviews. $H_0$ therefore stands accepted for concerts
+and reviews.
+
+Why do users of activity streams so strongly feel that the stream help them to
+better keep up-to-date on recent blog posts and not the other types of
+activities? One possible explanation could be that the activity stream
+shows an excerpt of blog posts after the blog author and title.%
+\sidenote[-1]{
+  The activity stream with excerpts can be seen in
+  \figurepageref{scrsh.urort.activity.feed}.
+}
+This means
+that the user can get a glimpse into the content of the blog post without
+actually navigating to the post itself.
+But reviews from other users are also displayed with an excerpt of its
+content. We therefore find this explanation to be highly suggestive. It might
+be that respondents from the experiment group answered with such a
+strong tendency towards the usefulness of activity streams with regards to
+blog posts by chance.
+
+Our data shows no indicators as why we experienced contradicting results
+when asking how easy users could keep up-to date on activities in general
+compared to specific activities.
+A possible explanation could be that respondents only formed a general
+impression of the usefulness of the activity stream due to the short period
+respondents had access to the feature. They were possibly unable to use all
+parts of the activity stream and have therefore no specific meanings about
+these.
+
+We note this as a potentially useful lesson
+when conducting questions about the ease of conducting a task. In our case,
+asking more generally gave larger differences than asking more specific
+questions.
+
+\subsubsection{Perceived usefulness}
+
+We tried to characterize in what way activity streams could be better than
+no such feature for keeping up-to-date on favorites by asking respondents
+to gauge statements of perceived usefulness.%
+\sidenote{
+  See
+  \tablepageref{up.to.date.favorite.perceived.usefulness.between}
+  for details.
+}
+The results of asking in this manner yielded no noticeable nor significant
+differences between experiment and control respondents. Similarly to asking
+for specific activities, asking for specific qualities of keeping up-to-date
+seems to result in only minor differences between groups.
+The $H1_0$ can
+not be rejected regarding perceived usefulness of an activity
+stream as a means to keeping up-to-date on favorites.
+
+\subsubsection{Perceived ease of use}
+
+Our investigation into the perceived ease of use%
+\sidenote{
+  See
+  \tablepageref{up.to.date.favorite.perceived.ease.of.use.between}
+  for details.
+}
+showed only minor differences between experiment and control groups. On the
+issue of how flexible the prototype was, respondents from the control group
+actually reported higher acceptance to our statements.
+In light of this evidence $H1_0$ can
+not be rejected regarding perceived ease of use for an activity
+stream as a means to keeping up-to-date on favorites.
+
+We think the reason for
+this lies in the nature of asking respondents about ease of use without
+mentioning for what task the prototype should be easy to use. Our placebo
+prototype had fewer features (lacking activity streams) and was more simple
+than the experiment prototype with an activity stream. Surely the simplest
+application would be easier to use as there are less information and less
+navigational possibilities available. The statements of perceived ease of use
+investigates the overall ease of using the application, not how easy it to use
+for keeping up-to-date on activities. They measure technological acceptance
+and not actual acceptance of the application to perform a particular task.
+
+\subsubsection{Activity stream as standard feature}
+
+Relating to perceived ease of use and technological acceptance is our question
+about whether respondents wanted the prototype to be a standard feature
+on \urort{}. The results%
+\sidenote{
+  \tablepageref{up.to.date.standard.feature.between}
+  lists the results.
+}
+indicated a dead race between the prototype with an activity feed and the
+prototype without. While this data does not show a higher liking of
+activity feeds, it's interesting to note how high the acceptance as
+a standard feature are from
+our respondents. Even the placebo\dash{}composed of only a list of
+a user's favorites\dash{}seems to be so useful for respondents that they want
+it included together with \urort{}'s standard features.
+
+\subsubsection{Activity streams for keeping up-to-date on favorites}
+
+Our data have showed inconclusive results for whether activity
+streams help users in keeping up-to-date on activities. There seem to be an
+indication of the usefulness of activity streams in this regard.
+Activity streams clearly makes the task of keeping up with blog posts on
+\urort{} easier.
+
+We've seen how
+one asks respondents questions can make a difference in the results one
+are able to obtain. In our case, more specific questions yielded answers
+further from where we believed them to be based on our hypotheses. A more
+general question resulted in data more in line with our expectations.
+
+\subsection{%
+  \rp[2]{
+    Does social navigation through activity streams lead users to more often
+    keep up-to-date on favorites' activities on \urort{}?
+  }
+}
+
+We hypothesized that usage of an activity stream would result in higher
+frequencies of keeping up-to-date on favorites' activities on \urort{}.
+
+\subsubsection{Keeping up-to-date frequency}
+
+As we indicated in the beginning of our discussion the control respondents
+seemed more experienced with using \urort{}. This is evident in how
+frequent they keep up to date compared to experiment respondents for the
+posttest.%
+\sidenote{
+  See
+  \tablepageref{up.to.date.favorite.activities.frequency.between}
+  for details.
+}
+The control group's more frequent action of keeping up-to-date is highly
+significant. When we compared the shift in the frequency of keeping up-to-date
+from the pretest to the posttest%
+\sidenote{
+  See
+  \tablepageref{up.to.date.favorite.activities.frequency.within}
+  for details.
+}
+we noticed, that the control group's frequency is practically unchanged.
+Interestingly the experiment respondents frequency of keeping up-to-date have
+increased significantly over the same period. This is a good example
+of how our pretest and posttest experiment design have enabled us to look
+at change over time within groups, without jumping to inconclusive inferences
+by looking only at the state after the treatment or placebo was introduced.
+
+In light of the significant within group increases for keeping up-to-date
+for experiment respondents compared to control respondents,
+we reject our $H2_0$ in favor of the $H2_A$.
+
+\subsubsection{Prototype usage frequency}
+
+Our data concerning actual usage frequencies of the prototype%
+\sidenote{
+  See
+  \tablepageref{up.to.date.prototype.frequency.between}
+  for details.
+}
+supports the
+increase of keeping up-to-date for experiment respondents. The increase in
+usage approaches $\alpha$ with $p = 0.056$.
+
+This data is however
+different than our findings of how often the same groups kept up-to-date
+on favorites' activities. The prototype usage data showed that the experiment
+group had a higher usage rate of \latest{} than the control respondents. The
+results approaches $\alpha$ with $p = 0.056$.
+
+Does this mean that these two data sources contradict each other? Not
+necessarily. The first frequency of use statistics shows how often the two
+groups kept up-to-date on activities while the second shows how often
+the two groups used our prototype. We believe the lower control group usage of
+the prototype is related to the lower usefulness of the placebo
+implementation.
+
+Why do the control group then report higher frequencies for keeping up-to-date
+on activities? There could be several reasons, but we believe this could
+indicate that the control group are keeping up-to-date on favorites'
+activities with other means than the placebo prototype implementation alone.
+This could then indicate that the prototype without an activity stream is less
+useful for keeping up-to-date on activities.
+
+\subsubsection{Keeping up-to-date more often with activity streams}
+
+To summarize, we believe that an activity stream makes respondents
+more often keep up-to-date on activities than without. Those having used such
+a tool reported larger changes over time in how frequent they conducted such
+tasks than those which did not. When one takes into account how often the
+prototype implementation was used, it seems like the prototype without
+an activity stream is less suitable for keeping up-to-date than that which
+implements such a feature. Respondents without an activity stream would
+then need to keep up-to-date on activities with other means than solely
+relying on the prototype.
+
+\subsection{%
+  \rp[3]{
+    Does social navigation through activity streams lead users to make
+    more artists on \urort{} their favorites?
+  }
+}
+
+We hypothesized that usage of activity streams on \urort{} would
+make respondents add more artists to their list of favorites.
+
+As our data%
+\sidenote{
+  See
+  \tablepageref{up.to.date.prototype.frequency.between}
+  for details.
+}
+showed, we found no evidence whatsoever for our claims of increases in
+number of favorites after having used an activity stream.
+We believed that the increased focus on favorites and their activities through
+an activity stream would lead users to make more artists their favorites.
+Based on the data we've provided, the $H_0$ for the number of favorites
+related to an activity stream can not be rejected.
+
+One reason for this mismatch between our hypotheses and the evidence could be
+that there is no explanation of the benefits of adding favorites on \urort{}.
+When a user is browsing the profile page of an artist there is no statement
+along the lines of: \q{become a favorite of this artist and get automatically
+updated on their latest activities}. Such a reminder of one benefit of adding
+artists as favorites could possibly lead to more favoring.
+
+Another reason for this discrepancy could be the short time our prototype was
+in use by experiment respondents. Just over a week could be too small
+a time window for measuring changes in how many favorites respondents were
+adding.
+
+\subsection{%
+  \rp[4]{
+    Can prototyping with Greasemonkey be considered a
+    viable technical option when testing user behavior in an
+    established web site?
+  }
+}
+
+When we conducted the experiment of our prototype with real world users
+we got valuable feedback on how well such a technical solution works.
+Since Greasemonkey enabled client with a dedicated server back-end is (to our
+knowledge) a new way of experimenting with social navigation, we did not
+make any hypotheses about the failure or success of the solution.
+We consider this early work on such prototypes where a few lessons
+were learnt.
+
+\subsubsection{Limitations in browser selection}
+
+As described in
+\sectionref{selection.stack.client.platform} there exists Greasemonkey-like
+implementations for all major browsers. Greasemonkey for Firefox is the only
+implementation that supports sending requests to other domains than the domain
+a user-script is running under. This means that if one have to use a server
+back-end to handle the heavy lifting (as we did), one are limited to
+using Firefox as a browser platform.%
+\sidenote[-1]{
+  Unless one have the opportunity to run the server software under the domain
+  of the web site one are prototyping. We had no such luxury.
+}
+
+Targeting only Firefox as a platform means that one are unable to reach
+all potential users. The amount of Firefox users lies somewhere
+between one tenth and one quarter of all web citizens.%
+\sidenote{
+  The amount of users which use Firefox can vary
+  between different populations. According to \citet{onestat08} 13.8\% of
+  users world wide used Firefox in February 2008. The market share for Firefox
+  in Europe lied on 19.7\% in February 2008 according to \citet{adtech08}.
+  \citet{xiti08} reports the usage to be 28.8\% for Europe in March 2008
+  while 20.3\% for Norway (our candidate country) for the same period.
+}
+Installing a new web browser to take part in an
+experiment is a lot to expect from end-users. One therefore have to take into
+account the limited outreach Firefox have when deciding on a Greasemonkey
+based prototype.
+
+We specifically asked for users of Firefox when we contacted
+789 potential respondents. 171 responded to our request, while 123 completed
+our pretest survey.%
+\sidenote[5]{
+  See
+  \figurepageref{fig.experiment.mortality}
+  for details.
+}
+Those who completed the pretest survey reported a median usage frequency of
+Firefox as
+\q{always}.%
+\sidenote[6]{
+  See
+  \tablepageref{respondents.profile.usage}
+  for details.
+}
+This means that from 789 people, 171 (22\%) bothered to take our survey and
+was likely a Firefox user.
+This means that either almost 100\% of all potential respondents with a
+Firefox web browser decided to answer our survey (highly unlikely) or Firefox
+usage for our sample of \urort{} users were above the norm for Norway.
+
+\subsubsection{Difficulties with installing Greasemonkey and user-scripts}
+
+Installing our prototype software consisted of two steps:
+
+\begin{enum}
+  \item Installing the Greasemonkey Firefox extension.
+  \item Installing our prototype user-script for Greasemonkey.
+\end{enum}
+
+The first step in the installation process consisted of
+\begin{inparaenum}[(i)]
+  \item navigating to the Greasemonkey installation page,
+  \item clicking an installation button on the page,
+  \item clicking on another installation button in an installation
+    dialog, and
+  \item restarting the Firefox browser.
+\end{inparaenum}
+The second step in the installation process consisted of
+\begin{inparaenum}[(i)]
+  \item filling out an email address,%
+    \sidenote{
+      We needed the respondents' email addresses for associating answers to
+      the pretest with the group each respondent was randomly distributed to
+      if they decided to install our prototype.
+    }
+  \item pressing an install hyperlink on the user-script installation page,
+    and
+  \item clicking on an installation button in a user-script installation
+    dialog.
+\end{inparaenum}
+It's evident that this multi-step process can be a bit complicated for the
+average user. We tried to make the separate steps as seamless as possible
+by providing screen dumps with descriptions for all parts of the process.
+
+Our non-accomplish rates showed a drop off rate of 36.6\% while
+our follow-up survey showed a drop off rate of 23.7\%.%
+\sidenote{
+  See
+  \tablepageref{prototype.installation.drop.off}
+  for details.
+}
+This discrepancy probably shows that
+frustrated respondents which did not manage to install the software were less
+inclined to take a follow-up survey.
+
+These are quite high rates of unsuccessful
+installations and one should keep this in mind when one designs an
+experiment where respondents have to install Greasemonkey and user-scripts
+themselves. To solve this problem one could design an experiment where
+participants were invited to a lab (where all software were pre-installed). A
+lab study have its shortcomings too, as we've described in
+\sectionref{empirical.methodology.experiment.design}.
+
+\parabreak
+
+During our development of a prototype application with Greasemonkey for
+enhancing an established web page we also got a feel for its pros and cons
+from a development perspective.
+
+\subsubsection{Unobtrusive for the established implementation}
+
+Prototyping with Greasemonkey is unobtrusive for both the creators
+of a web site and its users.  One are only manipulating
+pages on an already existing web site when having explicitly installed
+Greasemonkey and an accompanying user-script. This means that one can
+conduct experiments by altering a web site without contacting its authors,
+nor having to inform the web site's existing users. One are in other words
+only altering content on the client side\dash{}in the browser. Normal users
+are presented with the web site as served by its the web server.
+
+We had contact with the creators of \urort{} during our prototype
+implementation phase. But the prototype could just as well be implemented
+without having contact with the creators.%
+\sidenote{
+  Easy access to experiment participants was the main benefit we had with
+  keeping in contact with the creators of \urort{}.
+}
+
+The creators of \urort{} benefited from a Greasemonkey approach since they
+could keep going on with their work without worrying about potential breakage
+caused by our prototype. Since we did not access their implementation we could
+not make any harm on the product that was delivered to non-experiment users.
+
+\subsubsection{Requires little knowledge of the established implementation}
+
+If we had been permitted access to the \urort{} implementation we imagine
+there would be a large upfront investment in learning how the \urort{}
+architecture worked before we could start conducting any implementation work.
+With a Greasemonkey approach, there was some learning which had to be
+completed before we could dive in to implementation work, but we believe this
+to be less than what would be required to change the \urort{} implementation.
+
+\subsubsection{Could require more work than altering the established
+  implementation}
+
+In our work with creating a navigational prototype we had to investigate how
+\urort{} worked through its outward facing interface. This was a somewhat
+convoluted experience.
+We believe it would be much easier to change the \urort{} implementation
+directly had we been well acquainted with its inner workings.
+If one knows the underlying implementation of an established web site it's
+probably easier to change that directly.
+
+\subsubsection{Fragile when the established implementation is changed}
+
+A Greasemonkey based prototype have to hook in to the structure of the
+established web site one are prototyping. The prototype can cease to function
+properly if this underlying structure changes. The amount of harm such a
+change imposes depends on what parts of a client-server Greasemonkey prototype
+it hits:
+
+\begin{items}
+  \iterm{Server side:} If changes to the established web page breaks
+    functionality on the server side, the prototype would be unusable
+    while the changes are compensated for in the server side implementation.
+    The experiment would probably not be jeopardized if
+    one are able to sort out such problems in a timely manner.
+  \iterm{Client side:} If changes to the underlying web site hinder the client
+    side Greasemonkey user-script to hook in to the web site and change its
+    contents, one could be in a world of pain. Regardless of how easily the
+    breakage can be fixed, one would need to publish a new user-script version
+    and get experiment users to install this. Needless to say, this could
+    have major ramifications on how well the experiment goes.
+\end{items}
+
+When we were developing our prototype, before the experiment was conducted,
+the developers of \urort{} imposed a change which made our client side
+user-script malfunction. The fix was easy and no harm were done since the
+user-script had not been deployed to experiment participants.
+
+We did not experience any changes which imposed bugs in our server side
+prototype component. Nevertheless, we were aware of the possibility of such
+changes and tried to keep updated on how our prototype functioned at all
+times. Since we used automated testing in our development (see
+\sectionref{implementation.process.testing} for details) we could verify
+our server side implementation at all times.

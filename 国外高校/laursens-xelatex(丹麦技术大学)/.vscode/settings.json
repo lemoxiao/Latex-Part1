@@ -1,0 +1,27 @@
+{
+  // LATEX WORKSHOP
+  // Enable this if badbox warnings becomes too annoying
+  // "latex-workshop.message.badbox.show": false,
+
+  // SPELL RIGHT
+  "spellright.language": "en",
+  "spellright.documentTypes": [
+    "markdown",
+    "plaintext",
+    "latex"
+  ],
+
+  // CODE SPELL CHECKER
+  "cSpell.enabled": true,
+  // Define dictionary for latex template
+  "cSpell.dictionaryDefinitions": [
+    {
+      "name": "lauersens-cspell",
+      "path": ".vscode/lauersens-cspell.txt"
+    }
+  ],
+  // Activate dictionary for latex template, for latex and markdown
+  "cSpell.languageSettings": [
+    { "languageId": "latex, markdown", "dictionaries": ["lauersens-cspell"] }
+  ]
+}

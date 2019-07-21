@@ -1,0 +1,85 @@
+\chapter{Source Code}
+
+\section{Unobtrusive Social Navigation Prototype for \urort{}}
+
+Due to size considerations we're not going to list the source code of our
+prototype implementation for \urort{} called \latest{} in this appendix.
+The source code and its entire history is available at
+\url{http://bitbucket.org/uggedal/rort/}.
+
+\section{Reddit Collaborative Filtering Algorithm}
+\label{section:source.code.reddit}
+
+Here is the source code of the algorithm that decides the score of a
+submission. We made syntactical changes to make the code's intent clearer.
+
+\begin{scode}{Python}{reddit.cf.algorithm}{%
+  Reddit Collaborative Filtering Algorithm}{%
+  The collaborative filtering algorithm used on Reddit}
+\begin{lstlisting}
+from datetime import datetime, timedelta
+from math import log
+
+def seconds_since_cutoff(date):
+    cutoff = datetime(2005, 12, 8, 7, 46, 43)
+    td = date - cutoff
+
+    seconds = td.days * 24 * 60 * 60
+    seconds += td.seconds
+    seconds += float(td.microseconds) / 1000000
+    return seconds
+
+def score(up_votes, down_votes, submitted_date):
+    score = up_votes - down_votes
+    order = log(max(abs(score), 1), 10)
+    sign = 1 if score > 0 else -1 if score < 0 else 0
+
+    age = seconds_since_cutoff(submitted_date)
+
+    return round(order + sign * age / 45000, 7)
+\end{lstlisting}
+\end{scode}
+
+
+\section{JavaScript Comment Stripper}
+\label{section:source.code.javascript.comment.stripper}
+
+This small script was written to help
+compare different JavaScript libraries:
+
+
+\begin{scode}{Ruby}{javascript.comment.sripping}{%
+  JavaScript Comment Stripping}{%
+  Strips comments from JavaScript libraries}
+\begin{lstlisting}
+#!/usr/bin/env ruby
+
+js_files = Dir['*.js']
+
+ignore_pattern = /^[\s\t]?(\/\*|\*|\/\/)/
+
+js_files.each do |file|
+  File.open("#{file}.out", 'w') do |out| 
+    out.puts File.readlines(file).reject do |line|
+      line =~ pattern
+    end
+  end
+end
+\end{lstlisting}
+\end{scode}
+
+\section{Shell File and Directory Hierarchy}
+\label{section:source.code.hierarchy}
+
+This one-liner was used for conveying the directory and file hierarchy of our
+server side software:
+
+\begin{scode}{sh}{file.directory.hierarchy}{%
+  \abbr{UNIX} File and Directory Hierarchy}{%
+  File and directory hierarchy with standard \abbr{UNIX} tools}
+\begin{lstlisting}
+find . | sed -e 's/[^\/]*\//|--/g' -e 's/-- |/|/g'
+\end{lstlisting}
+\end{scode}
+
+

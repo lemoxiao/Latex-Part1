@@ -1,0 +1,22 @@
+\begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto,semithick,main node/.style={rectangle,draw,inner sep=2pt}]  
+%
+\tikzstyle{gray node}=[fill=gray!30]
+%
+\node [main node](0) at (0,0) {$\HS_\LinearPast$};
+\node [main node](1) at (0,1.5) {$\HS_\LinearTime$};
+\node [main node](2) at (0,-1.5) {$\HS_\stat$};
+\node [main node](3) at (2.5,0) {finitary $\CTLStar$};
+\node [main node](4) at (2.5,1.5) {$\LTL$};
+\node [main node](6) at (2.5,-1.5) {$\CTL$};
+\node [main node](5) at (5,0) {$\CTLStar$};
+%   
+\draw [dashed] (0.east) to node {$\equiv$} (3);
+\draw [dashed] (1.east) to node {$\equiv$} (4);
+\draw [dashed] (3.east) to node {$<$} (5);
+\draw [dashed] (0.north) to node [swap] {$\neq$} (1);
+\draw [dashed] (0.south) to node {\rotatebox{-90}{$<$}} (2);
+\draw [dashed] (2.east) to node [swap] {$\neq$} (6.west);
+\draw [dashed] (2) [out=-40,in=270] to node [near end] {$\neq$} (5);
+\draw [dashed] (0.south east) to node {$\neq$} (6.west);
+\draw [dashed] (2) [out=135,in=225] to node {$\neq$} (1);
+\end{tikzpicture}

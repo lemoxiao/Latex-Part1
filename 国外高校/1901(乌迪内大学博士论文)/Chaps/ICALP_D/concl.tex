@@ -1,0 +1,9 @@
+\section{Conclusions}
+In this chapter we have shown $\Psp$-completeness of both SAT and MC for $\D$ formulas $\varphi$ under homogeneity.
+This result is proved thanks to a finite-index equivalence relation $\sim$ between rows of a compass $\varphi$-structure, that preserves fulfillment of compasses, and allows us to ``contract'' these structures whenever we find two related rows. Moreover, if a compass features $\varphi$ before the contraction, then $\varphi$ is still featured after it. These facts are exploited to build a SAT and an MC algorithm for $\hsDhom$, which implicitly make compass contractions by a reachability check in suitable graphs, whose nodes are basically the equivalence classes of $\sim$.
+Since $\sim$ has finite index, exponentially bounded by $|\varphi|$,
+and the algorithms
+only need to keep track of two rows of a compass at a time (encoding them succinctly), $\Psp$-membership of the problems follows.
+
+In the next chapter, we will see that also the fragments $\AAbarBBbar$ and $\AAbarEEbar$ feature an MC problem complete for $\Psp$.
+However, as the reader will see, completely different techniques and notions are used to prove the result.

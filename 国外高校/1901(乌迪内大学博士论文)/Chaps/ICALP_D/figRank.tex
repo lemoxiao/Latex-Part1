@@ -1,0 +1,57 @@
+\begin{tikzpicture}
+
+\node[inner sep=0pt, label={[label distance=0.3cm]180:$\row_1$}](R1A) {\phantom{$A$}};
+\node[inner sep=0pt, right of=R1A](R1B) {\phantom{$A$}};
+\node[fit=(R1A)(R1B), draw, fill=gray!50] (R1){};
+ \fill[pattern=north east lines] (R1.north west) rectangle (R1.south east);
+
+\node(AMI)[draw, rounded corners, right of=R1B,node distance=0.8cm]{$A_i$};
+\node(AD)[right of=AMI,node distance=1.8cm]{$\ldots\quad${\huge $\uparrow$}$k\quad\ldots$};
+\node(A1)[draw, rounded corners,right of=AD,node distance=2.5cm]{$A_i$};
+
+\node(BJ)[draw, label={[label distance=-0.6cm]0:$B'$}, rounded corners,above of=A1,node distance=0.9cm]{$\phantom{A_i}$};
+\node(BJ1)[draw , label={[label distance=-0.7cm]0:$B''$},rounded corners,left of=BJ,node distance=0.9cm]{$\phantom{A_i}$};
+\node(BD)[left of=BJ1,node distance=0.6cm]{$\ldots$};
+\node(BJ1K)[draw , label={[label distance=-0.7cm]0:$B'''$},rounded corners,left of=BD,node distance=1.1cm]{$\phantom{A_i}$};
+\node(BD)[left of=BJ1K,node distance=0.6cm]{$\ldots$};
+\node(BJ1KE)[draw , label={[label distance=-0.7cm]0:$B'''$},rounded corners,left of=BD,node distance=1.1cm]{$\phantom{A_i}$};
+\draw[decorate, decoration={brace, raise=0.4cm, amplitude=0.25cm}, line width=0.3mm] (BJ1KE.west) -- (BJ1K.east)node[pos=0.5, above, yshift=0.6cm]{$=$};
+
+\node[inner sep=0pt, label={[label distance=0.3cm]180:$ $}](R11A) [right of=A1] {\phantom{$A$}};
+\node[inner sep=0pt, right of=R11A](R11B) {\phantom{$A$}};
+\node[fit=(R11A)(R11B), draw, fill=gray!50] (R11){};
+ \fill[pattern=north east lines] (R11.north west) rectangle (R11.south east);
+
+\node(SB)[draw, rounded corners,node distance=0.8cm, fill=gray!50] [above of=R11A, node distance=0.9cm]{$\phantom{A_i}$};
+ \fill[pattern=north east lines] (SB.north west) rectangle (SB.south east);
+
+\node[inner sep=0pt, label={[label distance=0.3cm]180:$ $}](R21A) [right of=SB, node distance=0.7cm] {\phantom{$A$}};
+\node[inner sep=0pt, right of=R21A](R21B) {\phantom{$A$}};
+
+\node[inner sep=0pt, label={[label distance=0.3cm]180:$\row_2$}](R2A) [above of=R1A, node distance=1cm] {\phantom{$A$}};
+\node[inner sep=0pt, right of=R2A](R2B) {\phantom{$A$}};
+\node[fit=(R2A)(R2B), draw, fill=gray!50] (R2){};
+ \fill[pattern=north east lines] (R2.north west) rectangle (R2.south east);
+\node[fit=(R21A)(R21B), draw, fill=gray!50] (R21){};
+ \fill[pattern=north east lines] (R21.north west) rectangle (R21.south east);
+
+
+\draw[decorate, decoration={brace, mirror, raise=0.4cm, amplitude=0.25cm}, line width=0.3mm] (AMI.west) -- (A1.east)node[pos=0.5, below, yshift=-0.7cm]{$m_i$};
+
+\path let
+         \p1 = ($(SB.north east)-(A1.south west)+(1,0)$),
+         \n1 = {veclen(\p1)}
+         in
+         (SB.south) -- (A1.north) 
+         node[midway, sloped, draw, red, ellipse, line width=0.4mm,
+          minimum width=\n1/1.29, rotate=18, minimum height=\n1/3.2, xshift=0.0cm, yshift=0.03cm](STARTS) {};
+\node(STARTS_L)[above right of=STARTS, yshift=0.5cm, xshift=1.5cm, draw, line width=0.4mm, red]{$start_i$ positions};
+\draw[red, line width=0.4mm] (STARTS) -- (STARTS_L.south west);
+\pgftransformshift{\pgfpoint{4cm}{-1.5cm}}
+\node{$\begin{array}{c}
+rank(A_i)\geq rank(B')> rank(B'') > \ldots > rank(B''') 
+\end{array}$};
+\pgftransformshift{\pgfpoint{7cm}{1.5cm}}
+\node{$\begin{array}{c}
+B' = \row_2(start_i+1)\end{array}$};
+\end{tikzpicture}

@@ -1,0 +1,70 @@
+\chapter{Using Mathematical Expressions}
+
+\graphicspath{ {graphics/Chapter2/} }
+
+\LaTeX~offers powerful support for mathematical expressions, which are rather important in scientific documents. In this chapter, several examples to insert mathematical expressions are shown.
+
+\section{Equations and Formulas}
+	
+	Following are some equations from IEEE Standard 738-2012 \cite{IEEEPower&EnergySociety.2013}, which are used here as example and to show some basic operation and \LaTeX~code to insert mathematical equations into your text. 
+	
+	If you want to insert a single equation (as the one shown in Formula \ref{radiated_heat_loss_rate}), just create an {\color{blue}\textbf{equation}} environment and type the corresponding equation.
+	
+	\begin{equation}
+		q_r = 17.8 {\cdot} D_0 {\cdot} {\varepsilon} {\cdot}\left[
+		\left( \frac{T_{max}{+}273}{100} \right)^4 - \left( \frac{T_a{+}273}{100} \right)^4
+		\right] \qquad W/m
+		\label{radiated_heat_loss_rate}
+	\end{equation}
+	
+	Maybe you also want to explain meanings of the variables used in the equation, \LaTeX~offers a {\color{blue}\textbf{tabbing}} environment which can be used to align the variables and corresponding explanations. As an example, for the variables used in Formula \ref{radiated_heat_loss_rate}, one may write:
+	
+	\begin{tabbing}
+		where \hspace{0.3cm} \= variables  \= explanations \kill
+		where \> {$D_0$} \> is the conductor diameter, \\
+		\> {$\varepsilon$} \> is the emissivity of surface area, \\
+		\> {$T_{max}$} \> is the maximum operating temperature of the conductor, \\
+		\> {$T_a$} \> is the ambient temperature.
+	\end{tabbing}
+	
+	As shown above, to refer one variable or insert some mathematical expression in the text body, one may use {\color{blue}{\verb|{$ $}|}} to create a mathematical expression environment.
+	
+	It is also useful to write some equations in one block (as shown in Formula \ref{steady_state_heat_balance}), however to make the equations look better, you may align the equations with each other. For example in the exemplary equations, they are aligned to the equal symbol. To align text in \LaTeX~environment, the {\color{blue}{\verb|&|}} symbol is used.
+	
+	\begin{align}
+		q_c {+} q_r &= q_s + I^2{\cdot}R \left(T_{s} \right)\\
+		I &= \sqrt{\frac{q_c{+}q_r{-}q_s}{R \left(T_{max} \right)}} 
+		\label{steady_state_heat_balance}
+	\end{align}
+	
+	Similar to the {\color{blue}{\verb|\aligh|}} environment, you may create equations with {\color{blue}{\verb|\subequations|}} environment, which will create \ref{qc1} and \ref{qc2} instead of a new number for the second equation as in Formula \ref{steady_state_heat_balance} did.
+	
+	\begin{subequations}
+		\begin{align}
+		q_{c1} &= K_{angle}{\cdot}\left[1.01{+}1.35{\cdot}{N_{Re}}^{0.52} \right] {\cdot} k_f{\cdot}\left(T_{max}{-}T_a\right) \qquad &W/m \label{qc1}\\ 
+		q_{c2} &= K_{angle}{\cdot}0.754{\cdot}{N_{Re}}^{0.6} {\cdot} k_f {\cdot}\left(T_{max}{-}T_a\right) \qquad &W/m \label{qc2}
+		\end{align}
+	\end{subequations}
+
+\section{In-line Mathematical Expressions}
+
+	It is usually necessary to use some mathematical expressions in-line, e.g. to mention variables or add units after numbers. As mentioned before, using {\color{blue}{\verb|{$ $}|}} in-line environment is rather simple, e.g. \colorbox{yellow!60}{$ H_2O $} (created with {\color{blue}{\verb|{$ H_2O $}|}}). However, expressions generated with mathematical environment in \LaTeX~are always italic. If you wish to have normal expressions, you may use the {\verb|\ensuremath|} environment, e.g. {\colorbox{yellow!60}{H{\ensuremath{_2}}O} (created with {\color{blue}{\verb|H{\ensuremath{_2}}O|}}). If you need to insert some mathematical expression quite often, you can also define a new command for such symbols or expressions. For example, you may define a new command for superscript -n and the dot multiplication sign with
+	
+	{\color{blue}{\verb|\newcommand{\inTextInv}[1]{\ensuremath{^{-#1}}}|}}
+	
+	{\color{blue}{\verb|\newcommand{\inTextDot}{\ensuremath{\cdot}}|}}
+	
+	\newcommand{\intextInv}[1]{\ensuremath{^{-#1}}}
+	\newcommand{\intextDot}{\ensuremath{\cdot}}
+	
+	So that you can use {\color{blue}{\verb|m{\intextDot}s{\intextInv{1}}|}} to create the \acrshort{SI} unit for speed m{\intextDot}s{\intextInv{1}} and {\color{blue}{\verb|kg{\intextDot}m{\intextDot}s{\intextInv{2}}|}} for the \acrshort{SI} unit of force kg{\intextDot}m{\intextDot}s{\intextInv{2}}.
+	
+%	It is also possible to use the package {\color{blue}\textbf{siunitx}} and set the {\color{blue}{inter-unit-product}} option by {\color{blue}{\verb|\sisetup{inter-unit-product=\ensuremath{{\cdot}}}|}}
+%	
+%	\si{\kilo\gram\metre\per\square\second}
+%	
+%	\si{\milli\ohm\per\kilo\meter}
+		
+
+
+

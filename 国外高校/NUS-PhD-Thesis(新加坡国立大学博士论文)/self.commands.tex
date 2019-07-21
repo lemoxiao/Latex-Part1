@@ -1,0 +1,114 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% self eivironment                                                            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\newtheorem{defi}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{thm}{Theorem}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{question}{Question}
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{example}{Example}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% symbols                                                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\usepackage{dsfont}
+\newcommand{\I}{\mathds 1}
+\newcommand{\real}{\mathbb{R}} 
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\natnumber }{\mathbb{N}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\iu}{\mathrm{i}\mkern1mu}
+
+\newcommand{\ha}{\mathcal{H}_A} 
+\newcommand{\hb}{\mathcal{H}_B} 
+\newcommand{\hh}{\mathcal{H}}
+\newcommand{\setS}{\mathcal{S}}%
+\makeatletter
+\newcommand{\notprop}{\propto\kern-1\@ptsize pt \diagup}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% operators                                                                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\newcommand{\rank}[1]{\mathrm{rank} (#1)} 
+\newcommand{\range}[1]{\mathcal{R} (#1)}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} 
+\newcommand{\kernel}[1]{\mathrm{Ker} (#1)}
+\newcommand{\trace}[1]{\mathrm{Tr}(#1)}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\adj}[1]{#1^{\mathsf{H}}}
+\newcommand{\trans}[1]{#1^{\intercal}}
+\newcommand{\Real}[1]{\mathrm{Re}(#1)}
+\newcommand{\Ima}[1]{\mathrm{Im}(#1)}
+
+
+% \DeclarePairedDelimiter\bra{\langle}{\rvert}
+% \DeclarePairedDelimiterX\ket{\lvert}{\rangle}
+% \DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1 \delimsize\vert#2}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% abbreviated expression                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\newcommand{\ei}[1][i]{\ket{#1}} % or e_i
+\newcommand{\ej}{\ket{j}}
+\newcommand{\xx}[1]{\adj{#1}#1}
+\newcommand{\sijkl}[2]{S^1_{#1,#2}}
+\newcommand{\sijklt}[2]{S^2_{#1,#2}}
+\newcommand{\commutes}{\; \substack{\mathrm{commutes}\\
+    \xrightarrow{\hspace*{6em}}\\ \mbox{}}\; }
+\newcommand\lijkl[2]{\lambda^{1}_{#1 #2}}
+\newcommand\lijklt[2]{\lambda^{2}_{#1 #2}}
+\newcommand\Lijkl[1]{\Lambda^{1}_{#1 }}
+\newcommand\Lijklt[1]{\Lambda^{2}_{#1}}
+
+%% -------------------------------------------------- qed --------------------------------------------------
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+%% -------------------------------------------------- end --------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% abbreviations                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\makeatletter
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
+
+\def\eg{\emph{e.g}\onedot} 
+\def\Eg{\emph{E.g}\onedot}
+\def\ie{\emph{i.e}\onedot} 
+\def\Ie{\emph{I.e}\onedot}
+\def\cf{\emph{c.f}\onedot} 
+\def\Cf{\emph{C.f}\onedot}
+\def\etc{\emph{etc}\onedot} 
+\def\vs{\emph{vs}\onedot}
+\def\wrt{w.r.t\onedot} 
+\def\dof{d.o.f\onedot}
+\def\etal{\emph{et al}\onedot}
+\makeatother
+\let\strokeL\L
+\DeclareRobustCommand{\L}{\ifmmode\mathbf{L}\else\strokeL\fi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%          renewcommand                                                       % 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\renewcommand{\intercal}{\mathsf{T}}
+\renewcommand\tilde[1]{\stackrel{\sim}{\smash{{#1}}\rule{0pt}{1.1ex}}}
+
+
+%
+
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "thesis"
+%%% End:

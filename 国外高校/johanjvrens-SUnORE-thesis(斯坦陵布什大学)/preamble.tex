@@ -1,0 +1,173 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% type the body of your abstracts here
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\engabstract{\Blindtext}
+
+\afrabstract{Skryf jou Afrikaanse uittreksel hier.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\ifoddmakenewpage % compensate for long abstracts
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% ECSA Outcome (ONLY SKRIPSIE!!)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifthenelse{\equal{\printtype}{skripsie}}{%
+
+
+\ecsa{      %ecsa outcomes
+\begin{center}
+
+
+\begin{tabular}{|p{8.3cm}|p{2.7cm}|p{1.5cm}|}
+\hline
+\headcol   & \multicolumn{2}{c|}{\textbf{Reference}} \\ \cline{2-3}
+\headcol
+\textbf{Outcome} & \textbf{Section} & \textbf{Page} \\ \hline
+\mbox{1. Problem} solving: Demonstrate competence to identify, assess, formulate and solve convergent and divergent engineering problems creatively and innovatively. & \textit{All}  & \textit{All} \\ \hline
+\rowcol
+{5. Engineering methods}, skills and tools, including information technology: Demonstrate competence to use appropriate engineering methods, skills and tools, including those based on information technology. & \textit{2,3,4 \& 5}  & \textit{3--57}    \\ \hline
+\mbox{6. Professional} and technical communication: Demonstrate competence to communicate effectively, both orally and in writing, with engineering audiences and the community at large.  & \textit{All}  & \textit{All}            \\ \hline
+\rowcol
+\mbox{9. Independent} learning ability: Demonstrate competence to engage in independent learning through well developed learning skills. & \textit{2,3,4 \& 5} & \textit{3--57}  \\ \hline
+\mbox{10. Engineering} professionalism: Demonstrate critical awareness of the need to act professionally and ethically and to exercise judgement and take responsibility within own limits of competence.  & \textit{All}                 & \textit{All}  \\ \hline
+\end{tabular}
+\end{center}
+}
+\ifoddmakenewpage
+}{}%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% list your acknowledgements here
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\acknowledgements{
+\begin{itemize}
+\item 
+\item 
+\item 
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\ifoddmakenewpage % compensate for long acknowledgements
+
+
+
+
+\tableofcontents
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% populate your glossary here - remove if you dont want one
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\Glossary % makes the heading
+
+\begin{description}
+\item[Something] Description of that something.
+\item[Something] Description of that something.
+\item[Something] Description of that something.
+\end{description}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\ifoddmakenewpage
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% populate your list of symbols here - remove if you dont want one
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\listofsymbols % makes the heading
+
+
+\begin{fontconventions}
+$A$       &   Symbol denoting a {\bf some general thing}   &   (Roman capitals)\\
+$\cal A$  &   Symbol denoting a {\bf some general thing}   &   (Calligraphic capitals)\\ 
+\end{fontconventions}
+
+
+\begin{symboltable}
+$\times$ & Symbol used to denote the multiplication operator \\
+$\times$ & Symbol used to denote the multiplication operator \\
+$\times$ & Symbol used to denote the multiplication operator \\
+$\times$ & Symbol used to denote the multiplication operator \\
+$\times$ & Symbol used to denote the multiplication operator \\ 
+\end{symboltable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\ifoddmakenewpage
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% populate your list of acronyms here - remove if you dont want one
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\listofacronyms % makes the heading
+
+
+\begin{description}
+\item[WISF:] What It Stands For
+\item[WISF:] What It Stands For
+\item[WISF:] What It Stands For
+\end{description}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\ifoddmakenewpage
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% lists - remove what you dont need
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\listoffigures
+\ifoddmakenewpage
+\listoftables
+\ifoddmakenewpage
+\listofalgorithms
+\ifoddmakenewpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

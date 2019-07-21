@@ -1,0 +1,29 @@
+\chapter{Text Structure}
+
+% set folder path of figures, so that only figure names are needed when insert figures
+\graphicspath{ {graphics/Chapter3/} }
+
+In a chapter it usually has several levels of sections and subsections to keep the contents well organized. 
+
+\section{This is a new section}
+
+	\subsection{This is a new subsection}
+	
+		Although in \LaTeX, there is also a {\color{blue}{\verb|\subsubsection|}} command which can generate an extra level of contents under subsection, it is not recommended to be used. The possible solution maybe:
+		
+		\paragraph{\colorbox{yellow!50}{A new paragraph}}
+		
+		instead of 
+		
+		\subsubsection{\colorbox{yellow!50}{A new subsubsection}}
+		
+		It should be noticed that all font types and spacing before or after the titles can be customized in the \href{thesis-template.cls}{cls-file}.
+		
+	\subsection{Make a list}
+		
+		It is also quite often to list out some important points in the text.
+		
+		\begin{itemize}
+			\item This is an unimportant entry
+			\item This is another unimportant entry :D
+		\end{itemize}

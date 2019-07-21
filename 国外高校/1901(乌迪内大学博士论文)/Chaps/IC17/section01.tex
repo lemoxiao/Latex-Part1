@@ -1,0 +1,177 @@
+\section{$\PTIME^{\NP}$ MC algorithm for $\AAbarB$ and $\AAbarE$}\label{sec:AAbarBalgo}
+In this section, we present an MC algorithm for $\AAbarB$ formulas (see the procedure \texttt{MC} reported in Algorithm~\ref{MC}) with 
+complexity in the class $\PTIME^{\NP}$. 
+%We recall that $\PTIME^{\NP}$ is the class of problems solvable in (deterministic) polynomial time exploiting an oracle for an $\NP$-complete problem. 
+W.l.o.g., we restrict our attention to $\AAbarB$ formulas devoid of occurrences of conjunctions and universal modalities 
+(definable, as usual, by means of disjunctions, negations, and existential modalities).
+
+\begin{algorithm}[b]
+\begin{algorithmic}[1]
+%	\State{$V(\psi,\bullet)\gets \texttt{New\_Array}(|\States|)$}
+	\For{all $\hsA\phi\in \mods(\psi)$}
+		\State{\texttt{MC}$(\Ku,\phi,\textsc{forward})$}
+	\EndFor
+	\For{all $\hsAt\phi\in \mods(\psi)$}
+		\State{\texttt{MC}$(\Ku,\phi,\textsc{backward})$}
+	\EndFor
+	
+	\For{all $s\in \States$}
+		\If{\textsc{direction} is \textsc{forward}}
+			\State{$V_{\A}(\psi,s)\gets Success(\texttt{Oracle}(\Ku,\psi,s,\textsc{forward},V_{\A}\cup V_{\Abar}))$}
+		\ElsIf{\textsc{direction} is \textsc{backward}}
+			\State{$V_{\Abar}(\psi,s)\gets Success(\texttt{Oracle}(\Ku,\psi,s,\textsc{backward},V_{\A}\cup V_{\Abar}))$}
+		\EndIf
+	\EndFor
+\end{algorithmic}
+\caption{\texttt{MC}$(\Ku,\psi,\textsc{direction})$}\label{MC}
+\end{algorithm}
+
+The MC procedure \texttt{MC} for a formula $\psi$ against a Kripke structure $\Ku$ exploits two global vectors, $V_{\A}$ and $V_{\Abar}$, which can be seen as the tabular representations of two Boolean functions taking as arguments a subformula $\phi$ of $\psi$ and a state $s$ of $\Ku$. 
+%The intuition is that 
+The function $V_{\A} (\phi,s)$ (resp., $V_{\Abar}(\phi,s)$) returns $\top$ if and only if there exists a 
+trace $\rho \in \Trk_{\Ku}$ starting from the state $s$ (resp., leading to the state $s$) such that $\Ku, \rho \models \phi$. 
+%
+$\texttt{MC}$ is initially invoked with parameters $(\Ku,\neg\psi,\textsc{forward})$. During the execution, it instantiates the entries of
+$V_{\A}$ and $V_{\Abar}$, which are exploited in order to answer the MC problem $\Ku\models \psi$. In the end, this is equivalent to checking whether $V_{\A}(\neg\psi,\sinit)=\bot$, where $\sinit$ is the initial state of $\Ku$.
+
+Let us consider $\texttt{MC}$ in more detail. Along with the Kripke structure $\Ku$ and the formula $\psi$, $\texttt{MC}$ features a third parameter, $\textsc{direction}$, which can be assigned the value $\textsc{forward}$ (resp., $\textsc{backward}$), that is used in combination with the modality $\hsA$ (resp., $\hsAt$) for a forward (resp., backward) unravelling of $\Ku$. 
+%
+$\texttt{MC}$ is applied recursively (lines 1--4) on the nesting of modalities $\hsA$ and $\hsAt$ in the formula $\psi$ (in the base case, $\psi$ features no occurrences of $\hsA$ or $\hsAt$). In order to instantiate the Boolean vectors $V_{\A}$ and $V_{\Abar}$, an oracle is invoked (lines 5--9) for each state $s$ of the Kripke structure. Such an invocation is syntactically represented by $Success(\texttt{Oracle}(\Ku,\psi,s,\textsc{direction},V_{\A}\cup V_{\Abar}))$, and it returns $\top$ whenever there exists a computation of the non-deterministic algorithm $\texttt{Oracle}(\Ku,\psi,s,\textsc{direction},\allowbreak V_{\A}\cup V_{\Abar})$ returning $\top$, namely, whenever there is a suitable trace starting from, or leading to $s$ (depending on the value of the parameter $\textsc{direction}$), satisfying $\psi$.
+
+
+We define now the set of $\AAbar$-\emph{modal subformulas} of $\psi$ ($\mods(\psi)$) used to ``direct'' the recursive calls of $\texttt{MC}$ (lines 1--4).
+\begin{definition}\label{def:modsubf}
+The set $\mods(\psi)$ of $\AAbar$-\emph{modal subformulas} of an $\AAbarB$ formula $\psi$ is the set of subformulas of $\psi$  either of the form $\hsA \psi'$ or of the form $\hsAt \psi'$, for some $\psi'$, which are \emph{not in the scope of any $\hsA$ or $\hsAt$ modality}.
+\end{definition}
+%
+As an example, it holds that
+\begin{itemize}
+    \item $\mods(\hsA\hsAt q)=\{\hsA\hsAt q\}$, and
+    \item $\mods\big(\big(\hsA p\, \wedge\, \hsA\hsAt q \big)\rightarrow \hsA p\big)\allowbreak =\{\hsA p,\hsA\hsAt q\}$.
+\end{itemize}
+
+$\texttt{MC}$ is recursively called on each formula $\phi$ such that $\hsA\phi$ or $\hsAt\phi$ belongs to the set $\mods(\psi)$ (lines 1--4). 
+In this way, we can recursively gather in the Boolean vectors $V_{\A}$ and $V_{\Abar}$, by increasing nesting depth of the modalities $\hsA$ and $\hsAt$, the oracle answers for all the formulas $\psi'$ such that $\hsA\psi'$, or $\hsAt\psi'$, is a subformula (be it maximal or not) of $\psi$.
+
+
+\begin{algorithm}[tp]
+\begin{algorithmic}[1]
+\State{$\tilde{\rho}\gets \texttt{A\_trace}(\Ku,s,|\States|\cdot(2|\psi|+1)^2,\textsc{direction})$}\Comment{a trace of $\Ku$ from/to $s$ having length $\leq |\States|\cdot (2|\psi|+1)^2$}
+%\State{$T\gets \texttt{New\_Array}(|\overline{\psi}|,|\tilde{\rho}|)$}
+\For{all $\hsA \phi\in\mods(\psi)$}
+    	\For{$i=1,\ldots ,|\tilde{\rho}|$}
+    		\State{$T[\hsA\phi,i]\gets V_{\A}(\phi,\tilde{\rho}(i))$}
+    	\EndFor
+\EndFor
+\For{all $\hsAt \phi\in\mods(\psi)$}
+    	\For{$i=1,\ldots ,|\tilde{\rho}|$}
+    		\State{$T[\hsAt\phi,i]\gets V_{\Abar}(\phi,\fst(\tilde{\rho}))$}
+    	\EndFor
+\EndFor
+
+\For{all subformulas $\varphi$ of $\psi$, not contained in (or equal to) $\AAbar$-modal subformulas of $\psi$, by increasing length}
+    \If{$\varphi=p$, for $p\in\Prop$}
+        \State{$T[p,1]\gets p\in \Lab(\fst(\tilde{\rho}))$}
+        \For{$i=2,\ldots ,|\tilde{\rho}|$}
+            \State{$T[p,i]\gets T[p,i-1]$ and $p\in \Lab(\tilde{\rho}(i))$}
+        \EndFor
+ 	\ElsIf{$\varphi=\neg \varphi_1$}
+	    \For{$i=1,\ldots ,|\tilde{\rho}|$}
+            \State{$T[\varphi,i]\gets$ not $T[\varphi_1,i]$}
+        \EndFor        
+    \ElsIf{$\varphi=\varphi_1\vee\varphi_2$}
+        \For{$i=1,\ldots ,|\tilde{\rho}|$}
+            \State{$T[\varphi,i]\gets T[\varphi_1,i]$ or $T[\varphi_2,i]$}
+        \EndFor
+	\ElsIf{$\varphi=\hsB\varphi_1$}
+	    \State{$T[\varphi,1]\gets\bot$}
+	    \For{$i=2,\ldots ,|\tilde{\rho}|$}
+            \State{$T[\varphi,i]\gets T[\varphi,i-1]$ or $T[\varphi_1,i-1]$}
+	    \EndFor
+	\EndIf
+\EndFor	
+\Return{$T[\psi,|\tilde{\rho}|]$}
+\end{algorithmic}
+\caption{\texttt{Oracle}$(\Ku,\psi,s,\textsc{direction},V_{\A}\cup V_{\Abar})$}\label{Oracle}
+\end{algorithm}
+
+We now consider the \emph{non-deterministic polynomial time} procedure $\texttt{Oracle}(\Ku,\allowbreak \psi,s, \textsc{direction}, V_{\A}\cup V_{\Abar})$ (see Algorithm~\ref{Oracle}), which is used as the \lq\lq basic engine\rq\rq{} by the oracle in the aforementioned MC Algorithm~\ref{MC}. 
+The idea underlying Algorithm~\ref{Oracle} is to first non-deterministically generate a trace $\tilde{\rho}$ by unravelling the Kripke structure $\Ku$
+according to the parameter $\textsc{direction}$, and then to verify $\psi$ over $\tilde{\rho}$.
+%
+Such a procedure exploits the proved \emph{polynomial small-model property} for formulas of $\AAbarBBbar$ (Theorem~\ref{theorem:polynomialSizeModelProperty}), 
+% \begin{proposition}[\cite{BMMPS16}, consequence of Theorem~10]\label{prop:TH10}
+% Let $\rho$ be a trace of a Kripke structure $\Ku=\KuDef$ and $\phi$ be an $\AAbarBBbar$ formula such that $\Ku,\rho \models \phi$. Then, there exists  $\rho' \in \Trk_\Ku$ such that $|\rho'|\leq |\States|\cdot (2|\phi|+1)^2$, $\fst(\rho)=\fst(\rho')$, $\lst(\rho)=\lst(\rho')$, and $\Ku,\rho' \models \phi$. 
+% \end{proposition}
+guaranteeing that, in order to check the satisfiability of an $\AAbarBBbar$ formula $\phi$, it is enough to consider traces whose length is bounded by $|\States|\cdot (2|\phi|+1)^2$. 
+
+An execution of \texttt{Oracle}$(\Ku,\psi,s,\textsc{direction},V_{\A}\cup V_{\Abar})$ starts (line 1) by \emph{non-determin\-istically} generating a trace $\tilde{\rho}$ (having length at most $|\States|\cdot (2|\psi|+1)^2$), with $s$ as its first (resp., last) state if the \textsc{direction} parameter is \textsc{forward} (resp., \textsc{backward}). 
+The trace is generated by visiting the unravelling of $\Ku$ (resp., of $\Ku$ with transposed edges). The remaining part of the algorithm \emph{deterministically} checks whether $\Ku,\tilde{\rho}\models\psi$ or not. 
+Such a verification is performed in a bottom-up way: for all the subformulas $\phi$ of $\psi$ (starting from the minimal ones) and for all the prefixes $\tilde{\rho}(1,i)$ of $\tilde{\rho}$, with $1 \leq i \leq  |\tilde{\rho}|$ (starting from the shorter ones), the procedure establishes if $\Ku,\tilde{\rho}(1,i)\models\phi$, and this result is stored in the entry $T[\phi,i]$ of a Boolean table $T$. 
+Note that if the considered subformula of $\psi$ is an element of $\mods(\psi)$, the algorithm does not need to perform any verification, since the result is already available in the Boolean vectors $V_{\A}$ and $V_{\Abar}$ (as a consequence of the previously completed calls to the procedure \texttt{Oracle}), and the table $T$ is updated accordingly (lines 2--7).
+For the remaining subformulas, the entries of $T$ are computed, as we already said, in a bottom-up fashion (lines 8--22). The result of the overall verification is stored 
+in $T[\psi,|\tilde{\rho}|]$ and returned (line 23).
+
+Such an algorithm 
+%presented here 
+for checking formulas of $\AAbarB$ can trivially be adapted to check formulas of the symmetric fragment $\AAbarE$.
+
+The next lemma states soundness and completeness of the procedure \texttt{Oracle} (its proof is in the
+Appendix~\ref{proof:lemmaOracle}).
+%and also points out which is the information $V_{\A}(\bullet,\bullet)$ and $V_{\Abar}(\bullet,\bullet)$, two Boolean input arrays for \texttt{Oracle}, are supposed to provide in for-loops at lines 2--7.
+
+\begin{lemma}\label{lemmaOracle}
+Let $\Ku=\KuDef$ be a finite Kripke structure, $\psi$ be an $\AAbarB$ formula, and $V_{\A}(\cdot,\cdot)$, $V_{\Abar}(\cdot,\cdot)$ be two Boolean arrays. We assume that 
+\begin{enumerate}
+	\item for each $\hsA \phi\in\mods(\psi)$ and $s'\in \States$, $V_{\A}(\phi,s')=\top$ if and only if there exists $\rho\in\Trk_{\Ku}$ such that $\fst(\rho)=s'$ and $\Ku,\rho\models \phi$, and
+	\item for each $\hsAt \phi\in\mods(\psi)$ and $s'\in \States$, $V_{\Abar}(\phi,s')=\top$ if and only if there exists $\rho\in\Trk_{\Ku}$ such that $\lst(\rho)=s'$ and $\Ku,\rho\models \phi$.
+\end{enumerate}
+Then \texttt{Oracle}$(\Ku,\psi,s,\textsc{direction},V_{\A}\cup V_{\Abar})$ features a successful computation (returning $\top$) if and only if:
+\begin{itemize}
+	\item there exists $\rho\in\Trk_{\Ku}$ such that $\fst(\rho)=s$ and $\Ku,\rho\models \psi$, when \textsc{direction} is \textsc{forward};
+	\item there exists $\rho\in\Trk_{\Ku}$ such that $\lst(\rho)=s$ and $\Ku,\rho\models \psi$, when \textsc{direction} is \textsc{backward}.
+\end{itemize}
+\end{lemma}
+
+
+The following theorem states soundness and completeness of the MC procedure \texttt{MC} (Algorithm~\ref{MC}).
+%
+\begin{theorem}\label{MCsoundCompl}
+Let $\Ku=\KuDef$ be a finite Kripke structure, $\psi$ be an $\AAbarB$ formula, and $V_{\A}(\cdot,\cdot)$ and $V_{\Abar}(\cdot,\cdot)$ be two Boolean arrays. If $\texttt{MC}(\Ku,\psi,\textsc{direction})$ is executed, then, for all $s\in \States$:
+\begin{itemize}
+	\item if \textsc{direction} is \textsc{forward}, $V_{\A}(\psi,s)=\top$ if and only if there exists $\rho\in\Trk_{\Ku}$ such that $\fst(\rho)=s$ and $\Ku,\rho\models \psi$;
+	\item if \textsc{direction} is \textsc{backward}, $V_{\Abar}(\psi,s)=\top$ if and only if there exists $\rho\in\Trk_{\Ku}$ such that $\lst(\rho)=s$ and $\Ku,\rho\models\psi$.
+\end{itemize}
+\end{theorem}
+%
+\begin{proof}
+The proof is by induction on the number $n$ of occurrences of $\hsA$ and $\hsAt$ modalities in $\psi$.
+
+If $n=0$, since $\mods(\psi)=\emptyset$, (1.) and (2.) of Lemma~\ref{lemmaOracle} are satisfied and the thesis trivially holds.
+
+Otherwise, $n>0$ and the formula $\psi$ contains at least an $\hsA$ or an $\hsAt$ modality, and thus $\mods(\psi)\allowbreak \neq \emptyset$. Since each recursive call to \texttt{MC} (either at line 2 or 4) is performed on a formula $\phi$ featuring a number of occurrences of $\hsA$ and $\hsAt$ which is strictly less than the number of their occurrences in $\psi$, we can apply the inductive hypothesis. As a consequence, when the control flow reaches line 5, it holds that:
+\begin{enumerate}
+	\item for each $\hsA \phi\in\mods(\psi)$ and $s'\in \States$, $V_{\A}(\phi,s')=\top$ if and only if there exists $\rho\in\Trk_{\Ku}$ such that $\fst(\rho)=s'$ and $\Ku,\rho\models \phi$;
+	\item for each $\hsAt \phi\in\mods(\psi)$ and $s'\in \States$, $V_{\Abar}(\phi,s')=\top$ if and only if there exists $\rho\in\Trk_{\Ku}$ such that $\lst(\rho)=s'$ and $\Ku,\rho\models \phi$.
+\end{enumerate}
+This implies that (1.) and (2.) of Lemma~\ref{lemmaOracle} are fulfilled. Hence (assuming that \textsc{direction} is \textsc{forward}), it holds that, for $s\in \States$, $V_{\A}(\psi,s)=\top$ if and only if there exists $\rho\in\Trk_{\Ku}$ such that $\fst(\rho)=s$ and $\Ku,\rho\models \psi$. The case for  \textsc{direction} $=$  \textsc{backward} is symmetric, and thus omitted.
+\end{proof}
+
+As an immediate consequence, we have that the procedure  \texttt{MC} solves the MC problem for $\AAbarB$ formulas with an  algorithm belonging to the class $\PTIME^{\NP}$.
+
+\begin{corollary}
+Let $\Ku=\KuDef$ be a finite Kripke structure and $\psi$ be an $\AAbarB$ formula. If $\texttt{MC}(\Ku,\neg\psi,\textsc{forward})$ is executed, then $V_{\A}(\neg\psi,\sinit)=\bot$ if and only if $\Ku\models \psi$.
+\end{corollary}
+
+\begin{corollary}\label{coro:AAbarBalgo}
+The MC problem for $\AAbarB$ formulas over finite Kripke structures is in $\PTIME^{\NP}$.
+\end{corollary}
+\begin{proof}
+Given a finite Kripke structure $\Ku=\KuDef$ and an $\AAbarB$ formula $\psi$, the number of recursive calls performed by $\texttt{MC}(\Ku,\neg\psi,\textsc{forward})$ is at most $|\psi|$. Each one costs $O(|\psi|+|\States|\cdot (|\Ku|+|\psi|+|\psi|\cdot |\States|))$, where the first addend it is due to the search of $\psi$ for its modal subformulas (lines 1--4), and the second one to the preparation of the input for the oracle call, for each $s\in \States$ (lines 5--9). Therefore, its (deterministic) complexity is $O(|\psi|^2\cdot |\Ku|^2)$.
+
+As for \texttt{Oracle}$(\Ku,\psi,s,\textsc{direction},V_{\A}\cup V_{\Abar})$, its (non-deterministic) complexity is $O(|\psi|^3\cdot |\Ku|)$, where $|\psi|$ is a bound to the number of subformulas and $O(|\psi|^2 \cdot |\Ku|)$ is the number of steps necessary to generate and check $\tilde{\rho}$.
+\end{proof}
+
+By a straightforward adaptation of the procedure \texttt{Oracle}, it is easy to prove that also the MC problem for the symmetric fragment $\AAbarE$ is in $\PTIME^{\NP}$.
+%
+As we will show in Section~\ref{sec:ABhard}, both problems are actually \emph{complete for} $\PTIME^{\NP}$.

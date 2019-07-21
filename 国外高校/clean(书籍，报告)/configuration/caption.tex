@@ -1,0 +1,63 @@
+% =============================================================
+% Caption
+% =============================================================
+\usepackage{caption}
+\usepackage{subcaption}
+
+\DeclareCaptionLabelFormat{r-parens}{(\textbf{#2})} % Define our custom label
+
+\DeclareCaptionFormat{llap}{\llap{#1#2}#3\par}%
+\captionsetup{format=llap,labelsep=quad,singlelinecheck=false}%
+
+\captionsetup[listing]{%
+    font={small},%
+    labelfont={bf, sf, color=maincolor},%
+    textfont={it},%
+    labelsep=endash,%
+    format=hang,%
+    justification=raggedright,%
+}
+
+\captionsetup[table]{%
+    font={small},%
+    labelfont={bf, sf, color=maincolor},%
+    textfont={it},%
+    labelsep=endash,%
+    format=hang,%
+    justification=raggedright,%
+}
+
+\captionsetup[figure]{%
+    font={small},%
+    labelfont={bf, sf, color=maincolor},%
+    textfont={it},%
+    labelsep=endash,%
+    format=hang,%
+    justification=raggedright,%
+}
+
+\captionsetup[subfigure]{%
+    font={small},%
+    labelfont={bf, sf, color=maincolor},%
+    textfont={it},%
+    labelsep=endash,%
+    format=hang,%
+    justification=raggedright,%
+    singlelinecheck=false,%
+    labelformat=r-parens,%
+}
+
+% Figure ref
+\newcommand{\fref}[1]{(Figure~\ref{#1})}
+\newcommand{\fpref}[1]{(Figure~\ref{#1}, page~\pageref{#1})}
+
+% Section ref
+\newcommand{\sref}[1]{(Partie~\ref{#1})}
+\newcommand{\spref}[1]{(Partie~\ref{#1}, page~\pageref{#1})}
+
+% Equation ref
+\newcommand{\eref}[1]{(Equation.~\eqref{#1})}
+\newcommand{\epref}[1]{(Equation.~\eqref{#1}, page~\pageref{#1})}
+% =============================================================
+
+

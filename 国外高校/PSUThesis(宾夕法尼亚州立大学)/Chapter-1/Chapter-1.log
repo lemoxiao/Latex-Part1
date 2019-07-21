@@ -1,0 +1,31 @@
+This is pdfeTeX, Version 3.141592-1.30.4-2.2 (Web2C 7.5.5) (format=pdflatex 2006.7.16)  30 JUL 2006 23:20
+entering extended mode
+\write18 enabled.
+**Chapter-1.tex
+(./Chapter-1.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8d> and hyphenation patterns for american, nohyphenation, loaded.
+! Undefined control sequence.
+l.2 \chapter
+            {Declaration of Independence with a Really Long Title to See How...
+
+? 
+! Emergency stop.
+l.2 \chapter
+            {Declaration of Independence with a Really Long Title to See How...
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 5 strings out of 95222
+ 131 string characters out of 1185215
+ 2044965 words of memory out of 4500000
+ 3243 multiletter control sequences out of 10000+50000
+ 3640 words of font info for 14 fonts, out of 2000000 for 2000
+ 14 hyphenation exceptions out of 5000
+ 5i,0n,1p,145b,8s stack positions out of 5000i,500n,6000p,200000b,40000s
+PDF statistics:
+ 0 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 1 words of extra memory for PDF output out of 10000
+No pages of output.

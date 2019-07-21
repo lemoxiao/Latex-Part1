@@ -1,0 +1,71 @@
+\documentclass[12pt,%
+               %draft,%
+               a4paper]{uiothesis}
+
+\author{Eivind Uggedal}
+\graphicspath{{graphics/}{dir2/}}
+%\includeonly{%
+%abstract,%
+%preface,%
+%introduction,%
+%social.navigation,%
+%flickr.and.facebook,%
+%implementation,%
+%empirical,%
+%conclusion,%
+%content.inventory,%
+%selection,
+%questionnaire,%
+%source.code,%
+%}
+
+\begin{document}
+  \chapterstyle{uio}
+  \pagestyle{uio}
+  \maxsecnumdepth{subsection}
+
+  \frontmatter
+    \pagenumbering{alph}
+    \maketitle
+    \pagenumbering{roman}
+    \clearpage
+    \include{abstract}
+    \cleardoublepage
+    \tableofcontents
+    \clearpage
+    \listoffigures
+    \clearpage
+    \listoftables
+    %\clearpage
+    %\listofsourcecode
+
+    \include{preface}
+
+  \mainmatter
+    \include{introduction}
+
+    \part{Social Navigation on the Social Web}
+      \include{social.navigation}
+      \include{flickr.and.facebook}
+
+    \part{Unobtrusive Prototyping of Social Navigation}
+      \include{implementation}
+      \include{empirical}
+
+    \part{Summary}
+      \include{conclusion}
+
+      \bibliographystyle{uio}
+      \bibliography{bibliography}
+
+    \addcontentsline{toc}{part}{\appendixtocname}
+    \appendixpage*
+
+    \begin{appendices}
+      \include{content.inventory}
+      \include{selection}
+      \include{questionnaire}
+      \include{source.code}
+    \end{appendices}
+
+\end{document}

@@ -1,0 +1,65 @@
+\ProvidesPackageRCS $Header: beamercolorthemetugraz.sty,v 1.0 2007/10/18 15:43:01 mweiglh Exp $
+
+% Copyright 2007 by Martin Weiglhofer <weiglhofer@ist.tugraz.at>
+% 
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+\mode<presentation>
+
+%\definecolor{grey}{rgb}{0.87,0.87,0.87}
+%\definecolor{greyblue}{rgb}{0.21,0.37,0.57}
+%\definecolor{greyblue1}{rgb}{0.31,0.51,0.74}
+%\definecolor{mymagenta}{rgb}{0.56,0.20,0.80}
+
+%\definecolor{tugblue}{rgb}{0.248,0.408,0.592}
+%\definecolor{tugmagenta}{rgb}{0.448,0.16,0.64}
+
+\definecolor{tugred}{rgb}{1.0,0.04,0.43}
+\definecolor{tugblue}{rgb}{0.31,0.51,0.74}
+\definecolor{tuggreen}{rgb}{0.61,0.73,0.35}
+\definecolor{tugmagenta}{rgb}{0.50,0.39,0.64}
+\definecolor{tugorange}{rgb}{0.97,0.59,0.27}
+
+\setbeamercolor{alerted text}{fg=tugblue}
+\setbeamercolor*{palette primary}{fg=gray!60!black,bg=gray!30!white}
+\setbeamercolor*{palette secondary}{fg=tugred!70!black,bg=gray!15!white}
+\setbeamercolor*{palette tertiary}{bg=tugred!80!black,fg=gray!10!white}
+\setbeamercolor*{palette quaternary}{fg=tugred,bg=gray!5!white}
+
+\setbeamercolor*{sidebar}{fg=tugred,bg=gray!15!white}
+
+\setbeamercolor*{palette sidebar primary}{fg=tugred!10!black}
+\setbeamercolor*{palette sidebar secondary}{fg=white}
+\setbeamercolor*{palette sidebar tertiary}{fg=tugred!50!black}
+\setbeamercolor*{palette sidebar quaternary}{fg=gray!10!white}
+
+%\setbeamercolor*{titlelike}{parent=palette primary}
+\setbeamercolor{titlelike}{parent=pallette primary,fg=gray}
+\setbeamercolor{frametitle}{fg=gray,bg=white}
+\setbeamercolor{frametitle right}{bg=gray!60!white}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+\setbeamercolor{block title}{use=structure,fg=white,bg=tugblue}
+\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg!75!black}
+\setbeamercolor{block title example}{use=example text,fg=white,bg=example text.fg!75!black}
+
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!10!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
+
+\setbeamercolor{itemize item}{fg=tugblue}
+\setbeamercolor{itemize subitem}{fg=tugblue}
+\setbeamercolor{itemize subsubitem}{fg=tugblue}
+
+%\setbeamercolor{section/subsection in toc}{fg=tugblue}
+\setbeamercolor{section in toc}{fg=black,bg=white}
+\setbeamercolor{subsection in toc}{fg=black,bg=white}
+
+\setbeamercolor{structure}{fg=tugblue}
+
+
+\mode
+<all>

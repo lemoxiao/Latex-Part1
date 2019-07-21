@@ -1,0 +1,216 @@
+\ProvidesPackageRCS $Header: beamerouterthemetugraz.sty,v 1.0 2007/10/18 15:43:01 mweiglh Exp $
+
+% Copyright 2007 by Martin Weiglhofer <weiglhofer@ist.tugraz.at>
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+\newcounter{mysidebarcnt}
+\setcounter{mysidebarcnt}{0}
+\newcount\beamer@nosidebar
+\newdimen\beamer@sidebarwidth
+\newdimen\beamer@headheight
+\usebeamerfont{frametitle}
+\beamer@sidebarwidth=0pt
+\beamer@headheight=-100pt %2.5\baselineskip
+\reset@font
+
+\def\beamer@lefttext{left}
+
+\DeclareOptionBeamer{hideothersubsections}[]{\beamer@nav@subsectionstyle{show/show/hide}}
+\DeclareOptionBeamer{hideallsubsections}[]{\beamer@nav@subsectionstyle{hide}}
+
+\DeclareOptionBeamer{sidebar}{\beamer@sidebarwidth=2.6\baselineskip}
+%\DeclareOptionBeamer{width}{\beamer@sidebarwidth=#1}
+%\DeclareOptionBeamer{height}{\beamer@headheight=#1}
+\DeclareOptionBeamer{nosidebar}{\beamer@nosidebar=#1}
+
+\DeclareOptionBeamer{left}{\def\beamer@sidebarside{left}}
+\DeclareOptionBeamer{right}{\def\beamer@sidebarside{right}}
+\ExecuteOptionsBeamer{left}
+
+\ProcessOptionsBeamer
+
+
+\mode<presentation>
+
+\xdefinecolor{tuggray}{rgb}{0.87,0.87,0.87}
+\definecolor{greyblue1}{rgb}{0.31,0.51,0.74}
+
+\setbeamercolor*{sidebar left}{bg=tuggray}
+\setbeamercolor*{section in sidebar}{parent=palette primary,fg=greyblue1,bg=white}
+\setbeamercolor*{section in sidebar shaded}{fg=gray}
+%\setbeamercolor*{section in sidebar}{fg=blue}
+\setbeamercolor*{subsection in sidebar}{parent=palette primary,fg=greyblue1,bg=white}
+\setbeamercolor*{subsection in sidebar shaded}{fg=gray}
+
+\setbeamercolor*{author in head/foot}{parent=palette tertiary}
+\setbeamercolor*{title in head/foot}{parent=palette secondary}
+\setbeamercolor*{date in head/foot}{parent=palette primary}
+
+\setbeamercolor*{section in head/foot}{parent=palette tertiary}
+\setbeamercolor*{subsection in head/foot}{parent=palette primary}
+\setbeamercolor*{pagenum in head/foot}{fg=gray,bg=white}
+\setbeamercolor*{footer}{bg=tuggray}
+
+\defbeamertemplate*{footline}{tugraz theme}
+{
+%  \leavevmode%
+  \hbox{%
+%    \hspace*{2ex}
+    \begin{tabular}[t]{c}
+      \hline
+     \hspace*{-2ex}%
+     \begin{beamercolorbox}[wd=\paperwidth,center]{footer}
+     \hspace*{-1ex}%
+     \begin{beamercolorbox}[wd=0.30cm,ht=0.30cm,center]{author in head/foot}
+     \end{beamercolorbox}%
+     \vspace*{-1.1ex}
+      \begin{minipage}{0.96\paperwidth}
+        \leavevmode
+        % \epsfysize = 0.5cm
+        % \epsffile{quadrat.ps}
+        \vspace*{1.5ex}
+        { \usebeamerfont{author in head/foot}\insertshortauthor \hfill %
+          \usebeamerfont{date in head/foot}\insertshortdate{} \hfill %
+          \usebeamerfont{title in head/foot}\insertshorttitle \hspace*{2ex}} %
+      \end{minipage}
+    \end{beamercolorbox}
+    \vspace*{-0.7ex}
+      \\
+      \hline
+      \vspace*{0.9ex}
+        \begin{beamercolorbox}[wd=0.9\paperwidth,ht=1.25ex,right]{pagenum in head/foot}%
+          \usebeamerfont{pagenum in head/foot}\hfill \insertframenumber{} / \inserttotalframenumber
+        \end{beamercolorbox}%
+    \end{tabular}%
+  }%
+  \vskip0pt%
+}
+
+\def\sublogo{\setbeamertemplate{sublogo}}
+\def\insertsublogo{\usebeamertemplate*{sublogo}}
+
+\defbeamertemplate*{headline}{tugraz theme}
+{
+%  \leavevmode%
+  \vskip5pt%
+  \hbox{%
+%    \hspace*{2ex}
+    \begin{tabular}[t]{c}
+      \begin{minipage}{0.96\paperwidth}
+      { %
+        %\hspace*{-2ex}
+        \begin{minipage}{0.5\paperwidth} %
+          \usebeamerfont{section in head/foot}\insertshortinstitute 
+        \end{minipage} %
+        \hfill %
+        \insertlogo
+      }
+      \end{minipage}
+      \\
+      \hline
+    \end{tabular}
+%   \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{section in head/foot}%
+%     \usebeamerfont{section in head/foot}\insertsectionhead\hspace*{2ex}
+%   \end{beamercolorbox}%
+%   \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{subsection in head/foot}%
+%     \usebeamerfont{subsection in head/foot}\hspace*{2ex}\insertsubsectionhead
+%   \end{beamercolorbox}
+  }%
+  \begin{minipage}{0.3\paperwidth}
+    \ifdim\beamer@sidebarwidth>0pt
+      \vspace*{-3pt}
+    \else
+      \vspace*{2pt}
+      \hspace*{2mm}\insertsublogo
+    \fi
+  \end{minipage}
+}
+
+\def\beamer@sidebarformat#1#2#3{
+  \begin{beamercolorbox}[wd=\beamer@sidebarwidth,leftskip=#1,rightskip=1ex plus1fil,vmode]{#2}
+    \vbox{}%
+    #3\par%
+    \vbox{}%
+    \vskip-1.5ex%
+  \end{beamercolorbox}
+}
+
+\defbeamertemplate*{section in sidebar}{sidebar theme}
+{%
+  \vbox{%
+    \vskip1ex%
+    \beamer@sidebarformat{3pt}{section in sidebar}{\insertsectionhead}%
+  }%
+}
+
+\defbeamertemplate*{section in sidebar shaded}{sidebar theme}
+{%
+  \vbox{%
+    \vskip1ex%
+    \beamer@sidebarformat{3pt}{section in sidebar shaded}{\insertsectionhead}%
+  }%
+}
+
+\defbeamertemplate*{subsection in sidebar}{sidebar theme}
+{%
+  \beamer@sidebarformat{5pt}{subsection in sidebar}{\insertsubsectionhead}%
+}
+
+\defbeamertemplate*{subsection in sidebar shaded}{sidebar theme}
+{%
+  \beamer@sidebarformat{5pt}{subsection in sidebar shaded}{\insertsubsectionhead}%
+}
+
+\defbeamertemplate*{subsubsection in sidebar}{sidebar theme}
+{%
+  \beamer@sidebarformat{7pt}{subsubsection in sidebar}{\insertsubsubsectionhead}%
+}
+
+\defbeamertemplate*{subsubsection in sidebar shaded}{sidebar theme}
+{%
+  \beamer@sidebarformat{7pt}{subsubsection in sidebar shaded}{\insertsubsubsectionhead}%
+}
+
+
+
+\ifdim\beamer@sidebarwidth>0pt
+% Sidebar
+  \setbeamersize{sidebar width \beamer@sidebarside=\beamer@sidebarwidth}
+  \defbeamertemplate*{sidebar left}{sidebar theme}
+  {
+    \begin{minipage}{0.3\paperwidth}
+      \addtocounter{mysidebarcnt}{1}
+      \vspace*{2pt}
+      \hspace*{2mm}\insertsublogo
+    \end{minipage}
+
+    \ifnum \value{mysidebarcnt}>\beamer@nosidebar
+      \vspace*{1cm}
+      \beamer@tempdim=\beamer@sidebarwidth%
+      \advance\beamer@tempdim by -6pt%
+      \insertverticalnavigation{\beamer@sidebarwidth}%
+     \fi
+     \vfill
+     \begin{minipage}{\paperwidth}
+       \hfill \llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm} \hspace*{1.5ex}
+     \end{minipage}
+  }%  
+                                % Margins
+  \setbeamersize{text margin left=0.5cm,text margin right=0.5cm}
+\fi
+
+
+\defbeamertemplate*{sidebar right}{tugraz}
+{
+  \vskip2pt%
+  \llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm}%
+  \vskip2pt%
+}
+
+\setbeamertemplate{sidebar right}{tugraz}
+
+
+\mode
+<all>

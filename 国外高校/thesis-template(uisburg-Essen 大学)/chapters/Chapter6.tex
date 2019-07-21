@@ -1,0 +1,13 @@
+\chapter{Acronym and Glossary}
+	
+\graphicspath{ {graphics/Chapter6/} }
+	
+It is rather handy to use acronyms or abbreviations in your thesis with \LaTeX. As defined in the \href{acronyms/acronyms.tex}{tex-file}, the first entry of {\color{blue}{\verb|\newacronym|}} command is the key you entered to call the acronym, while the second one is the short-form of this acronym and the third one is long-form.
+	
+For example, an entry of acronym is defined as:
+	
+{\color{blue}{\verb|\newacronym{der}{DER}{Distributed Energy Resouce}|}}
+	
+To refer the full version of this term for the first time, you may use {\color{blue}{\verb|\gls{der}|}} to get \colorbox{yellow!60}{\gls{der}} as output and {\color{blue}{\verb|\acrfull{der}|}} gives the same result \colorbox{yellow!60}{\acrfull{der}}, while {\color{blue}{\verb|\acrshort{der}|}} for the short form \colorbox{yellow!60}{\acrshort{der}} and {\color{blue}{\verb|\acrlong{der}|}} for the long form \colorbox{yellow!60}{\acrlong{der}}.
+	
+If is quite useful to refer an acronym with the plural form and it is quite simple to realize in \LaTeX --- just add ``pl" at the end of one command, e.g. {\color{blue}{\verb|acrfullpl{der}|}}, and the output will be \colorbox{yellow!60}{\acrfullpl{der}}.

@@ -1,0 +1,79 @@
+% \setcounter{chapter}{-1}
+
+% \chapter[An informal introduction (and some trifles)]{An informal introduction\\ (and some trifles)}
+% \label{chap:introINFOR}
+% \minitoc\mtcskip
+
+%
+%
+% \footnote{Yes, in this section I often use the ``I'' pronoun, and a half-serious style. If the reader doesn't like it, I want to reassure her: all the next sections follow the certainly more familiar, scientific impersonal style.
+% A reviewer may safely skip this chapter: I can't blame her if she doesn't want to listen to me talking nonsense :)}
+
+% I don't want to bore you with the details. 
+% The reliability of IT systems is a key issue, starting from the system design process!
+% System verification is used to establish that the design or product under consideration possesses certain properties. Specification: what the system has to do and what not; defect: the system does not fulfill one of the specification properties.
+
+% [\dots] Computer science is relatively new; as a
+% consequence when the software production activity
+% begins, we usually get wrong budget estimates,
+% production periods are wrongly calculated, products are
+% often delivered with unexpected behaviours, or with
+% operational failures, or with scarce security and safety
+% features.
+% If a building contractor made incorrect estimates,
+% built studio apartments in place of penthouses or building
+% that collapsed after some months, he would not survive.
+% An enterprise that built an automobile which broke down
+% twice a day would go bankrupt. A computer software
+% that makes your PC halt twice a day is normally sold,
+% bought and used.
+
+% «The computer is such a complex machine that it's not strange that sometimes it doesn't work;
+% conversely, it's a miracle it usually works fine!»
+
+% The two de facto reference textbooks---the ``older''~\cite{CGP02} and the more modern~\cite{Baier2008}---adopted in almost all graduate courses on model checking, define it respectively as:
+% \begin{quotation}
+% [\dots] an automatic technique for verifying finite state concurrent systems. 
+% It has a number of advantages over traditional approaches that are based on
+% simulation, testing, and deductive reasoning. 
+% The method has been used successfully in
+% practice to verify complex sequential circuit designs and communication protocols. 
+% [\dots]
+% The procedure
+% normally uses an exhaustive search of the state space of the system to determine if some
+% specification is true or not. Given sufficient resources, the procedure will always terminate
+% with a yes/no answer.
+% \end{quotation}
+% %
+% and
+% \begin{quotation}
+% [\dots] a prominent formal-verification technique for assessing functional properties of information and communication systems. Model checking
+% requires a [finite-state] model of the system under consideration and a desired [formally specified] property and systematically checks whether or not the given model satisfies this property. Typical properties
+% that can be checked are deadlock freedom, invariants, and request-response properties.
+% Model checking is an automated technique to check the absence of errors (i.e., property
+% violations) and alternatively can be considered as an intelligent and effective debugging
+% technique. It is a general approach and is applied in areas like hardware verification and
+% software engineering.
+% \end{quotation}
+
+%  Note that the property specification
+% prescribes what the system should do, and what it should not do, whereas the model
+% description addresses how the system behaves.
+
+% I've often been asked if I don't ever get bored while studying the complexity of fragments of HS by «just adding something and removing something else». Well, the answer is (in general) «No!».%
+% \footnote{Clearly, the exception is when we don't manage to reach some results we expect\dots}
+% As I (we) will try to persuade the reader of, is that, in spite of being the problem pretty much the same---apart from the specific fragments under consideration---the techniques we employ are always different and tailored to the specific situation. 
+% Obviously this is, on one hand, fun, 
+% on the other, sometimes pretty annoying, as you can hardly re-use what you have already done in a similar context. (Elenco high-level: small models, contrazioni, circuiti...)
+
+% So we are left with three open problems. We may as well put up with two of them,
+% but one really gets on our nerves.
+% It's the model checking problem for the fragment BE.
+% BE is known to be the devil, the hard core to kill of HS.
+% Undecidable as for its satisfiability problem, BE is known to be EXPSPACE-hard in model checking, but we only 
+% managed to craft a decision algorithm having nonelementary complexity\dots 
+% To try to close such complexity gap, or perhaps I should say, such abyss, we ended up falling in it\dots
+% The problem is still there, waiting for somebody to solve it. As one of us suggested,
+% BE model checking should perhaps be regarded as a difficult challenge, to possibly overcome in the long term.
+% So charmingly elegant and easy to explain, it may draw the attention of other people and researchers I feel compelled to warn:
+% BE may keep them awake at night, unless taken in small doses.

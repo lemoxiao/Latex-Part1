@@ -1,0 +1,255 @@
+% Copyright Remus Mihail Prunescu
+
+% LaTeX Support Group
+% DTU Official Presentation
+
+\mode<presentation>
+
+\RequirePackage{etoolbox}
+\RequirePackage{datetime}
+\RequirePackage{keyval}
+\RequirePackage{calc}
+
+% Enlarge slide size
+\beamer@paperwidth 1.09375\beamer@paperwidth%
+\beamer@paperheight 1.09375\beamer@paperheight%
+
+% Extra package
+\InputIfFileExists{departments}%
+	{\ClassInfo{}{The file departments.tex with department logo file naming has been loaded.}}%
+	{\ClassInfo{}{The file departments.tex is missing. Consult the manual.}%
+}%
+
+% Default values for options
+\newcommand{\inDepartmentShortName}{elektro}
+\newcommand{\inLanguage}{english}
+\newcommand{\inShowSection}{true}
+
+% Check language
+\@ifpackagewith{babel}{danish}{%
+	\renewcommand{\inLanguage}{danish}%
+}{}
+
+
+% Save options
+\DeclareOptionBeamer{department}{\renewcommand{\inDepartmentShortName}{#1}}
+\DeclareOptionBeamer{showsection}{\renewcommand{\inShowSection}{#1}}
+\ProcessOptionsBeamer
+
+% % % % % % % % % % % %
+% Define Dimensions
+% % % % % % % % % % % %
+
+\newcommand{\dimDTULogoWidth}{0.0394\paperwidth} % Percent
+\newcommand{\dimDTULogoHeight}{0.0777\paperheight} % Percent
+\newcommand{\dimDTULogoYOffset}{0.0404\paperheight} % Percent
+\newcommand{\dimDTULogoXOffset}{0.9176\paperwidth} % Percent
+
+\newcommand{\dimDTUDepLogoXOffset}{0.062\paperwidth} % Percent
+\newcommand{\dimDTUDepLogoHeight}{0.0897\paperheight} % Percent
+
+\newcommand{\dimDTUFriseYOffset}{0.03\paperheight} % Percent
+\newcommand{\dimDTUFriseXOffset}{0.418\paperwidth} % Percent
+\newcommand{\dimDTUFriseHeight}{0.3412\paperheight} % Percent
+\newcommand{\dimDTUDepFriseOffset}{0.018\paperheight} % Percent
+
+\newcommand{\dimTitleOffset}{0.148\paperheight}
+\newcommand{\dimSubtitleOffset}{0.0175\paperheight}
+\newcommand{\dimFrameTitleOffset}{0.033\paperheight}
+\newcommand{\dimAfterFrameTitleOffset}{-0.008\paperheight}
+\newcommand{\dimAuthorOffset}{0.06\paperheight}
+\newcommand{\dimInstituteOffset}{0.027\paperheight}
+
+\newcommand{\dimFootlineYOffset}{0.0355\paperheight}
+
+\newcommand{\dimLeftMarginI}{0.02\paperwidth}
+\newcommand{\dimTextLeftMargin}{0.0669\paperwidth} % Percent
+
+\newcommand{\dimPlaceTitleInHeader}{-0.09\paperheight}
+
+
+\makeatletter
+\setbeamersize{text margin left=\dimTextLeftMargin, text margin right=\dimTextLeftMargin}
+\makeatother
+
+% % % % % % % % % % % %
+% End of Dimensions
+% % % % % % % % % % % %
+
+% New commands to be used in the DTU template
+%\newcommand{\insertdepartmentandinstitute}{\departmenttitle , \institutetitle}
+\newcommand{\insertdepartmentandinstitute}{\departmenttitle}
+\newcommand{\insertDTULogo}{\includegraphics[width=\dimDTULogoWidth]{tex_dtu_logo}}
+\newcommand{\insertDTUWhiteLogo}{}
+\newcommand{\inserttitlefootline}{}
+\newcommand{\inserttitleheadline}{}
+\newcommand{\institutetitle}{}
+
+% Internal variable to check if \titlepage was called: false by default
+\def\bInTitle{false}
+\def\bDTUWhiteFrame{false}
+
+% Process language
+% Is it DK or UK?
+\ifdefstring{\inLanguage}{danish}
+{
+	\renewcommand{\institutetitle}{Danmarks Tekniske Universitet}
+	\renewcommand{\insertDTUWhiteLogo}{\includegraphics[height=\dimDTULogoHeight]{tex_dtu_dk_a1_neg}}
+}
+{
+	\ifdefstring{\inLanguage}{english}
+	{
+		\renewcommand{\institutetitle}{Technical University of Denmark}
+		\renewcommand{\insertDTUWhiteLogo}{\includegraphics[height=\dimDTULogoHeight]{tex_dtu_uk_a1_neg}}
+	}
+	{
+		% Undefined language
+		% Default values are used
+	}
+}
+
+\ifcsdef{department@\inDepartmentShortName}
+{
+	\activateDepartmentInfo{\inLanguage}{\inDepartmentShortName}
+}
+{
+	\PackageError{DTU Beamer Template}{Department is undefined. Reverting to default (elektro).}{Check the user guide for defined departments. If you cannot find it then contact support group to add the department.}
+	\activateDepartmentInfo{\inLanguage}{elektro}
+}
+
+% Command for generating the department title
+\newcommand{\departmenttitle}{\thedepartmentNameText}
+% Command for inserting the department logo
+\newcommand{\insertdepartmentlogoA}{%
+	\ifdefstring{\inDepartmentShortName}{admin}
+	{
+	}
+	{
+		\includegraphics[height=\dimDTUDepLogoHeight]{\thedepartmentLogo}
+	}
+}
+% Command for inserting frise
+\newcommand{\insertDTUFrise}{\includegraphics[height=\dimDTUFriseHeight]{\thedepartmentFrise}}
+
+% Command used from frame DTU logo (headline)
+\newcommand{\insertFrameDTULogo}
+{
+	\vspace{\dimDTULogoYOffset}
+	\begin{beamercolorbox}[right]{logo in head/foot}%
+		\insertDTULogo\makebox[\dimDTULogoWidth][]{}
+	\end{beamercolorbox}
+}
+\newcommand{\insertFrameDTUWhiteLogo}
+{
+	\vspace{\dimDTULogoYOffset}
+	\begin{beamercolorbox}[right]{logo in head/foot}%
+		\insertDTUWhiteLogo\makebox[\dimDTULogoWidth][]{}
+	\end{beamercolorbox}
+}
+
+% Command used in title page for inserting the DTU logo in headline
+\newcommand{\insertTitleDTULogo}
+{
+	\insertFrameDTULogo
+}
+
+% Change themes
+\usefonttheme{DTU}
+\useoutertheme{DTU}
+\useinnertheme{DTU}
+\usecolortheme{DTU}
+
+% Left margin for list environment
+\setlength{\leftmargini}{\dimLeftMarginI}
+
+% Adjust bullets placement
+\setlength\labelsep{3pt}
+
+\setbeamersize{text margin left=\dimTextLeftMargin}
+
+% Itemize
+\setbeamertemplate{items}[circle]
+\setbeamercolor{itemize item}{fg=dtured}
+\setbeamercolor{itemize subitem}{fg=dtured}
+
+\setbeamerfont{section in toc}{size=\small}
+\setbeamerfont{subsection in toc}{size=\scriptsize}
+
+\setbeamertemplate{enumerate items}[circle]
+\setbeamercolor{item projected}{fg=white,bg=dtured}
+
+% Table of contents
+\setbeamertemplate{section in toc}{%
+	\color{dtured}$\bullet$  \inserttocsection \par}
+
+\setbeamertemplate{subsection in toc}{
+	\hskip1em{\color{dtured}$\bullet$} \inserttocsubsection \par}
+
+% Fix space between sections and subsections in toc
+\makeatletter
+\patchcmd{\beamer@sectionintoc}
+  {\vfill}
+  {\vskip\itemsep}
+  {}
+  {}
+\pretocmd{\beamer@subsectionintoc}
+  {\vskip0.5\itemsep}
+  {}
+  {}
+\makeatother 
+
+
+% Date format
+\newcommand{\DTUDateFormat}{\DTUDate}
+\newdateformat{DTUDate}{\THEDAY.\THEMONTH.\THEYEAR}
+
+% Customize blocks
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{fg=white,bg=dtured}
+\setbeamerfont{block title}{series=\bfseries\small}
+\setbeamercolor{block body}{fg=black,bg=white}
+
+
+\newcommand{\defaultDTUFrameStyle}{
+	\setbeamertemplate{background}{}
+	\color{black}
+}
+
+% White DTU frame
+\makeatletter
+\define@key{beamerframe}{dtuwhitelogo}[true]{%
+	\global\def\bDTUWhiteFrame{true}
+	\color{white}
+}
+\define@key{beamerframe}{bgfilename}{%
+	\setbeamertemplate{background}{
+		\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{#1}
+	}
+}
+% Default framestyle
+\pretocmd{\beamer@@@@frame}
+{
+	\global\def\bDTUWhiteFrame{false}
+	\defaultDTUFrameStyle
+}
+{}{}
+\makeatother
+
+% Lengths for footer
+\newlength{\widthframenumber}
+\newlength{\widthdepartment}
+\newlength{\widthtitle}
+\newlength{\widthdate}
+
+% Short title for the footer
+\makeatletter
+\newcommand\insertshorttitleinfooter{%
+	\beamer@shorttitle%
+}
+\makeatother
+
+% Description list
+\setbeamercolor{description item}{fg=dtured}
+
+\mode
+<all>

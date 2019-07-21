@@ -1,0 +1,78 @@
+\newcommand{\cellThree}[3]{
+\begin{tabular}{c|c}
+\rule[-1ex]{0pt}{3.5ex}
+\multirow{2}{*}{#1} & #2 \\ 
+\hhline{~=}\rule[-1ex]{0pt}{3.5ex}
+ & #3 
+\end{tabular}}
+
+\newcommand{\cellTwo}[2]{\begin{tabular}{c|c}
+\rule[-1ex]{0pt}{3.5ex}
+#1 & #2 \\
+\end{tabular}}
+
+\newcommand{\cellOne}[1]{\begin{tabular}{c}
+		\rule[-1ex]{0pt}{3.5ex}
+		#1
+	\end{tabular}}
+	
+	
+\resizebox{\linewidth}{!}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,semithick,main node/.style={rectangle,draw, inner sep=0pt}]  
+
+\tikzstyle{gray node}=[fill=gray!30]
+
+    \node [main node](0) at (-4,0) {\cellTwo{$\AAbarBbarEbar$}{$\Psp$-complete}};
+    \node [main node](1) at (3,0)  {\cellTwo{$\Bbar$}{$\Psp$-complete}};
+    \node [main node](21) at (3,0.8)  {\cellTwo{$\Ebar$}{$\Psp$-complete}};
+    \node [main node](31) at (3,2.3)  {\cellTwo{$\AAbarEEbar$}{$\Psp$-complete}};
+    \node [main node](31a) at (3,3.2)  {\cellTwo{$\D$}{$\Psp$-complete}};
+    \node [main node](32) at (-2.3,2.3)  {\cellTwo{$\AAbarBBbar$}{$\Psp$-complete}};
+    \node [main node](2) at (-5.0,-3.4) {\cellThree{$\AAbar$}{$\Thsq$}{$\Th$-hard }};
+    \node [main node](22) at (0.2,-3.4) {\cellThree{\hspace*{-6pt}$\begin{array}{c}\A, \\ \Abar \end{array}$\hspace*{-6pt}}{$\Thsq$}{$\Th$-hard }};
+    \node [main node](92) at (4.8,-3.4) {\cellThree{\hspace*{-6pt}$\begin{array}{c}\Abar\B, \\ \A\E \end{array}$\hspace*{-6pt}}{$\Thsq$}{$\Th$-hard}};
+    
+    \node [main node](72) at (-3.3,-1.0)  {\cellTwo{$\AAbarB$}{$\PTIME^{\NP}$-complete}};
+    \node [main node](73) at (3.5,-1.0)  {\cellTwo{$\AAbarE$}{$\PTIME^{\NP}$-complete}};
+    \node [main node](74) at (-3.3,-2)  {\cellTwo{$\A\B$}{$\PTIME^{\NP}$-complete}};
+    \node [main node](75) at (3.5,-2)  {\cellTwo{$\Abar\E$}{$\PTIME^{\NP}$-complete}};
+    
+    \node [main node](53) at (-4,-6) {\cellTwo{$\B$}{$\co\NP$-complete}};
+    \node [main node](3) at (-4,-5) {\cellTwo{$\E$}{$\co\NP$-complete}};
+    \node [main node](4) at (3.5,-5.5) {\cellTwo{$\HSprop$}{$\co\NP$-complete }};
+    
+    \node [main node](5) at (-4,4) {\cellThree{$\AAbarBBbarEbar$}{$\EXPSPACE$ }{$\Psp$-hard }};
+    %\node [main node](6) at (-3.5,6) {\cellThree{succinct $\AAbarBBbarEbar$}{$\EXPSPACE$ }{$\NEXPTIME$-hard }};
+    
+    \node [main node](9) at (3,6) {\cellThree{$\BE$}{\textbf{nonELEMENTARY}}{$\EXPSPACE$-hard }};
+    \node [main node](10) at (3,8) {\cellThree{full $\HS$}{\textbf{nonELEMENTARY}}{$\EXPSPACE$-hard}};
+   
+    \path
+    (1) edge [swap] node {hard} (0) 
+    (0) edge  [out=150,in=190] node {hard} (5.south)
+    (4.west) edge [swap,near end] node {hard} (3.east)
+    (4.west) edge [near end] node {hard} (53.east)
+    (2.north east) edge [swap,out=370,in=170] node {upper-b.} (22.north west)
+    (22.south west) edge [swap,out=190,in=-10] node {hard} (2.south east)
+    (22.east) edge node {hard} (92.west)
+    (9) edge [swap] node {hard} (10)
+    (21.north) edge node {hard} (31.south)
+    (1.west) edge [out=120,in=-45, near end] node {hard} (32.south)
+    (74.west) edge [out=130, in=230, near end] node {hard} (72.west)
+    (72.east) edge [out=310, in=50] node {upper-bound} (74.east)
+    (75.west) edge [out=130, in=230, near end] node {hard} (73.west)
+    (73.east) edge [out=310, in=50] node {upper-b.} (75.east)
+    ;
+    
+    \draw [dashed,-,red] (-6.5,4) -- (6,4);
+    \draw [dashed,-,red] (-6.5,-2.5) -- (6,-2.5);
+    \draw [dashed,-,red] (-6.5,-4.5) -- (6,-4.5);
+    \draw [dashed,-,red] (-6.5,-0.5) -- (6,-0.5);
+    
+    
+    \draw [->,blue] (0,8) .. controls (0.1,3) .. node [right] {Chap.~\ref{chap:ICALP}} (0.8,3.3) ;
+    \draw [->,blue] (0.5,2.2) .. controls (-0.4,3.5) and (-1.3,2.3) .. node [right, very near end] {Chap.~\ref{chap:TCS17}} (-1.8,3.4);
+    \draw [->,blue] (0.5,2) .. controls (0.1,-0.8) .. node [left, near end] {Chap.~\ref{chap:IC17}} (-0.5,-1.4);
+    \draw [->,blue] (0,-0.8) .. controls (0.7,-1.2) .. (1.2,-2.8);
+\end{tikzpicture}
+}

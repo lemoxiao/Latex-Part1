@@ -1,0 +1,97 @@
+\section{MC for $\hsDhom${} over Kripke structures} \label{sec:mc}
+
+In this section we focus our attention on the MC problem for $\hsDhom$ formulas over Kripke structures, under homogeneity.
+%
+Let us start with the following (technical) definition, basically mapping traces of a Kripke structure into interval models.
+\begin{definition}\label{def:trimodel}%[Induced interval model]
+The interval model
+$\bM_\rho=(\mathbb{I(S)},\circ,\cV)$ \emph{induced by a trace $\rho$} of a finite Kripke structure $\Ku=\KuDef$
+is the homogeneous interval model such that:
+\begin{enumerate}
+    \item $\mathpzc{S}=\{0,\ldots,|\rho|-1\}$, and
+    \item for all $x\in \mathpzc{S}$ and $p\in\AP$, $[x,x]\in\cV(p)$ if and only if $p\in\mu(\rho(x+1))$.\footnote{We add 1 to the index $x$ of $\rho$ just because traces are 1-based (whereas linear orders and interval models are 0-based).}
+\end{enumerate}
+\end{definition}
+%
+Clearly we have $\Ku,\rho(i+1,j+1)\models \psi$ if and only if $\bM_\rho,[i,j]\models \psi$.
+
+We now describe how, with a slight modification of the previous SAT procedure, it is possible to derive a MC algorithm for $\hsDhom$ formulas $\varphi$ over finite Kripke structures $\Ku$.
+The idea is to consider some finite linear orders---not all the possible ones, unlike the case of SAT---precisely those corresponding to (some) initial traces of $\Ku$, checking whether $\neg\varphi$ holds over them: 
+in such a case we have found a counterexample, and we can conclude that $\Ku\not\models\varphi$.
+To ensure this kind of \lq\lq SAT driven by the traces of $\Ku$\rq\rq, we make a product between $\Ku$ and the previous graph $G_{\varphi\sim}$, getting what we call a \lq\lq\emph{$(\varphi\!\sim\!\Ku)$-graph}\rq\rq. In the following, we will also exploit the notion of \lq\lq compass structure \emph{induced by a trace $\rho$} of $\Ku$\rq\rq, which is a fulfilling homogeneous compass $\varphi$-structure built from $\rho$ and completely determined by it.
+
+Given a finite Kripke structure $\Ku=\KuDef$ and a $\hsDhom$ formula $\varphi$, we consider the $(\varphi\!\sim\!\Ku)$-graph $G_{\varphi \sim\Ku}$, which is basically the product of $\Ku$ and $G_{\varphi \sim}=(\Rows^\sim,\rownext)$, and is formally defined as 
+\[G_{\varphi \sim\Ku}=(\Gamma, \Xi),\] where:
+\begin{itemize}
+    \item $\Gamma$ is the maximal subset of $\States\times \Rows^\sim$ such that: if $(s,[row]_\sim)\in\Gamma$ then $\mu(s)=row(0)\cap\AP$;
+    \item $\big((s_1,[row_1]_\sim), (s_2,[row_2]_\sim)\big)\in\Xi$ iff $(i)$~$\big((s_1,[row_1]_\sim), (s_2,[row_2]_\sim)\big)\in\Gamma^2$, $(ii)$~$(s_1,s_2)\in\Edges$, and $(iii)$ $[row_1]_\sim\rownext [row_2]_\sim$.
+\end{itemize}
+Note that the definition of $\Gamma$ is well-given, since for all $row'\in[row]_\sim$, $row'(0)=row(0)$. The size of $G_{\varphi\sim\Ku}$ is bounded by $(|\States|\cdot |\Rows^\sim|)^2$.
+
+Given a generic trace $\rho$ of $\Ku$, we define the compass $\varphi$-structure \emph{induced by $\rho$} as the fulfilling homogeneous  compass $\varphi$-structure $\cG_{(\Ku,\rho)}=(\bbP_\bbD, \cL)$, where $\mathpzc{S}=\{0,\ldots, |\rho|-1\}$, and for $0\leq x<|\rho|$, $\cL(x,x)\cap\AP=\mu(\rho(x+1))$ and $\reqD(\cL(x,x))=\emptyset$. 
+Note that, given $\rho$, $\cG_{(\Ku,\rho)}$ always exists and is unique: all $\varphi$-atoms $\cL(x,x)$ ``on the diagonal'' are determined by the labeling of $\rho(x+1)$ (and by the absence of requests). Moreover,
+by Lemma~\ref{lem:row_successor}, all the other atoms $\cL(x,y)$, for $0\leq x<y<|\rho|$, are determined by the $\rownext$ relation between $\varphi$-rows. 
+
+The following property can easily be proved by induction.
+\begin{proposition}\label{prop:eqTrack}
+Given a finite Kripke structure $\Ku$, a trace $\rho$ of $\Ku$, and a $\hsDhom$ formula $\varphi$, 
+for all $0\leq x\leq y <|\rho|$ and for all subformulas $\psi$ of $\varphi$, we have 
+$\Ku,\rho(x+1,y+1)\models \psi$ if and only if $\psi\in\cL(x,y)$ in $\cG_{(\Ku,\rho)}$.
+\end{proposition}
+%
+%As a result of the property, $\Ku\not\models\varphi$ iff there exists an initial trace $\rho$ such that $\Ku,\rho\models\neg\varphi$, iff $\neg\varphi\in\cL(0,|\rho|-1)$ in the induced homogeneous fulfilling compass $\varphi$-structure $\cG_{(\Ku,\rho)}$.
+%
+We can now introduce Theorem~\ref{thm:path_iff_MC}, that can be regarded as a version of Theorem~\ref{thm:path_iff_sat} for MC.
+Its proof is in Appendix~\ref{proof:thm:path_iff_MC}.
+\begin{theorem}\label{thm:path_iff_MC}
+Given a finite Kripke structure $\Ku=\KuDef$ and a $\hsDhom$ formula $\varphi$, 
+there exists an initial trace $\rho$ of $\Ku$ such that $\Ku,\rho\models\varphi$
+if and only if
+there exists
+a path  in $G_{\varphi \sim\Ku}=(\Gamma, \Xi)$
+from some node $(\sinit,[\row]_\sim)\in\Gamma$ to some node $(s,[\row']_\sim)\in\Gamma$ such that:
+\begin{enumerate}
+    \item there exists $row_1\in[\row]_\sim$ with $|row_1|=1$, and
+    \item there exists $row_2\in[\row']_\sim$ with $\varphi\in row_2(|row_2|-1)$.
+\end{enumerate}
+\end{theorem} 
+%
+
+\begin{algorithm}[t]
+\caption{\texttt{Counterexample}$(\Ku,\varphi)$}\label{NDAlgoMC}
+\begin{algorithmic}[1]
+    \State{$M\gets |\States|\cdot 2^{3|\varphi|^2}$, $step\gets 0$ and $(s,\row)\gets(\sinit, A)$ for some atom $A\in \Atoms$ with  $\reqD(A)=\emptyset$ and $A\cap\AP=\mu(\sinit)$}
+    \If{$\varphi\not\in \row(|\row|-1)$}
+        \State{\textbf{return} ``yes''}
+    \EndIf
+    \If{$step = M-1$} 
+        \State{\textbf{return} ``no''}
+    \EndIf
+    \State{Non-deterministically choose $s'$ such that $(s,s')\in\Edges$}
+    \State{Non-deterministically generate a $\varphi$-row $\row'$ and check that $row'(0)\cap\AP=\mu(s')$ and $\row \rownext \row'$}
+    \State{$step \gets step +1$ and $(s,\row) \gets(s',\row')$}
+    \State{Go back to line 2}
+\end{algorithmic}
+\end{algorithm}
+
+Now, analogously to the case of SAT,
+we can perform a reachability in $G_{\varphi\sim\Ku}$, exploiting the previous theorem
+to decide whether there is an initial trace $\rho$ of $\Ku$ such that $\Ku,\rho\models\neg\varphi$, for a $\hsDhom$-formula $\varphi$ (i.e., the complementary problem of MC $\Ku\models\varphi$); $\rho$ is called a \lq\lq counterexample\rq\rq{} to $\varphi$.
+%
+The \emph{non-deterministic} procedure \texttt{Counterexample}$(\Ku,\varphi)$ in Algorithm~\ref{NDAlgoMC} 
+searches for a suitable path in $G_{\varphi \sim\Ku}$,  $(\sinit,[\row_0]_\sim) \stackrel{\Xi}{\rightarrow} \cdots \stackrel{\Xi}{\rightarrow} (s_m,[\row_{m}]_\sim)$, where $\row_0 =A\in \Atoms$ with  $\reqD(A)=\emptyset$, $A\cap\AP=\mu(\sinit)$, $m< M$, and $\neg\varphi\in \row_m(|\row_m|-1)$ (i.e., $\varphi\not\in \row_m(|\row_m|-1)$). At the $j$-th iteration of lines 6./7., $(s_{j-1},s_j)\in\Edges$ is selected, and $\row_{j}$ is non-deterministically generated checking that $row_j(0)\cap\AP=\mu(s_j)$ and $\row_{j-1}\rownext\row_{j}$.
+
+Basically, the same observations about the working space of the procedure in Algorithm~\ref{NDAlgo} can be done also for this algorithm, except for the space used to encode in binary $M\leq |\States|\cdot 2^{3|\varphi|^2}$ and $step$, ranging in $[0,M-1]$, which is $O(\log|\States| + |\varphi|^2)$ bits. Moreover we need to store two states, $s$ and $s'$ of $\Ku$, that need $O(\log |\States|)$ bits to be represented.
+
+We conclude the section by stating the main result.
+\begin{theorem}\label{thm:pspaceMC}
+The MC problem for $\hsDhom$ formulas over finite Kripke structures is in $\Psp$. Moreover, for constant-length formulas, it is in $\NLOGSP$.
+\end{theorem} 
+\begin{proof}
+Membership is immediate by the previous space analysis, and the fact that the complexity classes $\NPsp=\Psp$ and $\NLOGSP$ are closed under complement.
+\end{proof}
+%
+Finally, it is possible to adapt the procedure also for \emph{strict} $\hsDhom${} (using Definitions~\ref{def:d_generatorS}--\ref{def:rownextS}). 
+
+In the next section we will 
+comment on $\Psp$-hardness, and thus $\Psp$-completeness, of SAT and MC for $\hsDhom$ formulas.

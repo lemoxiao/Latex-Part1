@@ -1,0 +1,125 @@
+\section{Options}
+\label{sec:usage:options}
+
+In this section, we describe the options you can set when using this thesis class.
+\tablespacing
+% tablespacing is defined by the class to set single spacing for the long table when in doublespacing mode. If the singlespace option is set, this command has no effect.
+
+\begin{longtable}{p{0.3\linewidth} p{0.6\linewidth}}
+
+  % First page heading
+  \caption[Options Provided by the PUthesis Class]{List of options for the puthesis document class and template} \label{tab:usage:options}\\
+  \toprule
+  \textbf{Option} & \textbf{Description} \\
+  \midrule
+  \endfirsthead
+
+  % Future page heading
+  \caption[]{(continued)}\\
+  \toprule
+  \textbf{Option} & \textbf{Description} \\
+  \midrule
+  \endhead
+
+  % Page footer
+  \midrule
+  \multicolumn{2}{r}{(Continued on next page)}\\
+  \endfoot
+
+  % Last page footer
+  \bottomrule
+  \endlastfoot
+
+  12pt &
+  Specify the font size for body text as a parameter to \texttt{documentclass}. The Mudd Library requirements~\cite{muddthesis2009} state that 12pt is preferred for serif fonts (e.g., Times New Roman) and 10pt for sans-serif fonts (e.g., Arial).
+  \\
+
+  letterpaper &
+  If your document is coming out in a4paper, your LaTeX defaults may be wrong. Set this option as a parameter to \texttt{documentclass} to have the correct 8.5"x11" paper size.
+  \\
+
+  lot &
+  Set this option as a parameter to \texttt{documentclass} to insert a List of Tables after the Table of Contents.
+  \\
+
+
+  lof &
+  Set this option as a parameter to \texttt{documentclass} to insert a List of Figures after the Table of Contents and the List of Figures.
+  \\
+
+  los &
+  Set this option as a parameter to \texttt{documentclass} to insert a List of Symbols after the Table of Contents and the other lists.
+  \\
+
+  singlespace &
+  Set this option as a parameter to \texttt{documentclass} to single space your document. Double spacing is the default otherwise, and is required for the electronic copy you submit to ProQuest. Single spacing is permitted for the printed and bound copies for Mudd Library.
+  \\
+  
+  draft &
+  Set this option as a parameter to \texttt{documentclass} to have \LaTeX mark sections of your document that have formatting errors (e.g., overfull hboxes). 
+  \\
+
+  % the cmidrule here spans both columns but is indented slightly on the left and right. 
+  \cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+
+  \raggedright
+  $\backslash newcommand$ $\{\backslash printmode\}\{\}$ &
+  Insert this command after the \texttt{documentclass} command to turn off the hyperref package to produce a PDF suitable for printing.
+  \\
+
+  \raggedright
+  $\backslash newcommand$ $\{\backslash proquestmode\}\{\}$  &
+  Insert this command after the \texttt{documentclass} command to turn off the `colorlinks' option to the hyperref package. Links in the pdf document will then be outlined in color instead of having the text itself be colored. This is more suitable when the PDF may be viewed online or printed by the reader.
+  \\
+
+  $\backslash makefrontmatter$ &
+  Insert this command after the \texttt{$\backslash begin\{document\}$} command, but before including your chapters to insert the Table of Contents and other front matter.
+  \\
+  
+  \cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+
+  $\backslash title$ &
+  Set the title of your dissertation. Used on the title page and in the PDF properties.
+  \\
+
+  $\backslash submitted$ &
+  Set the submission date of your dissertation. Used on the title page. This should be the month and year when your degree will be conferred, generally only January, April, June, September, or November. Check the Mudd Library rules~\cite{mudd2009} for the appropriate deadlines.
+  \\
+
+  $\backslash copyrightyear$ &
+  Set the submission year of your dissertation. Used on the copyright page.
+  \\
+
+  $\backslash author$ &
+  Your full name. Used on the title page, copyright page, and the PDF properties. \\
+
+  $\backslash adviser$ &
+  Your adviser's full name. Used on the title page. \\
+
+  $\backslash departmentprefix$ &
+  The wording that precedes your department or program name. Used on the title page. The default is ``Department of'', since most people list their department and can leave this out (e.g., Department of Electrical Engineering), however if yours is a program, set $\backslash departmentprefix\{Program in\}$ \\
+
+  $\backslash department$ &
+  The name of your department or program. Used on the title page. \\
+
+  \cmidrule[0.1pt](l{0.5em}r{0.5em}){1-2}
+  
+  \raggedright  
+  $\backslash renewcommand$ $\{\backslash maketitlepage\}\{\}$ &
+  Disable the insertion of the title page in the front matter. This is useful for early drafts of your dissertation. \\
+
+  \raggedright  % full justification places the * in an awkward place
+  $\backslash renewcommand*\{\backslash makecopyrightpage\}\{\}$ &
+  Disable the insertion of the copyright page in the front matter. This is useful for early drafts of your dissertation. \\
+
+  \raggedright 
+  $\backslash renewcommand*\{\backslash makeabstract\}\{\}$ &
+  Disable the insertion of the abstract in the front matter. This is useful for early drafts of your dissertation. \\
+
+\end{longtable}
+\bodyspacing
+% bodyspacing restores double spacing or single spacing after the table
+
+% need blank space after \bodyspacing
+
+I've seen other people print their dissertations using $\backslash pagestyle\{headings\}$, which places running headings on the top of each page with the chapter number, chapter name, and page number. This documentclass is not currently compatible with this option -- the margins are setup to be correct with page numbers in the footer, placing them 3/4" from the edge of the paper, as required. If you wish to use headings, you will need to adjust the margins accordingly.

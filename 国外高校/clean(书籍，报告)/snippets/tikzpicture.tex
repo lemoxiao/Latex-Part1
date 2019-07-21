@@ -1,0 +1,16 @@
+\documentclass[12pt,tikz]{standalone}
+
+\ifstandalone%
+    \usepackage{import}%
+    \import{../../configuration/}{comon_packages.tex}%
+    \import{../../configuration/}{variables.tex}%
+    \import{../../configuration/}{conftikz.tex}%
+    \import{../../configuration/}{custom_config.tex}%
+\fi
+
+\begin{document}
+    \begin{tikzpicture}
+        \draw (0, 0) -- (1, 0);
+    \end{tikzpicture}
+\end{document}
+

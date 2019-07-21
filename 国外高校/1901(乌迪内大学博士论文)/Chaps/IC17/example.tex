@@ -1,0 +1,24 @@
+
+Before going into the results, let us make the following example.
+
+\begin{example}
+We show how some meaningful properties, to be checked against
+the Kripke structure
+$\Ku_{Sched}$ of Figure~\ref{KSched} at page~\pageref{KSched},
+can be expressed  by formulas of $\AbarE$ (a fragment that will be studied in detail next).
+
+As in Example~\ref{example:Ksched}, in all formulas we force the validity of the considered property over all legal computation sub-intervals by using modality $\hsEu$ (all computation sub-intervals are suffixes of at least one initial trace).
+
+Truth of the next statements can easily be checked (formulas express the same properties as those in Example~\ref{example:Ksched}, but are here adapted to $\AbarE$):
+\begin{itemize}
+    \item $\Ku_{Sched}\models\hsEu\big(\hsE^3\top \rightarrow (\chi(p_1,p_2) \vee \chi(p_1,p_3) \vee \chi(p_2,p_3))\big)$, \newline where $\chi(p,q)$ stands for $\hsE\hsAt p \wedge \hsE\hsAt q$;
+    \item $\Ku_{Sched}\not\models\hsEu(\hsE^{10}\top \rightarrow \hsE\hsAt p_3)$;
+    \item $\Ku_{Sched}\not\models\hsEu(\hsE^5 \rightarrow (\hsE\hsAt p_1 \wedge \hsE\hsAt p_2 \wedge \hsE\hsAt p_3))$.
+\end{itemize}
+The first formula states that in any suffix having length at least 4 of an initial trace, at least 2 proposition letters are witnessed. $\Ku_{Sched}$ satisfies the formula since a process cannot be executed twice in a row. 
+
+The second formula states that in any suffix of an initial trace having length at least 11, process 3 is executed at least once in some internal states (\emph{non starvation}). $\Ku_{Sched}$ does not satisfy the formula since the scheduler can avoid executing a process ad libitum. 
+
+The third formula requires that in any suffix of an initial trace having length at least 6, $p_1$, $p_2$ and $p_3$ are all witnessed.
+The only way to satisfy this property is to constrain the scheduler to execute the three processes in a strictly periodic manner (\emph{strict alternation}), that is, $p_i p_j p_k p_i p_j p_k p_i p_j p_k\ldots$, $i,j,k \in \{1,2,3\}, i \neq j \neq k \neq i$, but this is not the case.
+\end{example}

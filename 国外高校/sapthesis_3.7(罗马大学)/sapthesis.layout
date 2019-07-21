@@ -1,0 +1,7 @@
+#\DeclareLaTeXClass[sapthesis]{book (sapthesis)}
+Input stdclass.inc
+
+#% Copy this file in Lyx20\Resources\layouts\ folder
+#  In LyX, do: Tools > Reconfigure ; Restart Lyx.
+#  Choose the file class inside the Document properties
+#  and customize the preamble

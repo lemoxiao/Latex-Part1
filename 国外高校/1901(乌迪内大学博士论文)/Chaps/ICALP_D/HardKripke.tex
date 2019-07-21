@@ -1,0 +1,83 @@
+\begin{tikzpicture}[every node/.style={draw,circle,inner sep=1pt,minimum size=0.8cm}]
+
+\draw[draw=none, use as bounding box]  (-7,5.5) rectangle (9.7,0);
+
+\node (v1) at (-3.5,3.5) {$q_1^\top$};
+\node (v4) at (-3.5,2) {$q_1^\bot$};
+\node (v2) at (-2,3.5) {$q_2^\top$};
+\node (v5) at (-2,2) {$q_2^\bot$};
+\node (v3) at (-0.5,3.5) {$q_3^\top$};
+\node (v6) at (-0.5,2) {$q_3^\bot$};
+\node (v8) at (1,2.75) {$b$};
+\node (v7) at (1,4) {$a$};
+\node (v9) at (1,1.5) {$c$};
+\node (v10) at (2.5,2.75) {$x_1$};
+\node (v11) at (4,2.75) {$x_2$};
+\node (v12) at (5.5,3.5) {$q_1'^\top$};
+\node (v13) at (5.5,2) {$q_1'^\bot$};
+\node (v16) at (7,2) {$q_2'^\bot$};
+\node (v14) at (7,3.5) {$q_2'^\top$};
+\node (v15) at (8.5,3.5) {$q_3'^\top$};
+\node (v17) at (8.5,2) {$q_3'^\bot$};
+\node (v23) at (4,0.5) {$v_1$};
+\node (v24) at (2.5,0.5) {$v_2$};
+
+
+\draw [->] (v1) edge (v2);
+\draw [->] (v2) edge (v3);
+\draw [->] (v4) edge (v5);
+\draw [->] (v5) edge (v6);
+\draw [->] (v4) edge (v2);
+\draw [->] (v1) edge (v5);
+\draw [->] (v5) edge (v3);
+\draw [->] (v2) edge (v6);
+\draw [->] (v3) edge (v7);
+\draw [->] (v3) edge (v8);
+\draw [->] (v3) edge (v9);
+\draw [->] (v6) edge (v7);
+
+\draw [->] (v6) edge (v8);
+\draw [->] (v6) edge (v9);
+\draw [->] (v7) edge (v10);
+\draw [->] (v8) edge (v10);
+\draw [->] (v9) edge (v10);
+\draw [->] (v10) edge (v11);
+\draw [->] (v11) edge (v12);
+\draw [->] (v11) edge (v13);
+\draw [->] (v12) edge (v14);
+\draw [->] (v14) edge (v15);
+\draw [->] (v13) edge (v16);
+\draw [->] (v16) edge (v17);
+\draw [->] (v13) edge (v14);
+\draw [->] (v12) edge (v16);
+\draw [->] (v14) edge (v17);
+\draw [->] (v16) edge (v15);
+
+\node (v22) at (-0.5,5) {$\widehat{q_3}^\bot$};
+\node (v21) at (-2,5) {$\widehat{q_2}^\bot$};
+\node (v20) at (-3.5,5) {$\widehat{q_1}^\top$};
+\node (v19) at (-5,5) {$v_2'$};
+\node [double] (v18) at (-6.5,5) {$v_1'$};
+\draw [->] (v18) edge (v19);
+\draw [->] (v19) edge (v20);
+\draw [->] (v20) edge (v21);
+\draw [->] (v21) edge (v22);
+\draw [->] (v22) edge (v7);
+\draw [->] (v22) edge (v8);
+\draw [->] (v22) edge (v9);
+
+\draw [->](v15.south east) .. controls (10.5,2) and (10.5,0.5) .. (v23.east);
+\draw [->](v17.east) .. controls (9.5,2) and (9.5,0.5) .. (v23.east);
+\draw [->] (v23) edge (v24);
+\draw [->](v24.west) .. controls (-5.5,0.5) and (-5.5,2) .. (v1.south west);
+\draw [->](v24.west) .. controls (-4.5,0.5) and (-4.5,2) .. (v4.west);
+
+\draw [dashed,fill=gray,fill opacity=0.07] (-4,4) rectangle (0,1.5);
+\draw [dashed,fill=gray,fill opacity=0.07]  (5,4) rectangle (9,1.5);
+\draw [dashed,fill=gray,fill opacity=0.07]  (1.5,4.5) rectangle (0.5,1);
+
+\node [draw=none] at (-4.2,4) {\Large $Q$};
+\node [draw=none] at (1.7,4.5) {\Large $\Sigma$};
+\node [draw=none] at (4.8,4) {\Large $Q'$};
+
+\end{tikzpicture}

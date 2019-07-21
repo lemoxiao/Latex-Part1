@@ -1,0 +1,815 @@
+%!TEX root = ./main.tex
+
+% This file is part of the i10 thesis template developed and used by the
+% Media Computing Group at RWTH Aachen University.
+% The current version of this template can be obtained at
+% <http://www.media.informatik.rwth-aachen.de/karrer.html>.
+
+
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% Befehle
+% commands
+%-----------------------------------------------------------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------
+% \myBigFigure	[ LABEL_PREFIX (optional) ]
+%				{ FILENAME (without extension) }
+%				{ CAPTION TEXT }
+%				{ SHORT VERSION OF CAPTION TEXT }
+%
+%Bild wird in kompletter Breite gesetzt, die Kurzversion der Bildunterschrift erscheint im Abbildungsverzeichnis
+%picture using full width of the page, the short caption is what appears in the list of figures index
+
+%----------------------------------------------------------------------------------
+% \myFrameBigFigure	[ LABEL_PREFIX (optional) ]
+%					{ FILENAME (without extension) }
+%					{ CAPTION TEXT }
+%					{ SHORT VERSION OF CAPTION TEXT }
+%
+%Bild wird in kompletter Breite gesetzt und eingerahmt, die Kurzversion der Bildunterschrift erscheint im Abbildungsverzeichnis
+%picture with frame using the full width of the page, the short caption is what appears in the list of figures index
+
+%----------------------------------------------------------------------------------
+% \myHUGEFigure	[ LABEL_PREFIX (optional) ]
+%				{ FILENAME (without extension) }
+%				{ CAPTION TEXT }
+%				{ SHORT VERSION OF CAPTION TEXT }
+%
+%Bild wird rotiert und quer in kompletter Breite gesetzt, die Kurzversion der Bildunterschrift erscheint im Abbildungsverzeichnis
+%landscape picture using the full width of the rotated page, the short caption is what appears in the list of figures index
+
+%----------------------------------------------------------------------------------
+% \myFigure	[ LABEL_PREFIX (optional) ]
+%			{ FILENAME (without extension) }
+%			{ CAPTION TEXT }
+%			{ SHORT VERSION OF CAPTION TEXT }
+%
+%Bild wird in der Breite der textspalte gesetzt, die Kurzversion der Bildunterschrift erscheint im Abbildungsverzeichnis
+%picture using the width of the text column, the short caption is what appears in the list of figures index
+
+%----------------------------------------------------------------------------------
+% \myImgRef	[ LABEL_PREFIX (optional) ]
+%			{ LABEL OF THE IMAGE }
+%
+%referenziert das angegebene Bild
+%reference to an image
+
+%----------------------------------------------------------------------------------
+% \myBigTable	{ YOUR TABULAR DEFINITION }
+%			{ CAPTION TEXT }
+%			{ TABLE_LABLE }
+%
+%Tabelle wird in kompletter Breite gesetzt
+%table using the full width of the page
+
+%----------------------------------------------------------------------------------
+% \myTable	{ YOUR TABULAR DEFINITION }
+%			{ CAPTION TEXT }
+%			{ TABLE_LABLE }
+%
+%Tabelle wird in der Breite der Textspalte gesetzt
+%table using the width of the text column
+
+%----------------------------------------------------------------------------------
+% \myTxtRef	{ LABLE }
+%
+%Referenz auf Kapitel oder Abschnitte - gibt nummer und namen aus, z.B.: 5.3---"Yaddahyaddah"
+%references chapters or sections, outputs number and title, e.g., 5.3---"Yaddahyaddah"
+
+%----------------------------------------------------------------------------------
+% \myUnderscore
+%
+%Setzt einen "schönen" Unterstrich für URLs
+%typesets a 'nice' underscore for URLs
+
+%----------------------------------------------------------------------------------
+%\myTilde
+%
+%Setzt eine "schöne" Tilde für URLs
+%typesets a 'nice' tilde for URLs
+
+%----------------------------------------------------------------------------------
+% \myURL	{ TYPESET VERSION OF ANCHOR }
+%			{ PRISTINE URL }
+%			{ TYPESET VERSION OF URL }
+%
+%Setzt eine URL
+%die typographisch "schöne" version erscheint in einer Fußnote,
+%im Text erscheint der Ankertext, verlinkt ist die "echte" URL
+%typesets a URL
+%the typographically correct version appears as a footnote,
+%the anchor appears in the text, the link points to the pristine URL
+
+%----------------------------------------------------------------------------------
+% \mySimpleURL	{ TYPESET VERSION OF ANCHOR }
+%				{ PRISTINE URL }
+%
+%Setzt eine URL
+%die URL erscheint in einer Fußnote,
+%im Text erscheint der Ankertext, die URL ist verlinkt
+%typesets a URL
+%the URL appears as a footnote,
+%the anchor appears in the text, the link points to the URL
+
+%----------------------------------------------------------------------------------
+% \myProjectURL	{ TYPESET VERSION OF ANCHOR }
+%				{ PRISTINE URL INSIDE PROJECT DIRECTORY }
+%				{ TYPESET VERSION OF URL INSIDE PROJECT DIRECTORY }
+%
+%Setzt eine URL innerhalb des Projektverzeichnisses auf "media"
+%ACCOUNT muss durch den eigenen Usernamen ersetzt werden
+%die typographisch "schöne" version erscheint in einer Fußnote,
+%im Text erscheint der Ankertext, verlinkt ist die "echte" URL
+%typesets a URL inside the project directory on 'media'
+%replace ACCOUNT with your username
+%the typographically correct version appears as a footnote,
+%the anchor appears in the text, the link points to the pristine URL
+
+%----------------------------------------------------------------------------------
+% \mnote	{ MARGIN NOTE }
+%
+%Setzt eine Randnotitz
+%puts a comment into the margin in small sans-serif font
+
+%----------------------------------------------------------------------------------
+% \todo	{ TODO MARGIN NOTE }
+%
+%Setzt eine "ToDo"-Randnotitz in rot zur Erinnerung
+%puts a 'todo' comment into the margin in red
+
+%----------------------------------------------------------------------------------
+% \chapterquote	{ QUOTATION }
+%				{ SOURCE }
+%
+%Setzt ein Zitat zum Einleiten eines Kapitels
+%outputs a quote with its source, can be used as an introduction to chapters
+
+%----------------------------------------------------------------------------------
+% \myDefBox	{ TERM }
+%			{ DEFINITION }
+%
+%Setzt eine Randnotitz und eine farbige Box (Textspaltenbreite),
+%welche einen Begriff und seine Definition enthält
+%outputs a margin note and a colored box (width of the text column) containing a term and its definition
+
+%----------------------------------------------------------------------------------
+% \myBigDefBox	{ TERM }
+%				{ DEFINITION }
+%
+%Setzt eine farbige Box (Seitenbreite), welche einen Begriff und seine Definition enthält
+%outputs a colored box (width of the page) containing a term and its definition
+
+%----------------------------------------------------------------------------------
+% \myDownloadURL	{ TYPESET DOWNLOAD NAME }
+%					{ PRISTINE VERSION OF FILENAME }
+%					{ TYPESET VERSION OF FILENAME }
+%
+%Setzt eine farbige Box, welche einen Downloadlink enthält
+%outputs a colored box containing a download link
+
+%----------------------------------------------------------------------------------
+% \emptydoublepage
+%
+% Leere Doppelseite ohne Kopf- oder Fußzeile am Ende von Kapiteln
+% Clear double page without any header or footer at end of chapters
+
+%----------------------------------------------------------------------------------
+% \pagebreak	[ SOME STRANGE LATEX VALUE ]
+%
+%Eklige pagebreaks für den Druck (falls es nicht mehr anders geht)
+%pagebreaks for the final print version (last resort weapon against wrong pagebreaks by LaTeX)
+
+%----------------------------------------------------------------------------------
+% \TM
+%
+%Setzt ein (TM) Symbol
+%Places a (TM) symbol
+
+
+%----------------------------------------------------------------------------------
+%Packages and parameters
+%----------------------------------------------------------------------------------
+
+%Inputencoding für den Mac
+%inputencoding for the mac
+\usepackage[utf8]{inputenc}
+
+%Deutschpaket f¬ür das Proseminar
+\usepackage{german}
+%Mathe- und Symbolpakete
+
+%packages for mathematical symbols
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%Tabellengestaltung
+%table design
+\usepackage{booktabs}
+
+%Grafikpaket
+%grahics package
+\usepackage{color,graphicx}
+
+%relativer Pfad zu den Bildern
+%path to your image folder
+\graphicspath{{images/}}
+
+%Absätze werden nicht eingezogen, sondern vertikal abgesetzt
+%do not indent at new paragraphs but add a vertical offset
+\usepackage{noindent}
+
+%Palatino+Helvetica statt Computer Modern als standard fonts:
+%change standard fonts to Palatino and Helvetica
+\usepackage{palatino}
+
+%Bibliographieeinstellungen
+%bibliography settings
+\usepackage{natbib}
+\bibliographystyle{plainnat}
+
+%Zitierbefehle
+%citation commands
+\newcommand{\fullcite}{\citep} %for "Author [1980]"
+\renewcommand{\citeyear}{\citeyearpar} %for "[1980]"
+
+%paket für erweiterte kontrollstrukturen
+%package for control structures
+\usepackage{ifthen}
+
+%marginpar hack --- alle Randnotitzen sollten dann auf der richtigen Seite stehen
+%marginpar hack --- moves margin notes to correct position
+\usepackage{mparhack}
+
+%lesbare verweise
+%make readable references
+\usepackage[pdftex,plainpages=false,pdfpagelabels]{hyperref}
+
+
+%---------------------<Layout in the style of "A Pattern Approach to Interaction Design>---------------------------
+
+% Change page headers and footers:
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[RE]{\slshape \nouppercase{\leftmark}}    % Even page header: "page   chapter"
+\fancyhead[LO]{\slshape \nouppercase{\rightmark}}   % Odd  page header: "section   page"
+\fancyhead[RO,LE]{\bfseries \thepage} 
+\renewcommand{\headrulewidth}{1pt}    % Underline headers
+\renewcommand{\footrulewidth}{0pt}    
+
+\fancypagestyle{plain}{               % No chapter+section on chapter start pages
+\fancyhf{}
+\fancyhead[RO,LE]{\bfseries \thepage}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0pt}
+}
+
+% Left headings: "1  INTRODUCTION"
+\renewcommand{\chaptermark}[1]{%
+\markboth{\thechapter\ \ \ \ #1}{}}
+
+% Right headings: "1.1  Basics"
+\renewcommand{\sectionmark}[1]{%
+\markright{\thesection\ \ \ \ #1}{}}
+
+% some Fancyhdr problem...
+\addtolength{\headheight}{2pt} % To avoid overfull vboxes from fancyhdr
+
+
+%creating a better way to change the layout for the abstract pages
+\usepackage{geometry}
+
+\ifthenelse{\lengthtest{\paperheight=250mm}}%
+{% -----------------B5 Layout-----------------
+% Page layout
+
+%\pdfpageheight250mm
+%\pdfpagewidth176mm
+\geometry{	b5paper,
+			top = 27mm,
+			footskip = 10mm,
+			inner = 19mm,
+			outer = 39mm,
+			textheight = 175mm,
+			textwidth = 84mm,
+			marginparsep = 3mm,
+			marginparwidth = 32mm
+}
+\savegeometry{myText}
+% -----------------/ B5 Layout-----------------
+}%
+{% -----------------A4 Layout-----------------
+% Page layout
+\geometry{	a4paper,
+			twoside,
+			includemp,
+			includehead,
+			top = 30mm,
+			headsep = 10mm,
+			bindingoffset = 10mm,
+			inner = 20mm,
+			outer = 40mm,
+			bottom = 45mm,
+			marginparsep = 10mm,
+			marginparwidth = 30mm
+}
+\savegeometry{myText}
+% -----------------/ A4 Layout-----------------
+}
+% Abstract layout
+\geometry{	marginparsep = 0mm,
+			marginparwidth = 0mm
+}
+\savegeometry{myAbstract}
+\loadgeometry{myText}
+
+\newlength{\fullwidth} % Width of text plus margin notes
+\setlength{\fullwidth}{\textwidth}
+\addtolength{\fullwidth}{\marginparsep}
+\addtolength{\fullwidth}{\marginparwidth}
+
+\setlength{\headwidth}{\fullwidth} % Header stretches over margin notes
+
+
+%---------------------</Layout in the style of "A Pattern Approach to Interaction Design>---------------------------
+
+
+%wird für die flächendeckende Ausgabe der Titelseite benötigt
+%needed for the full-face titlepage
+\usepackage{eso-pic}
+
+%index verwenden
+%make an index
+\usepackage{makeidx}
+\makeindex
+
+%Index Formatierungshilfen
+%formatting helpers for the index
+\newcommand{\uu}[1]{\underline{#1}}
+\newcommand{\ii}[1]{\textit{#1}}
+
+%neue Definition der Index Umgebung
+%redesign of the index
+\renewenvironment{theindex}{%
+  \vspace*{50pt}%
+  {\Huge\bfseries\indexname}\par%
+  \vspace*{40pt}%
+  \setlength{\parskip}{0pt}%
+  \setlength{\parindent}{0pt}%
+  \small%
+  \renewcommand{\item}{\par{}}%
+  \renewcommand{\subitem}{\par\hspace{2em}- }%
+}%
+{}
+
+%Maximale Gliederungstiefe, die noch ins Inhaltsverzeichnis aufgenommen wird
+%maximum depth for the table of contents
+\setcounter{tocdepth}{3}
+
+%Vorschlag für ein schönes Farbschema
+%Set of colors which look nice together
+\usepackage{color}
+\definecolor{orange_light}{rgb}{1,0.8,0.4}
+\definecolor{orange_med}{rgb}{0.753,0.62,0.373}
+\definecolor{orange_dark}{rgb}{0.506,0.412,0.251}
+
+\definecolor{green_light}{rgb}{0.8,1,0.4}
+\definecolor{green_med}{rgb}{0.635,0.745,0.376}
+\definecolor{green_dark}{rgb}{0.435,0.498,0.255}
+
+\definecolor{blue_light}{rgb}{0.4,0.8,1}
+\definecolor{blue_med}{rgb}{0.365,0.624,0.749}
+\definecolor{blue_dark}{rgb}{0.251,0.42,0.502}
+
+\definecolor{pink_light}{rgb}{1,0.435,0.812}
+\definecolor{pink_med}{rgb}{0.745,0.38,0.62}
+\definecolor{pink_dark}{rgb}{0.498,0.255,0.416}
+
+\definecolor{yellow_light}{rgb}{1,1,0.4}
+\definecolor{yellow_med}{rgb}{0.757,0.745,0.373}
+\definecolor{yellow_dark}{rgb}{0.506,0.49,0.251}
+
+%blau (für URLs)
+%blue (for URLs)
+\definecolor{blue}{rgb}{0,0,1}
+
+%notwendig für die korrekte Erkennung, auf welcher Seite sich eine Abbildung befindet.
+%we need this to determine if a figure is on an odd or even page
+\usepackage{chngpage}
+
+%Hiermit können die Abbildungslegenden frei gestaltet werden
+%we need this to redesign the captions
+\usepackage[font=normalsize,labelfont=bf]{caption}
+
+%Abbildungen kommen auf eine eigene Seite, wenn sie mehr als 85% des Platzes
+%auf einer Seite einnehmen
+%if a figure takes more than 85% of a page it will be typeset on a separate page
+\renewcommand{\floatpagefraction}{0.85}
+
+%Benötigt um große Abbildungen gedreht auf eine Seite zu setzen
+%we need this to rotate big figures
+\usepackage[figuresright]{rotating}
+
+%Verschiedene Längenmaße für Textboxen
+%dimensions for textboxes
+\newlength{\myDefBoxWidth}
+\setlength{\myDefBoxWidth}{\textwidth}
+\addtolength{\myDefBoxWidth}{-4mm}
+\newlength{\myBigDefBoxWidth}
+\setlength{\myBigDefBoxWidth}{\fullwidth}
+\addtolength{\myBigDefBoxWidth}{-4mm}
+
+%Formathilfen für MatLab Code (wer's braucht...)
+%pre-defined matlab code formats
+\usepackage{alltt}
+\definecolor{string}{rgb}{0.7,0.0,0.0}
+\definecolor{comment}{rgb}{0.13,0.54,0.13}
+\definecolor{keyword}{rgb}{0.0,0.0,1.0}
+
+
+
+%-----------------------------------------------------------------------------------------------------------------------------------------
+% neue Befehle
+% new commands
+%-----------------------------------------------------------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------
+% \myBigFigure	[ LABEL_PREFIX (optional) ]
+%				{ FILENAME (without extension) }
+%				{ CAPTION TEXT }
+%				{ SHORT VERSION OF CAPTION TEXT }
+%
+%Bild wird in kompletter Breite gesetzt
+%picture using full width of the page
+\newcommand{\myBigFigure}[4][image]
+{%
+\begin{figure}[t!bp]%
+	\checkoddpage%
+	\ifcpoddpage%
+		%nothing
+	\else
+		\hspace{-\marginparsep}\hspace{-\marginparwidth}%
+	\fi
+	%use minipage to center the label beneath the figure
+	\begin{minipage}{\fullwidth}%
+		\includegraphics[width= \fullwidth]{#2}%
+		\caption[#4]{#3}%
+		\label{#1_#2}%
+	\end{minipage}%
+\end{figure}%
+}
+
+
+%----------------------------------------------------------------------------------
+% \myFrameBigFigure	[ LABEL_PREFIX (optional) ]
+%					{ FILENAME (without extension) }
+%					{ CAPTION TEXT }
+%					{ SHORT VERSION OF CAPTION TEXT }
+%
+%Bild wird in kompletter Breite gesetzt und eingerahmt
+%picture with frame using the full width of the page
+\newcommand{\myFrameBigFigure}[4][image]
+{
+\begin{figure}[t!bp]
+	\checkoddpage
+	\ifcpoddpage
+		%nothing
+	\else
+		\hspace{-\marginparsep}\hspace{-\marginparwidth}
+	\fi
+	%use minipage to center the label beneath the figure
+	\begin{minipage}{\fullwidth}
+	\frame{%
+		\includegraphics[width= \fullwidth]{#2}%
+		}
+		\caption[#4]{#3}
+		\label{#1_#2}
+	\end{minipage}
+\end{figure}
+}
+
+%----------------------------------------------------------------------------------
+% \myHUGEFigure	[ LABEL_PREFIX (optional) ]
+%				{ FILENAME (without extension) }
+%				{ CAPTION TEXT }
+%				{ SHORT VERSION OF CAPTION TEXT }
+%
+%Bild wird rotiert und quer in kompletter Breite gesetzt
+%landscape picture using the full width of the rotated page
+\newcommand{\myHugeFigure}[4][image]
+{
+\begin{sidewaysfigure}[t!bp]
+	\checkoddpage
+	\ifcpoddpage
+		%nothing
+		\vspace{\marginparsep}\vspace{\marginparwidth}
+	\else
+		%nothing
+		\vspace{-\marginparsep}\vspace{-\marginparwidth}
+	\fi
+		\includegraphics[width= \textheight]{#2}
+		\caption[#4]{#3}
+		\label{#1_#2}
+	
+\end{sidewaysfigure}
+}
+
+%----------------------------------------------------------------------------------
+% \myFigure	[ LABEL_PREFIX (optional) ]
+%			{ FILENAME (without extension) }
+%			{ CAPTION TEXT }
+%			{ SHORT VERSION OF CAPTION TEXT }
+%
+%Bild wird in der Breite der textspalte gesetzt
+%picture using the width of the text column
+\newcommand{\myFigure}[4][image]%
+{%
+\begin{figure}[t!bp]%
+	\begin{center}%
+		\includegraphics[width= \textwidth]{#2}%
+		\caption[#4]{#3}
+		\label{#1_#2}%
+	\end{center}%
+\end{figure}%
+}%
+
+%----------------------------------------------------------------------------------
+% \myImgRef	[ LABEL_PREFIX (optional) ]
+%			{ LABEL OF THE IMAGE }
+%
+%referenziert das angegebene Bild
+%reference to an image
+\newcommand{\myImgRef}[2][image]%
+{%
+	\ref{#1_#2}%
+}%
+
+%----------------------------------------------------------------------------------
+% \myBigTable	{ YOUR TABULAR DEFINITION }
+%			{ CAPTION TEXT }
+%			{ TABLE_LABLE }
+%
+%Tabelle wird in kompletter Breite gesetzt
+%table using the full width of the page
+\newcommand{\myBigTable}[3]%
+{%
+\begin{table}[htdp]%
+	\checkoddpage%
+	\ifcpoddpage%
+		%nothing
+	\else%
+		\hspace{-\marginparsep}\hspace{-\marginparwidth}%
+	\fi%
+	\begin{minipage}{\fullwidth}%
+		\begin{center}%
+			#1%
+			\caption{#2}%
+			\label{#3}%
+		\end{center}%	
+	\end{minipage}%
+\end{table}%
+}%
+
+%----------------------------------------------------------------------------------
+% \myTable	{ YOUR TABULAR DEFINITION }
+%			{ CAPTION TEXT }
+%			{ TABLE_LABLE }
+%
+%Tabelle wird in der Breite der Textspalte gesetzt
+%table using the width of the text column
+\newcommand{\myTable}[3]%
+{%
+\begin{table}[htdp]%
+	\begin{center}%
+		#1%
+		\caption{#2}%
+		\label{#3}%
+	\end{center}%	
+\end{table}%
+}%
+
+%----------------------------------------------------------------------------------
+% \myTxtRef	{ LABLE }
+%
+%Referenz auf Kapitel oder Abschnitte - gibt nummer und namen aus, z.B.: 5.3---"Yaddahyaddah"
+%references chapters or sections, outputs number and title, e.g., 5.3---"Yaddahyaddah"
+\newcommand{\myTxtRef}[1]
+{%
+	\ref{#1} ``\nameref{#1}''%
+}
+
+%----------------------------------------------------------------------------------
+% \myTxtRefPP	{ LABLE }
+%
+%Referenz auf Kapitel oder Abschnitte - gibt nummer, namen und seiten aus, z.B.: 5.3---"Yaddahyaddah" (p. 45)
+%references chapters or sections, outputs number and title, e.g., 5.3---"Yaddahyaddah"
+\newcommand{\myTxtRefPP}[1]
+{%
+	\ref{#1} ``\nameref{#1}'' (p.~\pageref{#1})%
+}
+
+%----------------------------------------------------------------------------------
+% \myUnderscore
+%
+%Setzt einen "schönen" Unterstrich für URLs
+%typesets a 'nice' underscore for URLs
+\newcommand{\myUnderscore}{$\underline{\hspace{0.5em}}$}
+
+%----------------------------------------------------------------------------------
+%\myTilde
+%
+%Setzt eine "schöne" Tilde für URLs
+%typesets a 'nice' tilde for URLs
+\newcommand{\myTilde}{$\sim$}
+
+%----------------------------------------------------------------------------------
+% \myURL	{ TYPESET VERSION OF ANCHOR }
+%			{ PRISTINE URL }
+%			{ TYPESET VERSION OF URL }
+%
+%Setzt eine URL
+%die typographisch "schöne" version erscheint in einer Fußnote,
+%im Text erscheint der Ankertext, verlinkt ist die "echte" URL
+%typesets a URL
+%the typographically correct version appears as a footnote,
+%the anchor appears in the text, the link points to the pristine URL
+\newcommand{\myURL}[3]%
+{%
+	\textcolor{blue}{%
+		\href{#2}{#1}%
+	}%
+	\footnote{#3}%
+}
+
+%----------------------------------------------------------------------------------
+% \mySimpleURL	{ TYPESET VERSION OF ANCHOR }
+%				{ PRISTINE URL }
+%
+%Setzt eine URL
+%die URL erscheint in einer Fußnote,
+%im Text erscheint der Ankertext, die URL ist verlinkt
+%typesets a URL
+%the URL appears as a footnote,
+%the anchor appears in the text, the link points to the URL
+\newcommand{\mySimpleURL}[2]%
+{%
+	\textcolor{blue}{%
+		\href{#2}{#1}%
+	}%
+	\footnote{#2}%
+}
+
+%----------------------------------------------------------------------------------
+% \myProjectURL	{ TYPESET VERSION OF ANCHOR }
+%				{ PRISTINE URL INSIDE PROJECT DIRECTORY }
+%				{ TYPESET VERSION OF URL INSIDE PROJECT DIRECTORY }
+%
+%Setzt eine URL auf hci/public wo die Inhalte des WebServer Ordners auf "oliver" verfügbar sind
+%die typographisch "schöne" version erscheint in einer Fußnote,
+%im Text erscheint der Ankertext, verlinkt ist die "echte" URL
+%typesets a URL to hci/public from where the contents of the WebServer folder from oliver can be accessed
+%the typographically correct version appears as a footnote,
+%the anchor appears in the text, the link points to the pristine URL
+\newcommand{\myProjectURL}[3]%
+{%
+	\textcolor{blue}{%
+		\href{http://hci.rwth-aachen.de/public/#2}{#1}%
+	}%
+	\footnote{http://hci.rwth-aachen.de/public/#3}%
+}
+
+%----------------------------------------------------------------------------------
+% \mnote	{ MARGIN NOTE }
+%
+%Setzt eine Randnotitz
+%puts a comment into the margin in small sans-serif font
+\newcommand{\mnote}[1]%
+{%
+	\leavevmode%
+	\checkoddpage%
+	\ifcpoddpage%
+		\marginpar{\raggedright\textsf{{\footnotesize{#1}}}}%
+	\else%
+		\marginpar{\raggedleft\textsf{{\footnotesize{#1}}}}%
+	\fi%
+}
+	
+% leavevmode allows mnotes to be aligned with the first line of a paragraph
+% NOTE: you have to put a "%" at the end of the line with the mnote, or you will get an extra blank at the beginning of the paragraph!
+
+%----------------------------------------------------------------------------------
+% \todo	{ TODO MARGIN NOTE }
+%
+%Setzt eine "ToDo"-Randnotitz in rot zur Erinnerung
+%puts a 'todo' comment into the margin in red
+\definecolor{red}{rgb}{1,0,0}
+\newcommand{\todo}[1]{\mnote{\textcolor{red}{ToDo: #1}}}
+
+%----------------------------------------------------------------------------------
+% \chapterquote	{ QUOTATION }
+%				{ SOURCE }
+%
+%Setzt ein Zitat zum Einleiten eines Kapitels
+%outputs a quote with its source, can be used as an introduction to chapters
+\newcommand{\chapterquote}[2]{
+\begin{quotation}
+    \begin{flushright}
+	\noindent\emph{``{#1}''\\[1.5ex]---{#2}}
+    \end{flushright}
+\end{quotation}
+}
+
+%----------------------------------------------------------------------------------
+% \myDefBox	{ TERM }
+%			{ DEFINITION }
+%
+%Setzt eine Randnotitz und eine farbige Box (Textspaltenbreite),
+%welche einen Begriff und seine Definition enthält
+%outputs a margin note and a colored box (width of the text column) containing a term and its definition
+\newcommand{\myDefBox}[2]
+{%
+	\setlength{\fboxrule}{1mm}%
+	\fcolorbox{orange_med}{orange_light}%
+	{%
+		\parbox{\myDefBoxWidth}{{\bfseries\scshape#1:}\\#2}%
+	}%
+	\mnote{Definition:\\\emph{#1}}
+}
+
+%----------------------------------------------------------------------------------
+% \myBigDefBox	{ TERM }
+%				{ DEFINITION }
+%
+%Setzt eine farbige Box (Seitenbreite), welche einen Begriff und seine Definition enthält
+%outputs a colored box (width of the page) containing a term and its definition
+\newcommand{\myBigDefBox}[2]
+{%
+	\begin{figure}[h!]
+	\setlength{\fboxrule}{1mm}%
+	\checkoddpage%
+	\ifcpoddpage%
+		%nothing
+	\else%
+		\hspace{-\marginparsep}\hspace{-\marginparwidth}%
+	\fi%
+	\fcolorbox{orange_med}{orange_light}%
+	{%
+		\parbox{\myBigDefBoxWidth}{{\bfseries\scshape#1:}\\#2}%
+	}%
+	\end{figure}
+}
+
+%----------------------------------------------------------------------------------
+% \myDownloadURL	{ TYPESET DOWNLOAD NAME }
+%					{ PRISTINE VERSION OF FILENAME }
+%					{ TYPESET VERSION OF FILENAME }
+%
+%Setzt eine farbige Box, welche einen Downloadlink enthält
+%outputs a colored box containing a download link
+\newcommand{\myDownloadURL}[3]{%
+\checkoddpage%
+	\ifcpoddpage%
+		%nothing
+	\else%
+		\hspace{-\marginparsep}\hspace{-\marginparwidth}%
+	\fi%
+\setlength{\fboxrule}{1mm}%
+\fcolorbox{green_med}{green_light}{%
+\begin{minipage}{\myBigDefBoxWidth}%
+\begin{center}%
+\myProjectURL{#1}{folder/#2}{folder/#3}%
+\end{center}%
+\end{minipage}%
+}%
+}
+
+%----------------------------------------------------------------------------------
+% \emptydoublepage
+%
+% Leere Doppelseite ohne Kopf- oder Fußzeile am Ende von Kapiteln
+% Clear double page without any header or footer at end of chapters
+\newcommand{\emptydoublepage}{\clearpage\thispagestyle{empty}\cleardoublepage}
+
+%----------------------------------------------------------------------------------
+% \pagebreak	[ SOME STRANGE LATEX VALUE ]
+%
+%Eklige pagebreaks für den Druck (falls es nicht mehr anders geht)
+%pagebreaks for the final print version (last resort weapon against wrong pagebreaks by LaTeX)
+\newcommand{\PB}[1][3]
+{%
+	\pagebreak[#1]%
+}
+
+
+
+%----------------------------------------------------------------------------------
+% \TM
+%
+%Setzt ein (TM) Symbol
+%Places a (TM) symbol
+\newcommand{\TM}
+{%
+	\textsuperscript{\texttrademark}%
+}

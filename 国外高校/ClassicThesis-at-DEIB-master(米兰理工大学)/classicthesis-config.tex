@@ -1,0 +1,289 @@
+% ****************************************************************
+% classicthesis-config.tex 
+% formerly known as loadpackages.sty, classicthesis-ldpkg.sty, and
+% classicthesis-preamble.sty Use it at the beginning of your
+% ClassicThesis.tex, or as a LaTeX Preamble in your
+% ClassicThesis.{tex,lyx} with \input{classicthesis-config}
+% ****************************************************************
+% If you like the classicthesis, then I would appreciate a
+% postcard. My address can be found in the file
+% ClassicThesis.pdf. A collection of the postcards I received so
+% far is available online at http://postcards.miede.de
+% ****************************************************************
+
+% ****************************************************************
+% 1. Configure classicthesis for your needs here, e.g., remove
+% "drafting" below in order to deactivate the time-stamp on the
+% pages
+% ****************************************************************
+\PassOptionsToPackage{eulerchapternumbers,
+					listings,
+					drafting,
+				 	pdfspacing,
+					floatperchapter,
+					%linedheaders,
+				 	subfig,
+					beramono,
+					eulermath,
+					parts}{classicthesis}										
+
+% ****************************************************************
+% Triggers for this config
+% **************************************************************** 
+\usepackage{ifthen}
+\newboolean{enable-backrefs} % enable backrefs in the bibliography
+\setboolean{enable-backrefs}{false} % true false
+% TODO backref is incompatible?
+% ****************************************************************
+
+
+% ****************************************************************
+% 2. Personal data and user ad-hoc commands
+% ****************************************************************
+\newcommand{\myTitle}{A template for master thesis at DEIB\xspace}
+\newcommand{\myTitleIT}{Un modello per tesi di laurea magistrale al DEIB \xspace}
+\newcommand{\myFirstAuthorName}{Andrea Cominola\xspace}
+\newcommand{\myMatrFirstAuthor}{111111\xspace}
+\newcommand{\mySecondAuthorName}{Emanuele Mason\xspace}
+\newcommand{\myMatrSecondAuthor}{222222\xspace}
+\newcommand{\mySupervisor}{Prof. Vilfredo Pareto\xspace} % relatore
+\newcommand{\myOtherSupervisor}{Dr. Paul Krugman\xspace} % co relatori
+\newcommand{\myOtherOtherSupervisor}{Prof. my ASP supervisor\xspace}
+\newcommand{\myCoExaminer}{Prof. Rodolfo Soncini-Sessa\xspace} % contro-relatore
+\newcommand{\myFaculty}{Facolt\`a di Ingegneria\xspace}
+\newcommand{\mySchool}{Scuola di Ingegneria Civile, Ambientale e Territoriale\xspace}
+\newcommand{\myDepartment}{Dipartimento di Elettronica, Informazione e Bioingegneria\xspace}
+\newcommand{\myCourseFirstPart}{Master of Science in\xspace}
+\newcommand{\myCourseFirstPartIT}{Corso di Laurea Magistrale in\xspace}
+\newcommand{\myCourseSecondPart}{Environmental and Land Planning Engineering\xspace}
+\newcommand{\myCourseSecondPartIT}{Ingegneria per l'Ambiente e il Territorio\xspace}
+\newcommand{\myUni}{Politecnico di Milano\xspace}
+\newcommand{\myLocation}{Milan\xspace}
+\newcommand{\myTime}{March 2013\xspace}
+\newcommand{\myVersion}{version 1.0\xspace}
+\newcommand{\myAcademicYear}{Academic Year 2011-2012\xspace}
+
+% ********************************************************************
+% Setup, fine tuning, and useful commands
+% ********************************************************************
+\newcounter{dummy} % necessary for correct hyperlinks (to index, bib, etc.)
+\newlength{\abcd} % for ab..z string length calculation
+\providecommand{\mLyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+% from here till the end of the section, you can modify whatever you want
+\newcommand{\ie}{i.\,e.\ }
+\newcommand{\Ie}{I.\,e.\ }
+\newcommand{\eg}{e.\,g.\ }
+\newcommand{\Eg}{E.\,g.\ }
+% referencing commands
+\newcommand{\myEq}[1]{equation \eqref{#1}}
+\newcommand{\MyEq}[1]{Equation \eqref{#1}}
+\newcommand{\myFig}[1]{figure \ref{#1}}
+\newcommand{\MyFig}[1]{Figure \ref{#1}}
+\newcommand{\myTab}[1]{table \ref{#1}}
+\newcommand{\MyTab}[1]{Table \ref{#1}}
+\newcommand{\mySubsec}[1]{subsection \ref{#1}}
+\newcommand{\MySubsec}[1]{Subsection \ref{#1}}
+\newcommand{\mySec}[1]{section \ref{#1}}
+\newcommand{\MySec}[1]{Section \ref{#1}}
+\newcommand{\myChap}[1]{chapter \ref{#1}}
+\newcommand{\MyChap}[1]{Chapter \ref{#1}}
+\newcommand{\myAppendix}[1]{appendix \ref{#1}}
+\newcommand{\MyAppendix}[1]{Appendix \ref{#1}}
+\newcommand{\myEmph}[1]{\textsc{#1}}
+
+% **********************************************************************
+
+
+% **********************************************************************
+% 3. Loading some handy packages
+% **********************************************************************
+\PassOptionsToPackage{T1}{fontenc} % T2A for cyrillics
+	\usepackage{fontenc} 
+\PassOptionsToPackage{utf8}{inputenc} % latin9 (ISO-8859-9) = latin1+"Euro sign"
+	\usepackage{inputenc}				
+
+\PassOptionsToPackage{autostyle,italian=guillemets,threshold=2}{csquotes}
+ 	\usepackage{csquotes}
+
+\PassOptionsToPackage{american,italian}{babel}
+	 \usepackage{babel}
+
+\PassOptionsToPackage{fleqn}{amsmath} % math environments and more by the AMS 
+ 	\usepackage{amsmath}
+ 
+\usepackage{amsthm}
+	\theoremstyle{definition}
+
+\newtheorem{definition}{Definition}
+
+\usepackage{textcomp} % fix warning with missing font shapes
+\usepackage{scrhack} % fix warnings when using KOMA with listings package          
+\usepackage{xspace} % to get the spacing after macros right  
+\usepackage{mparhack} % get marginpar right
+\usepackage{fixltx2e} % fixes some LaTeX stuff 
+
+\PassOptionsToPackage{printonlyused,smaller}{acronym}
+	\usepackage{acronym} % nice macros for handling all acronyms in the thesis
+\renewcommand{\bflabel}[1]{{#1}\hfill} % fix the list of acronyms
+% **********************************************************************
+
+
+% **********************************************************************
+% 4. Setup floats: tables, (sub)figures, and captions
+% **********************************************************************
+\usepackage{tabularx} % better tables
+	\setlength{\extrarowheight}{3pt} % increase table row height
+\newcommand{\tableheadline}[2]{\multicolumn{1}{#1}{\normalsize\spacedlowsmallcaps{#2}}}
+\newcommand{\tableheadlineMore}[3]{\multicolumn{#1}{#2}{\normalsize\spacedlowsmallcaps{#3}}}
+\newcommand{\tablefirstcol}[2]{\multicolumn{1}{#1}{\textbf{#2}}}
+
+\usepackage{caption}
+	\captionsetup{format=hang,labelfont={sf,bf},font=small}
+\usepackage{colortbl}
+\usepackage{multirow}
+
+\usepackage{subfig}
+\usepackage{siunitx}
+% *********************************************************************
+
+
+% *********************************************************************
+% 5. Setup code listings
+% *********************************************************************
+\usepackage{listings}
+\lstloadlanguages{bash, C++, Java, Matlab}
+
+% for special keywords
+\lstset{language=[LaTeX]Tex,
+    keywordstyle=\color{RoyalBlue},%\bfseries,
+    basicstyle=\small\ttfamily,
+    %identifierstyle=\color{NavyBlue},
+    commentstyle=\color{Green}\ttfamily,
+    stringstyle=\rmfamily,
+    numbers=none,%left,%
+    numberstyle=\scriptsize,%\tiny
+    stepnumber=5,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frameround=ftff,
+    frame=single,
+    belowcaptionskip=.75\baselineskip
+    %frame=L
+} 
+% *********************************************************************
+
+
+% *********************************************************************
+% 6. PDFLaTeX, hyperreferences and citation backreferences
+% *********************************************************************
+% ********************************************************************
+% Using PDFLaTeX
+% ********************************************************************
+\PassOptionsToPackage{pdftex,hyperfootnotes=false,pdfpagelabels}{hyperref}
+	\usepackage{hyperref}  % backref linktocpage pagebackref
+\pdfcompresslevel=9
+\pdfadjustspacing=1 
+\PassOptionsToPackage{pdftex}{graphicx}
+	\usepackage{graphicx} 
+
+% ********************************************************************
+% Setup the style of the backrefs from the bibliography
+% (translate the options to any language you use)
+% ********************************************************************
+\newcommand{\backrefnotcitedstring}{\relax}%(Not cited.)
+\newcommand{\backrefcitedsinglestring}[1]{(Cited on page~#1.)}
+\newcommand{\backrefcitedmultistring}[1]{(Cited on pages~#1.)}
+\ifthenelse{\boolean{enable-backrefs}}%
+{%
+		\PassOptionsToPackage{hyperpageref}{backref}
+		\usepackage{backref} % to be loaded after hyperref package 
+		   \renewcommand{\backreftwosep}{ and~} % separate 2 pages
+		   \renewcommand{\backreflastsep}{, and~} % separate last of longer list
+		   \renewcommand*{\backref}[1]{}  % disable standard
+		   \renewcommand*{\backrefalt}[4]{% detailed backref
+		      \ifcase #1 %
+		         \backrefnotcitedstring%
+		      \or%
+		         \backrefcitedsinglestring{#2}%
+		      \else%
+		         \backrefcitedmultistring{#2}%
+		      \fi}%
+}{\relax}    
+
+
+% ****************************************************************
+% PDF/A compliance
+% ****************************************************************
+% TODO not working: requires downloading color specification file in a specific
+% tex folder and other hacks I don't want to spend time with
+% \usepackage[a-1b]{pdfx}
+
+% ********************************************************************
+% Hyperreferences
+% ********************************************************************
+\hypersetup{%
+    %draft,	% = no hyperlinking at all (useful in b/w printouts)
+    colorlinks=true, linktocpage=true, pdfstartpage=3, pdfstartview=FitV,%
+    % uncomment the following line if you want to have black links (e.g., for printing)
+    %colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=3, pdfstartview=FitV,% 
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
+    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+} 
+
+    %pdftitle={\myTitle},%
+    %pdfauthor={\textcopyright\ \myFirstAuthorName and \mySecondAuthorName, \myUni, \myFaculty},%
+    %pdfsubject={},%
+    %pdfkeywords={},%
+    %pdfcreator={pdfLaTeX},%
+    %pdfproducer={LaTeX with hyperref and classicthesis}%
+
+%}   
+
+% ********************************************************************
+% Setup autoreferences
+% ********************************************************************
+% There are some issues regarding autorefnames
+% http://www.ureader.de/msg/136221647.aspx
+% http://www.tex.ac.uk/cgi-bin/texfaq2html?label=latexwords
+% you have to redefine the makros for the 
+% language you use, e.g., american, ngerman
+% (as chosen when loading babel/AtBeginDocument)
+% ********************************************************************
+\makeatletter
+\@ifpackageloaded{babel}%
+    {%
+       \addto\extrasamerican{%
+					\renewcommand*{\figureautorefname}{Figure}%
+					\renewcommand*{\tableautorefname}{Table}%
+					\renewcommand*{\partautorefname}{Part}%
+					\renewcommand*{\chapterautorefname}{Chapter}%
+					\renewcommand*{\sectionautorefname}{Section}%
+					\renewcommand*{\subsectionautorefname}{Section}%
+					\renewcommand*{\subsubsectionautorefname}{Section}% 	
+				}%
+       \addto\extrasitalian{% 
+					\renewcommand*{\paragraphautorefname}{Paragrafo}%
+					\renewcommand*{\subparagraphautorefname}{Paragrafo}%
+					\renewcommand*{\footnoteautorefname}{Nota a pié di pagina}%
+					\renewcommand*{\FancyVerbLineautorefname}{Zeile}%
+					\renewcommand*{\theoremautorefname}{Teorema}%
+					\renewcommand*{\appendixautorefname}{Appendice}%
+					\renewcommand*{\equationautorefname}{Equazione}%        
+					\renewcommand*{\itemautorefname}{Punto}%
+				}%	
+			% Fix to getting autorefs for subfigures right (thanks to Belinda Vogt for changing the definition)
+			\providecommand{\subfigureautorefname}{\figureautorefname}%  			
+    }{\relax}
+\makeatother
+
+% ****************************************************************
+% 7. Last calls before the bar closes
+% ****************************************************************
+
+\usepackage{classicthesis} 
+
+% ****************************************************************

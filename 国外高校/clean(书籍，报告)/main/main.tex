@@ -1,0 +1,129 @@
+\documentclass[%
+    paper=A4,               % paper size --> A4 is default in Germany
+    twoside=true,           % onesite or twoside printing
+    openany,              % doublepage cleaning ends up right side
+    chapterprefix=true,     % prefix for chapter marks
+    12pt,                   % font size
+    headings=normal,        % size of headings
+    bibliography=totoc,     % include bib in toc
+    titlepage=on,           % own page for each title page
+    captions=tableabove,    % display table captions above the float env
+    draft=false             % value for draft version
+]{book}%
+
+
+% =============================================================
+% CONFIGURATION FILES
+% =============================================================
+\input{../configuration/comon_packages.tex}
+\input{../configuration/caption.tex}
+\input{../configuration/sourcecode.tex}
+\input{../configuration/variables.tex}
+\input{../configuration/style.tex}
+\input{../configuration/conftikz.tex}
+\input{../configuration/bibliography.tex}
+\input{../configuration/nomenclature.tex}
+
+% You can add your own package/configuration here
+\input{../configuration/custom_config.tex}
+% =============================================================
+
+\newcommand{\onlyinsubfile}[1]{#1}
+\newcommand{\notinsubfile}[1]{}
+
+% =============================================================
+% BEGIN DOCUMENT
+% =============================================================
+\begin{document}
+
+% change onlyinsubfile in order to know if we are compiling
+% the main document of not (subfiles class)
+\renewcommand{\onlyinsubfile}[1]{}
+\renewcommand{\notinsubfile}[1]{#1}
+
+% Should ref all documents from bib
+\nocite{*}
+
+% =============================================================
+% TITLE PAGE
+% =============================================================
+\subfile{../titlepage/titlepage.tex}\thispagestyle{empty}\cleardoublepage{}
+% =============================================================
+
+% Configuration for the front matter
+\input{../configuration/frontmatter.tex}
+
+% =============================================================
+% FRONT MATTER
+% =============================================================
+% Remerciements
+\input{../frontmatter/remerciements.tex}\clearpage{}
+
+% Résumé en Français
+\input{../frontmatter/abstract_fr.tex}\clearpage{}
+
+% Résumé en anglais
+\input{../frontmatter/abstract_en.tex}\clearpage{}
+
+% Table des matières
+\input{../frontmatter/tableofcontents.tex}\clearpage{}\phantomsection{}
+
+% Table des figures
+\input{../frontmatter/listoffigures.tex}\clearpage{}\phantomsection{}
+
+% Liste des codes sources
+\input{../frontmatter/listoflistings.tex}\clearpage{}\phantomsection{}
+
+% Nomenclature
+\input{../frontmatter/nomenclature.tex}\clearpage{}
+% =============================================================
+
+% Configuration for the main matter
+\input{../configuration/mainmatter.tex}
+
+% =============================================================
+% MAIN MATTER
+% =============================================================
+% Introduction
+\subfile{../introduction/introduction.tex}\cleardoublepage{}
+
+% Chapitre 1
+\subfile{../chap1/chap1.tex}\cleardoublepage{}
+
+% Chapitre 2
+\subfile{../chap2/chap2.tex}\cleardoublepage{}
+
+% Conclusion
+\subfile{../conclusion/conclusion.tex}\cleardoublepage{}
+% =============================================================
+
+
+% =============================================================
+% ANNEXES
+% =============================================================
+\appendix{}
+
+% Appendix : Mathematics
+\subfile{../appendixA/appendixA.tex}\clearpage{}
+
+% Appendix : H Infiny
+\subfile{../appendixB/appendixB.tex}\clearpage{}
+% =============================================================
+
+
+% =============================================================
+% BIBLIOGRAPHIE
+% =============================================================
+\thispagestyle{frontmatterstyle}\pagestyle{frontmatterstyle}
+\backmatter{}
+\clearpage{}
+
+% Bibliography
+\printbibliography[heading=bibliography]
+% =============================================================
+
+% =============================================================
+% END DOCUMENT
+% =============================================================
+\end{document}
+

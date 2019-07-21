@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link href="data:text/css;charset=utf-8,blockquote%20%7B%0Aborder%2Dleft%3A%204px%20solid%20%23dddddd%3B%0Apadding%3A%200%2015px%3B%0Acolor%3A%20%23777777%3B%20%7D%0Ablockquote%20%3E%20%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%3B%20%7D%0Ablockquote%20%3E%20%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%3B%20%7D%0Acode%2C%20tt%20%7B%0Amargin%3A%200%202px%3B%0Apadding%3A%200%205px%3B%0Awhite%2Dspace%3A%20nowrap%3B%0Aborder%3A%201px%20solid%20%23eaeaea%3B%0Abackground%2Dcolor%3A%20%23f8f8f8%3B%0Aborder%2Dradius%3A%203px%3B%20%7D%0Apre%20code%20%7B%0Amargin%3A%200%3B%0Apadding%3A%200%3B%0Awhite%2Dspace%3A%20pre%3B%0Aborder%3A%20none%3B%0Abackground%3A%20transparent%3B%20%7D%0A%2Ehighlight%20pre%20%7B%0Abackground%2Dcolor%3A%20%23f8f8f8%3B%0Aborder%3A%201px%20solid%20%23cccccc%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%2019px%3B%0Aoverflow%3A%20auto%3B%0Apadding%3A%206px%2010px%3B%0Aborder%2Dradius%3A%203px%3B%20%7D%0Apre%20%7B%0Abackground%2Dcolor%3A%20%23f8f8f8%3B%0Aborder%3A%201px%20solid%20%23cccccc%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%2019px%3B%0Aoverflow%3A%20auto%3B%0Apadding%3A%206px%2010px%3B%0Aborder%2Dradius%3A%203px%3B%20%7D%0Apre%20code%2C%20pre%20tt%20%7B%0Abackground%2Dcolor%3A%20transparent%3B%0Aborder%3A%20none%3B%20%7D%0A" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1 id="the-ku-leuven-engineering-masters-thesis-class">The KU Leuven Engineering Master's Thesis Class</h1>
+<p>The kulemt LaTeX class helps you to format your Master's thesis according to the rules of the KU Leuven Faculty of Engineering Science. It can be adapted to other Master's thesis layouts by tweaking a configuration file.</p>
+<p>Bug reports and remarks can be sent to <a href="http://www.kuleuven.be/wieiswie/en/person/00010701">Luc Van Eycken</a>.</p>
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li>Documentation files</li>
+<li>Installation instructions</li>
+<li>Change history (&quot;what's new?&quot;)</li>
+</ul>
+<h2 id="documentation-files">Documentation files</h2>
+<ul>
+<li><code>guidelines_thesis.pdf</code>: guidelines for writing a Master's thesis at the KU Leuven Faculty of Engineering Science</li>
+<li><code>kulemt.pdf</code>: user manual of kulemt (KU Leuven Engineering Master Thesis document class)</li>
+<li><code>kulemt-src.pdf</code>: documented source (of <code>kulemt.cls</code> and <code>kulemt.cfg</code>)</li>
+<li><code>kulemtx.pdf</code>: user manual and documented source of the package kulemtx (kulemt extension)</li>
+<li><code>sjabloon</code>: directory with Dutch templates</li>
+<li><code>template</code>: directory with English templates</li>
+</ul>
+<p>All documentation is available from the <code>kulemt-doc.zip</code> file or from the <code>doc/latex/kulemt</code> directory in the <code>kulemt-tds.zip</code> file. To locate it on your system after installation, read the installation instructions below.</p>
+<h2 id="installation-instructions">Installation instructions</h2>
+<h3 id="quick-and-dirty-installation-on-any-system">Quick and dirty installation on any system</h3>
+<p>This is not the preferred way to install this class, because it only works if all the LaTeX files of your thesis are in a single directory, which we shall call <code>$XYZ</code>, and the documentation must be installed separately. However, if everything else fails or you want to put <code>$XYZ</code> on Overleaf, this is the way to go.</p>
+<ol style="list-style-type: decimal">
+<li><p>Before installing this package, make sure that the memoir class is installed on your TeX system. Check out the documentation of your TeX installation to find out how to do this.</p></li>
+<li><p>Unzip <code>kulemt-tex.zip</code> (from the <a href="ftp://ftp.esat.kuleuven.be/latex/kulemt/">ftp site</a>) into the <code>$XYZ</code> directory.</p></li>
+</ol>
+<p>Optionally, you can install the documentation where ever you want.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Unzip <code>kulemt-doc.zip</code> (from the ftp site) into your preferred documentation directory.</li>
+</ol>
+<h3 id="proper-installation-on-a-unix-like-system">Proper installation on a Unix like system</h3>
+<p>A Unix like system is any recent TeX installation on a Unix machine, MacOS X, or Cygwin on Windows. These TeX installations are all based on TeXLive.</p>
+<ol style="list-style-type: decimal">
+<li><p>Before installing this package, make sure that the memoir class is installed on your TeX system. To check this, issue the command</p>
+<pre><code>kpsewhich memoir.cls</code></pre>
+<p>and check if a file path is echoed.</p></li>
+<li><p>Find a suitable texmf tree to install in. We'll use <code>$ROOT</code> to refer to the root directory of that tree.</p>
+<ul>
+<li><p>For a system-wide installation:</p>
+<pre><code>ROOT=`kpsewhich -expand-var='$TEXMFLOCAL'`</code></pre></li>
+<li><p>For an installation for the current user only:</p>
+<pre><code>ROOT=`kpsewhich -expand-var='$TEXMFHOME'`</code></pre>
+<p>Note: some older installations use HOMETEXMF instead of TEXMFHOME. If no directory name is returned, use the <code>texmf</code> subdirectory of your home directory:</p>
+<pre><code>ROOT=&quot;$HOME/texmf&quot;</code></pre></li>
+</ul>
+<p>Make sure this root directory exists:</p>
+<pre><code>mkdir -p &quot;$ROOT&quot;</code></pre></li>
+<li><p>Unzip <code>kulemt-tds.zip</code> (from the <a href="ftp://ftp.esat.kuleuven.be/latex/kulemt/">ftp site</a>) in <code>$ROOT</code>:</p>
+<pre><code>unzip -d &quot;$ROOT&quot; kulemt-tds.zip</code></pre></li>
+<li><p>If you also want to install the sources, unzip <code>kulemt-src.zip</code> (from the ftp site) in the appropriate directory:</p>
+<pre><code>mkdir -p &quot;$ROOT/source/latex&quot;
+unzip -d &quot;$ROOT/source/latex&quot; kulemt-src.zip</code></pre></li>
+<li><p>Update the filename database (only needed for system-wide installations):</p>
+<pre><code>mktexlsr &quot;$ROOT&quot;</code></pre></li>
+</ol>
+<p>Note: All documentation is available in the <code>$ROOT/doc/latex/kulemt</code> directory.</p>
+<h3 id="proper-installation-on-miktex">Proper installation on MikTeX</h3>
+<p>This also includes MikTeX derived installations such as proTeXt.</p>
+<p>Note: The following procedure has only been tested on MikTeX 2.8. The MikTeX options can be accessed through the start menu MikTeX 2.8 | Maintenance | Settings. For system-wide installations, use &quot;Maintenance (Admin)&quot; instead of &quot;Maintenance&quot;.</p>
+<ol style="list-style-type: decimal">
+<li><p>Before installing this package, make sure that you enabled the automatic installation of missing packages (&quot;Package installation&quot; on the General tab of the MikTeX options)</p></li>
+<li><p>Find a suitable texmf tree to install in. We'll use <code>%ROOT%</code> to refer to the root directory of that tree. On the &quot;Roots&quot; tab of the MikTeX options, you can select any directory, which is not a MikTeX maintained root directory. If you don't find a suitable candidate, create a new directory and add it to that tab.</p></li>
+<li><p>Unzip (using 7-zip or winzip or ...) <code>kulemt-tds.zip</code> (from the <a href="ftp://ftp.esat.kuleuven.be/latex/kulemt/">ftp site</a>) into the <code>%ROOT%</code> directory.</p></li>
+<li><p>If you also want to install the sources, unzip <code>kulemt-src.zip</code> (from the ftp site) in the directory <code>%ROOT%\source\latex</code> .</p></li>
+<li><p>Update the filename database by clicking the &quot;Refresh FNDB&quot; button on the General tab of the MikTeX options.</p></li>
+</ol>
+<p>Note: All documentation is available in the <code>%ROOT%\doc\latex\kulemt directory</code>.</p>
+<h2 id="change-history">Change history</h2>
+<ul>
+<li><p>v1.9 (2017-05-30)</p>
+<ul>
+<li>Pass the <code>oldfontcommands</code> to memoir. (kulemt.cls)</li>
+<li>Update the masters: bwk, cws, ecws, mai, vlit. (kulemt.cfg)</li>
+<li>Add master evlit. (kulemt.cfg)</li>
+</ul></li>
+<li><p>v1.8a (2015-06-01)</p>
+<ul>
+<li>Update Nano options and add some English masters. (kulemt.cfg)</li>
+</ul></li>
+<li><p>v1.8 (2015-05-05)</p>
+<ul>
+<li>Allow for commands of other packages (e.g., cleveref) to globally modify local control sequences such as <code>\@tempa</code>. (kulemt.cls)</li>
+</ul></li>
+<li><p>v1.7 (2013-05-01)</p>
+<ul>
+<li>Logos on front pages completely reworked due to new KU Leuven rules: new layout, Sedes removed, only color logos, combined logo of the KU Leuven and of the Faculty. (kulemt.cls)</li>
+<li>Option &quot;bindcover&quot; becomes obsolete because of new cover page layout. (kulemt.cls)</li>
+<li>Option &quot;promoter&quot; is an alias to option &quot;promotor&quot;. (kulemt.cls)</li>
+<li>Input encoding initialized to ASCII to detect other input encodings. (kulemt.cls)</li>
+<li>Master programs can disallow master options. (kulemt.cls)</li>
+<li>Master option abbreviations are either valid or obsolete. Additionally you can specify the list of abbreviations, where one must be selected from, if the master requires so. (kulemt.cls)</li>
+<li>Masters and options updated to the 2013 situation. (kulemt.cfg)</li>
+<li>Some masters disallow master options. (kulemt.cfg)</li>
+</ul></li>
+<li><p>v1.6b (2012-05-15)</p>
+<ul>
+<li>Master title of &quot;emtk&quot; corrected. (kulemt.cfg)</li>
+</ul></li>
+<li><p>v1.6 (2012-05-13)</p>
+<ul>
+<li>New option &quot;bindcover&quot;. (kulemt.cls)</li>
+<li>The environment &quot;abstract*&quot; has a new optional argument to specify the language. (kulemt.cls)</li>
+<li>&quot;K.U.Leuven&quot; replaced by &quot;KU Leuven&quot;. (kulemt.cls)</li>
+<li>Support for obsolete master options. (kulemt.cls)</li>
+<li>Missing master options generate a warning instead of an error. (kulemt.cls)</li>
+<li>Masters and options updated to the 2012 situation. (kulemt.cfg)</li>
+</ul></li>
+<li><p>v1.5 (2011-08-10)</p>
+<ul>
+<li><code>\latinencoding</code> is T1 only if T1 is the current encoding. This resolves a microtype error when using the default CMR fonts. (kulemt.cls)</li>
+</ul></li>
+<li><p>v1.4 (2011-06-08)</p>
+<ul>
+<li><code>\mainmatter*</code> works again. (kulemt.cls)</li>
+<li>The labels for promoters, assessors and assistants can be defined in the configuration file. (kulemt.cls)</li>
+<li>Support for obsolete masters. (kulemt.cls)</li>
+<li>New master &quot;mse&quot; which replaces the obsolete &quot;mvt&quot;. (kulemt.cfg)</li>
+<li>The label for promoter is changed to &quot;thesis supervisor&quot; and for assistant to &quot;mentor&quot;. (kulemt.cfg)</li>
+</ul></li>
+<li><p>v1.3 (2011-05-13)</p>
+<ul>
+<li>Now compatible with the externalization library of tikz. (kulemt.cls)</li>
+</ul></li>
+<li><p>v1.2 (2010-08-03)</p>
+<ul>
+<li>Disallow empty values for the promoter keyword. (kulemt.cls)</li>
+<li>Don't put empty fields on the front page. (kulemt.cls)</li>
+</ul></li>
+<li><p>v1.1 (2010-03-07)</p>
+<ul>
+<li>Bug fix: Make accented characters work on the front page. (kulemt.cls)</li>
+</ul></li>
+<li><p>v1.0 (2010-03-02)</p>
+<ul>
+<li>Initial version</li>
+</ul></li>
+</ul>
+</body>
+</html>

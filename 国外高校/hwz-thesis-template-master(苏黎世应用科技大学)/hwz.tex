@@ -1,0 +1,89 @@
+\documentclass[11pt,a4paper]{hwz-thesis}
+
+\usepackage[german,ngerman]{babel}
+\usepackage[a4paper,portrait,twoside,inner=3.25cm,outer=3.5cm,top=3.5cm,bottom=4.0cm]{geometry}
+% xcolor must be loaded here, else definecolor warnings show up
+\usepackage{xcolor}
+\usepackage{hwz}
+
+\hypersetup{
+    pdftitle = HWZ Thesis Example,
+    pdfauthor = Ivan Wolf,
+    pdfsubject = Example for the HWZ Thesis LaTeX style,
+    pdfkeywords = example,
+    colorlinks = true,
+    linkcolor = blue,%red,
+    anchorcolor = blue,%red,
+    citecolor = black,%blue,
+    filecolor = black,%red,
+    urlcolor = blue,%red,
+    plainpages = false,
+    bookmarksnumbered = true
+} 
+
+\title{Der Titel}
+\subtitle{Hat natürlich auch einen Untertitel}
+\category{Bachelor Thesis}
+\author{Ivan Wolf}
+\email{$<$ivan.wolf@student.fhhwz.ch$>$}
+\professor{Prof. Dr. Walter Kuhn}
+\assistant{}
+\school{HWZ Hochschule für Wirtschaft}
+\department{Zürcher Fachhochschule}
+\version{}
+\date{\today}
+\copyrightyear{2005}
+
+\makeindex
+\makeglossaries
+\include{glossary}
+
+
+%% The actual document
+%% ---------------------------------------------------------------------------------------------
+\begin{document}
+
+	\frontmatter
+
+% Titelseite
+% @todo Oben auf der zweiten Seite des Titelblatts weitere Angaben (About the Author, Bild? :-), Adresse, Studiengruppe, ...)
+\maketitlepage
+
+% Management Summary
+\abstract{Management Summary}{chapters/abstract}
+
+% Inhaltsverzeichnis
+\toc
+
+% Vorwort
+\preface{Vorwort}{chapters/preface}
+
+	\mainmatter
+
+% The main content
+\include{chapters/sample}
+
+	\appendix
+
+% Anhang
+\include{chapters/appendix}
+
+% Bibliography
+\showbibliography{authordate1}{hwz}
+
+% Abbildungs- und Tabellenverzeichnis
+\listoffigures
+\listoftables
+
+% Glossary
+\showglossaries
+
+% Index
+\showindex
+
+% Insert an empty page at the end
+\theend
+
+% @todo Ehrenwörtliche Erklärung
+	
+\end{document}

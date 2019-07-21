@@ -1,0 +1,8 @@
+% This file is part of the i10 thesis template developed and used by the
+% Media Computing Group at RWTH Aachen University.
+% The current version of this template can be obtained at
+% <http://www.media.informatik.rwth-aachen.de/karrer.html>.
+
+delim_0 "\\dotfill "
+delim_1 "\\dotfill "
+delim_2 "\\dotfill "

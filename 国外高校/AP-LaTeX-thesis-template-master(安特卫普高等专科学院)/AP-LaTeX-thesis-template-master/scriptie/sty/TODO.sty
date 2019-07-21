@@ -1,0 +1,124 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sty/TODO}[05/12/2002 v1.2 TODOs]
+%
+% Package TODO.sty
+% Ce package est la simplicit� m�me donc
+% ne n�cessite aucun vrai commentaire
+% 
+% il d�finit une commande : 
+%   \TODO[texte optionnel] qui place dans la marge un �norme
+%   TODO, avec le texte optionnel plac� au milieu de l'�cran
+%   en italique, s'il n'existe pas il est remplac� par ???
+% 
+% Les messages indiqu�s sont alors mis dans le fichier \jobname.TODO
+% associ� avec les num�ros de page, pour permettre une lecture
+% facile des travaux qu'il reste � faire :-) 
+% 
+% Options au package TODO : 
+% 
+% nodraft : ne pas mettre un gros draft en fond d'�cran
+% 
+% final : version finale : v�rifie qu'il n'y a aucun TODO qui traine (sinon
+% on a une erreur) et implique nodraft.
+% 
+% silent : n'affiche pas les TODO, mais les �crit tout de meme dans le fichier
+% 
+% newstyle : Autre fa�on d'afficher les TODO. Vous avez le droit � un parbox
+% et non plus simplement � un hbox (ie vous pouvez mettre plusieurs lignes
+% comme commentaires)
+% 
+% 
+% 
+
+\newif\ifT@D@dr@ft
+\newif\ifT@D@fin@l
+\newif\ifT@D@newstyle
+\newif\ifT@D@verbose
+\T@D@verbosetrue
+\T@D@dr@fttrue
+\T@D@fin@lfalse
+\T@D@newstylefalse
+
+\DeclareOption{silent}{\T@D@verbosefalse}
+\DeclareOption{nodraft}{\T@D@dr@ftfalse}
+\DeclareOption{newstyle}{\T@D@newstyletrue}
+\DeclareOption{final}{\T@D@dr@ftfalse \T@D@fin@ltrue \T@D@verbosefalse}%
+
+\ProcessOptions%
+\ifT@D@dr@ft%
+\RequirePackage[french]{draftcopy}%
+\fi%
+
+\newtoks\tmpT@ks%
+\newwrite\T@D@file%
+\immediate\openout\T@D@file=\jobname.TODO%
+
+\def\T@D@st@ck{}%
+\def\pushFilen@me#1{\xdef\T@D@st@ck{{#1}{\T@D@st@ck}}}%
+\def\T@D@doDrop#1#2{\gdef\T@D@st@ck{#2}}%
+\def\popFilen@me{\expandafter\T@D@doDrop\T@D@st@ck}%
+\def\T@D@doPeek#1#2{#1}%
+\def\TheFilen@me{\expandafter\T@D@doPeek\T@D@st@ck}%
+\pushFilen@me{\jobname}%
+
+\let\T@D@incl@de=\include%
+
+\def\include#1{%
+  \pushFilen@me{#1}%
+  \T@D@incl@de{#1}% 
+  \popFilen@me%
+}%
+
+\ifT@D@newstyle%
+\newcommand{\affT@D@}[1]{%
+\vskip .1cm%
+\begingroup\par% 
+\hbox to \hsize{\strut\llap{\bf\large $\bigstar$ \`A faire%
+$\bigstar$\quad}\vrule\hfil\parbox{.9\hsize}{\it #1}\hfil}%%
+\par\endgroup%
+\vskip .1cm%
+}%
+\newcommand{\affT@THINK}[1]{}%
+\else%
+\newcommand{\affT@THINK}[1]{}%
+\newcommand{\affT@D@}[1]{%
+\begingroup\par% 
+\hbox to \hsize{\strut\llap{\bf TODO\quad}\hfil{\it #1}\hfil}%%
+\par\endgroup%
+}%
+\fi%
+
+\newcommand{\writeT@D@}[1]{%
+\tmpT@ks={#1}%  
+\immediate\write\T@D@file{(\TheFilen@me) l.\the\inputlineno, p \thepage, s \@currentlabel: \the\tmpT@ks}%
+}%
+
+\newcommand{\TODO}[1][N]{%
+\ifT@D@fin@l%
+\PackageError{TODO}{no TODO allowed in a final version}%
+\fi%
+\ifx#1N%
+\ifT@D@verbose%
+\affT@D@{???}%
+\fi%
+\writeT@D@{unknown TODO}%
+\else%
+\ifT@D@verbose%
+\affT@D@{#1}%
+\fi%
+\writeT@D@{#1}%
+\fi%
+}%
+
+
+\newcommand{\TOTHINK}[1][N]{%
+\ifx#1N%
+\PackageError{TODO}{TOTHINK command must have an argument}%
+\fi
+\ifT@D@verbose%
+\affT@THINK{#1}%
+\fi%
+\writeT@D@{#1}%
+}%
+
+\endinput

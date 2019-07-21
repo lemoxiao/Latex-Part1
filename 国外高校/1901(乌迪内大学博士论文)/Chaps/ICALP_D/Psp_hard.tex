@@ -1,0 +1,36 @@
+\section{An outline of $\Psp$-completeness of SAT \allowbreak and MC for $\D$}\label{sec:outlineSATMC}
+In Appendix~\ref{sec:MChard} we prove in detail that MC for $\D$ formulas is $\Psp$-hard: 
+we provide a reduction from the $\Psp$-complete \mbox{\emph{problem of (non-)universality}} of the language of a non-deterministic finite state automaton ($\NFA$) $\Au$~\cite{holzer}.
+Here we only give an account of the main ideas behind the reduction.
+
+We build a Kripke structure $\Ku_\Au$ and a $\D$ formula $\Phi_\Au$ which, together, allow us to consider \emph{the} deterministic computation of a $\DFA$ $\Du$, equivalent to the original $\NFA$ $\Au$ (i.e., accepting the same language), over some word $w$ \emph{not} accepted by $\Au$ (if such $w$ exists). The computation is built \lq\lq on-the-fly\rq\rq{} (i.e., we do not construct the---possibly exponentially larger---equivalent $\DFA$ $\Du$), and it is \lq\lq captured\rq\rq{} by an initial trace of $\Ku_\Au$, which is a concatenation of suitable subtraces, each one encoding a state $\tilde{q}$ of $\Du$, where $\tilde{q}$ is a subset of  $\Au$-states, by listing the $\Au$-states that belong to $\tilde{q}$. Each $\Du$-state (subtrace) is copied two times along the initial trace: this is necessary to enforce a suitable \lq\lq orientation\rq\rq, something that $\D${} is unaware of, as such logic is completely \lq\lq symmetric\rq\rq.
+
+By this construction and Theorem~\ref{thm:pspaceMC}, the following holds.
+\begin{theorem}
+The MC problem for $\hsDhom$ formulas over finite Kripke structures is $\Psp$-complete.
+\end{theorem} 
+
+Moreover,
+\begin{theorem}
+The MC problem for \emph{constant-length} $\hsDhom$ formulas over finite Kripke structures is $\NLOGSP$-complete.
+\end{theorem} 
+\begin{proof}
+Membership is stated by Theorem~\ref{thm:pspaceMC}.
+To prove the $\NLOGSP$-hardness, there exists a trivial reduction from the ($\NLOGSP$-complete) \emph{problem of \mbox{(non-)reachability}} of two nodes in a directed graph.
+\end{proof}
+
+We now briefly turn to $\D$ SAT,
+outlining its $\Psp$-hardness over finite linear orders.
+Our construction (thoroughly worked out in Appendix \ref{sec:SAThard}) mimics that of Section 3.2 and 3.3 of \cite{DBLP:journals/fuin/MarcinkowskiM14}, in which the authors show 
+that it is possible to build a $\D$ formula $\Psi_{\Ku}$ that encodes a finite Kripke structure $\Ku$.
+We instantiate it over $\Ku_\Au$, getting $\Psi_{\Ku_\Au}$, with the result that
+any finite linear order satisfying $\Psi_{\Ku_\Au}$ represents an initial trace of $\Ku_\Au$.
+In this way we get a reduction from the 
+problem of non-universality of the language of $\Au$ to SAT for $\hsDhom$:
+the language of $\Au$ is non-universal if and only if the formula $\Psi_{\Ku_\Au}\wedge\Phi_\Au$ is satisfiable.
+
+By also recalling Theorem \ref{thm:pspace}, the next result is proved.
+%
+\begin{theorem}\label{cor:pspace_complete}
+The SAT problem for $\hsDhom$ formulas over finite linear orders is $\Psp$-complete.
+\end{theorem}

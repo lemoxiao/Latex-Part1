@@ -1,0 +1,25 @@
+*************************
+Changelog for hmcpset.cls
+*************************
+
+v0.04
+2005/03/10
+ - removed vmargin package, replaced with geometry package in template file
+ - users should replace old template file with new one
+
+v0.03
+2004/09/07
+ - bump up to 0.03 for all versioned files
+
+v0.02
+2004/09/07
+ - made default font palatino, but can change with options
+ - added boxed/unboxed options for problem statements
+
+v0.01
+2004/09/03
+ - created class, based on earlier hw template file
+ - problem, solution environments added to 
+ - automatic placement of ID block with name, etc. at start of document
+ - option to turn off auto placement of block
+ - 1in margins by default

@@ -1,0 +1,42 @@
+% =============================================================
+% Source Code
+% =============================================================
+\usepackage[cache=false]{minted}
+
+\renewcommand{\listingscaption}{\listingscaptionname}
+\renewcommand{\listoflistingscaption}{\listoflistingsname}
+
+\providecommand{\listoflistings}{\listof{listing}{\listoflistingscaption}}
+
+\usemintedstyle{autumn}
+
+\newminted{matlab}{
+    linenos=true,
+    tabsize=4,
+    fontsize=\scriptsize,
+    autogobble=true,
+}
+
+\newminted{python}{
+    linenos=true,
+    tabsize=4,
+    fontsize=\scriptsize,
+    autogobble=true,
+}
+
+\newminted{cpp}{
+    linenos=true,
+    tabsize=4,
+    fontsize=\scriptsize,
+    autogobble=true,
+}
+
+\newmintedfile[pythonfile]{python}{
+    linenos=true,
+    tabsize=4,
+    fontsize=\scriptsize,
+    autogobble=true,
+}
+% =============================================================
+
+

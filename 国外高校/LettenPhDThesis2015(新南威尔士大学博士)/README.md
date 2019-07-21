@@ -1,0 +1,1 @@
+LaTeX source files for my PhD thesis formatted for UNSW Australia (adapted from template authored by Krishna Kumar: https://www.overleaf.com/latex/templates/phd-thesis-template-for-cambridge-university-engineering-department-cued-latex-xelatex-and-lualatex-support-v2-dot-1/kgfqybfnqkdf#.WTwsRMa1tPY)

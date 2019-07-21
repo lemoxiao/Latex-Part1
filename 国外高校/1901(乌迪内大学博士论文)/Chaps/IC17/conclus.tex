@@ -1,0 +1,9 @@
+\section{Conclusions}
+In this chapter, we have proved that the fragments $\AB$, $\AbarE$, $\AAbarB$, and $\AAbarE$ are complete for $\PTIME^{\NP}$, thus joining other (point-based) temporal logics---e.g., $\CTL^+$, $\mathsf{F}\CTL$, and $\mathsf{E}\CTL^+$---whose MC problem is complete for that class~\cite{LMS01} as well. 
+In addition, we have shown that MC for $\A$, $\Abar$, $\AAbar$, $\AbarB$, and $\AE$ has a lower complexity, placed in between $\Th$ and $\Thsq$. This result has been proved by reducing MC to \TBSATM, the problem of deciding the output value of a complex circuit, where some gates feature an $\NP$ oracle.
+
+Both the MC algorithms we propose can be efficiently implemented in practice by means of a polynomial-time procedure which iteratively invokes a SAT-solver, whose
+extreme efficiency can be \lq\lq imported\rq\rq{} in a straightforward way: the procedure just generates some suitable Boolean formulas, feeds the SAT-solver, and stores the results. 
+The modular and repetitive structure of the required Boolean formulas allows us to efficiently generate them and also to exploit the \emph{warm-restart} feature (or \emph{incrementality}) of SAT-solvers to quickly solve formulas following a common structural pattern.
+
+In the next chapter---as we anticipated in the introduction---we will (mostly) put aside complexity issues on $\HS$ MC, and, conversely, focus on expressiveness: we will compare the expressive power of three different semantic versions of $\HS$ among themselves, and to the standard point-based temporal logics $\CTL$, $\LTL$ and $\CTLStar$.

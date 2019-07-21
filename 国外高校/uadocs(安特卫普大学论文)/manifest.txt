@@ -1,0 +1,15 @@
+.
+[       4103]  uamasterthesis-example.tex
+[      74571]  uamasterthesis-example.pdf
+[     288624]  uadocs.pdf
+[       2627]  uadocs.ins
+[      62116]  uadocs.dtx
+[       7745]  uacoursetext-example.tex
+[      94750]  uacoursetext-example.pdf
+[      15948]  ua_color.pdf
+[     509002]  ua_color.eps
+[       1752]  README
+[        398]  manifest.txt
+[        487]  LICENSE
+
+0 directories, 12 files

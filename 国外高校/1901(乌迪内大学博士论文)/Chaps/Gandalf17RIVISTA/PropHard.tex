@@ -1,0 +1,14 @@
+
+The $\Psp$-hardness of MC for $\B\Bbar$ and 
+$\AAbarBBbar$ directly follows from that of the smallest fragment $\HSprop$ (the purely propositional fragment of $\HS$), which is stated by Theorem~\ref{th:hard}: in Appendix~\ref{sec:th:hard}, we prove that $\HSprop$ is hard for $\Psp$ by a reduction from the $\Psp$-complete \emph{universality problem for regular expressions}~\cite{Garey79}, namely, the problem of deciding, for a (standard) regular expression $r$ with $\lang(r) \subseteq \Sigma^*$ and $|\Sigma|\geq 2$, whether $\lang(r)=\Sigma^*$ or not.
+%i.e., all the possible strings over $\Sigma$ belong to the language of $r$).
+
+\begin{theorem}\label{th:hard}
+The MC problem for $\HSprop$ formulas extended with regular expressions over finite Kripke structures is $\Psp$-hard (under polynomial-time reductions).
+\end{theorem}
+
+By Theorem~\ref{th:ABBA} and Theorem~\ref{th:hard} we obtain the following complexity result.
+%
+\begin{theorem}\label{th:glob}
+The MC problem for formulas of any (proper or improper) sub-fragment of $\AAbarBBbar$ (and $\AAbarEEbar$) extended with regular expressions over finite Kripke structures is $\Psp$-complete.
+\end{theorem}

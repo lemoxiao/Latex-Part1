@@ -1,0 +1,25 @@
+% =============================================================
+% Nomenclature
+% =============================================================
+\usepackage[french]{nomencl} % Nomenclature
+\makenomenclature%
+
+\usepackage{etoolbox} % Groups for the nomenclature
+\renewcommand\nomgroup[1]{%
+    \item[\bfseries%
+        \ifstrequal{#1}{P}{Constantes Physiques}{}%
+        \ifstrequal{#1}{N}{Notations}{}%
+        \ifstrequal{#1}{A}{Acronymes}{}%
+    ]
+}
+
+% Used to add units to the nomenclature
+\newcommand{\nomunit}[1]{%
+    \renewcommand{\nomentryend}{\hspace*{\fill}#1}
+}
+
+% inserts some text in between the title and the list symbols. 
+%\renewcommand{\nompreamble}{The next list...}
+% =============================================================
+
+

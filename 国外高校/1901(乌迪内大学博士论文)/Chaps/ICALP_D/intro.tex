@@ -1,0 +1,29 @@
+\lettrine[lines=3]{I}{n this chapter} we focus on the logic 
+$\D$ (also known as \lq\lq the logic of sub-intervals\rq\rq) which features one modality only, corresponding to the Allen interval relation \emph{during}. Since any sub-interval is just an initial sub-interval of an ending one, or, equivalently, an ending sub-interval of an initial one, $\D$ is a (proper) fragment of $\BE$. 
+
+The logic of sub-intervals comes into play in the study of \emph{temporal prepositions in natural language}~\cite{DBLP:journals/ai/Pratt-Hartmann05};
+the connections between the temporal logic of (strict) sub-intervals and 
+\emph{the logic of Minkowski space-time} have been explored by Shapirovsky and Shehtman~\cite{DBLP:journals/logcom/ShapirovskyS05}.
+Finally, the temporal logic of reflexive sub-intervals has been studied for the
+first time by van Benthem, who proved that, when interpreted over dense linear 
+orderings, it is equivalent to the standard modal logic S4~\cite{DBLP:journals/jphil/Benthem91}.
+
+From a computational point of view, $\D$\ is a real character! Its SAT problem is $\Psp$-complete over the class of dense linear orders~\cite{DBLP:journals/logcom/BresolinGMS10,DBLP:conf/aiml/Shapirovsky04} (whereas the problem is undecidable for $\BE$~\cite{DBLP:conf/asian/Lodaya00}), it becomes undecidable when the logic is interpreted over the classes of finite and discrete linear orders~\cite{DBLP:journals/fuin/MarcinkowskiM14}, and the situation is still unknown over the class of all linear orders. As for its expressiveness, unlike $\AAbar$---which is expressively complete with respect to the two-variable fragment of first-order logic for binary relational structures over various linearly-ordered domains~\cite{DBLP:journals/apal/BresolinGMS09,DBLP:journals/jsyml/Otto01}---\emph{three} variables are needed to encode $\D$\ in first-order logic (the two-variable property is a sufficient condition for decidability, but it is not a necessary one). 
+
+
+In this chapter we show that decidability of SAT for $\D$\ over the class of finite linear orders can be recovered \emph{under the homogeneity assumption}. This will allow us to show that also MC under homogeneity is decidable. We first prove that $\D$ SAT is in $\Psp$ by exploiting a suitable contraction method. Then we show that the proposed SAT algorithm can be transformed into a $\Psp$ MC procedure for $\D$\ formulas over finite Kripke structures; $\Psp$-hardness of both problems follows via a reduction from the language universality problem of nondeterministic finite-state automata. 
+
+$\Psp$-completeness of $\D$\ MC strongly contrasts with the case of $\BE$, which we showed to be nonelementarily decidable and hard for $\EXPSPACE$.
+
+\paragraph*{Organization of the chapter.}
+\begin{itemize}
+	\item In Section~\ref{sec:preliminaries} and \ref{sec:compass}, we provide some background knowledge;
+in particular, we introduce the logic $\D$, interval models, and a spatial representation of interval models called \lq\lq \emph{compass structure}\rq\rq.
+	\item In Section~\ref{sec:decidability}, we show the $\Psp$ membership of the SAT problem for $\D$\ over finite linear orders
+(under homogeneity). 
+This complexity result is proved via a contraction technique, applied to the mentioned compass structures, relying on a suitable finite-index equivalence relation.
+	\item In Section~\ref{sec:mc}, we show that the MC problem for  $\D$\ over finite Kripke structures (again, under homogeneity) is in $\Psp$ as well. The proposed MC algorithm is basically a SAT procedure driven by the computation traces of the system model. 
+	\item Finally, 
+in Section \ref{sec:outlineSATMC}, we comment on the $\Psp$-hardness of both problems, referring to
+Appendix~\ref{sec:MChard} and Appendix~\ref{sec:SAThard} for further details. 
+\end{itemize}

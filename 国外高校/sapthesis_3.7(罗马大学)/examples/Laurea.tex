@@ -1,0 +1,218 @@
+% !TEX encoding = UTF-8
+% !TEX program = pdflatex
+% !TEX spellcheck = it_IT
+
+\documentclass[Lau,binding=0.6cm]{sapthesis}
+
+\usepackage{microtype}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenx}
+
+\usepackage{hyperref}
+\hypersetup{pdftitle={Sapthesis class example},pdfauthor={Francesco Biccari}}
+
+% Remove in a normal thesis
+\usepackage{lipsum}
+\usepackage{curve2e}
+\definecolor{gray}{gray}{0.4}
+\newcommand{\bs}{\textbackslash}
+
+% Commands for the titlepage
+\title{Esempio d'uso della classe Sapthesis\\ per una tesi di Laurea}
+\author{Francesco Biccari}
+\IDnumber{1234567}
+\course{Fisica}
+\courseorganizer{Facoltà di Scienze Matematiche, Fisiche e Naturali}
+\AcademicYear{2012/2013}
+\copyyear{2013}
+\advisor{Prof. Nome Cognome}
+\advisor{Dr. Nome Cognome}
+\coadvisor{Dr. Nome Cognome}
+\authoremail{biccari@email.com}
+
+\examdate{16 April 2013}
+\examiner{Prof. Nome Cognome}
+\examiner{Prof. Nome Cognome}
+\examiner{Dr. Nome Cognome}
+\versiondate{\today}
+
+
+
+\begin{document}
+
+\frontmatter
+
+\maketitle
+
+\dedication{Dedicato a\\ Donald Knuth}
+
+\begin{abstract}
+This document is an example which shows the main features of
+the \LaTeXe\ class \texttt{sapthesis.cls} developed by Francesco Biccari
+with the help of GuIT (Gruppo Utilizzatori Italiani di \TeX).
+\end{abstract}
+
+\begin{acknowledgments}
+Ho deciso di scrivere i ringraziamenti in italiano
+per dimostrare la mia gratitudine verso i membri
+del GuIT, il Gruppo Utilizzatori Italiani di \TeX, e, in particolare,
+verso il prof. Enrico Gregorio.
+\end{acknowledgments}
+
+\tableofcontents
+
+% Do not use the starred version of the chapter command!
+\chapter{Capitolo non numerato}
+
+In this manual you can skip the gray text because it is just dummy text.%
+\footnote{This is a footnote.}
+
+\textcolor{gray}{\lipsum[1-22]}
+
+
+\section*{Paragrafo non numerato}
+
+In this manual you can skip the gray text because it is just dummy text.
+
+\textcolor{gray}{\lipsum[1-22]}
+
+
+
+
+\mainmatter
+
+\chapter{Style features of \textsf{sapthesis}}
+
+In this chapter I will discuss my stylistic choices of \textsf{sapthesis}.
+I will show the page layout geometry and I will describe the page style.
+
+\section{Page layout}
+
+The page is fixed at the dimensions of an A4 paper, therefore you have to print your thesis on A4 paper to obtain the best results. The font dimension is fixed at 11\, pt. The text column and the margins are chosen to fill to the best an A4 paper while keeping a reasonable line length (396\, pt) for a good readability. The text height and the text width are in golden ratio (\textasciitilde 1.6180) as well as the outer and inner margins in a two-side document after binding margin removal. Also the top margin (excluding the header) and bottom margin are in the golden ratio. In Fig.~\ref{layout} a sketch of the \textsf{sapthesis} page layout is shown.
+
+\begin{figure}[h]
+\centering
+\setlength{\unitlength}{0.27mm}
+\begin{picture}(420,297)(-210,0)
+\polyline(-210,0)(210,0)(210,297)(-210,297)(-210,0)
+\Line(0,0)(0,297)
+\put(27.05,37.4){\polygon(0,0)(139.2,0)(139.2,223.8)(0,223.8)}
+\put(-27.05,37.4){\polygon(0,0)(-139.2,0)(-139.2,223.8)(0,223.8)}
+\put(27.05,268.16){\polygon(0,0)(139.2,0)(139.2,4.22)(0,4.22)}
+\put(-27.05,268.16){\polygon(0,0)(-139.2,0)(-139.2,4.22)(0,4.22)}
+\end{picture}
+\caption{Page layout scheme of \textsf{sapthesis class} using a zero binding margin.}
+\label{layout}
+\end{figure}
+
+
+\section{Page style}
+
+The captions have a smaller font respect to the text and the label is in boldface. The appearance of the margin notes has been improved.
+They have the same font dimension of the footnotes and are typed in italics.
+Moreover I defined a new command to typeset margin note aligned to the left on the right page and vice versa on the left page.
+Notice that if a binding margin greater than 1.5\, cm is used, the dimensions of the margin notes become too small and very ugly.
+Do not use them in this case.
+
+The mathematical objects, figures and tables are numbered within the chapters (e.g. 1.1, 1.2,\ldots for the first chapter, 2.1, 2.2 for the second one and so on\ldots). See for example the number of this simple equation
+\begin{equation}
+x_{1,2}=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+\end{equation}
+
+
+The title page is automatically composed when the \texttt{\bs maketitle} command is given.
+The parameters needed for the title page, author, title, etc\ldots , are supplied by dedicated commands explained in the next section.
+Two copies of the university logo in \texttt{pdf} format, one for color printing and the other one for black and white printing, are supplied in the \textsf{sapthesis} package. They are shown in Fig.~\ref{fig:largenenough}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{sapienza-MLred-pos}\\[3ex]
+\includegraphics[width=0.7\textwidth]{sapienza-MLblack-pos}
+\caption{Logo of the Sapienza -- University of Rome.}
+\label{fig:largenenough}
+\end{figure}
+
+
+
+\section{About figures and tables}
+
+As regards the image formats, please use vector images as much as possible! Use jpg images only for photographs! pdf\LaTeX\ supports the pdf, jpg and png formats.
+
+A very simple table is show in Tab.~\ref{tab:letters}. Remember to typeset
+always the table caption above the table. Do not use vertical lines.
+
+\begin{table}
+\caption{This is a simple table.}
+\label{tab:letters}
+\centering
+\begin{tabular}{lcc}
+\toprule
+Letter & Test & Test \\
+\midrule
+A & C & E \\
+B & D & F \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\section{A section}
+
+In this manual you can skip the gray text because it is just dummy text.
+
+\textcolor{gray}{\lipsum[1-10]}
+
+
+
+\section{Another section}
+
+In this manual you can skip the gray text because it is just dummy text.
+
+\textcolor{gray}{\lipsum}
+
+
+\appendix
+\chapter{Special commands provided by \textsf{sapthesis}}
+
+\textsf{Sapthesis} provides some special commands, particularly useful for scientific works. You can use for example the roman shape, instead of the italic, for the imaginary unit (\texttt{\bs iu}) and Napier's number (\texttt{\bs eu}):
+\begin{equation}
+\eu^{\iu\pi}+1=0
+\end{equation}
+
+There are also two commands to speed up the writing of derivatives. In the following example we have used the commands \texttt{\bs der} and \texttt{\bs pder}):
+\begin{equation}
+\der{f}{x} \qquad \pder[2]{f}{y}
+\end{equation}
+
+
+\textsf{Sapthesis} provides also 4 commands to improve the writing of subscripts, \texttt{\bs rb} and \texttt{\bs tb}, and superscripts, \texttt{\bs rp} and \texttt{\bs tp}. Two of these commands, \texttt{\bs rb} and \texttt{\bs rp}, can be used both in text and in math mode and compose their argument in roman. The other two, \texttt{\bs tb} and \texttt{\bs tp}, can be used only in text mode and compose their argument as are. Here it is an usage example of \texttt{\bs rb} and \texttt{\bs rp}:
+\[
+a_b \neq a\rb{b}\qquad a^b \neq a\rp{b}
+\]
+And here it is an usage example of \texttt{\bs tb}: \emph{Cu\tb{It} indicates copper bought in Italy}. And a usage example of \texttt{\bs ts}: \emph{Cher G\tp{le} Napol\'eon}.
+
+
+Then several commands for the correct typesetting of unit of measurements are provided. For example the command \texttt{\bs un} typesets its argument in roman and leaves a thin space between the number and the unit: $25\un{m}$, $3.5\un{m/s}$. Other commands are: (\texttt{\bs g}) 45\g, (\texttt{\bs C}) 30\,\C, (\texttt{\bs A}) 12\,\A, (\texttt{\bs micro}) 40\,\micro m, (\texttt{\bs ohm}) 27\,\ohm. 
+
+We have also \texttt{\bs x} as abbreviation of \texttt{\bs times}: \$7 \bs x 10\^{}5\$ gives $7 \x 10^5$. Then \texttt{\bs di} is the differential symbol which automatically insert the correct spacing.
+\[
+\int x \di x
+\]
+
+Finally we have defined the color \textsf{sapred} which is the official color
+of Sapienza -- University of Rome. It is defined as RGB(130,36,51). \textcolor{sapred}{This text is written with the color \textsf{sapred}.}
+
+In the following dummy text you can observe the usage of \texttt{\bs mnote} command which typesets fancy margin notes.
+
+\textcolor{gray}{\lipsum}
+\marginpar{This is a fancy margin note!}
+\textcolor{gray}{\lipsum}
+
+\backmatter
+% bibliography
+%\cleardoublepage
+%\phantomsection
+%\bibliographystyle{sapthesis} % BibTeX style
+%\bibliography{bibliography} % BibTeX database without .bib extension
+
+\end{document}

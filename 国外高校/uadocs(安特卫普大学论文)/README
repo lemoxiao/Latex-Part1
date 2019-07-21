@@ -1,0 +1,46 @@
+************************************************************
+*                                                          *
+*                The uadocs package                        *
+*                                                          *
+************************************************************
+                                                Walter Daems 
+                                    walter.daems(at)ua.ac.be
+                                     paul.levrie(at)ua.ac.be
+
+These class files implement the house style of the University of
+Antwerp, a.o. for course texts. This package originated from the
+Faculty of Applied Engineering.
+Using these class files will make it easy for you to make and 
+keep your documents compliant to this version and future 
+versions of the house style of the University of Antwerp.	
+
+If you think	
+  - there's an error in compliancy w.r.t. the house style,
+  - there's a feature missing in this class file,
+  - there's a bug in this class file,
+please, contact us through e-mail (paul.levrie@ua.ac.be or
+walter.daems@ua.ac.be). We'll provide you with an answer
+and if (and as soon as) possible with a solution to the 
+problem you spotted.
+
+Do you like this class file? You're welcome to send us 
+beer, wine, or just kind words.
+
+License
+=======
+
+see file LICENSE
+
+History
+=======
+
+ *** v1.0 - 2013/05/08 ***
+
+   - Consolidated uacoursetext class
+     course)
+   - Added options:
+     - titlepagetableonly: for submitting your text to the print shop
+     - titlepagenoartwork: to allow printing the black and white contents
+                           on a pre-printed full color cover sheet
+     - qr: adds a QR-mark containing the title page data to the 
+       tableonly cover sheet, or the final page

@@ -1,0 +1,115 @@
+% this file is called up by thesis.tex
+% content in this file will be fed into the main document
+
+%: ----------------------- introduction file header -----------------------
+
+\graphicspath{{1_introduction/figures/}} % specifies where the figures are stored
+
+% ----------------------------------------------------------------------
+%: ----------------------- content ----------------------- 
+% ----------------------------------------------------------------------
+
+
+
+%: ----------------------- HELP: latex document organisation
+% the commands below help you to subdivide and organise your thesis
+%    \chapter{}       = level 1, top level
+%    \section{}       = level 2
+%    \subsection{}    = level 3
+%    \subsubsection{} = level 4
+% note that everything after the percentage sign is hidden from output
+
+
+
+\chapter{Introduction} % top level followed by section, subsection
+
+
+\section{What is this?}  
+
+This is a template for producing PhD-thesis at Stockholm University (SU)\nomenclature{SU}{Stockholm University} using pdf\LaTeX. It could also, with some alterations, be used for Master thesis and Licentiat thesis. Observe that it is designed to be used with pdf\LaTeX and will not work (at least not as in the present state) with \TeX,\LaTeX or pdf\TeX.
+
+The template produces all necessary parts such as half title page, title page, printing info and so on. Simply input the information as called for in the file \emph{thesis.tex}. It also produces a number of parts for the front matter and back matter. Some of these parts are mandatory and some are optional depending on whether it is a monograph or a summary dissertation. Comment or uncomment these to fit your preferences. 
+
+
+
+%\subsection{Name your subsection} % subsection headings are again smaller than section names
+%\subsubsection{Name your subsubsection} % subsubsection headings are again smaller than subsection names
+
+
+
+
+
+
+
+
+%Starch of plants and glycogen of animals consists of $\alpha$-1,4-glycosidic glucose polymers \cite{lastname07}. See figure \ref{largepotato} for a comparison of glucose polymer structure and chemistry. 
+
+%Two references can be placed separated by a comma \cite{lastname07,name06}.
+
+%: ----------------------- HELP: references
+% References can be links to figures, tables, sections, or references.
+% For figures, tables, and text you define the target of the link with \label{XYZ}. Then you call cross-link with the command \ref{XYZ}, as above
+% Citations are bound in a very similar way with \cite{XYZ}. You store your references in a BibTex file with a programme like BibDesk.
+
+
+
+
+
+%\figuremacro{largepotato}{A common glucose polymers}{The figure shows starch granules in potato cells, taken from \href{http://molecularexpressions.com/micro/gallery/burgersnfries/burgersnfries4.html}{Molecular Expressions}.}
+
+%: ----------------------- HELP: adding figures with macros
+% This template provides a very convenient way to add figures with minimal code.
+% \figuremacro{1}{2}{3}{4} calls up a series of commands formating your image.
+% 1 = name of the file without extension; PNG, JPEG is ok; GIF doesn't work
+% 2 = title of the figure AND the name of the label for cross-linking
+% 3 = caption text for the figure
+
+%: ----------------------- HELP: www links
+% You can also see above how, www links are placed
+% \href{http://www.something.net}{link text}
+
+	%\figuremacroW{largepotato}{Title}{Caption}{0.8}
+
+% variation of the above macro with a width setting
+% \figuremacroW{1}{2}{3}{4}
+% 1-3 as above
+% 4 = size relative to text width which is 1; use this to reduce figures
+
+
+
+
+%: ----------------------- HELP: tables
+% Directly coding tables in latex is tiresome. See below.
+% I would recommend using a converter macro that allows you to make the table in Excel and convert them into latex code which you can then paste into your doc.
+% This is the link: http://www.softpedia.com/get/Office-tools/Other-Office-Tools/Excel2Latex.shtml
+% It's a Excel template file containing a macro for the conversion.
+
+%\begin{table}[htdp]
+%\centering
+%\begin{tabular}{ccc} % ccc means 3 columns, all centered; alternatives are l, r
+
+%{\bf Gene} & {\bf GeneID} & {\bf Length} \\ 
+% & denotes the end of a cell/column, \\ changes to next table row
+%\hline % draws a line under the column headers
+
+%human latexin & 1234 & 14.9 kbps \\
+%mouse latexin & 2345 & 10.1 kbps \\
+%rat latexin   & 3456 & 9.6 kbps \\
+% Watch out. Every line must have 3 columns = 2x &. 
+% Otherwise you will get an error.
+
+%\end{tabular}
+%\caption[title of table]{\textbf{title of table} - Overview of latexin genes.}
+% You only need to write the title twice if you don't want it to appear in bold in the list of tables.
+%\label{latexin_genes} % label for cross-links with \ref{latexin_genes}
+%\end{table}
+
+
+
+% There you go. You already know the most important things.
+
+
+% ----------------------------------------------------------------------
+
+
+

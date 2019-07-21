@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# 
+# compile
+# Compile LaTeX sources, staging temporary files in a build directory
+# Usage: ./compile [filename.tex]
+# 
+# If no filenames are given, perform a multipass compile of the full thesis
+# If filename.tex is provided, compile only that subfile
+#
+rootname="thesis"
+work_dir=$PWD
+script_dir=$(dirname "$0")
+
+# ----------------------------------------------------------------------------
+# TeX Processor
+# ----------------------------------------------------------------------------
+if [ "$(which xelatex)" ]; then
+  latex="xelatex"
+else
+  latex="pdflatex"
+fi
+
+# ----------------------------------------------------------------------------
+# Compile
+# ----------------------------------------------------------------------------
+cd "$script_dir"
+if [ "$#" -eq 0 ]; then
+  # Perform a full compile, with cross references and bibliography
+  # Invoked with:
+  #   ./compile
+  document="$rootname.tex"
+  $latex --output-directory=build $document
+  if [ "$?" -ne 0 ]; then
+    # an error occurred in the first run, abort
+    exit
+  fi
+  bibtex "build/$rootname.aux"
+  $latex --output-directory=build $document
+  $latex --output-directory=build $document
+  cp "build/$rootname.pdf" .
+else
+  # Perform a single-pass compile of one of the subfiles
+  # Invoked with:
+  #   ./compile filename.tex
+  document=$1
+  $latex --output-directory=build $document
+fi
+cd "$work_dir"

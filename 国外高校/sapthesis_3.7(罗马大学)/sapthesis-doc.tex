@@ -1,0 +1,648 @@
+% !TEX encoding = UTF-8
+% !TEX program = pdflatex
+% !TEX spellcheck = en_US
+
+\documentclass[a5paper,11pt]{article}
+
+\usepackage[scale=0.85, footskip=0.8cm,heightrounded]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[scaled=1]{newtxtext}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage[varg,cmintegrals,cmbraces]{newtxmath}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{color}
+\definecolor{gray}{gray}{0.4}
+\definecolor{sfondoblu}{rgb}{0.94,0.97,1}
+\usepackage{listings}
+\lstset{language=[LaTeX]TeX,
+	basicstyle=\scriptsize\ttfamily,
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{gray},
+	backgroundcolor=\color{sfondoblu},
+	frameround=tttt,
+	frame=tlrb,
+	escapechar=|,
+	morekeywords={submitdate, cycle,  courseorganizer, AcademicYear, copyyear, Faculty, course, PhDorganizer, IDnumber, advisor, examdate, examiner, authoremail, frontmatter, mainmatter, maketitle, tableofcontents, chapter, appendix, backmatter, dedication, selectlanguage, tutor, tutorcoord, schoolname, schooladdress, schoolwebsite, schoolprincipal},
+	columns=flexible
+}
+
+\usepackage{multicol}
+
+% eliminate dots in the table of contents
+\makeatletter
+\renewcommand{\@dotsep}{10000}
+\makeatother
+
+\usepackage[bookmarks=false,hyperfootnotes=false]{hyperref}
+\hypersetup{
+			colorlinks=true,
+			linkcolor=blue,
+			anchorcolor=blue,
+			citecolor=blue,
+			urlcolor=blue,
+			pdftitle={sapthesis.cls documentation},
+			pdfauthor={Francesco Biccari}
+}
+
+\newcommand{\bs}{\textbackslash}
+\newcommand{\sq}{\textquotesingle}
+
+\author{\small Francesco Biccari\thanks{\href{mailto:biccari@gmail.com}{biccari@gmail.com}}}
+\title{\small Documentation of the \LaTeX\ class\\
+		\Large \textbf{\texttt{sapthesis.cls}}\\
+		\small \vspace{0.2cm} Version 3.7, 2013-07-20
+}
+\date{}
+
+% degree
+  \providecommand{\degree}{\mbox{\textdegree}}
+  \providecommand{\g}{\degree}
+
+  % gradi Celsius
+  \providecommand{\celsius}{\ensuremath{\textrm{\upshape\textdegree}\kern-\scriptspace\mathrm{C}}}
+  \providecommand{\C}{\celsius}
+  
+  % Angstrom
+  \providecommand{\angstrom}{\mbox{\AA}}
+  \providecommand{\A}{\angstrom}
+  
+  % micro
+  \providecommand{\micro}{\mbox{\textmu}}
+  
+  % Ohm
+  \providecommand{\ohm}{\ensuremath{\mbox{\textohm}}}
+  
+  % Napier's number
+  \providecommand{\eu}{\ensuremath{\mathrm{e}}}
+  
+  % imaginary unit
+  \providecommand{\iu}{\ensuremath{\mathrm{i}}}
+  
+  % roman subscript
+  \providecommand*{\rb}[1]{\ensuremath{_\mathrm{#1}}}
+  
+  % roman superscript
+  \providecommand*{\rp}[1]{\ensuremath{^\mathrm{#1}}}
+
+  % differential (only math)
+  \providecommand{\di}{\mathop{}\!d}
+  
+  % derivative and partial derivative (only math)
+  \providecommand*{\der}[3][]{\frac{d^{#1}#2}{d #3^{#1}}}
+  \providecommand*{\pder}[3][]{%
+    \frac{\partial^{#1}#2}{\partial #3^{#1}}%
+  }
+
+  % measurement unit
+  \providecommand*{\un}[1]{\ensuremath{\mathrm{\,#1}}}
+  
+  
+\begin{document}
+\maketitle
+
+\begin{abstract}\noindent
+This document describes how to use \texttt{sapthesis.cls}, a \LaTeX\ document class for the typesetting of the theses of the ``Sapienza -- University of Rome''. The official web page of \textsf{sapthesis} is\\
+{\footnotesize\url{http://biccari.altervista.org/c/informatica/latex/sapthesis.php}}.
+\end{abstract}
+
+\setcounter{tocdepth}{2}
+\renewcommand{\columnseprule}{0.4pt}
+\setlength{\columnsep}{1.5cm}
+
+\addtocontents{toc}{\protect\begin{multicols}{2}}
+{\small
+\tableofcontents}
+
+\clearpage
+
+\section{Introduction}
+
+After several years in my faculty I noticed that usually students spend a lot of time to refine the aesthetic aspect of their \LaTeX\ documents instead of focusing on the content.
+This is against the philosophy of \LaTeX, which was created to relieve the writer from the typesetter's work.
+Apart from the time spent, the resulting documents are obviously all different from each other and good aesthetic results are not always achieved.
+This has a negative impact both on the student's work and on the university.
+Moreover in 2007 the Sapienza university changed completely its
+logo and a lot of strict graphic rules for official documents were introduced.%
+\footnote{A thesis is not an official document and therefore these guidelines can not be applied (private communication with Laura Gobbo, Ufficio Stampa e Comunicazione Sapienza -- Universit\`a di Roma).
+However some Microsoft Word templates, with a completely different style, are provided.
+To give a look to the new Sapienza style see 
+\href{http://www.uniroma1.it/ateneo/chi-siamo/identit\%C3\%A0-visiva-e-marchio}{Identit\`a visiva e marchio} and \href{http://www.uniroma1.it/logotesi}{Template tesi}.}
+
+For these reasons I thought that a \LaTeX\ class for the theses of my 
+university would have been a good idea.
+\textsf{Sapthesis} is the result of my work.
+To give a look to a document composed by \textsf{sapthesis} class see the file
+\texttt{sapthesis-example.pdf}.
+In that file the page layout and the layout choices are explained.
+\textsf{Sapthesis} is released under the terms of the latest version of the 
+\href{http://www.latex-project.org/lppl/}{\LaTeX\ Project Public License}.
+
+I would like to thank the Italian \TeX\ user group (\href{http://www.guitex.org/}{GuIT}) for the help provided, in particular Enrico Gregorio and Claudio Beccari. I would also thank all the users who reported bugs and suggestions.
+
+\section[Requirements\\ and installation]{Requirements and installation}
+
+The simplest way to install \textsf{sapthesis} is by the package manager of 
+your \TeX\ distribution (\TeX\ Live or MiK\TeX). For manual installation see 
+the \texttt{README} file. 
+
+The \textsf{sapthesis} package provides: the 
+\texttt{sapthesis.cls} class file; the documentation 
+\texttt{sapthesis-doc.pdf} (this file) and its source code; the logos of 
+Sapienza university; several usage examples; an English Bib\TeX\ style, called 
+\texttt{sapthesis.bst}, which can be used, obviously, only if you use the 
+Bib\TeX\ way to compose your bibliography and if your thesis is written in 
+English (its usage is not mandatory).
+
+
+\textsf{Sapthesis} explicitely loads the packages \textsf{xkeyval}, \textsf{geometry}, \textsf{ifxetex}, \textsf{xltxtra}, \textsf{fontenc}, \textsf{textcomp}, \textsf{lmodern}, \textsf{caption}, \textsf{graphicx}, \textsf{color}, \textsf{booktabs}, \textsf{amsmath}, \textsf{fancyhdr}.
+Do \textbf{not} include these packages in the preamble of your document!
+
+
+
+
+
+\section{Usage}
+
+A \LaTeX\ document based on \textsf{sapthesis} can be compiled only by the commands
+\texttt{pdflatex} and \texttt{xelatex}. In this manual only \texttt{pdflatex} will be considered.
+
+
+As usual, in order to use this class, you need to call it by
+\begin{lstlisting}
+\documentclass[|\textit{\texttt{options}}|]{sapthesis}
+\end{lstlisting}
+You have to specify the class options for your case (see Sec.~\ref{class_options}). Then you have to provide some fundamental information (title, author, etc\ldots) by specific commands (see Sec.~\ref{commands_titlepage}). Finally remember to follow a source code structure similar to those of the examples given in App.~\ref{sec:PhDexample} and~\ref{sec:LaMexample}.
+Especially the usage of the commands \texttt{\bs frontmatter}, \texttt{\bs mainmatter} and \texttt{\bs backmatter} is mandatory, otherwise the page style of the document will be wrong!
+
+This class supports, at the moment, two languages: Italian and English. English is the default.
+If your thesis contains only English or very few paragraphs in another language, do not use the \texttt{babel} package because completely useless. Instead, if you write in italian, load the \texttt{babel} package with the
+\texttt{italian} option: \texttt{\bs usepackage[italian]\{babel\}}.
+
+\subsection{Class options}
+\label{class_options}
+The following options can be passed to the documentclass command.
+
+\begin{description}
+\item[\texttt{PhD}] Option to typeset a \textit{Dottorato di Ricerca} (PhD) thesis.
+\item[\texttt{LaM}] Option to typeset a \textit{Laurea Magistrale} (Master's degree) thesis.
+\item[\texttt{Lau}] Option to typeset a \textit{Laurea} (Bachelor's degree) thesis.
+\item[\texttt{MasterP}] Option to typeset a thesis for a \textit{Master di primo livello} (First level master).
+\item[\texttt{MasterS}] Option to typeset a thesis for a \textit{Master di secondo livello} (Second level master).
+\item[\texttt{TFA}] Option to typeset the final report for a \textit{Tirocinio Formativo Attivo}.
+\item[\texttt{Specialization}] Option to typeset a thesis for a \textit{Specializzazione}.
+
+\item[\texttt{draft}] The usual \texttt{draft} option of the \LaTeX\ Standard Classes.
+\item[\texttt{oneside}] The usual \texttt{oneside} option of the \LaTeX\ Standard Classes.
+\item[\texttt{twoside}] (default) The usual \texttt{twoside} option of the \LaTeX\ Standard Classes.
+
+\item[\texttt{bn}] This option typesets the title page in black and white
+(using the b/w logo, \texttt{sapienza-MLblack-pos.pdf}, instead of the colored one) and passes the \texttt{monochrome} option to \textsf{color} and 
+\textsf{xcolor} packages.
+
+\item[\texttt{binding=\textsl{length}}] (zero default binding)
+The value of this option is an offset of the text column.
+It is useful to take into account the margin for the binding (ask to your bookbinder for information).
+\item[\texttt{noexaminfo}] Remove the final exam informations.
+\item[\texttt{italian} or \texttt{english}] Explicitly declare the language of 
+the title page. Useful when you want to write the title page in a language 
+and the thesis in a different language.
+\item[\texttt{nodefaultfont}] Avoid the loading of packages \textsf{fontenc}, \textsf{textcomp} and \textsf{lmodern}.
+\item[\texttt{romandiff}] See App.~\ref{sec:usefulcommands}.
+\item[\texttt{fem}] Use the feminine (only Italian): ``candidata'' instead of ``candidato''.
+\end{description}
+
+\subsection[Commands for the\\ title page]{Commands for the title page}
+\label{commands_titlepage}
+
+As usual, the title page is generated by the \texttt{\bs maketitle} command.
+It needs some information that you can supply by the following commands
+in the preamble.
+\begin{description}
+\item[\texttt{\bs title\{\dots\}}] Mandatory.
+
+\item[\texttt{\bs author\{\dots\}}] Mandatory
+
+\item[\texttt{\bs IDnumber\{\dots\}}] Mandatory. Your ID number (\textit{matricola} in Italian)
+
+\item[\texttt{\bs course[\dots]\{\dots\}}] Mandatory. Use the official Italian name of the course. The optional argument specifies the course name in another language, which is needed in the case of PhD's theses because of the ``requirements'' declaration.
+
+\item[\texttt{\bs courseorganizer\{\dots\}}] Mandatory.
+
+\item[\texttt{\bs cycle\{\dots\}}] Mandatory only for PhD's. Use the form: \texttt{\bs cycle\{XXII\}}
+
+\item[\texttt{\bs submitdate\{\dots\}}] Mandatory. Use the form \texttt{\bs submitdate\{April 2009\}} for PhD's and the form \texttt{\bs submitdate\{2009/2010\}} for Laurea theses.
+
+\item[\texttt{\bs AcademicYear\{\dots\}}] Alias for \texttt{\bs submitdate}.
+
+\item[\texttt{\bs copyyear\{\dots\}}] Mandatory. Copyright year (usually the 
+graduation year). 
+
+\item[\texttt{\bs advisor\{\dots\}}] You must specify at least one advisor.
+If you have more than one advisor, put several advisor commands in the correct order:\\
+\texttt{\bs advisor\{Prof.~Pippo\}} \texttt{\bs advisor\{Dr.~Pluto\}}
+
+\item[\texttt{\bs coadvisor\{\dots\}}] Optional. Co-advisors of the thesis. 
+Same syntax of the \texttt{\bs advisor} command. 
+
+\item[\texttt{\bs tutor\{\dots\}} and \texttt{\bs tutorcoord\{\dots\}}] Only for TFA. Mandatory.
+
+\item[\texttt{\bs director\{\dots\}}] Only for Specialization. Mandatory.
+
+\item[\texttt{\bs authoremail\{\dots\}}] Mandatory. Email of the thesis author.
+It is automatically hyper-linked if \textsf{hyperref} package is loaded.
+
+\item[\texttt{\bs examdate\{\dots\}}] Optional. Date of the final exam. 
+Use the form\\ \texttt{\bs examdate\{16 February 2010\}}.
+
+\item[\texttt{\bs examiner\{\dots\}}] Optional. Specifies the members of the
+board of examiners of the final exam. Usage similar to \texttt{\bs advisor} command.
+
+\item[\texttt{\bs schoolname\{\dots\}}] Only for TFA. Mandatory. Name of the school.
+\item[\texttt{\bs schooladdress\{\dots\}}] Only for TFA. Mandatory. School's address.
+\item[\texttt{\bs schoolwebsite\{\dots\}}] Only for TFA. Optional. School's website.
+\item[\texttt{\bs schoolprincipal\{\dots\}}] Only for TFA. Mandatory. School's principal.
+
+\item[\texttt{\bs versiondate\{\dots\}}] Optional. Date version of the thesis.
+
+\item[\texttt{\bs website\{\dots\}}] Optional. Thesis website. Automatically 
+hyper-linked if \textsf{hyperref} package is loaded.
+
+\item[\texttt{\bs ISBN\{\dots\}}] Optional. ISBN
+\end{description}
+
+
+
+\subsection[Other commands\\ and environments]{Other commands and environments}
+
+\begin{description}
+
+\item[\texttt{\bs dedication\{\dots\}}] A command to compose the dedication.
+
+\item[\texttt{abstract}] An environment to compose the abstract of your document. This environment has an optional parameter to choose the title of the abstract section.
+If you use a language for the abstract different from that of the thesis, consider the \texttt{\bs selectlanguage\{\dots\}} command provided by the \texttt{babel} package.
+
+\item[\texttt{acknowledgments}] An environment to compose the acknowledgments of your document. This environment has an optional parameter to choose the title of the acknowledgments section.
+If you use a language for the acknowledgments different from that of the thesis, consider the \texttt{\bs selectlanguage\{\dots\}} command provided by the \texttt{babel} package.
+
+
+\end{description}
+
+The \texttt{sapthesis} class defines also the color \texttt{sapred} which is the \emph{Sapienza red}: RGB(130,36,51).
+This color is switched to black if the \texttt{bn} option is in use. Example of usage: \texttt{\ldots \bs textcolor\{sapred\}\{blah blah blah\}\ldots}
+
+
+\section{Recommendations}
+
+\begin{itemize}
+
+\item Do \textbf{not} change the default layout and do \textbf{not} use packages which can modify the layout of your thesis. However if you want to change the interline spacing, do not use the \texttt{\bs linespread} command. Load instead the \textsf{setspace} package and use the \texttt{\bs onehalfspacing} command.
+
+\item Do \textbf{not} load the following packages in the preamble of your document because already loaded by \textsf{sapthesis}: \textsf{xkeyval}, \textsf{geometry}, \textsf{ifxetex}, \textsf{xltxtra}, \textsf{fontenc}, \textsf{textcomp}, \textsf{lmodern}, \textsf{caption}, \textsf{graphicx}, \textsf{color}, \textsf{booktabs}, \textsf{amsmath}, \textsf{fancyhdr}.
+
+\item As you already should know, \LaTeX\ can process only documents
+in pure ASCII. If you want to insert \emph{directly} other characters, not included in the 128 ASCII
+characters (for example accented letters), you have to use a particular text encoding for your source file. Then you have to ``tell'' to \LaTeX\ which encoding you have chosen by the packages \texttt{inputenc} or \texttt{inputenx}.
+
+However, if your thesis is in English, I suggest to avoid the use of a particular text encoding for the source code because  you will insert non ASCII characters very seldom. For this reason it is better to write these characters by the usage of the \LaTeX\ commands (for example \texttt{\bs\sq e} for the \'e letter), avoiding to load \texttt{inputenc} or \texttt{inputenx} package. This has another advantage, in fact your source file will be very portable.
+
+\item Respect the following thesis structure:
+
+\begin{itemize}
+\item Title page (\texttt{\bs maketitle} command)
+\item Dedication (\texttt{\bs dedication} command)
+\item Abstract (\texttt{abstract} environment)
+\item Acknowledgements (\texttt{acknowledgments} environment)
+\item Table of contents (\texttt{\bs tableofcontens} command)
+\item Chapters
+\item Appendices
+\item Bibliography
+\end{itemize}
+
+\item It is recommended to avoid or limit the acknowledgments in a thesis, it 
+is not very professional. The dedication should be enough.
+
+\item Do not put any preface in your thesis. The preface should be written only by an eminent expert in the field to comment exceptionally important results of the student.
+
+\item Usually tables and figures are centered. Remember that, according to the typographic rules, the table captions should be placed \textbf{above} the table, whereas the figure caption should be placed \textbf{below} the figure.
+
+\item If the figure has a small width, it is possible to put the figure caption
+aside the figure using the \texttt{sidecap} package (not preloaded in \texttt{sapthesis.cls}).
+
+\item Avoid the use of colors unless really necessary. Remember that the figures should be readable even if they are printed in gray scale!
+
+\item Subscripts and superscripts should be in italic if they represent variable quantities, whereas should be in roman if they are simply labels.
+
+\item The name of operators should be typed in roman. Example: use $\sin$ (\texttt{\$\bs sin\$}) instead of $sin$ (\texttt{\$sin\$}).
+
+\item The margin notes are rarely used in scientific documents and should \textbf{not} be used in a thesis.
+
+\item Do not divide the bibliography per chapter unless it is \textbf{really} necessary.
+This will save you from wasting a lot of time to prepare your \LaTeX\ source code.
+Order your bibliography alphabetically according to the
+first author surname: this order is very useful, contrary to the other typical order, the citation order. In this regard
+I recommend the usage of the \texttt{backref} package.
+
+\end{itemize}
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\addcontentsline{toc}{section}{\refname}
+\begin{thebibliography}{9}
+\item[]
+\hskip-\leftmargin
+\begin{minipage}{\textwidth}
+Many people want to (or are compelled to) write in \LaTeX\ without studying
+a basic manual. Here follows a brief list of documents, especially useful for
+italian students.
+\end{minipage}
+\medskip
+\bibitem{Pantieri_Arte}
+\href{http://www.lorenzopantieri.net/LaTeX_files/ArteLaTeX.pdf}{\textsc{L. 
+Pantieri \& T. Gordini}, \textit{L'arte di scrivere con \LaTeX}, (2012)}
+
+\bibitem{Pakin_Symbol}
+\href{http://www.ctan.org/tex-archive/info/symbols/comprehensive/symbols-a4.pdf}{\textsc{S. Pakin}, \textit{The comprehensive \LaTeX\ symbol list}, (2009)}
+
+\bibitem{Gregorio_Pacchetti}
+\href{http://profs.sci.univr.it/~gregorio/breveguida.pdf}{\textsc{E. Gregorio}, \textit{\LaTeX: breve guida ai pacchetti di uso pi\`u comune}, (2010)}
+\end{thebibliography}
+
+
+\appendix
+
+\clearpage
+\section{PhD thesis example}
+\label{sec:PhDexample}
+
+\begin{lstlisting}
+% !TEX encoding = UTF-8
+% !TEX program = pdflatex
+% !TEX spellcheck = en_US
+
+\documentclass[binding=0.6cm,PhD]{sapthesis}
+
+\usepackage{microtype}
+\usepackage{hyperref}
+\hypersetup{pdftitle={My thesis},pdfauthor={Francesco Biccari}}
+
+\title{My thesis}
+\author{Francesco Biccari}
+\IDnumber{123456}
+\course[Philology]{Filologia}
+\courseorganizer{Scuola di Dottorato in Scienze Filologiche}
+\cycle{XXII}
+\submitdate{October 2009}
+\copyyear{2009}
+\advisor{Prof. Caio}
+\advisor{Dr. Sempronio}
+\authoremail{pippo@pippo.com}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\dedication{Dedicated to\\ Donald Knuth}
+
+\begin{abstract}
+This thesis deals with myself.
+\end{abstract}
+
+\tableofcontents
+
+\mainmatter
+\chapter{Introduction}
+...
+
+\backmatter
+\cleardoublepage
+\phantomsection % Give this command only if hyperref is loaded
+\addcontentsline{toc}{chapter}{\bibname}
+% Here put the code for the bibliography. You can use BibTeX or
+% the BibLaTeX package or the simple environment thebibliography.
+
+\end{document}
+\end{lstlisting}
+
+
+\clearpage
+\section[Laurea (Magistrale)\\ thesis example]{Laurea (Magistrale) thesis example}
+\label{sec:LaMexample}
+
+\begin{lstlisting}
+% !TEX encoding = UTF-8
+% !TEX program = pdflatex
+% !TEX spellcheck = it_IT
+
+\documentclass[binding=0.6cm,Lau]{sapthesis} % LaM for a Laurea Magistrale
+
+\usepackage{microtype}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenx}
+\usepackage{hyperref}
+\hypersetup{pdftitle={La mia tesi},pdfauthor={Francesco Biccari}}
+
+\title{La mia tesi}
+\author{Francesco Biccari}
+\IDnumber{123456}
+\course{Fisica}
+\courseorganizer{Facolt|\`a| di Scienze Matematiche, Fisiche e Naturali}
+\AcademicYear{2011/2012}
+\copyyear{2012}
+\advisor{Prof. Caio}
+\advisor{Dr. Sempronio}
+\authoremail{pippo@pippo.com}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\dedication{Dedicato a\\ Donald Knuth}
+
+\begin{abstract}
+Questa tesi parla di me.
+\end{abstract}
+
+\tableofcontents
+
+\mainmatter
+\chapter{Introduzione}
+...
+
+\backmatter
+\cleardoublepage
+\phantomsection % Give this command only if hyperref is loaded
+\addcontentsline{toc}{chapter}{\bibname}
+% Here put the code for the bibliography. You can use BibTeX or
+% the BibLaTeX package or the simple environment thebibliography.
+
+\end{document}
+\end{lstlisting}
+
+
+\clearpage
+\section{TFA thesis example}
+\label{sec:TFAexample}
+
+\begin{lstlisting}
+% !TEX encoding = UTF-8
+% !TEX program = pdflatex
+% !TEX spellcheck = it_IT
+
+\documentclass[binding=0.6cm,TFA]{sapthesis}
+
+\usepackage{microtype}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenx}
+\usepackage{hyperref}
+\hypersetup{pdftitle={La mia tesi},pdfauthor={Francesco Biccari}}
+
+\title{La mia tesi}
+\author{Francesco Biccari}
+\IDnumber{123456}
+\course{A049 Matematica e Fisica}
+\courseorganizer{Facolt|\`a| di Scienze Matematiche, Fisiche e Naturali}
+\AcademicYear{2012/2013}
+\copyyear{2013}
+\advisor{Prof. Caio}
+\tutor{Dr. Sempronio}
+\tutorcoord{Dr. Sempronio}
+\authoremail{pippo@pippo.com}
+
+\schoolname{Liceo Scientifico Louis Pasteur}
+\schooladdress{Via G. Barellai 130, 00135 Roma}
+\schoolwebsite{http://www.liceopasteur.it/}
+\schoolprincipal{Prof. Diego Armando Maradona}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\dedication{Dedicato a\\ Donald Knuth}
+
+\tableofcontents
+
+\mainmatter
+\chapter{Introduzione}
+...
+
+\backmatter
+\cleardoublepage
+\phantomsection % Give this command only if hyperref is loaded
+\addcontentsline{toc}{chapter}{\bibname}
+% Here put the code for the bibliography. You can use BibTeX or
+% the BibLaTeX package or the simple environment thebibliography.
+
+\end{document}
+\end{lstlisting}
+
+\clearpage
+\section{Other useful commands}
+\label{sec:usefulcommands}
+
+\begin{description}
+\item[\texttt{\bs eu}] Napier's number, $\mathrm{e}$,  in roman.
+
+\item[\texttt{\bs iu}] Imaginary unit, $\mathrm{i}$,  in roman.
+
+\item[\texttt{\bs der[\dots]\{\dots\}\{\dots\}}] Derivative. The optional parameter is the order of the derivative. The following two arguments are the numerator and the denominator. The differential symbol is automatically inserted.
+
+\item[\texttt{\bs pder[\dots]\{\dots\}\{\dots\}}] Partial derivative. Same as above
+
+\item[\texttt{\bs rb\{\dots\}}] Roman suBscript
+
+\item[\texttt{\bs rp\{\dots\}}] Roman suPerscript
+
+\item[\texttt{\bs tb\{\dots\}}] Text suBscript
+
+\item[\texttt{\bs tp\{\dots\}}] Text suPerscript
+
+\item[\texttt{\bs un\{\dots\}}] Useful command to typeset measurement units in the correct way, e.g. \texttt{25\bs un\{m/s\}},
+\texttt{13\bs un\{kg\bs ,cm\^{}\{-3\}\}}. It can be used both inside or outside the math environment.
+For heavy usage of measurement units and to insert numbers in the form
+\texttt{1.4e-5}, the package \textsf{siunitx} is recommended.
+
+\item[\texttt{\bs mnote\{\dots\}}] Fancy margin notes
+
+\item[\texttt{\bs g}] Shortcut for the \texttt{\bs degree} command. Example: \texttt{45\bs g} produces 45\g.
+
+\item[\texttt{\bs C}] Shortcut for the \texttt{\bs celsius} command. Example: \texttt{37\bs ,\bs C} produces 37\,\C. (Not available in math mode compiling with \texttt{xelatex}).
+
+\item[\texttt{\bs A}] Angstrom. Example: \texttt{10\bs ,\bs A} produces 10\,\A.
+
+\item[\texttt{\bs micro}] Micro prefix. Example: \texttt{7\bs ,\bs micro m} produces 7\,\micro m.
+
+\item[\texttt{\bs ohm}] Ohm. Example: \texttt{100\bs ,\bs ohm} produces 100\,\ohm.
+
+\item[\texttt{\bs di}] Differential symbol with automatic spacing.\\ Example: 
+\texttt{\$\bs int x \bs di x\$} produces $\int x \di x$. If you prefer the differential symbol in roman ($\mathrm{d}$) you can give the option \texttt{romandiff} in the document class options.
+
+\item[\texttt{\bs x}] Shortcut for the \texttt{\bs times} command. E.g.: \texttt{\$7 \bs x 10\^{}5\$} produces $7 \times 10^5$.
+
+\end{description}
+
+
+\section{A very brief introduction to the \TeX\ world}
+
+\TeX, the document preparation system designed by Donald Knuth in 1978, is a program to typeset documents.
+It is a mark-up macro language: you write a source text decorated with \TeX\ commands, which is then compiled to obtain the final product, a document in pdf format in our case. 
+\LaTeX\ is just a set of macros written in \TeX\ to simplify the writing of the source text: you can think about it as a simpler programming language with respect to \TeX. A source code written in \LaTeX\ can be compiled by several ``compilers': \texttt{pdflatex} (the most common), or \texttt{xelatex}, or others. The following list of \LaTeX\ manuals, may be especially useful for Italian authors.
+
+\begin{itemize}
+\item \href{http://www.lorenzopantieri.net/LaTeX_files/ArteLaTeX.pdf}{\textsc{L. 
+Pantieri \& T. Gordini}, \textit{L'arte di scrivere con} \LaTeX, (2012)}
+
+\item \href{http://www.ctan.org/tex-archive/info/symbols/comprehensive/symbols-a4.pdf}{\textsc{S. Pakin}, \textit{The comprehensive} \LaTeX\ \textit{symbol list}, (2009)}
+
+\item \href{http://profs.sci.univr.it/~gregorio/breveguida.pdf}{\textsc{E. Gregorio}, \LaTeX\textit{: breve guida ai pacchetti di uso pi\`u comune}, (2010)}
+\end{itemize}
+
+In order to use \LaTeX, you have to install a \TeX\ distribution. It contains the compilers, several fonts and other files needed by the compilers and also many \emph{packages}, which can be thought as libraries or extensions of \LaTeX. The most famous distributions are \href{http://miktex.org/}{MiKTeX} (available only for Windows), \href{http://www.tug.org/texlive/}{TeX Live} (available both for Windows and Linux) and \href{http://www.tug.org/mactex/2011/}{MacTeX} (available only for Mac OS).
+
+Finally we discuss the editor, that is the program used to write your source file. Since a source file written in \LaTeX, like in any other programming language, is a simple text file, you can write your code with any text editor you want (for example Notepad in Windows). However the suggested editors are:
+\begin{itemize}
+\item \href{http://tug.org/texworks/}{TeXworks}. Already installed with any \TeX\ distribution. Very simple and powerful. Use TeXworks if you are not an expert. Enrico Gregorio has written a very good and brief TeXworks manual in Italian, which can be found at: {\small \url{http://profs.sci.univr.it/~gregorio/egtex.html}}.
+
+\item \href{http://texstudio.sourceforge.net/}{TeXstudio} (cross-platform), \href{http://www.xm1math.net/texmaker/}{TeXmaker} (cross-platform), \href{http://pages.uoregon.edu/koch/texshop/}{TeXshop} (only for Mac), \href{http://kile.sourceforge.net/}{Kile} (only for Linux). Powerful editors.
+
+\item \textbf{Avoid} other editors unless you know what you are doing!
+
+\end{itemize}
+
+Finally we explain how to compile the example document provided in the \textsf{sapthesis} package. Double click on the file \texttt{sapthesis-example.tex}. 
+TeXworks should start showing the content of that file. 
+The \texttt{pdflatex} compiler should be automatically selected thanks to the \emph{magic lines} placed at the beginning of the file.
+Now, in order to compile, press the green button. 
+At the end of the compilation the resulting pdf appears in a separate window. Remember to compile at least three times, because \LaTeX\ needs more than one compilation to correctly resolve the internal cross references (for example for the table of contents composition, or when you refer to a figure by the \texttt{\bs label}\,--\,\texttt{\bs ref}\,/\,\texttt{\bs pageref} mechanism).
+
+
+
+\section{Using LyX}
+
+LyX is an advanced \LaTeX\ editor which does not simply show the source code like any text editor, but instead it renders maths, images, tables and some text formatting commands. However this ``layer'' between the writer and the real source code is sometimes frustrating and many authors discourage the usage of LyX.
+
+Using \textsf{sapthesis} with LyX is quite straightforward.
+\begin{itemize}
+\item
+Install \textsf{sapthesis} by the package manager of your \TeX\ distribution or manually.
+
+\item
+In LyX, first of all, go in \textsf{Tools > Preferences > Language Settings > Language} and choose "none" in Language package. This step is necessary because LyX not only loads babel with the desired language, but it passes the language also as an option for the class! This triggers an error in many classes.
+
+\item
+In LyX, go in \textsf{View > View Source}. This step is not necessary but it is very useful to observe the \LaTeX\ code produced by LyX (on the right choose ``Complete source'').
+
+\item
+Copy the file \texttt{sapthesis.layout} in the directory\\ \texttt{C:\bs Program Files\bs Lyx20\bs Resources\bs layouts\bs}\\ and then, in LyX, click on \textsf{Tools > Reconfigure}. 
+\end{itemize}
+
+Now you are ready to use \textsf{sapthesis} in LyX.
+Create a new document and go in \textsf{Document > Settings > Document Class}. Here you can choose \textsf{sapthesis} as the class for the document and write the class options. Then you have to write the preamble of the document in \textsf{Document > Settings > LaTeX Preamble}.
+
+
+
+
+\addtocontents{toc}{\protect\end{multicols}}
+\end{document}

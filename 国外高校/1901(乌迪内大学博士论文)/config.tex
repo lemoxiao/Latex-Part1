@@ -1,0 +1,128 @@
+\usepackage[a-1b]{pdfx}%per PDF/A
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage[babel=true,final]{microtype}
+\usepackage{cmap}
+\usepackage[tt=false, type1=true]{libertine}
+%%%%\usepackage[varqu, scaled=0.95]{zi4}
+\usepackage[libertine]{newtxmath}
+\usepackage{lettrine}
+
+% \usepackage[scaled=.98,sups,osf]{XCharter}% osf in text, lining figures in math
+% \usepackage[scaled=1.04,varqu,varl]{inconsolata}% inconsolata typewriter
+% \usepackage[type1]{cabin}% sans serif
+% \usepackage[charter,vvarbb,scaled=1.07]{newtxmath}
+% \usepackage[cal=boondoxo]{mathalfa}
+% \linespread{1.04}
+
+\usepackage[T1]{fontenc}
+
+\usepackage[inner=1.8cm,outer=1.5cm,top=1.8cm,bottom=1.5cm,heightrounded]{geometry}
+\usepackage{emptypage} %elimina le testatine dalle pagine bianche
+\usepackage{nopageno} %toglie i numeri di pagina dalle pagine coi titoli dei capitoli
+
+\usepackage{graphicx,rotating}
+
+\usepackage{tikz,tikz-qtree}
+\usetikzlibrary{positioning,arrows,automata,patterns,decorations.pathmorphing,decorations.pathreplacing,fit, patterns, calc,shapes}
+\usepackage{xspace}
+\usepackage{xcolor}
+%ALGORITMI
+\usepackage[chapter]{algorithm}
+\usepackage[noend]{algpseudocode}
+\algrenewcommand{\algorithmiccomment}[1]{\hfill$\triangleleft$ {\small #1}}
+\algrenewcommand\algorithmicindent{1em}
+% \makeatletter
+% \renewcommand{\ALG@beginalgorithmic}{\small}
+% \makeatother
+\algloopdefx{Return}[1]{\textbf{return} #1}
+\algblock{Case}{EndCase}
+\algcblock[Case]{Case}{case}{EndCase}
+
+\usepackage{multirow,multicol}
+\usepackage{hhline}
+
+%\usepackage[backend=biber,style=alphabetic,citestyle=alphabetic,sorting=nyt,maxbibnames=99,giveninits=true,hyperref,backref]{biblatex}
+\usepackage[autostyle=true]{csquotes}
+
+\usepackage[pdfa]{hyperref}
+%\makeatletter
+\hypersetup{%pdfauthor={Alberto Molinari}, pdftitle={Model checking: the interval way},
+    unicode=true, colorlinks=true, allcolors=blue, hypertexnames=false, plainpages=false}
+%\makeatother
+
+%%%PERSONALIZZAZIONE
+\usepackage{sectsty}
+\usepackage[Bjornstrup]{fncychap}
+\usepackage{fancyhdr}
+%TESTATINE
+\pagestyle{fancy}
+\addtolength{\headwidth}{20pt}
+\fancyhf{}
+\fancyhead[LE]{\bfseries\sffamily\nouppercase{\makebox[35pt][l]{\textbf{\thepage\hfill$\diamond$\hfill}}\leftmark}}
+\fancyhead[RO]{\sffamily\nouppercase{\rightmark\makebox[35pt][c]{\hfill$\diamond$\hfill\textbf{\thepage}}}}
+\setlength{\headheight}{14pt}
+
+%PERSONALIZZA TITOLO
+%\ChNameAsIs
+\ChTitleVar{\raggedleft\LARGE\sffamily\bfseries}
+%\ChNameVar{\centering\huge\sffamily\bfseries}
+
+%PERSONALIZZA SEZIONI
+\allsectionsfont{\sffamily}
+\sectionfont{
+	\sffamily
+	\sectionrule{0pt}{0pt}{-5pt}{0.5pt}
+}
+
+%CAPTIONS
+\usepackage[labelfont={bf}, font={small,sf}]{caption}
+
+%MINITOC
+\usepackage[tight,english]{minitoc} %\minitoc\mtcskip dopo ogni capitolo
+%\mtcsetoffset{minitoc}{-3.0em}
+\setlength{\mtcindent}{0.5em}
+\renewcommand{\mtifont}{\Large\bfseries\sffamily}
+\setlength{\mtcskipamount}{2\bigskipamount}
+
+%LISTE
+\usepackage{enumitem}
+\setlist{parsep=0pt plus 1pt, itemsep=2.0pt plus 1.0pt minus 1.0pt, topsep=3pt plus 1pt minus 1 pt}
+\setlist[enumerate]{font=\sffamily\bfseries}
+\setlist[enumerate,1]{label=\arabic*.}
+\setlist[enumerate,2]{label=\alph*.}
+\setlist[enumerate,3]{label=\roman*.}
+
+%BLOCCHI COLORATI
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+%MATEMATICA
+\input{macro_mate}
+
+%RULE DI SEPARAZIONE FLOATS
+\newcommand\topfigrule{{%
+  \bigskip\noindent{\color{gray}\hrulefill\raisebox{-2.5pt}{$\;\circ\;$}\hrulefill}}}
+
+\newcommand\botfigrule{{%
+  \noindent{\color{gray}\hrulefill\raisebox{-2.5pt}{$\;\circ\;$}\hrulefill}\bigskip}}
+
+%RENDI SPAZIO FRA PARAGRAFI PIU' ELASTICO
+\setlength{\parskip}{0pt plus 0.4em}%default 0pt plus 1pt
+
+%\setlength{\baselineskip}{12pt plus 3pt minus 1pt}
+
+
+%NO CLUB AND WIDOWS
+\widowpenalty=9999 % Almost no widows at bottom of page
+\clubpenalty=9999 % Almost no orphans at top of page
+\interfootnotelinepenalty=9999 % Almost never break footnotes
+
+%BLOCCHI REF CHAP
+\newenvironment{chapref}
+    {\vspace*{-\baselineskip}\hfill\small}
+    {}
+%\tcolorboxenvironment{chapref}{enhanced jigsaw,colback=gray!30!white,colframe=white,arc=0mm,after skip=5pt}
+
+%EVITA RIGA FINALE DEL PARAGRAFO MOLTO BREVE
+\setlength\parfillskip{0pt plus 0.75\linewidth}

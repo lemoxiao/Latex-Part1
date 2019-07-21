@@ -1,0 +1,69 @@
+%*******************************************************
+% Titlepage
+%   the file is named in italian since our language 
+%   provide different words for different things and
+%   we should use them
+%*******************************************************
+\begin{titlepage}
+	% if you want the titlepage to be centered, uncomment and
+	% fine-tune the line below (KOMA classes environment)
+	% \begin{addmargin}[-1cm]{-3cm}
+    \begin{center}
+    	\large
+        \spacedlowsmallcaps{\myUni} \\
+        \bigskip\myFaculty \\
+        %\medskip\mySchool \\
+    	\medskip\myDepartment \\
+    	\bigskip\myCourseFirstPart \\
+        \medskip\myCourseSecondPart \\  
+
+        \hfill
+
+        \vfill
+        
+        \begin{figure}[!h]
+			\begin{center}
+				\includegraphics[width=0.3\columnwidth]{Images/logoPoli.pdf} 
+				% or \logo.eps on windows 
+			\end{center}
+		\end{figure}
+		
+		\vfill
+
+        \begingroup
+       		\huge	
+            \color{Maroon} \myTitle
+            \bigskip
+        \endgroup
+
+        \vfill
+
+		\flushleft 
+		\normalsize{Supervisor:}\\
+		\medskip\spacedlowsmallcaps{\mySupervisor}
+
+		\flushleft
+		\normalsize{Assistant Supervisor:}\\
+		\medskip\spacedlowsmallcaps{\myOtherSupervisor}\\
+		%comment if there is another supervisor
+		%\flushleft
+		%\normalsize{Alta Scuola Politecnica Assistant Supervisors:}\\
+		%\medskip\spacedlowsmallcaps{\myOtherOtherSupervisor}\\
+        
+        \vfill  
+        
+        \flushright
+        \normalsize{Master Graduation Thesis by:}\\
+        \medskip \spacedlowsmallcaps{\myFirstAuthorName}\\
+		Student Id n. \myMatrFirstAuthor \\ 
+		% uncomment if there is a second author
+		%\medskip\spacedlowsmallcaps{\mySecondAuthorName} \\
+		%Student Id n. \myMatrSecondAuthor \\
+		
+		\vfill 
+
+		\centering {\myAcademicYear}                     
+
+    \end{center}  
+  %\end{addmargin}       
+\end{titlepage}

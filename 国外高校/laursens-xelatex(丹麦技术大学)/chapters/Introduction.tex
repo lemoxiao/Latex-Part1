@@ -1,0 +1,145 @@
+% !TEX root =../Thesis.tex
+\chapter{Introduction}
+
+\begin{itemize}
+    \item \textup{Upright shape}
+    \item \textit{Italic shape}
+    \item \textsl{Slanted shape}
+    \item \textsc{Small Caps shape}
+    \item \textmd{Medium series}
+    \item \textbf{Bold series}
+    \item \textrm{Roman family}
+    \item \textsf{Sans serif family}
+    \item \texttt{Typewriter family}
+\end{itemize}
+
+I love to write special characters like øæå inside my \TeX{} document. Also á, à, ü, û, ë, ê, î, ï could be nice. So what about the ``π'' character. What about ° é ® † ¥ ü | œ π ‘ @ ö ä ¬ ∆ ‹ « © ƒ ∂ ß ª Ω … ç √ ∫ ñ µ ‚ · ¡ “ £ ∞ ™ [ ] ≠ ± '.
+
+Some dashes - – —, and the latex form - -- ---
+\begin{equation*}
+    x = \mathtt{x}, \mathbf{x}, \mathit{x}, x_{1_{2_{3_{4}}}}^{1^{2^{3^{4}}}} \cdot hello * \text{hello world} ⋅ \text{my world} · \text{third world} ⊗ t
+\end{equation*}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua\todo{Make a cake}. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum \cite{adams1980hitchhiker}.
+
+Mauris id quam non magna fermentum malesuada id mattis lorem. In a dapibus neque. Etiam lacus dui, malesuada ac eleifend imperdiet, imperdiet ut ipsum\todo{Do it now}. Vestibulum id ultricies est. Phasellus augue mauris, semper a luctus vel, faucibus in risus. Fusce commodo augue quis elit sagittis non viverra turpis bibendum. Nunc placerat sem non sapien malesuada malesuada ullamcorper orci luctus \cite{adams1980hitchhiker}. Morbi pharetra ligula integer mollis mi nec neque ultrices vitae volutpat leo ullamcorper. In at tellus magna. Curabitur quis posuere purus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse tristique placerat feugiat. Aliquam vitae est at enim auctor ultrices eleifend a urna. Donec non tincidunt felis. Maecenas at suscipit orci. See \cref{myFigure}.
+\begin{figure}
+    \centering
+        \missingfigure[figwidth=6cm]{This is some text that is with the todo and in the figure}
+    \caption[Short caption to special figure]{This is my special figure. Aliquam ultricies, arcu quis tempor rhoncus, tellus nisl tempus justo, condimentum tempor erat odio ac purus. Integer quis ipsum felis. Aliquam volutpat, leo ac consequat egestas, lectus lacus adipiscing quam, id iaculis dolor quam in erat. Phasellus tempor interdum arcu quis vestibulum}
+    \label{myFigure}
+\end{figure}
+
+Fusce id suscipit sem. Aliquam venenatis nibh nec nisl luctus vel consectetur neque dapibus. Nulla feugiat egestas turpis, ac viverra eros cursus sit amet. Cras tincidunt felis vel tellus ultrices condimentum. Quisque vehicula, arcu vitae interdum dignissim, purus tortor cursus libero, sit amet accumsan quam magna in neque. Phasellus luctus leo odio. Aliquam ultricies, arcu quis tempor rhoncus, tellus nisl tempus justo, condimentum tempor erat odio ac purus. Integer quis ipsum felis. Aliquam volutpat, leo ac consequat egestas, lectus lacus adipiscing quam, id iaculis dolor quam in erat. Phasellus tempor interdum arcu quis vestibulum. Pellentesque sit amet augue purus. See \cref{myTable}.
+
+\begin{table}
+    \centering
+        \begin{tabular}{c | r l}
+            h & h & h \\
+            e & e & e \\
+        \end{tabular}
+    \caption{This is a caption to the table}
+    \label{myTable}
+\end{table}
+
+\section{Torquent Arcu}
+Curabitur condimentum suscipit arcu, sit amet convallis urna pellentesque ac. Quisque fringilla tincidunt risus nec accumsan. Curabitur vel sagittis ante. Integer eget placerat leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis risus in nulla fermentum pellentesque dictum et erat. Nulla vel pretium nunc. Integer tortor lorem, suscipit sit amet ultricies non, porta at metus. Sed pharetra, ante facilisis interdum porta, mi dolor fringilla quam, ac porttitor urna dolor quis massa. Proin viverra semper tincidunt. Vivamus pulvinar pharetra condimentum. Pellentesque rutrum mollis tellus ac scelerisque.
+
+\begin{figure}
+    \centering
+        \subbottom[1 pass]{
+            \missingfigure[figwidth=6cm]{This is some text that is with the todo and in the figure}
+            \label{twoFigures1}
+        }
+        ~
+        \subbottom[5 passes]{
+            \missingfigure[figwidth=6cm]{This is some text that is with the todo and in the figure}
+            \label{twoFigures2}
+        }
+        \caption{loop performance comparison}
+    \label{twoFigures}
+\end{figure}
+
+\subsection{Vestibulum}
+Mauris luctus sollicitudin vestibulum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos \cref{twoFigures2}. Duis eu nisl nec turpis porttitor bibendum eget sed orci. Aliquam consequat lorem a dui viverra porta facilisis augue rutrum. Cras luctus tellus in lectus egestas eu consequat magna cursus. Aenean aliquam neque a nibh elementum ornare. Integer eleifend imperdiet commodo. Morbi auctor, dui vel laoreet congue, purus est accumsan augue, sit amet feugiat neque nisl vel lorem. Curabitur ante sem, lacinia id adipiscing quis, viverra tristique nulla. Pellentesque ullamcorper pellentesque metus varius facilisis. Cras ac dui id odio tempor scelerisque. Curabitur a egestas risus. Pellentesque quis velit in sapien accumsan auctor. Phasellus aliquam, sapien eget lobortis volutpat, libero metus porttitor nisl, sed hendrerit urna dolor nec mi. See \cref{fibonacci}.
+
+\begin{adjustwidth*}{0cm}{-0.4cm}
+\begin{lstlisting}[language=Python,caption=Fibonacci,label=fibonacci]
+# This is a comment
+import easy
+str = "I am a string"
+str2 = "Now i have an awesome string with ´ '' `` which are not TeX'ed"
+str3 = "What about awesome unicode characters? Like “, π, ”, Ω, ç. \" This"
+def fib(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+str4 = "Yes it is possible with 80 characters. Which this string proves. Wiiii."
+str5 = "It adjusts according to the spine"
+\end{lstlisting}
+\end{adjustwidth*}
+
+\section{Luctus}
+Praesent et pellentesque arcu. Phasellus venenatis mi eu lorem convallis et iaculis ante aliquet. Aenean rhoncus placerat metus, vel convallis leo suscipit eu. Integer dapibus venenatis commodo. Cras laoreet faucibus sem nec luctus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras consectetur lacinia dolor at gravida. Phasellus ipsum arcu, vulputate fermentum ultricies eget, tempor eu odio. Aenean accumsan vestibulum risus a mattis. See it on \cref{modifiedminibatch}.
+
+\begin{algorithm}
+\caption{Modified mini-batch $K$-means} \label{modifiedminibatch}
+\begin{algorithmic}[1]
+\State Given: $K$, mini-batch size $B$, iterations $T$, dataset $X$, correlation~matrix~$\mathrm{P}$.
+\State Initialize $C = \{\mathbf{c}^{(1)}, \mathbf{c}^{(2)}, \ldots, \mathbf{c}^{(K)}\}$ with random $\mathbf{x}$'es picked from $X$.
+\State $A \gets B \cdot T$ sorted random indexes to $X$, denoted $a_1, a_2, \ldots, a_{B\cdot T}$.
+\State $X' \gets \{\mathbf{x}^{(a_1)}, \mathbf{x}^{(a_2)}, \ldots, \mathbf{x}^{(a_{B\cdot T})}\}$ \Comment{Cache all points}
+\State $\textbf{size} \gets 0$
+\For {$i = 1$ to $T$}
+    \State $M \gets B$ examples picked randomly from $X'$
+    
+    \For{$\mathbf{x} \in M$} \Comment{\textit{Assignment step}}
+        \State $\textbf{d}[\textbf{x}] \gets f(C,\mathbf{x}, \mathrm{P})$ \Comment{Cache closest center}
+    \EndFor
+    
+    \For {$\mathbf{x} \in M$} \Comment{\textit{Update step}}
+        \State $\textbf{c} \gets \textbf{d[x]}$ \Comment{Get cached center for current \textbf{x}}
+        \State $\textbf{size}[\textbf{c}] \gets \textbf{size}[\textbf{c}] + 1$ \Comment{Update cluster size}
+        \State $\eta \gets \frac{1}{\textbf{size}[\textbf{c}]}$       \Comment{Get learning rate}
+        \State $\textbf{c} \gets (1 - \eta)\textbf{c}+\eta\textbf{x}$ \Comment{Take gradient step}
+    \EndFor
+\EndFor
+\State \Return {$C$, \textbf{size}}
+\end{algorithmic}
+\end{algorithm}
+
+Fusce id suscipit sem. Aliquam venenatis nibh nec nisl luctus vel consectetur neque dapibus. Nulla feugiat egestas turpis, ac viverra eros cursus sit amet. Cras tincidunt felis vel tellus ultrices condimentum. Quisque vehicula, arcu vitae interdum dignissim, purus tortor cursus libero, sit amet accumsan quam magna in neque. Phasellus luctus leo odio. Aliquam ultricies, arcu quis tempor rhoncus, tellus nisl tempus justo, condimentum tempor erat odio ac purus. Integer quis ipsum felis. Aliquam volutpat, leo ac consequat egestas, lectus lacus adipiscing quam, id iaculis dolor quam in erat. Phasellus tempor interdum arcu quis vestibulum. Pellentesque sit amet augue purus. 
+\begin{figure}[htbp]
+    \centering
+        \missingfigure[figwidth=6cm]{This is some text that is with the todo and in the figure}
+    \caption{This is the caption I wrote}
+    \label{fig:label}
+\end{figure}
+Curabitur condimentum suscipit arcu, sit amet convallis urna pellentesque ac. Quisque fringilla tincidunt risus nec accumsan. Curabitur vel sagittis ante. Integer eget placerat leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis risus in nulla fermentum pellentesque dictum et erat. Nulla vel pretium nunc. Integer tortor lorem, suscipit sit amet ultricies non, porta at metus. Sed pharetra, ante facilisis interdum porta, mi dolor fringilla quam, ac porttitor urna dolor quis massa. Proin viverra semper tincidunt. Vivamus pulvinar pharetra condimentum. Pellentesque rutrum mollis tellus ac scelerisque.
+
+\section{Sollicitudin vestibulum}
+Mauris luctus sollicitudin vestibulum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis eu nisl nec turpis porttitor bibendum eget sed orci. Aliquam consequat lorem a dui viverra porta facilisis augue rutrum. Cras luctus tellus in lectus egestas eu consequat magna cursus. Aenean aliquam neque a nibh elementum ornare. Integer eleifend imperdiet commodo. Morbi auctor, dui vel laoreet congue, purus est accumsan augue, sit amet feugiat neque nisl vel lorem. Curabitur ante sem, lacinia id adipiscing quis, viverra tristique nulla. Pellentesque ullamcorper pellentesque metus varius facilisis. Cras ac dui id odio tempor scelerisque. Curabitur a egestas risus. Pellentesque quis velit in sapien accumsan auctor. Phasellus aliquam, sapien eget lobortis volutpat, libero metus porttitor nisl, sed hendrerit urna dolor nec mi.
+
+Praesent et pellentesque arcu. Phasellus venenatis mi eu lorem convallis et iaculis ante aliquet. Aenean rhoncus placerat metus, vel convallis leo suscipit eu. Integer dapibus venenatis commodo. Cras laoreet faucibus sem nec luctus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras consectetur lacinia dolor at gravida. Phasellus ipsum arcu, vulputate fermentum ultricies eget, tempor eu odio. Aenean accumsan vestibulum risus a mattis.
+
+\begin{adjustwidth*}{0cm}{-0.4cm}
+\begin{lstlisting}[language=Python,caption=Fibonacci2,label=Fibonacci2]
+# This is a comment
+import easy
+str = "I am a string"
+str2 = "Now i have an awesome string with ´ '' `` which are not TeX'ed"
+str3 = "What about awesome unicode characters? Like “, π, ”, Ω, ç. \" This"
+def fib(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+str4 = "Yes it is possible with 80 charactes. Which this string proves. Wiiii."
+str5 = "It adjusts according to the spine"
+\end{lstlisting}
+\end{adjustwidth*}

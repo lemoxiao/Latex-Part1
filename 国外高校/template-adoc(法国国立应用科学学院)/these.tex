@@ -1,0 +1,222 @@
+%% Il y a deux façons d'utiliser ce prototype de thèse:
+%%       soit vous pouvez pas blairer LaTeX,
+%%       soit vous en êtes un gourou.
+%% Dans le premier cas, il vous suffira de remplacer ce qu'il faut 
+%% dans ce fichier pour obtenir presque automatiquement un manuscript qui 
+%% ressemble à une thèse réglementaire.
+%%
+%% Dans le second cas, vous ne pourrez vous empêcher d'aller trafiquer
+%% le fichier these.sty pour rendre les choses encore plus automatiques
+%% (il y a sûrement un moyen de rendre plus élégante la mise en place 
+%% du résumé sur la quatrième de couverture, par exemple)
+%% et l'adapter aux derniers caprices de la Scolarité. 
+%% SVP, dans ce cas, faites profiter tout le monde de vos améliorations
+%% en renvoyant these.sty et un exemple de these.tex au ouaibemestre de l'ADOC.
+%%
+ 
+\documentclass[11pt]{book}
+%% En 12pt c'est possible aussi
+
+%% packages utilises
+%%---------------------
+%\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage{amsmath}
+%\usepackage{math}
+\usepackage{amssymb}
+\usepackage{these}
+
+\usepackage{tabularx}
+\usepackage{epsfig, floatflt,amssymb} 
+\usepackage{moreverb} %% pour le verbatim en boite
+%\usepackage{slashbox} %% pour couper les colonnes des tableaux en diagonale 
+%\usepackage{showkeys} %% pour voir les labels
+\usepackage{multirow} %% pour regrouper un texte sur plusieurs lignes dans une table
+\usepackage{url} %% pour citer les url par \url
+\usepackage[all]{xy} %% pour la barre au dessus des symboles
+\usepackage{shorttoc} %% pour plusieurs tables des matières par la commande \shorttableofcontents{Titre}{profondeur}.
+\usepackage{textcomp} %% pour le symbol pour mille par \textperthousand.
+%\usepackage{hyperref} %% pour la transformation en PDF, ça permet d'obtenir des liens sur les sections ...
+
+%\usepackage{textcomp}
+\usepackage[right]{eurosym}
+%\usepackage{eurosans} %%pour le symbole \euro
+%\usepackage{epic,eepic}
+%\usepackage{times}%times,palatino}
+%\usepackage{palatino}
+%\usepackage{helvetica} : tjrs le pb
+%\usepackage{utopia}:pb de cesure
+
+%% macro/racourcis por les symboles et commandes usuelles
+\input{./macro}
+
+%% choix des profondeurs de section pour la table des matières
+%% 2= subsection, 3=subsubsection
+\setcounter{secnumdepth}{3}  %% Avec un numero.
+\setcounter{tocdepth}{3}     %% Visibles dans la table des matieres
+
+\makeindex %% crée l'index
+\def\underscore{\char`\_}
+
+%% c'est parti mon kiki !!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addtocounter{page}{-1}%ça c'est pour revenir à 0
+%\fontfamilly{phv}
+
+%%  1ere de Couverture:
+\titre{Mon super sujet de thèse bien accrocheur mais compliqué quand même}
+
+%\soutenue
+%%   Laisser cette ligne en commentaire sauf pour la version finale.
+%%   (la premiere page contiendra "a soutenir le ..." 
+%%   au lieu de "soutenue le ...")
+
+
+%% Les différents champs de la couverture...
+\datesout{plus tôt possible}
+\Auteur{Prénom}{Nom}
+
+\Labo{IRISA -- UMR6074}
+\LaboEtendu{Institut de Recherche en Informatique et Système Aléatoires} % sauf INSA
+\ComposanteUniversitaire{Composante Universitaire (par. ex. IFSIC)} % sauf INSA
+
+%% La composition du jury : prénom, nom, titre 
+\President[Mme]{Président}{du Jury}{Professeur à l'Université de Rennes~1}         %% le président du jury
+\Advisor{Directeur}{Un}{Professeur à l'INSA de Rennes}
+\Advisor[Mme]{Directeur}{Deux}{Chargée de recherche INRIA}
+\Rapporteur{Rapporteur}{Un}{Chercheur senior à Orange Labs}
+\Rapporteur[Mme]{Rapporteur}{Deux}{Directeur de recherche CNRS}
+%% Si vous avez N rapporteurs ça marche toujours...
+\Examinateur[Mme]{Examinateur}{Un}{Maître de conférence à l'UBS}
+\Examinateur{Examinateur}{Deux}{Maître de conférence à Télécom Bretagne}
+%% idem...
+
+\ordre{00000}  %% le numéro d'ordre donné par la Sco
+\makethese{rennes1}    %% crée la couverture.
+
+
+%% une page blanche (deuxième de couverture)
+
+\newpage\thispagestyle{empty}\addtocounter{page}{-1}
+~\newpage\thispagestyle{empty}\addtocounter{page}{-1}
+ 
+%%  une page de citation (pas indispensable)
+\vspace{\stretch{1}}
+\vspace{0.5\linewidth}
+\begin{flushright}
+  %\emph{No physical quantity can continue to change exponentially forever. Your job is delaying forever.}\\
+  \emph{la citation , voir www.supercitations.com}\\
+  par bob
+\end{flushright}
+\vspace{\stretch{2}}
+
+%% Encore une page blanche pour que les remerciements arrivent
+%%  sur une page impaire 
+
+\newpage\thispagestyle{empty}\addtocounter{page}{-1}
+~\newpage\thispagestyle{empty}\addtocounter{page}{-1}
+
+\remerciements
+%\remerciements{Il faut vraiment que je dise merci ? :o)}       
+%% vous n'êtes pas obligés d'utiliser cette commande 
+%% mais elle vous donnera une idée de la chose
+
+
+
+\newpage\thispagestyle{empty}\addtocounter{page}{-1}
+
+%% pour cacher le numéro de page sur cette page blanche paire
+%% (à virer si vous avez plus d'une page de remerciements.)
+
+%%----------------------------%%
+%%                            %%
+%%  TABLE DES MATIERES        %%
+%%                            %%
+%%----------------------------%%
+
+%\newpage\thispagestyle{empty}
+
+~\newpage
+\addcontentsline{toc}{chapter}{Table des matières}
+\markboth{Table des matières}{Table des matières}
+\tableofcontents%%{Table des matières}
+
+%%----------------------------%%
+%%                            %%
+%%  CHAPITRES PRINCIPAUX      %%
+%%                            %%
+%%----------------------------%%
+
+\input{./introduction/introduction}
+\input{./chapitre1/chapitre1}
+\input{./chapitre2/chapitre2}
+\input{./chapitre3/chapitre3}
+\input{./conclusion/conclusion}
+
+%%------------%%
+%%            %%
+%%  ANNEXES   %% 
+%%            %%
+%%------------%%
+\appendix
+\input{./glossaire/glossaire.tex}
+
+%%------------%%
+%%            %%
+%%  BIBLIO    %% 
+%%            %%
+%%------------%%
+\bibliographystyle{alpha}
+\bibliography{./biblio/biblio_these}
+\addcontentsline{toc}{chapter}{Bibliographie}
+
+%%------------------%%
+%%                  %%
+%%  INDEX/TABLES    %% 
+%%                  %%
+%%------------------%%
+%
+%\newpage
+%\cleardoublepage
+%\addcontentsline{toc}{chapter}{Table des matières}
+%\markboth{Table des matières}{Table des matières}
+%\sommaire[2]
+%\shorttableofcontents{Table des matières}{2}
+%\tableofcontents{Table des matières}
+%
+\newpage
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Table des figures}
+\markboth{Table des figures}{Table des figures}
+\listoffigures
+%%
+%%\newpage
+%%\cleardoublepage
+%%\addcontentsline{toc}{chapter}{Liste des algorithmes}
+%%\markboth{Liste des algorithmes}{Liste des algorithmes}
+%%\listofalgorithms
+%%
+
+%%\newpage
+%%\cleardoublepage
+%%\addcontentsline{toc}{chapter}{Index}
+%%\markboth{Index}{Index}
+%%\printindex
+
+
+%\commentaire{%-------------------- debut commentaire -------------------
+%% Il faut mettre le résumé sur la quatrième de couverture. 
+%% Suivant que votre liste de figures comporte un nombre pair 
+%% ou impair de pages il faudra mettre un nombre pair ou impair
+%% de commandes \newpage.
+ 
+\alignquatriemedecouv
+
+\input{./resume/resume.tex}
+
+\end{document}
+
+

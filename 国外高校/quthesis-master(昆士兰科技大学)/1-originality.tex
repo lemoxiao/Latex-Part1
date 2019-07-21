@@ -1,0 +1,33 @@
+% ----------------------------------------------------------------------------
+% Statement of Authenticity and Originality
+% ----------------------------------------------------------------------------
+\documentclass[thesis.tex]{subfiles}
+\begin{document}
+\ifstrict
+
+% Thesis Letter of Authenticity and Originality
+\begin{verticenter}
+\makeatletter
+\noindent In accordance with the requirements of the degree of \@degree in the \@department, I present the following thesis entitled,
+
+\begin{center}
+\bigskip
+\textbf{\emph{\noformat{\@title}\\\noformat{\@subtitle}}}
+\bigskip
+\end{center}
+
+\noindent This work was performed under the supervision of \@supervisor. I declare that the work submitted in this thesis is my own, except as acknowledged in the text and footnotes, and has not been previously submitted for a degree at \@university or any other institution.
+
+\begin{flushright}
+    \bigskip
+    \ifprint
+        Signed,\\\vspace{0.5in}
+    \fi
+    \@author
+\end{flushright}
+\makeatother
+\end{verticenter}
+\cleardoublepage
+
+\fi
+\end{document}

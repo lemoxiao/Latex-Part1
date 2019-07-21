@@ -1,0 +1,250 @@
+\documentclass[paper=a5,twoside,fontsize=10pt, DIV=calc, headings=small, bibliography=totoc, listof=totoc]{scrbook}
+\usepackage[ngerman]{babel}
+%\usepackage[latin1]{inputenc}
+
+\input{shared/template}
+\usepackage{shared/titlepage}
+
+%\input{commands}
+
+\begin{document}
+\iftex4ht
+\Configure{graphics*}  % After begin document. Package tex4ht
+  {pdf}
+  {\Link[\csname Gin@base\endcsname .png]{}{}% link the png
+  \Picture[pict]{\csname Gin@base\endcsname .png width:80\% align=center border=0}%  Show the png
+  \EndLink
+  }
+
+\Css{body {text-align:justify;}}
+
+%all LaTeX formulas as pictures
+\Configure{$}{\PicMath}{\EndPicMath}{}
+%$ % <- syntax highlighting fix for emacs
+\fi
+
+%Tipp von http://goemonx.blogspot.de/2012/01/pdflatex-ligaturen-und-copynpaste.html
+%siehe auch http://tex.stackexchange.com/questions/4397/make-ligatures-in-linux-libertine-copyable-and-searchable
+%
+%ONLY WORKS ON MiKTeX
+%On other systems, download glyphtounicode.tex from http://pdftex.sarovar.org/misc/
+%
+\input glyphtounicode.tex
+\pdfgentounicode=1
+
+% Die Seitennummerierung erfolgt durchlaufend ab der Titelseite. Also keine
+% Spielereien mit römischen Ziffern usw. - Die ISO 7144 schreibt das sogar für
+% wissenschaftliche Werke vor.  
+% Von Promitionsordnung verlangt!  
+% Deshalb ist \frontmatter DEAKTIVIERT
+%\frontmatter
+\title{Conversational Web Services}
+\author{\texorpdfstring{\href{http://www.taval.de/}{Tammo van Lessen}}{Tammo van Lessen}}
+\date{\today}
+\keywords{TODO}
+\firstexaminer{Prof.~Dr.~Frank Leymann}
+\secondexaminer{Prof.~Dr.~Dimka Karastoyanova}
+\dateofexamination{unbekannt}
+\placeofbirth{Bad Schwalbach}
+\faculty{Fakultät für Informatik, Elektrotechnik und Informationstechnik}
+\department{Institut für Architektur von Anwendungssystemen}
+
+\maketitle
+
+% This is necessary if you have more than 9 sections/subsections/subsubsections
+% \makeatletter
+% \renewcommand\l@section{\@dottedtocline{1}{1.5em}{3em}} 
+% \renewcommand\l@subsection{\@dottedtocline{2}{1.5em}{4.3em}} 
+% \renewcommand\l@subsubsection{\@dottedtocline{3}{1.5em}{5.6em}} 
+% \makeatother
+
+\tableofcontents
+\clearpage
+
+\pagestyle{justpagenums}
+% \input{abstract}
+
+%\mainmatter
+\pagestyle{scrheadings}
+
+%% --- Zusammenfassung ---------------------------------------------
+\chapter*{Zusammenfassung}
+The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so it can expand into the blank space above the title too\ldots
+Some people think monkeys are weird, but I disagree.
+\clearpage
+
+%% --- Abstract Page---------------------------------------------
+\chapter*{Abstract}
+The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so it can expand into the blank space above the title too\ldots
+Some people think monkeys are weird, but I disagree.
+\clearpage
+
+%% --- Acknowledgements page------------------------------------
+\chapter*{Danksagungen}
+I would like to thank the little green men from Mars. Without their anal probing equipment, the medical experiments on the monkeys described in this thesis would have been considerably more unpleasant for all parties involved.
+\clearpage
+
+\pagestyle{scrheadings}
+
+\chapter{Test}
+
+\section{Aufzählungen}
+\begin{enumerate}[label=\alph*)]
+\item a
+\item b
+\item c
+\item d
+\end{enumerate}
+
+Equivalent to paralist's inparaenum:
+\begin{enumerate*}[label=\alph*)]
+\item a
+\item b
+\item c
+\item d
+\end{enumerate*}
+
+\begin{description}
+\item[first] Erstens
+\item[second] Zweitens
+\item[third] Drittens
+\end{description}
+
+\begin{description}
+\item[\texttt{first}] Erstens
+\item[\texttt{second}] Zweitens
+\item[\texttt{third}] Drittens
+\end{description}
+
+%works only if package enumitem is loaded
+\begin{description}[font=\ttfamily]
+\item[first] Erstens
+\item[second] Zweitens
+\item[third] Drittens
+\end{description}
+
+\begin{itemize}
+\item Erstens
+\item Zweitens
+\item Drittens
+\end{itemize}
+
+Optionaler Parameter ändert den Marker, der vorangestellt ist. Siehe \url{http://www.weinelt.de/latex/item.html}.
+\begin{itemize}
+\item[A] Erstens
+\item[B] Zweitens
+\item[C] Drittens
+\end{itemize}
+
+Falsche Benutzung des optionalen Parameters wie folgt:
+\begin{itemize}
+\item[first] Erstens
+\item[second] Zweitens
+\item[third] Drittens
+\end{itemize}
+Dabei ist zu beachten, dass es sich bei Einbindung von \texttt{enumitem} anders verhält als bei \texttt{paralist}.
+
+
+\section{fquote}
+
+\begin{fquote}[T.\ Informatiker]
+Bis nächsten Freitag ist das Programm fertig.
+\end{fquote}
+
+\begin{gfquote}{T.\ Informatiker}
+Bis nächsten Freitag ist das Programm fertig.
+\end{gfquote}
+
+\todo{Hier muss noch kräftig Text produziert werden}	
+
+\section{Section}
+\blindtext
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+\blindtext
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+
+\section{Section}
+
+\subsection{Subsection}
+\blindtext
+
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+\subsection{Subsection}
+
+%\input{content/chapter1}
+\setchapterfooter{Kleiner Fuß!}
+\chapter{Transformation of WS-BPEL 2.0 into Executable Workflow Networks}
+\label{chap:bpel-ewfn-transformation}
+\resetchapterfooter
+
+\bibliography{bib/bibliography}
+\clearpage
+\listoffigures
+\listoftables
+
+\appendix
+
+% 'Anhang' ins Inhaltsverzeichnis
+%\phantomsection
+%\addcontentsline{toc}{part}{Anhang}
+
+%\input{content/Z-Anhang}
+
+\IfDefined{printindex}{\printindex}
+\IfDefined{printnomenclature}{\printnomenclature}
+
+\end{document}

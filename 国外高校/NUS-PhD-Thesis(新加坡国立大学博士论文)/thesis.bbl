@@ -1,0 +1,203 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{Bylicka2010}
+B.~Bylicka and D.~Chruściński.
+\newblock \emph{Witnessing quantum discord in 2 $\times$ n systems}.
+\newblock Phys. Rev. A, \textbf{81}, (2010), p. 062102.
+\newblock \url{http://dx.doi.org/10.1103/physreva.81.062102}.
+
+\bibitem{Bylicka2013}
+B.~Bylicka, D.~Chruściński, and J.~Jurkowski.
+\newblock \emph{On separable decompositions of quantum states with strong
+  positive partial transposes}.
+\newblock J. Phys. A: Math. Theor., \textbf{46}, (2013), p. 205303.
+\newblock \url{http://dx.doi.org/10.1088/1751-8113/46/20/205303}.
+
+\bibitem{Qian_CS2}
+L.~Chen, D.~Chu, L.~Qian, and Y.~Shen.
+\newblock \emph{Separability of completely symmetric states in a multipartite
+  system}.
+\newblock Phys. Rev. A, \textbf{99}, (2019), p. 032312.
+\newblock \url{http://dx.doi.org/10.1103/physreva.99.032312}.
+
+\bibitem{Chen2011}
+L.~Chen and D.~{\v{Z}}. {\DH}okovi{\'{c}}.
+\newblock \emph{Distillability and {PPT} entanglement of low-rank quantum
+  states}.
+\newblock J. Phys. A: Math. Theor., \textbf{44}, (2011), p. 285303.
+\newblock \url{http://dx.doi.org/10.1088/1751-8113/44/28/285303}.
+
+\bibitem{Chen2013a}
+L.~Chen and D.~{\v{Z}}. {\DH}okovi{\'{c}}.
+\newblock \emph{Separability problem for multipartite states of rank at most
+  4}.
+\newblock J. Phys. A: Math. Theor., \textbf{46}, (2013), p. 275304.
+\newblock \url{http://dx.doi.org/10.1088/1751-8113/46/27/275304}.
+
+\bibitem{Choi1982}
+M.-D. Choi.
+\newblock \emph{Positive linear maps} (1982).
+\newblock \url{http://dx.doi.org/10.1090/pspum/038.2/9850}.
+
+\bibitem{Chruscinski2008}
+D.~Chruściński, J.~Jurkowski, and A.~Kossakowski.
+\newblock \emph{Quantum states with strong positive partial transpose}.
+\newblock Phys. Rev. A, \textbf{77}, (2008), p. 022113.
+\newblock \url{http://dx.doi.org/10.1103/physreva.77.022113}.
+
+\bibitem{einstein1935can}
+A.~Einstein, B.~Podolsky, and N.~Rosen.
+\newblock \emph{Can quantum-mechanical description of physical reality be
+  considered complete?}
+\newblock Phys. Rev., \textbf{47}, (1935), pp. 777.
+\newblock \url{http://dx.doi.org/10.1103/physrev.47.777}.
+
+\bibitem{Fei2003}
+S.-M. Fei, X.-H. Gao, X.-H. Wang, Z.-X. Wang, and K.~Wu.
+\newblock \emph{Separability and entanglement in $c^2\otimes c^3\otimes c^ n$
+  composite quantum systems}.
+\newblock Phys. Rev. A, \textbf{68}, (2003), p. 022315.
+\newblock \url{https://doi.org/10.1103\%2Fphysreva.68.022315}.
+
+\bibitem{Guo2012}
+Y.~Guo and J.~Hou.
+\newblock \emph{A class of separable quantum states}.
+\newblock J. Phys. A: Math. Theor., \textbf{45}, (2012), p. 505303.
+\newblock \url{http://dx.doi.org/10.1088/1751-8113/45/50/505303}.
+
+\bibitem{gurvits2003classical}
+L.~Gurvits.
+\newblock \emph{Classical deterministic complexity of edmonds' problem and
+  quantum entanglement}.
+\newblock In \emph{Proceedings of the thirty-fifth ACM symposium on Theory of
+  computing - STOC '03}, pp. 10--19. ACM, ACM Press (2003).
+\newblock \url{http://dx.doi.org/10.1145/780543.780545}.
+
+\bibitem{Gurvits2002}
+L.~Gurvits and H.~Barnum.
+\newblock \emph{Largest separable balls around the maximally mixed bipartite
+  quantum state}.
+\newblock Phys. Rev. A, \textbf{66}, (2002), p. 062311.
+\newblock \url{http://dx.doi.org/10.1103/physreva.66.062311}.
+
+\bibitem{Ha2012}
+K.-C. Ha.
+\newblock \emph{Entangled states with strong positive partial transpose}.
+\newblock Phys. Rev. A, \textbf{81}, (2010), p. 064101.
+\newblock \url{http://dx.doi.org/10.1103/physreva.81.064101}.
+
+\bibitem{ha2013separability}
+K.-C. Ha.
+\newblock \emph{Separability of qubit-qudit quantum states with strong positive
+  partial transposes}.
+\newblock Phys. Rev. A, \textbf{87}, (2013), p. 024301.
+
+\bibitem{horodecki1996separability}
+M.~Horodecki, P.~Horodecki, and R.~Horodecki.
+\newblock \emph{Separability of n-particle mixed states: {Necessary} and
+  sufficient conditions in terms of linear maps}.
+\newblock Phys. Lett. A, \textbf{283}, (2001), pp.~1.
+\newblock \url{http://dx.doi.org/10.1016/s0375-9601(01)00142-6}.
+
+\bibitem{Horodecki1997}
+P.~Horodecki.
+\newblock \emph{Separability criterion and inseparable mixed states with
+  positive partial transposition}.
+\newblock Phys. Lett. A, \textbf{232}, (1997), pp. 333.
+\newblock \url{http://dx.doi.org/10.1016/s0375-9601(97)00416-7}.
+
+\bibitem{Horodecki2000}
+P.~Horodecki, M.~Lewenstein, G.~Vidal, and I.~Cirac.
+\newblock \emph{Operational criterion and constructive checks for the
+  separability of low-rank density matrices}.
+\newblock Phys. Rev. A, \textbf{62}, (2000), p. 032310.
+\newblock \url{http://dx.doi.org/10.1103/physreva.62.032310}.
+
+\bibitem{horodecki2003rank}
+P.~Horodecki, J.~A. Smolin, B.~M. Terhal, and A.~V. Thapliyal.
+\newblock \emph{Rank two bipartite bound entangled states do not exist}.
+\newblock Theor. Comput. Sci., \textbf{292}, (2003), pp. 589.
+\newblock \url{http://dx.doi.org/10.1016/s0304-3975(01)00376-0}.
+
+\bibitem{Karnas2001}
+S.~Karnas and M.~Lewenstein.
+\newblock \emph{Separability and entanglement in $c^2\otimes c^2\otimes c^n$
+  composite quantum systems}.
+\newblock Phys. Rev. A, \textbf{64}, (2001), p. 042313.
+\newblock \url{https://doi.org/10.1103\%2Fphysreva.64.042313}.
+
+\bibitem{Kraus2000}
+B.~Kraus, J.~I. Cirac, S.~Karnas, and M.~Lewenstein.
+\newblock \emph{Separability {in2$\times$Ncomposite} quantum systems}.
+\newblock Phys. Rev. A, \textbf{61}, (2000), p. 062302.
+\newblock \url{http://dx.doi.org/10.1103/physreva.61.062302}.
+
+\bibitem{Peres1996a}
+A.~Peres.
+\newblock \emph{Separability criterion for density matrices}.
+\newblock Phys. Rev. Lett., \textbf{77}, (1996), pp. 1413.
+\newblock \url{http://dx.doi.org/10.1103/physrevlett.77.1413}.
+
+\bibitem{Piani2008}
+M.~Piani, P.~Horodecki, and R.~Horodecki.
+\newblock \emph{No-local-broadcasting theorem for multipartite quantum
+  correlations}.
+\newblock Phys. Rev. Lett., \textbf{100}, (2008), p. 090502.
+\newblock \url{http://dx.doi.org/10.1103/physrevlett.100.090502}.
+
+\bibitem{Qian_sppt}
+L.~Qian.
+\newblock \emph{Separability of multipartite quantum states with strong
+  positive partial transpose}.
+\newblock Phys. Rev. A, \textbf{98}, (2018), p. 012307.
+\newblock \url{http://dx.doi.org/10.1103/physreva.98.012307}.
+
+\bibitem{Qian_CS}
+L.~Qian and D.~Chu.
+\newblock \emph{Decomposition of completely symmetric states}.
+\newblock Quantum Inf. Process., \textbf{18}, (2019), p. 208.
+\newblock \url{http://dx.doi.org/10.1007/s11128-019-2318-2}.
+
+\bibitem{Sanpera1997}
+A.~Sanpera, R.~Tarrach, and G.~Vidal.
+\newblock \emph{Local description of quantum inseparability}.
+\newblock Phys. Rev. A, \textbf{58}, (1998), pp. 826.
+\newblock \url{http://dx.doi.org/10.1103/physreva.58.826}.
+
+\bibitem{Strmer1963}
+E.~Størmer.
+\newblock \emph{Positive linear maps of operator algebras}.
+\newblock Acta Math., \textbf{110}, (1963), pp. 233.
+\newblock \url{http://dx.doi.org/10.1007/bf02391860}.
+
+\bibitem{Wang2005a}
+X.-H. Wang and S.-M. Fei.
+\newblock \emph{Canonical form and separability of ppt states on multiple
+  quantum spaces}.
+\newblock Int. J. Quantum Inform., \textbf{03}, (2005), pp. 147.
+\newblock \url{http://dx.doi.org/10.1142/s0219749905000669}.
+
+\bibitem{Werner1989}
+R.~F. Werner.
+\newblock \emph{Quantum states with {Einstein}-podolsky-{Rosen} correlations
+  admitting a hidden-variable model}.
+\newblock Phys. Rev. A, \textbf{40}, (1989), pp. 4277.
+\newblock \url{http://dx.doi.org/10.1103/physreva.40.4277}.
+
+\bibitem{Woronowikz1976}
+S.~Woronowicz.
+\newblock \emph{Positive maps of low dimensional matrix algebras}.
+\newblock Rep. Math. Phys., \textbf{10}, (1976), pp. 165.
+\newblock \url{http://dx.doi.org/10.1016/0034-4877(76)90038-0}.
+
+\bibitem{SPPT3partite}
+X.-Y. Yu and H.~Zhao.
+\newblock \emph{Separability of tripartite quantum states with strong positive
+  partial transposes}.
+\newblock Int J Theor Phys, \textbf{54}, (2014), pp. 292.
+\newblock \url{http://dx.doi.org/10.1007/s10773-014-2224-4}.
+
+\end{thebibliography}

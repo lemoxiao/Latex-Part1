@@ -1,0 +1,51 @@
+\section{Model Checking \MITL\ Specifications over Timelines} \label{sec:modelchecking}
+
+In this section, we outline how to model check real-time systems, described in terms of timelines,
+using the logic \MITL\ (Metric Interval Temporal Logic)~\cite{Alur:1996} as the property specification language.
+%
+Henceforth, $\Prop$ denotes a set of proposition letters.
+Two intervals $I$ and $I'$ are said to be \emph{adjacent} iff the right endpoint of $I$ equals the left endpoint of $I'$,
+and either $I$ is right-closed and $I'$ left-open, or $I$ is right-open and $I'$ left-closed.
+
+\MITL\ formulas are
+defined by the grammar $\psi ::= p\mid \neg \psi \mid \psi \wedge \psi\mid \psi \UI \psi $,
+where $p\in\Prop$ and $I\in \mathbb{I}(\Nat\cup\{+\infty\})$, at the subscript of $\mathsf{U}$, is nonsingular.
+%
+\MITL\ formulas are interpreted over timed state sequences.
+A \emph{timed state sequence} $(\overline{s},\overline{I})$ is given by an infinite sequence of states $\overline{s}=s_1s_2s_3\cdots$, where $s_i\subseteq \Prop$, and an infinite
+sequence of time intervals $\overline{I}=I_1 I_2 I_3\cdots$, where $I_i \in \mathbb{I}(\RealP\cup\{+\infty\})$,
+such that $(i)$~$I_1$ is left closed and 0 its left endpoint, $(ii)$~for all $i\geq 1$, $I_i$ and $I_{i+1}$ are adjacent, and $(iii)$~for all $t\in\RealP$, $t \in I_j$ for some $j\geq 1$.
+
+For $t\in\RealP$, $(\overline{s},\overline{I})^t$ denotes the timed state sequence $(\overline{s}',\overline{I}')$ where,
+assuming $t \in I_j$ for a $j\geq 1$, we have
+$\overline{s}'\!=\!s_j s_{j+1}\cdots$, $\overline{I}'\!=\!I_j' I_{j+1}'\cdots $, with $I_i'\!=\!\{t'\!-\! t \!\mid\!  t'\in I_i ,\, t'-t\geq 0\}$ for all $i\geq j$.
+
+The satisfaction relation $(\overline{s},\overline{I})\models \psi$ is defined as (we omit the clauses for Boolean operators):
+$(i)$~$(\overline{s},\overline{I})\models p$ iff $p\in s_1$;
+$(ii)$~$(\overline{s},\overline{I})\models \psi_1 \UI \psi_2$ iff, for some $t\in I$, $(\overline{s},\overline{I})^t\models \psi_2$ and for all $0<t'< t$, $(\overline{s},\overline{I})^{t'}\models \psi_1$.
+
+The following results appeared in~\cite{Alur:1996} (Theorem~4.4.1 and 4.5.2).
+Let $\psi$ be a \MITL\ formula, where $N$ is the number of subformulas of $\psi$, and $K$ the largest integer constant appearing in $\psi$:
+$(i)$~we can build a \TA\ $\mathcal{A}_\psi$ accepting the set of timed state sequences $(\overline{s},\overline{I})$ that satisfy $\psi$, with $O(2^{N\cdot K})$ states and $O(N\cdot K)$ clocks. Thus deciding its emptiness requires exponential space.
+$(ii)$~If in $\psi$ all intervals at the subscript of $\mathsf{U}$ have the form $[0,a]$, $[0,a)$, $[a,+\infty)$, or $(a,+\infty)$ (such fragment is denoted as $\MITL_{0,\infty}$), it is possible to build a \TA\ $\mathcal{A}_\psi$ accepting the set of sequences $(\overline{s},\overline{I})$ that satisfy $\psi$,
+    with $O(2^{N})$ states and $O(N)$ clocks. Deciding its emptiness requires polynomial space.\footnote{In the case of $\MITL_{0,\infty}$ formulas, we may also assume that intervals constraining the operator $\mathsf{U}$ have rational bounds, at no increased complexity cost.}
+
+Let us now consider a system description, given as a planning problem $P=(\{x_1,\ldots , x_k\}, \allowbreak S)$.
+For every state variable $x_j$, we encode every $v\in V_{x_j}$ by a suitable truth assignment to $\log |V_{x_j}|$ proposition letters $\Prop_j=\{p_{x_j,1},\ldots, p_{x_j,\log |V_{x_j}|}\}$. 
+We denote by $\enc(x_j,v)$ the set of letters which are true in the encoding of $v$.
+In this way, 
+a 
+timed $k$-multiword $(\vct{a}_1,\tau_1)(\vct{a}_2,\tau_2)\cdots$
+can be considered as the timed state sequence $(\overline{s},\overline{I})$ where, for all $i\geq 1$, $I_i=[\tau_i,\tau_{i+1})$ and
+(let $s_0=\emptyset$)
+$s_i=(\bigcup_{j=1,\ldots , k,\, \vct{a}_i[j]\neq \epsilon} \enc(x_j,\vct{a}_i[j]))\cup (\bigcup_{j=1,\ldots , k,\, \vct{a}_i[j]=\epsilon} s_{i-1}\cap \Prop_j)$.
+
+Now, given a system model $P=(\{x_1,\ldots , x_k\},S)$ and a property specification (\MITL\ formula) $\psi$, we have to decide whether or not $\TLang(\tilde{\mathcal{A}})\subseteq \TLang(\mathcal{A}_\psi)$, where $\tilde{\mathcal{A}}$ is the \TA\ for $P$ (Proposition~\ref{prop:LtA}).
+For the purpose we check whether $\TLang(\tilde{\mathcal{A}})\cap \TLang(\mathcal{A}_{\neg \psi})= \emptyset$, by making the product automaton 
+$\tilde{\mathcal{A}}\times \mathcal{A}_{\neg \psi}$, and checking for its emptiness. The size of $\tilde{\mathcal{A}}\times \mathcal{A}_{\neg \psi}$ is polynomial in those of $\tilde{\mathcal{A}}$ and $ \mathcal{A}_{\neg \psi}$.
+The next result follows.
+
+\begin{theorem}
+The MC problem for \MITL\ formulas over timelines is in \EXPSPACE.
+It is in \Psp\ for $\MITL_{0,\infty}$.
+\end{theorem}

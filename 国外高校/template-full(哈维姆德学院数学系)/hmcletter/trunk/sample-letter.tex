@@ -1,0 +1,211 @@
+% \iffalse meta-comment
+%
+
+% sample-letter.tex -- A sample letter to demonstrate and document
+%                      the hmcletter LaTeX class.
+%
+% Copyright (C) 2010 Department of Mathematics, Harvey Mudd College
+%
+% $Id: sample-letter.tex 323 2010-02-16 00:49:59Z cmc $
+%
+%   This program is free software; you can redistribute it and/or
+%   modify it under the terms of the GNU General Public License as
+%   published by the Free Software Foundation; either version 2 of the
+%   License, or (at your option) any later version.
+%
+%   This program is distributed in the hope that it will be useful,
+%   but WITHOUT ANY WARRANTY; without even the implied warranty of
+%   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%   GNU General Public License for more details. 
+%
+%   You should have received a copy of the GNU General Public License
+%   along with this program; if not, write to the Free Software
+%   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+%   02111-1307  USA 
+%
+%   The license is also available on the web, from
+%      <http://www.gnu.org/copyleft/gpl.html>
+%
+% \fi
+%%
+%% Sample hmcletter class letter.
+%%
+
+%%% Document-class command.
+\documentclass{hmcletter}
+
+% Possible options are
+%
+% ltrhead     Typeset with letterhead backdrop (default).
+% noltrhead   Suppress letterhead backdrop (for printing on real letterhead).
+%
+% block       Use block letter format (default).
+% semiblock   Use semiblock letter format (indented date and signature).
+%
+% You may also use other arguments accepted by the standard LaTeX
+% letter class.  (The default font size is 11 pts.)
+
+%%% Package loading, custom command or environment definitions
+%%% should go here.
+
+
+%%% Information fields.
+
+%% Note that many of these commands can be defined in a file
+%% called hmcletter.cfg in the working directory or in your
+%% personal TEXMF tree, and will override the default settings in
+%% the class file.  Commands defined here will override those set
+%% in the configuration file, of course.
+
+% Name and address of the letter recipient.
+\letterto{Renee Recipient, Chair\\
+Department of Mathematics\\
+Anytown University\\
+123 University Drive\\
+Anytown, California  12345-6789\\
+United States of America}
+
+% [OPTIONAL] Subject line.  \subjectname can be set to define a
+% header before the text in the letter, but doing so is not
+% recommended by most style guides.
+\subject{Lorem Ipsum, and Its Dolor Sit Amet}
+
+
+% Signature.  Note two arguments.  Optional argument allows you to
+% load a graphical version of your signature for use in generating
+% PDFs that look like real signed letters.  (Without the optional
+% argument, the class inserts blank vertical space for your
+% signature.)
+\signature[{\includegraphics[scale=0.25]{jrandomsig}}]%
+{J.~Random User\\ Associate Professor of Mathematics}
+
+
+% Date command; standard LaTeX command, so it will use the date
+% you specify, fall back to
+% current date if no \date command is used, or not appear at all
+% if defined as {}.
+\date{January 1, 2009}
+
+
+%%% Start of the actual document.
+\begin{document}
+
+%% Required salutation command; this command also sets the date
+%% and recipient information and puts in the optional subject.
+\opening{Dear Professor Recipient:}
+
+
+%% Body text of your letter.
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
+erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
+tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+consequat. Duis autem vel eum iriure dolor in hendrerit in
+vulputate velit esse molestie consequat, vel illum dolore eu
+feugiat nulla facilisis.
+
+Dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut
+aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
+in hendrerit in vulputate velit esse molestie consequat, vel illum
+dolore eu feugiat nulla facilisis at vero eros et accumsan et
+iusto odio dignissim qui blandit praesent luptatum zzril delenit
+augue duis dolore.
+
+Aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud
+exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
+commodo consequat. Duis autem vel eum iriure dolor in hendrerit in
+vulputate velit esse molestie consequat, vel illum dolore eu
+feugiat nulla facilisis at vero eros et accumsan et iusto odio
+dignissim qui blandit praesent luptatum zzril delenit augue duis
+dolore te feugait nulla.
+
+Lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel
+eum iriure dolor in hendrerit in vulputate velit esse molestie
+consequat, vel illum dolore eu feugiat nulla facilisis at vero
+eros et accumsan et iusto odio dignissim qui blandit praesent
+luptatum zzril delenit augue duis dolore te feugait nulla
+facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing
+elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+nostrud exerci tation.
+
+Autem vel eum iriure dolor in hendrerit in vulputate velit esse
+molestie consequat, vel illum dolore eu feugiat nulla facilisis at
+vero eros et accumsan et iusto odio dignissim qui blandit praesent
+luptatum zzril delenit augue duis dolore te feugait nulla
+facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing
+elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+nostrud exerci tation ullamcorper suscipit lobortis.
+
+Consequat. Duis autem vel eum iriure dolor in hendrerit in
+vulputate velit esse molestie consequat, vel illum dolore eu
+feugiat nulla facilisis at vero eros et accumsan et iusto odio
+dignissim qui blandit praesent luptatum zzril delenit augue duis
+dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit.
+
+Nostrud exerci tation ullamcorper suscipit lobortis nisl ut
+aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
+in hendrerit in vulputate velit esse molestie consequat, vel illum
+dolore eu feugiat nulla facilisis at vero eros et accumsan et
+iusto odio dignissim qui blandit praesent.
+
+Ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+dolor in hendrerit in vulputate velit esse molestie consequat, vel
+illum dolore eu feugiat nulla facilisis at vero eros et accumsan
+et iusto odio dignissim qui blandit praesent luptatum zzril
+delenit augue duis dolore te feugait nulla.
+
+
+%% Closing command.  Sets the ``complimentary close'' as well as
+%% your signature.
+\closing{Sincerely yours,}
+
+
+%% OPTIONAL postscript.  Should be no more than one paragraph.
+\ps{Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+  diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+  aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
+  nostrud exerci tation ullamcorper suscipit lobortis nisl ut
+  aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor
+  in hendrerit in vulputate velit.}
+
+%% OPTIONAL postscript with label redefined.
+\ps[P.P.S.]{Ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+dolor in hendrerit in vulputate velit esse molestie consequat, vel
+illum dolore eu feugiat nulla facilisis at vero eros et accumsan
+et iusto odio dignissim qui blandit praesent luptatum zzril
+delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum
+dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
+ullamcorper suscipit lobortis.}
+
+
+%% OPTIONAL Carbon-copy command.
+\cc{John Doe\\
+Jane Roe}
+
+%% OPTIONAL enclosures command.
+\encl{R\'{e}sum\'{e}\\Recommendation Letter}
+
+
+
+%%% Additional options.
+
+%% You may redefine the labels for some elements; these commands
+%% may appear in your document or in an hmcletter.cfg file.
+%
+% \ccname                 Defaults to ``cc''.
+% \enclname               Defaults to ``Enclosures''
+% \subjectname            Defaults to nothing.
+% \ltrheadheightskip      Defaults to 4em; pushed text below printed
+%                           letterhead.
+% \ltrheadbkgrnd          File to use as background for the page; defaults to
+%                           HMC-Math-Letterhead.  (Should be a PDF
+%                           file; don't include the .pdf extension.)
+
+\end{document}

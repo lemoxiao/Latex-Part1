@@ -1,0 +1,57 @@
+% =============================================================
+% PACKAGES
+% =============================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[english, french]{babel} % Last language is main language
+
+\usepackage{lmodern} % Latin Modern Font
+\usepackage{gensymb} % Generic symbols for both text and math mode
+
+\usepackage{subfiles}   % TODO
+\usepackage{standalone} % TODO
+
+\usepackage{wrapfig} % Wrap text around figure
+
+\usepackage{amsmath}   % Main math Package
+\usepackage{mathtools} % Extension package to amsmath
+\usepackage{amsthm}    % Typesetting theorems (AMS style)
+\usepackage{amsfonts}  % More fonts from the AMS
+\usepackage{textcomp}  % provide many text symbols
+\usepackage{steinmetz} % For phase symbol
+
+\usepackage{xstring}  % Utils to manipulate strings
+\usepackage{etoolbox} % Add basic if/then
+\usepackage{esvect}   % Beautyfull vectors
+\usepackage{graphicx} % Enhanced support for graphics
+\usepackage{grffile}  % Used by matlab2tikz
+
+\usepackage{microtype} % typographic tuning
+\usepackage{setspace}  % for line spacing, e.g. \onehalfspacing
+\usepackage{tabularx}  % table features
+\usepackage{enumitem}  % for simple list modifications
+\usepackage{blindtext} % package for blind text
+\usepackage{booktabs}  % better table support
+
+\usepackage{stackengine}
+
+\usepackage[babel, french=guillemets]{csquotes}  % Used for french quotes
+% \MakeOuterQuote{"}
+\frenchspacing%
+
+\usepackage[
+    title,
+    titletoc
+]{appendix}
+\renewcommand\appendixtocname{Annexes}
+
+\usepackage[load-configurations=abbreviations]{siunitx} % SI units
+\sisetup{
+    locale = FR,
+    detect-all,
+    range-phrase=--,
+    range-units=single
+}
+% =============================================================
+

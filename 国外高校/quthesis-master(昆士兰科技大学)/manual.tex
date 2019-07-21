@@ -1,0 +1,110 @@
+% ----------------------------------------------------------------------------
+% User Manual
+% ----------------------------------------------------------------------------
+\documentclass[thesis.tex]{subfiles}
+\begin{document}
+
+\chapter[\vspace{-2\baselineskip}]{QUThesis User Manual}
+\begin{quote}[Lewis Carroll, Alice in Wonderland][flushright]
+``Begin at the beginning and go on till you come to the end, then stop.''
+\end{quote}
+
+\lettrine{T}{he quthesis style package} is designed for Doctorate of Philosophy
+dissertations at the Queensland University of Technology (QUT), but may also be
+useful at many other institutions. The goals of the package are threefold:
+(i)~to comply with QUT's thesis submission guidelines, (ii)~to provide
+comprehensive base-level functionality, structure and version control so you
+can focus on content, and (iii)~to produce beautiful thesis documents that are
+a pleasure to read. To this end, quthesis provides a number of builtin commands
+and options, which are described in this manual.
+\subsection*{Package Options}
+The quthesis package is designed to be used with the \code{book} documentclass.
+The package is initialized in the typical manner,
+
+\begin{lstlisting}[language=tex]
+    \documentclass[11pt,a4paper]{book}
+    \usepackage[options]{quthesis}
+\end{lstlisting}
+
+\noindent The package accepts the following options:
+
+\noindent\begin{longtable}{l p{8.5cm}}
+\code|print|    & Print binding offsets of 0.5in are added to the inner edge, and
+                  hyperlink coloring is disabled \\
+\code|onehalfspacing| & Increase line spacing in the content, while preserving
+                  header spacing \\
+\code|strict|   & Comply with the QUT style guidelines (default)\\
+\code|relaxed|  & Remove material that isn't of interest to the reader;
+                  breaks compliance with the official QUT guidelines \\
+\code|dropcaps| & Initializes the lettrine package so that paragraph beginning
+                  words can be formatted using dropped capitals (dropcaps), as
+                  per the first character of this manual \\
+\code|calendas| & Use the Calendas font for headings, or a similar fallback if
+                  Calendas is not available \\
+\code|nonumber| & Remove numbering from sections and subsections (more suitable
+                  for historical/literature theses)
+\end{longtable}
+
+
+\subsection*{Features}
+\begin{tightemize}
+\item Automatically generated cover page, and templates for front matter
+      (dedication, acknowledgements, abstract)
+\item Margins and font size optimized for readability
+\item Simple and elegant headers and footers
+\item Explicit breaking of chapter titles without affecting headers
+\item Customized \code{listings} environment to better match the prose
+      formatting
+\item Better default settings for \code{hyperref}, including link colors, PDF
+      metadata and references
+\item Adjusted footnote size and spacing from main prose
+\end{tightemize}
+
+
+\subsection*{Provided Environments}
+\begin{itemize}
+\item \code|\begin{quote}[author][alignment] ... \end{quote}| \\ Format a
+quote, like the one at the beginning of the manual. The command has two
+optional arguments. The \code{author} formats a right-justified attribution
+after the quote. The \code{alignment} argument specifies the horizontal
+alignment of the quote on the page. It may be one of
+\code{flushleft|center|flushright}.
+\item \code|\begin{verticenter} ... \end{verticenter}| \\ Vertically center a
+block of content with optical adjustment (the content is actually positioned
+slightly above the true center).
+\item \code|\begin{tightemize} ... \end{tightemize}| \\ A renewed itemize
+environment with tighter spacing between items.
+\item \code|\begin{biography}[path/to/portrait.png] ... \end{biography}| \\ An
+environment for providing a short author biography at the end of the thesis.
+Text is wrapped around the optional portrait figure. The environment opens left
+instead of the usual right so that it appears on the back page as per novels.
+\item \code|\begin{verse} ... \end{verse}| \\ A renewed verse environment that
+provides two extra features over the regular verse environment: (1) lines can
+be input verbatim, with blank lines indicating stanzas, and (2) page breaks are
+disallowed mid-stanza.
+
+\end{itemize}
+
+
+\subsection*{Provided Commands}
+\begin{itemize}
+\item \code|\chapter[Alpha Name]{Chapter Name}| \\
+A custom chapter command that, along with behaving like a normal chapter, also
+allows unnumbered chapters and chapters with alpha names. This is useful for
+introductory chapters such as \\\code|\chapter[Introduction]{The State of the Union}|.
+\item \code|\chap, \sec, \subsec, \fig, \eqn| \\
+These commands wrap \code|\ref| to provide two utilities: (i) enforce
+namespacing in the use of labels, and (ii) enforce consistency of referring to
+labels. A figure with the label \code|\label{fig:results}| for example, can be
+referred to by \code|\fig{results}| which will evaluate to \code{Figure 2}. In
+the five variants, the namespace in the label is always the command name
+followed by a colon.
+\item \code|\code{inline code}| \\
+An alias of the \code{lstinline} command.
+\item \code|\ie, \eg, \cf, \etc, \wrt, \dof, \etal| \\
+Italicized abbreviations which respect the spacing and deduplication (for
+sentence ending abbreviations) of the final period: \ie, \eg, \cf, \etc, \wrt,
+\dof, \etal.
+\end{itemize}
+
+\end{document}

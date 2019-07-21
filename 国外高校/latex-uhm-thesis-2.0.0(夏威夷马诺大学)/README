@@ -1,0 +1,77 @@
+UH Manoa LaTeX Thesis Class Versions
+------------------------------------
+This LaTeX class was originally developed in 2000, and has been used by many
+theses and dissertations successfully accepted by UHM Graduate Division since
+then. The original class is called "uhthesis2e", showing it's age since it was
+adapted for LaTeX 2e, back when that was new. This version of the class was
+somewhat hacked together, which sometimes caused problems with more modern
+LaTeX packages.
+
+In 2008, Mark Stillwell undertook a complete rewrite of the class, starting
+from the standard report class. The goal was to provide a clean foundation for
+future maintenance, and ensure it worked properly with modern LaTeX packages.
+Further, he documented the class definition extensively, referring back to the
+style guide point by point. This new class is called "uhthesis",
+distinguishing it from the original class (in case you wish to switch between
+the two).
+
+In 2010, he got the rewritten version to the point where he could use it to
+successfully submit his dissertation to Graduate Division. However, since it
+was not tested as extensively as the original class, it was not formally
+released. Further, the Graduate Division style guide was updated later in
+2010, so there may be changes required in this class to meet the revised
+requirements.
+
+As of this writing, the most recent version of the uhthesis2e class is 1.1.0.
+
+This archive contains a beta release of the uhthesis class, version 2.0.0 to
+indicate that it is more recent than the uhthesis2e class. While this class is
+where all future development will be focused, it has not been used as
+extensively as the uhthesis2e class. Please test it out, and let us know if
+you find any problems.
+
+
+Instructions
+------------
+This archive contains everything necessary to prepare a University of Hawaii
+thesis or dissertation with a recent LaTeX2e environment like TeX Live. For
+information on how do download LaTeX distributions, go to <http://www.tug.org/>
+
+This class is hosted at Google Code:
+
+<http://code.google.com/p/latex-uhm-thesis/>
+
+For assistance with this package, please visit the associated Google Group:
+
+<http://groups.google.com/group/latex-uhm-thesis-discuss>
+
+The following files should be placed in your personal or departmental LaTeX
+style directory:
+
+uhthesis.cls	Document class file
+
+For example, on MacTeX you could create the directory
+/usr/local/texlive/texmf-local/tex/latex/uhthesis and copy all four files
+above into that directory to allow all users on the computer access to the
+class. If you only need the class file to be accessible by yourself, you
+could create ~/Library/texmf/tex/latex/uhthesis (all the directories after
+Library will have to be created) and then copy the four files in. A similar
+procedure should work for other TeX Live distributions.
+
+The class file is documented in uhthesis.pdf
+
+An example of how to use the style with extensive comments is provided in the
+example/ subdirectory. The following files make up this style. Start with
+"uhtest.tex".
+
+uhtest.tex
+uhtest-abstract.tex
+uhtest-acknowledgements.tex
+uhtest-appendix.tex
+uhtest-body.tex
+uhtest-dedication.tex
+uhtest-figure.eps
+uhtest.bib
+
+Good luck! You can report bugs or wonderful new features you have implemented
+to the Google Group discussed above.

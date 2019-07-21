@@ -1,0 +1,29 @@
+% beamercolorthemeDTU.sty
+% This file is a part of the DTU beamer package and makes sure that
+% the DTU colours are available. This file does neither redefine 
+% beamer settings, nor does it add new configurations. It has to be 
+% maintained for backward compatibility.
+%
+% Changelog
+% 2011-06-23 jowr Replaced the old colour definitions with the new ones from the design guide
+% 2011-07-05 jowr Added alternative colours for the graphs
+% 2011-08-16 jowr Moved colour definitions to resources folder, also used in poster class
+% 2014-09-27 jowr Added documentation and prepared merge to git repository
+%
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Load the file if it exists, throw a warning otherwise
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\InputIfFileExists{dtucolours}{
+    \PackageInfo{dtubeamer}{Successfully loaded the DTU colours.}
+  }{
+    \PackageWarning{dtubeamer}{Could not load the colours from dtucolours.sty. This compilation is likely to fail.}
+  }%
+
+\mode<presentation>
+
+% The new design does not need any adaption here, black is 
+% the default colour. 
+
+\mode<all> 

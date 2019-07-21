@@ -1,0 +1,18 @@
+%shorttoc.sty
+\ProvidesPackage{shorttoc}%
+[1995/01/04 v1.0 Short table of contents package (JPFD)]
+\def\@startshorttoc#1{\bgroup
+  \makeatletter
+  \@input{\jobname.#1}%
+  \global\@nobreakfalse \egroup}
+
+\def\shorttableofcontents#1#2{\bgroup\c@tocdepth=#2\@restonecolfalse
+  \if@twocolumn\@restonecoltrue\onecolumn\fi
+  \@ifundefined{chapter}%
+  {\section*{{#1}
+        \@mkboth{\uppercase{#1}}{\uppercase{#1}}}}%
+  {\chapter*{{#1}
+        \@mkboth{\uppercase{#1}}{\uppercase{#1}}}}%
+  \@startshorttoc{toc}\if@restonecol\twocolumn\fi\egroup}
+%%%% fin macro %%%%
+

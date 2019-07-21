@@ -1,0 +1,149 @@
+
+%--------------------------------------------------------------------
+% Document Style
+%--------------------------------------------------------------------
+\documentclass[12pt]{report}
+\usepackage{smu_thesis}
+\usepackage{epsf}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{verbatim}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{fancyhdr}
+
+\linespread{1.6}
+%\thesisdraft
+
+\begin{document}
+
+%===================================================================
+%   Change information used to create front pages of thesis
+%===================================================================
+%%
+%%  last name, first name, initial
+%%
+ \Name{Tarin}{Jennifer A.}{} %don't put anything in the last brackets
+
+%%
+%% title -- you have up to three lines to specify your title
+%% each line should be no more than 48 characters long
+%%
+ \Title{Analysis of Shell Models in Relation to a New}
+       {Self-Similarity Theory of the Inertial Range}
+       {in Isotropic Homogenous Turbulence}
+%%
+%% previous degress
+%%
+ \DegreeA{B.S., Texas Woman's University, 2004}
+ \DegreeB{M.S., Southern Methodist University, 2006}
+%%
+%% degree you are seeking
+%%
+ \DegreeSought{Doctor of Philosophy}
+%%
+%% major
+%%
+ \Major{Computational and Applied Mathematics}
+ \University{Southern Methodist University}
+ \School{Dedman College: School of Humanities and Sciences}
+%%
+%% date the degree will be confered
+%%
+ \DegreeDate{August 4, 2009}
+ \ThesisDate{August 4, 2009}
+%%
+%% is this a thesis, dissertation, or something else?
+%%
+ \ThesisType{Dissertation}
+%%
+%% your committee -- the rank of your advisor must be adjusted in
+%% smu_thesis.sty if it is not Dr.
+%%
+ \Advisor{Mogens V. Melander}
+ \CommitteeMemberA{Dr. Thomas W. Carr}
+ \CommitteeMemberB{Dr. Vladimir Ajaev}
+ \CommitteeMemberC{Dr. Paul Krueger}
+
+%===================================================================
+%   Create the front pages of the thesis
+%===================================================================
+
+ \ApprovalTitlePages
+
+%%
+%% include your acknowledgements
+%% If no dedication, move Acknowledgement to where dedication is and add to
+%% table of contents
+%% \addcontentsline{toc}{chapter}{\protect \noindent {ACKNOWLEDGMENTS}}
+ \begin{Acknowledgment}
+ \input{acknow}
+ \end{Acknowledgment}
+
+%%
+%% include your abstract
+%%
+ \begin{Abstract}
+ \input{abstract}
+ \end{Abstract}
+
+ \PreliminaryPages
+
+% Uncomment to insert a list of symbols from symbols.tex (or elsewhere)
+ %\begin{listofsymbols}
+ %\input{symbols}
+ %\end{listofsymbols}
+
+%%
+%% include your dedication
+%%
+ \Dedicate{Write something here. I dedicate this thesis to someone important to me.}
+
+%===================================================================
+%   Begin the body of the thesis
+%===================================================================
+\begin{thesis}
+%===================================================================
+%   Chapters are included here
+%===================================================================
+
+\input{chap_intro.tex}
+
+%\input{chap_str_exp.tex}        %Chapter) Stretched Exponentials
+
+%\input{chap_ln_pois_scale.tex}  %Chapter) Log Poisson Scaling
+
+%\input{chap_ana_beta.tex}       %Chapter) Analytical Beta
+
+%\input{chap_shell_models.tex}   %Chapter) Shell Models
+
+%\input{chap_conser_laws.tex}    %Chapter) Conservation Laws
+
+%\input{chap_numer_sim.tex}      %Chapter) Numerical Simulations
+
+%\input{chap_s_s_joint_pdf.tex}    %Chapter) I do not know
+
+%\input{chap_new_theory.tex}     %Chapter) A New Theory
+
+\input{chap_before_theory.tex}   %Chapter) Applying the Theory
+
+%\input{chap_conclusion.tex}
+
+%===================================================================
+%   Appendices go here if no appendix, remove \StartAppendix
+%===================================================================
+\StartAppendix %All chapters from this point are treated as appendices
+
+\input{app.tex}
+%\input{app2.tex}
+
+%===================================================================
+%   Bibliography goes here
+%===================================================================
+
+\bibliographystyle{acm}
+\bibliography{thesis}
+
+\end{thesis}
+
+\end{document}

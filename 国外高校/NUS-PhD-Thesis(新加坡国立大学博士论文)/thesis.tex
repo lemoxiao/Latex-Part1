@@ -1,0 +1,88 @@
+\documentclass[a4paper,11pt,minitoc,gray,chapterstyletwo,twoside,loabychapter,lotbychapter,lofbychapter]{NusThesis}    
+%% class option:
+%% loabychapter      : separate the list of algorithms by chapter
+%% lotbychapter      : separate the list of tables     by chapter
+%% lofbychapter      : separate the list of figures    by chapter
+%% lolbychapter      : separate the list of codes      by chapter // use lstlisting environment
+%% gray              : change colors to gray style
+%% chapterstyletwo   : another type of chapter style
+%% chapterstylethree : third type of chapter style
+%% minitoc           : create a minitoc at each chapter
+
+%% all the options for the book class can be added here
+
+%% self defined commands and configurations and extra loaded packaged, which are not necessary 
+%% to use this class
+\input{package}           % for used packages
+\input{self.commands}     % for delfdefined commands
+\input{config}            % for specific configurations
+%% users can replace the contents of the above files to these they need
+%\usepackage{showframe}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% input informations                                                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\title{Quantum Entanglement}
+\author{Qian Long}
+\authordegree{B.Sc., Wuhan University}         % the degree has obtained 
+\degree{Doctor of Philosophy}                  % degree this thesis for
+\department{Department of Mathematics}         % current department 
+\university{National University of Singapore}  % current university name
+\declarationdate{\today}                       % declaration date
+\supervisor{Associate Professor In Jen}     % Supervisor 
+\examinerone{Professor A}          % three examiners, if not in your university,
+\examinertwo{Professor B}          % may add the name of his university
+\examinerthree{Professor C, University of Somecity}
+
+
+
+% documents starts==============================================>
+\begin{document}
+\frontmatter              % change page number to roman number
+\maketitle                % create title page 
+\pagestyle{empty}
+\AddDeclaration[signature2]% input tha fig name of your signature in the braket
+\input{acknowledgments}   % input the contents of acknowledgement
+\tableofcontents          % Table of contents.
+
+\input{summary}           % input the contents of summary
+\listoffigures            % create the list of figures and add to toc
+\listoftables             % create the list of tables and add to toc
+\listofsymbols            % create the list of symbols and add to toc. see symbols.tex for examples
+\listofalgorithms         % create the list of algorithms and add to toc
+\lstlistoflistings        % create the list of codes and add to toc
+\listofpublications{Qian_sppt,Qian_CS,Qian_CS2} 
+
+% create the list of your publication, 
+% the contents if defined in contents file
+%% main contents start========================================>
+\mainmatter              % change page number to arabic number
+\chapter*{Introduction}
+\addstarredchapter{Introduction} % add the introduction to toc
+\input{introduction}     % introcution part
+\pagestyle{circle}   % use to change the head and foot style
+%% possible head style : basicstyle, gray, circle, circle2, circle3
+\input{chapter1}         % for clarity, we split the source into several files
+\input{chapter2}
+\input{chapter2}         % for testing
+%% for testing list of symbols
+%% To add the symbols to the list of symbols, need to use $\gls{t}$ in the contents
+%% which will create hyperlink to the section of listofsymbols
+%% To add the description of the symbols, one must add the entry in "symbols.tex" file
+\chapter{Sample}
+Reference symbols: $\gls{x}$, $\gls{v}$, $\gls{a}$, $\gls{t}$,
+$\gls{F}$,$\gls{xx}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% bibliography                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\bibliographystyle{tsien} % bibliography style, for example: plain, style "tsien" is user cumstomized
+\bibliography{biblio}       % bib file name 
+
+\end{document}
+%%% the following three lines of comments are used for emacs auctex users, each 
+%%% input file contains them. One can compile tex file on any buffer of them
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

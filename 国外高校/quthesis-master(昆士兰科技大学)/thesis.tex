@@ -1,0 +1,71 @@
+% ----------------------------------------------------------------------------
+% A dissertation for the Doctorate of Philosophy
+% Hilton Bristow
+% 2014
+%
+% Please think carefully before adjusting the font size or margins in this
+% document. They are optimized for readability, with 65-75 characters per line.
+% ----------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{book}
+\usepackage{quthesis}
+
+% ----------------------------------------------------------------------------
+% Packages
+% ----------------------------------------------------------------------------
+\usepackage{subfiles}
+
+% Custom notation
+\input{notation}
+
+% ----------------------------------------------------------------------------
+% Preamble
+% ----------------------------------------------------------------------------
+\title{A \LaTeX\xspace Template}
+\subtitle{For QUT Doctorate of Philosophy Dissertations}
+\author{Hilton Bristow}
+\qualifications{B.E. Mechatronics (Hons I)}
+\supervisor{Professor Simon Lucey}
+\email{hilton.bristow@gmail.com}
+\department{School of Computer Science}
+\university{The Queensland University of Technology}
+\degree{Doctor of Philosophy}
+\keywords{dissertation, LaTeX, PhD, template, thesis, QUT}
+\flourish{} % Insert vector flourish here if desired
+\logo{}     % Insert University logo here if desired
+
+% ----------------------------------------------------------------------------
+% Front Matter
+% ----------------------------------------------------------------------------
+\begin{document}
+\frontmatter
+\maketitle
+\subfile{1-originality}
+\subfile{2-dedication}
+\subfile{3-acknowledgements}
+\subfile{4-abstract}
+\subfile{5-toc}
+
+% ----------------------------------------------------------------------------
+% Main Matter
+% ----------------------------------------------------------------------------
+\mainmatter
+\subfile{6-introduction}
+
+% ----------------------------------------------------------------------------
+% Appendices
+% ----------------------------------------------------------------------------
+\appendix
+%\subfile{appendix}
+
+% ----------------------------------------------------------------------------
+% Bibliography
+% ----------------------------------------------------------------------------
+\backmatter
+\bibliographystyle{ieee}
+\bibliography{citations}
+
+% ----------------------------------------------------------------------------
+% Biography
+% ----------------------------------------------------------------------------
+\subfile{biography}
+\end{document}

@@ -1,0 +1,234 @@
+%----------------------------------------------------------------------
+%	Packages and other document configurations
+%----------------------------------------------------------------------
+%% Page Setup
+\documentclass[10pt, final]{report}	
+\usepackage[a4paper, margin=2.5cm]{geometry} 
+
+%% Language, input and output options
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}  % Unicode Characters
+%\usepackage{newtxmath,newtxtext} % Times New Roman 
+\usepackage[urw-garamond]{mathdesign} % But Garamond is better
+\usepackage{hologo}
+\usepackage{lettrine}
+\usepackage{setspace}
+
+%% Graphics and float packages
+\usepackage{rotating} % To rotate a page if nessacary
+\usepackage{graphicx} % Required for including pictures
+\usepackage{wrapfig} % Allows in-line images
+\usepackage{caption}
+\usepackage{subcaption}	
+\usepackage{float} % Allows putting an [H] to specify exact location 
+\graphicspath{{../figures/}} % Directory where pictures are stored
+\usepackage{pdflscape}
+\usepackage{tikz}
+
+%% Inclusion of other packages
+\usepackage[sort&compress,round,semicolon,authoryear]{natbib}
+\usepackage{siunitx}
+\usepackage{gensymb}
+\usepackage{pdfpages}
+\usepackage{tabularx}
+\usepackage[linguistics]{forest} % To create pretty diagrams
+\usepackage{tikz-qtree}
+\usetikzlibrary{shapes,arrows}
+\usepackage{enumitem}
+\usepackage{listings}
+
+%% Configure the TOC and center the TOC, LOF and LOT title
+\addtocontents{toc}{~\hfill\textbf{Page}\par}
+\usepackage[numbib]{tocbibind}
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\hspace*{\fill}\huge\bfseries}
+\renewcommand{\cftaftertoctitle}{\hspace*{\fill}}
+\renewcommand{\cftlottitlefont}{\hspace*{\fill}\huge\bfseries}
+\renewcommand{\cftafterlottitle}{\hspace*{\fill}}
+\renewcommand{\cftloftitlefont}{\hspace*{\fill}\huge\bfseries}
+\renewcommand{\cftafterloftitle}{\hspace*{\fill}}
+
+%% Setup titles and sectioning
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\centering}
+  {\chaptertitlename\ \thechapter}{-5pt}{\huge}
+  \titlespacing*{\chapter}{0pt}{-50pt}{10pt}
+  
+\titlespacing*{\section}
+{0pt}{1ex plus 1ex minus .2ex}{1ex plus .2ex}
+
+\titlespacing*{\subsection}
+{0pt}{1ex plus 1ex minus .1ex}{1ex plus .1ex}
+
+\titleformat{\paragraph}
+	{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+	\titlespacing*{\paragraph}
+	{0pt}{1ex plus 1ex minus .1ex}{1ex plus .1ex}
+
+%% Modify links
+\usepackage[hyphens]{url}
+\usepackage[colorlinks=true,urlcolor=black,citecolor=black,linkcolor=black,bookmarks=true,pagebackref]{hyperref} % colored citations
+\renewcommand{\backrefxxx}[3]{%
+  (\hyperlink{page.#1}{$\uparrow$#1})} % This is to add backref^
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage{bookmark}
+\bookmarksetup{numbered,open}
+
+%% Figure out the glossary
+\usepackage[toc]{glossaries}
+\newglossary{abbreviation}{aot}{ata}{List of Abbreviations}
+\loadglsentries[abbreviation]{glossaries}
+\makeglossaries
+
+%% Setup tikz, bookmarks, colors
+\colorlet{linecol}{black!75}
+\usetikzlibrary{arrows.meta}
+\tikzset{
+  my rounded corners/.append style={rounded corners=2pt},
+}
+
+%% Change lengths and minimize whitespace
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em plus 0.2em minus 0.2em}
+\linespread{1.2} % Line spacing\frac{(\overline{w'c'})
+\setcounter{secnumdepth}{0} % only number chapters
+\setcounter{tocdepth}{1}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftbeforeloftitleskip}{0pt}
+\setlength{\cftbeforelottitleskip}{0pt}
+\setlength\cftparskip{0pt}
+\setlength\cftbeforechapskip{0pt}
+
+%% Pdf Metadata
+\hypersetup{
+    pdftitle={Latex is for cool kids},
+    pdfsubject={Not Computer Science},
+    pdfauthor={Piet Pompies},
+    pdfkeywords={Linux, LaTeX, Debian, Github}
+}
+
+% document begin
+\begin{document}
+
+%--------------------------------------------------------------------
+%	Title Page
+%--------------------------------------------------------------------
+\pagenumbering{Roman}
+\input{../1titlepage&abstract/titlepage.tex}
+\thispagestyle{empty}
+
+%--------------------------------------------------------------------
+%	Declaration
+%--------------------------------------------------------------------
+\input{../2preface&acknowledgements/declaration.tex}
+\thispagestyle{empty}
+\newpage
+
+%--------------------------------------------------------------------
+%	Abstract
+%--------------------------------------------------------------------
+\input{../1titlepage&abstract/abstract.tex}
+\newpage
+
+%--------------------------------------------------------------------
+%	Dedication
+%--------------------------------------------------------------------
+\input{../2preface&acknowledgements/dedication.tex}
+\newpage
+
+%--------------------------------------------------------------------
+%	Preface
+%--------------------------------------------------------------------
+\input{../2preface&acknowledgements/preface.tex}
+\newpage
+
+%--------------------------------------------------------------------
+%	Table of Contents
+%--------------------------------------------------------------------
+\pagenumbering{Roman}
+\tableofcontents % Include a table of contents
+%\addtocontents{toc}{~\hfill\textbf{Page}\par}
+\newpage % Begins the LoF on a new page  
+
+%--------------------------------------------------------------------
+%	List of Figures
+%--------------------------------------------------------------------
+\listoffigures
+\addtocontents{lof}{~\hfill\textbf{Page}\par}
+\newpage
+
+%--------------------------------------------------------------------
+%	List of Tabels
+%--------------------------------------------------------------------
+\listoftables
+\addtocontents{lot}{~\hfill\textbf{Page}\par}
+
+%--------------------------------------------------------------------
+%	List of Abbreviations
+%--------------------------------------------------------------------
+\printglossaries
+\newpage
+
+%--------------------------------------------------------------------
+%	Chapter 1: Introduction and Litrature study
+%--------------------------------------------------------------------
+\input{../3background&introduction/background&introduction.tex} 
+
+%--------------------------------------------------------------------
+%	Chapter 2: Aims, Objectives and Layout
+%--------------------------------------------------------------------
+\input{../5aims&objectives/aims&objectives.tex}
+\newpage
+
+%--------------------------------------------------------------------
+%	Chapter 3: Study Area, Data & Methods
+%--------------------------------------------------------------------
+\input{../4data&methods/data&methods.tex}
+\newpage
+
+%--------------------------------------------------------------------
+%	Chapter 4: 
+%--------------------------------------------------------------------
+\input{../6objective1/objective1.tex}
+\newpage
+
+%--------------------------------------------------------------------
+%	Chapter 5: 
+%--------------------------------------------------------------------
+\input{../7objective2/objective2.tex}
+\newpage
+
+%--------------------------------------------------------------------
+%	Chapter 6: 
+%--------------------------------------------------------------------
+\input{../8objective3/objective3.tex}
+\newpage
+
+%--------------------------------------------------------------------
+%	Conclusion
+%--------------------------------------------------------------------
+\input{../9discussion/conclusion.tex}
+\newpage
+
+%--------------------------------------------------------------------
+%	Bibliography
+%--------------------------------------------------------------------
+\linespread{0.9} \normalsize
+\bibliographystyle{agsm} % Bibliography style
+\renewcommand{\bibpreamble}{$\uparrow$ refers back to in text citations}
+\bibliography{../bibliography/master}
+\label{sec:bib}
+
+%--------------------------------------------------------------------
+%   Appendix
+%--------------------------------------------------------------------
+\newpage
+\linespread{1.2} \normalsize
+\input{../appendix/appendix.tex}
+
+%--------------------------------------------------------------------
+%--------------------------------------------------------------------
+
+\end{document}

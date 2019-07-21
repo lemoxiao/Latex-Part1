@@ -1,0 +1,9 @@
+% style de l'index de these, compiler avec makeindex -s these.ist these.idx
+% lettres pour entre chaque index
+heading_prefix "{\\bfseries\\hfil "
+heading_suffix "\\hfil}\\nopagebreak\n"
+headings_flag 1 [index]
+% lignes jusqu'a la fin avant le no de page
+delim_0 "\\dotfill"
+delim_1 "\\dotfill"
+delim_2 "\\dotfill"

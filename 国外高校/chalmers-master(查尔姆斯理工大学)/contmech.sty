@@ -1,0 +1,84 @@
+\RequirePackage{mathtools}
+\RequirePackage{amssymb}
+
+% The common binary operators
+\newcommand{\dprodt}{\mathbin{\cdot\cdot}} % Double product transpose
+\newcommand{\dprod}{\mathbin{\vcentcolon}} % Double product
+\newcommand{\cross}{\mathbin{\times}} % Cross product
+\newcommand{\outerp}{\mathbin{\otimes}} % Outer product
+\newcommand{\uouterp}{\mathbin{\overline{\otimes}}} % Upper outer product
+\newcommand{\louterp}{\mathbin{\underline{\otimes}}} % Lower outer product
+
+% Tensors
+\newcommand{\ta}[1]{\boldsymbol{#1}} % First order tensor. Bold, cursive
+%\newcommand{\ts}[1]{\boldsymbol{\mathrm{#1}}} % Second order tensor. Bold, straigt
+\newcommand{\ts}[1]{\boldsymbol{#1}} % Second order tensor. Bold, cursive
+\newcommand{\td}[1]{\boldsymbol{\mathcal{#1}}} % Third order tensor. Bold, caligraphy
+\newcommand{\tf}[1]{\boldsymbol{\mathsf{#1}}} % Fourth order tensor. Bold, sans-serif
+
+% Alternative commands when using unicode-math.
+%\renewcommand{\ta}[1]{\mathbfit{#1}}
+%\renewcommand{\ts}[1]{\mathbfit{#1}}
+%\renewcommand{\td}[1]{\mathbfcal{#1}}
+%\renewcommand{\tf}[1]{\mathbfsf{#1}}
+
+\newcommand{\vect}[1]{\underline{#1}} % Vectors
+\newcommand{\mat}[1]{\underline{#1}} % Matrices (even if they are the same, keep them seperate if you ever wish to change it.
+
+\newcommand{\set}[1]{\mathbb{#1}} % For defining sets
+
+\newcommand{\diff}{\ts\nabla} % Very common operator
+
+\newcommand{\majorT}{\mathrm{T}} % For major transpose, \ts A^\Tran
+\newcommand{\minorT}{\mathrm{t}} % For minor transpose, \tf A^\tran
+
+% Common decorations for tensors.
+\newcommand{\dev}{\mathrm{dev}} % Deviatoric part
+\newcommand{\vol}{\mathrm{vol}} % Volumetric part
+\newcommand{\sym}{\mathrm{sym}} % Symmetric part
+\newcommand{\skw}{\mathrm{skw}} % Skew part
+\newcommand{\sph}{\mathrm{sph}} % Spherical part
+\newcommand{\trial}{\mathrm{tr}} % Trial value
+\newcommand{\el}{\mathrm{e}} % Elastic
+\newcommand{\pl}{\mathrm{p}} % Plastic
+\newcommand{\eff}{\mathrm{e}} % Effective value
+\newcommand{\eqv}{\mathrm{e}} % Equivalent value
+\newcommand{\alg}{\mathrm{a}} % Algorithmic value
+\newcommand{\mean}{\mathrm{m}} % Mean value
+\newcommand{\red}{\mathrm{red}} % Reduced value
+\newcommand{\thres}{\mathrm{th}} % Threshold value
+\newcommand{\macro}{\mathrm{M}} % Macroscopic value
+\newcommand{\fluct}{\mathrm{s}} % Fluctuation
+\newcommand{\nominal}{\mathrm{nom}} % Nominal value
+
+\newcommand{\Dissipation}{\mathcal{D}}
+\newcommand{\Dirichlet}{\mathrm{D}}
+\newcommand{\Neumann}{\mathrm{N}}
+
+% For typing out second order base indicies conveniently
+\newcommand{\be}[1]{\ta{e}_{#1}}
+\newcommand{\bee}[2]{\ta{e}_{#1}\otimes\ta{e}_{#2}}
+\newcommand{\beee}[3]{\ta{e}_{#1}\otimes\ta{e}_{#2}\otimes\ta{e}_{#3}}
+\newcommand{\beeee}[4]{\ta{e}_{#1}\otimes\ta{e}_{#2}\otimes\ta{e}_{#3}\otimes\ta{e}_{#4}}
+
+% Outer math commands;
+\newcommand{\defeq}{\overset{\mathrm{def}}{=}} % For definitions X \defeq Y + 1
+%\newcommand{\defeq}{\coloneqq} % alternative
+
+\newcommand{\nextts}[1]{\prescript{n}{}{#1}} % Next timestep.
+\newcommand{\oldts}[1]{\prescript{n-1}{}{#1}} % Old timestep.
+
+%\usepackage{commath} % Defines \op, \od, \md for derivatives. Usefull. Similarly defined as below;
+
+% Differentiation (like with integrals)
+\DeclareMathOperator{\dif}{d \!}
+\DeclareMathOperator{\Dif}{D \!}
+\DeclareMathOperator{\tr}{tr} % Trace
+
+\providecommand{\od}[2]{\ensuremath{\frac{\dif\:#1}{\dif #2}}} % Ordinary derivatives
+\providecommand{\pd}[2]{\ensuremath{\frac{\partial\: #1}{\partial #2}}} % Total derivatives
+\providecommand{\md}[3]{\ensuremath{\frac{\partial^2\: #1}{\partial #2 \partial #3}}} % Mixed derivatives.
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert} % Norm of a tensor or vector \norm A or \nornm* A
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert} % Absolute value of a scalar \abs x
+\DeclarePairedDelimiter{\mcc}{\langle}{\rangle} % McCauley bracket

@@ -1,0 +1,98 @@
+% Copyright 2014 by Remus Mihail Prunescu
+
+% LaTeX Support Group 2014
+% DTU Official Presentation
+
+\mode<presentation>
+
+\setbeamercolor*{framecounter in head/foot}{parent=palette tertiary}
+\setbeamercolor*{department in head/foot}{parent=palette tertiary}
+\setbeamercolor*{title in head/foot}{parent=palette tertiary}
+\setbeamercolor*{date in head/foot}{parent=palette tertiary}
+
+% No navigation symbols
+\setbeamertemplate{navigation symbols}{} 
+
+% Header
+\setbeamertemplate{headline}
+{
+	\ifdefstring{\bDTUWhiteFrame}{true}
+	{
+		\insertFrameDTUWhiteLogo
+	}
+	{
+		\ifdefstring{\bInTitle}{true}
+		{
+			\insertTitleDTULogo
+		}
+		{
+			\insertFrameDTULogo
+		}
+	}
+}
+
+% Footer
+\setbeamertemplate{footline}
+{
+	\ifdefstring{\bInTitle}{true}
+	{
+		\vspace{-0.35\paperheight}
+		\begin{beamercolorbox}[wd=\paperwidth]{title bottom}
+			\vbox{%
+				\makebox[0pt][l]{\hspace{\dimDTUDepLogoXOffset}\insertdepartmentlogoA}%
+				\vbox{%
+					\hspace{\dimDTUFriseXOffset}%
+					\makebox[0pt][l]{\insertDTUFrise}%
+					\vspace{\dimDTUDepFriseOffset}%
+				}%
+			}%
+			\vspace{\dimDTUFriseYOffset}
+		\end{beamercolorbox}
+		\global\def\bInTitle{false}
+	}
+	{
+		\ifdefstring{\bDTUWhiteFrame}{true}
+		{
+		}
+		{ %
+			\hbox{ %
+				\hspace{\dimTextLeftMargin}\hspace{-1.5pt}\insertframenumber %
+				\setlength{\widthframenumber}{2em + \widthof{\insertframenumber}} %
+				\setlength{\widthdepartment}{1em + \widthof{\insertdepartmentandinstitute}} %
+				\setlength{\widthdate}{1em + \widthof{00 00 0000}} %
+				\setlength{\widthtitle}{\textwidth-\widthframenumber-\widthdepartment-\widthdate-\dimTextLeftMargin-\dimTextLeftMargin} %
+				%\parbox[t]{\widthframenumber}{\insertframenumber} %
+				\parbox[t]{\widthdepartment}{\insertdepartmentandinstitute} %
+				\parbox[t]{\widthtitle}{\raggedleft\insertshorttitleinfooter} %
+				\parbox[t]{\widthdate}{\raggedleft\DTUDateFormat\insertdate} %
+				\vspace{\dimFootlineYOffset} %
+			}
+		}
+	}
+}
+
+% Position the frame title so that it would get into the headline
+\setbeamertemplate{frametitle}
+{
+	\vspace{\dimPlaceTitleInHeader}
+	\ifdefstring{\inShowSection}{true}
+	{
+			\usebeamerfont{section title}\color{black!20}%
+			\ifnumcomp{\thesection}{=}{0}{%
+				\ \par%
+			}
+			{%
+				\insertsection\par
+			}
+	}
+	{
+		\vspace{\dimFrameTitleOffset}
+	}
+	\vspace{-1pt}\usebeamerfont{frametitle}%
+	\ifdefstring{\bDTUWhiteFrame}{true}{\color{white}}{\color{black}}%
+	\insertframetitle
+	\vspace{\dimAfterFrameTitleOffset}
+}
+
+\mode
+<all>

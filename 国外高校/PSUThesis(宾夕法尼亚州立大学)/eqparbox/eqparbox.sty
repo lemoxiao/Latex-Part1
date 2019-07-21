@@ -1,0 +1,114 @@
+%%
+%% This is file `eqparbox.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% eqparbox.dtx  (with options: `package')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2001 Scott Pakin <pakin@uiuc.edu>
+%% -------------------------------------------------------
+%% 
+%% This package may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.2
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% File: eqparbox.dtx Copyright (C) 2001 Scott Pakin <pakin@uiuc.edu>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{eqparbox}
+         [2001/04/19 v1.00 Equal-widthed parboxes (SDP)]
+\newlength{\eqp@tempdima}
+\newlength{\eqp@tempdimb}
+\newlength{\eqp@tempdimc}
+\newif\ifeqp@must@rerun
+
+\AtEndDocument{%
+  \ifeqp@must@rerun
+    \@latex@warning@no@line{Rerun to correct eqparbox widths}
+  \fi
+}
+\def\eqp@settowidth#1#2{%
+  \settowidth{#1}{\begin{tabular}{@{}l@{}}#2\end{tabular}}%
+}
+\DeclareRobustCommand\eqparbox{%
+  \@ifnextchar[%]
+    {\eqparbox@i}%
+    {\eqparbox@iii[c][\relax][s]}%
+}
+\def\eqparbox@i[#1]{%
+  \@ifnextchar[%]
+    {\eqparbox@ii[#1]}%
+    {\eqparbox@iii[#1][\relax][s]}%
+}
+\def\eqparbox@ii[#1][#2]{%
+  \@ifnextchar[%]
+    {\eqparbox@iii[#1][#2]}%
+    {\eqparbox@iii[#1][#2][#1]}%
+}
+\def\eqparbox@iii[#1][#2][#3]#4#5{%
+  \expandafter%
+  \ifx\csname eqp@#4\endcsname\relax
+    \expandafter\global\expandafter\newlength\csname eqp@#4\endcsname
+    \expandafter\global\expandafter\newlength\csname eqp@next@#4\endcsname
+    \expandafter%
+    \ifx\csname eqp@first@#4\endcsname\relax
+      \global\eqp@must@reruntrue
+      \global\eqp@settowidth{\csname eqp@#4\endcsname}{#5}%
+    \else
+      \global\csname eqp@#4\endcsname=\csname eqp@first@#4\endcsname\relax
+    \fi
+    \AtEndDocument{%
+      \expandafter\let\expandafter\eqp@tempdima\csname eqp@next@#4\endcsname
+      \expandafter\let\expandafter\eqp@tempdimb\csname eqp@#4\endcsname
+      \ifnum\eqp@tempdima<\eqp@tempdimb
+        \@latex@warning@no@line{Rerun to correct width of eqparbox `#4'}
+        \immediate\write\@auxout{%
+          \string\global\string\newdimen%
+            \expandafter\string\csname eqp@first@#4\endcsname^^J%
+          \string\global\expandafter\string\csname eqp@first@#4\endcsname=%
+            \expandafter\the\eqp@tempdima\string\relax
+        }
+      \else
+        \immediate\write\@auxout{%
+          \string\global\string\newdimen%
+            \expandafter\string\csname eqp@first@#4\endcsname^^J%
+          \string\global\expandafter\string\csname eqp@first@#4\endcsname=%
+            \expandafter\the\eqp@tempdimb\string\relax
+        }
+      \fi
+    }%
+  \fi
+  \expandafter\let\expandafter\eqp@tempdima\csname eqp@#4\endcsname
+  \expandafter\let\expandafter\eqp@tempdimb\csname eqp@next@#4\endcsname
+  \eqp@settowidth{\eqp@tempdimc}{#5}%
+  \ifnum\eqp@tempdima<\eqp@tempdimc
+    \global\eqp@tempdima=\eqp@tempdimc\relax
+    \eqp@must@reruntrue
+  \fi
+  \ifnum\eqp@tempdimb<\eqp@tempdimc
+    \global\eqp@tempdimb=\eqp@tempdimc\relax
+  \fi
+  \parbox[#1][#2][#3]{\eqp@tempdima}{#5}%
+}
+\def\eqboxwidth#1{%
+  \expandafter%
+  \ifx\csname eqp@#1\endcsname\relax
+    \expandafter%
+    \ifx\csname eqp@first@#1\endcsname\relax
+      \z@
+    \else
+      \csname eqp@first@#1\endcsname
+    \fi
+  \else
+    \csname eqp@#1\endcsname
+  \fi
+}
+\endinput
+%%
+%% End of file `eqparbox.sty'.

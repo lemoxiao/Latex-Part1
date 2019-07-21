@@ -1,0 +1,39 @@
+\section{Some complexity classes in the polynomial hierarchy}\label{sub:compl}
+
+%For the sake of completeness, we briefly recall here some notions concerning the polynomial-time hierarchy.
+The \emph{polynomial-time hierarchy}, denoted by $\PH$, was introduced by Stockmeyer in~\cite{stockmeyer1976}, and is defined as \[\PH=\bigcup_{k\in\mathbb{N}}\Delta^p_k, \] 
+%
+where $\Delta_0^p=\Sigma_0^p=\Pi_0^p=\PTIME$
+and, for all $k\geq 1$, 
+\[
+\Delta_k^p=\PTIME^{\Sigma_{k-1}^p},
+\qquad 
+\Sigma_k^p=\NP^{\Sigma_{k-1}^p},
+\qquad 
+\Pi_k^p=\co\Sigma_k^p.
+\]
+%
+In particular, we have that $\Delta_1^p=\PTIME$, $\Sigma_1^p=\NP$, and $\Delta_2^p=\PTIME^{\NP}$. A well-known example of complete problem for $\Sigma^p_k$ (resp., $\Pi^p_k$) is to decide the truth of fully-quantified formulas of the form 
+\[Q_1 x_1 Q_2 x_2\cdots Q_n x_n \phi(x_1,x_2,\ldots ,x_n),\] where $\phi(x_1,x_2,\ldots ,x_n)$ is a quantifier-free Boolean formula whose variables range in the set $\{x_1,x_2,\ldots ,x_n\}$, $Q_i\in\{\exists,\forall\}$, for all $2\leq i \leq n$, $Q_1=\exists$ (resp., $Q_1=\forall$), and there are $k-1$ quantifier alternations, that is, $k-1$ different indexes $j>1$ such that $Q_j\neq Q_{j-1}$.
+%
+On the contrary, $\Delta_k^p$ does not feature very popular complete problems. As an example, for each $k\geq 1$, a $\Delta_{k+1}^p$-complete problem is to decide whether, given a true quantified Boolean formula of the form 
+\begin{equation*}
+\exists x_1\cdots \exists x_r \forall x_{r+1} Q_{r+2} x_{r+2}\cdots Q_n x_n \phi(x_1,\ldots ,x_n),
+\end{equation*}
+with $k-1$ quantifier alternations, the lexicographically maximum truth assignment $\upsilon$ to the variables $(x_1,\ldots , x_r)$ such that 
+\begin{equation*}
+\forall x_{r+1} Q_{r+2} x_{r+2}\cdots Q_n x_n \phi(\upsilon (x_1),\ldots , \upsilon (x_r), x_{r+1}, \ldots , x_n)
+\end{equation*}
+is true assigns $1$ to $x_r$~\cite{gottlob1995}.
+
+As a particular case, given a satisfiable Boolean formula $\phi(x_1,\ldots , x_n)$, the problem of deciding whether the lexicographically maximum truth assignment to $(x_1,\ldots , x_n)$ satisfying $\phi$ assigns $1$ to $x_n$ is complete for $\Delta_2^p=\PTIME^{\NP}$.
+For other examples of $\PTIME^{\NP}$-complete problems (many of them are related to MC) we refer the reader to~\cite{batzold2009,LMS01,LMS02,Lmp10}.
+
+Above $\NP$ and $\co\NP$, but below $\PTIME^{\NP}$, is the class $\Th$, introduced by Papadimitriou and Zachos in~\cite{Papadimitriou82}, which is the set of problems decided by a deterministic $\PTIME$ algorithm (Turing machine) which requires only $O(\log n)$ queries to an $\NP$ oracle (being $n$ the input size). Analogously, $\Thsq$ is the set of problems decided by a $\PTIME$ algorithm requiring $O(\log^2 n)$ queries to an $\NP$ oracle.\footnote{Here and in the following, we assume that the polynomial hierarchy $\PH$ is not collapsing, and that $\PTIME^{\NP}$, $\Th$, and $\Thsq$ are \emph{distinct}, as it is widely conjectured.} These complexity classes (and all others which set a bound on the number of allowed queries) are called \emph{bounded query classes}. Note that $\PTIME^{\NP}$, $\Th$ and $\Thsq$ are closed under complementation, as well as under $\LOGSPACE$ (many-one) reductions.
+
+As for $\Th$, it has been proved (see~\cite{buss1991,wagner90}) that $\Th = \LOGSPACE^{\NP}$ $= \Thpar$, where $\Thpar$ is the class of problems decided by a deterministic $\PTIME$ algorithm which performs a single round (or a \emph{constant} number of rounds) of parallel queries to an $\NP$ oracle. By \emph{parallel queries}, we mean that each query is independent of the outcome of any other or, equivalently, that all queries have to be formulated before the oracle is consulted. Obviously, the constraint of parallelism is not necessarily fulfilled in the class $\PTIME^{\NP}$, where a query to the oracle may be \emph{adaptive}, that is, it  may depend on the results of previously performed queries.
+%
+An example of complete problem for $\Th$ is PARITY(SAT): given a set of Boolean formulas $\Gamma=\{\phi_1,\ldots , \phi_n\}$, the problem is to decide if the number of \emph{satisfiable} formulas in $\Gamma$ is odd or even~\cite{WAGNER87}.
+
+As for $\Thsq$, it has been proved in~\cite{castro92} that $\Thsq=\Thparlogn$, (in $\Thparlogn$ a succession of $O(\log n)$ parallel query rounds are allowed). To the best of our knowledge, the first complete problems for this class were introduced in~\cite{schnoebelen2003}. Among these, a detailed account of the problem \TBSATM \ will be given in Section~\ref{sect:AAbarAlg}.
+

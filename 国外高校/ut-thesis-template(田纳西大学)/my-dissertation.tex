@@ -1,0 +1,130 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This template is distributed with ABSOLUTELY NO WARRANTY.
+% It serves as a guideline and constitutes a basic structure for a
+% thesis/dissertation. The user assumes full responsibility for formatting
+% and typesetting their document and for verifying that all the thesis
+% requirements set by the University of Tennessee are met. Please refer to the most
+% recent UT thesis guide (http://web.utk.edu/~thesis/thesisresources.shtml)
+% or contact the thesis consultant (http://web.utk.edu/~thesis/).
+% Please report any bugs to the thesis consultant.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% O P T I O N S:
+% 1. thesis/dissertation
+% 2. monochrome
+% 3. all options provided by the report class
+\documentclass[thesis,letterpaper,12pt]{utthesis} % thesis, one side
+% some alternatives are:
+%\documentclass[thesis,monochrome,letterpaper,12pt]{utthesis} %thesis, one side, monochrome text
+%\documentclass[thesis,twoside,letterpaper,12pt]{utthesis} % thesis, two side
+%\documentclass[thesis,monochrome,twoside,letterpaper,12pt]{utthesis} % thesis, two side, monochrome text
+% for a dissertation, replace the thesis option by dissertation:
+% \documentclass[dissertation,letterpaper,12pt]{utthesis} . . .
+\renewcommand{\baselinestretch}{1.5} 	 % line Spacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TO DO: FILL IN YOUR INFORMATION BELOW - READ THIS SECTION CAREFULLY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{My Thesis or Dissertation Title}	       % title of thesis/dissertation
+\author{My Name}                % author's name
+\copyrightYear{2012}            % copyright year of your thesis/dissertation
+\graduationMonth{May}           % month of graduation of your thesis/dissertation
+\majorProfessor{My Advisor}	    % advisor's name
+\keywords{List, Of, Keywords}	% keywords (optional) separated by commas - these are used in the PDF file properties
+\viceProvost{Carolyn R. Hodges} % vice provost name
+\major{Mechanical Engineering}	% major: Mechanical Engineering, Aerospace Engineering, Mathematics...
+\degree{Master of Science}	    % degree: Doctor of Philosophy, Master of Science, Master of Engineering...
+\college{Engineering}           % college
+\dept{Mechanical, Aerospace and Biomedical Engineering}	% department
+\university{The University  of Tennessee, Knoxville}	% school name
+% THIS TEMPLATE ACCOMMODATES UP TO 5 COMMITTEE MEMBERS - ENTER ONLY THE NAMES OF THE MEMBERS ON YOUR COMMITTEE
+\numberOfCommitteeMembers{2} % enter the number of committee members
+\committeeMemberA {Committee Member 1}	% name of first committee member
+\committeeMemberB {Committee Member 2}	% name of second committee member
+\committeeMemberC {Committee Member 3}	% ... you get the trend!
+\committeeMemberD {Committee Member 4}	% if your committee has less than 4 members, you do not need to edit the
+\committeeMemberE {Committee Member 5}  % rest of committee names
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LOAD SOME USEFUL PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{nomencl}                    % produces a nomenclature
+\usepackage{float}                      % figure floats
+\usepackage{natbib}                     % this package allows you to link your references
+\usepackage{graphicx}					% graphics package
+\graphicspath{ {figures/}{figures/eps/}{figures/pdf/} }% specify the path where figures are located
+\usepackage{fancyhdr}                   % fancy headers and footers
+\usepackage{url}                        % nicely format url breaks
+\usepackage[inactive]{srcltx}		 	% necessary to use forward and inverse searching in DVI
+\usepackage{relsize}                    % font sizing hierarchy
+\usepackage{booktabs}                   % professional looking tables
+\usepackage[config, labelfont={bf}]{caption,subfig} % nice sub figures
+\usepackage{mathrsfs}                   % additional math scripts
+%%% PACKAGES THAT ARE PRELOADED WITH THE CLASS ARE: amsmath,amsthm,amssymb,setspace,geometry,hyperref,and color
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+    \pagenumbering{alph} % this is needed to clear certain issues with the hyperref package
+    %
+    \makeApprovalPage % make the approval page - this is the page that needs to be signed & returned to the thesis/dissertation consultant
+    \makeETDApprovalPage % make the Electronic Thesis & Dissertation page - this page is kept with the electronic copy
+    %
+    \addToPDFBookmarks{0}{Front Matter}{rootNode} % create a root node named "Front Matter" in the pdf bookmarks
+    \addToPDFBookmarks{1}{Title}{a} % add a pdf bookmark to the title page
+    \makeTitlePage % make the title page. Make sure you properly set the \docType
+    %
+    \pagenumbering{roman}
+    \setcounter{page}{2}
+    %
+    \makeCopyrightPage % make the copyright page
+    %
+    \addToPDFBookmarks{1}{Dedication}{b} % add a pdf bookmark to the dedication page
+    \include{front-matter/dedication} % include the dedication
+    %
+    \addToPDFBookmarks{1}{Acknowledgements}{c} % add a pdf bookmark to the acknowledgements page
+    \include{front-matter/acknowledgements} % include the acknowledgements
+    %
+    \addToPDFBookmarks{1}{Quote}{d} % add a pdf bookmark to the quotation page
+    \include{front-matter/quote} % include a quote
+    %
+    \addToPDFBookmarks{1}{Abstract}{e} % add a pdf bookmark to the abstract page
+    \include{front-matter/abstract} % your abstract
+    %
+    \addToPDFBookmarks{0}{Table of Contents}{f}
+    \tableofcontents % generate a table of contents
+    %
+    \addToTOC{List of Tables} % this will add the list of tables to the Table of Contents (TOC)
+    \listoftables % generate a list of tables
+    %
+    \addToTOC{List of Figures} % this will add the list of figures to the Table of Contents (TOC)
+    \listoffigures % generate a list of figures
+    %
+    \makenomenclature % OPTIONAL
+    \addToPDFBookmarks{0}{Nomenclature}{g} % OPTIONAL
+    \printnomenclature[1.25in] % OPTIONAL
+    %
+    \newpage
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % INCLUDE THE CHAPTERS STARTING WITH THE NOMENCLATURE IF PRESENT
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \include{front-matter/nomenclature} % OPTIONAL
+    \include{chapters/chapter-1}
+    \include{chapters/chapter-2}
+    \include{chapters/chapter-3}
+    \include{chapters/chapter-4}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % BIBLIOGRAPHY
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \makeBibliographyPage % make the bibliography title page - can be edited in ut-thesis-template.tex
+    \bibliographystyle{apalike} % bibliography style - recommend using apalike-doi as it hyperlinks DOIs
+    \bibliography{references/references-dissertation} % references.bib included in the references directory
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % APPENDIX - OPTIONAL - COMMENT IF NOT NEEDED
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \makeAppendixPage   % make the appendix title page - can be edited in ut-thesis-template.tex
+    \appendix
+    \include{back-matter/appendix-1}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % A VITA IS REQUIRED
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \addToTOC{Vita}
+    \include{back-matter/vita}
+\end{document}

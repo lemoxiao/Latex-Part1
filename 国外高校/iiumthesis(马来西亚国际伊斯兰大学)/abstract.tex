@@ -1,0 +1,18 @@
+%!TEX root=thesis.tex
+%This is the draft abstract. More soon, I promise!
+\SingleSpacing
+\noindent Multicarrier Modulation (MCM) is a widely used modulation scheme in broadband communications. It is superior to ordinary Single Carrier (SC) technique in terms of data rate, combating multipath and eliminating the effect of intersymbol interference (ISI) without using complex equalizers. The most common MCM scheme is Orthogonal Frequency Division Multiplexing (OFDM) and can be implemented using the Fast Fourier Transform (FFT) for modulation and demodulation. Wavelet-based OFDM as an alternative scheme to Fourier-OFDM has been recently adopted in some standards such as the IEEE 1901. This thesis is mainly about mitigating impulsive noise in wavelet-OFDM systems and this was achieved by using two mitigation techniques. The first method was by using blanking technique which is a common technique used in FFT-OFDM systems. This technique was used to mitigate the impulsive noise in all wavelet families under study which were Haar, Daubechies-4 and biorthogonal-4.4. The second technique, the replacing technique, was proposed and developed based on the mathematical analysis of the Haar discrete wavelet transform-OFDM. A redundancy in data was found and exploited to mitigate the impulsive noise. However, the performance of both techniques is highly dependent on the selection of threshold values. The results of the first technique showed that all wavelet types have approximately similar BER performance except the Haar wavelet family which had superior BER performance in most cases. Under the assumption of Bernoulli-Gaussian model for impulsive noise and BPSK-OFDM scheme, it was found that both techniques could achieve performance of BER of $ 1\times 10^{-4} $ with  $ 5 $ dB  gain in SNR when the probability of impulsive noise occurrence  ($ p=0.001 $). Achieving higher performance requires lowering the probability of occurrence.
+ However, Assuming that there is an improper setting of the threshold value below or near the signal level, the replacing technique showed more immunity to errors. For a Haar DWT-OFDM, BPSK modulation and probability of impulsive noise occurrence of $ p=0.01 $, the replacing technique was able to improve performance by $ 80\% $ above the unmitigated case while this was  $ 30\% $ for the blanking technique when a threshold was set below $ 10\% $ of its minimum value. 
+%This is about my wonderful research.
+%
+%This is about \textbf{bold text}, \textit{italic}, \textsf{like Arial}, \texttt{like courier but I don't like courier so nvm}.
+%
+%\begin{itemize}
+%\item Bulleted lists!
+%\item Another one!
+%\end{itemize}
+%
+%\begin{enumerate}
+%\item Numbered lists!
+%\item Another one!
+%\end{enumerate}

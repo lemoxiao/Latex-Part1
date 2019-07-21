@@ -1,0 +1,219 @@
+\let\openbox\undefined
+
+\usepackage{amsmath,amsthm,amssymb}%amsfonts,
+\usepackage{mathtools}
+
+\allowdisplaybreaks
+
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\theoremstyle{plain}
+    \newtheorem{proposition}{Proposition}[section]
+    \newtheorem*{proposition*}{Proposition}
+    \newtheorem{theorem}[proposition]{Theorem}
+    \newtheorem*{theorem*}{Theorem}
+    \newtheorem{lemma}[proposition]{Lemma}
+    \newtheorem*{lemma*}{Lemma}
+    \newtheorem{corollary}[proposition]{Corollary}
+
+\theoremstyle{definition}
+    \newtheorem{definition}[proposition]{Definition}
+    \newtheorem{example}[proposition]{Example}
+    \newtheorem{property}[proposition]{Property}
+
+\theoremstyle{remark}
+    \newtheorem{remark}[proposition]{Remark}
+    \newtheorem{claim}[proposition]{Claim}
+
+
+\tcolorboxenvironment{proposition}{enhanced jigsaw,colback=gray!30!white,colframe=white,arc=0mm,breakable,before skip=5pt plus 0.2em,after skip=5pt plus 0.2em}
+\tcolorboxenvironment{proposition*}{enhanced jigsaw,colback=gray!30!white,colframe=white,arc=0mm,breakable,before skip=5pt plus 0.2em,after skip=5pt plus 0.2em}
+\tcolorboxenvironment{theorem}{enhanced jigsaw,colback=gray!30!white,colframe=white,arc=0mm,breakable,before skip=5pt plus 0.2em,after skip=5pt plus 0.2em}
+\tcolorboxenvironment{theorem*}{enhanced jigsaw,colback=gray!30!white,colframe=white,arc=0mm,breakable,before skip=5pt plus 0.2em,after skip=5pt plus 0.2em}
+\tcolorboxenvironment{lemma}{enhanced jigsaw,colback=gray!30!white,colframe=white,arc=0mm,breakable,before skip=5pt plus 0.2em,after skip=5pt plus 0.2em}
+\tcolorboxenvironment{lemma*}{enhanced jigsaw,colback=gray!30!white,colframe=white,arc=0mm,breakable,before skip=5pt plus 0.2em,after skip=5pt plus 0.2em}
+\tcolorboxenvironment{corollary}{enhanced jigsaw,colback=gray!30!white,colframe=white,arc=0mm,breakable,before skip=5pt plus 0.2em,after skip=5pt plus 0.2em}
+\tcolorboxenvironment{definition}{enhanced jigsaw,colback=gray!30!white,colframe=white,arc=0mm,breakable,before skip=5pt plus 0.2em,after skip=5pt plus 0.2em}
+\tcolorboxenvironment{example}{enhanced jigsaw,colback=white,colframe=black,boxrule=0.5pt,arc=1mm,breakable,before skip=8pt plus 0.2em,after skip=8pt plus 0.2em}
+\tcolorboxenvironment{property}{enhanced jigsaw,colback=gray!30!white,colframe=white,arc=0mm,breakable,before skip=5pt plus 0.2em,after skip=5pt plus 0.2em}
+\tcolorboxenvironment{remark}{enhanced jigsaw,colback=gray!30!white,colframe=white,arc=0mm,breakable,before skip=5pt plus 0.2em,after skip=5pt plus 0.2em}
+\tcolorboxenvironment{claim}{enhanced jigsaw,colback=gray!30!white,colframe=white,arc=0mm,breakable,before skip=5pt plus 0.2em,after skip=5pt plus 0.2em}
+
+%RIDEFINISCO PROOF
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{%
+\par
+\pushQED{\qed}%
+\normalfont %\topsep6\p@\@plus6\p@\relax
+%\trivlist
+%\item\relax
+\noindent{\bfseries #1\@addpunct{.}}\hspace\labelsep\ignorespaces
+}{%
+\popQED%\endtrivlist
+\@endpefalse
+\par\smallskip
+}
+\makeatother
+
+\renewcommand{\qedsymbol}{$\square$}
+
+%DEFs
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\newcommand{\Ku}{\ensuremath{\mathpzc{K}}}
+\newcommand{\Prop}{\ensuremath{\mathpzc{AP}}}
+\newcommand{\AP}{\Prop}%alias
+\newcommand{\States}{S}
+\newcommand{\Edges}{\ensuremath{\textit{R}}}
+\newcommand{\sinit}{s_0}
+\newcommand{\Lab}{\mu}
+\newcommand{\KuDef}{(\Prop,\States,\Edges,\Lab,\sinit)}
+
+\newcommand{\Nat}{\mathbb{N}}
+
+\DeclareMathOperator{\true}{\top}
+\DeclareMathOperator{\false}{\bot}
+
+\newcommand{\Length}{\textit{length}}
+
+\newcommand{\tpl}[1]{(#1)}
+\newcommand{\tupleof}[1]{(#1)}%alias
+
+\DeclareMathOperator{\Trk}{Trc}
+\DeclareMathOperator{\Pref}{Pref}
+\DeclareMathOperator{\Suff}{Suff}
+\DeclareMathOperator{\states}{states}
+\DeclareMathOperator{\intstates}{intstates}
+\DeclareMathOperator{\lst}{lst}
+\DeclareMathOperator{\fst}{fst}
+
+\DeclareMathOperator{\nestbe}{\mathsf{Nest}_{BE}}
+\DeclareMathOperator{\nestb}{\mathsf{Nest}_B}
+\DeclareMathOperator{\neste}{\mathsf{Nest}_E}
+
+\newcommand{\nnf}{\textsf{NNF}}
+\newcommand{\NNF}{\nnf}
+
+%Descrittori
+\DeclareMathOperator{\Root}{root}
+\DeclareMathOperator{\DV}{\mathcal{V}}
+\DeclareMathOperator{\DE}{\mathcal{E}}
+
+\newcommand{\RE}{\mathsf{RE}}
+\newcommand{\Lang}{{\mathpzc{L}}}
+\newcommand{\lang}{\Lang}%alias
+\newcommand{\SPEC}{\textsf{Spec}}
+\newcommand{\NFA}{\text{\sffamily NFA}}
+\newcommand{\DFA}{\text{\sffamily DFA}}
+\newcommand{\Au}{\ensuremath{\mathcal{A}}}
+\newcommand{\Du}{\ensuremath{\mathcal{D}}}
+
+%OPERATORI HS
+\DeclareMathOperator{\hsA}{\langle A\rangle}
+\DeclareMathOperator{\hsL}{\langle L\rangle}
+\DeclareMathOperator{\hsB}{\langle B\rangle}
+\DeclareMathOperator{\hsE}{\langle E\rangle}
+\DeclareMathOperator{\hsD}{\langle D\rangle}
+\DeclareMathOperator{\hsO}{\langle O\rangle}
+\DeclareMathOperator{\hsX}{\langle X\rangle}
+\DeclareMathOperator{\hsG}{\langle G\rangle}
+\DeclareMathOperator{\hsAt}{\langle \overline{A}\rangle}
+\DeclareMathOperator{\hsLt}{\langle \overline{L}\rangle}
+\DeclareMathOperator{\hsBt}{\langle \overline{B}\rangle}
+\DeclareMathOperator{\hsEt}{\langle \overline{E}\rangle}
+\DeclareMathOperator{\hsDt}{\langle \overline{D}\rangle}
+\DeclareMathOperator{\hsOt}{\langle \overline{O}\rangle}
+\DeclareMathOperator{\hsXt}{\langle \overline{X}\rangle}
+\DeclareMathOperator{\hsAu}{\mathopen[ A \mathclose]}
+\DeclareMathOperator{\hsLu}{\mathopen[ L \mathclose]}
+\DeclareMathOperator{\hsBu}{\mathopen[ B \mathclose]}
+\DeclareMathOperator{\hsEu}{\mathopen[ E \mathclose]}
+\DeclareMathOperator{\hsDu}{\mathopen[ D \mathclose]}
+\DeclareMathOperator{\hsOu}{\mathopen[ O \mathclose]}
+\DeclareMathOperator{\hsXu}{\mathopen[ X \mathclose]}
+\DeclareMathOperator{\hsGu}{\mathopen[ G \mathclose]}
+\DeclareMathOperator{\hsAtu}{\mathopen[ \overline{A} \mathclose]}
+\DeclareMathOperator{\hsLtu}{\mathopen[ \overline{L} \mathclose]}
+\DeclareMathOperator{\hsBtu}{\mathopen[ \overline{B} \mathclose]}
+\DeclareMathOperator{\hsEtu}{\mathopen[ \overline{E} \mathclose]}
+\DeclareMathOperator{\hsDtu}{\mathopen[ \overline{D} \mathclose]}
+\DeclareMathOperator{\hsOtu}{\mathopen[ \overline{O} \mathclose]}
+\DeclareMathOperator{\hsXtu}{\mathopen[ \overline{X} \mathclose]}
+
+%FRAMMENTI HS
+\newcommand{\A}{\mathsf{A}}
+\renewcommand{\AE}{\mathsf{AE}}
+\newcommand{\AB}{\mathsf{AB}}
+\newcommand{\Abar}{\mathsf{\overline{A}}}
+\newcommand{\AAbar}{\mathsf{A\overline{A}}}
+\newcommand{\AAbarB}{\mathsf{A\overline{A}B}}
+\newcommand{\AbarB}{\mathsf{\overline{A}B}}
+\newcommand{\AAbarE}{\mathsf{A\overline{A}E}}
+\newcommand{\AAbarBbarEbar}{\mathsf{A\overline{A}\overline{B}\overline{E}}}
+\newcommand{\AAbarBBbar}{\mathsf{A\overline{A}B\overline{B}}}
+\newcommand{\AAbarEEbar}{\mathsf{A\overline{A}E\overline{E}}}
+\newcommand{\ABbar}{\mathsf{A\overline{B}}}
+\newcommand{\Bbar}{\mathsf{\overline{B}}}
+\newcommand{\Ebar}{\mathsf{\overline{E}}}
+\newcommand{\B}{\mathsf{B}}
+\newcommand{\E}{\mathsf{E}}
+\renewcommand{\L}{\mathsf{L}}
+\newcommand{\D}{\mathsf{D}}
+\newcommand{\BE}{\mathsf{BE}}
+\newcommand{\AbarE}{\mathsf{\overline{A}E}}
+\newcommand{\BEbar}{\mathsf{B\overline{E}}}
+% \newcommand{\HSexi}{\mathsf{\exists A\overline{A}BE}}
+% \newcommand{\HSforall}{\mathsf{\forall A\overline{A}BE}}
+\newcommand{\ABBbar}{\mathsf{AB\overline{B}}}
+\newcommand{\AAbarBBbarEbar}{\mathsf{A\overline{A}B\overline{B}\overline{E}}}
+\newcommand{\BBbarEbar}{\mathsf{A\overline{A}B\overline{B}\overline{E}}}
+\newcommand{\AAbarEBbarEbar}{\mathsf{A\overline{A}E\overline{B}\overline{E}}}
+\newcommand{\AAbarBE}{\mathsf{A\overline{A}BE}}
+\newcommand{\HSprop}{\mathsf{Prop}}
+
+%LOGICHE
+\newcommand{\HS}{\text{\sffamily HS}}
+\newcommand{\PITL}{\text{\sffamily PITL}}
+\newcommand{\DC}{\text{\sffamily DC}}
+\newcommand{\CDT}{\text{\sffamily CDT}}
+\newcommand{\FO}{\text{\sffamily FO}}
+\newcommand{\CTLStar}{\text{\sffamily CTL$^{*}$}}
+\newcommand{\CTLStarLP}{\text{\sffamily CTL$^{*}_{lp}$}}
+\newcommand{\LTL}{\text{\sffamily LTL}}
+\newcommand{\LTLP}{\text{\sffamily LTL$_p$}}
+\newcommand{\CTL}{\text{\sffamily CTL}}
+\newcommand{\Downarrowx}{\text{$\downarrow$$x$}}
+\newcommand{\Downarrowy}{\text{$\downarrow$$y$}}
+\newcommand{\until}{\textsf{U}}
+\newcommand{\Next}{\textsf{X}}
+\newcommand{\Always}{\textsf{G}}
+\newcommand{\Eventually}{\textsf{F}}
+\newcommand{\EQ}{\exists}
+\newcommand{\EQF}{\exists_f}
+\newcommand{\AQ}{\forall}
+\newcommand{\EQSubf}{\exists\textit{SubF}}
+\newcommand{\present}{\textit{present}}
+
+%CLASSI COMPLEX
+\newcommand{\PTIME}{\textbf{P}}
+\newcommand{\NP}{\textbf{NP}}
+\newcommand{\PSPACE}{\textbf{PSPACE}}
+\newcommand{\Psp}{\PSPACE}%alias
+\newcommand{\NPsp}{\textbf{NPSPACE}}
+\newcommand{\LOGSPACE}{\textbf{LOGSPACE}}
+\newcommand{\NLOGSPACE}{\textbf{NLOGSPACE}}
+\newcommand{\NLOGSP}{\NLOGSPACE}%alias
+\newcommand{\EXPSPACE}{\textbf{EXPSPACE}}
+\newcommand{\NEXPTIME}{\textbf{NEXPTIME}}
+\newcommand{\EXPTIME}{\textbf{EXPTIME}}
+\newcommand{\AEXP}{\textbf{AEXP}}
+\newcommand{\LINAEXPTIME}{\mathbf{AEXP_{pol}}}
+\newcommand{\PH}{\textbf{PH}}
+\newcommand{\co}{\textbf{co-}}
+\newcommand{\Th}{\PTIME^{\NP[O(\log n)]}}
+\newcommand{\Thsq}{\PTIME^{\NP[O(\log^2 n)]}}
+\newcommand{\Thpar}{\PTIME^{\NP}_{\parallel}}
+\newcommand{\Thparlogn}{\PTIME^{\NP}_{\parallel O(\log n)}}
+\newcommand{\Tower}{\mathsf{Tower}}
+\newcommand{\TOWER}{\textbf{TOWER}}
+%\newcommand{\ACK}{\textbf{ACK}} 

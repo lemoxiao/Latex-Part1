@@ -1,0 +1,252 @@
+
+% ----------------------------------------------------------------------
+%                LATEX TEMPLATE FOR PhD THESIS AT STOCKHOLM UNIVERSITY
+% ----------------------------------------------------------------------
+
+% based on Harish Bhanderi's PhD/MPhil template, then Uni Cambridge
+% http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/ThesisStyle/
+% corrected and extended in 2007 by Jakob Suckale, then MPI-CBG PhD programme
+% and made available through OpenWetWare.org - the free biology wiki
+% modified for SU by Andreas Solders in 2011. Additional bug fixes and made available on GitHub by Samuel Bohman in 2017.
+
+%: Style file for Latex
+% Most style definitions are in the external filePhDthesisSU.
+% In this template package, it can be found in ./Latex/Classes/
+
+\documentclass[twoside,11pt]{Latex/Classes/PhDthesisSU} %Default style using S5 paper
+%\documentclass[twoside,11pt]{Latex/Classes/PhDthesisSU_A4} %Use this instead if you need A4 paper.
+
+%: Macro file for Latex
+% Macros help you summarize frequently repeated Latex commands.
+% Here, they are placed in an external file /Latex/Macros/MacroFile1.tex
+% An macro that you may use frequently is the figuremacro
+\include{Latex/Macros/MacroFile1}
+
+
+\setcitestyle{square,numbers} % change how references are included (see the natbib package).
+
+%: -------------------------------------------------------------
+%:                  TITLE PAGE
+% --------------------------------------------------------------
+
+\title{Title of your thesis}%Title of the thesis
+\subtitle{Subtitle}% Subtitle of the thesis
+\author{\href{mailto:email@department.su.se}{Your Name}}
+
+%put the following in PDF header
+
+%\pdfinfo { /Title  ()
+%               /Creator ()
+%               /Producer ()
+%               /Author ()
+%               /CreationDate (D:YYYYMMDDhhmmss)  %format D:YYYYMMDDhhmmss
+%               /ModDate (D:YYYYMMDDhhmm)
+%               /Subject (xyz)
+%               /Keywords (add, your, keywords, here) }
+%\pdfcatalog { /PageMode (/UseOutlines)
+%                  /OpenAction (fitbh)  }
+
+\pdfinfo{
+   /Author (Nicola Talbot)
+   /Title  (Creating a PDF document using PDFLaTeX)
+   /CreationDate (D:20040502195600)
+   /Subject (PDFLaTeX)
+   /Keywords (PDF;LaTeX)
+}
+
+
+
+% ---------------------------------------------------------------
+       
+% turn of those nasty overfull and underfull hboxes
+\hbadness=10000
+\hfuzz=50pt
+% \raggedbottom
+
+
+
+% ---------------------------------------------------------------
+%:                  FRONT MATTER: dedications, abstract,..
+% ---------------------------------------------------------------
+
+%\includeonly{X/filename} % Uncomment to only compile the specified files.
+
+\begin{document}
+
+\selectlanguage{english}
+
+\frontmatterSU
+
+\halftitlepage
+
+%: ----------------------- Generate cover page ------------------------
+
+\maketitle  % command to print the title page with above variables
+
+
+%: ----------------------- Cover page back side ------------------------
+
+\newpage
+\thispagestyle{empty}
+
+\input{0_frontmatter/abstract} % Uncomment to input the abstract if you want to have it printed.
+
+\phantom{.}
+
+\vspace{\stretch{1}}
+
+% see https://en.wikibooks.org/wiki/LaTeX/Fonts
+{\fontfamily{cmr}\selectfont 
+{\scriptsize
+\noindent
+\copyright Your Name, Stockholm 20XX % Name of author, location year
+ 
+\vspace{5mm}
+\noindent
+ISBN XXX-XX-XXXX-XXX-X % Provided by the library
+
+\vspace{5mm}
+\noindent
+Typeset by the author using \LaTeX \newline
+Printed in Sweden by XXXX, Stockholm 2011 %name of printing company
+
+\noindent
+Distributor: Department of XX, Stockholm University %name of department
+}
+}
+\cleardoublepage
+
+
+%: ----------------------- Tie in front matter ------------------------
+
+\include{0_frontmatter/dedication} % Include a page with dedication
+
+\include{0_frontmatter/listofpapers} % Include a list of papers
+
+\include{0_frontmatter/contribution} % Include a page with authors contribution
+
+
+%: ----------------------- Table of contents ------------------------
+
+\setcounter{secnumdepth}{2} % organisational level that receives a numbers
+\setcounter{tocdepth}{2}    % print table of contents for level 2
+\tableofcontents            % print the table of contents
+% levels are: 0 - chapter, 1 - section, 2 - subsection, 3 - subsubsection
+
+
+
+%: ----------------------- Abbreviations ------------------------
+
+% Tie in external source file for definitions: /0_frontmatter/abbreviations.tex
+% Abbreviation entries can also be defined in the main text. See abbreviations.tex
+% To create the glossary run "makeindex thesis.nlo  -s nomencl.ist -o thesis.nls"
+
+\renewcommand{\nomname}{Abbreviations} % Change title of page from Nomenclature to Abbreviations
+
+% \nomrefpage % to include page numbers after abbrevations
+
+% In the text type "\g" to refer to glossary
+
+\include{0_frontmatter/abbreviations}
+
+%\begin{multicols}{2}  % uncomment to have 2 columns
+
+\begin{footnotesize} % scriptsize(7) < footnotesize(8) < small (9) < normal (10)
+
+\printnomenclature[2 cm] % [] = distance between entry and description
+\label{nom} % target name for links to glossary
+
+\end{footnotesize}
+
+% \end{multicols}
+
+%: ----------------------- list of figures/tables ------------------------
+
+\listoffigures	% print list of figures
+
+\listoftables  % print list of tables
+
+%: ----------------------- Acknowledgements ------------------------
+
+\include{0_frontmatter/acknowledgement} % Use this to include an acknowledgement in the frontmatter
+
+
+
+%: --------------------------------------------------------------
+%:                  MAIN DOCUMENT SECTION
+% --------------------------------------------------------------
+
+% the main text starts here with the introduction, 1st chapter,...
+
+\mainmatterSU
+
+
+%: ----------------------- subdocuments ------------------------
+
+% Parts of the thesis are included below. Rename the files as required.
+% But take care that the paths match. You can also change the order of appearance by moving the include commands.
+
+\include{1_introduction/introduction}
+% \include{2/chapter2}
+\include{2/instructions}
+\include{3/chapter3}
+\include{4/chapter4}
+\include{5/chapter5}
+\include{6/chapter6}
+\include{7/chapter7}
+\include{8/chapter8}
+            
+% Include as many chapters as you need
+     
+% --------------------------------------------------------------
+%:                  BACK MATTER: appendices, refs,..
+% --------------------------------------------------------------
+
+\backmatterSU
+
+% the back matter: summary and references close the thesis
+
+\include{9_backmatter/summary}
+
+\include{9_backmatter/acknowledgement}  % Use this to include an acknowledgement in the backmatter
+
+%: ----------------------- bibliography ------------------------
+
+% The section below defines how references are listed and formatted.
+
+
+%\begin{multicols}{2} % \begin{multicols}{ # columns}[ header text][ space] %uncomment to have 2 columns
+\begin{scriptsize} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
+
+\bibliographystyle{Latex/Classes/PhDbiblio-url2} %Default style file. Change according to you preferences.
+
+
+\renewcommand{\bibname}{References} % changes the header from Bibliography to References
+
+\bibliography{9_backmatter/references} % adjust this to fit your BibTex file
+
+\end{scriptsize}
+%\end{multicols}
+
+
+% Various bibliography styles exit. Replace above style as desired.
+
+% in-text refs: (1) (1; 2)
+% ref list: alphabetical; author(s) in small caps; initials last name; page(s)
+%\bibliographystyle{Latex/Classes/PhDbiblio-case} % title forced lower case
+%\bibliographystyle{Latex/Classes/PhDbiblio-bold} % title as in bibtex but bold
+%\bibliographystyle{Latex/Classes/PhDbiblio-url} % bold + www link if provided
+%\bibliographystyle{Latex/Classes/jmb} % calls style file jmb.bst
+% in-text refs: author (year) without brackets
+% ref list: alphabetical; author(s) in normal font; last name, initials; page(s)
+
+%\bibliographystyle{plainnat} % calls style file plainnat.bst
+% in-text refs: author (year) without brackets
+% (this works with package natbib)
+
+
+% --------------------------------------------------------------
+
+
+
+\end{document}

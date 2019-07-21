@@ -1,0 +1,36 @@
+\chapter[Chapter name for Index]{Lorem Ipsum}
+
+A tabular example
+\begin{center}
+
+\begin{tabular}{cc}
+\hline
+\hline
+Tit1	&	Tit2	\\
+\hline
+el1	&	el2	\\
+el1	&	el2	\\
+el1	&	el2	\\
+\hline
+\end{tabular}
+
+\end{center}
+
+but tabulars cannot be captioned ! (are in text elements)
+
+
+\begin{table}
+  \centering
+    \begin{tabular}{| l c r |}
+    \hline
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    7 & 8 & 9 \\
+    \hline
+    \end{tabular}
+  \caption{A simple table}
+\end{table}
+
+Using the table environment, the caption works ! BUT BECOMES FLOATING OBJECTS (in fact is on the bottom of the page due to no more text inserted afterwards).
+
+Same thing for the figure environment

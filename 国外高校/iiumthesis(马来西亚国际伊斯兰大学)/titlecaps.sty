@@ -1,0 +1,499 @@
+\ProvidesPackage{titlecaps}
+[2013/04/11 V1.01
+ Routines for setting rich-text input into Titling Caps]
+%% Copyright 2013 Steven B. Segletes
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is Steven B. Segletes.
+%
+% V1.1  -Typographical corrections to docs.
+%       -Missing % added on line 356
+%
+\usepackage{ifnextok}
+\usepackage{ifthen}
+\newcounter{lcword@index}
+\newcounter{word@count}
+\newcounter{lc@words}
+\let\SaveHardspace~
+\def\SoftSpace{ }
+\catcode`\^^00=12
+\def\cmd@flag{^^00} % FLAGS END-OF-COMMAND; NEXT CHAR CAPPED
+
+\let\sv@textup\textup
+\let\sv@textit\textit
+\let\sv@textsc\textsc
+\let\sv@textsl\textsl
+\let\sv@textmd\textmd
+\let\sv@textbf\textbf
+\let\sv@textrm\textrm
+\let\sv@textsf\textsf
+\let\sv@texttt\texttt
+\let\sv@itshape\itshape
+\let\sv@upshape\upshape
+\let\sv@scshape\scshape
+\let\sv@slshape\slshape
+\let\sv@bfseries\bfseries
+\let\sv@mdseries\mdseries
+\let\sv@sffamily\sffamily
+\let\sv@rmfamily\rmfamily
+\let\sv@ttfamily\ttfamily
+
+% THESE ARE THE PUNCTUATION MARKS SCREENED OUT FOR 
+% LOWER CASE WORD SEARCH
+\newcommand\kill@punct{%
+\catcode`.=9%
+\catcode`,=9%
+\catcode`:=9%
+\catcode`;=9%
+\catcode`(=9%
+\catcode`)=9%
+\catcode`[=9%
+\catcode`]=9%
+\catcode`?=9%
+\catcode`!=9%
+\catcode``=9%
+\catcode`'=9%
+}
+
+\newcommand\restore@punct{%
+\catcode`.=12%
+\catcode`,=12%
+\catcode`:=12%
+\catcode`;=12%
+\catcode`(=12%
+\catcode`)=12%
+\catcode`[=12%
+\catcode`]=12%
+\catcode`?=12%
+\catcode`!=12%
+\catcode``=12%
+\catcode`'=12%
+}
+
+\def\add@space{\protected@edef\@thestring{\@thestring\SoftSpace}}
+
+% PRIMUS IS FOR BEGINNING-OF-STRING TITLE-CAPPING (1st WORD OVERRIDES
+% PREDEFINED LOWER CASE)
+\newcommand\redefine@primus{%
+  \def\textup##1{\relax\bgroup\sv@upshape\titlecap[s]{{\cmd@flag##1}}\egroup}%
+  \def\textit##1{\relax\bgroup\sv@itshape\titlecap[s]{{\cmd@flag##1}}\egroup}%
+  \def\textsc##1{\relax\bgroup\sv@scshape\titlecap[s]{{\cmd@flag##1}}\egroup}%
+  \def\textsl##1{\relax\bgroup\sv@slshape\titlecap[s]{{\cmd@flag##1}}\egroup}%
+  \def\textmd##1{\relax\bgroup\sv@mdseries\titlecap[s]{{\cmd@flag##1}}\egroup}%
+  \def\textbf##1{\relax\bgroup\sv@bfseries\titlecap[s]{{\cmd@flag##1}}\egroup}%
+  \def\textrm##1{\relax\bgroup\sv@rmfamily\titlecap[s]{{\cmd@flag##1}}\egroup}%
+  \def\textsf##1{\relax\bgroup\sv@sffamily\titlecap[s]{{\cmd@flag##1}}\egroup}%
+  \def\texttt##1{\relax\bgroup\sv@ttfamily\titlecap[s]{{\cmd@flag##1}}\egroup}%
+  \def\textnc##1{\relax\bgroup\titlecap[s]{{\cmd@flag##1}}\egroup}%
+  \def\itshape{\relax\sv@itshape\cmd@flag}%
+  \def\upshape{\relax\sv@upshape\cmd@flag}%
+  \def\scshape{\relax\sv@scshape\cmd@flag}%
+  \def\slshape{\relax\sv@slshape\cmd@flag}%
+  \def\bfseries{\relax\sv@bfseries\cmd@flag}%
+  \def\mdseries{\relax\sv@mdseries\cmd@flag}%
+  \def\sffamily{\relax\sv@sffamily\cmd@flag}%
+  \def\rmfamily{\relax\sv@rmfamily\cmd@flag}%
+  \def\ttfamily{\relax\sv@ttfamily\cmd@flag}%
+}
+% SECONDUS IS FOR MIDSTRING TITLE-CAPPING (WHERE PREDEFINED LOWER 
+% CASE CAN PREVAIL)
+\newcommand\redefine@secundus{%
+  \def\textup##1{\relax\bgroup\sv@upshape\titlecap[s]{{##1}}\egroup}%
+  \def\textit##1{\relax\bgroup\sv@itshape\titlecap[s]{{##1}}\egroup}%
+  \def\textsc##1{\relax\bgroup\sv@scshape\titlecap[s]{{##1}}\egroup}%
+  \def\textsl##1{\relax\bgroup\sv@slshape\titlecap[s]{{##1}}\egroup}%
+  \def\textmd##1{\relax\bgroup\sv@mdseries\titlecap[s]{{##1}}\egroup}%
+  \def\textbf##1{\relax\bgroup\sv@bfseries\titlecap[s]{{##1}}\egroup}%
+  \def\textrm##1{\relax\bgroup\sv@rmfamily\titlecap[s]{{##1}}\egroup}%
+  \def\textsf##1{\relax\bgroup\sv@sffamily\titlecap[s]{{##1}}\egroup}%
+  \def\texttt##1{\relax\bgroup\sv@ttfamily\titlecap[s]{{##1}}\egroup}%
+  \def\textnc##1{\relax\bgroup\titlecap[s]{{##1}}\egroup}%
+  \def\itshape{\relax\sv@itshape\cmd@flag}%
+  \def\upshape{\relax\sv@upshape\cmd@flag}%
+  \def\scshape{\relax\sv@scshape\cmd@flag}%
+  \def\slshape{\relax\sv@slshape\cmd@flag}%
+  \def\bfseries{\relax\sv@bfseries\cmd@flag}%
+  \def\mdseries{\relax\sv@mdseries\cmd@flag}%
+  \def\sffamily{\relax\sv@sffamily\cmd@flag}%
+  \def\rmfamily{\relax\sv@rmfamily\cmd@flag}%
+  \def\ttfamily{\relax\sv@ttfamily\cmd@flag}%
+}
+
+% TERTIUS IS USED FOR STRIPPING OUT MACROS, SO THAT LOWER-CASE
+% WORDS CAN BE FOUND
+\newcommand\redefine@tertius{%
+  \def\textup##1{\bgroup{##1}\egroup}%
+  \def\textit##1{\bgroup{##1}\egroup}%
+  \def\textsc##1{\bgroup{##1}\egroup}%
+  \def\textsl##1{\bgroup{##1}\egroup}%
+  \def\textmd##1{\bgroup{##1}\egroup}%
+  \def\textbf##1{\bgroup{##1}\egroup}%
+  \def\textrm##1{\bgroup{##1}\egroup}%
+  \def\textsf##1{\bgroup{##1}\egroup}%
+  \def\texttt##1{\bgroup{##1}\egroup}%
+  \def\textnc##1{\bgroup{##1}\egroup}%
+  \def\itshape{}%
+  \def\itshape{}%
+  \def\upshape{}%
+  \def\scshape{}%
+  \def\slshape{}%
+  \def\bfseries{}%
+  \def\mdseries{}%
+  \def\sffamily{}%
+  \def\rmfamily{}%
+  \def\ttfamily{}%
+}
+
+\newcommand\un@define{%
+  \let\textup\sv@textup%
+  \let\textit\sv@textit%
+  \let\textsc\sv@textsc%
+  \let\textsl\sv@textsl%
+  \let\textmd\sv@textmd%
+  \let\textbf\sv@textbf%
+  \let\textrm\sv@textrm%
+  \let\textsf\sv@textsf%
+  \let\texttt\sv@texttt%
+  \def\textnc##1{##1}%
+  \let\itshape\sv@itshape%
+  \let\upshape\sv@upshape%
+  \let\scshape\sv@scshape%
+  \let\slshape\sv@slshape%
+  \let\bfseries\sv@bfseries%
+  \let\mdseries\sv@mdseries%
+  \let\sffamily\sv@sffamily%
+  \let\rmfamily\sv@rmfamily%
+  \let\ttfamily\sv@ttfamily%
+}
+
+% USES EQUIVALENT NAMES FROM stringstrings PACKAGE
+\newcommand\usestringstringsnames{%
+  \let\addlcwords\Addlcwords%
+  \let\resetlcwords\Resetlcwords%
+  \let\addlcword\add@lcword%
+  \let\getargs\get@argsC%
+  \newcommand\capitalizetitle[2][v]{%
+    \if v##1\titlecap[P]{##2}\else\titlecap@q[P]{##2}\fi%
+  }%
+}
+
+% STORE (DON'T EXECUTE) \titlecap COMMAND & ARGUMENT
+\newcommand\titlecap@q[2][P]{%
+  \def\thestring{\titlecap[#1]{#2}}%
+}%
+
+% RESET PREDESIGNATED LOWERCASE WORD LIST
+\setcounter{lc@words}{0}
+\newcommand\Resetlcwords[0]{\setcounter{lc@words}{0}}
+
+% ADD WORDS TO PREDESIGNATED LOWERCASE WORD LIST
+\newcommand\Addlcwords[1]{%
+  \get@argsC{#1}%
+  \setcounter{lcword@index}{0}%
+  \whiledo{\value{lcword@index} < \narg}{%
+    \addtocounter{lcword@index}{1}%
+    \add@lcword{\csname arg\roman{lcword@index}\endcsname}%
+  }
+}
+\newcommand\add@lcword[1]{%
+  \addtocounter{lc@words}{1}%
+  \expandafter\edef\csname lcword\roman{lc@words}\endcsname{#1}
+}
+
+% SEARCH TERTIUS CONVERTED ARGUMENT FOR LOWERCASE WORDS, SET FLAG
+% FOR EACH WORD (T = FOUND IN LIST, F= NOT FOUND IN LIST)
+\newcommand\seek@lcwords[1]{%
+\kill@punct%
+  \setcounter{word@count}{0}%
+  \whiledo{\value{word@count} < \narg}{%
+    \addtocounter{word@count}{1}%
+\protected@edef\current@word{\csname arg\roman{word@count}\endcsname}%
+    \def\found@word{F}%
+    \setcounter{lcword@index}{0}%
+    \expandafter\def\csname%
+            found@word\roman{word@count}\endcsname{F}%
+    \whiledo{\value{lcword@index} < \value{lc@words}}{%
+      \addtocounter{lcword@index}{1}%
+      \protected@edef\current@lcword{%
+                     \csname lcword\roman{lcword@index}\endcsname}%
+%% THE FOLLOWING THREE LINES ARE FROM DAVID CARLISLE
+  \protected@edef\tmp{\noexpand\scantokens{\def\noexpand\tmp%
+   {\noexpand\ifthenelse{\noexpand\equal{\current@word}{\current@lcword}}}}}%
+  \tmp\ifhmode\unskip\fi\tmp
+%%
+      {\expandafter\def\csname%
+            found@word\roman{word@count}\endcsname{T}%
+       \setcounter{lcword@index}{\value{lc@words}}}%
+      {}%
+    }%
+  }%
+\if P#1\def\found@wordi{F}\fi%
+\restore@punct%
+}
+
+% THE TITLECAP ROUTINE
+\newcommand\titlecap[2][P]{%
+  \digest@sizes%
+  \if T\converttilde\def~{ }\fi%
+  \redefine@tertius%
+  \get@argsC{#2}%
+  \seek@lcwords{#1}%
+  \if P#1%
+    \redefine@primus%
+    \get@argsC{#2}%
+    \protected@edef\primus@argi{\argi}%
+  \else%
+  \fi%
+  \setcounter{word@count}{0}%
+  \redefine@secundus%
+  \def\@thestring{}%
+  \get@argsC{#2}%
+  \if P#1\protected@edef\argi{\primus@argi}\fi%
+  \whiledo{\value{word@count} < \narg}{%
+    \addtocounter{word@count}{1}%
+    \if F\csname found@word\roman{word@count}\endcsname%
+      \title@word{\csname arg\roman{word@count}\endcsname}%
+      \expandafter\protected@edef\csname%
+           arg\roman{word@count}\endcsname{\@thestring}%
+    \else
+      \notitle@word{\csname arg\roman{word@count}\endcsname}%
+      \expandafter\protected@edef\csname%
+           arg\roman{word@count}\endcsname{\@thestring}%
+    \fi%
+  }%
+  \def\@thestring{}%
+  \setcounter{word@count}{0}%
+  \whiledo{\value{word@count} < \narg}{%
+    \addtocounter{word@count}{1}%
+    \ifthenelse{\value{word@count} = 1}%
+   {}{\add@space}%
+    \protected@edef\@thestring{\@thestring%
+      \csname arg\roman{word@count}\endcsname}%
+  }%
+  \let~\SaveHardspace%
+  \@thestring%
+  \restore@sizes%
+\un@define}
+
+\newcommand\notitle@word[1]{%
+  \def\symbol@flag{F}%
+  \protected@edef\the@string{#1}%
+  \def\@thestring{}\def\make@cap{F}%
+  \expandafter\eat@noTitleWord\the@string\string@end%
+}
+
+\def\eat@noTitleWord{\def\make@cap{F}\IfNextToken\string@end%
+  {\@gobble}%
+  {\title@string{\eat@noTitleWord}}%
+}
+
+\newcommand\title@word[1]{%
+  \def\symbol@flag{F}%
+  \protected@edef\the@string{#1}%
+  \def\@thestring{}\def\make@cap{T}%
+  \expandafter\eat@TitleWord\the@string\string@end%
+}
+
+\def\eat@TitleWord{\IfNextToken\string@end%
+  {\@gobble}%
+  {\title@string{\eat@TitleWord}}%
+}
+
+\def\@symboli{\noexpand\`}
+\def\@symbolii{\noexpand\'}
+\def\@symboliii{\noexpand\^}
+\def\@symboliv{\noexpand\"}
+\def\@symbolv{\noexpand\~}
+\def\@symbolvi{\noexpand\=}
+\def\@symbolvii{\noexpand\.}
+\def\@symbolviii{\noexpand\u}
+\def\@symbolix{\noexpand\v}
+\def\@symbolx{\noexpand\H}
+\def\@symbolxi{\noexpand\t}
+\def\@symbolxii{\noexpand\c}
+\def\@symbolxiii{\noexpand\d}
+\def\@symbolxiv{\noexpand\b}
+\def\@symbolxv{\oe}
+ \def\uc@symbolxv{\OE}
+\def\@symbolxvi{\ae}
+ \def\uc@symbolxvi{\AE}
+\def\@symbolxvii{\o}
+ \def\uc@symbolxvii{\O}
+%\def\@symbolxviii{\aa}
+% \def\uc@symbolxviii{\AA}
+%\def\@symbolxix{\l}
+% \def\uc@symbolxix{\L}
+\newcounter{dia@count}
+
+\def\title@string#1#2{%
+  \if T\make@cap%
+    \setcounter{dia@count}{1}%
+    \if F\symbol@flag%
+      \whiledo{\value{dia@count} < 18}{%
+        \ifthenelse{\equal{\csname @symbol\roman{dia@count}\endcsname}%
+                          {#2}}{%
+%BEGIN IFDIACRIT
+          \ifthenelse{\value{dia@count} < 15}{%
+%IF = DIACRIT<15
+            \protected@edef\di@critic%
+              {\csname @symbol\roman{dia@count}\endcsname}%
+            \def\symbol@flag{D}%
+            \setcounter{dia@count}{99}% INDICATING DICRIT JUST FOUND
+           }{%
+%IF = NATSYM
+            \protected@edef\di@critic%
+              {\csname uc@symbol\roman{dia@count}\endcsname}%
+            \setcounter{dia@count}{90}% >19 AND <99 MEANS NON-DIACRIT SYMBOL
+            \def\symbol@flag{N}%
+           }%
+         }{%
+%END IF = DIACRIT
+%IFNOT = DIACRIT
+          \addtocounter{dia@count}{1}}%
+      }% END WHILEDO
+    \fi%
+    \ifthenelse{\value{dia@count} < 99}{%
+      \if D\symbol@flag% FOR DIACRIT, ONCE ARGUMENT IS IN #2, TO BE CAPPED
+        \def\next@char{\di@critic#2}%
+        \def\symbol@flag{F}%
+      \else%
+        \if N\symbol@flag% FOR NATSYM TO BE CAPITALIZED
+          \def\next@char{\di@critic}%
+          \def\symbol@flag{F}%
+        \else% FOR ANY OTHER CHARACTER TO BE CAPITALIZED
+          \def\next@char{#2}%
+        \fi%
+      \fi%
+      \ifthenelse{\equal{\cmd@flag}{#2}}{\def\make@cap{T}}{%
+        \protected@edef\@thestring{\@thestring\uppercase{\next@char}}%
+        \def\make@cap{F}%
+        \@checkfornewgroup{#2}%
+      }%
+    }{}%
+  \else% FOR CHARACTERS NOT TO BE CAPITALIZED
+    \ifthenelse{\equal{\cmd@flag}{#2}}{\def\make@cap{T}}{%
+      \protected@edef\@thestring{\@thestring#2}%
+      \@checkfornewgroup{#2}%
+    }%
+  \fi%
+  #1}
+
+\def\@checkfornewgroup#1{%
+  \ifthenelse{\equal{-}{#1}}{\def\make@cap{T}}{%
+    \ifthenelse{\equal{(}{#1}}{\def\make@cap{T}}{%
+      \ifthenelse{\equal{[}{#1}}{\def\make@cap{T}}{%
+        \ifthenelse{\equal{\{}{#1}}{\def\make@cap{T}}{%
+          \ifthenelse{\equal{`}{#1}}{\def\make@cap{T}}{}%
+        }%
+      }%
+    }%
+  }%
+}
+
+%%%%%%%%%%%%%%%%%%
+% DAVID CARLISLE GREATLY ASSISTED WITH THE \get@argsC COMMAND LOGIC
+
+\def\string@@@end{$\SaveHardspace}
+\def\converttilde{F}
+\newcounter{arg@@@index}
+\let\SaveHardspace~%%%
+\def\the@@@rule{\rule{.8ex}{1.6ex}}%
+
+\def\get@argsC#1{%
+  \if T\converttilde\def~{ }\else\catcode`~=12\fi
+  \protected@edef\the@@@string{#1}%
+  \setcounter{arg@@@index}{0}%
+  \lowercase{\expandafter\parse@@@Block\the@@@string} \string@@@end
+  \let~\SaveHardspace%
+  \catcode`~=13%
+}
+
+\def\parse@@@Block#1 {%
+  \stepcounter{arg@@@index}%
+  \@namedef{arg\roman{arg@@@index}}{#1}%
+  \ifthenelse{\equal{\argi}{}}{\addtocounter{arg@@@index}{-1}}{}%
+  \futurelet\tmp\parse@@@Block@@@}
+
+\def\parse@@@Block@@@{%
+\ifx\tmp\string@@@end\edef\narg{\thearg@@@index}\expandafter\@gobble
+\else\expandafter\parse@@@Block\fi}
+
+%%%%%%%%%%%%
+
+\let\sv@tiny\tiny
+\let\sv@scriptsize\scriptsize
+\let\sv@footnotesize\footnotesize
+\let\sv@small\small
+\let\sv@normalsize\normalsize
+\let\sv@large\large
+\let\sv@Large\Large
+\let\sv@LARGE\LARGE
+\let\sv@huge\huge
+\let\sv@huge\Huge
+
+\let\make@lttr\makeatletter%
+\let\make@othr\makeatother%
+
+\newcommand\noatinsidetc{%
+  \def\make@lttr{}
+  \def\make@othr{}
+}
+
+\def\restore@sizes{%
+  \let\tiny\sv@tiny%
+  \let\scriptsize\sv@scriptsize%
+  \let\footnotesize\sv@footnotesize%
+  \let\small\sv@small%
+  \let\normalsize\sv@normalsize%
+  \let\large\sv@large%
+  \let\Large\sv@Large%
+  \let\LARGE\sv@LARGE%
+  \let\huge\sv@huge%
+  \let\huge\sv@Huge%
+  \make@othr%
+}
+
+% THE \makeatletter IS REQUIRED FOR PROCESSING FONTSIZE CHANGES
+\def\digest@sizes{%
+\make@lttr%
+\def\tiny{\unskip\noexpand\sz@tiny\SoftSpace}%
+\def\sz@tiny{\noexpand\sv@tiny}%
+%
+\def\scriptsize{\unskip\noexpand\sz@scriptsize\SoftSpace}%
+\def\sz@scriptsize{\noexpand\sv@scriptsize}%
+%
+\def\footnotesize{\unskip\noexpand\sz@footnotesize\SoftSpace}%
+\def\sz@footnotesize{\noexpand\sv@footnotesize}%
+%
+\def\small{\unskip\noexpand\sz@small\SoftSpace}%
+\def\sz@small{\noexpand\sv@small}%
+%
+\def\normalsize{\unskip\noexpand\sz@normalsize\SoftSpace}%
+\def\sz@normalsize{\noexpand\sv@normalsize}%
+%
+\def\large{\unskip\noexpand\sz@large\SoftSpace}%
+\def\sz@large{\noexpand\sv@large}%
+%
+\def\Large{\unskip\noexpand\sz@Large\SoftSpace}%
+\def\sz@Large{\noexpand\sv@Large}%
+%
+\def\LARGE{\unskip\noexpand\sz@LARGE\SoftSpace}%
+\def\sz@LARGE{\noexpand\sv@LARGE}%
+%
+\def\huge{\unskip\noexpand\sz@huge\SoftSpace}%
+\def\sz@huge{\noexpand\sv@huge}%
+%
+\def\Huge{\unskip\noexpand\sz@Huge\SoftSpace}%
+\def\sz@Huge{\noexpand\sv@Huge}%
+}
+
+\endinput

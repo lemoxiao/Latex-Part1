@@ -1,0 +1,59 @@
+\begin{tikzpicture}[node distance=0 cm,outer sep = 0pt]
+
+%\draw[use as bounding box] (-1,301) rectangle (16,200);
+
+\tikzstyle{cella}=[draw, rectangle,  minimum height=0.7cm, minimum width={width("dddddd")},anchor=south west];
+\tikzstyle{dcella}=[draw, rectangle, dashed, minimum height=0.7cm, minimum width={width("dddddd")},anchor=south west];
+%
+\node[cella] (k-0) at (0,300) {$d^k_0$};
+\node[cella] (k-1) [right = of k-0] {$d^k_1$};
+\node[cella] (k-2) [right = of k-1] {$d^k_2$};
+\node[dcella] (k-3) [right = of k-2] {};
+\node[dcella] (k-4) [right = of k-3] {};
+\node[dcella] (k-5) [right = of k-4] {};
+\node[cella] (k-6) [right = of k-5] {$d^k_{2^n-2}$};
+\node[cella] (k-7) [right = of k-6] {$d^k_{2^n-1}$};
+%
+\node[dcella] (k1-4) [below = of k-4] {};
+\node[cella] (k2-4) [below = of k1-4] {$d^{j+1}_i$};
+\node[cella] (k3-4) [below = of k2-4] {$d^{j}_i$};
+\node[cella] (k4-4) [below = of k3-4] {$d^{j-1}_i$};
+\node[cella] (k3-3) [left = of k3-4] {$d^{j}_{i-1}$};
+\node[cella] (k3-5) [right = of k3-4] {$d^{j}_{i+1}$};
+\node[dcella] (k5-4) [below = of k4-4] {};
+%
+%\node[cella] (k-0)  {$d^k_0$};
+\node[dcella] (1-4) [below = of k5-4] {};
+\node[dcella] (1-5) [right = of 1-4] {};
+\node[dcella] (1-3) [left = of 1-4] {};
+\node[cella] (1-2) [left = of 1-3] {$d^0_2$};
+\node[cella] (1-1) [left = of 1-2] {$d^0_1$};
+\node[cella] (1-0) [left = of 1-1] {$d^0_0$};
+\node[cella] (1-6) [right = of 1-5] {$d^0_{2^n-2}$};
+\node[cella] (1-7) [right = of 1-6] {$d^0_{2^n-1}$};
+%
+ \node [align=left,red](13) [left = of 1-0] {$d_{init}$};
+ \node [align=left,red](13) [right = of k-7] {$d_{final}$};
+%
+\node[cella] (k-k) at (10.9,298) {$d^j_i$};
+\node [align=left,red] [left = of k-k] {$[d^j_i]_\Left$};
+\node [align=left,red] [right = of k-k] {$[d^j_i]_\Right$};
+\node [align=left,red] [below = of k-k] {$[d^j_i]_\Down =$};
+\node [align=left,red] [above = of k-k] {$[d^j_i]_\Up$};
+%
+\node[cella] (k-k-1) at (10.9,296) {$d^{j-1}_i$};
+\node [align=left,red] [above = of k-k-1] {$[d^{j-1}_i]_\Up$};
+%
+\node[dcella] (i-0) [below = of k-0] {};
+\node[dcella] (i-1) [below = of i-0] {};
+\node[dcella] (i-2) [below = of i-1] {};
+\node[dcella] (i-3) [below = of i-2] {};
+\node[dcella] (i-4) [below = of i-3] {};
+%
+\node[dcella] (j-0) [below = of k-7] {};
+\node[dcella] (j-1) [below = of j-0] {};
+\node[dcella] (j-2) [below = of j-1] {};
+\node[dcella] (j-3) [below = of j-2] {};
+\node[dcella] (j-4) [below = of j-3] {};
+
+\end{tikzpicture}

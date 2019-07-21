@@ -1,0 +1,89 @@
+% \iffalse meta-comment
+%
+
+% hmcletter-template.tex -- A template file for the hmcletter LaTeX class.
+%
+% Copyright (C) 2010 Department of Mathematics, Harvey Mudd College
+%
+% $Id: hmcletter-template.tex 325 2010-02-16 00:54:40Z cmc $
+%
+%   This program is free software; you can redistribute it and/or
+%   modify it under the terms of the GNU General Public License as
+%   published by the Free Software Foundation; either version 2 of the
+%   License, or (at your option) any later version.
+%
+%   This program is distributed in the hope that it will be useful,
+%   but WITHOUT ANY WARRANTY; without even the implied warranty of
+%   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%   GNU General Public License for more details. 
+%
+%   You should have received a copy of the GNU General Public License
+%   along with this program; if not, write to the Free Software
+%   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+%   02111-1307  USA 
+%
+%   The license is also available on the web, from
+%      <http://www.gnu.org/copyleft/gpl.html>
+%
+% \fi
+%%
+%% hmcletter class template.
+%%
+
+%%% Document-class command.
+\documentclass{hmcletter}
+%%% Package loading, custom command or environment definitions
+%%% should go here.
+
+
+%%% Information fields.
+
+
+% Name and address of the letter recipient.
+\letterto{}
+
+% [OPTIONAL] Subject line.  \subjectname can be set to define a
+% header before the text in the letter, but doing so is not
+% recommended by most style guides.
+% \subject{}
+
+
+% Signature.  Note two arguments.  Optional argument allows you to
+% load a graphical version of your signature for use in generating
+% PDFs that look like real signed letters.  (Without the optional
+% argument, the class inserts blank vertical space for your
+% signature.)
+\signature{}
+
+
+% Date command; standard LaTeX command, so it will use the date
+% you specify, fall back to
+% current date if no \date command is used, or not appear at all
+% if defined as {}.
+% \date{}
+
+
+%%% Start of the actual document.
+\begin{document}
+
+%% Required salutation command; this command also sets the date
+%% and recipient information and puts in the optional subject.
+\opening{}
+
+%% Body text of your letter goes here..
+
+%% Closing command.  Sets the ``complimentary close'' as well as
+%% your signature.
+\closing{}
+
+
+%% OPTIONAL postscript.  Should be no more than one paragraph.
+% \ps{}
+
+%% OPTIONAL Carbon-copy command.
+% \cc{}
+
+%% OPTIONAL enclosures command.
+% \encl{}
+
+\end{document}

@@ -1,0 +1,86 @@
+\documentclass[10pt,italian,english,a5paper,twoside,openright]{book}
+\pdfoutput=1 
+\title{Model checking: the interval way}
+\author{Alberto Molinari}
+\date{}
+ 
+\input{config.tex}
+
+%\addbibresource{biblioEXTR.bib}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\includeonly{Chaps/Concl/conclMain}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%PARTE INIZIALE
+\frontmatter
+
+\input{FrontBackMatter/frontespizio.tex}
+
+%\cleardoublepage
+%\input{FrontBackMatter/frontespizio2.tex}
+
+\cleardoublepage
+\input{FrontBackMatter/date_copyr.tex}
+
+\cleardoublepage
+\input{FrontBackMatter/cit.tex}
+
+\cleardoublepage
+\input{FrontBackMatter/abstract.tex}
+
+\cleardoublepage
+\input{FrontBackMatter/ringraziamenti.tex}
+ 
+\cleardoublepage
+\dominitoc %serve per gli indicini di ogni capitolo
+\tableofcontents
+
+% \listoffigures
+% \listoftables
+% \listofalgorithms
+% \lstlistoflistings
+
+%PARTE PRINCIPALE
+\mainmatter
+
+\part{Introduction}\label{part:intro}
+%\include{Chaps/Intro/introINFOR}
+\include{Chaps/Intro/introFOR}
+
+\part{MC for $\HS$ under homogeneity}\label{part:HShomo}
+\include{Chaps/Intro/MCfullHShomo}%intro
+\include{Chaps/ICALP_D/ICALPmain}
+\include{Chaps/TCS17/TCS17main}
+\include{Chaps/IC17/IC17main}
+\include{Chaps/TOCL17/TOCL17main}
+
+\part{MC for $\HS$ relaxing homogeneity}\label{part:HSrelaxhomo}
+\include{Chaps/Gandalf17RIVISTA/Gand17main}
+
+\part{Interval-based system models}\label{part:timelines}
+\include{Chaps/Timelines/TimelinesMain}
+\include{Chaps/Concl/conclMain}
+
+\appendix
+\part{Appendices}
+\include{Chaps/Appendices/appendixICALP_D}
+\include{Chaps/Appendices/appendixTCS17}
+\include{Chaps/Appendices/appendixIC17}
+\include{Chaps/Appendices/appendixTOCL17}
+\include{Chaps/Appendices/appendixGand17}
+\include{Chaps/Appendices/appendixTimelines}
+
+%PARTE FINALE
+\backmatter
+\cleardoublepage
+
+\phantomsection
+ \addcontentsline{toc}{chapter}{\bibname}
+ \bibliographystyle{alphaurl}%{abbrvurl}%{plainurl}
+ \bibliography{biblioEXTR.bib}
+
+%\printbibliography[heading=bibintoc]
+
+\end{document}

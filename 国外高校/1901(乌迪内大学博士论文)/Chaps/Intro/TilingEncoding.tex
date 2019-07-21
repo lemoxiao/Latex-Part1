@@ -1,0 +1,76 @@
+\newcommand{\cellTwo}[2]{
+    \begin{tabular}{c|c}
+        \rule[-1ex]{0pt}{3.5ex}
+    #1 & #2 \\
+    \end{tabular}}
+
+\newcommand{\cellOne}[1]{
+    \begin{tabular}{c}
+		\rule[-1ex]{0pt}{3.5ex}
+		#1
+	\end{tabular}}
+	
+	
+
+\begin{tikzpicture}[node distance=0 cm,->,>=stealth',shorten >=1pt,auto,semithick,main node/.style={rectangle,draw, inner sep=0pt}]  
+
+\tikzstyle{gray node}=[fill=gray!30]
+%
+ \node [main node](0) at (-4,0) {\cellTwo{$d^0_0$}{$0\cdots 00$}};
+ \node [main node](1) [right = of 0] {\cellTwo{$d^0_1$}{$1\cdots 00$}};
+\node [main node](11) [right = of 1] {\cellOne{$\cdots$}};
+ \node [main node](2) [right = of 11] {\cellTwo{$d^0_{2^n-1}$}{$1\cdots 11$}};
+ \node [main node, red](3) [right = of 2]  {\cellOne{\$}};
+ %
+  \node [main node](4) [right = of 3]  {\cellTwo{$d^1_0$}{$0\cdots 00$}};
+   \node [main node](5) [right = of 4]  {\cellTwo{$d^1_1$}{$1\cdots 00$}};
+\node [main node](55) [right = of 5] {\cellOne{$\cdots$}};
+   \node [main node](6) [right = of 55]  {\cellTwo{$d^1_{2^n-1}$}{$1\cdots 11$}};
+   \node [main node, red](7) [right = of 6]  {\cellOne{\$}};
+   \node (8) [right = of 7] {\Large $\cdots$};
+   
+   %
+   \node [align=left,red](10) [below = of 0] {column $0$};
+   \node [align=left,red](11) [below = of 1] {column $1$};
+   \node [align=left,red](12) [below = of 2] {column $2^n - 1$};
+   %
+   \node [align=left,red](13) [below = of 4] {column $0$};
+   \node [align=left,red](14) [below = of 5] {column $1$};
+   \node [align=left,red](15) [below = of 6] {column $2^n - 1$};
+   %
+ \node [align=left,red](20) at (-4,1.2) {row $0$};
+  \node [align=left,red](20) at (5.2,1.2) {row $1$};
+ 
+\draw [{|-|},dashed,red,thick] (-5.2,1) -- (3.5,1);
+\draw [{|-|},dashed,red,thick] (4.1,1) -- (12.8,1);   
+
+
+%\path
+%(10) edge [swap] node {} (0)
+%(11) edge [swap] node {} (1)
+%(12) edge [swap] node {} (2)
+%(13) edge [swap] node {} (4)
+%(14) edge [swap] node {} (5)
+%(15) edge [swap] node {} (6);
+%    \path
+%    (1) edge [swap] node {hardness} (0) 
+%    (0) edge  [out=150,in=190] node {hardness} (5.south)
+%    (4.west) edge [swap,near end] node {hardness} (3.east)
+%    (4.west) edge [near end] node {hardness} (53.east)
+%    (2.north east) edge [swap,out=370,in=170] node {upper-bound} (22.north west)
+%    (22.south west) edge [swap,out=190,in=-10] node {hardness} (2.south east)
+%    (9) edge [swap] node {hardness} (10)
+%    (21.north) edge node {hardness} (31.south)
+%    (1.west) edge [swap] node {hardness} (32.south);
+%    
+%    \draw [dashed,-,red,thick] (-6.5,4) -- (6,4);
+%    \draw [dashed,-,gray] (-6.5,-2.5) -- (6,-2.5);
+%    \draw [dashed,-,gray] (-6.5,-0.5) -- (6,-0.5);
+%    
+%    \node[align=left](50) at (4,-5) {
+%    $^1$ \cite{MMMPP15}, 
+%    $^2$ \cite{MMP15}, 
+%    $^3$ \cite{MMP15B}, 
+%    $^4$ \cite{MMPS16}};
+
+\end{tikzpicture}

@@ -1,0 +1,52 @@
+% Copyright 2007 by Till Tantau
+% Copyright 2010 by Remus Mihail Prunescu
+
+% LaTeX Support Group 2010
+% DTU Official Presentation
+
+
+\mode<presentation>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title page: DTU
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\defbeamertemplate*{title page}{DTU}[1][]
+{
+	% Set bInTitle to true to make sure the right footline is printed
+	\global\edef\bInTitle{true}
+	
+	\linespread{1.45}
+	% Content of the title page
+	
+	% Title + Subtitle
+	\vspace{\dimTitleOffset}
+	\begin{beamercolorbox}[left]{title box}
+		\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par
+		\ifx\insertsubtitle\@empty
+		\else
+			\vspace{\dimSubtitleOffset}
+			{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}
+		\fi
+	\end{beamercolorbox}
+	
+	\vspace{\dimAuthorOffset}
+	% Author
+	\begin{beamercolorbox}[left]{author box}
+		\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor
+	\end{beamercolorbox}
+	
+	\vspace{\dimInstituteOffset}% Institute
+	\begin{beamercolorbox}[left]{institute box}
+		\usebeamerfont{institute}\usebeamercolor[fg]{author}\insertinstitute
+	\end{beamercolorbox}
+
+	% Title graphic
+	{\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+	
+	% Fill the space till bottom
+	\vskip0pt plus 1filll
+}
+
+\mode
+<all> 

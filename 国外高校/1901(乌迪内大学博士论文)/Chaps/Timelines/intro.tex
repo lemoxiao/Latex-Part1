@@ -1,0 +1,53 @@
+
+\lettrine[lines=3]{I}{n all the previous chapters,} we have assumed finite Kripke structures as system models.
+On the positive side, these labelled state-transition graphs are simple, in that no \lq\lq feasibility check\rq\rq\ needs to
+be performed over them and the described system (the latter exists by definition of the structure itself); moreover they are commonly employed for several industrial purposes, being many modeling languages translated into them, before the MC process (running phase) starts.
+%
+On the negative side, they are \lq\lq inherently point-based\rq\rq , as they make explicit how a system evolves \emph{state-by-state}
+(i.e., how from a state it can move to another one, according to the transition function), and describe which are the atomic properties (proposition letters) that hold true at every state.
+
+In this chapter, we study a possible replacement of Kripke structures by a more expressive model, which allows us to describe systems in terms of their \emph{interval-based} behaviour and properties.
+We first identified as natural candidates \emph{interval graphs}~\cite{intvgraphs}, on which there has been a good deal of work, also from the algorithmic point of view; however, we immediately realized that they are too basic to capture meaningful properties of systems.
+We then turned to a different kind of structures, 
+called \emph{timelines}, which have been fruitfully exploited in temporal planning for quite a long time.
+For this reason, we want now to start a short digression on timeline-based planning, and come back to MC later, explaining why the former is a sort of \lq\lq necessary condition\rq\rq\ for the latter, which can then be solved straightforwardly once the former has, under certain conditions.
+
+\emph{Timeline-based planning} (TP for short) can be viewed as an alternative to the classic action-based approach to planning. Action-based planning aims at determining a sequence of actions that, given the initial state of the world 
+and a goal, transforms, step by step, the state of the world until we reach a state satisfying the goal.  
+TP focuses on what has to happen in order to satisfy the goal instead of what an agent has to do, and thus it can be considered as a more declarative approach with respect to action-based planning: it models the planning domain as a set of independent (but interacting) components, each one consisting of a number of \emph{state variables}. The evolution of the values of state variables over time is described by means of a set of \emph{timelines} (in turn these are sequences of time intervals called \emph{tokens}), and it is governed by a set of transition functions, one for each state variable, and a set of synchronization rules, that constrain the temporal relations among (values of) state variables. This standard lexicon of TP---that some readers, from our experience, may find misleading---will be formally defined and become clearer in the next sections. In the meanwhile, looking (ahead) at Figure~\ref{fig:timelineEx} may give an intuition.
+
+TP has been successfully exploited in a number of application domains, for instance, in space missions, constraint solving, activity scheduling (see, e.g.,~\cite{barreiro2012europa,CestaCFOP07,aspen2010,FrankJ03,JonssonMMRS00,Muscettola94}), but a systematic study of its expressiveness and complexity has been undertaken only very recently. The temporal domain is commonly assumed to be \emph{discrete}.
+In~\cite{GiganteMCO16}, Gigante et al.\ showed that TP with bounded temporal relations and token durations, and no temporal horizon, is $\EXPSPACE$-complete and  expressive enough to capture action-based temporal planning. Later, in~\cite{GiganteMCO17}, they proved that $\EXPSPACE$-completeness still holds for TP with unbounded interval relations, and that the problem becomes $\NEXPTIME$-complete if an upper bound to the temporal horizon is added. 
+
+In the following sections we will study 
+TP over a \emph{dense temporal domain} 
+(without having recourse to any form of artificial discretization, which is quite a common trick).
+The reason why we assume this different version of time domain is to avoid discreteness in system descriptions,
+which can then be abstracted at a higher level, enabling us to neglect details which are unnecessary, and paving the way for a really interval-based MC:
+in this respect TP can be regarded, as we said, as a sort of necessary condition for MC, the former playing the role of a \lq\lq feasibility check\rq\rq\ of the system description (which is not immediately feasible by definition---as opposed to Kripke structures---given the presence of synchronization rules). 
+Moreover, if both the system model and the specifications (temporal formulas) can be translated into a common formalism (in our case, as we will show, \emph{timed automata}), \lq\lq adding\rq\rq\ MC on top of TP is just a matter of technical aspects. This is why 
+we shall now focus mainly on TP, and come back to MC at the end of the chapter.
+
+In the next sections, we will study suitable restrictions on the TP problem that allow us to recover its decidability: as a matter of fact, the first result we establish is a negative one, 
+namely, that TP over dense time, in its general formulation, is \emph{undecidable}. Then we will also show how to obtain better computational complexities, which are appropriate to the practical exploitation of timeline-based TP and MC,  by suitably constraining the logical structure of synchronization rules. 
+
+In the general case, a synchronization rule allows a universal quantification over the tokens of a timeline (such a quantification is called \emph{trigger}).
+When a token is \lq\lq selected\rq\rq{} by a trigger, the rule allows us to compare %those 
+tokens of the timelines both preceeding (past) and following (future) the trigger token. 
+The first restriction we consider consists in limiting the comparison to tokens in the future with respect to the trigger (\emph{future semantics} of trigger rules). 
+The second imposes that the name of a non-trigger token appears exactly once in the constraints set by the rule (\emph{simple} trigger rules):
+this syntactical restriction avoids comparisons of multiple token time-events with a non-trigger reference time-event.  
+Better complexity results can be obtained by restricting also the type of \emph{intervals} used in rules in order to compare tokens.
+
+We now describe the organization of this chapter, outlining in particular which are the complexity results implied by the aforementioned restrictions of TP.
+
+\paragraph{Organization of the chapter.}
+\begin{itemize}
+    \item In Section~\ref{sec:preliminTimelines} we start by introducing the TP framework, providing some background knowledge on it. 
+    \item In Section~\ref{sec:undecidability} we prove that TP is \emph{undecidable} in the general case, by a reduction from the \emph{halting problem for Minsky $2$-counter machines}. The section is concluded commenting on \emph{non-primitive recursive-hardness} of TP under the future semantics of trigger rules (this is formally proved in Appendix~\ref{sec:NPRHardness}).    
+    \item In Section~\ref{sec:DecisionProcedures}, we establish that future TP with simple trigger rules is \emph{decidable} (in non-primitive recursive time), and show membership in $\EXPSPACE$ (respectively, $\Psp$) under the restriction to \emph{non-singular intervals} (respectively, intervals of the forms $\mathopen[0,a\mathclose]$ and $\mathopen[b,+\infty\mathclose[\,$).
+    \item Matching complexity lower bounds for the last two restrictions are given in Section~\ref{sec:pspace}. 
+    \item In Section~\ref{sec:NPtriggerless} we outline an \NP\ planning algorithm for TP with \emph{trigger-less rules only} (which disallow the universal quantification/trigger and have a purely existential form) stemming from the results of the previous sections. With a trivial hardness proof, we also show TP with trigger-less rules to be $\NP$-complete.
+    \item In Section~\ref{sec:modelcheckingTimelines}, we finally tackle the MC problem for systems described as timelines, where property specifications are given in terms of formulas of \emph{Metric Interval Temporal Logic} (\MITL), a timed logic which extends \LTL. The reason why here we drop $\HS$ and employ the latter is the following: enriching system models claims for extensions of the property specification language; in our case, timelines would naturally require a timed extension of $\HS$ which, however, has not been studied yet (in the literature, only \emph{metric} extensions of $\HS$ have been proposed over the natural numbers~\cite{DBLP:journals/sosym/BresolinMGMS13}).
+    Thus the well-known and thoroughly studied \MITL\ comes to the rescue as a sort of \lq\lq approximation\rq\rq\ of $\HS$; moreover, it allows us to link the world of interval-based models/timelines with that of \emph{timed automata}, another famous formalism used in planning as well as in system verification, that will be heavily used for many results we are about to prove. 
+\end{itemize}

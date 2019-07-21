@@ -1,0 +1,116 @@
+\lettrine[lines=3]{A}{\ good balancing} of \emph{expressiveness} and \emph{complexity} in the choice 
+of the system 
+model and of the specification language is a key factor for the effective 
+exploitation of MC. 
+Various improvements to both of them have been proposed in the literature. As 
+for the latter we recall in particular the extensions of $\LTL$ with 
+promptness, that make it 
+possible to bound the delay with which a liveness request is fulfilled (see, 
+e.g.,~\cite{DBLP:journals/fmsd/KupfermanPV09}). 
+Another possible direction is
+\emph{adding regular expressions}, that allow one to enrich the expressive 
+power of existing logics. This has been investigated, for instance, in the 
+cases of $\LTL$~\cite{Leucker2007} and $\CTL$~\cite{MATEESCU20112854}.
+%
+In this chapter, we study the MC problem for \emph{$\HS$ extended with regular 
+expressions}, which are exploited as a means for \emph{relaxing the homogeneity 
+assumption}, that otherwise limits the expressive power of $\HS$. 
+
+As we have already said (Section~\ref{sec:LOMrelated}), in~\cite{lm16} %the first meaningful attempt to relax the homogeneity assumption can be found, where 
+Lomuscio and Michaliszyn propose to use regular expressions to define the 
+labeling of proposition letters over intervals in terms of the component 
+states---thus relaxing homogeneity, that can be trivially \lq\lq 
+encoded\rq\rq{} by regular expressions, as shown later. In that work the 
+authors prove decidability of MC with regular expressions for some very 
+restricted fragments of epistemic $\HS$, giving some rough upper bounds to its 
+computational complexity
+(see the fourth column of Table~\ref{fig:overv}).
+%
+In this chapter, 
+we define interval labeling via regular expressions in a way that 
+can be shown to be equivalent to that of~\cite{lm16}, and
+we give a detailed picture of decidability and complexity for $\HS$ with 
+regular expressions, which was still missing. The results are summarized in the 
+third column of Table~\ref{fig:overv}. 
+
+\begin{table}
+	\centering
+	\caption{Complexity of MC for $\HS$ and its fragments ($^\dagger$local MC). 
+	In red, the new results proved in this chapter.}\label{fig:overv}
+	\resizebox{\textwidth}{!}{
+		\input{Chaps/Gandalf17RIVISTA/overvTable}
+	}
+	%\vspace*{-0.2cm}
+\end{table}
+
+It is interesting to compare the complexity of MC for $\HS$ fragments extended with regular expressions with the same fragments under the homogeneity assumption. The rich spectrum of complexities for the less expressive fragments of $\HS$ under homogeneity (last four rows in the table) collapses to $\Psp$-completeness in the case of the corresponding fragments with regular expressions, witnessing that using regular expressions increases the expressive power of (syntactically) small fragments of $\HS$. Whether or not there exists an elementary algorithm for full $\HS$ remains an open issue, just like in the case of full $\HS$ under homogeneity. The main results of the chapter are summarized in the following account of the contents of the next sections.
+
+\paragraph*{Organization of the chapter.}
+\begin{itemize}
+
+\item
+In Section~\ref{sect:backgrRegex}, we start by recalling the notions of regular expression and finite-state automaton, and then give syntax and semantics of $\HS$ with regular expressions.
+
+\item
+In Section \ref{sect:fullHS}, we prove that MC for (full) $\HS$ extended with regular expressions (under the state-based semantics) is decidable,
+by exploiting an automata-theoretic approach and the notion of $\Ku$-\NFA, a particular version of finite-state automaton. 
+Moreover, the problem can be shown to be in $\PTIME$ when it is restricted to 
+system models, assuming the formula to be of constant length. 
+
+\item
+Then, in Section~\ref{sec:AAbarBBbarEbarRegex},
+we study the problems of MC for the two (syntactically) maximal (symmetric) 
+fragments $\A\Abar\B\Bbar\Ebar$ and $\A\Abar\E\Bbar\Ebar$ with regular 
+expressions, proving that both problems are $\LINAEXPTIME$-complete. 
+$\LINAEXPTIME$ denotes the complexity class of problems decided by   
+\emph{exponential-time bounded} alternating Turing machines making a 
+\emph{polynomially 
+bounded number of alternations}; such a class captures the exact complexity of 
+some relevant problems~\cite{tcs15l,FR75}, such as, for instance, the 
+first-order 
+theory of real addition with order~\cite{FR75}.
+First, we recall (Chapter~\ref{chap:TCS17}) that settling the exact complexity 
+of these fragments under the homogeneity assumption is a difficult open 
+question. Moreover,  considering that $\LINAEXPTIME \subseteq \AEXP = \EXPSPACE$ and 
+that $\HS$ under homogeneity  is subsumed by $\HS$ with regular expressions (as 
+we will see later), 
+the results proved in this chapter improve  the complexity upper bounds for the 
+fragments  
+$\A\Abar\B\Bbar\Ebar$ and $\A\Abar\E\Bbar\Ebar$ given in 
+Section~\ref{sec:AAbarBBbarEbar}. 
+%
+More in detail, we preliminarily establish an exponential small-model property 
+for $\A\Abar\B\Bbar\Ebar$ (Section~\ref{sec:AAbarBBbarEbarTrackProperty}): for 
+each interval (trace),  it is possible to find an interval of bounded 
+exponential 
+length that is indistinguishable with respect to the fulfillment of 
+$\A\Abar\B\Bbar\Ebar$ formulas (respectively, $\A\Abar\E\Bbar\Ebar$ formulas).
+Such a property allows us to devise an MC procedure belonging to the class $\LINAEXPTIME$ (Section~\ref{sec:UpperBound}). 
+Finally, the %hardness of the problem 
+matching lower bounds are obtained % proved for the fragment $\B\Ebar$ of $\A\Abar\B\Bbar\Ebar$ 
+by polynomial-time reductions from the so-called \emph{alternating multi-tiling 
+problem}, showing that they already hold for the fragments $\B\Ebar$ and 
+$\E\Bbar$ of $\A\Abar\B\Bbar\Ebar$ and $\A\Abar\E\Bbar\Ebar$, respectively 
+(Section~\ref{sec:LowerBound}). 
+
+\item
+Finally, in Section~\ref{sec:AABB}, we show that 
+formulas of $\HS$ fragments featuring (any subset of) $\HS$ modalities for the Allen's relations \emph{meets, met-by, started-by}, and \emph{starts} ($\AAbarBBbar$) can be checked in polynomial working space (MC for all these is $\Psp$-complete). 
+%
+In particular, in Section~\ref{subsec:AAbarEEbar} we prove a small-model 
+theorem for $\AAbarBBbar$ (and the symmetric $\AAbarEEbar$) with regular 
+expressions, which is then 
+exploited in Sections~\ref{sect:PspAlgo} and \ref{sect:genResult} to devise a 
+$\Psp$ MC algorithm for $\AAbarBBbar$ (and $\AAbarEEbar$). Moreover, in 
+Section~\ref{sect:genResult}, we prove that MC for the purely propositional 
+fragment of $\HS$, denoted as $\HSprop$, is hard for $\Psp$, which is enough to 
+conclude that MC for any sub-fragment of $\AAbarBBbar$ or $\AAbarEEbar$ is 
+complete for $\Psp$.
+%
+Hence, relaxing the homogeneity assumption via regular expressions comes at no 
+cost for $\AAbarBBbar$, $\AAbarEEbar$, $\B\Bbar$, $\E\Ebar$, $\Bbar$ and 
+$\Ebar$---that remain in $\Psp$---while $\AAbarB$ and $\A\Abar\E$ and their 
+sub-fragments
+%$\B$, $\E$, $\AAbar$, $\AAbarB$, $\A\Abar\E$, \dots{} 
+increase their complexity to $\Psp$ (see Table~\ref{fig:overv} once more). 
+\end{itemize}

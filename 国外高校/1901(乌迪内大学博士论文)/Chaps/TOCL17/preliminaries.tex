@@ -1,0 +1,175 @@
+\section{Preliminaries}\label{sec:backgr}
+
+In the following, let $\Sigma$ be an alphabet and $w$ be a non-empty finite or infinite word over $\Sigma$. We denote by $|w|$ the length of $w$ ($|w|=\infty$ if $w$ is infinite). For all  $i,j\in\Nat$ with $i\leq j$, $w(i)$ denotes the
+$i$-th letter of $w$, while $w(i,j)$ denotes the finite subword of $w$ given by $w(i)\cdots w(j)$.
+The set of all the finite words over $\Sigma$ is denoted by $\Sigma^*$, and $\Sigma^+$ represents $\Sigma^*\setminus\{\varepsilon\}$, where $\varepsilon$ is the empty word.
+
+Clearly, a trace $\rho$ of a Kripke structure $\Ku=\KuDef$ can be considered as a finite word over $\States$, where $(\rho(i),\rho(i+1))\in\Edges$ for all $0\leq i<|\rho|-1$.
+In addition to traces, we define an \emph{infinite path} $\pi$ of $\Ku$ as an infinite word over $\States$ such that $(\pi(i),\pi(i+1))\in \Edges$ for all $i\geq 0$.
+Here, unlike the previous chapters, we assume traces and paths to be 0-based (and not 1-based) for notational convenience.
+
+\subsection{Standard point-based temporal logics}\label{sect:PTL}
+
+We start now by recalling the standard propositional temporal logics $\CTLStar$, $\CTL$  and $\LTL$~\cite{EH86,Pnu77}.
+%
+Given a set of proposition letters $\Prop$, the formulas $\varphi$ of
+$\CTLStar$ are defined as follows:
+%
+\[
+\varphi ::= \top \mid p \mid \neg \varphi \mid \varphi \wedge \varphi \mid \Next \varphi \mid \varphi \until \varphi \mid \EQ  \varphi ,
+\]
+%
+where $p\in \Prop$, $\Next$ and $\until$ are the
+``next'' and ``until'' temporal modalities,   and $\EQ$ is the
+ existential path quantifier.%
+\footnote{Hereafter, we denote by $\exists/\forall$ the existential/universal path quantifiers (instead of by the usual E/A), in order not to confuse them with the $\HS$ modalities $\mathsf{E}/\mathsf{A}$.}
+ We also use the standard shorthands $\AQ\varphi=\neg\EQ\neg\varphi$ (``universal path quantifier''),
+$\Eventually\varphi= \top \until \varphi$ (``eventually'' or ``in the future'') and its
+dual $\Always \varphi=\neg \Eventually\neg\varphi$ (``always'' or ``globally'').
+We denote by $|\varphi|$ the size of $\varphi$, that is, the number of its subformulas.
+%
+The logic $\CTL$ is the  fragment of $\CTLStar$ where each temporal modality is immediately preceded by a path quantifier, whereas  $\LTL$ corresponds to the path-quantifier-free  fragment of $\CTLStar$.
+
+Given a Kripke
+structure $\Ku=\KuDef$, an infinite path $\pi$ of
+$\Ku$, and a position $i\geq 0$ along $\pi$, the
+satisfaction relation $\Ku,\pi,i \models \varphi$ for
+$\CTLStar$, written simply $\pi,i \models \varphi$ when $\Ku$ is clear from the context, is defined as follows (Boolean connectives are treated as usual):%in the standard way):%
+\[ \begin{array}{ll}
+\pi, i \models p  &  \Leftrightarrow  p \in \Lab(\pi(i)),\\
+\pi, i \models \Next \varphi  & \Leftrightarrow   \pi, i+1 \models \varphi ,\\
+\pi, i \models \varphi_1\until \varphi_2  &
+  \Leftrightarrow  \text{for some $j\geq i$}: \pi, j
+  \models \varphi_2,
+  \text{ and }  \pi, k \models  \varphi_1 \text{ for all }i\leq k<j,\\
+\pi, i \models \EQ \varphi  & \Leftrightarrow \text{for some infinite path } \pi'  \text{ starting from $\pi(i)$, }  \pi', 0 \models \varphi .
+\end{array} \]
+%
+The MC problem is defined as follows: $\Ku$ is a model of $\varphi$, written $\Ku\models \varphi$, if for all initial infinite paths $\pi$ of $\Ku$, it holds that $\Ku,\pi, 0 \models\varphi$.
+
+We also consider a variant of $\CTLStar$, called \emph{finitary} $\CTLStar$, where the path quantifier $\EQ$ of $\CTLStar$ is replaced by the finitary path
+quantifier $\EQF$. In this setting, path quantification ranges over the traces starting from the current state.
+The satisfaction relation $\rho, i \models \varphi$, where $\rho$ is a trace and $i$ is a position along $\rho$, is similar to that given for $\CTLStar$ with the only difference of finiteness of paths, and the fact that, for a formula $\Next\varphi$, we have  $\rho, i \models \Next\varphi$ if and only if $i+1<|\rho|$ and $\rho, i+1 \models \varphi$.    A Kripke structure $\Ku$  is a model of a finitary $\CTLStar$ formula if, for each initial trace $\rho$ of  $\Ku$,  it holds that $\Ku,\rho, 0 \models\varphi$.
+  
+The MC problem for both $\CTLStar$ and $\LTL$ is $\PSPACE$-complete~\cite{DBLP:conf/popl/EmersonL85,Sistla:1985}. It is not difficult to show that, as it happens with finitary $\LTL$~\cite{DBLP:conf/ijcai/GiacomoV13}, MC for finitary $\CTLStar$ is $\PSPACE$-complete as well.
+
+
+\subsection{Three semantic variants of $\HS$ for MC}\label{sect:3sem}%{Finite model checking against \HS.}
+In this section we formally define the three presented variants of $\HS$ semantics $\HS_\stat$ (state-based), $\HS_\LinearPast$ (computation-tree-based), and $\HS_\LinearTime$ (trace-based) for model checking $\HS$ formulas against Kripke structures.
+For each variant, the related (finite) MC problem consists in deciding whether or not a finite Kripke structure is a model of an $\HS$ formula under such a semantic variant, as defined in the following.
+
+\paragraph*{State-based variant $\HS_\stat$.} 
+Let us recall the state-based variant,
+which is basically the one we have been assuming so far,
+where 
+%the authors define a mapping from Kripke structures to abstract interval models.
+an abstract interval model  (Definition~\ref{def:AIM})
+%(over $\Trk_\Ku$) 
+is naturally associated with a given Kripke structure $\Ku$ %, 
+by considering the set of intervals as the set 
+$\Trk_\Ku$
+of traces of $\Ku$. 
+
+\begin{definition}[Abstract interval model induced by a Kripke structure, Definition~\ref{def:inducedmodel}]
+The abstract interval model induced by a finite Kripke structure $\Ku=\KuDef$ is
+$\mathpzc{A}_\Ku=(\Prop,\mathbb{I},B_\mathbb{I},E_\mathbb{I},\sigma)$, where
+\begin{itemize}
+    \item $\mathbb{I}=\Trk_\Ku$,
+    \item $B_\mathbb{I}=\{(\rho,\rho')\in\mathbb{I}\times\mathbb{I}\mid \rho'\in\Pref(\rho)\}$,
+    \item $E_\mathbb{I}=\{(\rho,\rho')\in\mathbb{I}\times\mathbb{I}\mid \rho'\in\Suff(\rho)\}$, and
+    \item $\sigma:\mathbb{I}\to 2^\Prop$ such that, for all $\rho\in\mathbb{I}$, 
+        \begin{equation*}
+            \sigma(\rho)=\bigcap_{s\in\states(\rho)}\Lab(s).
+        \end{equation*}
+\end{itemize}
+\end{definition}
+
+\begin{definition}[State-based $\HS$---$\HS_\stat$, Definition~\ref{def:satkripke} and~\ref{def:MCkripke}]
+Let $\Ku$ be a finite Kripke structure and
+$\psi$ be an $\HS$ formula.
+A trace $\rho\in\Trk_\Ku$ satisfies $\psi$ under the state-based semantic variant,
+denoted as $\Ku,\rho\models_\stat \psi$, if and only if $\mathpzc{A}_\Ku,\rho\models \psi$
+(Definition~\ref{def:satisfaction}).
+
+Moreover,
+$\Ku$ is a model of $\psi$ under the state-based semantic variant, denoted as $\Ku\models_\stat \psi$, if and only if,
+for all \emph{initial} traces $\rho\in\Trk_\Ku$, it holds that $\Ku,\rho\models_\stat \psi$.
+\end{definition}
+
+\paragraph*{Computation-tree-based semantic variant $\HS_\LinearPast$.}%
+We now describe the com\-putation-tree-based semantic variant: to the aim, we consider the abstract interval model \emph{induced by the computation tree} of a Kripke structure (this will be formally defined in the following), and basically  proceed as in the previous case. 
+
+We start by introducing the notion of \emph{$D$-tree structure}, namely, an infinite tree-shaped Kripke structure with branches over a set $D$ of directions.
+
+\begin{definition}[$D$-tree structure] Given a set $D$ of directions,
+a \emph{$D$-tree structure} over a set of proposition letters $\Prop$ is a Kripke structure $\Ku=\KuDef$
+such that $\sinit\in D$, $\States$ is a prefix closed subset of $D^{+}$, and $\Edges$ is the set of pairs $(s,s')\in \States\times \States$ such that there exists $d\in D$
+for which $s'=s\cdot d$ (note that $\Edges$ is completely specified by $\States$). The states of a $D$-tree structure are called \emph{nodes}.
+\end{definition}
+
+A Kripke structure $\Ku=\KuDef$ induces an $\States$-tree structure, called the \emph{computation tree of $\Ku$}, denoted by
+$\mathpzc{C}(\Ku)$, which is obtained by unwinding $\Ku$ %starting 
+from the initial state (note that the directions are the set of states of $\Ku$).
+Formally, $\mathpzc{C}(\Ku)= (\Prop,\Trk_\Ku^{0}, \Edges',\Lab',\sinit)$, where the set of nodes is the set of initial traces of
+$\Ku$---hereafter denoted as $\Trk_\Ku^0$---and, for all $\rho,\rho'\in \Trk_\Ku^{0}$, $\Lab'(\rho)=\Lab(\lst(\rho))$ and $(\rho,\rho')\in \Edges'$ if and only if
+$\rho'=\rho\cdot s$ for some $s\in \States$.
+See Figure~\ref{fig:unr} for an example.
+
+\input{Chaps/TOCL17/Imgs/unravelling.tex}
+
+
+
+Notice that since each state in a computation tree has a unique predecessor (with the exception of the initial state), this $\HS$ variant enforces a linear reference in the past.
+
+\begin{definition}[Computation-tree-based $\HS$---$\HS_\LinearPast$]
+A finite Kripke structure $\Ku$ is a model of an $\HS$ formula $\psi$ under the computation-tree-based semantic variant, denoted as $\Ku\models_\LinearPast \psi$, if and only if
+$\mathpzc{C}(\Ku)\models_\stat \psi$.
+%The \emph{computation-tree-based model checking problem} for $\HS$ over finite Kripke structures is
+%checking whether $\Ku\models_\LinearPast \psi$.
+\end{definition}
+
+\paragraph*{Trace-based semantic variant $\HS_\LinearTime$.}
+Finally, we introduce the trace-based semantic variant, which exploits the interval structures induced by the infinite paths of a Kripke structure, as defined in the following.
+
+We recall that,
+given a strict partial ordering $\mathbb{S}=(\mathpzc{S},<)$, an \emph{interval} in $\mathbb{S}$ is an ordered pair
+$[x,y]$, such that $x,y\in \mathpzc{S}$ and $x\leq y$, which represents the subset of $\mathpzc{S}$ given by all points $z\in \mathpzc{S}$ such
+that $x\leq z\leq y$. We denote by $\mathbb{I}(\mathbb{S})$ the set of intervals in $\mathbb{S}$.
+
+The following notion has already been presented in Section~\ref{sec:preliminaries}, but here we use (for technical convenience) a different notation.
+\begin{definition}[Interval structure]
+An \emph{interval structure (or interval model)} $\mathpzc{IS}$ over  $\Prop$ is a pair $\mathpzc{IS}=(\mathbb{S},\sigma)$ such that $\mathbb{S}=(\mathpzc{S},<)$ is a strict partial ordering
+and $\sigma: \mathbb{I}(\mathbb{S}) \to 2^\Prop$ is a labeling function assigning a set of proposition letters
+to each interval in $\mathbb{S}$.
+\end{definition}
+
+The next definition shows how to derive an abstract interval model from an interval structure,
+allowing us to interpret $\HS$ over interval structures.
+
+\begin{definition}[Abstract interval model induced by an interval structure] 
+An interval structure 
+$\mathpzc{IS}=(\mathbb{S},\sigma)$ over $\Prop$, where $\mathbb{S}=(\mathpzc{S},<)$ is a strict partial ordering, induces the abstract interval model
+\[
+\mathpzc{A}_{\mathpzc{IS}}=(\Prop,\mathbb{I}(\mathbb{S}), B_{\mathbb{I}(\mathbb{S})},E_{\mathbb{I}(\mathbb{S})},\sigma),
+\]
+where
+%\begin{compactitem}
+ $[x,y] \, B_{\mathbb{I}(\mathbb{S})}\, [v,z]$ if and only if $x=v$ and $z<y$, and
+ $[x,y] \, E_{\mathbb{I}(\mathbb{S})}\, [v,z]$ if and only if $y=z$ and $x<v$.
+%\end{compactitem}
+\end{definition}
+%
+Given an interval $I$ and an $\HS$ formula $\psi$, we write $\mathpzc{IS},I\models \psi$ to mean that $\mathpzc{A}_{\mathpzc{IS}},I\models \psi$.
+%
+We now interpret $\HS$ over the infinite paths of a Kripke structure by mapping them into interval structures.
+\begin{definition}[Interval structure induced by an infinite path]\label{def:inducedPathIntervalStructure}
+For a finite  Kripke structure $\Ku=\KuDef$ and an infinite path $\pi=\pi(0)\pi(1)\cdots$ of $\Ku$,
+the \emph{interval structure induced by $\pi$} is
+$\mathpzc{IS}_{\Ku,\pi}=((\Nat,<),\sigma)$, where
+ for each interval $[i,j]$, we have  $\sigma([i,j])=\bigcap_{h=i}^{j}\Lab(\pi(h))$.
+\end{definition}
+
+\begin{definition}[Trace-based $\HS$---$\HS_\LinearTime$]
+A finite Kripke structure $\Ku$ is a model of an $\HS$ formula $\psi$ under the trace-based semantic variant, denoted as $\Ku\models_\LinearTime \psi$, if and only if,
+for each initial infinite path $\pi$  and for each initial interval $[0,i]$, it holds that  $\mathpzc{IS}_{\Ku,\pi},[0,i]\models \psi$. 
+\end{definition}

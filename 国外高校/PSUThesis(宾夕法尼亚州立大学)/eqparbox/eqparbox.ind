@@ -1,0 +1,50 @@
+
+ \begin{theindex} 
+ \makeatletter\scan@allowedfalse
+{\bfseries\hfil Symbols\hfil}\nopagebreak
+
+  \item \verb*+\@ifnextchar+\pfill 16, 21, 26
+  \item \verb*+\@latex@warning@no@line+\pfill 9, 46
+
+  \indexspace
+{\bfseries\hfil A\hfil}\nopagebreak
+
+  \item \verb*+\AtEndDocument+\pfill 7, 42
+
+  \indexspace
+{\bfseries\hfil E\hfil}\nopagebreak
+
+  \item \verb*+\eqboxwidth+\pfill \usage{3}, \main{75}
+  \item \verb*+\eqp@must@rerunfalse+\pfill \main{5}
+  \item \verb*+\eqp@must@reruntrue+\pfill \main{5}, 37, 68
+  \item \verb*+\eqp@settowidth+\pfill \main{12}, 38, 65
+  \item \verb*+\eqp@tempdima+\pfill \main{2}, 43, 45, 51, 63, 66, 67, 
+		73
+  \item \verb*+\eqp@tempdimb+\pfill \main{2}, 44, 45, 58, 64, 70, 71
+  \item \verb*+\eqp@tempdimc+\pfill \main{2}, 65--67, 70, 71
+  \item \verb*+\eqparbox+\pfill \usage{3}, \main{15}
+  \item \verb*+\eqparbox@i+\pfill \main{15}
+  \item \verb*+\eqparbox@ii+\pfill \main{15}
+  \item \verb*+\eqparbox@iii+\pfill 18, 23, 27, 28, \main{30}
+
+  \indexspace
+{\bfseries\hfil I\hfil}\nopagebreak
+
+  \item \verb*+\ifeqp@must@rerun+\pfill \main{5}
+
+  \indexspace
+{\bfseries\hfil P\hfil}\nopagebreak
+
+  \item \verb*+\parbox+\pfill 73
+
+  \indexspace
+{\bfseries\hfil S\hfil}\nopagebreak
+
+  \item \verb*+\settowidth+\pfill 13
+
+  \indexspace
+{\bfseries\hfil W\hfil}\nopagebreak
+
+  \item \verb*+\write+\pfill 47, 54
+
+ \end{theindex}

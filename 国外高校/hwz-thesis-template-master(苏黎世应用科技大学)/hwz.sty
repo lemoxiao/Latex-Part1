@@ -1,0 +1,560 @@
+%% This file is `hwz.sty'
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{hwz}[2008/12/14 0.2 HWZ Style]
+
+\RequirePackage[helvetica]{quotchap}
+\RequirePackage{times}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[latin1]{inputenc}
+\RequirePackage{lmodern}
+\RequirePackage[comma]{natbib}
+\RequirePackage{blindtext}
+\RequirePackage{longtable}
+\RequirePackage{fancyhdr}
+\RequirePackage{shadethm}
+\RequirePackage{url}
+\RequirePackage{makeidx}
+\RequirePackage{glossaries}
+\RequirePackage{graphicx}
+\RequirePackage{textcomp}
+\RequirePackage{relsize}
+\RequirePackage{alltt}
+\RequirePackage{shadethm}
+\RequirePackage{listings}
+\RequirePackage{xcolor} 
+\RequirePackage[hang,small,nooneline]{caption}
+\RequirePackage[hang,multiple]{footmisc}
+\RequirePackage{array}
+\RequirePackage[hyperfootnotes=false]{hyperref} % Disabling hyperref for footnotes because it causes problems with footmisc
+
+\typeout{Copyright Ivan Wolf}
+
+\renewcommand{\sectfont}{\sffamily\bfseries\Huge}
+
+\newif\ifpdf 
+\ifx\pdfoutput\undefined 
+    \pdffalse
+\else 
+    \pdftrue 
+\fi
+\newif\iflogo
+\logotrue
+
+% Global Definitions
+\def\subtitle#1{\gdef\@subtitle{#1}}
+\def\logo#1{\gdef\@logo{#1}}
+\def\email#1{\gdef\@email{#1}}
+\def\professor#1{\gdef\@professor{#1}}
+\def\assistant#1{\gdef\@assistant{#1}}
+\def\school#1{\gdef\@school{#1}}
+\def\department#1{\gdef\@department{#1}}
+\def\version#1{\gdef\@version{#1}}
+\def\category#1{\gdef\@category{#1}}
+\def\copyrightyear#1{\gdef\@copyrightyear{#1}}
+\gdef\@subtitle{}
+\gdef\@logo{graphics/hwz}
+\gdef\@email{}
+\gdef\@professor{Prof. Dr. Walter Kuhn}
+\gdef\@assistant{}
+\gdef\@school{HWZ Hochschule für Wirtschaft}
+\gdef\@department{Zürcher Fachhochschule}
+\gdef\@version{}
+\gdef\@category{Bachelor Thesis}
+\gdef\@copyrightyear{}
+
+% Subscript
+\DeclareRobustCommand*\textsubscript[1]{%
+  \@textsubscript{\selectfont#1}}
+\def\@textsubscript#1{%
+  {\m@th\ensuremath{_{\mbox{\fontsize\sf@size\z@#1}}}}}
+
+% Logos
+\newcommand{\HWZlogo}[1][scale=1.0]{\includegraphics[#1]{graphics/hwz}}
+
+% Exercise Format
+\newcounter{series}
+\newcommand{\series}[1] {
+	\setcounter{series}{#1}
+}
+
+\newcounter{exercise}
+\setcounter{exercise}{0}
+\newcommand{\ex}[1] {
+   \stepcounter{exercise}%
+   \vspace{9mm}
+   {\bf\sffamily Exercise \arabic{series}.\arabic{exercise} \hspace{3mm} \it\rmfamily{#1}}
+}
+\newcommand{\expart}[1] {%
+	\vspace{3mm}
+	{\bf\sffamily #1}
+	\vspace{3mm}
+}
+
+\newcounter{task}
+\setcounter{task}{0}
+\newcommand{\task}[1] {
+   \stepcounter{task}%
+   \vspace{9mm}
+   {\bf\sffamily Task \arabic{series}.\arabic{task} \hspace{3mm} \it\rmfamily{#1}}
+}
+
+\newcounter{solution}
+\setcounter{solution}{0} 
+\newcommand{\sol}[1] {
+   \stepcounter{solution}%
+   \vspace{9mm}
+   {\bf\sffamily Solution \arabic{series}.\arabic{solution} \hspace{3mm} \it\rmfamily{#1}}
+}
+
+
+
+% Various Commands
+\newcommand{\outline}[1]{\outlinewidth{\textwidth}{#1}}
+\newcommand{\outlinewidth}[2]{
+   \begin{center}
+      \fbox{
+         \begin{minipage}{#1}
+            %\vspace{1ex}
+            #2
+         \end{minipage}
+      }
+   \end{center}
+}
+\newcommand{\bd}[1]{\rm {\bf #1}}
+\newcommand{\ty}[1]{\tt #1}
+\newcommand{\co}[1]{\tt #1}
+\newcommand{\cs}[1]{\tt #1}
+\newcommand{\lequiv}{\Leftrightarrow}
+\newcommand{\idy}{\equiv}
+\newcommand{\impl}{\Rightarrow}\medskip
+
+% Definitions, Proofs and Lemmas
+\newcommand{\defn}[3]{
+   \medskip 
+   \begin{description}
+      \item[{\bf Definition #1}] \hspace{0.3cm} {\bf #2} #3 
+   \end{description}
+   \medskip 
+}
+\newcommand{\thm}[3]{
+   \medskip 
+   \begin{description}
+      \item[{\it \bf Theorem #1} \hspace{0.2cm}] #2
+      \item[{\it Proof :} \hspace{0.2cm}] #3 \hfill $\Box$
+   \end{description}
+   \medskip 
+}
+\newcommand{\lem}[3]{
+   \medskip 
+   \begin{description}
+      \item[{\it \bf Lemma #1} \hspace{0.3cm}] #2
+      \item[{\it Proof :} \hspace{0.3cm}] #3 \hfill $\Box$
+   \end{description}
+   \medskip 
+}
+
+% Program Figures
+\newcommand{\progfig}[3]{\codefigure{#1}{#2}{#3}}
+\newcommand{\codefigure}[3]{%
+   \begin{figure}[htb]
+      \codebox{#1}    
+      \caption{#2}
+      \label{#3}
+   \end{figure}
+}
+
+\newcommand{\code}[1]{
+   \begin{small}
+      \begin{alltt}
+         \begin{tabbing}
+         #1
+         \end{tabbing}
+      \end{alltt}
+   \end{small}
+}
+
+\newcommand{\codebox}[1]{%
+   \outline{%
+      \code{#1}
+   }
+}
+
+\newcommand{\shadecodebox}[1]{%
+   \begin{footnotesize}
+      \begin{shadebox}
+         \hfill
+         \vspace{-\baselineskip}
+         \begin{alltt}
+            \begin{tabbing}
+            #1
+            \end{tabbing}
+         \end{alltt}
+      \end{shadebox}
+   \end{footnotesize}
+}
+
+% Queries
+\newcommand{\query}[1]{
+    \begin{quote} 
+        \begin{alltt}
+            #1
+        \end{alltt}
+    \end{quote}
+}
+
+% Relational Algebra
+\newcommand{\thetajoin}[3]{%
+   #1~$\bowtie$\textsubscript{~#2}~#3%
+}
+   
+\newcommand{\bigthetajoin}[4]{%
+   #1\\
+   \hspace*{#4}$\bowtie$\textsubscript{~#2}~#3%
+}
+
+\newcommand{\project}[2]{%
+   $\pi$\textsubscript{~#1}~#2%
+}
+
+\newcommand{\card}[1]{%
+   $|$#1$|$%
+}
+
+\newcommand{\select}[2]{%
+   $\sigma$\textsubscript{~#1}~#2%
+}
+
+\def\creators#1{\gdef\@creators{#1}}
+\gdef\@creators{}
+
+\def\lecture#1{\gdef\@lecture{#1}}
+\gdef\@lecture{}
+
+\def\term#1{\gdef\@term{#1}}
+\gdef\@term{}
+
+\def\seriestitle#1{\gdef\@seriestitle{#1}}
+\gdef\@seriestitle{}
+
+
+\typeout{Pagestyle 'hwz'}
+\def\es{} % eat space for nice formatting
+\def\logosize{\@setsize\normalsize{12pt}\xpt\@xpt} % always make font letters same size
+                                                   
+\def\ps@hwz{\es
+
+  \addtolength{\textheight}{\headheight} % change the page parms around
+  \setlength{\headheight}{15.6mm}
+  \addtolength{\textheight}{-\headheight}
+  \setlength{\topmargin}{-8.5mm}
+  \setlength{\headsep}{10mm}
+
+  \newsavebox{\HWZlogoBox}
+  \sbox{\HWZlogoBox}{\es              % Put the HWZ logo in a box
+    \setlength{\unitlength}{0.01mm}\es
+    \HWZlogo[height=13mm]
+  }
+  \def\@oddhead{\es
+    \unitlength=\textwidth\es
+    \unitlength=1mm \noindent \hfuzz=250pt
+    \begin{picture}(33,20)
+       \put(0,0){\usebox{\HWZlogoBox}}
+       \put(0,-2.7){\sffamily\fontsize{7}{12}\bfseries \@school}
+       \put(0,-6.1){\sffamily\fontsize{7}{12}\bfseries \@professor}
+       \put(0,-9.5){\parbox[t]{0.5\textwidth}{\sffamily\fontsize{7}{10}\bfseries \@creators}}
+    \end{picture}
+  } 
+  \def\@oddfoot{}            % Empty foot
+  \let\@evenhead\@oddhead    % Same for evenhead/foot
+  \def\@evenfoot{}
+}
+
+\newcommand{\makeseriestitle}{
+	\vspace*{9mm}
+	\begin{center}
+	    {\Large\bf\sffamily \@lecture}\\[1ex]
+	    {\large\bf\sffamily \@term}\\[3ex]
+	    \vspace*{2mm}
+	    {\bf\sffamily {\@seriestitle} \arabic{series}}\\
+	\end{center}
+	\vspace*{6mm}
+}
+
+% The OMSjp Logo
+\newcommand{\OMSjp}{{\sffamily {\textbf{OMS\textsuperscript{jp}}}}}
+
+% Better TM Symbol
+\newcommand{\trademark}{{\smaller \textsuperscript{TM}}}
+
+% Backshlash everywhere
+\newcommand{\bsl}{\char`\\}
+
+% HWZ Titlepage
+\newcommand{\maketitlepage}{
+   \begin{titlepage}%
+      \ifx\pdfoutput\undefined
+         % We're not running pdftex
+      \else
+         \pdfbookmark{Titel}{title}
+      \fi
+      \newlength{\centeroffset}
+      \thispagestyle{empty}
+      \sffamily
+      \vspace*{\stretch{6}}%
+      \noindent\hspace*{\centeroffset}%
+      \makebox[0pt][l]{%
+         \begin{minipage}{\textwidth}%
+            \flushright {%
+            	{\Huge\bfseries \@title}\par
+            	\vspace{0.5cm}
+            	{\LARGE\bfseries \@subtitle}
+            }%
+            \noindent\rule[-1ex]{\textwidth}{2pt}\par
+            \vspace{0.9cm}
+            \hfill\emph{\huge \@category}
+         \end{minipage}
+      }\par
+      \vspace{2.7cm}%
+      \noindent\hspace*{\centeroffset}%
+      \makebox[0pt][l]{%
+         \begin{minipage}{\textwidth}%
+         \flushright {%
+            {\LARGE\bfseries \@author}\par
+            \vspace{0.2cm}
+            {\Large\sffamily{\@email}}\par
+            \vspace{1cm}
+            {\large \@professor\par 
+            \vspace{0.1cm}          
+            \@assistant\par
+            \vspace{1cm}
+            \@school\par
+            \@department\par}
+            \vspace{1cm}
+            {\normalsize \@version\par
+            \@date}
+         }%
+         \end{minipage}
+      }
+      \vspace{4cm}
+      
+			\begin{figure}[b]%
+				\centering
+					\includegraphics[height=1cm]{graphics/hwz}
+			\end{figure}
+      
+      \addtolength{\textwidth}{\centeroffset} 
+      
+      \pagebreak 
+      \sffamily
+      \thispagestyle{empty} 
+      \vspace*{\stretch{1}}
+      \begin{small}%
+         \noindent Copyright \copyright{} \@copyrightyear \ \@school.
+      \end{small}
+      
+   \end{titlepage}
+}
+
+\newcommand{\subtitlelinebreak}{\vspace{0.3em}\linebreak}
+
+% Some commands for helping with INDEX creation
+%
+% Index entry for a command (\cih for hidden command index
+\newcommand{\eei}[1]{%
+\index{extension!\texttt{#1}}\texttt{#1}}
+% probably add handling of period like handling of \ in \ci 
+\newcommand{\fni}[1]{%
+\index{font!#1@\texttt{\bs#1}}%
+\index{#1@\texttt{\hspace*{-1.2ex}\bs #1}}\texttt{\bs #1}}
+\newcommand{\cih}[1]{%
+\index{commands!#1@\texttt{\bs#1}}%
+\index{#1@\texttt{\hspace*{-1.2ex}\bs #1}}}
+\newcommand{\ci}[1]{\cih{#1}\texttt{\bs #1}}
+%Package
+\newcommand{\paih}[1]{%
+\index{packages!#1@\textsf{#1}}%
+\index{#1@\textsf{#1}}}
+\newcommand{\pai}[1]{%
+\paih{#1}\textsf{#1}}
+% Index entry for an environment
+\newcommand{\ei}[1]{%
+\index{environments!\texttt{#1}}%
+\index{#1@\texttt{#1}}%
+\texttt{#1}}
+% Indexentry for a word (Word inserted into the text)
+\newcommand{\wi}[1]{\index{#1}#1}
+
+% Intro Environment
+\newenvironment{intro}{\sffamily}{\vspace*{2ex minus 1.5ex}}
+
+% Quoting
+\newcommand{\quoteauthor}[1]{%
+	\small\sffamily \textmd{#1}
+}
+
+\newcommand{\bigquote}[2][]{%
+	\begin{quote}
+		\Large\textsl{#2}\par
+		\ifthenelse{\equal{#1}{}}{}
+		{\vspace{0.2em} \quoteauthor{#1}}
+	\end{quote}
+}
+
+% Code
+\definecolor{hellgelb}{rgb}{1,1,0.8}
+\definecolor{colKeys}{rgb}{0,0,1}
+\definecolor{colIdentifier}{rgb}{0,0,0}
+\definecolor{colComments}{rgb}{1,0,0}
+\definecolor{colString}{rgb}{0,0.5,0}
+
+\lstset{%
+    float=hbp,%
+    basicstyle=\ttfamily\small, %
+    identifierstyle=\color{colIdentifier}, %
+    keywordstyle=\color{colKeys}, %
+    stringstyle=\color{colString}, %
+    commentstyle=\color{colComments}, %
+    columns=flexible, %
+    tabsize=2, %
+    frame=single, %
+    extendedchars=true, %
+    showspaces=false, %
+    showstringspaces=false, %
+    numbers=left, %
+    numberstyle=\tiny, %
+    breaklines=true, %
+    backgroundcolor=\color{hellgelb}, %
+    breakautoindent=true, %
+    captionpos=b%
+}
+
+% Eine Code Abbildung mit Caption und Label
+\newcommand{\javalisting}[3]{%
+	\begin{figure}[htb]
+      \lstinputlisting[language=Java]{#1}
+      \caption{#2}
+      \label{#3}
+	\end{figure}\\
+}
+
+% erstellt eine Fussnote mit Vgl. und dahinter die zitierte Stelle
+% \vgl{Quelle05} -> vgl. Quelle 2005
+% \vgl[S. 123]{Quelle05} -> vgl. Quelle 2005, S. 123
+\newcommand{\vgl}[2][]{%
+  \footnote{Vgl. \cite{#2}\ifthenelse{\equal{#1}{}}{}{, #1}}%
+}
+
+% erstellt eine Fussnote mit der zitierten Stelle
+% \zitat{Quelle05} -> Quelle 2005
+% \zitat[S. 123]{Quelle05} -> Quelle 2005, S. 123
+\newcommand{\zitat}[2][]{%
+  \footnote{\cite{#2}\ifthenelse{\equal{#1}{}}{}{, #1}}%
+}
+
+% Kommandozeilen Befehl
+\newcommand{\cl}[1]{%
+	\framebox{\texttt{#1}}%
+}
+
+% Caption settings
+\setlength{\captionmargin}{28pt}
+\setlength{\abovecaptionskip}{5pt}
+\renewcommand{\captionfont}{\sffamily\small}
+\renewcommand{\captionlabelfont}{\bfseries}
+
+% Footnote settings
+%\renewcommand\footnotelayout{\quad}
+\setlength{\footnotemargin}{1.5em}
+
+% Simple Table
+\newcommand{\tbl}[4]{
+	\begin{table}[h]
+			\begin{tabular}{#1}
+				#2
+			\end{tabular}
+		\caption{#3}
+		\label{#4}
+	\end{table}
+}
+
+% Pdfbookmarks
+\newcommand{\ifpdfbookmark}[1]{%
+	\ifx\pdfoutput\undefined \else \pdfbookmark{#1}{#1} \fi
+}
+\newcommand{\abstract}[2]{%
+	\cleardoublepage
+	\ifpdfbookmark{#1}
+\include{#2}
+}
+\newcommand{\toc}{%
+	\cleardoublepage
+	\ifpdfbookmark{\contentsname}
+	\tableofcontents
+}
+\newcommand{\preface}[2]{%
+	\cleardoublepage
+	\ifpdfbookmark{#1}
+\include{#2}
+}
+\newcommand{\showbibliography}[2]{%
+	\cleardoublepage
+	\ifpdfbookmark{\bibname}
+	\bibliographystyle{#1}
+	\bibliography{#2}
+}
+\newcommand{\showindex}{%
+	\cleardoublepage 
+	\ifpdfbookmark{\indexname}
+	\printindex
+}
+\newcommand{\showglossaries}{%
+	\cleardoublepage
+	\ifpdfbookmark{\glossaryname}
+	\printglossaries
+}
+
+\newcommand{\theend}{%
+	\cleardoublepage
+	\newpage
+	\thispagestyle{empty}
+	\vspace*{\fill}
+	\newpage
+	\thispagestyle{empty}
+	\vspace*{\fill}
+}
+
+\newcommand{\todo}[1]{%
+	 \textsf{\color{green} \textbf{@todo} #1}%
+}
+
+% Schaltet auf eine grosszügige Formatierungsweise um, die relativ wenige Worttrennungen am Zeilenende erzeugt, dafür aber auch etwas grössere Wortabstände innerhalb der Zeilen zulässt.
+\sloppy
+
+\setlength{\shadedtextwidth}{\textwidth}
+\setlength{\shadeleftshift}{3mm}
+\setlength{\shaderightshift}{3mm}
+\addtolength{\shadedtextwidth}{-\shadeleftshift}
+\addtolength{\shadedtextwidth}{-\shaderightshift}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\sffamily\bfseries\small\thepage}
+\fancyhead[LO]{\sffamily\bfseries\small\leftmark}
+\fancyhead[RE]{\sffamily\bfseries\small\rightmark}
+\renewcommand{\headrulewidth}{0.1pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{
+   \fancyhf{}
+   \fancyfoot[C]{\sffamily\bfseries\small\thepage}
+   \renewcommand{\headrulewidth}{0pt}
+   \renewcommand{\footrulewidth}{0pt}
+}
+
+\raggedbottom
+
+\endinput
+

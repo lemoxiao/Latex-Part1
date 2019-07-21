@@ -1,0 +1,128 @@
+% This is an example on how to use the chalmers-thesis document class.
+% Document should be compiled with pdflatex or lualatex
+% If you find something odd, wrong or lacking, you can email me at; Mikael Öhman <mikael.ohman@chalmers.se>
+% But *please* do NOT email me about standard latex questions, but only things specific to the chalmers-thesis document class.
+% I.e. do not ask me about any of the packages included in this example file. Read the manuals for the packages.
+% This file has been distributed through: http://www.github.com/Micket/chalmers
+
+% These manuals are a *must* read. They are all full of good examples;
+% amsldoc   - http://mirror.ctan.org/macros/latex/required/amslatex/math/amsldoc.pdf
+% mathtools - http://mirror.ctan.org/macros/latex/contrib/mh/mathtools.pdf
+% biblatex  - http://mirror.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
+% booktabs  - http://mirror.ctan.org/macros/latex/contrib/booktabs/booktabs.pdf
+% http://www.ctan.org/tex-archive/help/Catalogue/bytopic.html
+% http://en.wikibooks.org/wiki/LaTeX/
+% See chalmers-thesis.cls for the documentation on this actual template.
+
+\RequirePackage[l2tabu,orthodox]{nag} % This package helps prevent you from doing things wrong.
+
+% change masters to bachelors if necessary
+\documentclass[masters,a4paper]{chalmers-thesis}
+% All options are; doctorate, licentiate, masters, bachelors, techreport, projectreport, nocover, draft, g5paper,
+% and everything the standard report class support.
+\usepackage{ifluatex} % Automatic check for luatex.
+\ifluatex
+ \usepackage{fontspec}
+\else
+ \usepackage[utf8]{inputenc} % File encoding, you should try to stick to utf8.
+\fi
+\usepackage{microtype} % Magically improves typesetting for pdflatex
+\usepackage{subfiles} % Convenient use of subfiles in documents. Using \subfile is optional. See README
+\usepackage{hyperref} % Required for in document links and document metadata.
+\usepackage[swedish, english]{babel}
+
+% More or less required packages
+\usepackage{csquotes} % Needed for biblatex
+% Biblatex allows you to choose backend, either the old "bibtex", or the new "biber".
+\usepackage[firstinits=true, style=alphabetic, backend=biber]{biblatex} % Modern bibliography facilities (you may change style to numeric)
+\usepackage{mathtools} % All your math related needs
+\usepackage{tikz} % Draw figures. Required for cover page
+\usepackage{subfig} % Subfloats
+
+% Read the manuals for the respective package to see the usage;
+%\usepackage{pdfpages} % For included other pdf files (like articles).
+%\usepackage{thmtools} % For theorems.
+%\usepackage{algorithms} % For algorithms.
+%\usepackage{listings} % For source code.
+%\usepackage{booktabs} % High quality tables.
+%\usepackage{siunitx} % For all your numerical values and units.
+%\usepackage{pgfplots} % Make plots directly in latex. Also tables. Excellent package.
+%\usepackage{contmech} % Custom package for typesetting in continuum mechanics for applied mechanics.
+%\usepackage{yourcustomcommands} % Put your custom commands in a file 'yourcustomcommands.sty' and load it like this.
+
+\usepackage{lipsum}\setlipsumdefault{1-3} % Package used to put in placeholder text. Remove it.
+
+% User commands
+\title{The Title of Your Thesis which might be very long}
+\subtitle{And Perhaps a Subtitle} % Optional
+\author{Some Author\and Other Author}
+\thesisin{Solid and Structural Mechanics}
+\department{Department of Applied Mechanics}
+\division{Division of Solid Mechanics}
+\reportno{2011:01}
+\copyrightyear{2011}
+
+% You should scale the figure according to textwidth and or paperheight.
+\coverfigure{\includegraphics[width=\textwidth,height=0.4\paperheight,keepaspectratio]{figures/ExampleCover}}
+\covercaption{Some explanation}
+
+\firstabstract{\lipsum}
+%\secondabstract{swedish}{\lipsum} % Optional
+\keywords{Some stuff, More stuff, Stuff}
+
+\preface{\lipsum} % You can use \input to put preface and acknowledgements in another document
+\acknowledgements{\lipsum}
+
+% You can add extra contents such as abbreviations and nomenclature using.
+% Use \presectiontitle to render add titles to new sections.
+\extrafrontmatter{\presectiontitle{Nomenclature} \lipsum} % Optional
+
+% Other optional settings for biblatex;
+\DeclareFieldFormat[article]{title}{#1} % Removes quotes from article title
+\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}} % Makes volume print in bold.
+\renewbibmacro{in:}{} % Removes the "In:" from the journals field.
+\DeclareFieldFormat[article]{pages}{#1} % Removes the pp. before pages.
+% Adds short journal entries;
+\renewbibmacro*{journal+issuetitle}{%
+  \usebibmacro{shortjournal}%
+  \setunit*{\addspace}%
+  \iffieldundef{series}{}{\newunit\printfield{series}\setunit{\addspace}}%
+  \usebibmacro{volume+number+eid}%
+  \setunit{\addspace}%
+  \usebibmacro{issue+date}%
+  \setunit{\addcolon\space}%
+  \usebibmacro{issue}%
+  \newunit}
+% End of optional citation modifications.
+
+\addbibresource{ExampleBib.bib} % New command, use if available
+%\bibliography{ExampleBib} % Legacy command
+
+\begin{document}
+%\selectlanguage{swedish} % Use this if you are writing your thesis in swedish.
+\maketitle
+% If you need to do any modifications, you can redefine each page respectively, or just call them manually as;
+%\makecoverpage
+%\maketitlepage
+%\makeprintinfopage
+%\makesecondabstractpage
+%\makededicationpage
+%\makeprefacepage
+%\makeacknowledgementspage
+%\maketableofpaperspage
+%\cleardoublepage\tableofcontents
+%\cleardoublepage\pagenumbering{arabic}
+
+ % Sets up page numbering for the rest of the document.
+% Highly recommended to put contents into subfiles, or use \input.
+\subfile{ExampleIntroduction}
+%\subfile{Introduction}
+%\subfile{Theory}
+%\subfile{Method}
+%\subfile{Results}
+
+\nocite{*} % Cites everything from the bibliography
+\printbibliography % This command is new in biblatex. Do not attempt to use style files as with old latex.
+
+\end{document}
+

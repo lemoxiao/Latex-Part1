@@ -1,0 +1,23 @@
+#!/bin/sh
+# build the output pdf
+FILENAME=${1:-"thesis_contents"}
+pdflatex "$FILENAME".tex
+bibtex "$FILENAME"
+pdflatex "$FILENAME".tex
+pdflatex "$FILENAME".tex
+mkdir -p build/
+mv *.* build/
+cp build/*.tex ./
+cp build/*.pdf ./
+cp build/*.bib ./
+cp build/*.cls ./
+cp build/*.bst ./
+mv build/*.md ./
+
+# create a .tar.gz with the files
+mkdir -p nus-thesis-latex-template/build
+mkdir -p nus-thesis-latex-template/images
+cp *.tex ./make *.bib *.cls *.bst ./nus-thesis-latex-template
+cp images/*.* nus-thesis-latex-template/images/
+tar cvzf nus-thesis-latex-template.tar.gz nus-thesis-latex-template
+rm -rf nus-thesis-latex-template/

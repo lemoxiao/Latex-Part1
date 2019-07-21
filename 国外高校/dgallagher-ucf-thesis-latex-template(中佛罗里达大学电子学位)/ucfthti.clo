@@ -1,0 +1,764 @@
+% UCF THESIS TITLE PAGE STYLE (format for preliminary pages)
+% (C) Copyright 2007 Daniel Gallagher,
+% derived from work (C) Copyright 2000 by Ivan Garibay,
+% derived from work (C) Copyright 1995 John Heidemann,
+% derived from work (C) Copyright 1988 Richard B. Wales,
+% taken in turn from material Copyright (C) 1985 by Leslie Lamport.
+
+
+%%%
+% Version checking.
+%%%
+\NeedsTeXFormat{LaTeX2e}
+\def\ucfthtiversion{1.0 beta}
+\def\ucfthtidate{1995/05/11}
+\ProvidesFile{ucfthti}[\ucfthtidate, \ucfthtiversion]
+
+%
+% When this file is included from other than ucfthes,
+% \@spacing may be undefined.
+%
+% NEEDSWORK:  This test always fails, even when ucfthes.cls is loaded.
+\def\@stdsinglespacing{1.0}
+\ifx\@singlespacing\@stdsinglespacing
+  % Spacing has already been set (in ucfthes.cls).
+\else
+  % Spacing was not set, set it here as if we were ucfthes.cls.
+  % \typeout{Spacing not set.}
+  \def\@singlespacing{1.0}
+  \def\@doublespacing{1.544}          % see above for explanation of value
+  \let\@spacing=\@singlespacing
+\fi
+
+%
+% The following macro pair save and restore ``twocolumn'' status.
+%
+\newif\if@ColumnSaveValue
+\newcommand{\ColumnSave}{
+  \if@twocolumn
+    \@ColumnSaveValuetrue
+  \else
+    \@ColumnSaveValuefalse
+  \fi
+  \pagebreak
+  \onecolumn
+}
+\newcommand{\ColumnSaveHeading}[1]{
+  \if@twocolumn
+    \@ColumnSaveValuetrue
+    \pagebreak
+    \twocolumn[#1]
+  \else
+    \@ColumnSaveValuefalse
+    \pagebreak
+    #1
+  \fi
+}
+\newcommand{\ColumnRestore}{\if@ColumnSaveValue\twocolumn\fi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                              TITLE PAGE                               %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\@maketitlepage{
+   \begin {titlepage}
+      \renewcommand\baselinestretch{1} \normalsize
+      \ColumnSave
+      \begin {center}
+\vspace*{40pt}                     % Space at top of text page. (UCF:to add up to 2-inches)
+\pagenumbering{roman}
+\setcounter{page}{0}
+         %\textsc{\large University of Central Florida} \\
+         %\normalsize Orlando \\
+         %\vfill
+%         \textbf{\@titlesize \@title} \\
+         \textsc{\large \@title} \\
+         \vskip 48pt plus0pt minus18pt
+
+          \normalsize
+
+         by \\
+
+         \vskip 24pt plus0pt minus6pt
+         \textsc{\large \@author} \\
+          \if@prevdegreei\ \@prevdegreei \fi\\
+         %\if@prevdegreeii\ \@prevdegreeii \fi\\
+         %\if@prevdegreeiii\ \@prevdegreeiii \fi\\
+
+         \vskip 24pt plus0pt minus6pt
+         A \@thesisname \hspace{1pt} submitted in partial fulfillment of the requirements\\
+         for the degree of \@degreename \\
+         %\if@department\ in the Department of \@department \fi\\
+         \if@school\ in the School of \@school \fi\\
+         in the College of \@college \\
+         at the University of Central Florida \\
+         Orlando, Florida
+
+         \vskip 24pt plus0pt minus6pt
+
+         \vfill
+         \@term \hspace{1pt} Term \\
+         \@degreeyear
+
+         \vskip 24pt plus0pt minus6pt
+
+%         {\normalsize Major Professor: \\ \@professor }
+         {\normalsize Major Professor: \@professor } %%% D. Gallagher 2007 - Remove line break per editor
+
+
+      \end {center}
+      \ColumnRestore
+   \end {titlepage}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                            COPYRIGHT PAGE                             %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% UCF : I. Garibay: Centered vertical and horizontal
+
+
+\newif\if@copyright
+\@copyrighttrue
+\newcommand\nocopyright{\@copyrightfalse}
+
+\def\@copyrightinfo{All Rights Reserved}
+\newcommand\copyrightinfo[1]{\def\@copyrightinfo{#1}}
+
+\newcommand\@makecopyrightpage{
+   \ColumnSave
+   \pagenumbering{roman}
+   \setcounter{page}{2}   % Changed from 0 D. Gallagher 10/30/2006
+   %\thispagestyle{empty} % Show Page Number on Copyright Page per Editor D. Gallagher 10/30/2006
+   \thispagestyle{plain} 
+   \null
+   \vfill
+   \if@copyright
+      \begin{center}
+         %\normalsize \rm Copyright \copyright\ \@copyrightyear
+         %\ifx\@copyrightyear\@degreeyear\else , \@degreeyear \fi
+         %\ by \@author \\
+         %\@copyrightinfo
+         \normalsize \normalfont \copyright\  \@copyrightyear  \hspace{1pt} %by  % Do not Use "by" per editor D. Gallagher 10/30/2006
+         \@author \\
+      \end{center}
+   \fi
+   \vfill
+   \ColumnRestore
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                           SIGNATURE PAGE                              %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newif\if@sigpage
+\@sigpagetrue
+\newcommand\nosigpage{\@sigpagefalse}
+
+% The following definitions for "\chair" and "\member" allow for one or
+% three chairs (co-chairs) and up to six additional committee members.
+
+
+\newcounter{chairs}
+\setcounter{chairs}{0}
+\newcommand\chair[1]{
+   \ifcase\value{chairs}
+      \def\@chairA{#1} \or \def\@chairB{#1} \or \def\@chairC{#1}
+   \else
+      \typeout{Too many co-chairs.}
+   \fi
+   \addtocounter{chairs}{1}
+}
+
+\newcounter{members}
+\setcounter{members}{0}
+\newcommand\member[1]{
+   \ifcase\value{members}
+      \def\@memberA{#1} \or \def\@memberB{#1} \or \def\@memberC{#1} \or
+      \def\@memberD{#1} \or \def\@memberE{#1} \or \def\@memberF{#1}
+   \else
+      \typeout{Too many committee members.}
+   \fi
+   \addtocounter{members}{1}
+}
+
+% The following definition for "\@signatureline" draws a line and puts
+% a name underneath the line.  If the standard "single" line spacing is
+% changed, it may be desirable to change the "\vskip" before the name.
+
+\newcommand\@signatureline[2]{
+   \noindent \rule{#1}{0.005in} \\ \noindent #2
+}
+
+
+\newcommand\@makesignaturepage{
+   \ColumnSave
+    \vspace*{10pt}                     % Space at top of text page. (UCF:to add up to 2-inches)
+    \pagenumbering{roman}
+    \setcounter{page}{0}
+   \noindent
+   \renewcommand\baselinestretch{1}\@normalsize
+%  \normalsize \normalfont The \@thesisname\ of \@author\ is approved.
+   \normalsize \normalfont 
+   \begin{center}UNIVERSITY OF CENTRAL FLORIDA\\
+                     DISSERTATION APPROVAL
+   \end{center}
+   \nohyphens The members of the Committee approve the dissertation entitled
+    \textit{\@title}\ of \@author, defended \@defensedate.
+   
+%   \vskip 72pt plus0pt minus24pt
+   \vskip 24pt
+ \begin {multicols}{2}
+%      \ifnum\c@members>5 \@signatureline{\@memberF}\fi
+%      \ifnum\c@members>4 \@signatureline{\@memberE}\fi
+%      \ifnum\c@members>3 \@signatureline{\@memberD}\fi
+%      \ifnum\c@members>2 \@signatureline{\@memberC}\fi
+%      \ifnum\c@members>1 \@signatureline{\@memberB}\fi
+%      \ifnum\c@members>0 \@signatureline{\@memberA}
+%         \else\typeout{No non-chair committee members.}\fi
+%      \ifnum\c@chairs>2
+%         \@signatureline{\@chairC, Committee Co-chair}
+%         \@signatureline{\@chairB, Committee Co-chair}
+%         \@signatureline{\@chairA, Committee Co-chair}
+%      \else\ifnum\c@chairs>1
+%         \@signatureline{\@chairB, Committee Co-chair}
+%         \@signatureline{\@chairA, Committee Co-chair}
+%      \else\ifnum\c@chairs>0
+%         \@signatureline{\@chairA, Committee Chair}
+%      \else\typeout{No committee chair.}
+%      \fi\fi\fi
+ \@signatureline{2in}{\@chairA, Chair} \vskip 12pt
+ \@signatureline{2in}{\@memberA}\\ Committee Member \vskip 14pt
+% \mbox{ } \vskip 30pt 
+ \@signatureline{2in}{\@memberB}\\ Committee Member \vskip 14pt
+ \@signatureline{2in}{\@memberC}\\ Committee Member \vskip 14pt   % Comment line for MS Thesis
+% \@signatureline{2in}{\@memberD}\\ Committee Member \vskip 14pt
+ \end {multicols}
+ \noindent
+ It is recommended that this dissertation be used in partial fulfillment
+ of the requirements for the degree of Doctor of Philosophy from the
+ Department of \@department\ in the College of Engineering and Computer Science. \vskip 14pt 
+ 
+  \@signatureline{3in}{Issa Batarseh, Chair, Department Head} \vskip 14pt
+  \@signatureline{3in}{Jamal Nayfeh, Associate Dean, Academic Affairs and Graduate Studies} \vskip 14pt
+  \@signatureline{3in}{Neal C.\ Gallagher, Dean of College} \vskip 14pt
+  \@signatureline{3in}{Patricia J.\ Bishop}\\ Vice Provost and Dean of Graduate Studies \vskip 18pt
+ \noindent 
+ The committee, the college, and the University of Central Florida are not
+ liable for any use of the materials presented in this study.
+ 
+%   \vfill
+%   \begin {center}
+%      University of Central Florida, Orlando \\ \@degreeyear
+%   \end {center}
+  \ColumnRestore
+  \renewcommand\baselinestretch{\@spacing}\@normalsize
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%                                                                       %
+%%%%%%%%%%%%%                            SIGNATURE PAGE                             %
+%%%%%%%%%%%%%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%
+%%%%%%%%%%%%% The following definitions for "\chair" and "\member" allow for one or
+%%%%%%%%%%%%% three chairs (co-chairs) and up to six additional committee members.
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+%%%%%%%%%%%%\newcounter{chairs}
+%%%%%%%%%%%%\setcounter{chairs}{0}
+%%%%%%%%%%%%\newcommand\chair[1]{
+%%%%%%%%%%%%   \ifcase\value{chairs}
+%%%%%%%%%%%%      \def\@chairA{#1} \or \def\@chairB{#1} \or \def\@chairC{#1}
+%%%%%%%%%%%%   \else
+%%%%%%%%%%%%      \typeout{Too many co-chairs.}
+%%%%%%%%%%%%   \fi
+%%%%%%%%%%%%   \addtocounter{chairs}{1}
+%%%%%%%%%%%%}
+%%%%%%%%%%%%
+%%%%%%%%%%%%\newcounter{members}
+%%%%%%%%%%%%\setcounter{members}{0}
+%%%%%%%%%%%%\newcommand\member[1]{
+%%%%%%%%%%%%   \ifcase\value{members}
+%%%%%%%%%%%%      \def\@memberA{#1} \or \def\@memberB{#1} \or \def\@memberC{#1} \or
+%%%%%%%%%%%%      \def\@memberD{#1} \or \def\@memberE{#1} \or \def\@memberF{#1}
+%%%%%%%%%%%%   \else
+%%%%%%%%%%%%      \typeout{Too many committee members.}
+%%%%%%%%%%%%   \fi
+%%%%%%%%%%%%   \addtocounter{members}{1}
+%%%%%%%%%%%%}
+%%%%%%%%%%%%
+%%%%%%%%%%%%% The following definition for "\@signatureline" draws a line and puts
+%%%%%%%%%%%%% a name underneath the line.  If the standard "single" line spacing is
+%%%%%%%%%%%%% changed, it may be desirable to change the "\vskip" before the name.
+%%%%%%%%%%%%
+%%%%%%%%%%%%\newcommand\@signatureline[1]{
+%%%%%%%%%%%%   \rule{4in}{0.01in} \\ \vskip-10pt{#1} \\
+%%%%%%%%%%%%   \vskip 36pt plus0pt minus15pt%
+%%%%%%%%%%%%}
+%%%%%%%%%%%%
+%%%%%%%%%%%%\newcommand\@makesignaturepage{
+%%%%%%%%%%%%   \ColumnSave
+%%%%%%%%%%%%        \vspace*{40pt}                     % Space at top of text page. (UCF:to add up to 2-inches)
+%%%%%%%%%%%%        \pagenumbering{roman}
+%%%%%%%%%%%%        \setcounter{page}{0}
+%%%%%%%%%%%%   \noindent
+%%%%%%%%%%%%   \renewcommand\baselinestretch{\@doublespacing}\@normalsize
+%%%%%%%%%%%%   \normalsize \normalfont The \@thesisname\ of \@author\ is approved.
+%%%%%%%%%%%%   \vskip 72pt plus0pt minus24pt
+%%%%%%%%%%%%   \begin {flushright}
+%%%%%%%%%%%%      \ifnum\c@members>5 \@signatureline{\@memberF}\fi
+%%%%%%%%%%%%      \ifnum\c@members>4 \@signatureline{\@memberE}\fi
+%%%%%%%%%%%%      \ifnum\c@members>3 \@signatureline{\@memberD}\fi
+%%%%%%%%%%%%      \ifnum\c@members>2 \@signatureline{\@memberC}\fi
+%%%%%%%%%%%%      \ifnum\c@members>1 \@signatureline{\@memberB}\fi
+%%%%%%%%%%%%      \ifnum\c@members>0 \@signatureline{\@memberA}
+%%%%%%%%%%%%         \else\typeout{No non-chair committee members.}\fi
+%%%%%%%%%%%%      \ifnum\c@chairs>2
+%%%%%%%%%%%%         \@signatureline{\@chairC, Committee Co-chair}
+%%%%%%%%%%%%         \@signatureline{\@chairB, Committee Co-chair}
+%%%%%%%%%%%%         \@signatureline{\@chairA, Committee Co-chair}
+%%%%%%%%%%%%      \else\ifnum\c@chairs>1
+%%%%%%%%%%%%         \@signatureline{\@chairB, Committee Co-chair}
+%%%%%%%%%%%%         \@signatureline{\@chairA, Committee Co-chair}
+%%%%%%%%%%%%      \else\ifnum\c@chairs>0
+%%%%%%%%%%%%         \@signatureline{\@chairA, Committee Chair}
+%%%%%%%%%%%%      \else\typeout{No committee chair.}
+%%%%%%%%%%%%      \fi\fi\fi
+%%%%%%%%%%%%   \end {flushright}
+%%%%%%%%%%%%   \vfill
+%%%%%%%%%%%%   \begin {center}
+%%%%%%%%%%%%      University of Central Florida, Orlando \\ \@degreeyear
+%%%%%%%%%%%%   \end {center}
+%%%%%%%%%%%%   \ColumnRestore
+%%%%%%%%%%%%   \renewcommand\baselinestretch{\@spacing}\@normalsize
+%%%%%%%%%%%%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                           DEDICATION PAGE                             %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newif\if@dedication
+\def\@dedication{}
+\newcommand\dedication[1]{\@dedicationtrue\def\@dedication{#1}}
+
+\newcommand\@makededication{
+   \if@dedication
+      \ColumnSave
+      \par\pagestyle{plain}
+      \renewcommand\baselinestretch{\@spacing}\@normalsize\normalfont
+      \vspace*{0pt}                % force spacing at top of page
+      \vfill
+      \begin{center}
+         \@dedication
+      \end{center}
+      \vfill
+      \ColumnRestore
+   \fi
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                         ACKNOWLEDGMENTS PAGE                          %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newif\if@acks
+\def\@acknowledgments{}
+\newcommand\acknowledgments[1]{\@ackstrue\def\@acknowledgments{#1}}
+
+\newcommand\@makeacknowledgmentsheading{
+  {
+    \centering
+    
+    \phantomsection \pdfbookmark[0]{ACKNOWLEDGMENTS}{lbl_ACKNOWLEDGMENTS} %UCF: D. Gallagher 2007 Add to Bookmarks only
+%%%%    \addcontentsline{toc}{frontmatter}{ACKNOWLEDGMENTS}  % UCF: D. Gallagher 2006 Add to frontmatter per editor
+    \vspace*{45pt}                     % Space at top of text page. (UCF:to add up to 2-inches)
+%    \textsc{\large Acknowledgments}
+     \MakeUppercase{\large Acknowledgments}
+    \vskip 0pt
+  }
+}
+
+
+\newcommand\@makeacknowledgments{
+   \if@acks
+      \ColumnSaveHeading{\@makeacknowledgmentsheading}
+      \par\pagestyle{plain}
+      \renewcommand\baselinestretch{\@spacing}\@normalsize
+      \noindent \normalsize \normalfont \@acknowledgments
+      \vfill
+      \ColumnRestore
+   \fi
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                              VITA PAGE                                %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This definition for the "\vitaitem" command allows for up to 26 vita
+% items.  The use of "\normalfont" in each definition permits any macros that
+% are sensitive to type style (and which might be disrupted by the mode
+% set for the "tabular" processing) to work properly.
+
+\newcounter{vitaitems}
+\setcounter{vitaitems}{0}
+\newcommand\@vitadate[1]{{\parbox[t]{1.25in}{\normalfont{#1}}}}
+\newcommand\@vitatext[1]{{\parbox[t]{4.45in}{\normalfont{#1}}}}
+\newcommand\vitaitem[2]{
+   \ifcase\value{vitaitems}
+      \def\@vitaA{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaB{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaC{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaD{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaE{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaF{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaG{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaH{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaI{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaJ{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaK{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaL{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaM{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaN{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaO{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaP{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaQ{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaR{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaS{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaT{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaU{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaV{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaW{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaX{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaY{\@vitadate{#1} & \@vitatext{#2}} \or
+      \def\@vitaZ{\@vitadate{#1} & \@vitatext{#2}}
+   \else
+      \typeout{Too many vita items.}
+   \fi
+   \addtocounter{vitaitems}{1}
+}
+
+%%%% NOTE: I/G.3.13.00:: Review this part!
+
+% These definitions for the "\publication" and "\presentation" commands
+% allow for up to 26 publications and/or presentations.  Note that UCF
+% requires publications and presentations to be combined into a single
+% list with a single title; the "@pubs" and "@pres" flags are used to
+% determine what the title will look like.
+
+\newcounter{publications}
+\setcounter{publications}{0}
+\newif\if@pubs \newif\if@pres
+\newcommand\publication[1]{
+   \@pubstrue
+   \ifcase\value{publications}
+      \def\@pubA{#1} \or \def\@pubB{#1} \or \def\@pubC{#1} \or
+      \def\@pubD{#1} \or \def\@pubE{#1} \or \def\@pubF{#1} \or
+      \def\@pubG{#1} \or \def\@pubH{#1} \or \def\@pubI{#1} \or
+      \def\@pubJ{#1} \or \def\@pubK{#1} \or \def\@pubL{#1} \or
+      \def\@pubM{#1} \or \def\@pubN{#1} \or \def\@pubO{#1} \or
+      \def\@pubP{#1} \or \def\@pubQ{#1} \or \def\@pubR{#1} \or
+      \def\@pubS{#1} \or \def\@pubT{#1} \or \def\@pubU{#1} \or
+      \def\@pubV{#1} \or \def\@pubW{#1} \or \def\@pubX{#1} \or
+      \def\@pubY{#1} \or \def\@pubZ{#1}
+   \else
+      \typeout{Too many publications/presentations.}
+   \fi
+   \addtocounter{publications}{1}
+}
+\newcommand\presentation[1]{
+   \@prestrue
+   \ifcase\value{publications}
+      \def\@pubA{#1} \or \def\@pubB{#1} \or \def\@pubC{#1} \or
+      \def\@pubD{#1} \or \def\@pubE{#1} \or \def\@pubF{#1} \or
+      \def\@pubG{#1} \or \def\@pubH{#1} \or \def\@pubI{#1} \or
+      \def\@pubJ{#1} \or \def\@pubK{#1} \or \def\@pubL{#1} \or
+      \def\@pubM{#1} \or \def\@pubN{#1} \or \def\@pubO{#1} \or
+      \def\@pubP{#1} \or \def\@pubQ{#1} \or \def\@pubR{#1} \or
+      \def\@pubS{#1} \or \def\@pubT{#1} \or \def\@pubU{#1} \or
+      \def\@pubV{#1} \or \def\@pubW{#1} \or \def\@pubX{#1} \or
+      \def\@pubY{#1} \or \def\@pubZ{#1}
+   \else
+      \typeout{Too many publications/presentations.}
+   \fi
+   \addtocounter{publications}{1}
+}
+
+\newcommand\@printvitaitem[1]{
+   \noindent
+   \begin {tabular} {@{}p{1.25in}@{}p{4.45in}@{}}
+      #1
+   \end {tabular}
+}
+
+\newcommand\@printpubitem[1]{\par \noindent #1}
+
+\newcommand\@makevitapage{
+   % Save the old stretch.
+   \let\OldArrayStretch=\arraystretch
+   \renewcommand\arraystretch{1.67}
+   \ifnum\c@vitaitems>0
+      \ColumnSave
+      \par\pagestyle{plain}
+      \renewcommand\baselinestretch{\@spacing}\@normalsize
+      \begin{center}
+         \textsc{\large Vita} \\
+      \end{center}
+      \vskip 12pt
+      \ifnum\c@vitaitems>0  \@printvitaitem{\@vitaA} \fi
+      \ifnum\c@vitaitems>1  \@printvitaitem{\@vitaB} \fi
+      \ifnum\c@vitaitems>2  \@printvitaitem{\@vitaC} \fi
+      \ifnum\c@vitaitems>3  \@printvitaitem{\@vitaD} \fi
+      \ifnum\c@vitaitems>4  \@printvitaitem{\@vitaE} \fi
+      \ifnum\c@vitaitems>5  \@printvitaitem{\@vitaF} \fi
+      \ifnum\c@vitaitems>6  \@printvitaitem{\@vitaG} \fi
+      \ifnum\c@vitaitems>7  \@printvitaitem{\@vitaH} \fi
+      \ifnum\c@vitaitems>8  \@printvitaitem{\@vitaI} \fi
+      \ifnum\c@vitaitems>9  \@printvitaitem{\@vitaJ} \fi
+      \ifnum\c@vitaitems>10 \@printvitaitem{\@vitaK} \fi
+      \ifnum\c@vitaitems>11 \@printvitaitem{\@vitaL} \fi
+      \ifnum\c@vitaitems>12 \@printvitaitem{\@vitaM} \fi
+      \ifnum\c@vitaitems>13 \@printvitaitem{\@vitaN} \fi
+      \ifnum\c@vitaitems>14 \@printvitaitem{\@vitaO} \fi
+      \ifnum\c@vitaitems>15 \@printvitaitem{\@vitaP} \fi
+      \ifnum\c@vitaitems>16 \@printvitaitem{\@vitaQ} \fi
+      \ifnum\c@vitaitems>17 \@printvitaitem{\@vitaR} \fi
+      \ifnum\c@vitaitems>18 \@printvitaitem{\@vitaS} \fi
+      \ifnum\c@vitaitems>19 \@printvitaitem{\@vitaT} \fi
+      \ifnum\c@vitaitems>20 \@printvitaitem{\@vitaU} \fi
+      \ifnum\c@vitaitems>21 \@printvitaitem{\@vitaV} \fi
+      \ifnum\c@vitaitems>22 \@printvitaitem{\@vitaW} \fi
+      \ifnum\c@vitaitems>23 \@printvitaitem{\@vitaX} \fi
+      \ifnum\c@vitaitems>24 \@printvitaitem{\@vitaY} \fi
+      \ifnum\c@vitaitems>25 \@printvitaitem{\@vitaZ} \fi
+      \ifnum\c@publications>0{
+         \ifx\@spacing\@doublespacing\parskip 24pt plus 4pt
+         \else                       \parskip 12pt plus 2pt
+         \fi
+         \vskip 36pt
+         \begin{center}
+            \large \scshape
+            \if@pubs
+               \if@pres Publications and Presentations
+               \else    Publications
+               \fi
+            \else       Presentations
+            \fi
+            \\
+         \end{center}
+         \nobreak \vskip 12pt
+         \ifnum\c@publications>0  \@printpubitem{\@pubA} \fi
+         \ifnum\c@publications>1  \@printpubitem{\@pubB} \fi
+         \ifnum\c@publications>2  \@printpubitem{\@pubC} \fi
+         \ifnum\c@publications>3  \@printpubitem{\@pubD} \fi
+         \ifnum\c@publications>4  \@printpubitem{\@pubE} \fi
+         \ifnum\c@publications>5  \@printpubitem{\@pubF} \fi
+         \ifnum\c@publications>6  \@printpubitem{\@pubG} \fi
+         \ifnum\c@publications>7  \@printpubitem{\@pubH} \fi
+         \ifnum\c@publications>8  \@printpubitem{\@pubI} \fi
+         \ifnum\c@publications>9  \@printpubitem{\@pubJ} \fi
+         \ifnum\c@publications>10 \@printpubitem{\@pubK} \fi
+         \ifnum\c@publications>11 \@printpubitem{\@pubL} \fi
+         \ifnum\c@publications>12 \@printpubitem{\@pubM} \fi
+         \ifnum\c@publications>13 \@printpubitem{\@pubN} \fi
+         \ifnum\c@publications>14 \@printpubitem{\@pubO} \fi
+         \ifnum\c@publications>15 \@printpubitem{\@pubP} \fi
+         \ifnum\c@publications>16 \@printpubitem{\@pubQ} \fi
+         \ifnum\c@publications>17 \@printpubitem{\@pubR} \fi
+         \ifnum\c@publications>18 \@printpubitem{\@pubS} \fi
+         \ifnum\c@publications>19 \@printpubitem{\@pubT} \fi
+         \ifnum\c@publications>20 \@printpubitem{\@pubU} \fi
+         \ifnum\c@publications>21 \@printpubitem{\@pubV} \fi
+         \ifnum\c@publications>22 \@printpubitem{\@pubW} \fi
+         \ifnum\c@publications>23 \@printpubitem{\@pubX} \fi
+         \ifnum\c@publications>24 \@printpubitem{\@pubY} \fi
+         \ifnum\c@publications>25 \@printpubitem{\@pubZ} \fi
+      }
+      \ColumnRestore
+   \fi\fi
+   \renewcommand\arraystretch{\OldArrayStretch}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                            ABSTRACT PAGE                              %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newif\if@abstract
+\def\@abstract{}
+\newcommand\abstract[1]{\@abstracttrue\def\@abstract{#1}}
+
+%
+% one argument: the baselinestretch
+% The RFTADP requires doublespacing, but in techreports
+% you may wish something less.
+%
+\newcommand{\@makeabstractpage}[1]{
+   \if@abstract
+      \ColumnSave
+      \par\pagestyle{plain}
+              \vspace*{30pt}                     % Space at top of text page. (UCF:to add up to 2-inches)
+           \pagenumbering{roman}
+           \setcounter{page}{3}  % Change if no copyright page / Not necessary if there is a copyright page 
+        
+        \phantomsection \pdfbookmark[0]{ABSTRACT}{lbl_abstract} %UCF: D. Gallagher 2007 - Add to Bookmarks
+%%%%        \addcontentsline{toc}{frontmatter}{ABSTRACT}  % UCF: D. Gallagher 2006 Add to frontmatter per editor
+                
+        \begin{center}
+%        \textbf{\@titlesize Abstract}\\[12pt]
+%        \textsc{\large Abstract}
+	\MakeUppercase{\large Abstract}
+        \end{center}
+
+%      \begin{center}
+%         \textsc{\large Abstract of the \@Thesisname}\\[12pt]
+%         \textbf{\@titlesize \@title}\\[12pt]
+%         \normalsize \normalfont by\\[12pt]
+%         \textbf{\large \@author} \\
+%         \normalsize \normalfont
+%         \@degreename\if@department\ in \@department \fi\\
+%         University of Central Florida \@degreeyear \\
+%         \ifnum\c@chairs>2
+%            Professor \@chairA, Co-chair \\
+%            Professor \@chairB, Co-chair \\
+%            Professor \@chairC, Co-chair \\
+%         \else\ifnum\c@chairs>1
+%            Professor \@chairA, Co-chair \\
+%            Professor \@chairB, Co-chair \\
+%         \else\ifnum\c@chairs>0
+%            Professor \@chairA, Chair \\
+%         \else\typeout{No committee chair.}
+%         \fi\fi\fi
+%      \end{center}
+
+      \ifx\@spacing\@doublespacing\vskip 12pt\else\vskip 24pt\fi
+      \renewcommand\baselinestretch{#1}\@normalsize
+      %
+      % Set up spacing.
+      % If it's single spacing, indent the margins.
+      % If double spacing is required than things are already
+      % ugly enough (and we loose enough space) that we may
+      % as well use the whole \textwidth.
+      %
+      \ifthenelse{\equal{#1}{\@stdsinglespacing}}{
+        \begin{center}
+        \begin{minipage}{4.75in}
+        \setlength{\parindent}{1.5em}
+        \@abstract
+        \end{minipage}
+        \end{center}
+      }{
+        \@abstract
+      }
+
+      \renewcommand\baselinestretch{\@spacing}\@normalsize
+      \ColumnRestore
+  \else
+      \typeout{No abstract.}
+   \fi
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                   LIST OF ACRONYMS PAGE                               %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newif\if@acronyms
+\def\@acronyms{}
+\newcommand\acronyms[1]{\@acronymstrue\def\@acronyms{#1}}
+\newcommand\acr[2]{#1 & --- & #2\\}
+%
+% one argument: the baselinestretch
+% The RFTADP requires doublespacing, but in techreports
+% you may wish something less.
+%
+\newcommand{\@makeacronymspage}[1]{
+   \if@acronyms
+      \ColumnSave
+%      \par\pagestyle{plain}
+%              \vspace*{30pt}                     % Space at top of text page. (UCF:to add up to 2-inches)
+ 
+ \chapter*{LIST OF ACRONYMS\markboth{LIST OF ACRONYMS}{LIST OF ACRONYMS}}\addcontentsline{toc}{frontmatter}{LIST OF ACRONYMS}     
+
+%        \phantomsection \addcontentsline{toc}{frontmatter}{LIST OF ACRONYMS}  % UCF: D. Gallagher 2007 Add to frontmatter per editor
+%                
+%        \begin{center}
+%%        \textbf{\@titlesize List of Acronyms}\\[12pt]
+%        \textsc{\large List of Acronyms}
+%        \end{center}
+
+%      \ifx\@spacing\@doublespacing\vskip 12pt\else\vskip 24pt\fi
+%      \renewcommand\baselinestretch{#1}\@normalsize
+
+%        \begin{center}  %%% D. Gallagher 2007 -- List of Acronyms Content to Begin at left of page
+%        \setlength{\parindent}{1.5em}
+        \singlespacing
+\setlength\LTleft{\parindent}
+%\setlength\LTright{0pt}
+        \begin{longtable}{lcl}
+            \@acronyms
+        \end{longtable}        
+%        \end{center}
+
+      \renewcommand\baselinestretch{\@spacing}\@normalsize
+      \ColumnRestore
+  \else
+      \typeout{No acronyms.}
+   \fi
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                      PRINT ALL PRELIMINARY PAGES                      %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\makeintropages{
+
+  % If you do not want to generate a signature page
+  % the \nosigpage command should be used in preamble or intropages tex file
+  \if@sigpage   
+      \@makesignaturepage
+  \fi
+  
+  \@maketitlepage
+  % If we're printing two sided,
+  % insert a blank page for the back of the title page.
+  % NOTE:  This extra page makes the output non-conforming
+  % to the RFTADP, unless you throw it away.
+  \if@twoside
+    \typeout{Two-side detected.}
+    \pagebreak   % the back side of the title page
+  \fi
+  \@makecopyrightpage
+  \@makeabstractpage{\@doublespacing}
+  \@makededication
+  \@makeacknowledgments
+
+%\topmargin 1.15in
+  \tableofcontents
+
+  \listoffigures  % D. Gallagher Swapped LOF to go before LOT July2007
+
+  \listoftables
+
+  \@makeacronymspage
+
+%\topmargin 0.15in
+
+  \newpage \pagenumbering{arabic}
+}

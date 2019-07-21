@@ -1,0 +1,44 @@
+
+\typeout{eqlist.sty by M. Vaeth: Revision 1.2}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{eqlist}[2001/08/17 v1.2]
+
+\RequirePackage{eqparbox}
+
+\newenvironment{eqlist}[1][\eqlistinit]{\eql@start{#1}}{\eql@end}
+\newenvironment{eqlist*}[1][\eqliststarinit]{\eql@start{#1}}{\eql@end}
+\newenvironment{Eqlist}[2][\eqlistinit]{\eql@startp{#1}{#2}}{\eql@end}
+\newenvironment{Eqlist*}[2][\eqliststarinit]{\eql@startp{#1}{#2}}{\eql@end}
+
+\ifx\eqlistinitpar\undefined
+  \def\eqlistinitpar{\relax\listparindent\parindent\relax\parsep\parskip\relax}
+\fi
+\ifx\eqlistinit\undefined
+  \def\eqlistinit{\eqlistinitpar}
+\fi
+\ifx\eqliststarinit\undefined
+  \def\eqliststarinit{\topsep0pt\relax\itemsep0pt\relax%\partopsep0pt\relax
+    \eqlistinitpar}
+\fi
+\ifx\eqlistlabel\undefined
+  \def\eqlistlabel#1{#1\ }
+\fi
+
+\newcount\eql@cnt\relax\eql@cnt=0
+
+\long\def\eql@start#1{\global\advance\eql@cnt by1\begin{list}{}{\expandafter
+  \eql@mainprepn\expandafter{\romannumeral\eql@cnt}{#1}}}
+\long\def\eql@startp#1#2{\begin{list}{}{\eql@mainprep{#2}{#1}}}
+\def\eql@end{\end{list}}
+
+\long\def\eql@mainprep#1#2{\let\makelabel\eqlistlabel
+  \setlength{\labelwidth}{\eqboxwidth{#1}}%
+  \setlength{\leftmargin}{\labelwidth}\relax
+  #2\let\eql@makelabel\makelabel
+  \def\makelabel##1{\eqparbox[b]{#1}{\eql@makelabel{##1}}\hfil}%
+  \addtolength{\leftmargin}{\labelsep}}
+\def\eql@mainprepn#1{\eql@mainprep{eqlistbox#1}}
+
+\endinput
+%%
+%% End of file `eqlist.sty'.

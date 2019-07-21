@@ -1,0 +1,16 @@
+\section{Related work}\label{sec:LOMrelated}
+We would like to conclude the chapter by summarizing the content of other research papers that deal with $\HS$ MC.
+As already mentioned, the MC problem for interval temporal logics has not been extensively studied in literature. Indeed the only three papers (apart from the ones by these authors) that study $\HS$ MC are all by A.\ Lomuscio and J.\ Michaliszyn~\cite{LM13,LM14,lm16}.
+
+In~\cite{LM13,LM14,lm16}, they address the MC problem for some fragments of $\HS$ extended with epistemic modalities. Their semantic assumptions are different from the ones we make here, thus 
+a systematic comparison of the two research lines is quite difficult. In both cases, formulas of $\HS$ are evaluated over traces/intervals of a Kripke structure; however, in~\cite{LM13,LM14} truth of proposition letters over an interval depends only on its endpoints. 
+
+In~\cite{LM13}, the authors focus on the $\HS$ fragment $\B\E\D$ of Allen's relations \emph{started-by}, \emph{finished-by}, and \emph{contains} (since modality $\hsD$ is definable in terms of modalities $\hsB$ and $\hsE$, $\B\E\D$ is actually as expressive as $\BE$), extended with epistemic modalities. They consider a \emph{restricted} form of MC (\lq\lq local\rq\rq\ MC), which verifies a given specification against a single (finite) initial computation interval. Their goal is indeed to reason about a given computation of a multi-agent system, rather than on all its admissible computations.
+They prove that the considered MC problem is $\PSPACE$-complete; furthermore, they show that the same problem restricted to the pure temporal fragment $\B\E\D$, that is, the one obtained by removing epistemic modalities, is in $\PTIME$ as, basically, modalities $\hsB$ and $\hsE$ allow one to access only sub-intervals of the initial one, whose number is quadratic in the length (number of states) of the initial interval.
+
+In~\cite{LM14}, they show that the picture drastically changes with other $\HS$ fragments that allow one to access infinitely many intervals. In particular, they prove that the MC problem for the fragment $\ABbar\L$ of Allen's relations \emph{meets}, \emph{starts}, and \emph{before} (since modality $\hsL$ is definable in terms of modality $\hsA$, $\ABbar\L$ is actually as expressive as $\ABbar$) extended with epistemic modalities, is decidable in nonelementary time. Note that, thanks to modalities $\hsA$ and $\hsBt$, formulas of $\ABbar\L$ can possibly refer to infinitely many (future) intervals.
+
+Finally, in~\cite{lm16}, Lomuscio and Michaliszyn show how to use regular expressions in order to specify the way in which intervals of a Kripke structure get labelled. Such an extension leads to a significant increase in 
+expressiveness, as the labelling of an interval is no more determined by that of its endpoints only, 
+but it depends on the ordered sequence of states the interval consists of. They also prove that there is no corresponding increase in computational complexity, as the bounds given in~\cite{LM13,LM14} still hold with the new semantic variant: MC for $\B\E\D$ is in $\PSPACE$, and it is nonelementarily decidable for $\ABbar\L$.
+We will come back to this idea of using regular expressions to define interval labelling in Chapter~\ref{chap:Gand17}.

@@ -1,0 +1,19 @@
+\section{Conclusions}
+In this chapter we have studied the MC problem for $\HS$ extended with regular expressions  used to define interval labelling. The approach, stemming from~\cite{lm16}, generalizes both the one of the previous chapters, in which we enforce the homogeneity principle, and of~\cite{LM13,LM14} where labeling is endpoint-based. 
+In the general case, MC for (full) $\HS$ turns out to be nonelementarily decidable---the proof exploits an automata-theoretic approach based on the notion of $\Ku$-\NFA---%
+but, for a constant-length formula,
+it is in $\PTIME$.
+Moreover, the problem is $\EXPSPACE$-hard (the hardness follows from that of $\BE$ under homogeneity).
+
+We have also investigated the MC problem for two maximal fragments of $\HS$, namely $\AAbarBBbar\Ebar$ and $\AAbar\E\Bbar\Ebar$ with 
+%a semantics for proposition letters 
+regular expressions, and we have showed that it is 
+$\LINAEXPTIME$-complete.
+The complexity upper bound has been proved by providing an alternating algorithm which performs an exponential number of computation steps, but only polynomially many alternations (in the length of the formula to be checked). 
+Conversely, the lower bound has been shown by a reduction from the $\LINAEXPTIME$-complete alternating multi-tiling problem.
+In this way, we have also improved the known complexity result for the same fragments under the homogeneity assumption.
+
+Finally, we have proved that the $\HS$ fragments $\AAbarBBbar$ and $\AAbarEEbar$, and all  their sub-fragments, are $\Psp$-complete.
+The bedrock is a small-model property that allows us to restrict the verification of formulas of $\AAbarBBbar$/$\AAbarEEbar$ to traces having at most exponential length. 
+%then, by a binary reachability technique, all such traces can be incrementally verified.
+Conversely, the matching complexity lower bound has been proved by a reduction from the $\Psp$-complete universality problem for regular expressions.

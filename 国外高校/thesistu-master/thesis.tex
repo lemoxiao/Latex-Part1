@@ -1,0 +1,269 @@
+% Copyright (C) 2014-2016 by Thomas Auzinger <thomas@auzinger.name>
+% Copyright (C) 2016 by Maximilian Hoheiser <maximilian.hoheier@student.tuwien.ac.at>
+
+%===============================================================================================================
+%%LaTeX relevant commands
+
+\documentclass[final]{thesistu} % Remove option 'final' to obtain debug information.
+%atention draft only links images, but doesnt diplay them [draft,final]
+
+% Load packages to allow in- and output of non-ASCII characters.
+\usepackage{lmodern}        % Use an extension of the original Computer Modern font to minimize the use of bitmapped letters.
+\usepackage[T1]{fontenc}    % Determines font encoding of the output. Font packages have to be included before this line.
+\usepackage[utf8]{inputenc} % Determines encoding of the input. All input files have to use UTF8 encoding.
+
+% Extended LaTeX functionality is enables by including packages with \usepackage{...}.
+\usepackage{fixltx2e}   % Provides fixes for several errors in LaTeX2e.
+\usepackage{amsmath}    % Extended typesetting of mathematical expression.
+\usepackage{amssymb}    % Provides a multitude of mathematical symbols.
+\usepackage{mathtools}  % Further extensions of mathematical typesetting.
+\usepackage{nicefrac}	% enables different fraction styles
+\usepackage{microtype}  % Small-scale typographic enhancements.
+\usepackage{enumitem}   % User control over the layout of lists (itemize, enumerate, description).
+\usepackage{multirow}   % Allows table elements to span several rows.
+\usepackage{booktabs}   % Improves the typesettings of tables.
+\usepackage[binary-units=true]{siunitx}	%nice unit expression
+
+\sisetup{tophrase={{~bis~}},list-final-separator={{~und~}}} %change si range to german (remove for englisch)
+
+\usepackage[justification=raggedright,singlelinecheck=false]{caption} % ,format=hang change the text format to italic of captions
+\usepackage[justification=centering,textfont=it]{subcaption} % Allows the use of subfigures and enables their referencing.
+
+\usepackage[ruled,linesnumbered,algochapter]{algorithm2e} % Enables the writing of pseudo code.
+\usepackage[usenames,dvipsnames,table]{xcolor} % Allows the definition and use of colors. This package has to be included before tikz.
+\usepackage{nag}       % Issues warnings when best practices in writing LaTeX documents are violated.
+\usepackage{hyperref}  % Enables cross linking in the electronic document version. This package has to be included second to last.
+\usepackage[german]{cleveref} %enables the prefix Abbildung: for \cref
+\usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists fo acronyms. This package has to be included last.
+\usepackage[backend=biber,backref=true,hyperref=true,language=german,style=ieee,citestyle=ieee]{biblatex} %specifies the biblatex package to use for citations
+\usepackage[autostyle,austrian=quotes]{csquotes} % enables better quotation styles for citation
+\numberwithin{figure}{section} %change numberation of figures from subsection number
+\numberwithin{table}{section} %change numberation of tables from subsection number
+\numberwithin{equation}{section} %change numberation of equations from subsection number
+
+\makeatletter
+\renewcommand\@memmain@floats{%
+	\counterwithin{figure}{section}
+	\counterwithin{table}{section}
+	\counterwithin{equation}{section}
+}
+\makeatother
+
+\usepackage{subfiles} %allows that chapters are in separate txt files, and can be placed in a subfolder
+%subfiles can be comppiled on their own
+
+%include images in the tex files, which can be in separate folders
+%additional chapters must be added in the way {chapterX/graphics/}
+\graphicspath{{graphics/}{chapter1/graphics/}{chapter2/graphics/}}
+\DeclareGraphicsExtensions{.jpg, .png, .eps} %defines the image extensions LaTeX searches for
+
+\usepackage[section]{placeins} %prevent float bevor section
+\addbibresource{thesis.bib} %implements a bibliography from a supplied biblatex file, which must be in the main folder 
+%===========================================================================================================
+%% Userimput
+
+% Define convenience functions to use the author name and the thesis title in the PDF document properties.
+\newcommand{\authorname}{Forename Surname} % The author name without titles.
+\newcommand{\thesistitle}{Title of the Thesis} % The title of the thesis. The English version should be used, if it exists.
+
+% Set PDF document properties
+\hypersetup{
+    pdfpagelayout   = {TwoPageRight},           % How the document is shown in PDF viewers (optional).
+    linkbordercolor = {Melon},                % The color of the borders of boxes around crosslinks (optional).
+    pdfauthor       = {\authorname},          % The author's name in the document properties (optional).
+    pdftitle        = {\thesistitle},         % The document's title in the document properties (optional).
+    pdfsubject      = {Subject},              % The document's subject in the document properties (optional).
+    pdfkeywords     = {a, list, of, keywords} % The document's keywords in the document properties (optional).
+}
+\setsecnumdepth{section} % Enumerate subsections. %change eg: for subsection enumeration
+
+%\setsecnumdepth{subsection} % Enumerate subsections.
+
+\nonzeroparskip             % Create space between paragraphs (optional).
+\setlength{\parindent}{0pt} % Remove paragraph identation (optional).
+
+\makeindex      % Use an optional index.
+\makeglossaries % Use an optional glossary.
+%\glstocfalse   % Remove the glossaries from the table of contents.
+
+
+%===========================================================================================================
+%% Thesisdatainput
+
+\setlogo{TUifp} %definde which eps file is used for the logo
+\setheader{TUifp} %define which eps file is used for the header
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Foter on the titlepage
+\setunizipcode{A-1010}
+\setunicity{City}
+\setunistreet{Steet 15}
+\setunitelnr{+43-1-234567-0}
+\setuniwebsite{www.website.at}
+
+
+
+% Set persons with 4 arguments:
+%  {title before name}{name}{title after name}{gender}
+%  where both titles are optional (i.e. can be given as empty brackets {}).
+\setauthor{Pretitle}{\authorname}{Posttitle}{female}
+\setadvisor{Pretitle}{Forename Surname}{Posttitle}{male}
+
+% For bachelor and master theses:
+\setfirstassistant{Pretitle}{Forename Surname}{Posttitle}{male}
+\setsecondassistant{Pretitle}{Forename Surname}{Posttitle}{male}
+\setthirdassistant{Pretitle}{Forename Surname}{Posttitle}{male}
+
+% For dissertations:
+\setfirstreviewer{Pretitle}{Forename Surname}{Posttitle}{male}
+\setsecondreviewer{Pretitle}{Forename Surname}{Posttitle}{male}
+
+% For dissertations at the PhD School:
+\setsecondadvisor{Pretitle}{Forename Surname}{Posttitle}{male}
+
+% Required data.
+\setaddress{Address}
+\setregnumber{0123456}
+\setdate{01}{01}{2001} % Set date with 3 arguments: {day}{month}{year}.
+\settitle{\thesistitle}{Titel der Arbeit} % Sets English and German version of the title (both can be English or German).
+\setsubtitle{Optional Subtitle of the Thesis}{Optionaler Untertitel der Arbeit} % Sets English and German version of the subtitle (both can be English or German).
+
+
+
+% Select the thesis type: bachelor / master / doctor / phd-school.
+% Bachelor:
+\setthesis{bachelor}
+%
+% Master:
+%\setthesis{master}
+%\setmasterdegree{dipl.} % dipl. / rer.nat. / rer.soc.oec. / master
+%
+% Doctor:
+%\setthesis{doctor}
+%\setdoctordegree{rer.soc.oec.}% rer.nat. / techn. / rer.soc.oec.
+%
+% Doctor at the PhD School
+%\setthesis{phd-school} % Deactivate non-English title pages (see below)
+
+% For bachelor and master:
+\setcurriculum{Curriculum}{Kurrikulum} % Sets the English and German name of the curriculum.
+\setuniversity{University Name}{Universitaets Name} %Sets the Englisch and German name of the University
+\setfaculty{Faculty}{Fakultaet} %Sets the Englisch and German name of the Faculty
+\setinstitut{Institut}{Insitut} %Sets the Englisch and German name of the Institut
+\setlecture{Lecture}{Vorlesung} %sets the English and German name and id number of the lecture
+
+% For dissertations at the PhD School:
+\setfirstreviewerdata{Affiliation, Country}
+\setsecondreviewerdata{Affiliation, Country}
+
+
+%==================================================================================================
+% Acronyms
+
+\newacronym{key}{Name}{description}
+
+%=====================================================================================================
+% Glossary
+\newglossaryentry{key2}
+{
+	name={Name},
+	description={description}
+}
+%================================================================================================
+%==================================================================================================================
+%%Document imput
+
+
+\begin{document}
+
+\frontmatter % Switches to roman numbering.
+% The structure of the thesis has to conform to your university
+
+\addtitlepage{naustrian} % German title page (not for dissertations at the PhD School).
+\addtitlepage{english} % English title page.
+\addstatementpage
+
+
+%include the chapter acknowledgements
+\subfile{./acknowledgements/acknowledgements.tex} %both englisch and german version are in the same subfile acknowledgments.txt
+
+%include the chapter abstract 
+\subfile{./abstract/abstract.tex} %both the englisch and german version are in the same subfile abstract.txt
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Select the language of the thesis, e.g., english or naustrian.
+\selectlanguage{english}
+
+% Add a table of contents (toc).
+\tableofcontents % Starred version, i.e., \tableofcontents*, removes the self-entry.
+\clearpage
+
+% Use an optional list of figures.
+\listoffigures % Starred version, i.e., \listoffigures*, removes the toc entry.
+\clearpage
+
+% Use an optional list of tables.
+\listoftables % Starred version, i.e., \listoftables*, removes the toc entry.
+\clearpage
+
+% Use an optional list of alogrithms.
+%\listofalgorithms
+%\addcontentsline{toc}{chapter}{List of Algorithms}
+ 
+
+ 
+ % Switch to arabic numbering and start the enumeration of chapters in the table of content.
+\mainmatter
+
+%\subfile{./introduction/introduction.tex}	%introduction chapter
+\begin{einleitung*}
+	
+	\todo{Einleitungstext}
+	
+\end{einleitung*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% include chapter1 
+\subfile{./chapter1/chapter1.tex} %chapter01 is in a sepperate latex file, and can be compiled on its own
+
+% include chapter2
+\subfile{./chapter2/chapter2.tex} %chapter01 is in a sepperate latex file, and can be compiled on its own
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+
+% Use an optional list of figures.
+%\listoffigures % Starred version, i.e., \listoffigures*, removes the toc entry.
+
+% Use an optional list of tables.
+%\listoftables % Starred version, i.e., \listoftables*, removes the toc entry.
+
+% Use an optional list of alogrithms.
+%\listofalgorithms
+%\addcontentsline{toc}{chapter}{List of Algorithms}
+
+% Add an index.
+%\printindex
+
+% Add a glossary.
+%\printglossaries
+
+% Add a bibliography.
+
+% Add a bibliography.
+%\defbibfilter{internet}{
+%	type=inreference or
+%	type=online
+%}
+
+%\printbibliography[nottype={inreference},nottype={online}]
+%\printbibliography[heading=subbibintoc,filter=internet,title={Internet Quellen}] % only website sources
+%\printbibliography
+
+\appendix
+
+%\subfile{./appendix/appendix.tex} %chapter appendix 1 is in a sepperate latex file, and can be compiled on its own
+
+\end{document}

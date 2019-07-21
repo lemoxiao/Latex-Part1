@@ -1,0 +1,251 @@
+%%% Clinic Statement of Work Template
+%%%
+%%% C.M. Connelly <cmc@math.hmc.edu>
+%%%
+%%%  $Id: statement-of-work-template.tex 353 2010-08-23 23:47:44Z cmc $
+
+
+%%% !!! HMC STUDENTS SHOULD REMOVE THE FOLLOWING COPYRIGHT NOTICE FROM
+%%% !!! FINAL SUBMISSIONS.
+
+%%% Copyright (C) 2004-2010 Department of Mathematics, Harvey Mudd College.
+%%%
+%%% This file is part of the hmcclinic class document provided to
+%%% HMC mathematics students.
+%%%
+%%% See the COPYING document, which should accompany this
+%%% distribution, for information about distribution and
+%%% modification of the document and its components.
+
+%%% !!! END COPYRIGHT NOTICE.
+
+
+%%% Clinic reports use the clinic class, which should be located
+%%% somewhere in TeX's search path.
+
+%%% For your ``statement of work'' (or ``work statement''), specify
+%%% the ``proposal'' document-class option to the hmcclinic class.
+\documentclass[proposal]{hmcclinic}
+
+%%% The major difference between the statement of work and a midyear
+%%% or final report is that the statement of work is typeset as an
+%%% article, which means that the highest level of structural
+%%% division available to you is section rather than chapter.
+
+%%% There are also some changes in pagination styles and content
+%%% that reflect the briefer nature of the proposal.  For example,
+%%% in the longer reports, you use \frontmatter, \mainmatter, and
+%%% \backmatter to separate some sections of the report from
+%%% others.  In the statement of work, you don't need those
+%%% commands, as no such division is necessary.
+
+%%% Other packages needed by your document may be loaded here.
+% \usepackage{url}              % For formatting URLs and other web or
+                                % file references.
+
+%%% Provide additional context around errors. 
+\setcounter{errorcontextlines}{1000}
+
+
+%%% Information about this document.
+
+%%% I find it most useful to put identifying information about a
+%%% document near the top of the preamble.  Technically, this
+%%% information must precede the \maketitle command, which often
+%%% appears immediately after the beginning of the document 
+%%% environment.  Placing it near the top of the document makes it
+%%% easier to identify the document, and keeps it out from getting
+%%% mixed up with the real meat of the document.
+
+%%% We use the same set of commands for specifying information about
+%%% the people involved with the project that are used in the longer
+%%% reports, so you can copy most of this information directly into
+%%% your midyear and final reports.
+
+%%% So, some questions.
+
+%% What is the name of the company or organization sponsoring your project?
+\sponsor{Harvey Mudd College}
+
+%% What is the title of your report?
+\title{Statement of Work}
+
+%% Who are the authors of the report (your team members)?  (Separate
+%% names with \and.)
+\author{Claire Connelly (Project Manager) \and Melissa O'Neill}
+
+%% What is your faculty advisor's name?  (Again, separate names with
+%% \and, if necessary.)
+\advisor{Melissa O'Neill}
+
+%% Liaison's name or names?
+\liaison{Sam Neal}
+
+%% Did you have an outside consultant help you with this project?  Put
+%% their names in the \consultant command.
+\consultant{Joseph Jones}
+
+%%% End of information section.
+
+%%% New commands and environments.
+
+%%% You can define your own commands and environments here.  If you
+%%% have a lot of material here, you might want to consider splitting
+%%% the commands and environments into a separate ``style'' file that
+%%% you load with \usepackage.
+
+\newcommand{\coolcommand}[1]{#1 is cool.} % Lets everyone know that
+                                % the person or thing that you provide
+                                % as the argument to the command is
+                                % cool.
+
+
+%%% Some theorem-like command definitions.
+
+%%% The \newtheorem command comes from the amsthm package.  That
+%%% package is loaded by the class file.
+
+%%% Note that these definitions have changed from the version in the
+%%% sample report document by dropping the ``within'' argument.  See
+%%% Gratzer's _Math into LaTeX_ or the AMS-LaTeX documentation for
+%%% more details.
+
+% \newtheorem{thm}{Theorem}
+% \newtheorem{Theo1}{Theorem}
+% \newtheorem{Theo2}{Theorem}
+% \newtheorem{Lemma}{Lemma}
+
+
+%%% If you find that some words in your document are being hyphenated
+%%% incorrectly, you can specify the correct hyphenation using the
+%%% \hyphenation command.  Note that words are separated by
+%%% whitespace, as shown below.
+
+\hyphenation{ap-pen-dix wer-ther-i-an}
+
+
+%%% The start of the document!
+
+%% The document environment is the main environment in any LaTeX
+%% document.  It contains other environments, as well as your text.
+
+\begin{document}
+
+%%% In a longer document (such as your midterm and final reports),
+%%% you would have separate \frontmatter, \mainmatter, and
+%%% \backmatter commands to define some large chunks of your
+%%% document.  For the Statement of Work, which is a short document,
+%%% we don't need these commands.
+
+%%% Your Statement of Work begins with a title page.  The title page
+%%% is formatted by commands in the document class file, so you
+%%% don't need to worry about what it looks like -- just putting the
+%%% \maketitle command in your document (and filling in the necessary
+%%% information for the identification commands above) is enough.
+\maketitle
+
+%%% In a longer document or an article being submitted to a journal
+%%% or conference, you would probably have an abstract that
+%%% summarized the purpose of the document.  We don't need that for
+%%% a Statement of Work.
+
+%%% Similarly, in longer documents you would probably have commands
+%%% to include a table of contents and lists of figures or tables.
+%%% For a short document such as the Statement of Work, we don't
+%%% need these commands.
+
+
+%%% Content.
+
+%%% For smaller documents---especially those you're writing by
+%%% yourself---you might write your entire report using a single LaTeX
+%%% source file.  For larger documents, we recommend that you split
+%%% the source file into several separate, smaller files.  The smaller
+%%% files are ``included'' into your main, or ``master'' document
+%%% using \include commands.  See the template file for the Clinic
+%%% reports for more details on how to split a LaTeX project into
+%%% smaller files.
+
+
+%%% The body of your Statement of Work should appear here.  See
+%%% Chapter 4 in _The Mathematics Clinic in Brief: A Handbook_ for
+%%% more details on what you should include in a Statement of Work.
+
+
+%%% Appendices.
+
+%%% For your Statement of Work, you probably won't have any
+%%% appendices, but you could include some if you really needed to.
+
+%%% The appendices are delineated with the \appendix command.
+%%% Individual appendices are begun with the standard \chapter or
+%%% \section commands.  In our example, we'll \include them just as we
+%%% did other chapters.
+
+%%% Even in a relatively short document such as your statement of
+%%% work, you might need to have appendices.  If so, uncomment
+%%% the \appendix command and add them below (remember, the
+%%% top-level structural command in this format is section).
+
+% \appendix
+
+
+%%% Bibliography.
+
+%%% BibTeX is the tool to use for citations and layout of your
+%%% bibliography.  Instead of having to type ``[5]'' or ``(Jones,
+%%% 1968)'' (and keep track of which citation is which and renumber
+%%% them as you add more references to your bibilography), you use
+%%% special commands that allow BibTeX and LaTeX to automatically put
+%%% the correct information in the right place.
+
+%%% Section 5.6 in _The Mathematics Clinic in Brief: A Handbook_,
+%%% talks about using BibTeX to format your bibliography and
+%%% citations.
+
+%%% Depending on your field, it may or may not be appropriate to list
+%%% references for which you haven't included specific citations.  If
+%%% your field sanctions such practices, or if you just want to get an
+%%% idea of what you have in your bibliography file, you can include
+%%% everything with the \nocite{*} command.
+\nocite{*} 
+
+
+%%% The appearance of your bibliography and citations in your text are
+%%% defined by a combination of any bibliography-related LaTeX
+%%% packages (such as natbib, harvard, or chicago) and the particular
+%%% bibliography style file that you load with the \bibliographystyle
+%%% command.  Bibliography-style files end in .bst; you can find them
+%%% by searching your file system using whatever tools you have for
+%%% doing searches.  (On most modern Unices, ``locate .bst'' will give
+%%% you an idea of what's available.)
+
+\bibliographystyle{hmcmath}
+
+%%% The particular bibliography data file or files that you want to
+%%% use are specified with the \bibliography file.  Multiple files are
+%%% separated by commas.
+
+%%% You might want to use multiple bibliography (or ``bib'') files if
+%%% you had a master bib file containing references you use again and
+%%% again, and another containing only records for references for a
+%%% particular project.
+
+%%% Many people create a single, large bib file that they use for
+%%% everything they write.  That approach requires you to \cite every
+%%% reference that you want to use in your document -- using
+%%% \nocite{*} with a huge bibliography database will give you a large
+%%% bibliography containing many references you haven't consulted for
+%%% your particular document!
+
+\bibliography{sample}
+
+
+%%% Glossary or Index.
+
+%%% Having a glossary or index in a statement of work is overkill.
+%%% Just define your terms in the text and you'll be fine.
+
+\end{document}
+
+

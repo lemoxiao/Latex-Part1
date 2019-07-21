@@ -1,0 +1,41 @@
+\subsection{$\Psp$-completeness of MC for $\AAbarBBbar$} \label{sect:genResult}
+
+We now show that the algorithm \texttt{CheckAux} can be used as a basic engine to design a $\Psp$ MC algorithm for the bigger fragment $\AAbarBBbar$. 
+
+The idea is that, being proposition letters (related with) regular expressions, modalities $\hsA$ and $\hsAt$ do not augment the expressiveness of the fragment $\B\Bbar$. In particular,
+we will show that the occurrences of modalities  $\hsA$ and $\hsAt$ in an $\AAbarBBbar$ formula can suitably be ``absorbed'' and replaced by fresh proposition letters.
+%
+
+
+We recall that
+$\Ku,\rho\models \hsA \psi$ if and only if there exists a trace $\tilde{\rho}\in\Trk_{\Ku}$ such that $\lst(\rho)=\fst(\tilde{\rho})$ and $\Ku,\tilde{\rho}\models \psi$. An immediate consequence is that, for any $\rho'\in\Trk_{\Ku}$ with $\lst(\rho)=\lst(\rho')$, $\Ku,\rho\models \hsA \psi\iff \Ku,\rho'\models \hsA \psi$ and similarly for the symmetrical modality $\hsAt$ with respect to the first state of the trace. In general, if two traces have the same final state (resp., first state), either both of them satisfy a formula $\hsA \psi$ (resp., $\hsA \psi$), or none of them does.
+
+As a consequence, for a formula $\hsA\psi$ (resp., $\hsAt\psi$), we can determine the subset $S_{\hsA\psi}$ (resp., $S_{\hsAt\psi}$) of the set of states $\States$ of the Kripke structure
+such that, for any $\rho\in\Trk_{\Ku}$, $\Ku,\rho\models\hsA\psi$ (resp., 
+$\Ku,\rho\models\hsAt\psi$) if and only if $\lst(\rho)\in S_{\hsA\psi}$
+(resp., $\fst(\rho)\in S_{\hsAt\psi}$).
+
+Now, for a formula $\hsA\psi$ (resp., $\hsAt\psi$), we provide a regular expression $r_{\hsA\psi}$ (resp., $r_{\hsAt\psi}$) characterizing the set of traces which model the formula.
+To this end we identify the states in $\States$ by a set of  fresh proposition letters $\{q_s\mid s\in \States\}$ and we 
+replace the Kripke structure  $\Ku=\KuDef$ by
+$\Ku'=\tpl{\Prop',\States,\Edges,\Lab',\sinit}$, with $\Prop'=\Prop\cup \{q_s\mid s\in \States\}$ and $\Lab'(s) = \{q_s\}\cup \Lab(s)$ for any $s \in \States$.
+The regular expressions $r_{\hsA\psi}$ and $r_{\hsAt\psi}$ are  
+\[r_{\hsA\psi}=\top^*\cdot\Big( \bigcup_{s\in S_{\hsA\psi}} q_s\Big)  \quad \text{ and } \quad r_{\hsAt\psi}=\Big( \bigcup_{s\in S_{\hsAt\psi}}q_s \Big)\cdot \top^*.\]
+By definition $\Ku,\rho\models r_{\hsA \psi}$ if and only if $\lst(\rho)\in S_{\hsA\psi}$, if and only if $\Ku,\rho\models \hsA \psi$.
+%The analogous can be done for $\hsAt$.
+
+We can now sketch the procedure for \lq\lq reducing\rq\rq{} the MC problem for $\AAbarBBbar$ to the MC problem for $\B\Bbar$: we iteratively rewrite a formula $\Phi$ of $\AAbarBBbar$ until it gets converted to an (equivalent) formula of $\B\Bbar$.
+At each step, we select an occurrence of a subformula of $\Phi$, either having the form $\hsA\psi$ or $\hsAt\psi$, devoid of any  occurrence of modalities $\hsA$ and $\hsAt$ in $\psi$. For such an occurrence, say $\hsA\psi$, we have to compute the set $S_{\hsA\psi}$. For that purpose we can run a variant \texttt{CheckAux'}($\Ku,\Psi,s$) of the MC procedure \texttt{CheckAux}($\Ku,\Psi$), which invokes \texttt{Check} at line 2 on the additional parameter (state) $s$, instead of $\sinit$. 
+For each $s \in \States$, we invoke \texttt{CheckAux'}($\Ku,\neg\psi,s$), deciding that $s\in S_{\hsA\psi}$ if and only if the procedure returns $\bot$.
+%
+Then we \emph{replace} $\hsA\psi$ in $\Phi$ with the regular expression $r_{\hsA\psi}$, obtaining  a formula $\Phi'$. To deal with subformulas of the form $\hsAt\psi$, we have to introduce a slight variant of the procedure \texttt{Check}, which finds traces leading to (and not starting from) a given state.
+Now, if the resulting formula $\Phi'$ is in $\B\Bbar$, the rewriting process ends; otherwise, we can perform another rewriting step over $\Phi'$.
+ 
+Considering that the sets  $S_{\hsA\psi}$, $S_{\hsAt\psi}$ and the regular expressions $r_{\hsA\psi}$ and $r_{\hsAt\psi}$ have a size linear in $|\States|$, we can conclude with the following result.
+
+%The following theorem follows.
+\begin{theorem}\label{th:ABBA}
+The MC problem for $\AAbarBBbar$ formulas extended with regular expressions over finite Kripke structures is in $\Psp$.
+\end{theorem}
+
+By symmetry we can show that the MC problem for $\A\Abar\E\Ebar$ is also in $\Psp$.

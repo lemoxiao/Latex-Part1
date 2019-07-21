@@ -1,0 +1,199 @@
+
+% macro pour le 'debuggage': permet de corriger le document avec plus de facilité
+\newcommand{\mydebuglabel}[1]{\label{#1}}
+%\newcommand{\debuglabel}[1]{\label{#1}}
+
+% nouveaux environements de theoreme
+%----------------------
+\newtheorem{proposition}{Proposition}
+%\newtheorem{lemme}{Lemme}
+\newtheorem{exemple}{Exemple}
+%\newcommand{\mydefinition}[2]{\begin{definition}{\bf #1:} #2$\diamond$\end{definition}}
+%\newcommand{\mydefinition}[1]{\begin{definition}#1\end{definitio\newtheorem{theoreme}{Theorem}[section]
+\newcommand{\deftitle}[1]{\begin{definition}{\bf (#1)}}
+
+% alias de notation mathematiques
+%-----------------------
+%%%% debut macro %%%% %\newcommand{\barre}[1]{#1}  %% pour ajouter une barre horizontale au dessus d'un symbole
+
+%\newcommand{\vector}[1]
+%{\mathchoice
+%{\overset{\mbox{\xymatrix{*{\hphantom{\displaystyle #1}}
+%\ar[]+L;[]+R}}}{\displaystyle #1}}%
+%{\overset{\mbox{\xymatrix{*{\hphantom{\textstyle #1}}
+%\ar[]+L;[]+R}}}{\textstyle #1}}%
+%{\overset{\mbox{\xymatrix{*{\hphantom{\scriptstyle #1}}
+%\ar[]+L;[]+R}}}{\scriptstyle #1}}%
+%{\overset{\mbox{\xymatrix{*{\hphantom{\scriptscriptstyle #1}}
+%\ar[]+L;[]+R}}}{\scriptscriptstyle #1}}% 
+%}
+
+\newcommand{\barre}[1]{\overline{#1}}%% pour ajouter une barre horizontale au dessus d'un symbole
+\newcommand{\prosite}[1]{{\bf{\small#1}}}%% pour écrire des motifs prosite
+\newcommand{\permille}{\hbox{$\,^0\!/_{00}$}}%% symbole pourmille
+
+
+%Pour changer la distance de la flèche, on peut procéder ainsi.
+%\renewcommand{\ra}[1]
+%{\overset{\raisebox{-1pt}{\mbox{\xymatrix{*{\hphantom{#1}}
+%\ar[]+L;[]+R}}}}{#1}}
+%%%% fin macro %%%%
+
+
+%% alias specifiques pour les relations, utilisables seulement en mode mathematique
+%-----------------------
+\newcommand{\La}{\ensuremath{\langle}}
+\newcommand{\Ra}{\ensuremath{\rangle}}
+
+\newcommand{\dcp}[2]{\parallel_p^{\La #1,#2 \Ra}}
+\newcommand{\dcs}[2]{\parallel_s^{\La #1,#2 \Ra}}
+\newcommand{\cp}[2]{\parallel_p^{#1,#2}}
+\newcommand{\cs}[2]{\parallel_s^{#1,#2}}
+\newcommand{\cscc}{\parallel_s^{c_1,c_2}} % racourci pour cs avec comme classe c1 et c2
+\newcommand{\scp}{\parallel_p} % scp pour Simple Common Prefix (simple = pas de classe)
+\newcommand{\scs}{\parallel_s} % scs pour Simple Common Suffix (simple = pas de classe)
+%\newcommand{\inc}[2]{\not\sim^{#1,#2}}
+\newcommand{\sinc}{\parallel_s^{\neq}} % sinc pour Simple Incompatible (simple = pas de classe)
+\newcommand{\stc}{\scs} % stc: suffixe toute classe
+\newcommand{\scce}{\parallel_s^{ce}} % scce: suffixe commun de contre exemple
+%\newcommand{\cp}[2]{{\vphantom{\parallel_p^{#2}}}^{#1}{\parallel_p^{#2}}}
+%\newcommand{\cs}[2]{{\vphantom{\parallel_s^{#2}}}^{#1}{\parallel_s^{#2}}}
+
+\newcommand{\suff}[2]{\text{{\it Suff}}_{#1}(#2)}
+\newcommand{\pref}[2]{\text{{\it Pref}}_{#1}(#2)}
+\newcommand{\relalias}{\ifmmode{\parallel_{r}}\else{$\parallel_{r}$}\fi} % un symbol pour représenter une relation qque entre 2 etats
+
+%% alias pour la definition des classes d'automates, des acceptations et des automates particuliers (en mode math ou non)
+%-----------------------
+\newcommand{\assurepasmath}[1]{\ifmmode\text{#1}\else #1\fi}
+%\newcommand{\cnfa}{\ifmmode\text{NFAC}\else NFAC}
+\newcommand{\ufa}{\assurepasmath{UFA}}
+\newcommand{\ufas}{\assurepasmath{UFAs}}
+\newcommand{\dfa}{\assurepasmath{DFA}}
+\newcommand{\dfas}{\assurepasmath{DFAs}}
+\newcommand{\nfa}{\assurepasmath{NFA}}
+\newcommand{\nfas}{\assurepasmath{NFAs}}
+\newcommand{\rfsa}{\assurepasmath{RFSA}}
+\newcommand{\rfsas}{\assurepasmath{RFSAs}}
+\newcommand{\kamb}[1]{\ifmmode\text{AFA}_{#1}\else AFA\ensuremath{_{\text{#1}}}\fi}
+\newcommand{\cnfa}{\assurepasmath{{NFC}}}
+\newcommand{\cnfas}{\assurepasmath{{NFCs}}}
+\newcommand{\cdfa}{\assurepasmath{{DFC}}}
+\newcommand{\cdfas}{\assurepasmath{{DFCs}}}
+\newcommand{\cufa}{\assurepasmath{{UFC}}}
+\newcommand{\cufas}{\assurepasmath{{UFCs}}}
+\newcommand{\ckamb}[1]{\ifmmode\text{{AFC}}_{#1}\else {AFC}\ensuremath{_{\text{#1}}}\fi}
+
+\newcommand{\Sa}{\ifmmode\mathcal{S}\else\ensuremath{\mathcal{S}}\fi}
+
+\newcommand{\auset}[2]{\ifmmode\boldsymbol{D}_{#1}(#2)\else\ensuremath{\boldsymbol{D}_{\text{#1}}(\text{#2})}\fi}
+\newcommand{\partitions}[1]{\ifmmode\boldsymbol{P}(#1)\else\ensuremath{\boldsymbol{P}}(#1)\fi}
+% ensemble des partitions restreinte a une classe d'automate
+%\newcommand{\partitionsr}[2]{\ifmmode\mathcal{P}art_{#1}(#2)\else\ensuremath{\mathcal{P}art_{#1}}(#2)\fi}
+\newcommand{\partitionsr}[2]{\ifmmode\boldsymbol{P}_{#1}(#2)\else\ensuremath{\boldsymbol{P}_{#1}}(#2)\fi}
+
+\newcommand{\Acc}[2]{\ifmmode Acc_{#1}(#2)\else\ensuremath{Acc_{\text{#1}}(\text{#2})}\fi}
+\newcommand{\smca}[1]{\ensuremath{\text{{\it MCA}}(}#1\ensuremath{)}}
+\newcommand{\mca}{\ensuremath{\text{{\it MCA}}}} % mca sans le sample
+\newcommand{\ua}{\ensuremath{\text{{\it UA}}}}
+\newcommand{\sua}[1]{\ensuremath{\text{{\it UA}}(}#1\ensuremath{)}}
+\newcommand{\mcak}[1]{\ensuremath{\text{{\it MCA}}_{#1}}}
+\newcommand{\smcak}[2]{\ensuremath{\text{{\it MCA}}_{#1}(}#2\ensuremath{)}}
+\newcommand{\smcau}[1]{\smcak{u}{#1}}
+\newcommand{\mcau}{\mcak{u}}
+\newcommand{\pta}{\ensuremath{\text{{\it PTA}}}}
+\newcommand{\spta}[1]{\ensuremath{\text{{\it PTA}}(}#1\ensuremath{)}}
+\newcommand{\au}[1]{\ensuremath{\La\Sigma,\Gamma_{#1},Q_{#1},I_{#1},\delta_{#1},\rho_{#1}\Ra}}% automate classifieur
+\newcommand{\nau}[1]{\ensuremath{\La\Sigma,Q_{#1},I_{#1},\delta_{#1},F_{#1}\Ra}}% automate normal
+
+%% alias des opérateurs de parcours
+%---------------------------------
+% seulement en mode math !!!
+% fusion simple sur partition
+\newcommand{\ispar}{\prec} % infériorité stricte
+\newcommand{\ipar}{\prec^*} % infériorité
+\newcommand{\fuspar}{\xrightarrow{\prec}} % opérateur de fusion
+%\newcommand{\fispar}{\xrightarrow{\succ}}% opérateur de fission
+% fusion simple sur automates
+\newcommand{\isaut}{\prec_{A}} % infériorité stricte
+\newcommand{\iaut}{\prec^*_{A}} % infériorité
+\newcommand{\fusaut}{\xrightarrow{\prec_A}}% opérateur de fusion simple
+\newcommand{\fisaut}{\xrightarrow{\succ_A}}% opérateur de fission simple
+\newcommand{\fussaut}{\xrightarrow{A*}}% opérateur de suite de fusion simples
+% fusion deterministe
+\newcommand{\idet}{\prec^*_{det}}
+\newcommand{\isdet}{\prec_{det}}
+\newcommand{\fdet}{\xrightarrow{det}}
+% fusion restreinte au determinisme
+\newcommand{\irdet}{\prec^*_{D}}
+\newcommand{\isrdet}{\prec_{D}}
+\newcommand{\frdet}{\xrightarrow{D}}
+% fusion desambiguisante
+\newcommand{\ides}{\prec^*_{des}}
+\newcommand{\isdes}{\prec_{des}}
+\newcommand{\fdes}{\xrightarrow{des}}
+% fusion restreinte a la k-ambiguite
+\newcommand{\ikam}[1]{\prec^*_{#1-amb}}
+\newcommand{\iskam}[1]{\prec_{#1-amb}}
+\newcommand{\fkam}[1]{\xrightarrow{#1-amb}}
+
+%% alias de presentation
+%-----------------------
+\newcommand{\etc}{etc.}
+%\newcommand{\commentaire}[1]{{\tiny #1}}
+\newcommand{\commentaire}[1]{}
+\newcommand{\proof}[1]{{\bf Preuve:} #1}
+%\newcommand{\proof}[1]{{\bf Proof:} #1$\square$}
+\newcommand{\hintproof}[1]{{\bf Idée de la preuve:} #1}
+%\newcommand{\hintproof}[1]{{\bf Hint of the proof:} #1$\square$}
+%\newcommand{\mycaption}[1]{\caption{{\small #1}}}
+%\newcommand{\mycaption}[1]{\caption{ #1}}
+
+%\newcommand{\remark}[1]{{\small Remark: \emph{#1}}}
+\newcommand{\remark}[1]{Remark: \emph{#1}}
+
+\newcommand{\resumefr}[1]{%
+\thispagestyle{empty}
+\section*{Résumé}
+#1 
+\vfill
+}
+
+% >> macro pour la separation d'un bout de page en deux parties, utile pour les figures et leur caption a droite ou gauche
+% l'argument specifie la taille de la partie gauche
+\newlength\jataille
+\newcommand{\figgauche}[3]%
+{\jataille=\textwidth\advance\jataille by -#1
+\parbox{#1}{#2}
+\parbox{\jataille}{#3}
+}
+
+\newcommand{\figtxt}[1]%
+{{\it {\small #1}}}
+% << fin macro
+
+% >> macro pour tracer un trai horizontal sur la largeur de la page
+\newcommand{\traithoriz}{\raisebox{0.4em}{\vrule depth 0pt height 0.4pt width \textwidth}}
+
+
+% nom des algos
+\newcommand{\edsm}{EDSM}
+\newcommand{\rpni}{RPNI}
+\newcommand{\edsmdfaf}{D$_{\text{f}}$\textit{edsm}}
+\newcommand{\edsmdfac}{D$_{\text{c}}$\textit{edsm}}
+\newcommand{\hcdfaf}{D$_{\text{f}}$\textit{hc}}
+\newcommand{\hcdfac}{D$_{\text{c}}$\textit{hc}}
+\newcommand{\hcufaf}{U$_{\text{f}}$\textit{hc}}
+\newcommand{\hcufac}{U$_{\text{c}}$\textit{hc}}
+\newcommand{\delete}{DLT2}
+\newcommand{\majvote}{MAJ}
+
+
+
+%%%% debut macro pour faire des lignes épaisses dans les tableaux %%%%
+\makeatletter
+\def\hlinewd#1{%
+\noalign{\ifnum0=`}\fi\hrule \@height #1 %
+\futurelet\reserved@a\@xhline}
+\makeatother
+%%%% fin macro %%%%

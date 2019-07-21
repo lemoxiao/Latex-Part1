@@ -1,0 +1,31 @@
+\subsection{Sous section avec des équations}%
+\label{sec:subsectionlabel}
+
+\subsubsection{Sous sous section avec une équation}
+
+\begin{equation}
+    x_{1,2} = \frac{- b \pm \sqrt{\Delta}}{2a}
+    \label{eq:equation}
+\end{equation}
+
+Voir l'équation~\eqref{eq:equation}.
+
+\subsubsection{Sous sous section avec une sous équation}
+
+\begin{subequations}
+    \begin{align}
+        \begin{split}
+            \label{eq:coriolis_y}
+            \vv{F_{cy}}(t) & = \hphantom{-}2 m_x \dot{x}(t) \Omega_z(t) \ \vec{x} \wedge \vec{z} \\
+                           & = -2 m_x \dot{x}(t) \Omega_z(t) \ \vec{y}
+        \end{split}\\
+        \begin{split}
+            \label{eq:coriolis_x}
+            \vv{F_{cx}}(t) & = 2 m_y \dot{y}(t) \Omega_z(t) \ \vec{y} \wedge \vec{z}\\
+                           & = 2 m_y \dot{y}(t) \Omega_z(t) \ \vec{x}
+        \end{split}
+    \end{align}
+\end{subequations}
+
+Voir les équations~\eqref{eq:coriolis_y} et~\eqref{eq:coriolis_x}.
+

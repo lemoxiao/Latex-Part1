@@ -1,0 +1,144 @@
+% arara: pdflatex: { draft: true }
+% arara: bibtex
+% arara: makeglossaries
+% arara: bibtex: { files: [ conf ] }
+% arara: pdflatex: { synctex: true }    
+% arara: pdflatex: { synctex: true }   
+
+
+\documentclass{iiumthesis}
+\usepackage[nopar]{lipsum}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{titletoc} %Used to modify long enteries in lot and lof as per IIUM
+%%%%%%%%%%%%
+%added by Moaaz
+%%%%%%%%%%%%
+\usepackage{titlecaps}% http://ctan.org/pkg/titlecaps
+\usepackage{amsmath}
+\usepackage{amssymb} %for circular convolution symbol
+\usepackage{subfig}
+\usepackage{algpseudocode} %algorithm
+\usepackage[chapter]{algorithm} %algorithm
+\usepackage{pdflscape} %landscape pdf see chapter 4
+\usepackage{multirow}
+\usepackage{pdfpages} %includepdf
+\usepackage{tikz}
+\captionsetup[table]{format=plain,justification=centering,labelformat=simple,labelsep=newline}%
+\usepackage{bibentry}
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}  %numbering equations for align
+
+%%%%%%%%%%%%modify long enteries in lot and lof as IIUM%%%%%%%%%%%%
+\titlecontents{figure}[0pt]
+{\normalfont\mdseries\singlespace}
+{\contentspush{\makebox[4em][l]{ \thecontentslabel}}\begin{tabular}[t]{@{}p{11cm}@{}}}
+{\hspace{-2em}\begin{tabular}[t]{p{11cm}}}
+{\end{tabular}\hspace{1em}\contentspage} 
+
+\titlecontents{table}[0pt]
+{\normalfont\mdseries\singlespace}
+{\contentspush{\makebox[4em][l]{ \thecontentslabel}}\begin{tabular}[t]{@{}p{11cm}@{}}}
+{\hspace{-2em}\begin{tabular}[t]{p{11cm}}}
+{\end{tabular}\hspace{1em}\contentspage} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Addlcwords{for a is but and with of in as the etc on to if}
+\setlength{\listparindent}{2cm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Write your name, title, etc...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{Maaz Elhag Ali}
+\title{Impulsive noise mitigation in wavelet based Orthogonal Frequency Division Multiplexing systems}
+\submissionyear{2014}
+\submissionmonth{March}
+\degree{Master of Science}
+\college{Engineering}
+\department{Electrical and Computer Engineering} 
+\major{Communication Engineering}
+\supervisor{Khaizuran Abduallah}
+\cosupervisor{Mohammad Umar Siddiqi}
+\internalexaminer{Ahmad Fadzil Ismail}
+\externalexaminer{Mohammad Yusof Alias}
+\departmenthead{Othman O. Khalifa}
+\collegedean{Md. Noor B. Salleh}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\loadglsentries{myabbreviations}
+
+\begin{document}
+
+\frontmatter
+\addtocontents{toc}{\protect\booltrue{specialtoc}}
+\makecoverandtitlepage
+\abstractfromfile{abstract}
+\newpage
+\chapter*{}
+\addcontentsline{toc}{chapter}{Abstract in Arabic}
+\includepdf[pages=1,scale=1,pagecommand={}]{ArabicAbstract.pdf}
+\clearpage
+\approvalpage
+\declarationpage
+\iiumcopyrightpage
+\include{acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\clearpage
+
+\addtocontents{toc}{\protect\booltrue{specialtoc}}
+
+{
+	\SingleSpacing
+
+	\tableofcontents* \clearpage
+}
+\listoftables
+
+\addtocontents{lot}{\underline{\normalsize{Table No.}} \vspace{0pt} ~\hfill \underline{\normalsize {Page No.}} \vspace{0pt} \par}
+\clearpage
+\listoffigures %add 
+\addtocontents{lof}{\underline{\normalsize{Figure No.}} \vspace{0pt} ~\hfill \underline{\normalsize{Page No.}} \vspace{0pt}\par}
+\glsaddall
+\listofabbreviations\clearpage
+\listofsymbols
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addtocontents{toc}{\protect\boolfalse{specialtoc}}
+\pretocmd{\chapter}{\addtocontents{toc}{\addvspace{14pt}}}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add chapters 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{chap_1}
+\include{chap_2}
+\include{chap_3}
+\include{chap_4}
+\include{chap_5}
+\include{chap_6}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\interlinepenalty=10000 %To prevent page break between lines of a paragraph or bibliography entry?
+\bibliography{bibfile}
+\clearpage
+
+\pretocmd{\chapter}{\addtocontents{toc}{\vspace*{0pt}}}{}{}
+
+
+\nociteconf{2013-moaaz} % conference publications 
+\bibliographyconf{bibfile}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add appendices 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{appendices}
+\startapps
+\include{append1}
+\include{append2}
+\include{append3}
+\finishapps
+\end{appendices}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

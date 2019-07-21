@@ -1,0 +1,4 @@
+seitennummer nach \backmatter vor \appendix nicht auf null resetten, aber keine leere seite ohne seitennummer
+einfügen, sondern auch wenn gerade leere seite wenn ungerade kleine in class hineinschreiben 
+umschreiben von backmatter bzw appendix funktion in memoir class so dass nicht 
+resett der seitennummer

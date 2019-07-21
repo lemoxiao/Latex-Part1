@@ -1,0 +1,79 @@
+\chapter{Interval-based system models: timelines}\label{chap:Timelines}
+\begin{chapref}
+The references for this chapter are~\cite{kr18,gand18,ictcs18}.
+\end{chapref}
+
+\minitoc\mtcskip
+
+\newcommand{\Instruct}{\mathsf{Inst}}
+\newcommand{\InstructLab}{\mathsf{InstLab}}
+\newcommand{\InstL}{\mathsf{L}}
+\newcommand{\Inc}{\mathsf{Inc}}
+\newcommand{\Dec}{\mathsf{Dec}}
+\newcommand{\halt}{{\textit{halt}}}
+\newcommand{\init}{{\textit{init}}}
+\newcommand{\main}{{\textit{main}}}
+\newcommand{\Checking}{{\textit{check}}}
+\newcommand{\inc}{{\mathsf{inc}}}
+\newcommand{\dec}{{\mathsf{dec}}}
+
+\newcommand{\zero}{{\mathsf{zero}}}
+\newcommand{\instr}{{\textit{op}}}
+\newcommand{\gainy}{{\textit{gainy}}}
+\newcommand{\From}{{\textit{from}}}
+\newcommand{\To}{{\textit{to}}}
+\newcommand{\cont}{{\textit{sec}}}
+\newcommand{\Tag}{{\textit{Tag}}}
+\newcommand{\Succ}{{\textit{succ}}}
+\newcommand{\op}{{\textit{op}}}
+
+\newcommand{\dummy}{{\textit{dummy}}}
+
+\newcommand{\Con}{\mathsf{con}}
+
+
+\newcommand{\start}{\mathsf{s}}
+\newcommand{\startTime}{\mathsf{s}}
+\newcommand{\Ending}{\mathsf{e}}
+
+
+\newcommand{\der}[1]{\ensuremath{\;\;{\mathop{{ %
+            \longrightarrow}}\limits^{{#1}}}\!}\;\;} %
+
+\newcommand{\derG}[1]{\ensuremath{\;\;{\mathop{{ %
+            \longrightarrow}}\limits^{{#1}}}\!}_\gainy\;\;} %
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\TA}{\text{\sffamily TA}}
+\newcommand{\MTL}{\text{\sffamily MTL}}
+\newcommand{\TPTL}{\text{\sffamily TPTL}}
+\newcommand{\MITL}{\text{\sffamily MITL}}
+\newcommand{\MITLR}{\text{\sffamily MITL}_{(0,\infty)}}
+
+\newcommand{\RealP}{{\mathbb{R}_+}}
+\newcommand{\RatP}{{\mathbb{Q}_+}}
+\newcommand{\val}{{\mathit{val}}}
+\newcommand{\Main}{{\mathit{Main}}}
+\newcommand{\EqTime}{{\mathit{EqTime}}}
+\newcommand{\Past}{{\mathit{past}}}
+\newcommand{\code}{{\mathit{code}}}
+\newcommand{\Res}{\textit{Res}}
+\newcommand{\TLang}{{\mathcal{L}_T}}
+\newcommand{\StrictUntil}{\textsf{U}}
+
+%\newcommand{\DefORmini}{\ensuremath{\;\big|\;}}
+\newcommand{\Deriv}{{\mathit{Deriv}}}
+\newcommand{\Intv}{{\mathit{Intv}}}
+\newcommand{\IntvR}{{\mathit{Intv}_{(0,\infty)}}}
+
+
+
+\input{Chaps/Timelines/intro.tex}
+\input{Chaps/Timelines/prelim.tex}
+\input{Chaps/Timelines/undecidability.tex}
+\input{Chaps/Timelines/DecidFutTPsimple.tex}
+\input{Chaps/Timelines/PSPACEhard.tex}
+\input{Chaps/Timelines/TriggerlessNPcomplete.tex}
+\input{Chaps/Timelines/MCTimelines.tex}
+\input{Chaps/Timelines/conclusions.tex}

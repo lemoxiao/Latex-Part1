@@ -1,0 +1,107 @@
+%===========================================================================================
+% Template Name:      SUnORE Starter Thesis/dissertation template
+% Template URI:       http://sunore.co.za/sunore-thesis/
+% Description:        Starter Thesis/dissertation template for SUnORE 
+%                     Department of Industrial Engineering, Stellenbosch University
+% Version:            1.0.3
+% Author:             Johan Janse van Rensburg
+% Author URI:         http://johanjvrens.co.za/
+% License:            MIT License
+% License URI:        http://opensource.org/licenses/MIT
+%===========================================================================================
+\documentclass[meng]{thesis}
+% Thesis options are
+%              skripsie
+%              meng
+%              msc
+%              mcomm
+%              phdsc
+%              phdcomm
+%================================================
+% add packages as needed (check first, the thesis
+% class already includes some packages)
+%================================================
+\usepackage[figuresright]{rotating}
+\usepackage{blindtext}
+\usepackage{amscd,amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+%================================================
+% thesis details
+%================================================
+\thesistitle{The title of your skripsie, thesis or dissertation should be typed here}
+\student{Student name}
+\graduation{December}
+\year{2015}
+%================================================
+% if masters or skripsie
+%================================================
+\supervisor{Supervisor name}
+\cosupervisor{Co-supervisor name}  % remove if NA
+%================================================
+% if phd
+%================================================
+\promoter{Promoter name}
+\copromoter{Co-promoter name}      % remove if NA
+%================================================
+\addbibresource{bibliography.bib}     % .bib file
+
+
+%================================================
+% Special Math functions
+%================================================
+\newcommand{\blokkie}{\hspace{.07cm}\Box\hspace{.07cm}}
+
+
+\begin{document}
+\SetKwInOut{Input}{Input}
+\SetKwInOut{Output}{Output}
+
+
+%================================================
+% front page and decleration page - were set up
+% according to university standards (as specified
+% in yearbook) and may not be edited
+%================================================
+\frontpage
+\dominitoc[c] % remove if you don't want mini tables of contents for each chapter
+
+
+%================================================
+% go populate the fields in this file
+%================================================
+\input{preamble} 
+
+
+%================================================
+% how-to examples:
+%================================================
+\input{example/chapter}            % remove if NA
+\input{example/tables}             % remove if NA
+\input{example/figures}            % remove if NA
+\input{example/algorithms}         % remove if NA
+
+
+%================================================
+% include your chapters here
+%================================================
+\input{chapter/last_chapter} 
+
+
+%================================================
+% bibliography
+%================================================
+\cite{*} % cites all items in your .bib file for the purpose of testing biblatex - REMOVE!
+\printbibliography[heading=bibintoc] % prints a bibliography containing all (and only) cited items
+
+
+%================================================
+% Appendices
+%================================================
+\appendix
+\input{chapter/appendixA} 
+\input{chapter/appendixB}
+
+
+\end{document}

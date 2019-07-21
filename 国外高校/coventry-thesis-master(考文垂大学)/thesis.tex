@@ -1,0 +1,188 @@
+% ******************************* PhD Thesis Template **************************
+% Please have a look at the README.md file for an overview introduction
+
+\documentclass[a4paper,12pt,times,numbered,print,index]{Classes/CUPhDThesis}
+
+% ******************************************************************************
+% ******************************* Class Options ********************************
+% ******************************************************************************
+
+% 'a4paper' : Section 8.12.1 of the Coventry University Academic Regulations
+% requires a page size of A4, which is the default option). Other sizes can be
+% specified, for example 'a5paper'.
+%
+% '12pt' is default, other font sizes can be specified, for example 10pt. The
+% 'Thesis Requirments.pdf' document states that a font size less that 10pt must
+% not be used for the main text.
+%
+% 'oneside' or 'twoside' (default) : Printing double side (twoside) or single
+% side. 'Thesis Requirments.pdf' states either is acceptable.
+%
+% 'print' : Use 'print' for print version with appropriate margins and page
+% layout. Leaving the options field blank will activate Online version.
+%
+% 'index' : For index at the end of the thesis.
+%
+% 'draftclassic' : For draft mode without loading any images (same as draft in book).
+%
+% 'draft' : Special draft mode with line numbers, images, and water mark with
+% timestamp and custom text. Position of the text can also be modified.
+%
+% 'abstract' : To generate only the title page and abstract page with
+% dissertation title and name.
+%
+% 'chapter' : This option enables only the specified chapter and it's references
+%  Useful for review and corrections.
+%
+% ************************* Custom Page Margins ********************************
+%
+% 'custommargin' : Use 'custommargin' in options to activate custom page margins,
+% which can be defined in the 'preamble.tex'. Custom margin will override
+% print/online margin setup.
+%
+% *********************** Choosing the Fonts in Class Options ******************
+%
+% 'times' : Times font with math support. ('Thesis Requirments.pdf' states any
+% clear and readable font.)
+%
+% 'fourier' : Utopia Font with Fourier Math font. (This free font has to be installed.)
+%
+% 'customfont' : Use 'customfont' option in the document class and load the
+% package in the 'preamble.tex'.
+%
+% Default or leave empty : 'Latin Modern' font will be loaded.
+%
+% ********************** Choosing the Bibliography style ***********************
+%
+% 'authoryear' : For author-year citation e.g. Krishna (2013)
+%
+% 'numbered' : (Default Option) For numbered and sorted citation e.g. [1,5,2]
+%
+% 'custombib' : Define your own bibliography style in the 'preamble.tex' file.
+%              '\RequirePackage[square, sort, numbers, authoryear]{natbib}'.
+%              This can be also used to load biblatex instead of natbib, see
+%              preamble.
+%
+% **************************** Choosing the Page Style *************************
+%
+% 'default' (leave empty) : For page numbers in Header (Left Even, Right Odd) and
+% Chapter Name in Header (Right Even) and Section Name (Left Odd). Blank Footer.
+%
+% 'PageStyleI' : Chapter Name next & Page Number on Even Side (Left Even).
+% Section Name & Page Number in Header on Odd Side (Right Odd). Footer is empty.
+%
+% 'PageStyleII': Chapter Name on Even Side (Left Even) in Header. Section Number
+% and Section Name in Header on Odd Side (Right Odd). Page numbering in footer.
+
+% Uncomment to change page style
+%\pagestyle{PageStyleII}
+%
+% **************************** First or Final Submission ***********************
+%
+% 'finalsub' : Switch from first submission to final submission
+
+% ********************************** Preamble **********************************
+% Preamble: Contains packages and user-defined commands and settings
+\input{Preamble/preamble}
+
+% ************************ Thesis Information & Meta-data **********************
+% Thesis title and author information, reference file for biblatex
+\input{thesis-info}
+
+% ***************************** Abstract Separate ******************************
+% To printout only the title page and the abstract with the PhD title and the
+% author name, use the 'abstract' option in the document class.
+
+\ifdefineAbstract
+ \pagestyle{empty}
+ \includeonly{Declaration/declaration, Abstract/abstract}
+\fi
+
+% ***************************** Chapter Mode ***********************************
+% The chapter mode allows user to only print particular chapters with references
+% Title, Contents, Frontmatter are disabled by default
+% Useful option to review a particular chapter or to send it to supervisior.
+% To use choose 'chapter' option in the document class.
+
+\ifdefineChapter
+ \includeonly{Chapter3/chapter3}
+\fi
+
+% ******************************** Front Matter ********************************
+\begin{document}
+
+\frontmatter
+
+\maketitle
+
+% ** Ethics certificate - must be replaced with the actual certificate
+\includepdf[pages=-]{Forms/ethics-certificate.pdf}
+
+\include{Dedication/dedication}
+\include{Declaration/declaration}
+\include{Acknowledgement/acknowledgement}
+\include{Abstract/abstract}
+
+% *********************** Adding TOC and List of Figures ***********************
+
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+% \printnomenclature[space] space can be set as 2em between symbol and description
+% \printnomenclature[3em]
+
+\printnomenclature
+
+% ******************************** Main Matter *********************************
+\mainmatter
+
+\include{Chapter1/chapter1}
+\include{Chapter2/chapter2}
+\include{Chapter3/chapter3}
+\include{Chapter4/chapter4}
+%\include{Chapter5/chapter5}
+%\include{Chapter6/chapter6}
+%\include{Chapter7/chapter7}
+
+% ********************************** Back Matter *******************************
+% Backmatter should be commented out, if you are using appendices after References
+%\backmatter
+
+% ********************************** Bibliography ******************************
+\begin{spacing}{0.9}
+
+% To use the conventional natbib style referencing
+% Bibliography style previews: http://nodonn.tipido.net/bibstyle.php
+% Reference styles: http://sites.stat.psu.edu/~surajit/present/bib.htm
+
+\bibliographystyle{apalike}
+%\bibliographystyle{unsrt} % Use for unsorted references  
+%\bibliographystyle{plainnat} % use this to have URLs listed in References
+\cleardoublepage
+\bibliography{References/references} % Path to your References.bib file
+
+% If you would like to use BibLaTeX for your references, pass 'custombib' as
+% an option in the document class. The location of 'reference.bib' should be
+% specified in the preamble.tex file in the custombib section.
+% Comment out the lines related to natbib above and uncomment the following line.
+
+%\printbibliography[heading=bibintoc, title={References}]
+
+\end{spacing}
+
+% ********************************** Appendices ********************************
+
+\begin{appendices} % Using appendices environment for more functionality
+
+\include{Appendix1/appendix1}
+\include{Appendix2/appendix2}
+
+\end{appendices}
+
+% *************************************** Index ********************************
+\printthesisindex % If index is present
+
+\end{document}

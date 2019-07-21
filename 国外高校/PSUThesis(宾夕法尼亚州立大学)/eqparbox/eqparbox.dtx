@@ -1,0 +1,642 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2001 Scott Pakin <pakin@uiuc.edu>
+% -------------------------------------------------------
+%
+% This package may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.2
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%    http://www.latex-project.org/lppl.txt
+% and version 1.2 or later is part of all distributions of LaTeX
+% version 1999/12/01 or later.
+%
+% \fi
+% \iffalse
+%% File: eqparbox.dtx Copyright (C) 2001 Scott Pakin <pakin@uiuc.edu>
+%
+%<package>\NeedsTeXFormat{LaTeX2e}
+%<package>\ProvidesPackage{eqparbox}
+%<package>         [2001/04/19 v1.00 Equal-widthed parboxes (SDP)]
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{eqparbox}
+\EnableCrossrefs
+\CodelineIndex
+
+% Uncomment the following line if you don't want to include a
+% source-code listing.
+%\OnlyDescription
+
+% Give LaTeX some more leeway in placing floats
+% (suggested by Donald Arseneau <asnd@triumf.ca>).
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.7}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.66}
+\renewcommand{\dbltopfraction}{0.66}
+\renewcommand{\dblfloatpagefraction}{0.66}
+\setcounter{topnumber}{9}
+\setcounter{bottomnumber}{9}
+\setcounter{totalnumber}{20}
+\setcounter{dbltopnumber}{9}
+
+% Because we put table captions *above* tables, we should add a
+% little extra space between the caption and the table.
+\setlength{\belowcaptionskip}{2ex}
+
+\begin{document}
+\DocInput{eqparbox.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \CheckSum{190}
+% \GetFileInfo{eqparbox.sty}
+%
+% \title{The \textsf{eqparbox} package\thanks{This file
+%         has version number \fileversion, last
+%         revised \filedate.}}
+% \author{Scott Pakin\\pakin@uiuc.edu}
+% \date{\filedate}
+% \maketitle
+%
+% \changes{v1.00}{2001/04/19}{Initial version}
+%
+% \DoNotIndex{\@auxout,\begin,\csname,\DeclareRobustCommand,\def,\else}
+% \DoNotIndex{\end,\endcsname,\expandafter,\fi,\global,\ifnum,\ifx}
+% \DoNotIndex{\immediate,\let,\newdimen,\newif,\newlength,\relax}
+% \DoNotIndex{\string,\the,\z@}
+%
+% \begin{abstract}
+%   The \textsf{eqparbox} package makes it easy to define a group of
+%   \verb|\parbox|es whose members all have the same width, the natural
+%   width of the widest member.  A document can contain any number of
+%   groups, and each group can contain any number of members.  This
+%   simple, equal-width mechanism can be used for a variety of alignment
+%   purposes, as is evidenced by the examples in this document.
+% \end{abstract}
+%
+% \section{Motivation}
+%
+% Let's start with a little test.  How would you typeset
+% Table~\ref{tbl:sales-data}, in which the numbers are right-justified
+% relative to each other but centered as a group within each column.
+% And second, how would you typeset the r\'esum\'e excerpt shown in
+% Figure~\ref{fig:resume-excerpt} while meeting the following
+% requirements:
+%
+% \begin{enumerate}
+%   \item The header columns must be left-justified relative to each
+%         other.
+%   \item The headers columns should be evenly spaced across the page.
+%   \item Page breaks should be allowed within the r\'esum\'e.
+% \end{enumerate}
+%
+% \begin{table}
+% \centering
+% \caption{Sample sales data}
+% \label{tbl:sales-data}
+% \begin{tabular}{@{}lccc@{}} \hline
+%   & \multicolumn{3}{c}{Sales (in millions)} \\ \cline{2-4}
+%   \multicolumn{1}{c}{\raisebox{1ex}[2ex]{Product}} &
+%   October & November & December \\ \hline
+%
+%   Widgets      & \eqparbox{oct}{\raggedleft         55.2 } &
+%                  \eqparbox{nov}{\raggedleft\textbf{ 89.2}} &
+%                  \eqparbox{dec}{\raggedleft         57.9 } \\
+%   Doohickeys   & \eqparbox{oct}{\raggedleft\textbf{ 65.0}} &
+%                  \eqparbox{nov}{\raggedleft         64.1 } &
+%                  \eqparbox{dec}{\raggedleft          9.3 } \\
+%   Thingamabobs & \eqparbox{oct}{\raggedleft         10.4 } &
+%                  \eqparbox{nov}{\raggedleft          8.0 } &
+%                  \eqparbox{dec}{\raggedleft\textbf{109.7}} \\ \hline
+% \end{tabular}
+% \end{table}
+%
+% \begin{figure}
+% \bigskip\noindent\rule{\linewidth}{1pt}\bigskip\par
+% \noindent%
+% \eqparbox{place}{\textbf{Widgets, Inc.}} \hfill
+% \eqparbox{title}{\textbf{Senior Widget Designer}} \hfill
+% \eqparbox{dates}{\textbf{1/95--present}}
+%
+% \begin{itemize}
+%   \item Supervised the development of the new orange and blue widget lines.
+%   \item Improved the design of various widgets, making them less sticky
+%         and far less likely to explode.
+%   \item Made widget management ten times more cost-effective.
+% \end{itemize}
+%
+% \noindent%
+% \eqparbox{place}{\textbf{Thingamabobs, Ltd.}} \hfill
+% \eqparbox{title}{\textbf{Lead Engineer}} \hfill
+% \eqparbox{dates}{\textbf{9/92--12/94}}
+%
+% \begin{itemize}
+%   \item Found a way to make thingamabobs run on solar power.
+%   \item Drafted a blueprint for a new doohickey-compatibility module for
+%         all cool-mint thingamabobs.
+%   \item Upgraded superthingamabob specification document from Microsoft
+%         Word to \LaTeXe.
+% \end{itemize}
+% \noindent\rule{\linewidth}{1pt}
+% \caption{Excerpt from a sample r\'esum\'e}
+% \label{fig:resume-excerpt}
+% \end{figure}
+%
+% The two questions can be answered the same way: by putting various
+% blocks of text into equal-widthed boxes.  if the data in
+% Table~\ref{tbl:sales-data} are put into equal-sized |\parbox|es, each
+% containing a |\raggedleft| for right-justification, the |\parbox|es
+% can then be centered to achieve the desired result.  Similarly, if the
+% company names in Figure~\ref{fig:resume-excerpt} are both put in a
+% |\parbox| as wide as ``Thingamabobs, Ltd.,'' the job titles in a
+% |\parbox| as wide as ``Senior Widget Designer,'' and the dates in a
+% |\parbox| as wide as ``1/95--present,'' then they can be spaced evenly
+% by separating them with |\hfill|s.
+%
+% The problem is in choosing the width for each set of |\parbox|es.  For
+% Table~\ref{tbl:sales-data}, this isn't too difficult, because digits
+% are the same width as each other in most fonts.  Each |\parbox|,
+% therefore, need be only as wide as the largest sequence of digits
+% expected.  Figure~\ref{fig:resume-excerpt} is more of a bother.  The
+% user must typeset the r\'esum\'e once to see which entry in each
+% column is the widest and then assign lengths appropriately:
+%
+% \begin{verbatim}
+%     \newlength{\placewidth}
+%     \settowidth{\placewidth}{Thingamabobs, Ltd.}         % Employment 2
+%     \newlength{\jobtitlewidth}
+%     \settowidth{\jobtitlewidth}{Senior Widget Designer}  % Employment 1
+%     \newlength{\dateswidth}
+%     \settowidth{\dateswidth}{1/95--present}              % Employment 1
+% \end{verbatim}
+%
+% \noindent
+% Every time a piece of information changes, it must be changed in two
+% places: in the r\'esum\'e itself and in the |\settowidth|
+% command.  When employment information is added or deleted, the
+% |\settowidth| commands must be modified to reflect the new
+% maximum-widthed entry in each column.  If only there were a simpler
+% way to keep a set of |\parbox|es as wide as the widest entry in the
+% set\,\dots
+%
+% That simpler way is the \textsf{eqparbox} package.  \textsf{eqparbox}
+% exports a macro, |\eqparbox|, which works just like |\parbox|, except
+% that instead of specifying the width of the box, one specifies the
+% group that the box belongs to.  All boxes in the same group will be
+% typeset as wide as the widest member of the group.  In that sense, an
+% |\eqparbox| behaves like a cell in an~|l|, |c|, or~|r| column in a
+% |tabular|; |\eqparbox|es in the same group are analogous to
+% cells in the same column.
+%
+% \section{Usage}
+%
+% \DescribeMacro{\eqparbox}
+% The primary macro in the \textsf{eqparbox} package is |\eqparbox|.
+% Usage is almost identical to that of |\parbox|:
+%
+% \begin{center}
+% |\eqparbox| \oarg{pos} \oarg{height} \oarg{inner-pos}
+% \marg{tag} \marg{text}
+% \end{center}
+%
+% \noindent
+% The only difference is that, where |\parbox| has its \meta{width}
+% argument, |\eqparbox| has \meta{tag}.  (For a description of the
+% remaining arguments, look up |\parbox| in any \LaTeXe\ book or in
+% the \texttt{usrguide.tex} file that comes with \LaTeXe.)  \meta{tag}
+% can be any valid identifier.  All |\eqparbox|es with the same tag
+% will be typeset in a box wide enough to hold the widest of them.
+% Discounting \TeX's limitations, any number of tags can be used in the
+% same document, and any number of |\eqparbox|es can share a tag.
+%
+% The only catch is that \texttt{latex} will need to be run a second
+% time for the various box widths to stabilize.
+%
+% \bigskip
+%
+% \DescribeMacro{\eqboxwidth}
+% It is sometimes useful to take the width of an |\eqparbox| to use in
+% other \LaTeX{} commands.  While the width can be determined by
+% creating an |\eqparbox| and using |\settowidth| to measure it, the
+% \textsf{eqparbox} package defines a convenience routine called
+% |\eqboxwidth| that achieves the same result.
+%
+% |\eqboxwidth| makes it easy to typeset something like
+% Table~\ref{tbl:mixed-tabular}.  Table~\ref{tbl:mixed-tabular}'s only
+% column expands to fit the widest cell in the column, excluding the
+% final cell.  The final cell's text word-wraps within whatever space is
+% allocated to it.  In a sense, the first four cells behave as if they were
+% typeset in an~|l| column, while the final cell behaves as if it were
+% typeset in a~|p| column.  In actuality, the column is an~|l| column;
+% an |\eqparbox| for the first four cells ensures the column stretches
+% appropriately, while a |\parbox| of width |\eqboxwidth{|\meta{tag}|}|
+% in the final cell ensures that the final cell word-wraps.
+%
+% \begin{table}
+% \centering
+% \caption{A \texttt{tabular} that stretches to fit some cells while
+% forcing others to wrap}
+% \label{tbl:mixed-tabular}
+% ^^A We use \fbox and \fboxsep because ``|'' is currently active.
+% \setlength{\fboxsep}{0pt}\fbox{^^A
+% \begin{tabular}{@{}l@{}}
+%   \eqparbox[b]{wtab}{Wide} \\ \hline
+%   \eqparbox[b]{wtab}{Wider} \\ \hline
+%   \eqparbox[b]{wtab}{Wider than that} \\ \hline
+%   \eqparbox[b]{wtab}{This is a fairly wide cell} \\ \hline
+%   \parbox[b]{\eqboxwidth{wtab}}{\strut
+%     While this cell's text wraps, the previous cells (whose text
+%     doesn't wrap) determine the width of the column.}
+% \end{tabular}}
+% \end{table}
+%
+% \section{Examples}
+%
+% Figure~\ref{fig:resume-excerpt}'s headings were typeset with the
+% following code:
+%
+% \begin{verbatim}
+%     \noindent%
+%     \eqparbox{place}{\textbf{Widgets, Inc.}} \hfill
+%     \eqparbox{title}{\textbf{Senior Widget Designer}} \hfill
+%     \eqparbox{dates}{\textbf{1/95--present}}
+% \end{verbatim}
+% \centerline{$\vdots$}
+% \begin{verbatim}
+%     \noindent%
+%     \eqparbox{place}{\textbf{Thingamabobs, Ltd.}} \hfill
+%     \eqparbox{title}{\textbf{Lead Engineer}} \hfill
+%     \eqparbox{dates}{\textbf{9/92--12/94}}
+% \end{verbatim}
+% \centerline{$\vdots$}
+% \bigskip
+%
+% \noindent
+% Table~\ref{tbl:sales-data} was entered as follows:
+%
+% \begin{verbatim}
+%     \begin{tabular}{@{}lccc@{}} \hline
+%       & \multicolumn{3}{c}{Sales (in millions)} \\ \cline{2-4}
+%       \multicolumn{1}{c}{\raisebox{1ex}[2ex]{Product}} &
+%       October & November & December \\ \hline
+%
+%       Widgets      & \eqparbox{oct}{\raggedleft         55.2 } &
+%                      \eqparbox{nov}{\raggedleft\textbf{ 89.2}} &
+%                      \eqparbox{dec}{\raggedleft         57.9 } \\
+%       Doohickeys   & \eqparbox{oct}{\raggedleft\textbf{ 65.0}} &
+%                      \eqparbox{nov}{\raggedleft         64.1 } &
+%                      \eqparbox{dec}{\raggedleft          9.3 } \\
+%       Thingamabobs & \eqparbox{oct}{\raggedleft         10.4 } &
+%                      \eqparbox{nov}{\raggedleft          8.0 } &
+%                      \eqparbox{dec}{\raggedleft\textbf{109.7}} \\ \hline
+%     \end{tabular}
+% \end{verbatim}
+%
+% \noindent
+% Note that the above can be simplified by defining a macro that
+% combines |\eqparbox| and |\raggedleft|.  Furthermore, because the
+% numeric data being typeset are all approximately the same width, a
+% single tag could reasonably replace |oct|, |nov|, and |dec|.  As it
+% stands, the code serves more as an illustration than as an optimal way
+% to typeset Table~\ref{tbl:sales-data}.
+%
+% Finally, Table~\ref{tbl:mixed-tabular} utilizes code similar to the
+% following:
+%
+% \begin{verbatim}
+%     \begin{tabular}{|l|} \hline
+%       \eqparbox[b]{wtab}{Wide} \\ \hline
+%       \eqparbox[b]{wtab}{Wider} \\ \hline
+%       \eqparbox[b]{wtab}{Wider than that} \\ \hline
+%       \eqparbox[b]{wtab}{This is a fairly wide cell} \\ \hline
+%       \parbox[b]{\eqboxwidth{wtab}}{%
+%         While this cell's text wraps, the previous cells (whose text
+%         doesn't wrap) determine the width of the column.} \\ \hline
+%     \end{tabular}
+% \end{verbatim}
+%
+% As an additional example, consider the paragraphs depicted in
+% Figure~\ref{fig:hang-indent}.  We'd like the paragraph labels set on
+% the left, as shown, but we'd also like to allow both intra-~and
+% inter-paragraph page breaks.  Of course, if the labels are made wider
+% or narrower, we'd like the paragraph widths to adjust automatically.
+% (Can any word processor do that, incidentally?)  By using a custom
+% |list| environment which typesets its labels with |\eqparbox|, this is
+% fairly straightforward:
+%
+% \begin{figure}[tbp]    ^^A NOT "here" (in case the default is changed)
+% \rule{\linewidth}{1pt}
+% \begin{list}{}{^^A
+%   \renewcommand{\makelabel}[1]{\eqparbox[b]{listlab}{#1}}^^A
+%   \setlength{\labelwidth}{\eqboxwidth{listlab}}^^A
+%   \setlength{\labelsep}{2em}^^A
+%   \setlength{\parsep}{2ex plus 2pt minus 1pt}^^A
+%   \setlength{\itemsep}{0pt}^^A
+%   \setlength{\leftmargin}{\labelwidth}^^A
+%   \addtolength{\leftmargin}{\labelsep}^^A
+%   \setlength{\rightmargin}{0pt}}
+%
+%   \item[Stuff about me] I am great.  Blah, blah, blah, blah, blah,
+%   blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,
+%   blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,
+%   blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,
+%   blah.
+%
+%   \item[More stuff] I am wonderful.  Blah, blah, blah, blah, blah,
+%   blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,
+%   blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,
+%   blah.
+%
+%   Did I mention that blah, blah, blah, blah, blah, blah, blah, blah,
+%   blah, blah, blah, blah, blah, blah, blah?
+%
+%   \item[The final exciting thing] I am fantastic.  Blah, blah, blah,
+%   blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,
+%   blah, blah, blah, blah, blah, blah, blah, blah, blah.
+% \end{list}
+% \rule{\linewidth}{1pt}
+% \caption{Paragraphs with hanging indentation}
+% \label{fig:hang-indent}
+% \end{figure}
+%
+% \begin{verbatim}
+%     \begin{list}{}{%
+%       \renewcommand{\makelabel}[1]{\eqparbox[b]{listlab}{#1}}%
+%       \setlength{\labelwidth}{\eqboxwidth{listlab}}%
+%       \setlength{\labelsep}{2em}%
+%       \setlength{\parsep}{2ex plus 2pt minus 1pt}%
+%       \setlength{\itemsep}{0pt}%
+%       \setlength{\leftmargin}{\labelwidth+\labelsep}%
+%       \setlength{\rightmargin}{0pt}}
+%
+%       \item[Stuff about me]  I am great.  Blah, blah, blah, ...
+%
+%       \item[More stuff]  I am wonderful.  Blah, blah, blah, ...
+%
+%       \item[The final exciting thing]  I am fantastic.  Blah,
+%          blah, blah, ...
+%     \end{list}
+% \end{verbatim}
+%
+%
+% \StopEventually{\PrintIndex}
+%
+% \section{Implementation}
+%
+% The one-sentence summary of the implementation is, ``As
+% \textsf{eqparbox} goes along, it keeps track of the maximum width of
+% each box type, and when it's finished, it writes those widths to
+% the~|.aux| file for use on subsequent runs.''  If you're satisfied
+% with that summary, then read no further.  Otherwise, get ready to
+% tackle the following annotated code listing.
+%
+%    \begin{macrocode}
+%<*package>
+%    \end{macrocode}
+%
+% \begin{macro}{\eqp@tempdima}
+% \begin{macro}{\eqp@tempdimb}
+% \begin{macro}{\eqp@tempdimc}
+% Define a few temporary \meta{dimen}s for use in a variety of locations.
+%    \begin{macrocode}
+\newlength{\eqp@tempdima}
+\newlength{\eqp@tempdimb}
+\newlength{\eqp@tempdimc}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\ifeqp@must@rerun}
+% \begin{macro}{\eqp@must@reruntrue}
+% \begin{macro}{\eqp@must@rerunfalse}
+% If an |eqparbox| is wider than the maximum-width |eqparbox| with the
+% same tag, we need to store the new maximum width and request that the
+% user re-run |latex|.  We use |\ifeqp@must@rerun| and |\eqp@must@reruntrue|
+% to assist with this.
+%    \begin{macrocode}
+\newif\ifeqp@must@rerun
+
+\AtEndDocument{%
+  \ifeqp@must@rerun
+    \@latex@warning@no@line{Rerun to correct eqparbox widths}
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\eqp@settowidth}
+% This macro is just like |\settowidth|, but it puts its argument in a
+% |tabular|, which means that it can contain |\\|.  Is there a better
+% way to find the natural width of something like ``\texttt{This is
+% split \string\\ across lines.}''?
+%    \begin{macrocode}
+\def\eqp@settowidth#1#2{%
+  \settowidth{#1}{\begin{tabular}{@{}l@{}}#2\end{tabular}}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\eqparbox}
+% \begin{macro}{\eqparbox@i}
+% \begin{macro}{\eqparbox@ii}
+% We want |\eqparbox| to take the same arguments as |\parbox|, with the
+% same default values for the optional arguments.  The only difference
+% in argument processing is that |\eqparbox| has a \meta{tag} argument
+% where |\parbox| has \meta{width}.
+%
+% Because |\eqparbox| has more than one optional argument, we can't use
+% a single function defined by |\DeclareRobustCommand|.  Instead, we
+% have to split |\eqparbox| into the following four macros:
+%
+% \begin{description}
+%   \item[\texttt{\string\eqparbox}] Takes zero or more optional arguments.
+%   First optional argument defaults to~|c|.  Calls |\eqparbox@i|.
+%
+%   \item[\texttt{\string\eqparbox@i}] Takes one or more optional arguments.
+%   Second optional argument defaults to~|\relax|.  Calls |\eqparbox@ii|.
+%
+%   \item[\texttt{\string\eqparbox@ii}] Takes two or more optional arguments.
+%   Third optional argument defaults to~|s| if either of the first two
+%   arguments is absent or to the first argument if both are present.
+%   Calls |\eqparbox@iii|.
+%
+%   \item[\texttt{\string\eqparbox@iii}] Takes three optional arguments
+%   and two mandatory arguments.  Does all the work for |\eqparbox|.
+% \end{description}
+%
+% \noindent
+% Note the direct correspondence between these macros and
+% |ltboxes.dtx|'s |\parbox|, |\@iparbox|, |\@iiparbox|, and
+% |\@iiiparbox| macros.
+%    \begin{macrocode}
+\DeclareRobustCommand\eqparbox{%
+  \@ifnextchar[%]
+    {\eqparbox@i}%
+    {\eqparbox@iii[c][\relax][s]}%
+}
+\def\eqparbox@i[#1]{%
+  \@ifnextchar[%]
+    {\eqparbox@ii[#1]}%
+    {\eqparbox@iii[#1][\relax][s]}%
+}
+\def\eqparbox@ii[#1][#2]{%
+  \@ifnextchar[%]
+    {\eqparbox@iii[#1][#2]}%
+    {\eqparbox@iii[#1][#2][#1]}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\eqparbox@iii}
+% The following function does all the real work for |\eqparbox|.  It takes
+% five parameters---\meta{pos}, \meta{height}, \meta{inner-pos},
+% \meta{tag}, and \meta{text}---and ensures that all boxes with the same
+% tag will be as wide as the widest box with that tag.
+%
+% To keep track of box widths, |\eqparbox| makes use of three global
+% variables for each tag: |\eqp@|\meta{tag}, |\eqp@first|\meta{tag}, and
+% |\eqp@next|\meta{tag}.  |\eqp@|\meta{tag} is the maximum width seen so
+% far for tag \meta{tag}.  It is initialized to |\eqp@first@|\meta{tag},
+% if defined, otherwise to the width of \meta{text}.
+% |\eqp@next@|\meta{tag} works the same way, but is always initialized
+% to~|0.0pt|.  At the end of a run, \textsf{eqparbox} prepares the next
+% run (via the~|.aux| file) to initialize |\eqp@first@|\meta{tag} to the
+% final value of |\eqp@next@|\meta{tag}.
+%
+% |\eqp@next@|\meta{tag} is needed to detect whether the
+% widest text with tag \meta{tag} has been removed/shrunk.
+% |\eqp@first@|\meta{tag} is needed so |\eqp@|\meta{tag} can be
+% initialized to it, while |\eqp@next@|\meta{tag} is initialized
+% to~|0.0pt|.
+%    \begin{macrocode}
+\def\eqparbox@iii[#1][#2][#3]#4#5{%
+  \expandafter%
+  \ifx\csname eqp@#4\endcsname\relax
+%    \end{macrocode}
+% If we get here, then this is the first use of \meta{tag} in this
+% document.  In the following |\ifx| statement, we initialize
+% |\eqp@|\meta{tag} to the value of |\eqp@first@|\meta{tag}, if defined,
+% otherwise to the width of~\meta{text}.
+%    \begin{macrocode}
+    \expandafter\global\expandafter\newlength\csname eqp@#4\endcsname
+    \expandafter\global\expandafter\newlength\csname eqp@next@#4\endcsname
+    \expandafter%
+    \ifx\csname eqp@first@#4\endcsname\relax
+%    \end{macrocode}
+% If we didn't encounter tag \meta{tag} on our previous run, then
+% request that the user re-run |latex|.  This is not always
+% necessary (e.g., when all uses of the |\eqparbox| with tag
+% \meta{tag} are left-justified), but it's better to be safe than sorry.
+%    \begin{macrocode}
+      \global\eqp@must@reruntrue
+      \global\eqp@settowidth{\csname eqp@#4\endcsname}{#5}%
+    \else
+      \global\csname eqp@#4\endcsname=\csname eqp@first@#4\endcsname\relax
+    \fi
+%    \end{macrocode}
+% At the |\end{document}|, we see if |\eqp@next@|\meta{tag}, which was
+% initialized to~|0.0pt|, is smaller than |\eqp@|\meta{tag}, which was
+% initialized to the maximum box width from the previous run.  If so, we
+% initialize the next run's |\eqp@first@|\meta{tag} to
+% |\eqp@next@|\meta{tag} and tell the user to re-run |latex|, because the
+% widest box with tag \meta{tag} must have been removed or shrunk.
+% Otherwise, we initialize the next run's |\eqp@first@|\meta{tag} to
+% |\eqp@|\meta{tag}.
+%    \begin{macrocode}
+    \AtEndDocument{%
+      \expandafter\let\expandafter\eqp@tempdima\csname eqp@next@#4\endcsname
+      \expandafter\let\expandafter\eqp@tempdimb\csname eqp@#4\endcsname
+      \ifnum\eqp@tempdima<\eqp@tempdimb
+        \@latex@warning@no@line{Rerun to correct width of eqparbox `#4'}
+        \immediate\write\@auxout{%
+          \string\global\string\newdimen%
+            \expandafter\string\csname eqp@first@#4\endcsname^^J%
+          \string\global\expandafter\string\csname eqp@first@#4\endcsname=%
+            \expandafter\the\eqp@tempdima\string\relax
+        }
+      \else
+        \immediate\write\@auxout{%
+          \string\global\string\newdimen%
+            \expandafter\string\csname eqp@first@#4\endcsname^^J%
+          \string\global\expandafter\string\csname eqp@first@#4\endcsname=%
+            \expandafter\the\eqp@tempdimb\string\relax
+        }
+      \fi
+    }%
+  \fi
+%    \end{macrocode}
+% Each invocation, we check to see if \meta{text} is wider than the
+% previous maximum for tag \meta{tag}.  If so, we set
+% |\eqp@must@reruntrue|, so the user will later be notified to re-run
+% |latex|.  The next run will start with the maximum width of
+% |\eqp@|\meta{tag}.
+%    \begin{macrocode}
+  \expandafter\let\expandafter\eqp@tempdima\csname eqp@#4\endcsname
+  \expandafter\let\expandafter\eqp@tempdimb\csname eqp@next@#4\endcsname
+  \eqp@settowidth{\eqp@tempdimc}{#5}%
+  \ifnum\eqp@tempdima<\eqp@tempdimc
+    \global\eqp@tempdima=\eqp@tempdimc\relax
+    \eqp@must@reruntrue
+  \fi
+%    \end{macrocode}
+% Increase |\eqp@next@|\meta{tag} to the width of \meta{text}, if
+% necessary.
+%    \begin{macrocode}
+  \ifnum\eqp@tempdimb<\eqp@tempdimc
+    \global\eqp@tempdimb=\eqp@tempdimc\relax
+  \fi
+%    \end{macrocode}
+% Finally, we can call |\parbox|.  We pass it \meta{pos}, \meta{height},
+% \meta{inner-pos}, and \meta{text} directly, and we pass it
+% |\eqp@|\meta{tag} for its \meta{width} argument.
+%    \begin{macrocode}
+  \parbox[#1][#2][#3]{\eqp@tempdima}{#5}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\eqboxwidth}
+% For the times that the user wants to make something other than a box
+% match an |\eqparbox|'s width, we provide |\eqboxwidth|.  |\eqboxwidth|
+% returns the width of a box corresponding to a given tag.  More
+% precisely, if |\eqp@|\meta{tag} is defined, it's returned.  Otherwise,
+% if if |\eqp@first@|\meta{tag} is defined, it's returned.
+% Otherwise,~|0.0pt| is returned.
+%
+% Because we use |\def| to define |\eqboxwidth| and we return only
+% \meta{dimen}s, it's legal to precede |\eqboxwidth| with |\the| or
+% anything else that expects to be followed by a \meta{dimen}.
+%    \begin{macrocode}
+\def\eqboxwidth#1{%
+  \expandafter%
+  \ifx\csname eqp@#1\endcsname\relax
+    \expandafter%
+    \ifx\csname eqp@first@#1\endcsname\relax
+      \z@
+    \else
+      \csname eqp@first@#1\endcsname
+    \fi
+  \else
+    \csname eqp@#1\endcsname
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+%
+%    \begin{macrocode}
+%</package>
+%    \end{macrocode}
+%
+% \Finale
+%

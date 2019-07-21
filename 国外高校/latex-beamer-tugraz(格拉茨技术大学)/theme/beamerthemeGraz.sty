@@ -1,0 +1,53 @@
+\ProvidesPackageRCS $Header: beamerthemeGraz.sty,v 1.0 2007/10/18 15:43:01 mweiglh Exp $
+
+% Copyright 2007 by Martin Weiglhofer <weiglhofer@ist.tugraz.at>
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+\newcount\beamer@sidebarskip
+\newcount\beamer@sidebar
+\beamer@sidebar=0
+
+\DeclareOptionBeamer{sidebar}{\beamer@sidebar=#1}
+\DeclareOptionBeamer{sidebarskip}{\beamer@sidebarskip=#1}
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+%\definecolor{greyblue1}{rgb}{0.31,0.51,0.74}
+
+\useinnertheme[shadow=true]{rounded}
+\ifnum\beamer@sidebar<1
+  \useoutertheme[nosidebar=\beamer@sidebarskip,hideothersubsections]{tugraz}
+\else
+  \useoutertheme[nosidebar=\beamer@sidebarskip,sidebar,hideothersubsections]{tugraz}
+\fi
+\usecolortheme{tugraz}
+
+\setbeamertemplate{items}[square]
+\setbeamertemplate{sections/subsections in toc}[square]
+
+\setbeamerfont{block title}{size={}}
+\setbeamerfont{author in head/foot}{series=\bfseries}
+\setbeamerfont{date in head/foot}{series=\bfseries}
+\setbeamerfont{title in head/foot}{series=\bfseries}
+\setbeamerfont{section in head/foot}{series=\bfseries}
+\setbeamerfont{pagenum in head/foot}{size*={5}{0}}
+
+\setbeamercolor{titlelike}{parent=structure,bg=white}
+
+\setbeamersize{text margin left=1.0cm}
+\setbeamersize{text margin right=1.0cm}
+\setbeamertemplate{items}[square]
+
+\setbeamertemplate{frametitle}
+{
+  \begin{centering}
+    \insertframetitle \par
+  \end{centering}
+}
+
+
+\mode
+<all>

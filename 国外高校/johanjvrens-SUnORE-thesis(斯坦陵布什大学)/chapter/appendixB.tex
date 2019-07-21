@@ -1,0 +1,47 @@
+\chapter{Data}
+
+% EXAMPLE
+%=========
+%
+% example using multicolumn, multirow and the sideways environment
+Data related to the Case Study in Chapter 5 are presented in Table \ref{ex2}.
+\begin{table}[h!tb]
+
+\centering
+
+\begin{tabular}{cc|rrrrrr}\hline
+
+\headcol &&\multicolumn{6}{c}{this goes across 6 columns}\\
+
+ \headcol && col a & col b & col c & col d & col e & col f \\ \hline \hline
+
+\multirow{6}{*}{
+%
+\begin{sideways}
+this is sideways,
+\end{sideways}
+%
+\begin{sideways}
+and goes across
+\end{sideways}
+%
+\begin{sideways}
+six rows
+\end{sideways}
+%
+}
+
+
+& row 1 \\
+& row 2 & \cellcolrow & \cellcolrow & \cellcolrow & \cellcolrow & \cellcolrow & \cellcolrow \\
+& row 3 \\ 
+& row 4 & \cellcolrow & \cellcolrow & \cellcolrow & \cellcolrow & \cellcolrow & \cellcolrow \\
+& row 5 \\
+& row 6 & \cellcolrow & \cellcolrow & \cellcolrow & \cellcolrow & \cellcolrow & \cellcolrow \\ \hline
+
+\end{tabular}
+
+\caption[Do not end short caption with full-stop]{Type full caption here.}
+\label{ex2}
+
+\end{table}

@@ -1,0 +1,37 @@
+% =============================================================
+% Notations
+% =============================================================
+\nomenclature[N]{$\mathcal{F}$}{Transformée de Fourier}
+\nomenclature[N]{$\mathcal{L}$}{Transformée de Laplace}
+\nomenclature[N]{$\mathcal{Z}$}{Transformée en Z}
+% =============================================================
+
+
+% =============================================================
+% Acronymes
+% =============================================================
+\nomenclature[A]{PID}{Proportionnel / Intégral / Dérivé}
+\nomenclature[A]{MEMS}{Microsystème électromécanique}
+% =============================================================
+
+
+% =============================================================
+% Physical constant
+% =============================================================
+\nomenclature[P]{$c$}{Vitesse de la lumière dans le vide
+    \nomunit{$\SI{299792458}{\metre\per\second}$}}
+
+\nomenclature[P]{$\epsilon_0$}{Permittivité du vide
+\nomunit{$\SI{8.854d-12}{\ampere\squared\second\tothe{4}\per\kilogram\per\metre\tothe{3}}$}}
+
+\nomenclature[P]{$h$}{Constante de Planck
+    \nomunit{$\SI{6.626d-34}{\metre\squared\kilogram\per\second}$}}
+% =============================================================
+
+{
+    \renewcommand{\MakeUppercase}[1]{#1}
+    \printnomenclature[3.5em]
+    \addcontentsline{toc}{chapter}{\protect\numberline{}\nomenlaturename}
+    \unumeredchaptermark{\nomenlaturename}
+}
+

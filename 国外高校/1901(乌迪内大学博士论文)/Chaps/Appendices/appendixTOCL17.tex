@@ -1,0 +1,328 @@
+\chapter{Proofs of Chapter~\ref{chap:TOCL17}}
+\minitoc\mtcskip
+
+\section{Proof of Lemma~\ref{lemma1:CharacterizationFinitaryLTL}}\label{proof:lemma1:CharacterizationFinitaryLTL}
+
+\begin{lemma*}[\ref{lemma1:CharacterizationFinitaryLTL}] Let $\Sigma$ be a finite alphabet,
+  $b\in \Sigma$, $\Gamma=\Sigma\setminus\{b\}$, $\Lang\subseteq \Gamma^{+}$, and $\psi$ be a $\BE$ formula over $\Gamma$ such that $\Lang_\act(\psi)=\Lang$. Then,
+  there are $\BE$ formulas defining (under the action-based semantics) the languages
+   $b\Lang$, $\Sigma^* b\Lang$, $\Sigma^* b(\Lang+\varepsilon)$,
+   $\Lang b$, $ \Lang b \Sigma^* $, $ (\Lang+\varepsilon) b \Sigma^* $, and $b \Lang b$.
+  \end{lemma*}
+  
+  \begin{proof}
+We focus on the cases for the languages $b\Lang$, $\Sigma^* b\Lang$, $\Sigma^* b$, and  $b \Lang b$ (for the other languages, the proof is similar: $\Sigma^*b(\Lang + \varepsilon)=\Sigma^* b\Lang+ \Sigma^* b$, $\Lang b$ is symmetric to $b\Lang$, $\Lang b\Sigma^*$ to $\Sigma^* b\Lang$, and $ (\Lang+\varepsilon) b \Sigma^* $ to $\Sigma^*b(\Lang + \varepsilon)$). 
+
+Let $\psi$ be a $\BE$ formula over $\Gamma$ such that $\Lang_\act(\psi)=\Lang$. 
+
+\paragraph{Language $b\Lang$.} The $\BE$ formula defining the language $b\Lang$ is:
+%
+\begin{equation}
+\label{eq-bL}
+(\neg \Length_1 \wedge \hsB b \wedge \hsEu(\neg b \wedge \hsBu\neg b)) \wedge h_b(\psi),
+\end{equation}
+%
+where the  formula  $h_b(\psi)$ is inductively defined on the structure of $\psi$ in the following way. The mapping $h_b$ is homomorphic with respect to the Boolean connectives, while for the atomic actions in $\Gamma$ and the modalities $\hsE$ and $\hsB$, it is defined  as follows:
+ \begin{itemize}
+   \item for all $a\in \Gamma$, $h_b(a)= a\vee (\hsB b \wedge \hsE a \wedge \hsEu a)$;
+   \item $h_b(\hsB\theta)= (\hsB h_b(\theta) \wedge \neg\hsB b) \vee \hsB(h_b(\theta)\wedge \hsB b)$;
+   \item $h_b(\hsE\theta)= (\hsE h_b(\theta) \wedge \neg\hsB b) \vee (\hsB b \wedge \hsE \hsE h_b(\theta))$.
+ \end{itemize}
+The first conjunct of (\ref{eq-bL}) ensures that a word $u'$ in the defined language has length at least $2$ and it has the form $bu$ without any occurrence of $b$ in $u$. The second conjunct $h_b(\psi)$ ensures that $u$ belongs to the language defined by $\psi$. For atomic actions and temporal modalities, $h_b(\psi)$ is a disjunction of two possible choices; the appropriate one is forced at top level by the first conjunct of (\ref{eq-bL}), that constrains one and only one $b$ to occur in the word in the first position.
+
+By a straightforward structural induction on $\psi$, it can be shown that the following fact holds.
+
+\begin{claim}\label{cl:claim1} Let $u\in \Gamma^{+}$, $u'= bu$, and $|u|= n+1$. Then, for all $i,j \in [0,n]$ with $i\leq j$, $u(i,j) \in \Lang_\act(\psi)$
+if and only if $u'(\hat{i},j+1)\in \Lang_\act(h_b(\psi))$, where  $\hat{i}= i$ if $i=0$, and $\hat{i}=i+1$ otherwise.
+\end{claim}
+
+ By Claim~\ref{cl:claim1}, for each $u\in \Gamma^{+}$, $u\in \Lang_\act(\psi)$ if and only if $bu\in \Lang_\act(h_b(\psi))$. Therefore, (\ref{eq-bL}) captures the language $b\Lang_\act(\psi)$. 
+
+\paragraph{Languages $\Sigma^* b\Lang$ and $\Sigma^* b$.} Following the proof given for the case of the language $b\Lang$, with $\Lang\subseteq \Gamma^{+}$, one can construct a
+ $\BE$ formula  $\varphi$ defining the language $b\Lang$. Hence, the $\BE$ formula $\varphi\vee \hsE\varphi$ defines $\Sigma^* b\Lang$. The $\BE$ formula defining $\Sigma^* b$ is $b \vee \hsE b$. 
+
+\paragraph{Language $b\Lang b$.} By the proof given for the language $b\Lang$, with $\Lang\subseteq \Gamma^{+}$, one can build a $\BE$ formula  $\varphi$ defining the language $b\Lang$. The $\BE$ formula defining the language $b\Lang b$ is the formula:
+%
+\begin{equation}
+\label{eq-bLb}
+(\neg \Length_1 \wedge \neg \Length_2 \wedge \hsB b \wedge \hsE b \wedge \hsEu\hsBu\neg b) \wedge k_b(\varphi)
+\end{equation}
+%
+where the formula  $k_b(\varphi)$ is inductively defined on the structure of $\varphi$  in the following way. 
+% We construct by structural induction on $\varphi$ a $\BE$ formula  $k_b(\varphi)$ as follows.
+The mapping $k_b$ is homomorphic with respect to the Boolean connectives, while for the atomic actions in $\Sigma$ and the modalities $\hsE$ and $\hsB$, it is defined  as follows:
+ \begin{itemize}
+   \item for all $a\in \Gamma$, $k_b(a)= a\vee (\hsE b \wedge \hsB a \wedge \hsBu a)$;
+   \item $k_b(b)=b$;
+   \item $k_b(\hsB\theta)= (\hsB k_b(\theta) \wedge \neg\hsE b) \vee (\hsE b \wedge \hsB \hsB k_b(\theta))$.
+      \item $k_b(\hsE\theta)= (\hsE k_b(\theta)\wedge \neg\hsE b) \vee \hsE(k_b(\theta)\wedge \hsE b)$.
+ \end{itemize}
+
+The first conjunct of (\ref{eq-bLb}) ensures that a word $u'$ in the defined language has length at least $3$ and it has the form $bub$ without any occurrence of $b$ in $u$. The second conjunct $k_b(\varphi)$ ensures that $bu$ belongs to the language defined by $\varphi$. Similarly to the case of the language $b\Lang$, for atomic actions (different from $b$) and temporal modalities, $k_b(\psi)$ is a disjunction of two possible choices; the appropriate one is forced at top level by the first conjunct of  (\ref{eq-bLb}), that constrains one and only one $b$ to occur in the word in the last position.
+
+By a straightforward structural induction on $\varphi$, it can be shown that the following fact holds.
+% By a straightforward structural induction on $\varphi$, we can show that the following fact holds. 
+
+\begin{claim}\label{cl:claim2} Let $u\in \Gamma^{+}$ and $|bu|= n+1$. Then, for all $i,j \in [0,n]$ with $i\leq j$, $bu(i,j) \in \Lang_\act(\varphi)$
+if and only if $bub(i,\hat{j})\in \Lang_\act(k_b(\varphi))$ where  $\hat{j}= j$ if $j<n$, and $\hat{j}=n+1$ otherwise.
+\end{claim}
+
+ By Claim~\ref{cl:claim2}, for each $u\in \Gamma^{+}$, $bu\in \Lang_\act(\varphi)$ if and only if $bub\in \Lang_\act(k_b(\varphi))$ implying that the formula of (\ref{eq-bLb})
+ %$(\neg \Length_1 \wedge \neg \Length_2 \wedge \hsB b \wedge \hsE b \wedge [E][B]\neg b) \wedge h_b(\psi)$ 
+ defines the language $\Lang_\act(\varphi)b$. 
+%
+% This concludes the proof of the lemma.
+\end{proof}
+  
+  
+\section{Proof of Lemma~\ref{lemma2:CharacterizationFinitaryLTL}}\label{proof:lemma2:CharacterizationFinitaryLTL}
+
+\begin{lemma*}[\ref{lemma2:CharacterizationFinitaryLTL}] Let $\Sigma$ and $\Delta$ be finite alphabets,
+  $b\in \Sigma$, $\Gamma=\Sigma\setminus\{b\}$, $U_0= \Gamma^{*}b$, $h_0:U_0 \rightarrow \Delta$ and $h:U_0^{+} \rightarrow \Delta^{+}$ be defined by
+    $h(u_0u_1\cdots u_n)=h_0(u_0)\cdots h_0(u_n)$. Assume that, for each $d\in \Delta$, there is a $\BE$ formula capturing the language $\Lang_d =\{u\in \Gamma^{+}\mid h_0(ub)= d\}$.  Then, for each $\BE$ formula $\varphi$ over $\Delta$, one can construct a $\BE$ formula over $\Sigma$
+    capturing
+    the language $\Gamma^{*}b h^{-1}(\Lang_\act(\varphi))\Gamma^{*}$.
+  \end{lemma*}
+  
+  \begin{proof} By hypothesis and Lemma~\ref{lemma1:CharacterizationFinitaryLTL}, for each $d\in \Delta$ there exists a
+  $\BE$ formula $\theta_d$ over $\Sigma$ defining the language $b \Lang_d b$, where $\Lang_d =\{u\in \Gamma^{+}\mid h_0(ub)= d\}$.
+  Hence there exists a
+  $\BE$ formula $\hat{\theta}_d$ over $\Sigma$ capturing the language $b \hat{\Lang}_d b$, where $\hat{\Lang}_d =\{u\in \Gamma^{*}\mid h_0(ub)= d\}$ (note that
+ $\Lang_d= \hat{\Lang}_d\setminus\{\varepsilon\}$).
+
+ Let $\varphi$ be a  $\BE$ formula over $\Delta$. By structural induction over $\varphi$, we construct a $\BE$ formula $\varphi^{+}$ over $\Sigma$
+ such that $\Lang_\act(\varphi^{+})= \Gamma^{*}b h^{-1}(\Lang_\act(\varphi))\Gamma^{*}$.
+The formula $\varphi^{+}$ is defined as follows:
+\begin{itemize}
+  \item $\varphi= d$ with $d\in \Delta$. We have that $\Lang_\act(d)=d^{+}$ and $\Gamma^{*}b h^{-1}(\Lang_\act(d))\Gamma^{*}$ is the set of finite words in
+  $\Gamma^{*}b \Sigma^{*} b\Gamma^{*}$ such that each subword $u(i,j)$ of $u$ which is in $b\Gamma^{*}b$ is in $b\hat{\Lang}_d b$ as well. Using the formula  $\psi_b:= \neg \Length_1 \wedge \hsB b \wedge \hsE b \wedge \hsEu\hsBu\neg b$ to define the language $b\Gamma^{*}b$, $\varphi^{+}$ is defined as follows:
+  \[
+  \varphi^{+} =(\hsG\psi_b) \wedge \hsGu(\psi_b \rightarrow \hat{\theta}_d).
+  \]
+  \item $\varphi = \neg \theta$. We have that
+  \begin{multline*}
+ % \Gamma^{*}b h^{-1}(\Lang_\act(\varphi))\Gamma^{*} = \Gamma^{*}b \Sigma^{*} b\Gamma^{*} \cap \overline{\Gamma^{*}b  h^{-1}(\Lang_\act(\theta))\Gamma^{*}}.
+ \Gamma^{*}b h^{-1}(\Lang_\act(\varphi))\Gamma^{*} = 
+ \Gamma^{*}b h^{-1}(\Delta^+ \setminus \Lang_\act(\theta))\Gamma^{*} = \\
+ \Gamma^{*}b h^{-1}(\Delta^+)\Gamma^{*} \cap \overline{\Gamma^{*}b  h^{-1}(\Lang_\act(\theta))\Gamma^{*}}, 
+  \end{multline*}
+  where $\Gamma^{*}b h^{-1}(\Delta^+)\Gamma^{*}$ restricts the set of \lq\lq candidate\rq\rq{} models to the well-formed ones.
+  
+  Thus, taking $\psi_b$ as defined in the previous case, $\varphi^{+}$ is given by: 
+  \[\varphi^{+}=(\hsG\psi_b) \wedge \hsGu(\psi_b \rightarrow \bigvee_{d\in \Delta}\hat{\theta}_d) \wedge \neg \theta^{+},\]
+  where, by the inductive hypothesis, $\Lang_\act(\theta^{+})=\Gamma^{*}b  h^{-1}(\Lang_\act(\theta))\Gamma^{*}$. 
+  \item $\varphi = \theta\wedge \psi$. We simply have $\varphi^{+}= \theta^{+}\wedge \psi^{+}$.
+  %, and the correctness of the construction easily follows.
+  \item $\varphi =\hsB \theta$. First, we note that $\Gamma^{*}b h^{-1}(\Lang_\act(\hsB \theta))\Gamma^{*}$ is the set of finite words in the language  $\Gamma^{*}b h^{-1}(\Lang_\act(\theta))h^{-1}(\Delta^+)\Gamma^{*}$, which is included in the
+  language  $\Gamma^{*}bh^{-1}(\Delta^+)\Gamma^{*}$ defined by the formula
+  $ \hsGu(\psi_b \rightarrow \bigvee_{d\in \Delta}\hat{\theta}_d).$ Note also that,
+  by the inductive hypothesis, $\Gamma^{*}b h^{-1}(\Lang_\act(\theta))$ is included in the language of $\theta^{+}$. %, and it is defined by the formula $\hsE b \wedge  \hsB(\theta^{+}\wedge \hsE b)$. 
+  Thus, $\varphi^{+}$ is given by (for $\xi=(\hsE b) \wedge  \hsB(\theta^{+}\wedge \hsE b)$):
+ \[
+ \varphi^{+} =  \hsGu(\psi_b \rightarrow \bigvee_{d\in \Delta}\hat{\theta}_d) \wedge (\xi\vee \hsB\xi).
+ \]
+ %\varphi^{+} =  \hsGu(\psi_b \rightarrow \bigvee_{d\in \Delta}\hat{\theta}_d) \wedge \hsB(\hsE b \wedge  \hsB(\theta^{+}\wedge \hsE b)).  \]
+ %
+ %\wedge (\hsE b \wedge  \hsGu(\psi_b \rightarrow \hat{\theta}_d)).
+% \]
+%  $\varphi =\hsB \theta$. Clearly $\Gamma^{*}b h^{-1}(\Lang_\act(\hsB \theta))\Gamma^{*}$ is the set of finite words over $\Sigma$ featuring a
+ % proper prefix in  $\Gamma^{*}b h^{-1}(\Lang_\act(\theta))\Sigma^{*}b$. Thus $\varphi^{+}$
+ %is given by:
+ %\[
+ %\varphi^{+} = \hsB(\hsE b \wedge  \hsB(\theta^{+}\wedge \hsE b)).
+%
+  \item $\varphi =\hsE \theta$. $\Gamma^{*}b h^{-1}(\Lang_\act(\hsE \theta))\Gamma^{*}$ is the set  $\Gamma^{*}b h^{-1}(\Delta^+) h^{-1}(\Lang_\act(\theta))\Gamma^{*}$ included in the
+  language  $\Gamma^{*}bh^{-1}(\Delta^+)\Gamma^{*}$, symmetrically to the previous case.
+  %
+  %
+ % of finite words over $\Sigma$ featuring a
+ % proper suffix in  $b\Sigma^{*}b h^{-1}(\Lang_\act(\theta))\Gamma^{*}$. 
+  Thus, $\varphi^{+}$ is given by (for $\xi'=(\hsB b) \wedge  \hsE(\theta^{+}\wedge \hsB b)$):
+ \[
+ %\varphi^{+} =  \hsGu(\psi_b \rightarrow \bigvee_{d\in \Delta}\hat{\theta}_d) \wedge \hsE(\hsB b \wedge  \hsE(\theta^{+}\wedge \hsB b)).
+ \varphi^{+} =  \hsGu(\psi_b \rightarrow \bigvee_{d\in \Delta}\hat{\theta}_d) \wedge (\xi'\vee \hsE\xi'). \qedhere
+\]
+ \end{itemize}
+%
+% The proof of the lemma is complete.
+  \end{proof}
+
+
+\section{Proof of Lemma~\ref{lemma:UsingSeparationHybridCTLPreliminary}}\label{proof:lemma:UsingSeparationHybridCTLPreliminary}
+%
+\begin{lemma*}[\ref{lemma:UsingSeparationHybridCTLPreliminary}] 
+Let $\psi$ be  a \emph{simple} hybrid $\CTLStarLP$ formula  with respect to $x$. 
+Then $(\Eventually^{-} x)\wedge \psi$ is congruent to a formula of the form $(\Eventually^{-} x)\wedge \xi$, where $\xi$ is a Boolean combination of the atomic formula $x$ and $\CTLStar$ formulas. 
+\end{lemma*}
+
+\begin{proof} Let  $\psi$ be  a \emph{simple} hybrid $\CTLStarLP$ formula  with respect to $x$. From a syntactic point of view, $\psi$ is not, in general, a $\CTLStar$ formula due to the occurrences of the free variable $x$. We show that these occurrences can be separated whenever $\psi$ is paired with $\Eventually^{-} x$, obtaining a Boolean combination of the atomic formula $x$ and $\CTLStar$ formulas. 
+
+The base case where $\psi=x$, $\psi=p\in\Prop$, or $\psi=\EQ\psi'$, is obvious.
+
+As for the inductive step, let $\psi$ be a Boolean combination of simple hybrid $\CTLStarLP$ formulas $\theta$, where $\theta$ is either $p\in\Prop$, the variable $x$, a $\CTLStar$ formula, or a simple hybrid $\CTLStarLP$ formula (with respect to $x$) of the forms $\Next\theta_1$ or 
+$\theta_1\until \theta_2$. Thus, we just need to consider the cases where $\theta =\Next \theta_1$ or $\theta =\theta_1\until \theta_2$.
+
+Let us consider the case $\theta =\Next \theta_1$. Since there are no past temporal modalities in $\theta_1$, 
+$\Next \theta_1$ forces the free occurrence of $x$ in $\psi$ to be interpreted in a (strictly) future position. 
+However, $\psi$ is conjunct with the formula $\Eventually^{-} x$, which turns out to be false when $x$ is associated with a (strictly) future position.  
+%
+Let us denote by $\widehat{\theta}$  the $\CTLStar$ formula obtained from $\theta$ by replacing each occurrence of $x$ in $\psi$ with $\bot$ (false).
+%
+Now, when $x$ is mapped to a (strictly) future position, $\Eventually^{-} x$ is false and, when $x$ is mapped to a present/past position, $\Eventually^{-} x$ is  true, and $\theta$ and $\widehat{\theta}$ are congruent.
+As a consequence it is clear that $(\Eventually^{-} x)\wedge \theta$ is congruent to $(\Eventually^{-} x)\wedge  \widehat{\theta}$.
+
+Let us consider the case for $\theta =\theta_1\until \theta_2$. Using the same arguments of the previous case, we have that
+ $(\Eventually^{-} x)\wedge \theta$ is congruent to $(\Eventually^{-} x)\wedge (\theta_2 \vee (\theta_1\wedge\Next (\widehat{\theta_1\until \theta_2})))$. By distributivity of $\wedge$ over $\vee$, we get $((\Eventually^{-} x)\wedge\theta_2) \vee ((\Eventually^{-} x)\wedge\theta_1\wedge\Next (\widehat{\theta_1\until \theta_2})))$. The thesis follows by applying the inductive hypothesis to $(\Eventually^{-} x)\wedge\theta_2$ and to $(\Eventually^{-} x)\wedge\theta_1$, and by factorizing $\Eventually^{-} x$ (note that $\widehat{\theta_1\until \theta_2}$ is a $\CTLStar$ formula).
+\end{proof}
+
+
+\section{Proof of Lemma \ref{cor:UsingSeparationHybridCTL}}\label{proof:cor:UsingSeparationHybridCTL}
+
+\begin{lemma*}[\ref{cor:UsingSeparationHybridCTL}] Let $(\Eventually^{-} x)\wedge \EQ \varphi(x)$ (resp., $\EQ\varphi$) be a well-formed formula (resp., well-formed sentence) of hybrid $\CTLStarLP$.  Then there exists a finite set $\mathpzc{H}$ of $\CTLStar$ formulas of the form $\EQ\psi$, such that $(\Eventually^{-} x)\wedge \EQ \varphi(x)$ (resp., $\EQ\varphi$) is congruent to a well-formed formula of hybrid $\CTLStarLP$ which is a Boolean combination of $\CTLStar$ formulas and (formulas that
+%disjunction of formulas of the form $\psi_p\wedge \EQ \psi$, where $\EQ\psi$ is a $\CTLStar$ formula and $\psi_p$ 
+correspond to) \emph{pure past}  $\LTLP$ formulas over the set of proposition letters $\Prop\cup  \mathpzc{H} \cup \{x\}$ (resp., $\Prop\cup  \mathpzc{H}$).
+\end{lemma*} 
+
+\begin{proof}
+As in the case of Lemma~\ref{lemma:UsingSeparationHybridCTL}, we focus on well-formed formulas of the form  $(\Eventually^{-} x)\wedge \EQ \varphi(x)$ (the case of well-formed sentences of the form $\EQ\varphi$ is similar).
+%
+The proof is by induction on the nesting depth of the path quantifier $\exists$ in $\varphi(x)$. 
+
+In the base case we have $\EQSubf(\varphi)=\emptyset$: we apply Lemma~\ref{lemma:UsingSeparationHybridCTL}, and the result follows by taking  $\mathpzc{H}=\emptyset$. 
+
+As for the inductive step, 
+%Let us consider the case where the set of formulas $\EQSubf(\varphi)$ is not empty. 
+we let $\EQ \psi\in \EQSubf(\varphi)$. Since $(\Eventually^{-} x)\wedge \EQ \varphi(x)$ is well-formed, either $\psi$ is a sentence, or $\psi$ has a unique free variable $y$ and $\EQ \psi(y)$ occurs in $\varphi(x)$ in the context $(\Eventually^{-} y)\wedge \EQ \psi(y)$. Assume that the latter case holds (the former is similar). 
+By definition of well-formed formula, $y$ is not free in $\varphi(x)$, and $(\Eventually^{-} y)\wedge \EQ \psi(y)$ must occur in the scope of some occurrence of  $\Downarrowy$.
+By the inductive hypothesis, the thesis holds for $(\Eventually^{-} y)\wedge \EQ \psi(y)$. Hence there exists 
+a finite set $\mathpzc{H}'$ of $\CTLStar$ formulas of the form $\EQ\theta$ such that $(\Eventually^{-} y)\wedge \EQ \psi(y)$ is congruent to a well-formed formula of hybrid $\CTLStarLP$, say $\xi(y)$, which is a Boolean combination of $\CTLStar$ formulas and formulas that correspond to  \emph{pure past}  $\LTLP$ formulas over the set of proposition letters
+$\Prop\cup  \mathpzc{H'} \cup \{y\}$. 
+
+By replacing each occurrence of $(\Eventually^{-} y)\wedge \EQ \psi(y)$ in $\varphi(x)$ with $\xi(y)$, and repeating the procedure for all the formulas in   $\EQSubf(\varphi)$, we obtain a well-formed formula of hybrid $\CTLStarLP$ of the form $(\Eventually^{-} x)\wedge \EQ \theta(x)$ which is congruent to $(\Eventually^{-} x)\wedge \EQ \varphi(x)$ (note that the congruence relation is closed under substitution) and such that $\EQSubf(\theta)$ consists of $\CTLStar$ formulas. At this point we can apply Lemma~\ref{lemma:UsingSeparationHybridCTL} proving the assertion.
+\end{proof}
+
+
+\section{Proof of Lemma~\ref{lemma:MainnonBranchingExpressibilityOfEventually}}\label{proof:lemma:MainnonBranchingExpressibilityOfEventually}
+
+To prove the lemma, we need some technical definitions. 
+Let $\rho$ be a trace of $\Ku_n$ (note that $\Ku_n$ and $\mathpzc{M}_n$ feature the same traces).
+By construction, $\rho$ has the form $\rho'\cdot \rho''$, where $\rho'$ is a (possibly empty) trace visiting only states where $p$ does not hold, and $\rho''$
+is a (possibly empty) trace visiting only the state $t$, where $p$ holds. We say that $\rho'$ (resp., $\rho''$) is the $\emptyset$-part (resp., $p$-part) of $\rho$.
+
+Let $N_\emptyset(\rho)$, $N_p(\rho)$, and $D_p(\rho)$ be the natural numbers defined as follows:
+\begin{itemize}
+  \item $N_\emptyset(\rho) = |\rho'|$ (the length of the $\emptyset$-part of $\rho$);
+  \item $N_p(\rho) = |\rho''|$ (the length of the $p$-part of $\rho$);
+  \item $D_p(\rho)=0$ if $N_p(\rho)>0$ (i.e., $\lst(\rho)=t$); otherwise, $D_p(\rho)$ is the length of the minimal trace starting from  $\lst(\rho)$ and leading to
+  $s_{2n}$. Notice that $D_p(\rho)$ is well defined and $0\leq D_p(\rho)\leq 2n+1$.
+\end{itemize}
+
+By construction, the following property holds.
+
+\begin{proposition}\label{remark:HcompatibilityOne} For all traces $\rho$ and $\rho'$ of $\Ku_n$, if $D_p(\rho)= D_p(\rho')$, then $\lst(\rho)=\lst(\rho')$.
+\end{proposition}
+
+Now, for each $h\in [1,n]$, we introduce the notion of \emph{$h$-compatibility} between traces of  $\Ku_n$. Intuitively, this notion provides a sufficient condition to make two traces indistinguishable under the state-based semantics by means of balanced $\HS$ formulas having size at most $h$.
+
+\begin{definition}[$h$-compatibility] Let $h\in [1,n]$. Two traces $\rho$ and $\rho'$ of $\Ku_n$ are \emph{$h$-compatible} if the following conditions hold:
+\begin{itemize}
+\item $N_p(\rho) = N_p(\rho')$;
+  \item either $N_\emptyset(\rho) = N_\emptyset(\rho')$, or $N_\emptyset(\rho)\geq h$ and $N_\emptyset(\rho')\geq h$;
+        \item either $D_p(\rho) = D_p(\rho')$, or $D_p(\rho)\geq h$ and $D_p(\rho')\geq h$.
+\end{itemize}
+We denote by $\tilde{\mathpzc{R}}(h)$ the binary relation over the set of traces of $\Ku_n$ such that $(\rho,\rho')\in \tilde{\mathpzc{R}}(h)$ if and only if $\rho$ and $\rho'$ are $h$-compatible. 
+
+Notice that $\tilde{\mathpzc{R}}(h)$ is an equivalence relation, for all $h\in [1,n]$.
+Moreover $\tilde{\mathpzc{R}}(h)\subseteq \tilde{\mathpzc{R}}(h-1)$, for all $h\in [2,n]$, that is, $\tilde{\mathpzc{R}}(h)$ is a refinement of $\tilde{\mathpzc{R}}(h-1)$.
+\end{definition}
+
+By construction, the following property, that will be exploited in the proof of Lemma~\ref{lemma:MainnonBranchingExpressibilityOfEventually}, can be easily shown.
+
+\begin{proposition}\label{remark:HcompatibilityTwo} For every trace  $\rho$ of  $\Ku_n$ starting from $s_0$ (resp., $s_1$), there exists a trace $\rho'$ of
+$\Ku_n$ starting from $s_1$ (resp., $s_0$) such that $(\rho,\rho')\in \tilde{\mathpzc{R}}(n)$.
+\end{proposition}
+
+The following lemma lists some useful properties of $\tilde{\mathpzc{R}}(h)$.
+
+ \begin{lemma}\label{lemma:Hcompatibility} Let $h\in [2,n]$ and $(\rho,\rho')\in \tilde{\mathpzc{R}}(h)$. The next properties hold:
+ \begin{enumerate}
+  \item for each proper prefix $\sigma$ of $\rho$, there exists a proper prefix $\sigma'$ of $\rho'$ such that $(\sigma,\sigma')\in \tilde{\mathpzc{R}}(\lfloor \frac{h}{2}\rfloor)$;
+   \item for each trace of the  form $\rho\cdot \sigma$, where $\sigma$ is not empty, there exists a trace of the form $\rho'\cdot\sigma'$
+    such that $\sigma'$ is not empty and $(\rho\cdot\sigma,\rho'\cdot \sigma') \in \tilde{\mathpzc{R}}(\lfloor \frac{h}{2}\rfloor)$;
+ \item for each proper suffix $\sigma$ of $\rho$, there exists a proper suffix $\sigma'$ of $\rho'$ such that $(\sigma,\sigma')\in \tilde{\mathpzc{R}}(h-1)$;
+   \item for each trace of the form $\sigma \cdot \rho$, where $\sigma$ is not empty, there exists a trace of the form $\sigma'\cdot \rho'$ such that $\sigma'$ is not empty and $(\sigma\cdot \rho,\sigma'\cdot \rho')\in \tilde{\mathpzc{R}}(h)$.
+\end{enumerate}
+ \end{lemma}
+ \begin{proof} We prove (1.) and (2.); (3.) and (4.) easily follow by construction and by definition of $h$-compatibility.
+
+ (1.) We distinguish the following cases:
+ \begin{enumerate}
+  \item $D_p(\rho)<h$ and $N_\emptyset(\rho)<h$. Since $(\rho,\rho')\in \tilde{\mathpzc{R}}(h)$ and $h\in [2,n]$, it holds that $D_p(\rho)=D_p(\rho')$, $N_\emptyset(\rho)=N_\emptyset(\rho')$, and $N_p(\rho)=N_p(\rho')$, and thus $\rho=\rho'$.
+  \item $D_p(\rho)\geq h$. Since $(\rho,\rho')\in \tilde{\mathpzc{R}}(h)$, $D_p(\rho')\geq h$, $N_p(\rho')=N_p(\rho)=0$,  and either $N_\emptyset(\rho')=N_\emptyset(\rho)$, or $N_\emptyset(\rho)\geq h$ and $N_\emptyset(\rho')\geq h$. In both cases, by construction it easily follows that for each proper prefix $\sigma$ of $\rho$,
+      there exists a proper prefix $\sigma'$ of $\rho'$ such that $(\sigma,\sigma')\in \tilde{\mathpzc{R}}(h-1)\subseteq \tilde{\mathpzc{R}}(\lfloor \frac{h}{2}\rfloor)$.
+  \item $D_p(\rho)<h$ and $N_\emptyset(\rho)\geq h$. Since $(\rho,\rho')\in \tilde{\mathpzc{R}}(h)$, we have that $D_p(\rho')=D_p(\rho)$ (and hence, by Proposition~\ref{remark:HcompatibilityOne}, $\lst(\rho)=\lst(\rho')$), $N_p(\rho')=N_p(\rho)$,  and $N_\emptyset(\rho')\geq h$.
+  
+  Let $\sigma$ be a proper prefix of $\rho$. We distinguish the following three subcases:
+ \begin{enumerate}
+   \item $N_\emptyset(\sigma)< \lfloor \frac{h}{2}\rfloor$. Since $N_\emptyset(\rho)\geq h$, we have that $D_p(\sigma)\geq \lfloor \frac{h}{2}\rfloor$ and $|\sigma|=N_\emptyset(\sigma)$ (and thus $N_p(\sigma)=0$). Since
+    $N_\emptyset(\rho')\geq h$, by taking the proper prefix $\sigma'$ of $\rho'$ having length $N_\emptyset(\sigma)$, we obtain that
+    $(\sigma,\sigma')\in  \tilde{\mathpzc{R}}(\lfloor \frac{h}{2}\rfloor)$.
+   \item $N_\emptyset(\sigma)\geq  \lfloor \frac{h}{2}\rfloor$ and $D_p(\sigma)\geq  \lfloor \frac{h}{2}\rfloor$. By taking the prefix $\sigma'$ of
+   $\rho'$ of length $\lfloor \frac{h}{2}\rfloor$, we get that $(\sigma,\sigma')\in  \tilde{\mathpzc{R}}(\lfloor \frac{h}{2}\rfloor)$.
+   \item  $N_\emptyset(\sigma)\geq  \lfloor \frac{h}{2}\rfloor$ and $D_p(\sigma)<  \lfloor \frac{h}{2}\rfloor$. Since $\lst(\rho)=\lst(\rho')$, $N_p(\rho')=N_p(\rho)$,
+   and $N_\emptyset(\rho')\geq h$,
+   there exists a proper prefix $\sigma'$ of $\rho'$ such that $\lst(\sigma')=\lst(\sigma)$,  $N_p(\sigma')=N_p(\sigma)$, and
+    $N_\emptyset(\sigma')\geq  \lfloor \frac{h}{2}\rfloor$. Hence $(\sigma,\sigma')\in  \tilde{\mathpzc{R}}(\lfloor \frac{h}{2}\rfloor)$.
+ \end{enumerate}
+\end{enumerate}
+Thus, in all the cases, (1.) holds.
+
+(2.) Let $(\rho,\rho')\in \tilde{\mathpzc{R}}(h)$ and $\sigma$ be a non-empty trace such that $\rho\cdot \sigma$ is a trace. We distinguish the following cases:
+ \begin{enumerate}
+  \item $D_p(\rho)<h$. Since $(\rho,\rho')\in \tilde{\mathpzc{R}}(h)$, we have that $D_p(\rho')= D_p(\rho)$, $N_p(\rho)=N_p(\rho')$, and either $N_\emptyset(\rho')=N_\emptyset(\rho)$, or $N_\emptyset(\rho)\geq h$ and $N_\emptyset(\rho')\geq h$. Hence, $\lst(\rho)\!=\!\lst(\rho')$ and, taking $\sigma'\!=\!\sigma$, we get that
+        $(\rho\cdot\sigma,\rho'\cdot\sigma')\!\in\! \tilde{\mathpzc{R}}(h)\!\subseteq\! \tilde{\mathpzc{R}}(\lfloor \frac{h}{2}\rfloor)$.
+  \item $D_p(\rho)\geq h$ and $D_p(\sigma)<\lfloor \frac{h}{2}\rfloor$. It follows that $N_\emptyset(\rho\cdot\sigma)\geq \lfloor \frac{h}{2}\rfloor$. Since
+$D_p(\rho')\geq h$, there exists a trace of the form $\rho'\cdot \sigma'$ such that $D_p(\rho'\cdot\sigma')=D_p(\rho\cdot\sigma)$, $N_p(\rho'\cdot\sigma')=N_p(\rho\cdot\sigma)$,
+and $N_\emptyset(\rho'\cdot\sigma')\geq \lfloor \frac{h}{2}\rfloor$. Hence,
+$(\rho\cdot\sigma,\rho'\cdot\sigma')\in \tilde{\mathpzc{R}}(\lfloor \frac{h}{2}\rfloor)$.
+\item $D_p(\rho)\geq h$ and $D_p(\sigma)\geq \lfloor \frac{h}{2}\rfloor$. Thus $D_p(\rho')\geq h$. If $N_\emptyset(\rho\cdot\sigma)<\lfloor \frac{h}{2}\rfloor$, then 
+$N_\emptyset(\rho)=N_\emptyset(\rho')$. Therefore, there exists a trace of the form $\rho'\cdot\sigma'$ such that  $N_\emptyset(\rho'\cdot\sigma')=N_\emptyset(\rho\cdot\sigma)$
+and $D_p(\sigma')\geq \lfloor \frac{h}{2}\rfloor$. Otherwise, $N_\emptyset(\rho\cdot\sigma)\geq \lfloor \frac{h}{2}\rfloor$ and
+   there exists a trace of the form $\rho'\cdot\sigma'$ such that  $N_\emptyset(\rho'\cdot\sigma')\geq \lfloor \frac{h}{2}\rfloor$
+and $D_p(\sigma')= \lfloor \frac{h}{2}\rfloor$. In both cases, $(\rho\cdot\sigma,\rho'\cdot\sigma')\in \tilde{\mathpzc{R}}(\lfloor \frac{h}{2}\rfloor)$.
+\end{enumerate}
+Thus, (2.) holds.
+\end{proof}
+
+By exploiting the previous lemma, we can prove the following one.
+%that, for any natural number $n$, the relation of $h$-compatibility, with $h \leq n$, preserves the satisfiability of 
+%$\HS_\stat$ formulas of length at most $h$ over $\Ku_n$
+ \begin{lemma}\label{corollary:HcompatibilityOne} Let $n\in\Nat$,  $\psi$ be a balanced $\HS_\stat$ formula with $|\psi|\leq n$, and $(\rho,\rho')\in \tilde{\mathpzc{R}}(|\psi|)$. Then $\Ku_n,\rho\models \psi$ if and only if $\Ku_n,\rho'\models \psi$.
+ \end{lemma}
+ \begin{proof} The proof is by induction on $|\psi|$. The cases for the Boolean connectives directly follow from the inductive hypothesis and the fact that $\tilde{\mathpzc{R}}(h)\subseteq \tilde{\mathpzc{R}}(k)$, for all $h,k\in [1,n]$ with $h\geq k$. 
+ 
+ As for the other cases, we proceed as follows:
+ \begin{itemize}
+  \item $\psi=p$. Since $(\rho,\rho')\in \tilde{\mathpzc{R}}(1)$, that is, either $N_{\emptyset}(\rho) = N_{\emptyset}(\rho') = 0$ or both
+  $N_{\emptyset}(\rho) \geq 1$ and $N_{\emptyset}(\rho') \geq 1$, $\rho$ visits a state where $p$ does not hold if and only if $\rho'$ visits a state where $p$ does not hold, which proves the thesis.
+  \item $\psi =\hsB \theta$ (resp., $\psi =\hsBt \theta$). Since $\psi$ is balanced, $\theta$ has the form $\theta=\theta_1\wedge\theta_2$, with $|\theta_1|=|\theta_2|$. Hence $|\theta_1|,|\theta_2|\leq \lfloor \frac{|\psi|}{2}\rfloor$. We focus on the case $\psi =\hsB \theta$.
+  Since $\tilde{\mathpzc{R}}(|\psi|)$ is an equivalence relation, by symmetry it suffices to show that $\Ku_n,\rho\models \psi$ implies $\Ku_n,\rho'\models \psi$. If $\Ku_n,\rho\models \psi$, then there exists a proper prefix $\sigma$ of $\rho$ such that $\Ku_n,\sigma\models \theta_i$, for $i=1,2$. Since $(\rho,\rho')\in \tilde{\mathpzc{R}}(|\psi|)$, by (1.) of Lemma~\ref{lemma:Hcompatibility}, there exists a proper prefix $\sigma'$ of $\rho'$ such that  $(\sigma,\sigma')\in \tilde{\mathpzc{R}}(\lfloor \frac{|\psi|}{2}\rfloor)$. Since $\tilde{\mathpzc{R}}(\lfloor \frac{|\psi|}{2}\rfloor)\subseteq \tilde{\mathpzc{R}}(|\theta_i|)$, for $i=1,2$, by the inductive hypothesis we get that $\Ku_n,\sigma'\models \theta_i$, for $i=1,2$, thus proving that $\Ku_n,\rho'\models \psi$.
+      
+  The case for $\psi =\hsBt \theta$ can be dealt with similarly by exploiting (2.) of  Lemma~\ref{lemma:Hcompatibility}.
+  \item $\psi =\hsE \theta$ (resp., $\psi =\hsEt \theta$). We can proceed as in the previous case by applying (3.) of Lemma~\ref{lemma:Hcompatibility} (resp., (4.) of Lemma~\ref{lemma:Hcompatibility}) and the inductive hypothesis.\qedhere
+\end{itemize}
+ \end{proof}
+%
+
+We can finally prove Lemma~\ref{lemma:MainnonBranchingExpressibilityOfEventually}.
+\begin{lemma*}[\ref{lemma:MainnonBranchingExpressibilityOfEventually}]
+For all $n\in\Nat^+$ and balanced $\HS_\stat$ formulas $\psi$, with $|\psi|\leq n$, 
+it holds that $\Ku_n\models_\stat \psi$ if and only if $\mathpzc{M}_n\models_\stat \psi$.
+\end{lemma*}
+\begin{proof}
+First, let us assume that $\Ku_n\not\models_\stat \psi$. Then, there exists an initial trace $\rho$ of $\Ku_n$ such that $\Ku_n,\rho \not \models_\stat \psi$. By Proposition~\ref{remark:HcompatibilityTwo}, there exists a trace $\rho'$ of $\Ku_n$, which is an initial trace for $\mathpzc{M}_n$, such that $(\rho,\rho') \in \tilde{\mathpzc{R}}(|\psi|)$. By Lemma~\ref{corollary:HcompatibilityOne}, we have 
+that $\Ku_n,\rho ' \not \models_\stat \psi$. Since for any trace $\sigma$ and any $\HS_\stat$ formula $\varphi$, we have that $\Ku_n,\sigma \models_\stat \varphi$ if and only if $\mathpzc{M}_n,\sigma \models_\stat \varphi$ ($\Ku_n$ and $\mathpzc{M}_n$ feature exactly the same set of traces with exactly the same labeling; they only differ in the initial state), we can conclude that $\mathpzc{M}_n,\rho ' \not \models_\stat \psi$, and thus $\mathpzc{M}_n\not \models_\stat \psi$.
+
+Let us now assume that $\mathpzc{M}_n\not \models_\stat \psi$. Then there exists an initial trace $\rho$ of $\mathpzc{M}_n$ such that $\mathpzc{M}_n,\rho \not \models_\stat \psi$. As in the converse direction, we have $\Ku_n,\rho \not \models_\stat \psi$, and, by Proposition~\ref{remark:HcompatibilityTwo}, we can easily find an initial trace $\rho'$ of $\Ku_n$ such that $(\rho,\rho') \in \tilde{\mathpzc{R}}(|\psi|)$. By Lemma~\ref{corollary:HcompatibilityOne} we can conclude that $\Ku_n\not\models_\stat \psi$.
+\end{proof}
+%

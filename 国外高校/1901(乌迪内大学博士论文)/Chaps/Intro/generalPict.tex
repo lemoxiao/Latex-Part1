@@ -1,0 +1,84 @@
+\section{An overview on MC for $\HS$ and its fragments under homogeneity}
+\label{sec:overvHomo}
+
+%In the previous sections we have established two fundamental results.
+%On one hand, 
+%we have given a nonelementary decision procedure for solving $\HS$ MC.
+%On the other, we have shown that 
+As the $\EXPSPACE$-hardness of the fragment $\BE$ clearly propagates to full $\HS$, $\HS$ MC represents a \emph{provably intractable problem} (here and in the following, we say \lq\lq intractable\rq\rq---by borrowing the terminology from Meyer and Stockmeyer~\cite{Stockmeyer:1973}---when a problem can not be provably solved in polynomial time).
+%
+The reasons which originated a systematic, in-depth investigation on complexity and expressiveness of $\HS$ fragments should then appear obvious: lowering the computational complexity of MC has crucial importance; at the same time, identifying a good \emph{trade-off between complexity and expressiveness} of a logic is fundamental as well. In the next chapters we start considering the issue of complexity which, for $\HS$ fragments where properties of prefixes (namely, $\hsB$) and suffixes ($\hsE$) of intervals are dealt with separately, is markedly lower than that of full $\HS$ (see Figure~\ref{fGr} for a graphical overview). Expressiveness will be addressed in Chapter~\ref{chap:TOCL17}: there we will make
+a comparison of different semantic variants of $\HS$; %that is, \emph{state-based} (the one adopted here), \emph{trace-based}, and \emph{computation-tree-based}, 
+in addition we will compare such variants with the standard point-based temporal logics $\LTL$, $\CTL$, and $\CTLStar$.
+
+\begin{figure}[p]
+\centering
+    \input{Chaps/Intro/overGraph}
+    %\vspace{-0.4cm}
+    \caption{Complexity of the MC problem for $\HS$ and its fragments. Red lines separate different complexity classes. Blue arrows depict the contents of the next three chapters.}
+    \label{fGr}
+\end{figure}
+
+Since the combined use of modalities for prefixes $\hsB$ and suffixes $\hsE$ is critical,
+the first fragments taken into consideration were 
+$\AAbarBBbarEbar$ and $\AAbarEBbarEbar$:
+these (syntactically maximal) fragments are obtained from full $\HS$ (i.e., $\AAbar\BE\Bbar\Ebar$) in an obvious way, that is, by removing either $\B$ or $\E$.
+In~\cite{MMP15} we devised, for both of them, an $\EXPSPACE$ MC algorithm which finds, for each trace of the input Kripke structure, a satisfaction-preserving trace of bounded exponential length, i.e., a \emph{trace representative}. In this way, the algorithm needs to check only trace representatives instead of traces of unbounded length. In the same paper, it was proved that formulas satisfying a constant bound on the B-nesting depth (resp., E-nesting depth) can be checked in polynomial working space. As a consequence MC for $\AAbar\Bbar\Ebar$ is in $\PSPACE$ (its formulas do not feature $\hsB$/$\hsE$, hence $\nestb(\psi)=\neste(\psi)=0$).
+The techniques employed in~\cite{MMP15} will be summarized at the beginning of Section~\ref{sec:AAbarBBbarEbar}.
+However, the proof of existence of trace representatives is rather involved and it exploits very technical arguments. In this thesis, we will prove---in a (hopefully!) much more understandable and compact way---membership to $\EXPSPACE$ of MC for $\AAbarBBbarEbar$ and $\AAbarEBbarEbar$ (Section~\ref{sec:AAbarBBbarEbar}) by having recourse to completely different notions.
+
+Still in Chapter~\ref{chap:TCS17} (Section~\ref{sec:AAbarEEbar}), we prove that MC for the $\HS$ fragment $\AAbarBBbar$ (resp., $\AAbarEEbar$) %that allows one to express properties of future and past intervals, interval prefixes (resp., suffixes), and right (resp., left) interval extensions, 
+is in $\PSPACE$.
+Since MC for the $\HS$ fragment featuring only one modality for right (resp., left) interval extensions $\Bbar$ (resp., $\Ebar$) is $\PSPACE$-hard (see Appendix~\ref{sect:BbarHard}),%
+\footnote{The $\PSPACE$-hardness of MC for $\Bbar$/$\Ebar$ gives the best (unmatching) complexity lower bound also for $\AAbarBBbarEbar$ and $\AAbarEBbarEbar$ MC.}
+$\PSPACE$-completeness immediately follows: 
+the complexity turns out be the same as the one of $\LTL$ MC (known to be $\PSPACE$-complete~\cite{Sistla:1985}).
+As a \lq\lq byproduct\rq\rq , we show that MC for the one-modality fragments $\B$ and $\E$ ($\B$ and $\E$ dealt with separately!) turns out to be $\co\NP$-complete.%
+\footnote{The $\co\NP$-hardness derives from that of the fragment $\HSprop$ (the purely propositional fragment of $\HS$), as proved in~\cite{MMP15B}.}
+These results are achieved by means of a \emph{small-model property}: intuitively, given a trace $\rho$ in a finite Kripke structure and a formula $\varphi$ of $\AAbarBBbar$/$\AAbarEEbar$, we prove that, by iteratively contracting $\rho$ it is always possible to build another trace
+whose length is \emph{polynomially bounded} in the size of the formula and of the Kripke structure, which preserves the satisfiability of  $\varphi$  with respect to  $\rho$. 
+
+In Chapter~\ref{chap:IC17}, we analyze the sub-fragments of $\AAbarBBbar$ (respectively, $\AAbarEEbar$), which are still expressive enough to capture meaningful interval properties of state transition systems and whose MC problem has a computational complexity markedly lower than that of full $\HS$,
+namely, $\A$, $\Abar$, $\AAbar$, $\AB$, $\AbarB$, $\AE$, $\AbarE$, $\AAbarB$, and  $\AAbarE$.
+%What they have in common is the 
+All these have a similar computational complexity, as their MC problem settles in one of the lowest levels of the \emph{polynomial-time hierarchy}, $\PTIME^{\NP}$, or below. Such a class consists of the set of problems decided by a deterministic polynomial-time bounded Turing machine, with the \lq\lq support\rq\rq{} of an oracle for the class $\NP$,
+that is, a tool which decides, in one computation step, whether an instance of a problem belonging to $\NP$ is positive or not. 
+%As a consequence, similar techniques can be applied to provide asymptotically optimal model checking algorithms, and analogous ideas can be exploited to prove their hardness.
+$\PTIME^{\NP}$ is also referred to as $\PTIME$ \emph{relative to} $\NP$ (relativization).
+%
+However, though the fragments in the considered set are similar, some differences can be marked. In particular, the fragments $\A$, $\Abar$, $\AAbar$, $\AbarB$, and $\AE$ are actually \lq\lq easier\rq\rq{} than the other ones, since they require the $\PTIME$ Turing machine to perform just $O(\log^2 n)$ queries to the $\NP$ oracle, for an input size $n$, instead of $O(n^k)$ queries, for some constant $k\geq 0$, as it is allowed in the general case for a  polynomial running time machine. The MC problem for these fragments witnesses
+%\lq\lq generates\rq\rq 
+a \lq\lq non-standard\rq\rq{} complexity class in the polynomial-time hierarchy, called \emph{bounded-query} class, that will be presented in detail in Section~\ref{sub:compl}.
+%
+More precisely, 
+we devise a $\PTIME^{\NP}$ MC algorithm for $\AAbarB$ and $\AAbarE$ in Section~\ref{sec:AAbarBalgo}, and then prove a matching complexity lower bound (Section~\ref{sec:ABhard});
+then we show that MC for $\A$, $\Abar$, $\AAbar$, $\AbarB$ and $\AE$   
+is still in $\PTIME^{\NP}$, but only $O(\log^2 n)$ queries to the $\NP$ oracle are necessary (Section~\ref{sect:AAbarAlg}).
+This result is achieved by a reduction \emph{to} the problem TB(SAT)~\cite{schnoebelen2003}, whose instances are complex 
+circuits where some of the gates are endowed with $\NP$ oracles. 
+Finally, we identify a lower bound, which shows that \emph{at least $\log n$ queries} are needed to solve the problem (Section~\ref{sect:AHard}). Unfortunately, such bound does not exactly match the upper bound, leaving open the question whether the problem can be solved by $o(\log^2 n)$ (i.e., strictly less than $O(\log^2 n)$) queries to an $\NP$ oracle, or a tighter lower bound can be proved (or both).
+ 
+In the next Chapter~\ref{chap:ICALP}, we focus on another $\HS$ fragment that has been studied, namely, $\D$---%
+also known as \lq\lq the logic of sub-intervals\rq\rq---whose MC on finite Kripke structures turns out to be $\Psp$-complete (the same complexity result holds also for its SAT over finite linear orders, assuming homogeneity). 
+Modality $\hsD$ can be easily defined by $\hsB$ and $\hsE$, as
+$\hsD \varphi = \hsB \hsE \varphi = \hsE \hsB \varphi$,
+hence $\D$ is a fragment of $\BE$. However
+$\Psp$-completeness of $\D$ MC and SAT strongly contrasts with the case of $\BE$ (whose MC and SAT are $\EXPSPACE$-hard under homogeneity whereas, without homogeneity, SAT is undecidable over the class of finite and discrete linear orders~\cite{DBLP:journals/fuin/MarcinkowskiM14}).%
+%
+\footnote{We point out that homogeneity changes the status of the SAT problem for $\HS$ and its fragments. We will show in Chapter~\ref{chap:TOCL17} that, when interpreted over the (infinite) fullpaths of a finite Kripke structure (which is not the way we interpret $\HS$ here), $\LTL$ and $\HS$ have the same expressive power under homogeneity, but the latter is provably exponentially more succinct. As a byproduct, the SAT problem for full $\HS$, with such a semantics, turns out to be decidable. Therefore, \emph{under homogeneity}, the relevant issue for SAT of $\HS$ becomes its complexity, rather than its decidability.}
+%All results we prove in Chapter~\ref{chap:TOCL17} have \emph{compass structures} at the core: here imported from SAT resolution techniques into MC, they are two-dimensional sets of points labelled by \emph{atoms} which, in turn, are maximal consistent sets of $\D$ formulas.
+
+We now summarize the contents of the next three chapters, by a kind of \lq\lq journey\rq\rq{} among complexity classes, which is depicted by the blue arrows of Figure~\ref{fGr}.
+
+\paragraph{Organization of the next chapters.}
+\begin{itemize}
+	\item  We start with Chapter~\ref{chap:ICALP}, presenting $\D$ MC and SAT. Whereas MC and SAT for $\BE$ are nonelementarily decidable and $\EXPSPACE$-hard, the situation is much better if we restrict to $\BE$'s fragment $\D$: we will prove $\PSPACE$ membership of both problems for it under homogeneity, and comment on their $\PSPACE$-hardness.
+	\item In Chapter~\ref{chap:TCS17}, at first we remain in $\PSPACE$: we prove that MC for $\AAbarBBbar$ (resp., $\AAbarEEbar$) belongs to that class. Since MC for $\Bbar$ (resp., $\Ebar$) is $\PSPACE$-hard (this is proved in Appendix~\ref{sect:BbarHard}), $\PSPACE$-completeness of all fragments \lq\lq in between\rq\rq{} $\Bbar$ and $\AAbarBBbar$ (resp., $\Ebar$ and $\AAbarEEbar$) follows. It is surprising that $\Bbar$ and $\AAbarBBbar$ have exactly the same complexity, being the latter much more expressive than the former, as it can also express properties of prefixes, and of intervals in the future as well as in the past.
+If we then \emph{add} $\Ebar$ to $\AAbarBBbar$ getting $\AAbarBBbarEbar$ (resp., $\Bbar$ to $\AAbarEEbar$ getting $\AAbarEBbarEbar$) we show that the complexity \lq\lq raises\rq\rq{} to $\EXPSPACE$ (Section~\ref{sec:AAbarBBbarEbar});%
+ \footnote{The fragments $\AAbarBBbarEbar$/$\AAbarEBbarEbar$ are presented after $\AAbarBBbar$/$\AAbarEEbar$ for technical reasons.} 
+ conversely,  
+ \item in Chapter~\ref{chap:IC17}, we show the results achieved by \emph{removing} $\Bbar$ from $\AAbarBBbar$  (resp., $\Ebar$ from $\AAbarEEbar$). As we said, this leads to a \lq\lq fall\rq\rq{} towards a low level of the polynomial hierarchy, namely $\PTIME^{\NP}$, where MC for $\A$, $\Abar$, $\AAbar$, $\AB$, $\AbarB$, $\AE$, $\AbarE$, $\AAbarB$ and  $\AAbarE$ is.
+\end{itemize}
+
+
+\input{Chaps/Intro/LOMrelated.tex}

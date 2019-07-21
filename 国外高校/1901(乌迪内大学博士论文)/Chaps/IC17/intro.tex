@@ -1,0 +1,49 @@
+\lettrine[lines=3]{I}{n this chapter,} we study the MC problem for some of the sub-fragments of $\AAbarBBbar$ and of $\AAbarEEbar$---removing $\Bbar$ and $\Ebar$ which lead to $\Psp$-hardness---namely, $\A$, $\Abar$, $\AAbar$, $\AB$, $\AbarB$, $\AE$, $\AbarE$, $\AAbarB$, and  $\AAbarE$.
+%What they have in common is the 
+All these have a similar computational complexity, as their MC settles in one of the lowest levels of the \emph{polynomial-time hierarchy}, $\PTIME^{\NP}$, or even below. 
+We recall that $\PTIME^{\NP}$ is the set of problems decided by a deterministic polynomial-time Turing machine, endowed with an oracle for the class $\NP$
+which decides, in one computation step, whether an instance of a problem belonging to $\NP$ is positive or not. 
+$\PTIME^{\NP}$ is also referred to as $\PTIME$ \emph{relative to} $\NP$.
+
+In order to solve their MC, $\AAbarB$, $\AAbarE$, $\AB$, and $\AbarE$ require the $\PTIME$ Turing machine to perform $O(n^k)$
+queries to the $\NP$ oracle, for an input of size $n$ and for some constant $k\geq 0$.
+Conversely, $\A$, $\Abar$, $\AAbar$, $\AbarB$, and $\AE$ are \lq\lq easier\rq\rq{}
+since, for them, $O(\log^2 n)$ queries are always enough:
+the MC problem for the latter fragments witnesses
+a \lq\lq non-standard\rq\rq{} complexity class in the polynomial-time hierarchy, called \emph{bounded-query} class and denoted as $\Thsq$, that will be presented in more detail below.
+
+More formally, we first prove that MC for $\AB$, $\AbarE$, $\AAbarB$, and $\AAbarE$ is a $\PTIME^{\NP}$-complete problem.
+To this end, we design a $\PTIME^{\NP}$ algorithm exploiting the polynomial small-model property of Section~\ref{sec:AAbarEEbar} and we prove a matching complexity lower bound.%
+%\footnote{In this paper, we use $\LOGSPACE$ many-one reductions for the proofs of hardness.} 
+%
+Next, we devise another MC algorithm for all the remaining fragments, $\A$, $\Abar$, $\AAbar$, $\AbarB$, and $\AE$, via a reduction \emph{to} the problem \TBSATM~\cite{schnoebelen2003} (a problem complete for the aforementioned bounded-query class), whose instances are complex circuits in which some of the gates feature $\NP$ oracles.
+Finally, we prove a lower bound showing that at least $\log n$ queries are needed to solve MC; unfortunately, it does not match the upper bound, leaving open the question whether the problem can be solved by $o(\log^2 n)$ (i.e., strictly less than $O(\log^2 n)$) queries to an $\NP$ oracle, or a tighter lower bound can be proved (or both).
+%
+Figure~\ref{fig:lattice} depicts the scenario of complexity of MC for $\AAbarBBbar$ and all its sub-fragments.
+\begin{sidewaysfigure}
+    \centering
+    \input{Chaps/IC17/lattice}
+    \caption{The computational complexity of MC for the sub-fragments of $\AAbarBBbar$.}
+    \label{fig:lattice}
+\end{sidewaysfigure}
+
+Before moving on, we want to intuitively explain why, for instance, $\AbarB$ is \lq\lq easier\rq\rq{} than $\AB$ (the same holds for the symmetric fragments $\AE$ and $\AbarE$); this is justified by the different expressiveness of the two fragments.
+%To have an intuition about the difference in the complexity of the two fragments, 
+Let us consider an $\A\B$ formula of the form $\hsB \hsA \theta$. A trace $\rho$ satisfies $\hsB \hsA \theta$ if there exists a prefix $\tilde{\rho}$ of $\rho$ from which a branch, i.e., a trace starting from $\lst(\tilde{\rho})$, satisfying $\theta$ departs. 
+%This amounts to say that 
+Hence, $\A\B$ allows one to state specific properties of the branches departing from a state occurring in a given path. Such an ability will be exploited in Section~\ref{sec:ABhard} to prove the $\PTIME^{\NP}$-hardness of $\AB$.
+%
+This kind of properties cannot be expressed in the fragment $\AbarB$. Indeed, for any given trace $\rho$, modality $\hsAt$ only allows one to \lq\lq select\rq\rq{} traces leading to the first state of $\rho$, and modality $\hsB$ is of no help: if we consider any prefix $\tilde{\rho}$ of $\rho$, the set of traces leading to its first state is exactly the same as the set of those leading to the first state of $\rho$, as $\fst(\tilde{\rho}) = \fst(\rho)$. Therefore, pairing $\hsAt$ and $\hsB$ does not give any advantage in terms of expressiveness. 
+%Such a weakness of $\AbarB$ represents the reason why $\AbarB$ formulas can be checked in time $\Thsq$, instead of $\PTIME^{\NP}$.
+%
+Finally, since $\A$, $\Abar$, and $\AAbar$ are devoid of modalities for prefixes (and suffixes), they analogously belong to $\Thsq$.
+
+\paragraph*{Organization of the chapter.}
+\begin{itemize}
+	\item In the next section, we start by recalling some complexity classes that come into play.
+	\item In Section~\ref{sec:AAbarBalgo}, we describe a $\PTIME^{\NP}$ MC algorithm for $\AAbarB$ (and $\AAbarE$). 
+	\item In Section~\ref{sect:AAbarAlg}, we provide a different MC algorithm for the fragments $\AAbar$, $\AbarB$, and $\AE$, whose computational complexity is lower, 
+as it requires only $O(\log^2 n)$ queries to a $\NP$ oracle.
+	\item In Section~\ref{sec:ABhard}, we prove a $\PTIME^{\NP}$ lower bound for $\AB$ (resp., $\AbarE$) MC. The bound immediately propagates to $\AAbarB$ (resp., $\AAbarE$), closing the complexity gap and proving that the MC problem for  $\AB$, $\AbarE$, $\AAbarB$, and $\AAbarE$ is $\PTIME^{\NP}$-complete. 
+	\item In Section~\ref{sect:AHard}, we prove that MC for $\A$ and $\Abar$ formulas requires at least $\log n$ queries to a $\NP$ oracle: this bound propagates to $\AAbar$, $\AbarB$, and $\AE$.
+\end{itemize}

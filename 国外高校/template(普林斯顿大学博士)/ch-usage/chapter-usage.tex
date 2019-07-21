@@ -1,0 +1,29 @@
+
+\chapter{Usage\label{ch:usage}}
+
+To start, in your main .tex file, use this class as your main documentclass instead of `report' or `book'. For example:
+\begin{quote}
+$\backslash documentclass[12pt,lot, lof]\{puthesis\}$
+\end{quote}
+
+In this example, we setup our document to use the PU Thesis style, with 12pt font for body text, and to include a List of Tables and List of Figures in the front matter. You could instead set an 11 point or 10 point font by changing the first option. You can also add `los' to include a list of symbols.
+
+To use single spacing, add the option `singlespace'. This is a special option for the \texttt{puthesis} documentclass, which sets single spacing for both the front matter and for the document itself. Additional parameters should be set in your main .tex file, and are described in detail in Section~\ref{sec:usage:options}.
+
+The template itself declares two other options, to be set immediately after the \texttt{documentclass} command. First is `printmode', declared with the command:
+\begin{quote}
+$\backslash newcommand\{\backslash printmode\}\{\}$
+\end{quote}
+This command, used later in the thesis.tex file, turns off the \texttt{hyperref} package and all internal links in the PDF file. This removes any colored links and highlighting that would not be appropriate in a printed and bound thesis. Instead the \texttt{url} package is loaded, so that \\url commands in your document will continue to work and urls will break properly across multiple lines.
+
+When `printmode' is not specified, the hyperref package is included. It creates colored links for citations, footnotes, and internal references, which can be used to navigate the PDF document more easily. It also adds bookmarks to the PDF file, mirroring the table of contents. By default, it is set to use colored links. For the PDF file that you will submit electronically to ProQuest, this may not be desirable since some copies may be printed, while others will be used electronically. Thus another option, `proquestmode', is defined that keeps hyperref but disables colored links:
+\begin{quote}
+$\backslash newcommand\{\backslash proquestmode\}\{\}$
+\end{quote}
+This mode has no effect when used in combination with `printmode'. 
+
+
+\input{ch-usage/usage_options} 
+
+
+

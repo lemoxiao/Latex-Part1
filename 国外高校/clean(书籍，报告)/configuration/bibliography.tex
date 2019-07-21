@@ -1,0 +1,30 @@
+% =============================================================
+% Bibliography
+% =============================================================
+\usepackage[        % use biblatex for bibliography
+    backend=biber,  % use biber backend (bibtex replacement) or bibtex
+    style=ieee,     % bib style
+    natbib=true,    % allow natbib commands
+    hyperref=true,  % activate hyperref support
+    backref=true,   % activate backrefs
+    isbn=false,     % don't show isbn tags
+    url=false,      % don't show url tags
+    doi=false,      % don't show doi tags
+    urldate=long,   % display type for dates
+    maxnames=3,     %
+    minnames=1,     %
+    maxbibnames=5,  %
+    minbibnames=3,  %
+    maxcitenames=2, %
+    mincitenames=1  %
+]{biblatex}
+
+\defbibheading{bibliography}[\refname]{% Custom Heading for the bibliography
+    \chapter*{\bibliographyname}%
+    \addcontentsline{toc}{chapter}{\protect\numberline{}\bibliographyname}
+    \unumeredchaptermark{\bibliographyname}
+}
+
+\addbibresource{../references/primary.bib}
+% =============================================================
+

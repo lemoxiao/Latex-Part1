@@ -1,0 +1,1069 @@
+%
+%save this document as thesis.sty %T But then it won't work
+%
+%===================================================%
+%  The document style definition file 'thesis.sty'  %
+%  Copyright by Jin Liu, May, 1993                  %
+%---------------------------------------------------%
+%  modified by Yu Chih (Julie) Liu, 1997            %
+%---------------------------------------------------%
+%  The document style 'dissertation' is modified    %
+%  from LaTeX style 'report'.                       %
+%===================================================%
+%  The first part of this file is from 'report.sty' %
+%---------------------------------------------------%
+%  Modified by T McLoud to use LaTex2e report[12pt] %
+%
+% report.sty 24-May-89
+
+ \typeout{===================================================================}
+ \typeout{  Document Style `thesis'  (C) 1994, Jin Liu                       }
+ \typeout{-------------------------------------------------------------------}
+ \typeout{  For the questions concerning the format and usage of this LaTeX  }
+ \typeout{  document style, please contact Jin Liu at "jin@seas.smu.edu",    }
+ \typeout{  Electrical Engineering Department, S.M.U., Dallas, Texas 75275.  }
+ \typeout{-------------------------------------------------------------------}
+ \typeout{  Modified by Yu Chih (Julie) Liu, 1997                            }
+ \typeout{===================================================================}
+
+
+
+\renewcommand\contentsname{TABLE OF CONTENTS}
+
+%----------------------------------------------------
+%  The first part of this file is from 'rep12.sty'  |
+%----------------------------------------------------
+%
+% rep12.sty 19-Jan-88
+
+ \def\baselinestretch{1.5}
+
+ \def\@makechapterhead#1{{\parindent 0pt \begin{center}
+%%  \ifnum \c@secnumdepth >\m@ne \bf \@chapapp{} \thechapter \\ %% Change by Julie
+  %\large %T
+  \ifnum \c@secnumdepth >\m@ne  \@chapapp{} \thechapter \\ %% Change by Ted
+  \vskip 2pt \fi
+     #1 \end{center}
+  \nobreak } }
+
+ \def\@makeschapterhead#1{{\parindent 0pt \begin{center}
+     \bf          %% Add by Julie to boldface chapter name
+  #1 \end{center}
+  \nobreak } }
+
+ \def\chapter{\clearpage \thispagestyle{plain} \global\@topnum\z@
+ \@afterindentfalse \secdef\@chapter\@schapter}
+
+ \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+ \advance \numfigure by \c@figure
+ \advance \numtable by \c@table
+ \refstepcounter{chapter}
+ \typeout{\@chapapp\space\thechapter.}
+ \addcontentsline{toc}{chapter}{\protect
+ \numberline{\hfill \thechapter.\hbox{\hskip 0.8em}\ignorespaces}#1}\else
+ \addcontentsline{toc}{chapter}{#1}\fi
+ \vbox{\vskip 0.56in} %% 2" FROM TOP OF PAGE TO 'CHAPTER'
+ \chaptermark{#1}
+ %************************NEW CHAPTER DEFINITION*****************
+ \if@twocolumn
+ \@topnewpage[\@makechapterhead{#2}]
+ \else \@makechapterhead{#2}
+ \@afterheading\fi
+\vskip -0.19in  %% 2 DOUBLE SPACES BETWEEN CHAPTER TITLE AND FIRST SENTENCE
+ \chaptertest=0
+ \indent
+ \everypar={\advance \chaptertest by 1}
+
+ }
+
+ \def\@schapter#1{\if@twocolumn \@topnewpage[\@makeschapterhead{#1}]
+ \else \@makeschapterhead{#1}
+ \@afterheading\fi
+ \indent
+ }
+
+%
+%----------------------------------------------------------%
+%  New definitions of section and subsections              %
+%----------------------------------------------------------%
+
+ \def\section#1{\ifnum\chaptertest>1 \vskip 0.25in \else \vskip 0.25in \fi
+                \ifnum \c@secnumdepth >\m@ne
+ \refstepcounter{section}
+ \addcontentsline{toc}{section}{\protect
+ \numberline{\thesection.}#1}\else
+ \addcontentsline{toc}{section}{#1}\fi
+ \sectionmark{#1}
+ \noindent %T
+%T \centerline{$\underline{\hbox{\thesection.} _{\ } \ \hbox{#1}}$}
+ \Null { \bf \thesection. \ #1}%T
+ \vskip -0.23in %% Julie
+ \indent
+ }
+
+%\def\sectiondl#1#2{\ifnum\chaptertest>1 \vskip 0.25in \else \vskip 0.01in \fi
+ \def\sectiondl#1#2{\ifnum\chaptertest>1 \vskip 0.25in \else \vskip 0.25in \fi
+                \ifnum \c@secnumdepth >\m@ne
+ \refstepcounter{section}
+ \addcontentsline{toc}{section}{\protect
+ \numberline{\thesection.}#1 #2}\else
+ \addcontentsline{toc}{section}{#1 #2}\fi
+ \sectionmark{#1 #2}
+
+ \centerline{$\underline{\hbox{\thesection.} _{\ } \ \hbox{#1}}$}
+ \centerline{$\underline{\hbox{\thesection.} _{\ } \ \hbox{#1}}$}
+ \centerline{$\underline{_{\ } \hbox{#2}}$}
+ \vskip -0.09in
+ \indent
+ }
+
+ \def\subsection#1{\vskip 0.25in \ifnum \c@secnumdepth >\m@ne
+ \refstepcounter{subsection}
+ \addcontentsline{toc}{subsection}{\protect
+ \numberline{\thesubsection.}#1}\else
+ \addcontentsline{toc}{subsection}{#1}\fi
+ \subsectionmark{#1}
+%T \centerline{\thesubsection. \ #1}
+ \noindent %T
+ \Null \thesubsection. \ #1
+  \vskip -0.27in  %% Julie: space betw. name to the fisrt line
+ \indent
+
+ }
+
+ \def\subsectiondl#1#2{\vskip 0.25in \ifnum \c@secnumdepth >\m@ne
+ \refstepcounter{subsection}
+ \addcontentsline{toc}{subsection}{\protect
+ \numberline{\thesubsection.}#1 #2}\else
+ \addcontentsline{toc}{subsection}{#1 #2}\fi
+ \subsectionmark{#1}
+ \noindent
+ \centerline{\thesubsection. \ #1} \vskip -0.08in
+ \centerline{#2}
+  \vskip -0.27in
+ \indent
+
+ }
+
+ \def\subsubsection#1{\vskip 0.25in \ifnum \c@secnumdepth >\m@ne
+ \refstepcounter{subsubsection}
+ \addcontentsline{toc}{subsubsection}{\protect
+ \numberline{\thesubsubsection.}#1}\else
+ \addcontentsline{toc}{subsubsection}{#1}\fi
+ \subsubsectionmark{#1}
+ \noindent
+ %\centerline{\thesubsubsection. \ #1}  %% title is on the middle originally
+ %T\Null \thesubsubsection. \ #1  %% Julie move it to the left ( standard requirement)
+ \Null { \em \thesubsubsection. \ #1 } %% Julie move it to the left ( standard requirement)
+                                %T \Null added to show first numeral
+ \vskip -0.27in
+ \indent
+
+ }
+
+ \def\subsubsectiondl#1#2{\vskip 0.25in \ifnum \c@secnumdepth >\m@ne
+ \refstepcounter{subsubsection}
+ \addcontentsline{toc}{subsubsection}{\protect
+ \numberline{\thesubsubsection.}#1 #2}\else
+ \addcontentsline{toc}{subsubsection}{#1 #2}\fi
+ \subsubsectionmark{#1 #2}
+ \noindent
+ \centerline{\em \thesubsubsection. \ #1} \vskip -0.08in
+ \centerline{\em #2}
+ \vskip -0.27in
+ \indent
+
+ }
+
+
+%
+%--------------------------------------------------------------------------
+%  End of the first part and continue of the second part of "thesis.sty". %
+%--------------------------------------------------------------------------
+%
+
+ \def\@pnumwidth{1.55em}
+ \def\@tocrmarg {4.00em}
+ \def\@dotsep{1.5}
+ \setcounter{tocdepth}{3}
+
+
+ \def\loftitle{\dimen0=\hsize \advance\dimen0 by -4.8em
+              \parshape=2 0pt\hsize 4.8em\dimen0}
+
+ \def\@dottedlofline#1#2#3#4#5{\ifnum #1>\c@tocdepth \else
+   \vskip \z@ plus .2pt
+   {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
+    \parindent #2\relax\@afterindenttrue
+    \interlinepenalty\@M
+    \leavevmode
+    \@tempdima #3\relax \advance\hangindent \@tempdima \hbox{}\hskip -\leftskip
+    \loftitle #4\nobreak\leaders\hbox{$\m@th \mkern \@dotsep mu.\mkern \@dotsep
+       mu$}\hfill \nobreak \hbox to\@pnumwidth{\hfil\rm #5}\par}\fi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%        TABLE OF CONTENTS          %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \def\tableofcontents{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
+ \fi \newpage \vbox{\vskip -0.47in \chapter*{TABLE OF CONTENTS\@mkboth{CONTENTS}{CONTENTS}}}
+ \vskip -0.04in %T Different from report.cls
+ \@starttoc{toc}\if@restonecol\twocolumn\fi}
+
+ \def\l@chapter{\par
+                \baselineskip 0.20in  % added for smaller spacing
+                \@dottedtocline{1}{0.0em}{2.6em}}
+ \def\l@section{\baselineskip 0.20in  % added for smaller spacing
+                \@dottedtocline{1}{2.6em}{2.3em}}
+ \def\l@subsection{\baselineskip 0.20in  % added for smaller spacing
+                   \@dottedtocline{2}{4.9em}{3.2em}}
+ \def\l@subsubsection{\baselineskip 0.20in  % added for smaller spacing
+                     \@dottedtocline{3}{8.1em}{4.1em}}
+ \def\l@paragraph{\baselineskip 0.20in  % added for smaller spacing
+                 \@dottedtocline{4}{12.2em}{5em}}
+ \def\l@subparagraph{\baselineskip 0.20in  % added for smaller spacing
+                    \@dottedtocline{5}{17.2em}{6em}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%         LIST OF FIGURES           %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \def\listoffigures{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
+  \fi \newpage \vbox{\vskip 0.42in \chapter*{LIST OF FIGURES\@mkboth  %% Julie
+  {LIST OF FIGURES}{List of Figures}}}
+  \vskip -0.1in
+  \noindent
+  Figure \hfill Page
+
+ \addcontentsline{toc}{chapter}{\protect \noindent {LIST OF FIGURES}}
+
+  \@starttoc{lof}\if@restonecol \twocolumn\fi}
+
+ \def\l@figure{\baselineskip 0.10in              % added for smaller spacing
+               \@dottedlofline{1}{0.2em}{3.0em}} % in lists of figures and tables
+
+ \def\l@table{\baselineskip 0.20in              % added for smaller spacing
+              \@dottedlofline{1}{0.2em}{3.0em}} % in lists of figures and tables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%          LIST OF TABLES           %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \def\listoftables{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
+  \fi \newpage \vbox{\vskip 0.42in \chapter*{LIST OF TABLES\@mkboth
+  {LIST OF TABLES}{LIST OF TABLES}}}
+  
+  \vskip -0.1in
+  
+  \noindent
+  
+  Table \hfill Page
+
+ \addcontentsline{toc}{chapter}{\protect \noindent {LIST OF TABLES}}
+
+ \@starttoc{lot}\if@restonecol \twocolumn\fi}
+
+ \let\l@table\l@figure
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%           BIBLIOGRAPHY            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \def\thebibliography#1{\newpage \vbox{\vskip 0.57in \chapter*{REFERENCES\@mkboth
+  {BIBLIOGRAPHY}{BIBLIOGRAPHY}}}
+  \vskip -0.1in
+  %%     REFERENCES heading
+ \refstepcounter{chapter}
+ \typeout{REFERENCES.}
+ \addcontentsline{toc}{chapter}{REFERENCES}
+ \chaptermark{REFERENCES}
+ %}  %% end of vbox
+ \baselineskip 0.10in
+ \renewcommand\lbaselinestretch{0.20in} %% tdp-fx single space references
+
+ \list
+ {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+ \advance\leftmargin\labelsep
+ \usecounter{enumi}}
+ \def\newblock{\hskip .11em plus .33em minus .07em}
+ \sloppy\clubpenalty4000\widowpenalty4000
+ \sfcode`\.=1000\relax} %% end of thebibliography
+
+ \let\endthebibliography=\endlist
+
+%
+%-----------------------------------------------
+%  Special caption style for table environment |
+%-----------------------------------------------
+%
+ \def\tcaption{\refstepcounter\@captype \@dblarg{\@tcaption\@captype}}
+ \long\def\@tcaption#1[#2]#3{\par\addcontentsline{\csname
+   ext@#1\endcsname}{#1} {\protect\numberline{\hfill \csname
+   the#1\endcsname. \hbox{\hskip 0.5em}\ignorespaces}{\ignorespaces #2}}\begingroup
+     \@parboxrestore
+     \normalsize
+     \@maketcaption{\csname fnum@#1\endcsname} {\ignorespaces #3}\par
+   \endgroup}
+ \long\def\@maketcaption#1#2{
+  \vskip 10pt \baselineskip 0.23in
+   \setbox\@tempboxa\hbox{#1.-{\hskip 1pt}-#2}
+  \ifdim \wd\@tempboxa >\hsize #1.-{\hskip 1pt}-#2\par \else \hbox
+ to\hsize{\hfil\box\@tempboxa\hfil}
+% \fi}
+  \fi \vskip 0.5cm}   %% Julie add   space betw. caption anf table
+
+ \long\def\@makecaption#1#2{
+  \vskip 10pt \baselineskip 0.23in
+   \setbox\@tempboxa\hbox{#1.\ \ #2}
+  \ifdim \wd\@tempboxa >\hsize #1.\ \  #2\par \else \hbox
+ to\hsize{\hfil\box\@tempboxa\hfil}
+% \fi}
+  \fi \vskip 0.5cm}   %% Julie add   space betw. caption anf table
+
+\long\def\@caption#1[#2]#3{\par\addcontentsline{\csname
+  ext@#1\endcsname}{#1}{\protect\numberline{\hfill \csname
+  the#1\endcsname.\hbox{\hskip 0.5em}\ignorespaces}{\ignorespaces #2}}\begingroup
+    \@parboxrestore
+    \normalsize
+    \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
+  \endgroup}
+
+ \def\end@float{\vbox{\vskip 0.15in}
+    \par\vskip\z@\egroup %% \par\vskip\z@ added 15 Dec 87
+    \ifnum\@floatpenalty <\z@
+     \@cons\@currlist\@currbox
+     \ifdim \ht\@currbox >\textheight
+        \ht\@currbox\textheight \fi
+     \ifnum\@floatpenalty < -\@Mii
+        \penalty -\@Miv
+        \@tempdima\prevdepth    %% saving and restoring \prevdepth added
+        \vbox{}                 %% 26 May 87 to prevent extra vertical
+        \prevdepth \@tempdima   %% space when used in vertical mode
+        \penalty\@floatpenalty
+      \else \vadjust{\penalty -\@Miv \vbox{}\penalty\@floatpenalty}\@esphack
+     \fi\fi}
+
+ \def\@xfloat#1[#2]{\ifhmode \@bsphack\@floatpenalty -\@Mii\else
+    \@floatpenalty-\@Miii\fi\def\@captype{#1}\ifinner
+       \@parmoderr\@floatpenalty\z@
+     \else\@next\@currbox\@freelist{\@tempcnta\csname ftype@#1\endcsname
+        \multiply\@tempcnta\@xxxii\advance\@tempcnta\sixt@@n
+        \@tfor \@tempa :=#2\do
+                         {\if\@tempa h\advance\@tempcnta \@ne\fi
+                          \if\@tempa t\advance\@tempcnta \tw@\fi
+                          \if\@tempa b\advance\@tempcnta 4\relax\fi
+                          \if\@tempa p\advance\@tempcnta 8\relax\fi
+          }\global\count\@currbox\@tempcnta}\@fltovf\fi
+     \global\setbox\@currbox\vbox\bgroup
+%    \boxmaxdepth\z@     % commented out 15 Dec 87
+     \hsize\columnwidth \@parboxrestore \baselineskip \fbaselinestretch}
+
+ \def\@startline{\vskip \tabbaselinestretch
+   \global\@curtabmar\@nxttabmar\relax
+   \global\@curtab\@curtabmar\global\setbox\@curline\hbox % missing \global
+   {}\@startfield\strut}                                  % added 17 Jun 86
+
+ \def\list#1#2{\ifnum \@listdepth >5\relax \@toodeep
+     \else \global\advance\@listdepth\@ne \fi
+  \rightmargin \z@ \listparindent\z@ \itemindent\z@
+  \csname @list\romannumeral\the\@listdepth\endcsname
+  \def\@itemlabel{#1}\let\makelabel\@mklab \@nmbrlistfalse #2\relax
+  \@trivlist \baselineskip \lbaselinestretch
+  \parskip\parsep \parindent\listparindent
+  \advance\linewidth -\rightmargin \advance\linewidth -\leftmargin
+  \advance\@totalleftmargin \leftmargin
+  \parshape \@ne \@totalleftmargin \linewidth
+  \ignorespaces}
+
+ \def\@tabular{\leavevmode \hbox \bgroup $\let\@acol\@tabacol
+    \let\@classz\@tabclassz
+    \let\@classiv\@tabclassiv \def\arraystretch{\tbaselinestretch}
+    \let\\\@tabularcr\@tabarray}
+
+
+
+
+%
+%----------------------------------------------------------------
+%  Add more space around "equation" and "eqnarray" environment  |
+%----------------------------------------------------------------
+%
+ \@addtoreset{equation}{chapter}
+ \def\theequation{\thechapter.\arabic{equation}}
+
+ \def\eqnarray{\vskip 0.01in \stepcounter{equation}
+        \let\@currentlabel=\theequation \global\@eqnswtrue
+        \global\@eqcnt\z@\tabskip\@centering\let\\=\@eqncr
+        $$\halign to \displaywidth\bgroup\@eqnsel\hskip\@centering
+        $\displaystyle\tabskip\z@{##}$&\global\@eqcnt\@ne
+        \hskip 2\arraycolsep \hfil${##}$\hfil
+        &\global\@eqcnt\tw@ \hskip 2\arraycolsep
+        $\displaystyle\tabskip\z@{##}$\hfil
+        \tabskip\@centering&\llap{##}\tabskip\z@\cr}
+
+ \def\endeqnarray{\@@eqncr\egroup
+      \global\advance\c@equation\m@ne$$
+      \vskip 0.20in \noindent \global\@ignoretrue}
+
+ \def\equation{\vskip 0.01in $$ % $$ BRACE MATCHING HACK
+               \refstepcounter{equation}}
+
+ \def\endequation{\eqno \@eqnnum % $$ BRACE MATCHING HACK
+  $$ \vskip 0.10in \noindent \global\@ignoretrue}   %% 0.10in MARIO, 06/96
+
+
+
+
+ \ps@plain \pagenumbering{arabic} \onecolumn \if@twoside\else\raggedbottom\fi
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    THIS SHOULD GO AT THE BEGINNING    %%
+%%  SETS THE MARGINS & PRELIMINARY PAGES %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%JENNY YOU HAVE CHANGED THESE VALUES!! DO NOT CHANGE!!
+ \setlength{\topmargin}{-0.45in}
+ \setlength{\oddsidemargin}{0.5in}
+ \setlength{\textwidth}{6.0in}
+ \setlength{\textheight}{8.5in}
+ \parskip .15in  %I don't know what this is for. . . (JT)
+
+%--------------------------------------------------------------------
+% Define the sectional title format
+%--------------------------------------------------------------------
+%
+ \newcount\numdegree
+ \newcount\numCmember
+
+ \def\Null{ }
+
+ \def\Name#1#2#3{\def\mylastname{ #1} \def\myfirstname{ #2} \def\Suffix{ #3}}
+
+ \def\Title#1#2#3{\def\dtitleA{#1}\def\dtitleB{#2}\def\dtitleC{#3}
+      \def\udtitle{\begin{center}
+                    \if\dtitleA\Null \else\uppercase{#1} \\ \fi
+                    \if\dtitleB\Null \else\uppercase{#2} \\ \fi
+                    \if\dtitleC\Null \else\uppercase{#3} \fi
+                   \end{center}}}
+
+ \def\DegreeA#1{\numdegree=1 \def\mydegreeA{#1}}
+ \def\DegreeB#1{\numdegree=2 \def\mydegreeB{#1}}
+ \def\DegreeC#1{\numdegree=3 \def\mydegreeC{#1}}
+ \def\DegreeD#1{\numdegree=4 \def\mydegreeD{#1}}
+ \def\DegreeE#1{\numdegree=5 \def\mydegreeE{#1}}
+
+ \def\DegreeSought#1{\def\mydegree{#1}}
+ \def\Major#1{\def\mymajor{#1}}
+ \def\University#1{\def\myuniversity{#1}}
+ \def\School#1{\def\myschool{#1}}
+ \def\DegreeDate#1{\def\ddate{#1}}
+ \def\ThesisDate#1{\def\dsdate{#1}}
+
+ \def\Advisor#1{\def\myadvisor{#1}}
+ % \def\AdvisorA#1{\def\myadvisorA{#1}}
+ % \def\AdvisorB#1{\def\myadvisorB{#1}}
+
+ \def\CommitteeMemberA#1{\numCmember=1 \def\memberA{#1}}
+ \def\CommitteeMemberB#1{\numCmember=2 \def\memberB{#1}}
+ \def\CommitteeMemberC#1{\numCmember=3 \def\memberC{#1}}
+ \def\CommitteeMemberD#1{\numCmember=4 \def\memberD{#1}}
+ \def\CommitteeMemberE#1{\numCmember=5 \def\memberE{#1}}
+
+ \def\Dedicate#1{\def\dedication{#1}}
+ \def\ThesisType#1{\def\thesistype{#1  }}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%          Title Page               %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \def\Titlepage{\raggedbottom
+       {\baselineskip 0.35in
+       \vbox{\vspace{0.4in}}
+
+       \udtitle
+
+       \begin{center}
+        A \thesistype Presented to the Graduate Faculty of the \\
+        \myschool \\
+        \myuniversity \\
+        in \\
+        Partial Fulfillment of the Requirements \\
+        for the degree of \\
+        \mydegree \\
+        with a \\
+        Major in \mymajor \\
+        by \\ \  \\
+
+        \vskip -0.05in  %DOUBLE SPACE BETWEEN 'BY' AND 'YOUR NAME'
+
+        \myfirstname \mylastname \Suffix
+       \end{center}}
+
+       \vskip -0.30in    %SINGLE SPACE BETWEEN DEGREES
+
+       \vbox{\baselineskip0.20in
+             \begin{center} \
+              \ifnum\numdegree>0 \\ (\mydegreeA) \fi
+              \ifnum\numdegree>1 \\ (\mydegreeB) \fi
+              \ifnum\numdegree>2 \\ (\mydegreeC) \fi
+              \ifnum\numdegree>3 \\ (\mydegreeD) \fi
+              \ifnum\numdegree=5 \\ (\mydegreeE) \fi
+               \\ \ \\ \  \\
+
+             \vskip 0.05in     %DOUBLE SPACE BETWEEN 'PREVIOUS DEGREES' AND 'DATE'
+
+        \ddate
+             \end{center}}
+
+       \newpage
+       \setcounter{page}{0}
+       }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%          Approval Page            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \def\Approvalpage{
+       \pagenumbering{alph}
+       \setcounter{page}{0}
+       \raggedbottom
+       \vbox{\vspace{0.42in}}   %% 0.64 original julie
+
+       \udtitle
+
+       \vspace{1.0in}
+
+       \begin{flushright}
+       \parbox{3.0in}{\begin{flushleft}
+       \hfill Approved by: \\ \  \\
+                 \vspace{0.2in}
+                 \rule[-0.1in]{3.0in}{1pt} \\
+                  Dr. \myadvisor \vspace{0.2in}
+                 \ifnum\numCmember>0 \rule[-0.1in]{3.0in}{1pt} \\
+                 \memberA \vspace{0.2in} \fi
+                 \ifnum\numCmember>1 \rule[-0.1in]{3.0in}{1pt} \\
+                 \memberB \vspace{0.2in} \fi
+                 \ifnum\numCmember>2 \rule[-0.1in]{3.0in}{1pt} \\
+                 \memberC \vspace{0.2in} \fi
+                 \ifnum\numCmember>3 \rule[-0.1in]{3.0in}{1pt} \\
+                 \memberD \vspace{0.2in} \fi
+                 \ifnum\numCmember=5 \rule[-0.1in]{3.0in}{1pt} \\
+                 \memberE \fi
+       \end{flushleft}}
+       \end{flushright}
+       \newpage
+       \pagenumbering{alph}
+       \setcounter{page}{0}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%          Abstract Page            %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \newenvironment{Abstract}{\newpage
+       \noindent
+       \vbox{\vspace{0.38in}}
+       {\vbox{\baselineskip0.20in
+              \hbox{\mylastname \Suffix, \myfirstname}
+              \ifnum\numdegree>1 \hbox{\ } \fi
+              \ifnum\numdegree>2 \hbox{\ } \fi
+              \ifnum\numdegree>3 \hbox{\ } \fi
+              \ifnum\numdegree=5 \hbox{\ } \fi}
+       \hfill
+       \vbox{\baselineskip0.20in
+              \ifnum\numdegree>0 \hbox{\mydegreeA} \fi
+              \ifnum\numdegree>1 \hbox{\mydegreeB} \fi
+              \ifnum\numdegree>2 \hbox{\mydegreeC} \fi
+              \ifnum\numdegree>3 \hbox{\mydegreeD} \fi
+              \ifnum\numdegree=5 \hbox{\mydegreeE} \fi   }} \\
+
+       \vskip -0.4in
+
+       \noindent
+       \if\dtitleA\Null \else $\underline{\hbox{\dtitleA} _{\ }}$ \fi
+
+       \vskip -0.20in
+
+       \noindent
+       \if\dtitleB\Null \else $\underline{\hbox{\dtitleB} _{\ }}$ \fi
+
+       \vskip -0.20in
+
+       \noindent
+       \if\dtitleC\Null \else $\underline{\hbox{\dtitleC}} _{\ }$ \fi
+
+       \vspace{-0.01in}
+
+       \vbox{\vskip0.120in \indent Advisor: \   Professor \myadvisor
+             \par\vskip 0.02in}
+
+       \vspace{-0.04in}
+       \noindent
+       \vbox{\baselineskip 0.28in
+             \hbox{\mydegree \ degree conferred \ddate}
+
+             \hbox{\thesistype  completed \dsdate}
+             \vskip -0.1in}
+             \parskip 0.00in
+
+             \vskip -0.25in
+
+       \vbox{\vskip 0.25in}   %% add by Julie
+       \indent
+       }{   }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%      Acknowledgment Page          %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \newenvironment{Acknowledgment}{\newpage \parskip 0.00in
+       %%
+       %% Next line used to be \vbox{\vskip 0.63in} MARIO, 06/96
+       %%
+       \vbox{\vskip 0.55in}
+      %T \addcontentsline{toc}{chapter}{\protect \noindent {ACKNOWLEDGMENTS}}
+       \begin{center} \bf ACKNOWLEDGMENTS \end{center} \par
+
+       \vskip -0.18in
+
+       %\vskip 0.00in
+       \indent
+       }{  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%          Symbols Page             %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \newenvironment{listofsymbols}{\newpage
+       \vbox{\vskip 0.63in}
+       \addcontentsline{toc}{chapter}{\protect \noindent {LIST OF SYMBOLS}}
+       \begin{center} LIST OF SYMBOLS \end{center}
+       \let\ttbaselinestretch\tabbaselinestretch
+       \def\tabbaselinestretch{0.00in}
+       \noindent
+       \begin{tabbing}
+       }{\end{tabbing}
+       \let\tabbaselinestretch\ttbaselinestretch
+       \newpage}
+
+ \def\ApprovalTitlePages{
+         \newcount\numfigure
+         \newcount\numtable
+         \newcount\chaptertest
+         \def\indexfile{\jobname.idx}
+         \immediate\openin7 \jobname.idx
+         \ifeof7 \message{No file \indexfile}
+         \else \immediate\closein7 \input{\indexfile} \fi
+         \Approvalpage \Titlepage
+         \pagenumbering{roman} \setcounter{page}{3}}
+
+ \def\PreliminaryPages{
+      \tableofcontents
+       \ifnum\numfigure>0 \listoffigures \fi
+       \ifnum\numtable>0 \listoftables \fi}
+       %\listoffigures %T If lof not displayed, remove ifnum
+       %\listoftables} %T If lot not displayed, remove ifnum
+
+ \newenvironment{thesis}{
+         \numfigure=0
+         \numtable=0
+         \parskip 0.00in
+         \if\dedication\Null \else
+         \newpage \pagenumbering{alph}\setcounter{page}{0}
+       % \begin{center} \vbox{\vskip 1.0in} {\it \dedication} \end{center}
+   \begin{center} \vbox{\vskip 0.803in} {\it \dedication} \end{center} %% Julie
+         \fi
+
+         \addtocontents{toc}{\protect\noindent
+                             CHAPTER \hfill \protect\vskip 0.05in}
+         \newpage
+         \pagenumbering{arabic}}{
+         \advance \numfigure by \c@figure
+         \advance \numtable by \c@table
+         \immediate\openout7=\indexfile
+         \immediate\write7{\numfigure=\the\numfigure}
+         \immediate\write7{\numtable=\the\numtable}
+         \immediate\closeout7
+         \typeout{Total number of figures: \the\numfigure}
+         \typeout{Total number of tables: \the\numtable}}
+
+ \newcommand\StartAppendix {
+    \appendix
+    \addtocontents{toc}{\protect\noindent APPENDIX \hfill
+    \protect\vskip 0.05in} } %end StartAppendix
+%
+%----------------------------------------------------------------------
+%  The following definitions related to the baselineskip are for the  |
+%  smaller spacing in float, list, tabular and tabbing environments   |
+%----------------------------------------------------------------------
+%
+ \def\fbaselinestretch{0.20in}
+ \def\lbaselinestretch{0.30in}  %% Will look like 2-space now MARIO,6/96
+ % originally there was 0.8 (below)
+%%  \def\tbaselinestretch{0.30}
+ \def\tbaselinestretch{0.75}   %% change by Julie for table, heigh of row
+  \def\tabbaselinestretch{-0.07in}
+%
+%-----------------------------
+%  Initialize all variables  |
+%-----------------------------
+%
+ \numdegree=0
+ \numCmember=0
+
+%T \def\dedication{ }
+%T \def\acknowledgments{ }
+%T \def\thesistype{your thesis type (dissertation or thesis)}
+%T \def\mylastname{your last name}
+%T \def\myfirstname{your first and middle name}
+%T \def\Suffix{ }
+%
+%----------------------
+%  Other definitions  |
+%----------------------
+%
+ \def\refe#1{Eq.(\ref{#1})}
+ \def\reff#1{Figure \ref{#1}}
+ \def\reft#1{Table \ref{#1}}
+ \def\refch#1{Chapter \ref{#1}}
+ \def\refap#1{Appendix \ref{#1}}
+
+ \raggedbottom
+
+
+
+%%%
+%%% Command to print draft version of the thesis.
+%%%
+\newcommand{\thesisdraft}{
+    \pagestyle{fancy}
+        \fancyhf{}
+        \lhead{\bf DRAFT}
+        \rhead{\bf DRAFT}
+        \chead{\timestamp}
+        \lfoot{\bf DRAFT}
+        \cfoot{\thepage}
+        \rfoot{\bf DRAFT}
+        \renewcommand{\headrulewidth}{0.4pt}
+        \renewcommand{\footrulewidth}{0pt}
+
+    \fancypagestyle{plain}{
+        \fancyhf{}
+        \lhead{\bf DRAFT}
+        \rhead{\bf DRAFT}
+        \chead{\timestamp}
+        \lfoot{\bf DRAFT}
+        \cfoot{\thepage}
+        \rfoot{\bf DRAFT}
+        \renewcommand{\headrulewidth}{0.4pt}
+        \renewcommand{\footrulewidth}{0pt}
+    }
+    }
+
+%%%
+%%% Code to compute current timestamp.  Some parts by Martin Minow.
+%%%
+\newcount\hour \newcount\minute
+\hour=\time  \divide \hour by 60
+\minute=\time
+\loop \ifnum \minute > 59 \advance \minute by -60 \repeat
+\def\thesistime{\ifnum \hour<13 \number\hour:%
+                      \ifnum \minute<10 0\fi
+                      \number\minute
+                      \ifnum \hour<12 \ am\else \ pm\fi
+         \else \advance \hour by -12 \number\hour:%
+                      \ifnum \minute<10 0\fi
+                      \number\minute \ pm\fi}
+
+\def\thesisdate{\ifcase\month\or
+January\or February\or March\or April\or May\or June\or
+July\or August\or September\or October\or November\or December\fi
+\space\number\day, \number\year}
+
+\newcount\dow
+\newcount\leap
+\newcount\x
+\newcount\y
+
+%leap = year + (month - 14)/12
+\leap=\month \advance\leap by -14 \divide\leap by 12
+  \advance\leap by \year
+
+%dow = (13 * (month + 10 - (month + 10)/13*12) - 1)/5
+\dow=\month \advance\dow by 10
+  \y=\dow \divide\y by 13 \multiply\y by 12
+  \advance\dow by -\y \multiply\dow by 13 \advance\dow by -1 \divide\dow by 5
+
+%dow += day + 77 + 5 * (leap % 100)/4
+\advance\dow by \day \advance\dow by 77
+  \x=\leap \y=\x \divide\y by 100 \multiply\y by 100 \advance\x by -\y
+  \multiply\x by 5 \divide\x by 4 \advance\dow by \x
+
+%dow += leap / 400
+\x=\leap \divide\x by 400 \advance\dow by \x
+
+%dow -= leap / 100 * 2;
+%dow = (dow % 7)
+\x=\leap \divide\x by 100 \multiply\x by 2 \advance\dow by -\x
+  \x=\dow \divide\x by 7 \multiply\x by 7 \advance\dow by -\x
+
+\def\thesisdayofweek{\ifcase\dow
+Sunday\or Monday\or Tuesday\or
+Wednesday\or Thursday\or Friday\or Saturday\fi}
+
+\def\timestamp{\thesistime, \thesisdayofweek, \thesisdate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% Some commands to be used or ignored %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\ind}{\hspace*{2.0em}}
+\newcommand{\tab}{\hspace*{4em}}
+
+\newcommand{\myp}{\protect{$+$}}
+\newcommand{\mypp}[1]{\protect{${#1}$}}
+\newcommand{\myf}[2]{\protect{\ \(\frac{\mbox{\rm #1}}{\mbox{\rm #2}}\)}\ }
+\newcommand{\myup}{\protect{$ \uparrow$}}
+\newcommand{\scc}[1]{\protect{\ \ \ $ SCC = {#1} $}}
+
+%%
+\newcommand{\twoheadrightarrow}{{\rightarrow \hspace{-0.3cm} \rightarrow \hspace{0.2cm}}}
+
+\newcommand{\chap}[1]{\chapter{\protect{\bf {#1}}}}
+\newcommand{\mytab}{\hspace*{13em}}
+\newcommand{\bleft}{\left \{\ }
+\newcommand{\bright}{\ \right \}}
+\newcommand{\sind}{ \ \ \ }
+\newcommand{\mand}{ \ \&\ }
+\newcommand{\mif}{\mbox{\ :-\ }}
+%%%\newcommand{\nf}{\sim}
+\newcommand{\posI}{$I^+$}
+\newcommand{\negI}{$I^-$}
+%\newcommand{\AST}{$AST(P)$}
+\newcommand{\Ip}[1]{${\cal I}_{#1}$}
+\newcommand{\II}[1]{${\cal I}({#1})$}
+%\newcommand{\HU}[1]{${\cal HU}_{#1}$}
+%\newcommand{\US}{${\cal US}$}
+%\newcommand{\HB}[1]{${\cal HB}_{#1}$}
+%----- chen  -----------------
+%\newcommand{\emptyset}{\phi}
+\newcommand{\cUS}{{\cal US}}
+\newcommand{\cHU}{{\cal HU}}
+\newcommand{\cHB}{{\cal HB}}
+\newcommand{\cUC}{{\cal UC}s}
+\newcommand{\cBody}{{\cal B}ody}
+\newcommand{\wA}{\widetilde{\rm A}}
+\newcommand{\LF}{${\cal LF}$}
+\newcommand{\DI}{DI^+ \cup DI^-}
+\newcommand{\AI}{AI^+ \cup AI^-}
+\newcommand{\Asp}{\tt asp}
+\newcommand{\Aspt}[1]{${\tt asp}({#1})$}
+\newcommand{\BP}[1]{${\cal BP}({#1})$}
+\newcommand{\myarrow}{-\hspace*{-0.23cm}-\hspace*{-0.23cm}-\hspace*{-0.23cm}\longrightarrow}
+\newcommand{\nedge}{\rightarrow\hspace*{-0.39cm}{\prime} \hspace*{0.29cm}}
+\newcommand{\jmp}[1] {\hspace*{0.3in}{#1}\hspace*{0.3in}}
+\newcommand{\Aro}[1]{\stackrel{#1}\longrightarrow}
+\newcommand{\MyAro}[1]{\stackrel{#1}\myarrow}
+\newcommand{\MyLoAro}[1]{\stackrel{#1}{-\hspace*{-0.23cm}-\hspace*{-0.23cm}\myarrow}}
+
+%----- For figure  -----------------
+
+
+\newcommand{\myfigureold}[3]{ \begin{figure}[tbp]
+  \begin{center}
+   \fbox{
+    \begin{minipage}[t]{5.7in}
+    \rule[-.1cm]{0cm}{0.5cm}
+    \centerline{\psfig{#1}}
+    \end{minipage}
+    }
+    \end{center}
+       \caption{#2} \label{#3} \vskip -0.14in \end{figure} }
+
+\newcommand{\mytabfig}[3]{ \begin{figure}[tbp]
+  \begin{center}
+   \fbox{
+    \begin{minipage}[t]{5.7in}
+    \rule[-.1cm]{0cm}{0.5cm}
+#1
+    \end{minipage}
+        }
+        \end{center}
+       \caption{#2} \label{#3} \vskip -0.14in \end{figure} }
+
+\newcommand{\myfigure}[3]{ \begin{figure}[tbp]
+    \begin{center}
+    #1
+    \end{center}
+    \caption{#2} \label{#3} \vskip -0.14in \end{figure} }
+
+\newcommand{\mytable}[3]{ \begin{table}[tbp]
+  \begin{center}
+  \caption{#2}
+    #1
+  \label{#3} \vskip -0.01in \end{center} \end{table} }
+
+\newcommand{\myendfig}{\vskip -0.14in \end{figure} }
+\newcommand{\myendtab}{\vskip -0.01in \end{table} }
+
+%----------------- theorem definitions ----------
+\newtheorem{ex}{Example}[chapter]
+\newtheorem{theor}{Theorem}[chapter]
+\newtheorem{mtd}{Method}[chapter]
+\newtheorem{mydef}{Definition}[chapter]
+%\newtheorem{mylem}{Lemma}[chapter]
+\newtheorem{mylem}[theor]{Lemma}
+
+\newtheorem{algorithm}{Algorithm}[chapter]
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{proposition}{Proposition}[section]
+%\newtheorem{remark}{Remark}[section]
+
+%-----------------
+\font\pf=rpcrr at 11pt
+\font\spf=rpcrr at 11pt
+%----------------- command definitions ----------
+
+\newcommand{\myqed}{\vspace{-1.1cm} \qed \vspace{0.9cm}}
+\newcommand{\qed}{\mbox{$\ \Box$}}
+\newcommand{\lqed}{\qed\vspace{.1in}}
+\newcommand{\nf}{{\mbox{$\sim$}}}
+\newcommand{\wt}{\mbox{$\widehat{T}$}}
+\newcommand{\as}{\mbox{$/\hspace{-2mm}>$}}
+\newcommand{\equi}{\mbox{$\leftrightarrow$}}
+\newcommand{\myeq}{\mbox{$\leftrightarrow$}}
+%\newcommand{\tab}{\hspace*{4em}}
+%\newcommand{\ind}{\hspace*{2em}}
+%\newcommand{\mif}{\mbox{ :- }}
+%\newcommand{\dd}{\mbox{$\bullet$}}
+\newcommand{\dd}{\mbox{\ $\mid$\ }}
+
+%-------------------- environment definitions -----------------
+\newenvironment{example}{\begin{ex} \rm}{\hfill \qed \end{ex}}
+\newenvironment{theorem}{\begin{theor}}{ \end{theor}}
+\newenvironment{method}{\begin{mtd} \rm}{\hfill \qed \end{mtd}}
+\newenvironment{definition}{\begin{mydef} \rm}{\hfill \qed \end{mydef}}
+%\newenvironment{lemma}{\begin{mylem} \rm}{\hfill \qed \end{mylem}}
+\newenvironment{lemma}{\begin{mylem}}{ \end{mylem}}
+
+\newenvironment{vers}{\vspace{-0.1cm} \begin{verse}}{\vspace{-0.1cm} \end{verse}}
+\newenvironment{vers2}{\vspace{-0.2cm} \begin{verse}}{\vspace{-0.1cm} \end{verse}}
+
+\newenvironment{proof}[0]{\vspace{0.3cm}\noindent {\bf Proof:} \rm }{\hfill \lqed}
+\newenvironment{proof-of}[1]{\noindent {\bf Proof of #1:}}{\hfill \lqed}
+
+%------------------ counter definitions ------------------------
+\setcounter{tocdepth}{3}
+
+%% Calligraphic Letters
+
+\newcommand{\cA}{{\cal A}}
+\newcommand{\cB}{{\cal B}}
+\newcommand{\cC}{{\cal C}}
+\newcommand{\cD}{{\cal D}}
+\newcommand{\cE}{{\cal E}}
+\newcommand{\cF}{{\cal F}}
+\newcommand{\cG}{{\cal G}}
+\newcommand{\cH}{{\cal H}}
+\newcommand{\cI}{{\cal I}}
+\newcommand{\cJ}{{\cal J}}
+\newcommand{\cK}{{\cal K}}
+\newcommand{\cL}{{\cal L}}
+\newcommand{\cM}{{\cal M}}
+\newcommand{\cN}{{\cal N}}
+\newcommand{\cO}{{\cal O}}
+\newcommand{\cP}{{\cal P}}
+\newcommand{\cQ}{{\cal Q}}
+\newcommand{\cR}{{\cal R}}
+\newcommand{\cS}{{\cal S}}
+\newcommand{\cT}{{\cal T}}
+\newcommand{\cU}{{\cal U}}
+\newcommand{\cV}{{\cal V}}
+\newcommand{\cW}{{\cal W}}
+\newcommand{\cX}{{\cal X}}
+\newcommand{\cY}{{\cal Y}}
+\newcommand{\cZ}{{\cal Z}}
+
+\newcommand{\cw}{{\cal w}}
+
+\newcommand{\bA}{{\bf A}}
+\newcommand{\bB}{{\bf B}}
+\newcommand{\bC}{{\bf C}}
+\newcommand{\bD}{{\bf D}}
+\newcommand{\bE}{{\bf E}}
+\newcommand{\bF}{{\bf F}}
+\newcommand{\bG}{{\bf G}}
+\newcommand{\bH}{{\bf H}}
+\newcommand{\bI}{{\bf I}}
+\newcommand{\bJ}{{\bf J}}
+\newcommand{\bK}{{\bf K}}
+\newcommand{\bL}{{\bf L}}
+\newcommand{\bM}{{\bf M}}
+\newcommand{\bN}{{\bf N}}
+\newcommand{\bO}{{\bf O}}
+\newcommand{\bP}{{\bf P}}
+\newcommand{\bQ}{{\bf Q}}
+\newcommand{\bR}{{\bf R}}
+\newcommand{\bS}{{\bf S}}
+\newcommand{\bT}{{\bf T}}
+\newcommand{\bU}{{\bf U}}
+\newcommand{\bV}{{\bf V}}
+\newcommand{\bW}{{\bf W}}
+\newcommand{\bX}{{\bf X}}
+\newcommand{\bY}{{\bf Y}}
+\newcommand{\bZ}{{\bf Z}}
+
+\newcommand{\oA}{{\overline A}}
+\newcommand{\oB}{{\overline B}}
+\newcommand{\oC}{{\overline C}}
+\newcommand{\oD}{{\overline D}}
+\newcommand{\oE}{{\overline E}}
+\newcommand{\oF}{{\overline F}}
+\newcommand{\oG}{{\overline G}}
+\newcommand{\oH}{{\overline H}}
+\newcommand{\oI}{{\overline I}}
+\newcommand{\oJ}{{\overline J}}
+\newcommand{\oK}{{\overline K}}
+\newcommand{\oL}{{\overline L}}
+\newcommand{\oM}{{\overline M}}
+\newcommand{\oN}{{\overline N}}
+\newcommand{\oO}{{\overline O}}
+\newcommand{\oP}{{\overline P}}
+\newcommand{\oQ}{{\overline Q}}
+\newcommand{\oR}{{\overline R}}
+\newcommand{\oS}{{\overline S}}
+\newcommand{\oT}{{\overline T}}
+\newcommand{\oU}{{\overline U}}
+\newcommand{\oV}{{\overline V}}
+\newcommand{\oW}{{\overline W}}
+\newcommand{\oX}{{\overline X}}
+\newcommand{\oY}{{\overline Y}}
+\newcommand{\oZ}{{\overline Z}}
+
+\newcommand{\ovd}{{\overline d}}
+\newcommand{\ove}{{\overline e}}
+\newcommand{\ovf}{{\overline f}}
+\newcommand{\ovg}{{\overline g}}
+\newcommand{\ovh}{{\overline h}}
+\newcommand{\ovi}{{\overline i}}
+
+%---------------------------------
+\newcommand{\vS}{{\vec S}}
+\newcommand{\vT}{{\vec T}}
+\newcommand{\vU}{{\vec U}}
+\newcommand{\vV}{{\vec V}}
+\newcommand{\vW}{{\vec W}}
+\newcommand{\vX}{{\vec X}}
+\newcommand{\vY}{{\vec Y}}
+\newcommand{\vZ}{{\vec Z}}
+
+\newcommand{\vs}{{\vec s}}
+\newcommand{\vt}{{\vec t}}
+\newcommand{\vu}{{\vec u}}
+\newcommand{\vv}{{\vec v}}
+\newcommand{\vw}{{\vec w}}
+\newcommand{\vx}{{\vec x}}

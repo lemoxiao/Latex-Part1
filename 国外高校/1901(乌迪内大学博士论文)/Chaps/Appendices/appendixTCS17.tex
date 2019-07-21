@@ -1,0 +1,229 @@
+\chapter{Proofs and complements of Chapter~\ref{chap:TCS17}}
+\minitoc\mtcskip
+
+\section{Proof of Lemma~\ref{lemmamdc}}\label{proof:lemmamdc}
+
+\begin{lemma*}[\ref{lemmamdc}]
+Let $\psi$ be an $\AAbarEEbar$ formula, $\Ku$ be a finite Kripke structure, and $\sigma\in\Trk_\Ku$. Then, $\texttt{Check}(\Ku, \psi,\sigma)=1$ if and only if $\Ku,\sigma\models \psi$.
+\end{lemma*}
+
+\begin{proof}
+The proof is by induction on the structure of $\psi$.
+ The base case where $\psi=p$, for some $p\in\Prop$, directly follows from the definition (line 2 of Algorithm~\ref{Chk2}).
+  The cases in which $\psi=\neg\varphi$ and $\psi=\varphi_1\wedge\varphi_2$ are also trivial and thus omitted. We focus on the remaining cases.
+\begin{itemize}
+    \item $\psi=\hsA\varphi$. If $\Ku,\sigma\models \psi$, then there exists a trace $\rho\in \Trk_\Ku$ such that $\lst(\sigma)=\fst(\rho)$ and $\Ku,\rho\models \varphi$.
+    By Theorem~\ref{theorem:polynomialSizeModelProperty}, there exists a trace $\pi\in\Trk_\Ku$, with $|\pi|\leq |\States|\cdot(|\varphi'|+1)^2$ and $\fst(\pi)=\fst(\rho)(=\lst(\sigma))$, such that $\Ku,\pi\models\varphi'$, where $\varphi'$ is the \nnf{} of $\varphi$. Thus, being $|\pi|\leq |\States|\cdot(2|\varphi|+1)^2$, such trace $\pi$ is considered in the for-loop at line 12. By the inductive hypothesis, $\texttt{Check}(\Ku,\varphi,\pi)=1$ and thus \texttt{Check}$(\Ku,\psi,\sigma)=1$.
+
+    Vice versa, if \texttt{Check}$(\Ku,\psi,\sigma)=1$, then there exists a trace $\pi\in \Trk_\Ku$, with $\lst(\sigma)=\fst(\pi)$, such that \texttt{Check}$(\Ku,\varphi,\pi)=1$. By the inductive hypothesis, $\Ku,\pi\models \varphi$, hence $\Ku,\sigma\models \psi$.
+
+    \item $\psi=\hsAt\varphi$ is analogous to the previous case.
+    \item $\psi=\hsE\varphi$. If $\Ku,\sigma\models \psi$, there exists a trace $\pi\in\Suff(\sigma)$ such that $\Ku,\pi\models \varphi$. By the inductive hypothesis, \texttt{Check}$(\Ku,\varphi,\pi)=1$. Since all the proper suffixes of $\sigma$ are checked (line 17), \texttt{Check}$(\Ku,\psi,\sigma)=1$.
+
+    Vice versa, if \texttt{Check}$(\Ku,\psi,\sigma)=1$, then for some $\pi\in\Suff(\sigma)$, it holds that \texttt{Check}$(\Ku,\varphi,\pi)=1$. By the inductive hypothesis $\Ku,\pi\models \varphi$ implying that $\Ku,\sigma\models \psi$.
+    \item $\psi=\hsEt\varphi$. If $\Ku,\sigma\models \psi$, then there exists a trace $\rho\in \Trk_\Ku$, with $|\rho|\geq 2$, such that $\Ku,\rho\star\sigma\models \varphi$.
+    By Theorem~\ref{theorem:polynomialSizeModelProperty}, there exists a trace $\pi\in\Trk_\Ku$ induced by $\rho$, with $|\pi|\leq |\States|\cdot(|\varphi'|+1)^2$, such that $\Ku,\pi\star\sigma\models\varphi'$, where $\varphi'$ is the \nnf{} of $\varphi$. Such trace $\pi$ is considered in the for-loop at line 22, since $|\pi|\leq |\States|\cdot(2|\varphi|+1)^2$ and $|\pi|\geq 2$ as it is induced by $\rho$. By the inductive hypothesis, \texttt{Check}$(\Ku,\varphi,\pi\star\sigma)=1$ implying that  \texttt{Check}$(\Ku,\psi,\sigma)=1$.
+
+    Vice versa, if \texttt{Check}$(\Ku,\psi,\sigma)=1$, then there exists a trace $\pi \in \Trk_\Ku$, with $|\pi|\geq 2$, such that \texttt{Check}$(\Ku,\varphi,\pi\star\sigma)=1$. By the inductive hypothesis, $\Ku,\pi\star\sigma\models \varphi$, hence $\Ku,\sigma\models \psi$.\qedhere
+\end{itemize}
+\end{proof}
+
+
+\section{Proof of Lemma~\ref{ThCorrComplMC}}\label{proof:ThCorrComplMC}
+
+\begin{theorem*}[\ref{ThCorrComplMC}]
+Let $\psi$ be an $\AAbarEEbar$ formula and $\Ku$ be a finite Kripke structure. Then, \texttt{ModCheck}$(\Ku,\psi)=1$ if and only if $\Ku\models \psi$.
+\end{theorem*}
+
+\begin{proof}
+	($\Leftarrow$)
+	If $\Ku\models \psi$ then, for all initial traces $\rho\in\Trk_\Ku$, we have that $\Ku,\rho\models \psi$.
+	By Lemma~\ref{lemmamdc},
+it follows that $\texttt{Check}(\Ku,\psi,\rho)=1$. Now, since the for-loop at line 1 considers a subset of the initial traces, it holds that \texttt{ModCheck}$(\Ku,\psi)=1$.
+
+    ($\Rightarrow$)
+	If \texttt{ModCheck}$(\Ku,\psi)=1$, then, for any initial trace $\rho$ considered by the for-loop at line 1, that is, with $|\rho|\leq |\States|\cdot (2|\psi|+3)^2$, it holds that $\texttt{Check}(\Ku,\psi,\rho)=1$.
+	%
+	Let us assume by contradiction that $\Ku\not\models\psi$, that is, there exists an initial trace $\rho'\in\Trk_\Ku$ such that $\Ku,\rho'\models\neg\psi$, or, equivalently, $\Ku,\rho'\models\overline{\psi}$, where $\overline{\psi}$ is the \nnf{} of $\neg\psi$. Thus, by Theorem~\ref{theorem:polynomialSizeModelProperty}, there exists an initial trace $\sigma$, with $|\sigma|\leq |\States|\cdot (|\overline{\psi}|+1)^2\leq |\States|\cdot (2|\psi|+3)^2$, such that $\Ku,\sigma\models \overline{\psi}$, namely, $\Ku,\sigma\not\models\psi$. By Lemma~\ref{lemmamdc}, it holds that $\texttt{Check}(\Ku,\psi,\sigma)=0$, leading to a contradiction and proving that $\Ku\models \psi$.
+\end{proof}
+
+
+\section{$\Psp$-hardness of MC for $\Bbar$ and $\Ebar$}\label{sect:BbarHard}
+In this section, we prove that the MC problem for formulas of $\Bbar$ and of $\Ebar$, over finite Kripke structures, is $\Psp$-hard by means of a reduction from 
+the QBF problem, that is, the problem of determining the truth of a \emph{fully-quantified} Boolean formula in \emph{prenex normal form}, which is known to be $\Psp$-complete (see, for example, \cite{Sip12}). The proof for  $\Bbar$ can easily be modified to show the $\Psp$-hardness of the symmetric fragment $\Ebar$.
+%---to the model checking problem for $\ABbar$ formulas over finite Kripke structures. 
+
+Let $\psi=Q_n x_n Q_{n-1} x_{n-1}$ $\cdots Q_1 x_1 \phi(x_n,x_{n-1},\ldots ,x_1)$ be a quantified Boolean formula where, for $i=1,\ldots ,n,$ $Q_i\in \{\exists, \forall\}$ and $\phi(x_n,x_{n-1},\ldots ,x_1)$ is a quantifier-free Boolean formula over the set of variables $Var = \{x_n,\ldots ,x_1\}$. We define a Kripke structure $\Ku_{QBF}^{Var}$, whose initial traces represent all the possible assignments to the variables of $Var$. For each variable $x \in Var$, $\Ku_{QBF}^{Var}$ features a pair of states $s_x^{\top}$ and $s_x^{\bot}$, that represent a $\top$ and $\bot$ truth assignment to $x$, respectively. An example of $\Ku_{QBF}^{Var}$, with $Var=\{x,y,z\}$, is given in Figure~\ref{Kqbf}.
+
+Formally, let $\Ku_{QBF}^{Var}=\KuDef$, where:
+\begin{itemize}
+    \item $\Prop= Var \cup \{t\} \cup \{ \tilde{x_i} \mid 1\leq i\leq n\}$;
+    \item $\States= \{s_{x_i}^\ell \mid 1\leq i\leq n,\; \ell \in \{\bot,\top\}\} \cup \{s_0,sink\}$;
+    \item if $n=0$, $\Edges=\{(s_0,sink),(sink,sink)\}$;\newline
+            if $n>0$,  
+            $\Edges = \{(s_0,s_{x_n}^{\top}),(s_0,s_{x_n}^{\bot})\}\cup 
+            \{(s_{x_i}^\ell,s_{x_{i-1}}^m) \mid \ell \, , m \in \{\bot,\top\},\: 2 \leq i \leq n\} \cup 
+            \{(s_{x_1}^{\top},sink),(s_{x_1}^{\bot},sink),(sink,sink) \}$. 
+    \item $\Lab(s_0) = Var \cup \{t\}\cup \{ \tilde{x_i} \mid x_i \in Var\}$; \newline
+            for all $1\leq i\leq n$, $\Lab(s_{x_i}^\top) = Var \cup \{\tilde{x_j} \mid 1\leq j\leq i\}$
+            and $\Lab(s_{x_i}^\bot) = (Var \setminus \{x_i\}) \cup \{\tilde{x_j} \mid 1\leq j\leq i\}$; \newline
+            $\Lab(sink) = Var$.
+\end{itemize}
+
+\begin{figure}[tb]
+\centering
+%\resizebox{\linewidth}{!}{
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,node distance=2.2cm,semithick,every node/.style={circle,draw,inner sep=-2pt,outer sep=0},every loop/.style={max distance=8mm}]  
+    \node (0) [double] {$\begin{array}{c} s_0 \\ x,y,z \\ t,\tilde{x},\tilde{y},\tilde{z} \end{array}$};
+    \node (1a) [above right of= 0] {$\begin{array}{c} s_x^{\top} \\ x,y,z \\ \tilde{x},\tilde{y},\tilde{z} \end{array}$};%below right=0.5cm and 3.7cm
+    \node (1b) [below right of= 0] {$\begin{array}{c} s_x^{\bot} \\ y,z \\ \tilde{x},\tilde{y},\tilde{z} \end{array}$};
+    
+    \node (2a) [right of=1a] {$\begin{array}{c} s_y^{\top} \\ x,y,z \\ \tilde{y},\tilde{z} \end{array}$};
+    \node (2b) [right of=1b] {$\begin{array}{c} s_y^{\bot} \\ x,z \\ \tilde{y},\tilde{z} \end{array}$};
+
+    \node (3a) [right of=2a] {$\begin{array}{c} s_z^{\top} \\ x,y,z \\ \tilde{z} \end{array}$};
+    \node (3b) [right of=2b] {$\begin{array}{c} s_z^{\bot} \\ x,y \\ \tilde{z} \end{array}$};
+    
+    \node (pit) [below right of=3a] {$\begin{array}{c} sink \\ x,y,z \\  \end{array}$};
+  
+  \path
+    (0) edge (1a)
+        edge (1b)
+        
+    (1a) edge (2a)
+        edge (2b)
+    (1b) edge (2a)
+        edge (2b)
+
+    (2a) edge (3a)
+        edge (3b)
+    (2b) edge (3a)
+        edge (3b)
+
+    (3a) edge (pit)
+    (3b) edge (pit)
+    (pit) edge [loop above] (pit)
+    ;
+\end{tikzpicture}%}
+%\vspace{-0.6cm}
+\caption{The finite Kripke structure $\Ku_{QBF}^{x,y,z}$.}\label{Kqbf}
+\end{figure}
+
+The QBF formula $\psi$ is reduced to the $\Bbar$ formula $\xi=t\rightarrow \xi_n$, where
+\begin{equation*}
+\xi_i=
+\begin{cases}
+\phi(x_n,x_{n-1},\ldots ,x_1) & \text{ if } i=0\\
+\hsBt\big(\tilde{x_i} \wedge \xi_{i-1}\big) & \text{ if } i>0 \text{ and }  Q_i=\exists\\
+\hsBtu\big(\tilde{x_i} \rightarrow \xi_{i-1}\big) & \text{ if } i>0 \text{ and }  Q_i=\forall
+\end{cases}.
+\end{equation*}
+%Clearly, 
+Note that both $\Ku_{QBF}^{Var}$ and $\xi$ can be built in polynomial time. 
+%
+In Theorem~\ref{th:ABbarHard}, we shall show the correctness of the reduction, i.e., that $\psi$
+%=Q_n x_n Q_{n-1} x_{n-1} \cdots Q_1 x_1 \phi(x_n,x_{n-1},\cdots x_1)$ 
+is true iff $\Ku_{QBF}^{Var}\models\xi$.
+%
+As a preliminary step, we introduce some technical definitions and an auxiliary lemma.
+
+Given a Kripke structure $\Ku=\KuDef$ and a $\Bbar$ formula $\chi$, we denote by $p\ell(\chi)$ the set of proposition letters occurring in $\chi$ and by $\Ku_{\,|p\ell(\chi)}$ the 
+%Kripke 
+structure obtained from $\Ku$ by restricting the labelling of each state to $p\ell(\chi)$, namely, the 
+Kripke 
+structure $(\overline{\Prop},\States, \Edges,\overline{\Lab},s_0)$, where $\overline{\Prop}=\Prop\cap p\ell(\chi)$ and $\overline{\Lab}(s)=\Lab(s)\cap p\ell(\chi)$, for all $s\in \States$.
+
+Moreover, for $v\in \States$, we denote by $reach(\Ku,v)$ the subgraph of $\Ku$ induced by the states reachable from $v$, namely, the 
+Kripke 
+structure $(\Prop,\States',\Edges',\Lab',v)$, where $\States'=\{s\in \States \mid \text{ there exists } \rho\in \Trk_\Ku \text{ with } \fst(\rho)=v \text{ and } \lst(\rho)=s\}$, $\Edges'=\Edges \cap (\States'\times \States')$, and $\Lab'(s)=\Lab(s)$, for all $s\in \States'$. %$reach(\Ku,v)$ is thus  Notice that the initial state of $reach(\Ku,v)$ is $v$. 
+
+As usual, we say that two Kripke structures $\Ku=\KuDef$ and $\Ku'=(\Prop',\States', \Edges',\Lab',\sinit')$ are \emph{isomorphic} (written $\Ku\sim \Ku'$) if and only if there is a \emph{bijection} $f:\States\to \States'$ such that 
+\begin{itemize}
+    \item $f(s_0)=s_0'$;
+    \item for all $u,v\in \States$, $(u,v)\in \Edges \iff (f(u),f(v))\in\Edges'$;
+    \item for all $v\in \States$, $\Lab(v)=\Lab'(f(v))$.
+\end{itemize}
+
+Finally, if  $\mathpzc{A}_\Ku=(\Prop,\mathbb{I},A_\mathbb{I},B_\mathbb{I},E_\mathbb{I},\sigma)$ is the abstract interval model induced by a Kripke structure  $\Ku$ and $\rho\in\Trk_{\Ku}$,
+ %is a trace, 
+ we denote $\sigma(\rho)$ by $\mathpzc{L}(\Ku,\rho)$.
+
+Let $\Ku$ and $\Ku'$ be two Kripke structures. The following lemma, which is an immediate consequence of Lemma~1 of \cite{MMP15B}, states that, for any $\Bbar$ formula $\psi$, if the same set of proposition letters, restricted to $p\ell(\psi)$, holds over two traces $\rho \in \Trk_{\Ku}$ and $\rho' \in \Trk_{\Ku'}$, and the subgraphs consisting of the states reachable from, respectively, $\lst(\rho)$ and $\lst(\rho')$ are isomorphic, then $\rho$ and $\rho'$ are equivalent with respect to $\psi$.
+
+\begin{lemma}\label{lemmaBbar}
+Given a $\Bbar$ formula $\psi$, two finite Kripke structures \[\Ku=\KuDef \text{ and } \Ku'=(\Prop',\States', \Edges',\Lab',\sinit'),\] and two traces $\rho\in\Trk_\Ku,\, \rho'\in \Trk_{\Ku'}$ such that  \[\mathpzc{L}(\Ku_{\,|p\ell(\psi)},\rho)=\mathpzc{L}(\Ku'_{\,|p\ell(\psi)},\rho')\] and 
+\[reach(\Ku_{\,|p\ell(\psi)},\lst(\rho))\sim reach(\Ku'_{\,|p\ell(\psi)},\lst(\rho')),\]
+it holds that $\Ku,\rho\models\psi\iff \Ku',\rho'\models\psi$.
+\end{lemma}
+%The proof is omitted (see Lemma~1 of \cite{MMP15B}).
+
+\begin{theorem}\label{th:ABbarHard}
+The MC problem for $\Bbar$ formulas over finite Kripke structures is $\PSPACE$-hard (under polynomial-time reductions).
+\end{theorem}
+\begin{proof}
+Let $\psi=Q_n x_n$ $Q_{n-1} x_{n-1} \cdots Q_1 x_1 \phi(x_n,x_{n-1},\ldots ,x_1)$.
+We prove by induction on the number $n$ of variables of $\psi$ that $\psi$ is true 
+%We prove that the quantified Boolean formula $\psi=Q_n x_n Q_{n-1} x_{n-1} \cdots Q_1 x_1 \phi(x_n,x_{n-1},\cdots ,x_1)$ is true 
+if and only if $\Ku_{QBF}^{x_n,\cdots , x_1}\models\xi$. In the following, $\phi(x_n,x_{n-1},\ldots , x_1)\{x_i/\upsilon\}$, with $\upsilon\in\{\top ,\bot\}$, denotes the formula obtained from $\phi(x_n,x_{n-1},\ldots ,x_1)$ by replacing all 
+occurrences of $x_i$ by $\upsilon$. 
+Notice that $\Ku_{QBF}^{x_n,x_{n-1},\cdots , x_1}$ and $\Ku_{QBF}^{x_{n-1},\cdots , x_1}$ are isomorphic if restricted to the states 
+$s_{x_{n-1}}^\top$, $s_{x_{n-1}}^\bot$, $\cdots$, $s_{x_1}^\top$, $s_{x_1}^\bot$, $sink$ (i.e., the initial parts of both Kripke structures are eliminated), and the labelling of states is suitably restricted. Moreover, notice that only the trace $s_0$ satisfies the proposition letter $t$ in $\xi$.
+
+Base case ($n=0$). In this case, $\psi=\phi(\emptyset)$ is a Boolean formula devoid of variables. 
+If $\psi$ is true, then in particular $\Ku_{QBF}^{\emptyset},s_0\models\phi(\emptyset)$ and thus $\Ku_{QBF}^{\emptyset}\models s\rightarrow \phi(\emptyset)(=\xi)$. Conversely, if $\Ku_{QBF}^{\emptyset}\models s\rightarrow \phi(\emptyset)$, then $\Ku_{QBF}^{\emptyset},s_0\models\phi(\emptyset)$, and since $\phi(\emptyset)$ has no variables, it must be true.
+
+%\medskip
+Case $n\geq 1$.
+We first prove that if $\psi\!=\!Q_n x_n Q_{n-1} x_{n-1}\!\cdots Q_1 x_1 \phi(x_n,x_{n-1},\ldots\! , x_1)$ is true, then $\Ku_{QBF}^{x_n,\cdots , x_1}\models\xi$. 
+
+If
+%$\psi=Q_n x_n Q_{n-1} x_{n-1} \cdots Q_1 x_1 \phi(x_n,x_{n-1},\cdots , x_1)$ is true and 
+$Q_n=\exists$, one possibility is that $Q_{n-1} x_{n-1} \cdots Q_1 x_1 \phi'(x_{n-1},\ldots , x_1)$ is true, where $\phi'(x_{n-1},\ldots , x_1)=\phi(x_n,x_{n-1},\ldots , x_1)\{x_n/ \top\}$. By the inductive hypothesis, it holds that $\Ku_{QBF}^{x_{n-1},\cdots , x_1}\models\xi'$, where $\xi'=t\rightarrow\xi_{n-1}'$ and $\xi_{n-1}'=\xi_{n-1}\{x_n/\top\}$. Thus $\Ku_{QBF}^{x_{n-1},\cdots , x_1},s_0'\models \xi_{n-1}'$ ($s_0'$ is the initial state of the structure $\Ku_{QBF}^{x_{n-1},\cdots , x_1}$). By Lemma~\ref{lemmaBbar}, $\Ku_{QBF}^{x_n,\cdots , x_1},s_0s_{x_n}^\top\models \xi_{n-1}'$. Since every right extension of $s_0s_{x_n^\top}$ models $x_n$, $\Ku_{QBF}^{x_n,\cdots , x_1},s_0s_{x_n}^\top\models \xi_{n-1}$, and thus $\Ku_{QBF}^{x_n,\cdots , x_1},s_0\models \hsBt(\tilde{x_n}\wedge\xi_{n-1})(=\xi_n)$. To conclude, $\Ku_{QBF}^{x_n,\cdots , x_1}\models t\rightarrow\xi_n(=\xi)$. The only other possible case is that $Q_{n-1} x_{n-1} \cdots Q_1 x_1 \phi'(x_{n-1},\ldots , x_1)$ is true, with $\phi'(x_{n-1},\ldots , x_1)=\phi(x_n,x_{n-1},\ldots ,\allowbreak x_1)\{x_n/ \bot\}$. As before, it follows that $\Ku_{QBF}^{x_n,\cdots , x_1},s_0s_{x_n}^\bot\models \xi_{n-1}\{x_n/\bot\}$ and thus $\Ku_{QBF}^{x_n,\cdots , x_1},s_0\models \hsBt(\tilde{x_n}\wedge\xi_{n-1})$.
+
+%If $\psi=Q_n x_n Q_{n-1} x_{n-1} \cdots Q_1 x_1 \phi(x_n,x_{n-1},\cdots , x_1)$ is true and 
+Now, let 
+%us consider the case where
+$Q_n=\forall$. Both formulas $Q_{n-1} x_{n-1} \cdots$ $Q_1 x_1 \phi(x_n,x_{n-1},\ldots , x_1)\{x_n/ \top\}$ and  $Q_{n-1} x_{n-1} \cdots Q_1 x_1 \phi(x_n,x_{n-1},\ldots , x_1)\{x_n/ \bot\}$ are true. By reasoning as in the existential case, we have $\Ku_{QBF}^{x_n,\cdots , x_1},s_0s_{x_n}^\top\models \xi_{n-1}$ and $\Ku_{QBF}^{x_n,\cdots , x_1},s_0s_{x_n}^\bot\models \xi_{n-1}$. Thus, $\Ku_{QBF}^{x_n,\cdots , x_1},s_0\models \hsBtu(\tilde{x_n}\rightarrow \xi_{n-1})$ and $\Ku_{QBF}^{x_n,\cdots , x_1}\models s\rightarrow \hsBtu(\tilde{x_n}\rightarrow \xi_{n-1})$.
+
+%\medskip
+We now prove that if $\Ku_{QBF}^{x_n,\cdots , x_1}\models\xi$, then $\psi$
+%=Q_n x_n Q_{n-1} x_{n-1} \cdots Q_1 x_1 \phi(x_n,x_{n-1},\cdots , x_1)$ 
+is true.
+
+If $Q_n=\exists$, then $\Ku_{QBF}^{x_n,\cdots , x_1},s_0\models \hsBt(\tilde{x_n}\wedge \xi_{n-1})$. Thus  $\Ku_{QBF}^{x_n,\cdots , x_1},s_0s_{x_n}^\top\models\xi_{n-1}$ or $\Ku_{QBF}^{x_n,\cdots , x_1},s_0s_{x_n}^\bot\models\xi_{n-1}$. In the former case, $\Ku_{QBF}^{x_n,\cdots , x_1},s_0s_{x_n}^\top\models \xi_{n-1}\{x_n/\top\}$ (since every right extension of $s_0s_{x_n}^\top$ models $x_n$). 
+By Lemma~\ref{lemmaBbar}, $\Ku_{QBF}^{x_{n-1},\cdots , x_1},s_0'\models\xi_{n-1}\{x_n/\top\}$, and $\Ku_{QBF}^{x_{n-1},\cdots , x_1}\models t\rightarrow \xi_{n-1}\{x_n/\top\}$. By the inductive hypothesis, $Q_{n-1} x_{n-1} \cdots Q_1 x_1 \phi(x_n,x_{n-1},\ldots , x_1)\{x_n/\top\}$ is true, thus the formula $\psi=\exists x_n Q_{n-1} x_{n-1} \cdots Q_1 x_1 \phi(x_n,x_{n-1},\ldots , x_1)$ is true. In the latter case, we symmetrically have that $Q_{n-1} x_{n-1} .. Q_1 x_1 \phi(x_n,x_{n-1},\ldots , x_1)\{x_n/\bot\}$ is true, thus the formula $\psi=\exists x_n Q_{n-1} x_{n-1} \cdots Q_1 x_1 \phi(x_n,x_{n-1},\ldots , x_1)$ is true.
+
+If $Q_n=\forall$, then $\Ku_{QBF}^{x_n,\cdots , x_1}, s_0 \models \hsBtu(\tilde{x_n}\rightarrow \xi_{n-1})$. So both $\Ku_{QBF}^{x_n,\cdots , x_1},$ $s_0s_{x_n}^\top\models  \xi_{n-1}$ and $\Ku_{QBF}^{x_n,\cdots , x_1},s_0s_{x_n}^\bot\models  \xi_{n-1}$.
+By reasoning as in the existential case, both  
+$Q_{n-1} x_{n-1} \cdots Q_1 x_1 \phi(x_n,x_{n-1},\ldots , x_1)\{x_n/\top\}$ and
+$Q_{n-1} x_{n-1} \!\cdots Q_1 x_1 \phi(x_n,x_{n-1},\ldots ,\allowbreak x_1)\{x_n/\bot\}$ are true, thus $\psi=\forall x_n Q_{n-1} x_{n-1} \cdots  Q_1 x_1 \phi(x_n,x_{n-1},\ldots ,$ $x_1)$ is true.
+\end{proof}
+
+
+\section{Proof of Lemma~\ref{lemma:prefixSamplingOne}}\label{proof:lemma:prefixSamplingOne}
+
+\begin{lemma*}[\ref{lemma:prefixSamplingOne}] Let $h\geq 1$, $\rho$ be a trace of $\Ku$, and let $i,j$ be two consecutive $\rho$-positions in the $h$-prefix sampling of $\rho$.
+Then, for all $\rho$-positions $n,n'\in [i+1,j]$ such that $\rho(n)=\rho(n')$, it holds that $\rho(1,n)$ and $\rho(1,n')$ are $(h-1)$-prefix bisimilar.
+\end{lemma*}
+
+\begin{proof} The proof is by induction on $h\geq 1$.
+
+Base case: $h=1$. The $1$-prefix sampling of $\rho$ is the prefix-skeleton sampling of $\rho$ in $[1,|\rho|]$. Hence, being $i$ and $j$ consecutive positions in this sampling, for each position $k\in [i,j-1]$, there is $\ell\leq i$ such that $\rho(\ell)=\rho(k)$. Since $\rho(n)=\rho(n')$, it holds that $\states(\rho(1,n))=\states(\rho(1,n'))$, and thus $\rho(1,n)$ and $\rho(1,n')$ are $0$-prefix bisimilar.
+
+Inductive step: $h>1$. By definition of $h$-prefix sampling, there are two consecutive positions $i',j'$ in the $(h-1)$-prefix
+  sampling of $\rho$ such that    $i,j$ are consecutive positions of the prefix-skeleton sampling of $\rho(i',j')$.
+
+  If $i=i'$, then $j=i+1$, and thus, being $n,n'\in [i+1,j]$, we get that $n=n'$, and the result trivially holds.
+
+  Let $i\neq i'$, thus $i>i'$.
+     As in the base case, we easily deduce that $\rho(1,n)$ and $\rho(1,n')$ are $0$-prefix bisimilar. It remains to show that
+for each proper prefix $\nu$ of $\rho(1,n)$ (resp., $\nu'$ of $\rho(1,n')$), there is a proper prefix $\nu'$ of $\rho(1,n')$ (resp., $\nu$ of $\rho(1,n)$) such that $\nu$ and $\nu'$ are $(h-2)$-prefix bisimilar. Let us consider a proper prefix $\nu$ of $\rho(1,n)$ (the proof for the other direction is symmetric). It holds that $\nu = \rho(1,m)$, for some $m<n$. We distinguish two cases:
+\begin{itemize}
+  \item $m\leq i$. Hence, $\rho(1,m)$ is a proper prefix of $\rho(1,n')$ and the result follows.
+  \item $m>i$. Since $i$ and $j$ are consecutive positions of the prefix-skeleton sampling of $\rho(i',j')$, $i>i'$,
+   and $m\in [i+1,j-1]$ (hence $m<j'$), there is $m'\in [i'+1,i]$ such that $\rho(m')=\rho(m)$ and $m'$ is in the prefix-skeleton sampling of $\rho(i',j')$. Let $\nu'=\rho(1,m')$. Clearly, $\nu'$ is a proper prefix of $\rho(1,n')$ (as $n'\geq i+1$). Moreover, since
+       $m,m'\in [i'+1,j']$ and $i',j'$ are consecutive positions in the $(h-1)$-prefix sampling of $\rho$, by the inductive   hypothesis, $\nu=\rho(1,m)$ and $\nu'=\rho(1,m')$ are $(h-2)$-prefix bisimilar.
+ \end{itemize}
+%
+This concludes the proof of Lemma~\ref{lemma:prefixSamplingOne}.
+\end{proof}

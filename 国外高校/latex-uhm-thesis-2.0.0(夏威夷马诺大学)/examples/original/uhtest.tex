@@ -1,0 +1,148 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -*- Mode: Latex -*- %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% uhtest.tex -- 
+%% Author          : Robert Brewer
+%% Created On      : Wed Sep 30 16:08:49 1998
+%% Last Modified By: Robert Brewer
+%% Last Modified On: Mon Oct  5 16:17:16 1998
+%% RCS: $Id: uhtest.tex,v 1.2 1998/10/06 02:04:56 rbrewer Exp rbrewer $
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%   Copyright (C) 1998 Robert Brewer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+%!NOTE: This example file has been prepared according to the University of
+%!      Hawaii Style & Policy Manual for Theses and Dissertations dated
+%!      "Revised February 1998". If you have one with a later date, you may
+%!      need to make revisions to this document as well. In any event, making
+%!      sure your thesis complies with Graduate Division guidelines is
+%!      ultimately your responsibility. Caveat LaTeXtor. :)
+%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+%% The options are (you can only choose one from each group):
+%%
+%% 10pt, 11pt, 12pt: chooses the point size for the document. "11ot" is the
+%%                   default.
+%%
+%% oneside, twoside: whether you want your document onesided or twosided. Note
+%%                   that twosided is not guaranteed to work, and style
+%%                   guidelines prohibit double sided printouts on final
+%%                   copy. "oneside" is the default.
+%%
+%% draft, final: when printing drafts you can save a lot of paper by using the
+%%               "draft" option. It switches to single spacing, displays overful
+%%               hboxes with a black box, prints a version number on title page 
+%%               and omits signature page. Of course for the final copy make
+%%               sure to use the "final" option! "final" is the default.
+%%
+%% cm, times, palatino, newcent, bookman: switches between different font
+%%                                        sets. "cm" is the Computer Modern
+%%                                        font (TeX's default), the rest are
+%%                                        PostScript fonts. "times" is the
+%%                                        default.
+%%
+%% thesis, dissertation: switches between the style for a master's thesis and a 
+%%                       Ph.D. dissertation. The differences are fairly minor
+%%                       and limited to the front matter. "thesis" is the
+%%                       default.
+%%
+%% actual, proposal: switches between actual document and proposal mode. In
+%%                   proposal mode: the title page is simplified, the
+%%                   version number is always printed, and the signature page
+%%                   is omitted.
+%%
+%%% Load the uhthesis2e document class
+\documentclass[11pt]{uhthesis}
+
+%%% Load some useful packages:
+%% New LaTeX2e graphics support
+\usepackage{graphicx}
+%% Package to linebreak URLs in a sane manner.
+\usepackage{url}
+
+%%% Declarations for Front Matter. Capitalize all of these values
+%%% "normally". This allows the document class to format them properly.
+%% Full title of thesis or dissertation, capitalized like a title should be.
+\title{The Elements of Theses}
+%% Your name, capitalized normally. Do not include any titles like Dr.
+\author{Perry H. Disdainful}
+%% Month in which you intend to receive your degree (i.e. graduation).
+%% Presumably this will be one of: May, August, or December.
+\degreemonth{May}
+%% Year of expected graduation.
+\degreeyear{2000}
+%% Type of degree to be conferred.
+\degree{Master of Science}
+%% This is the chairperson of your committee. Do not use titles like Dr.
+\chair{Rap Replinger}
+%% The other members of your committee, seperated by "\\". Again, no titles,
+%% and it is customary to list the outside committee member (if you have one)
+%% last.
+\othermembers{Andy Bumatai\\
+Frank DeLima\\
+Joseph B. Bogus}
+%% This is the total size of your committee, including the chairperson. The
+%% signature page routine will only handle up to 6 members; if you have more
+%% than that you will need to modify the document class.
+\numberofmembers{4}
+%% The field in which you are obtaining your degree, capitalized normally.
+\field{Information and Computer Sciences}
+%\subfield{Bioinformatics}
+%% The version number of your document. Consistent use of this will enable you
+%% to tell old drafts from new ones. Final actual documents omit this
+%% automatically so you can use it without fear of submission problems at the
+%% end. If you do not define this parameter, it defaults to "1.0.0".
+\versionnum{2.1.1}
+
+%%% End of preamble
+\begin{document}
+\maketitle
+
+\begin{frontmatter}
+
+%%% Create the signature page (when indicated by the options)
+\signaturepage
+
+%%% Create the copyright page
+\copyrightpage
+
+%%% Bring in the dedication page from external file
+\include{uhtest-dedication}
+
+%%% Bring in the acknowledgments section from external file
+\include{uhtest-acknowledgments}
+
+%%% Bring in the abstract section from external file
+\include{uhtest-abstract}
+
+%%% Generate table of contents
+\tableofcontents
+
+%%% Generate list of tables
+\listoftables
+
+%%% Generate list of figures
+\listoffigures
+
+\end{frontmatter}
+
+%\normalsize
+%%% Bring in the body of the thesis from external file
+\include{uhtest-body}
+
+%%% Switch to appendix mode
+\appendix
+
+%%% Bring in any appendices from external file
+\include{uhtest-appendix}
+
+%% Just for demo purposes, include all entries from bib file
+\nocite{*}
+
+%%% Input file for bibliography
+\bibliography{uhtest}
+%% Use this for an alphabetically organized bibliography
+\bibliographystyle{plain}
+%% Use this for a reference order organized bibliography
+%\bibliographystyle{unsrt}
+
+\end{document}

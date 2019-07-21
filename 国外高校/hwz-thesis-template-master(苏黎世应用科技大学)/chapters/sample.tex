@@ -1,0 +1,32 @@
+\chapter{Foo}
+
+% Introtext
+\begin{intro}
+	\Blindtext[1]
+\end{intro}
+
+	\section{Bar}
+		\subsection{Quux}
+Lorem ipsum dolor\zitat{Bischoff-2008}\\
+Vgl. test\vgl[S.2]{Bischoff-2008}
+\gls{ria} ist ein Glossar Eintrag.\\
+Und noch ein \wi{Index}\\
+Kommandozeile: \cl{net send}
+\Blindtext[2][2]
+
+	\section{Java}
+	
+Nun ein wenig Java Code!
+\javalisting{code/example.java}{Java Hello World Beispiel}{java:example}
+Und noch etwas Text nach der Abbildung...\footnote{Erste}\footnote{Zweite}
+
+\tbl{|>{\bfseries}l|l|}{
+One & Two\\
+Three & Four\\
+}{Eine Tabelle}{tab:example}
+
+Und noch etwas Text nach der Tabelle...
+
+Auf Seite \pageref{java:example} befindet sich das Java Hello World Beispiel (siehe Abschnitt \ref{labelname}).
+
+\bigquote[Titel einer Batman-Episode (Staffel 1, Folge 41)]{If You're So Smart, Why Aren't You Rich?}

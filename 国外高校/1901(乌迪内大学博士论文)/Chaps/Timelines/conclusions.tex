@@ -1,0 +1,20 @@
+\section{Conclusions}
+In this chapter we started by considering the
+timeline-based planning problem (TP) over dense temporal domains.
+Timelines have been fruitfully used in temporal planning for quite a long time to describe planning domains.
+Having recourse to dense time is important for expressiveness: in this way one can express interval-based properties of planning domains, can abstract from unnecessary (or even \lq\lq forced\rq\rq) details often artificially added due to the necessity of discretizing time, and can suitably represent actions with duration, accomplishments and temporally extended goals.
+Since TP turns out to be undecidable in its general form, 
+we identified and studied \lq\lq intermediate\rq\rq\ decidable cases of the problem, which enforce 
+forms of synchronization rules having lower expressive power than that of 
+general ones.
+% As a matter of fact, trigger-less rules can essentially be used only to express initial conditions
+% and the goals of the problem, while trigger rules, much more powerful, are useful to specify invariants and response requirements. Thus one needs somehow a way of re-introducing the latter rules in order to recover their expressive power at least partially.
+
+The final purpose of the chapter is however exploiting timelines as system descriptions/models, 
+which are checked against properties specified in the logic \MITL\ (which replaces $\HS$, in that timed extensions of the latter are not available in literature).
+TP is a sort of \lq\lq necessary condition\rq\rq\ for timeline-based MC: 
+TP boils down to a feasibility check of the system description; moreover MC can easily be solved once TP has, as both timelines and the property specification language \MITL\ can be translated into  timed automata~\cite{ALUR1994183}, which have been studied for a long time and are at the basis of well-known model checkers (e.g., Uppaal~\cite{UPP}).
+
+
+\paragraph*{Acknowledgment} 
+I would like to sincerely thank Gerhard Woeginger (RWTH Aachen University) for his fundamental contribution to the \lq\lq enforcing legal token durations and timeline evolutions\rq\rq\ phase of the $\NP$ planning algorithm for TP with trigger-less rules.

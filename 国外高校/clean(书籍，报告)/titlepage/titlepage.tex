@@ -1,0 +1,62 @@
+\documentclass[../main/main.tex]{subfiles}
+\begin{document}
+
+\newgeometry{top=1in,bottom=1in,right=0.5in,left=0.5in}
+\thispagestyle{empty}
+\pagestyle{empty}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft}
+            $\vcenter{\hbox{\includegraphics[height=2.5em]{\schoolLogo}}}$\\[0.5\baselineskip]
+            \schoolName{}\\
+            \reportShortName{}\\
+        \end{flushleft}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright}
+            $\vcenter{\hbox{\includegraphics[height=2.5em]{\companyLogo}}}$\\[0.5\baselineskip]
+            \companyName{}\\
+            \companyPlace{}\\
+        \end{flushright}
+    \end{minipage}\\[3.0\baselineskip]
+
+    \centering
+    {\large \reportType}\\[1.0\baselineskip]
+    {\Huge \reportTitle}\\[1.5\baselineskip]
+    {\scshape \authorLastName}~\textit{\authorFirstName}\\[0.5\baselineskip]
+    \href{mailto:\authorEmail}{\authorEmail}\\[1.0\baselineskip]
+
+    \vfill
+    % \includegraphics[width=0.7\textwidth, height=0.35\textheight, keepaspectratio]{titlepage}
+    \vfill
+
+    \begin{flushleft}
+        \emph{Option}: Informatique\\
+        \emph{Filière}: Internet des Objets\\
+        \emph{Métier}: Recherche et Développement\\[2.0\baselineskip]
+    \end{flushleft}
+
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft}
+            \textbf{Tuteur ECL}\\
+            {\scshape \schoolTutorLastName{}}~\textit{\schoolTutorFirstName{}}\\
+            \href{mailto:\schoolTutorEmail}{\schoolTutorEmail}\\
+        \end{flushleft}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright}
+            \textbf{Tuteur Entreprise}\\
+            {\scshape \companyTutorLastName{}}~\textit{\companyTutorFirstName{}}\\
+            \href{mailto:\companyTutorEmail}{\companyTutorEmail}\\
+        \end{flushright}
+    \end{minipage}
+\end{titlepage}
+
+\hypersetup{pageanchor=true}
+\restoregeometry{}
+
+\end{document}
+

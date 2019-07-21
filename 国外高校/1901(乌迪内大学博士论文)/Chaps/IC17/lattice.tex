@@ -1,0 +1,79 @@
+\begin{tikzpicture}
+\tikzset{
+    every node/.style={
+        draw
+    },
+    every edge/.style={
+        draw, gray
+    }
+}
+
+\tikzstyle{coNPstyle}=[draw,densely dashed,circle]
+\tikzstyle{PNPlogstyle}=[draw,densely dotted,thick,rectangle, minimum width=1.2cm]
+\tikzstyle{PNPstyle}=[draw,regular polygon,regular polygon sides=9,inner sep=0.5pt]
+\tikzstyle{PSPstyle}=[draw,dash dot dot,thick,ellipse, minimum width=1.2cm]
+
+
+\node [style=coNPstyle] (v2) at (-3.5,-3) {$\B$};
+\node [style=PNPlogstyle] (v3) at (-0.5,-3) {$\A$};
+\node [style=PNPlogstyle] (v4) at (2.5,-3) {$\Abar$};
+\node [style=PSPstyle] (v5) at (5.5,-3) {$\Bbar$};
+
+\node [style=PNPstyle](v6) at (-6.5,-1.5) {$\AB$};
+\node [style=PNPlogstyle](v9) at (-3.5,-1.5) {$\AAbar$};
+\node [style=PNPlogstyle] (v7) at (-0.5,-1.5) {$\AbarB$};
+\node [style=PSPstyle] (v10) at (2.5,-1.5) {$\ABbar$};
+\node [style=PSPstyle] (v11) at (5.5,-1.5) {$\mathsf{\overline{AB}}$};
+\node [style=PSPstyle] (v8) at (8.5,-1.5) {$\mathsf{B\overline{B}}$};
+
+\node [style=PNPstyle] (v12) at (-3.5,0) {$\AAbarB$};
+\node [style=PSPstyle] (v13) at (-0.5,0) {$\ABBbar$};
+\node [style=PSPstyle] (v14) at (2.5,0) {$\mathsf{A\overline{AB}}$};
+\node [style=PSPstyle] (v15) at (5.5,0) {$\mathsf{\overline{A}B\overline{B}}$};
+
+
+\node [style=PSPstyle] (v16) at (1,1.5) {$\AAbarBBbar$};
+\node [style=coNPstyle] (v1) at (1,-4.5) {$\HSprop$};
+
+\draw  (v1) edge (v2);
+\draw  (v1) edge (v3);
+\draw  (v1) edge (v4);
+\draw  (v1) edge (v5);
+\draw  (v2) edge (v6);
+\draw  (v2) edge (v7);
+\draw  (v2) edge (v8);
+\draw  (v3) edge (v6);
+\draw  (v3) edge (v9);
+
+\draw  (v3) edge (v10);
+\draw  (v4) edge (v9);
+\draw  (v4) edge (v7);
+\draw  (v4) edge (v11);
+\draw  (v5) edge (v8);
+\draw  (v5) edge (v11);
+\draw  (v5) edge (v10);
+\draw  (v6) edge (v12);
+\draw  (v6) edge (v13);
+\draw  (v9) edge (v12);
+\draw  (v9) edge (v14);
+\draw  (v7) edge (v12);
+\draw  (v7) edge (v15);
+\draw  (v10) edge (v13);
+\draw  (v10) edge (v14);
+\draw  (v11) edge (v14);
+\draw  (v11) edge (v15);
+\draw  (v12) edge (v16);
+\draw  (v13) edge (v16);
+\draw  (v14) edge (v16);
+\draw  (v15) edge (v16);
+
+\draw  (v8) edge (v15);
+\draw  (v8) edge (v13);
+
+
+\node [style=coNPstyle] at (-6.5,-5.5) {\scriptsize $\co\NP$};
+\node [style=PNPlogstyle] at (-4.4,-5.5) {\scriptsize $\Thsq$};
+\node [style=PNPstyle] at (-2.5,-5.5) {\scriptsize $\PTIME^{\NP}$};
+\node [style=PSPstyle] at (-0.5,-5.5) {\scriptsize $\PSPACE$};
+
+\end{tikzpicture}

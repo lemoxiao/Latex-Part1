@@ -1,0 +1,30 @@
+% !TEX root = ../Thesis.tex
+
+% Text fonts (http://www.macfreek.nl/memory/Fonts_in_LaTeX)
+% Install fonts from /usr/local/texlive/<version>/texmf-dist/fonts/opentype/public
+\usepackage{fontspec}
+
+% Sans-serif font
+\setsansfont[
+    Ligatures=TeX,
+    Extension=.otf,
+    UprightFont=*-regular,
+    BoldFont=*-bold,
+    ItalicFont=*-italic,
+    BoldItalicFont=*-bolditalic,
+    %SlantedFont=,
+    %BoldSlantedFont=,
+    %SmallCapsFont=
+    Scale=0.8      % Adjustmens when using math in sections
+]{texgyreadventor}
+%\setsansfont[Ligatures=TeX]{Neo Sans Intel}    % Neo Sans Intel – Like DTU font but more symbols
+%\setsansfont[
+%    Ligatures=TeX,
+%    Scale=0.8
+%]{NeoSans}           % NeoSans – DTU font (missing `+' symbols and other)
+%\setsansfont[Ligatures=TeX]{CMU Sans Serif}    % Computer Modern Unicode font
+%\setsansfont[Ligatures=TeX]{Latin Modern Sans} % Latin Modern Sans serif font
+
+% Use this for more convenient sans serif font in math mode.
+%\setmathsf{Latin Modern Sans}
+

@@ -1,0 +1,19 @@
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2017.8.21)  21 AUG 2017 11:42
+ restricted system commands enabled.
+**%.tex
+! Emergency stop.
+<*> %.tex
+      
+*** (job aborted, no legal \end found)
+
+
+
+Here is how much of LuaTeX's memory you used:
+ 3 strings out of 494472
+ 100000,89155 words of node,token memory allocated 234 words of node memory still in use:
+   34 glue_spec nodes
+   avail lists: 2:12,3:1,4:1,5:1
+ 4263 multiletter control sequences out of 65536+600000
+ 14 fonts using 591679 bytes
+ 0i,0n,0p,0b,6s stack positions out of 5000i,500n,10000p,200000b,100000s
+!  ==> Fatal error occurred, no output PDF file produced!

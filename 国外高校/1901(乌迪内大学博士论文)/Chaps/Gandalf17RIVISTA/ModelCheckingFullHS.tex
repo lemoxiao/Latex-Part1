@@ -1,0 +1,277 @@
+\section{MC for full $\HS$}\label{sect:fullHS}
+
+In this section, we develop an automata-theoretic approach to the MC problem 
+for full $\HS$ with regular expressions. 
+
+Given a finite Kripke structure $\Ku=\KuDef$ and an $\HS$ formula $\varphi$ over 
+$\Prop$, we compositionally construct an \NFA\ over the set of states $S$ of 
+$\Ku$ accepting the set of traces $\rho$ of $\Ku$ such that 
+$\Ku,\rho\models\varphi$. The size of the resulting \NFA\ is nonelementary, but 
+it is just \emph{linear in the size of $\Ku$}. To prove that the nonelementary 
+blow-up does not depend on $\Ku$, we introduce a special subclass of  $\NFA$s, 
+called  $\Ku$-\NFA, which intuitively represents the \lq\lq 
+synchronization\rq\rq\ of an \NFA\ with the  Kripke structure $\Ku$. In this 
+way, a $\Ku$-\NFA\ may only accept traces of $\Ku$. 
+
+\begin{definition}[$\Ku$-\NFA]
+A $\Ku$-\NFA\   is an \NFA\ $\Au=(S,Q,Q_0,\Delta,F)$ over $S$ satisfying the 
+following conditions:
+\begin{itemize}
+  \item the set $Q$ of states has the form $M\times S$ ($M$ is called the 
+  \emph{main component}, or the set of \emph{main states});
+  \item $Q_0\cap F = \emptyset$, that is, the empty word $\varepsilon$ is not accepted;
+  \item for all $(q,s)\in M\times S$ and $s'\in S$, we have 
+  $\Delta((q,s),s')=\emptyset$ if $s' \neq s$,
+and $\Delta((q,s),s)\subseteq M\times \Edges(s)$%
+\footnote{We recall that $\Edges(s)$ is the set of successors of $s$ in $\Ku$.}.
+\end{itemize}
+\end{definition}
+%
+It is worth noticing that,
+for all words $\rho\in S^{+}$, if there is a run of the $\Ku$-\NFA\ over $\rho$, then $\rho$ is a trace of  $\Ku$. In the following, we construct a $\Ku$-\NFA\ $\Au$ accepting the traces $\rho$ of $\Ku$ such that $\Ku,\rho\models\varphi$. 
+
+In a standard automata-theoretic approach, an automaton accepting the set of models of $\varphi$ would be first defined, and then intersected with $\Ku$. In the following construction, the synchronization with $\Ku$ is instead implicitly associated with the construction of the  $\Ku$-\NFA\ itself.
+Such a choice is motivated by the fact that proposition letters in the formula $\varphi$ (the base case in the construction) are regular expressions which have to be synchronized with 
+the traces of $\Ku$. Such a synchronization  is then maintained along the whole process of
+$\Ku$-\NFA{} construction. 
+
+The recursive step for dealing with negation in 
+$\varphi$ is noteworthy, since it is not just a pure complementation of the  $\Ku$-\NFA\ under construction. As a matter of fact, only the synchronized \NFA-component (for the regular expressions of $\varphi$) has to be complemented, whereas the synchronized $\Ku$-component does not. For this reason, the size of the final $\Ku$-\NFA{} is nonelementary, but linear in the size of $\Ku$.
+
+% 
+%The key aspect in the construction of $\Ku$-\NFA s is that, intuitively, the product with the Kripke
+%structure is not deferred until the end (as it is done, for instance, in LTL model checking). Conversely, we
+%have to make the product between $\Ku$ and an NFA for a regular expression from
+%the very beginning (in order to recognize traces accepted by a regular expression,
+%namely, the base case in our formulas), and we have to bring it along for the whole process of
+%$\Ku$-\NFA{} construction. Moreover, the complementation of a $\Ku$-\NFA{} is noteworthy, as we just
+%have to complement the \NFA-component, but not $\Ku$.
+%For this reason, the size of the final $\Ku$-\NFA{} is nonelementary, 
+%but it is linear in the size of $\Ku$.
+
+In order to prove the main result of the section (stated in Theorem \ref{th-m}), we preliminarily 
+describe the composition steps to build the required $\Ku$-\NFA. In particular, we give: $(i)$~in Proposition~\ref{prop:FromNFAtoK-NFA} the basic step to deal with propositions associated with regular expressions, $(ii)$~in Proposition \ref{prop:closureUnderPrefixSuffix} the closure of $\Ku$-\NFA s under language operations corresponding to \HS\ modalities, and $(iii)$~in Proposition~\ref{prop:booleanClosureNFA} the closure of $\Ku$-\NFA s  under Boolean operations.
+
+In the following, let $\Ku=\KuDef$ be a finite Kripke structure over $\Prop$.
+%Fix a Kripke structure $\Ku=(\Prop,S, \Edges,\mu,s_0)$ over $\Prop$.
+
+\begin{proposition}\label{prop:FromNFAtoK-NFA} Let $\Au$ be an \NFA\ over $2^{\Prop}$ with $n$ states. One can construct, in polynomial time, a $\Ku$-\NFA\  $\Au_{\Ku}$ with at most $n+1$ main states accepting the set of traces $\rho$ of $\Ku$ such that $\mu(\rho)\in \Lang(\Au)$.
+\end{proposition}
+\begin{proof}
+Let $\Au = \tpl{2^{\Prop},Q,Q_0,\Delta,F}$. By using an additional state, we can assume $\varepsilon\notin \Lang(\Au)$, that is, $Q_0\cap F=\emptyset$. Then, $\Au_{\Ku}=\tpl{S,Q\times S,Q_0\times S,\Delta',F\times S}$, where for all $(q,s)\in Q\times S$ and $s'\in S$, it holds that $\Delta'((q,s),s')=\emptyset$ if $s'\neq s$, and $\Delta'((q,s),s) = \Delta(q,\mu(s))\times \Edges(s)$. Since $\Edges(s)\neq \emptyset$ for all $s \in S$, the thesis follows.
+\end{proof}
+
+We now define the operations on languages of  finite words over $S$ corresponding to the $\HS$ modalities $\hsB$, $\hsBt$, $\hsE$, and $\hsEt$.
+Given a language $\Lang$ over $S$, we define the following languages of traces of $\Ku$:
+%
+%
+%$\hsB_{\Ku}(\Lang)$, $\hsE_{\Ku}(\Lang)$, $\hsBt_{\Ku}(\Lang)$, $\hsEt_{\Ku}(\Lang)$ be the languages of traces of $\Ku$ defined as:
+%
+\begin{itemize}
+ \item   $\hsB_{\Ku}(\Lang) = \{ \rho\in\Trk_\Ku\mid  \exists\, \rho'\in \Lang\cap S^{+} \text{ and }\rho''\in S^{+} \text{ such that } \rho= \rho'\cdot \rho'' \}$;
+ \item   $\hsBt_{\Ku}(\Lang) =\{ \rho\in \Trk_\Ku\mid \exists\, \rho'\in S^{+}\text{ such that }\rho\cdot \rho'\in\Lang\cap \Trk_\Ku \}$;
+  \item   $\hsE_{\Ku}(\Lang) =\{ \rho\in\Trk_\Ku\mid \exists\, \rho''\in \Lang\cap S^{+} \text{ and } \rho'\in S^{+} \text{ such that } \rho= \rho'\cdot \rho''  \}$;
+ \item   $\hsEt_{\Ku}(\Lang) = \{ \rho\in\Trk_\Ku\mid \exists\, \rho'\in S^{+}\text{ such that } \rho'\cdot \rho\in\Lang\cap \Trk_\Ku \}$.
+\end{itemize}
+
+%The compositional translation of $\HS$ formulas into a $\Ku$-\NFA\ is based on the following two propositions.
+%~\ref{prop:closureUnderPrefixSuffix} and~\ref{prop:booleanClosureNFA}. 
+We show that $\Ku$-$\NFA$s are closed under the above defined language operations $\hsB_{\Ku}(\cdot)$, $\hsE_{\Ku}(\cdot)$, $\hsBt_{\Ku}(\cdot)$ and $\hsEt_{\Ku}(\cdot)$.
+
+\begin{proposition}\label{prop:closureUnderPrefixSuffix} Given a $\Ku$-$\NFA$ $\Au$ with $n$ main states, 
+one can construct, in polynomial time, $\Ku$-$\NFA$s with $n+1$ main states accepting the languages
+$\hsB_{\Ku}(\Lang(\Au))$, $\hsE_{\Ku}(\Lang(\Au))$, $\hsBt_{\Ku}(\Lang(\Au))$ and $\hsEt_{\Ku}(\Lang(\Au))$, 
+respectively.
+\end{proposition}
+\begin{proof}
+Let $\Au=\tpl{S, M\times S,Q_0,\Delta,F}$, where $M$ is the set of main states. 
+
+\paragraph*{Language $\hsB_{\Ku}(\Lang(\Au))$.} Let $\Au_{\hsB}$ be the $\NFA$ over $S$ given by
+\[\Au_{\hsB}=\tpl{S,(M\cup \{q_\acc\})\times S ,Q_0,\Delta',\{q_\acc\}\times S},\] where $q_\acc\notin M$ is a fresh main state, and for all $(q,s)\in (M\cup \{q_\acc\})\times S$ and $s'\in S$, we have $\Delta'((q,s),s')=\emptyset$, if $s'\neq s$, and 
+%$\Delta'((q,s),s)$ is defined as follows:
+%
+\[
+%\begin{array}{l}
+\Delta'((q,s),s) =  \left\{
+    \begin{array}{ll}
+    \Delta((q,s),s)
+      &    \text{ if }   (q,s)\in (M\times S)\setminus F
+      \\
+    \Delta((q,s),s) \cup 
+     (\{q_\acc\}\times \Edges(s))
+      &    \text{ if }    (q,s)\in F
+      \\
+    \{q_\acc\}\times \Edges(s) &    \text{ if }    q = q_\acc.
+    \end{array}
+  \right.
+%\end{array}
+\]
+%
+%Essentially, 
+Given an input word $\rho$, from an initial state $(q_0,s)$ of $\Au$,   the automaton $\Au_{\hsB}$ simulates the behavior of $\Au$ from $(q_0,s)$ over $\rho$. When $\Au$ is in an accepting state $(q_f,s)$ and the current  input symbol is $s$, $\Au_{\hsB}$ can additionally choose
+to  move to a state in  $\{q_\acc\}\times \Edges(s)$, which is accepting for $\Au_{\hsB}$ (a prefix of $\rho$ belongs to  $\Lang(\Au)$). From such states, $\Au_{\hsB}$ accepts if and only if the remaining part of the input is a trace of $\Ku$.
+Since $\Au$ is a $\Ku$-\NFA, $\Au_{\hsB}$ is a $\Ku$-\NFA\  by construction. Moreover, a word $\rho$ over $S$ is accepted by $\Au_{\hsB}$  \emph{if and only if} $\rho$ is a trace of $\Ku$ having some proper prefix $\rho'$ in $\Lang(\Au)$ (note that $\rho'\neq \varepsilon$ since $\Au$ is a $\Ku$-\NFA). Thus, $\Lang(\Au_{\hsB})=\hsB_{\Ku}(\Lang(\Au))$.%\vspace{0.1cm}
+
+\paragraph*{Language  $\hsBt_{\Ku}(\Lang(\Au))$.} Let $\Au_{\hsBt}$ be the $\NFA$ over $S$ given by 
+\[\Au_{\hsBt}=\tpl{S,(M\cup \{q'_0\})\times S ,\{q'_0\}\times S,\Delta',F'},\] where $q'_0\notin M$ is a fresh main state and $\Delta'$ and $F'$ are defined as follows:
+\begin{itemize}
+  \item for all
+$(q,s)\in (M\cup \{q'_0\})\times S$, $s'\in S$, we have $\Delta'((q,s),s')=\emptyset$, if $s'\neq s$, and 
+%
+\[
+%\begin{array}{l}
+ \Delta'((q,s),s) = \left\{
+    \begin{array}{ll}
+   \displaystyle{\bigcup_{(q_0,s)\in Q_0}}\Delta((q_0,s),s)
+      &    \text{ if } q=q'_0 \medskip
+      \\
+    \Delta((q,s),s)
+      &    \text{ otherwise.}
+    \end{array}
+  \right.
+%\end{array}
+\]
+%
+  \item The set $F'$ of accepting states is the set of states $(q,s)$ of $\Au$ such that there exists a run of $\Au$ from $(q,s)$ to some state in $F$ over some non-empty word.
+\end{itemize}
+
+Note that the set $F'$ can be computed in time polynomial in the size of $\Au$. Since   $\Au_{\hsBt}$ essentially simulates $\Au$, and $\{q'_0\}\times S$ and $F'$ are disjoint,
+by construction it easily follows that $\Au_{\hsBt}$ is a $\Ku$-\NFA. Moreover, $\Au_{\hsBt}$ accepts a word $\rho$ \emph{if and only if} $\rho$ is a non-empty proper prefix of some word accepted by $\Au$.
+Thus, since $\Au$ is a $\Ku$-\NFA, we obtain that $\Lang(\Au_{\hsBt})=\hsBt_{\Ku}(\Lang(\Au))$.%\vspace{0.1cm}
+
+% By construction, we have that $\Au_{\hsBt}$ is a $\Ku$-\NFA\ and $\Au_{\hsBt}$ accepts a word $\rho$ \emph{if and only if} $\rho$ is a non-empty proper prefix of some word accepted by $\Au$, implying that $\Lang(\Au_{\hsBt})=\hsBt_{\Ku}(\Lang(\Au))$.
+
+The constructions for $\hsE_{\Ku}(\Lang(\Au))$ and $\hsEt_{\Ku}(\Lang(\Au))$---which are symmetric to the ones for $\hsB_{\Ku}(\Lang(\Au))$ and $\hsBt_{\Ku}(\Lang(\Au))$---can be found in \ref{sec:prop:closureUnderPrefixSuffix}.
+\end{proof}
+
+Now we show that $\Ku$-$\NFA$s are closed under Boolean operations.
+
+\begin{proposition}\label{prop:booleanClosureNFA} 
+Given two $\Ku$-$\NFA$s  $\Au$ and $\Au'$   with $n$ and $n'$ main states, respectively, 
+one can construct:
+\begin{itemize}
+  \item a  $\Ku$-$\NFA$ with $n+n'$ main states accepting $\Lang(\Au)\cup \Lang(\Au')$ in time~\mbox{$O(n+n')$};
+  %\item in time $O(n\cdot n')$ a $\Ku$-$\NFA$ with $n\cdot n'$ main states accepting $\Lang(\Au)\cap \Lang(\Au')$;
+   \item a $\Ku$-$\NFA$ with $2^{n+1}+1$ main states accepting   $\Trk_\Ku\setminus \Lang(\Au)$ in time~$2^{O(n)}$.
+\end{itemize}
+\end{proposition}
+\begin{proof}     
+The construction for union is standard and thus omitted. The construction for 
+complementation follows.
+
+%are slightly variants of the standard ones for \NFA s.
+%
+%\paragraph*{Union}
+%Let $\Au=\tpl{S, M\times S,Q_0,\delta,F}$ and $\Au'=\tpl{S, M'\times S,Q'_0,\delta',F'}$ be the given $\Ku$-$\NFA$s. W.l.o.g., we assume that $M\cap M'=\emptyset$.
+%
+%Let  $\Au_\cup$ be the $\NFA$ over $S$ defined as
+%$\Au_\cup=\tpl{S,(M\cup M')\times S ,Q_0\cup Q'_0,\delta'',F\cup F'}$, where for all
+%$(q,s)\in (M\cup M')\times S$ and $s'\in S$, we have $\delta''((q,s),s')=\emptyset$ if $s'\neq s$, and 
+%
+%\[
+%\begin{array}{l}
+% \delta''((q,s),s) = \left\{
+%    \begin{array}{ll}
+%    \delta((q,s),s)
+%      &    \text{ if }   q\in M
+%      \\
+%     \delta'((q,s),s)
+%      &    \text{ if }   q\in M'.
+%    \end{array}
+%  \right.
+%\end{array}
+%\]
+%
+%The correctness of the construction trivially follows.
+%
+%\paragraph*{Construction for complementation}
+Let $\Au=\tpl{ S,M\times S,Q_0,\Delta,F}$.
+% 
+%Let $n$ be the number of main states of $\Au$.
+First, we need a preliminary construction. Let us consider the \NFA\ 
+\[\Au''= \tpl{S,(M \cup \{q_\acc\}) \times S ,Q_{0},\Delta'',\{q_\acc\}\times S},\]
+where $q_\acc\notin M$ is a fresh main state, and for all
+$(q,s)\in (M \cup \{q_\acc\}) \times S$ and $s'\in s$, we have $\Delta''((q,s),s')=\emptyset$, if $s'\neq s$, and  %
+\[% \hspace{-0.3cm}
+%\begin{array}{l}
+\Delta''((q,s),s)= \left\{
+    \begin{array}{ll}
+     \Delta((q,s),s)\cup (\{q_\acc\}\times S)
+      &    \text{ if }   q\in M \text{ and } \Delta((q,s),s)\cap F\neq \emptyset
+      \\
+      \Delta((q,s),s)
+      &    \text{ if }   q\in M \text{ and } \Delta((q,s),s)\cap F = \emptyset
+      \\
+      \emptyset
+      &   \text{ if }   q = q_\acc.
+    \end{array}
+  \right.
+%\end{array}
+\]
+%
+Note that  $\Lang(\Au'')=\Lang(\Au)$, but $\Au''$ is actually \emph{not} a  $\Ku$-$\NFA$.
+
+Next, we show that it is possible to  construct in time $2^{O(n)}$ a \emph{weak} $\Ku$-$\NFA$ $\Au_c$ with $2^{n+1}$ main states   accepting   $(\Trk_\Ku\setminus \Lang(\Au''))\cup \{\varepsilon\}$, where a \emph{weak} $\Ku$-$\NFA$ is just a $\Ku$-$\NFA$ without the requirement that the empty word $\varepsilon$ is not accepted. Thus, since a weak $\Ku$-$\NFA$ can be easily converted into an equivalent $\Ku$-$\NFA$ by using an additional main state, and $\Lang(\Au'')=\Lang(\Au)$, the result follows.  The weak $\Ku$-$\NFA$ $\Au_c$ is given by
+$\Au_c=\tpl{S,2^{\tilde{M}}\times S ,Q_{0,c},\Delta_c,F_c}$, where $\tilde{M}=M\cup \{q_\acc\}$, and $Q_{0,c}$,  $F_c$ and $\Delta_c$ are defined as follows:
+\begin{itemize}
+  \item $Q_{0,c}=\{(P,s)\in 2^{M}\times S \mid P=\{q\in M\mid (q,s)\in Q_0\}\}$;
+  \item $F_c=\{(P,s)\in 2^{M}\times S \}$;
+  \item for all
+$(P,s)\in 2^{\tilde{M}}\times S$ and $s'\in S$, we have $\Delta_c((P,s),s')=\emptyset$, if $s'\neq s$, and 
+%
+\[\Delta_c((P,s),s)=
+ \bigcup_{s'\in \Edges(s)} \Big\{ (\{q'\in \tilde{M} \mid (q',s')\in \bigcup_{p\in P}\Delta''(p,s)\},s') \Big\}.
+\]
+%
+\end{itemize}
+%
+By construction, $\Au_c$ is a weak $\Ku$-$\NFA$ not accepting words in $S^{+}\setminus \Trk_\Ku$. Since $Q_{0,c}\subseteq F_c$, we have $\varepsilon\in \Lang(\Au_c)$.
+Let $\rho\in \Trk_\Ku$ with $|\rho|=k$. To conclude the proof, we have to show that $\rho\in \Lang(\Au'')$ if and only if $\rho \notin \Lang(\Au_c)$.
+
+Assuming that $\rho\in \Lang(\Au'')$, we prove by contradiction that $\rho \notin \Lang(\Au_c)$. Let us assume that there is a run of $\Au_c$ over $\rho$ having the form $(P_0,s_0)\cdots (P_{k},s_k)$ such that
+$(P_0,s_0)\in Q_{0,c}$ and $(P_k,s_k)\in F_c$ implying that $q_\acc\notin P_k$. By construction, $P_0 = \{q\in M\mid (q,s_0)\in Q_0\}$,   and  for all $i\in [0,k-1]$, $s_i = \rho(i)$
+and $P_{i+1} = \{p\in \tilde{M} \mid (p,s_{i+1})\in \Delta''(q,s_i) \text{ for some } q\in P_i  \}$. Since $\rho\in \Lang(\Au'')$, there is $s\in S$, $(q_0,s_0)\in Q_0$ and an accepting run of
+$\Au''$ over $\rho$ having the form $(q_0,s_0)\cdots  (q_{k-1},s_{k-1}) (q_k,s)$ where $q_k = q_\acc$.  By definition of the transition function $\Delta ''$ of  $\Au''$, we can also assume that
+$s=s_k$. It follows that
+$q_i\in P_i $ for all $i\in [0,k]$, which is a contradiction since $q_\acc\notin P_k$. Therefore $\rho \notin \Lang(\Au_c)$.
+
+As for the converse direction, let us assume that $\rho \notin \Lang(\Au_c)$.  We have to show that $\rho\in \Lang(\Au'')$.  By construction, there exists some run of
+$\Au_c$ over $\rho$ starting from an initial state (recall that $\Edges(s)\neq \emptyset$  for all $s\in S$). Moreover, each of these runs has the form $(P_0,s_0)\cdots (P_{k},s_k)$
+such that  $P_0 = \{q\in M\mid (q,s_0)\in Q_0\}$, $q_\acc \in P_k$, and    for all $i\in [0,k-1]$, $s_i = \rho(i)$
+and $P_{i+1} = \{p\in \tilde{M} \mid (p,s_{i+1})\in \Delta(q,s_i) \text{ for some } q\in P_i  \}$. It easily follows that there is an accepting run of
+$\Au''$ over $\rho$ from some initial state in $P_0\times \{s_0\}$, thus proving the thesis. 
+\end{proof}
+
+An MC algorithm for full $\HS$ can be built as follows.
+%
+Let $\varphi$ be an $\HS$ formula. First of all, we convert $\varphi$ into an equivalent formula, called \emph{existential form of $\varphi$}, that makes use of negations, disjunctions, and the existential modalities
+$\hsB$, $\hsBt$, $\hsE$, and $\hsEt$, only. %such that negation is applied only to the $\HS$ temporal modalities and to atomic formulas (i.e., regular expressions).
+%
+For all $h\geq 1$, let $\HS_h$ denote the syntactical $\HS$ fragment consisting only of formulas $\varphi$ such that the \emph{nesting depth of negation in the existential form
+of $\varphi$ is at most $h$}. Moreover $\neg\HS_h$ is the set of formulas $\varphi$ such that $\neg\varphi\in \HS_h$.
+%
+  Now, given an $\HS$ formula $\varphi$ (in existential form), checking whether  $\Ku\not\models \varphi$ reduces to checking the existence of
+an initial trace $\rho$ of $\Ku$ such that $\Ku,\rho\models \neg\varphi$. By exploiting Proposition~\ref{prop:FromNFAtoK-NFA}, \ref{prop:closureUnderPrefixSuffix} and~\ref{prop:booleanClosureNFA}, we can build  in a compositional way (driven by the structure of $\neg\varphi$) a $\Ku$-\NFA\ $\Au$ accepting the set of initial traces $\rho$ such that $\Ku,\rho\models \neg\varphi$ and check $\Au$ for emptiness.
+
+
+For all $h,n\geq 0$, let $\Tower(h,n)$ denote a tower of exponentials of height $h$ and argument $n$, that is, $\Tower(0,n)=n$ and $\Tower(h+1,n)=2^{\Tower(h,n)}$. Moreover, let \mbox{$h$-$\EXPTIME$} denote the class of languages decided by deterministic Turing machines whose number of computation steps is bounded by functions of $n$ in $O(\Tower(h,n^c))$, for some constant $c\geq 1$. Note that \mbox{$0$-$\EXPTIME$} is $\PTIME$.
+
+The next theorem states the main result of the section.
+%
+  \begin{theorem}\label{th-m} There exists a constant $c$ such that, given a finite Kripke structure $\Ku$ and  an $\HS$ formula $\varphi$, one can construct %in time $O(|\Ku| * \Tower(h,|\varphi|^{c}))$
+  a $\Ku$-\NFA\ with $O(|\Ku| \cdot \Tower(h,|\varphi|^{c}))$ states  accepting the set of traces $\rho$ of $\Ku$
+  such that $\Ku,\rho\models  \varphi$, where $h$ is the nesting depth of negation in the existential form of $\varphi$. 
+  
+  Moreover,  for each $h\geq 0$, the MC problem for $\neg\HS_h$
+is in \mbox{$h$-$\EXPTIME$}. Additionally, for a constant-length formula,
+the MC problem is in $\PTIME$.
+  \end{theorem} 
+  
+On one hand, this algorithm can be adapted to $\HS$ under homogeneity in a straightforward way, as an alternative to the one presented in 
+Section~\ref{sec:decidProof}. On the other, the complexity lower bound proved in Section~\ref{sec:BEhard} for MC of $\HS$ formulas under  homogeneity immediately propagates to the complexity of MC for $\HS$ extended with regular expressions.
+
+\begin{theorem}\label{theorem:lowerBoundBERegex} The MC problem for $\HS$ formulas extended with regular expressions over finite Kripke structures is $\EXPSPACE$-hard (under polynomial-time reductions).
+\end{theorem}
+  
+We now focus on the complexity of $\HS$ fragments with regular expressions.
+%by proving matching lower/upper bounds to it.

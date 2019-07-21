@@ -1,0 +1,9 @@
+\chapter{Citation and Bibliography}
+
+\graphicspath{ {graphics/Chapter5/} }
+
+There are a lot of literature management software in the market, e.g. EndNote, Citavi, Mandeley, etc. Taking Citavi as example, one can add literature and reference sources into this software and exported all references into a bib-file, which can be read by \LaTeX~and directly added as references in the generated pdf-file.
+	
+In this thesis template, the citation management package used is {\color{blue}biblatex}, hence in Citavi you should export the selected references by setting a Bib\LaTeX~export filter. It should be noticed, the time format used in the package {\color{blue}biblatex} is the \gls{UTC} time format, i.e. \colorbox{yellow!60}{yyyy-MM-dd}. Citavi also supports different time formats, e.g. German format \colorbox{yellow!60}{dd.MM.yyyy}. However, problems may occur when one attempted to export such time format into a bib-file. Therefore, it is recommended to use \acrshort{UTC} time format in Citavi and then export.
+	
+Each reference entry has a unique Bib\TeX~key within your Citavi project and in the bib-file, which can be directly referred in \LaTeX~environment with the command {\color{blue}{\verb|\cite|}}. For example, type {\color{blue}{\verb|\cite{Burger.20180508}|}}, the corresponding reference will be referred in the text \cite{Burger.20180508}.

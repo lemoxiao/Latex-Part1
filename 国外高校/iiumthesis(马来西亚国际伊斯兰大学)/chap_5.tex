@@ -1,0 +1,42 @@
+\chapter{mitigation of Impulsive noise in DWT-based OFDM Systems} \label{chap5}
+	\section{Introduction}
+
+	\section{Mitigation of Impulsive Noise Using  blanking Technique} \label{sec5:NB}
+
+		\subsection{Threshold Selection}
+			\subsubsection{Fixed Threshold}
+			\subsubsection{Optimized Threshold}
+
+\begin{algorithm} 
+\caption{Finding the optimum threshold }
+\label{algo5:algo1}
+\begin{algorithmic}
+  \Procedure{FindOptimumThreshold }{$T_{th,opt_{i}}$}
+   \State {$\textbf{SNR} = [0:2:20]$}, $ \textbf{T} _{th}=[0:0.1:7] $
+    \For{i=1:length(SNR)}
+    	 \For{j=1:length(T$_{th}  $)}
+    	\Procedure{CalculateBitErrorRate }{BER(T$_{th,j}$)}
+    	\EndProcedure
+    \EndFor
+        \State $T_{opt,i}=T_{th}(j)\gets {minimum}(BER(T_{th,j}))$
+    \EndFor 
+  \EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+
+		\subsubsection{Expected Threshold}
+			
+		\subsection{Simulation Results and Analysis}
+				\subsubsection{Results of Fixed Threshold}	
+	\subsubsection{Results of Optimized Threshold}
+			\subsubsection{Results of Expected Threshold} \label{subsub5:expected}
+
+	\section{Impulsive Noise Mitigation Using the Replacing Technique for Haar DWT based OFDM }\label{sec5:proposedT}
+		 
+	\subsection{Simulation Results and Analysis}
+		
+	\section{Performance Comparison}\label{sec5:performaceComparison}
+	
+	\section{Summary} \label{sec5:summary}
+	

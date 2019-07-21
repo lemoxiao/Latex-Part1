@@ -1,0 +1,472 @@
+% =============================================================
+% Text Format
+% =============================================================
+\setstretch{1.2} % value for line spacing
+\clubpenalty=10000 % prevent single lines at the beginning of a paragraph (Schusterjungen)
+\widowpenalty=10000 % prevent single lines at the end of a paragraph (Hurenkinder)
+\displaywidowpenalty=10000 %
+\interdisplaylinepenalty=2500 %
+
+\newcommand{\tgherosfont}{\fontfamily{qhv}\selectfont}
+% =============================================================
+
+
+% =============================================================
+% Geometry
+% =============================================================
+\usepackage[               % page layout modifications
+    paper=a4paper,         % use A4 paper size
+    includehead,           % include header space
+    includefoot,           % include footer space
+    includemp,             % include side note space
+    bindingoffset=0.5cm,   % binding correction
+    top=2.25cm,            % total body: top margin
+    left=3.75cm,           % total body: left margin (odd pages)
+    right=0.75cm,          % total body: right margin (odd pages)
+    bottom=1.5cm,          % total body: bottom margin
+    % headheight=20pt,       % use because of the fancyhdr package
+    marginparwidth=1.75cm, % width for side note
+    marginparsep=10pt,     % space between notes and body text (content)
+    footskip=2cm           % footer skip size
+]{geometry}
+
+% \usepackage{showframe}     % use to show the frame
+% =============================================================
+
+
+% =============================================================
+% Chapter/Section style
+% =============================================================
+\usepackage{titlesec} % Used to customize capter/section style
+
+\makeatletter
+% Chapter Style
+\iftoggle{fancychapter}{%
+    \newcommand\ctformatchapter[1]{\parbox[t]{\dimexpr\textwidth-4em\relax}{\raggedright#1}}
+    \titleformat%
+        {name=\chapter}% Command
+        [display]% Shape
+        {\Huge}% Format
+        {%
+            \vspace{-6em}% Vertical shift of everything
+            \raggedleft{%
+                {\color{colorblack}\rule[-0.5em]{2pt}{6em}}% Vertical bar
+                \hspace{1.0em}% Space between the bar and the text
+                {%
+                    \def\stackalignment{c}\stackon[1em]% Distance between chapter and chapter number
+                        {\color{maincolor}\fontsize{60}{60}\selectfont\thechapter}% Font size of chapter number
+                        {\normalsize{\textsc{\@chapapp}}}% Print the chapter number
+                }%
+            }\hspace{-1.5em}% Horizontal Shift of the chapter mark
+        }% Label
+        {-3.0em}% Sep
+        {\ctformatchapter}% Before Code
+        [\phantomsection]% After Code
+
+    \titleformat%
+        {name=\chapter, numberless}% Command
+        [display]% Shape
+        {\Huge}% Format
+        {}% label
+        {-6.0em}% Sep
+        {}% Before Code
+        [\phantomsection]% After Code
+
+    % titlespacing{\command}{left-sep}{before-sep}{after-sep}[right-sep]
+    \titlespacing{name=\chapter}{0em}{2em}{3em}%
+    \titlespacing{name=\chapter,numberless}{0em}{5em}{3em}%
+}{%
+    \titleformat%
+        {name=\chapter}% command
+        [display]% shape
+        {\bfseries\LARGE\itshape}% format
+        {%
+            \rule{\textwidth}{1pt}
+            \@chapapp~\thechapter.
+        }% label
+        {0.5ex}% sep
+        {
+            \vspace{-0.1em}
+            \centering
+        }% before-code
+        [
+            \vspace{-0.3em}%
+            \rule{\textwidth}{1pt}
+        ]% after-code
+    \titleformat%
+        {name=\chapter, numberless}% Command
+        [display]% Shape
+        {\Huge}% Format
+        {}% label
+        {-6.6em}% Sep
+        {}% Before Code
+        [\phantomsection]% After Code
+
+    \titlespacing{name=\chapter}{0pt}{-2.5em}{1em}%
+    \titlespacing{name=\chapter,numberless}{0pt}{5em}{1em}%
+}
+
+% Section Style
+\titlespacing{\section}{0em}{.75em}{.2em}
+\iftoggle{sectionmargin}{%
+    \titleformat{\section}% Command
+        {\huge}% Format
+        {\hspace{-3cm}\makebox[3cm][r]{\color{maincolor}\thesection\hspace{0.3cm}}}% Label
+        {0em}% Sep
+        {\raggedright}% Before Code
+        [\phantomsection]% After Code
+}{%
+    \titleformat{\section}% Command
+        {\huge}% Format
+        {\color{colorblack}\thesection\hspace*{10pt}}% Label
+        {0em}% Sep
+        {\raggedright}% Before Code
+        [\phantomsection]% After Code
+}
+
+% Subsection Style
+\titlespacing{\subsection}{0em}{.5em}{0em}%[0pt]
+\iftoggle{sectionmargin}{%
+    \titleformat{\subsection}[block]%
+        {\LARGE}%
+        {\hspace{-3cm}\makebox[3cm][r]{\color{maincolor}\thesubsection\hspace{0.3cm}}}% Label
+        {0em}%
+        {\raggedright}%
+        [\phantomsection]
+}{%
+    \titleformat{\subsection}[block]%
+        {\LARGE}%
+        {\color{colorblack}\thesubsection\hspace*{10pt}}%
+        {0em}%
+        {\raggedright}%
+        [\phantomsection]
+}
+
+% Subsubsection Style
+\iftoggle{sectionmargin}{%
+    \titleformat{\subsubsection}% Command
+        [hang]% Shape
+        {\Large}% Format
+        {\hspace{-3cm}\makebox[3cm][r]{\color{maincolor}\thesubsubsection\hspace{0.3cm}}}% Label
+        {0em}% Sep
+        {\raggedright}% Before Code
+        [\phantomsection]% After Code
+}{%
+    \titleformat{\subsubsection}% Command
+        [hang]% Shape
+        {\Large}% Format
+        {\color{colorblack}\thesubsubsection\hspace*{10pt}}% Label
+        {0em}% Sep
+        {\raggedright}% Before Code
+        [\phantomsection]% After Code
+}
+
+% Paragraph Style
+% titlespacing{\command}{left-sep}{before-sep}{after-sep}[right-sep]
+\titlespacing{\paragraph}{0.0em}{1.0em}{0.0em}
+\titleformat{\paragraph}% Command
+    [hang]% Shape
+    {\bf}% Format
+    {}% Label
+    {0em}% Sep
+    {}% Before Code
+    []% After Code
+
+\makeatother
+% =============================================================
+
+
+
+% =============================================================
+% Redefine Rightmark and Leftmark (used for header/footer)
+% =============================================================
+\usepackage{fancyhdr} % Modify Headers and Footers
+\pagestyle{fancy}
+
+\makeatletter
+% Used to set \leftmark for the unumered chapters
+\newcommand{\unumeredchaptermark}[1]{
+	\markboth{\footnotesize{\color{maincolor}\textsc{#1}}}{}%
+}
+
+\renewcommand{\chaptermark}[1]{%
+	\markboth{%
+		\footnotesize%
+		{\color{colorblack}\textbf{\@chapapp\ \thechapter}}%
+		\quad%
+		{\color{maincolor}\textsc{#1}}%
+	}{}%
+}
+
+\renewcommand{\sectionmark}[1]{%
+    \markright{%
+        \footnotesize%
+        {\color{colorblack}\textbf{\thesection}}%
+        \quad%
+        {\color{maincolor}\textsc{#1}}%
+    }
+}
+\makeatother
+% =============================================================
+
+
+
+% =============================================================
+% Headers and Footers
+% =============================================================
+
+%                                  Chapter should start here
+% 
+%             Even                            Odd
+%   %-----------------------%      %-----------------------%
+%   | LE       CE        RE |      | LO       CO        RO | <= Header
+%   |                       |      |                       |
+%   .                       .      .                       .
+%   .                       .      .                       .
+%   .                       .      .                       .
+%   |                       |      |                       |
+%   | LE       CE        RE |      | LO       CO        RO | <= Footer
+%   %-----------------------%      %-----------------------%
+%     ^        ^         ^           ^        ^         ^
+%    Left    Center    Right        Left    Center    Right
+
+
+% Page style for the Front Matter
+\fancypagestyle{frontmatterstyle}{
+    \fancyhf{} % Clear all header fields
+    \pagestyle{fancy}
+
+    % Header
+    \fancyhead[LE,RO]{}
+    \fancyhead[CE,CO]{}
+    \fancyhead[RE,LO]{}
+
+    % Footer
+    \fancyfootoffset[RE,LO]{1cm}
+    \iftoggle{isconfidential}{%
+        \fancyfoot[CE,CO]{\vspace{1em}\confidential}
+    }{
+        \fancyfoot[CE,CO]{}
+    }
+    \fancyfoot[RE,LO]{\includegraphics[height=1em]{\schoolLogo}}
+    \fancyfoot[LE]{%
+        \begin{minipage}[b]{1.5cm}%
+            \raggedleft\color{colorblack}\normalsize\textbf{\thepage}%
+        \end{minipage}%
+        \footnotesize%
+        \hspace*{10pt}{\color{colorblack}\rule[-90pt]{1.25pt}{100pt}}%
+        \hspace*{0.75cm}\leftmark%
+    }
+    \fancyfoot[RO]{%
+        {\ }\footnotesize%
+        \leftmark%
+        \hspace*{0.75cm}{\color{colorblack}\rule[-90pt]{1.25pt}{100pt}}%
+        \hspace*{10pt}\begin{minipage}[b]{1.5cm}%
+            \color{colorblack}\normalsize\textbf{\thepage}%
+        \end{minipage}%
+    }
+
+    % Rulers
+    \renewcommand{\headrulewidth}{0.0pt}
+    \renewcommand{\footrulewidth}{0.0pt}
+}
+
+
+% Page style for the First chapter pages and for tableofcontents
+\fancypagestyle{plain}{
+    \fancyhf{} % Clear all header fields
+    \pagestyle{fancy}
+
+    % Header
+    \fancyhead[LE,RO]{}
+    \fancyhead[CE,CO]{}
+    \fancyhead[RE,LO]{}
+
+    % Footer
+    \fancyfootoffset[RE,LO]{1cm}
+    \iftoggle{isconfidential}{%
+        \fancyfoot[CE,CO]{\vspace{1em}\confidential}
+    }{
+        \fancyfoot[CE,CO]{}
+    }
+    \fancyfoot[RE,LO]{\includegraphics[height=1em]{\schoolLogo}}
+    \fancyfoot[LE]{%
+        \begin{minipage}[b]{1.5cm}%
+            \raggedleft\color{colorblack}\normalsize\textbf{\thepage}%
+        \end{minipage}%
+        \footnotesize%
+        \hspace*{10pt}{\color{colorblack}\rule[-90pt]{1.25pt}{100pt}}%
+        \hspace*{0.75cm}\leftmark%
+    }
+    \fancyfoot[RO]{%
+        {\ }\footnotesize%
+        \leftmark%
+        \hspace*{0.75cm}{\color{colorblack}\rule[-90pt]{1.25pt}{100pt}}%
+        \hspace*{10pt}\begin{minipage}[b]{1.5cm}%
+            \color{colorblack}\normalsize\textbf{\thepage}%
+        \end{minipage}%
+    }
+
+    % Rulers
+    \renewcommand{\headrulewidth}{0.0pt}
+    \renewcommand{\footrulewidth}{0.0pt}
+}
+
+% Page style for the Main Matter
+\fancypagestyle{mainmatterstyle}{
+    \fancyhf{} % Clear all header fields
+    \pagestyle{fancy}
+
+    % Header
+    \fancyhead[LE,RO]{}
+    \fancyhead[CE,CO]{}
+    \fancyhead[RE,LO]{}
+
+    % Footer
+    \fancyfootoffset[RE,LO]{1cm}
+    \iftoggle{isconfidential}{%
+        \fancyfoot[CE,CO]{\vspace{1em}\confidential}
+    }{
+        \fancyfoot[CE,CO]{}
+    }
+    \fancyfoot[RE,LO]{\includegraphics[height=1em]{\schoolLogo}}
+    \fancyfoot[LE]{%
+        \begin{minipage}[b]{1.5cm}%
+            \raggedleft\color{colorblack}\normalsize\textbf{\thepage}%
+        \end{minipage}%
+        \footnotesize%
+        \hspace*{10pt}{\color{colorblack}\rule[-90pt]{1.25pt}{100pt}}%
+        \hspace*{0.75cm}\rightmark%
+    }
+    \fancyfoot[RO]{%
+        {\ }\footnotesize%
+        \leftmark%
+        \hspace*{0.75cm}{\color{colorblack}\rule[-90pt]{1.25pt}{100pt}}%
+        \hspace*{10pt}\begin{minipage}[b]{1.5cm}%
+            \color{colorblack}\normalsize\textbf{\thepage}%
+        \end{minipage}%
+    }
+
+    % Rulers
+    \renewcommand{\headrulewidth}{0.0pt}
+    \renewcommand{\footrulewidth}{0.0pt}
+}
+
+% Page style for the Appendices Matter
+\fancypagestyle{appendicesmatterstyle}{
+    \fancyhf{} % Clear all header fields
+    \pagestyle{fancy}
+
+    % Header
+    \fancyhead[LE,RO]{}
+    \fancyhead[CE,CO]{}
+    \fancyhead[RE,LO]{}
+
+    % Footer
+    \fancyfootoffset[RE,LO]{1cm}
+    \iftoggle{isconfidential}{%
+        \fancyfoot[CE,CO]{\vspace{1em}\confidential}
+    }{
+        \fancyfoot[CE,CO]{}
+    }
+    \fancyfoot[RE,LO]{\includegraphics[height=1em]{\schoolLogo}}
+    \fancyfoot[LE]{%
+        \begin{minipage}[b]{1.5cm}%
+            \raggedleft\color{colorblack}\normalsize\textbf{\thepage}%
+        \end{minipage}%
+        \footnotesize%
+        \hspace*{10pt}{\color{colorblack}\rule[-90pt]{1.25pt}{100pt}}%
+        \hspace*{0.75cm}\leftmark%
+    }
+    \fancyfoot[RO]{%
+        {\ }\footnotesize%
+        \leftmark%
+        \hspace*{0.75cm}{\color{colorblack}\rule[-90pt]{1.25pt}{100pt}}%
+        \hspace*{10pt}\begin{minipage}[b]{1.5cm}%
+            \color{colorblack}\normalsize\textbf{\thepage}%
+        \end{minipage}%
+    }
+
+    % Rulers
+    \renewcommand{\headrulewidth}{0.0pt}
+    \renewcommand{\footrulewidth}{0.0pt}
+}
+
+\fancypagestyle{vide}{
+    \fancyhf{} % Clear all header fields
+}
+
+% Redefine Chapter command to put plain page style by default
+% \makeatletter
+% \renewcommand{\chapter}%
+% {%
+%     \clearpage% TODO: should put cleardoublepage ?
+%     \thispagestyle{plain}
+%     \global\@topnum\z@
+%     \@afterindentfalse%
+%     \secdef\@chapter\@schapter%
+% }
+% \makeatother
+% =============================================================
+
+
+% =============================================================
+% Section Numbering
+% =============================================================
+% Should number subsubsection
+\setcounter{secnumdepth}{4}
+
+\makeatletter
+\renewcommand\thechapter{\Roman{chapter}}
+\renewcommand\thesection{\thechapter.\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\alph{subsubsection}}
+\makeatother
+% =============================================================
+
+
+% =============================================================
+% Local TOC for each chapter
+% =============================================================
+\iftoggle{minitocchapter}{%
+    \usepackage{etoc}
+
+    \makeatletter
+    \newcommand{\changetocstyle}[0]{
+        \etocsettocstyle{\medskip{\bf Sommaire}\medskip\hrule\medskip}{\medskip\hrule\bigskip}%
+    }
+
+    \newcommand{\chaptertoc}[0]{%
+        \iftoggle{minitocchapter}{%
+            \renewcommand{\markboth}[2]{}% So it don't change footers
+            \localtableofcontents*{}
+        }{}
+    }
+    \makeatother
+
+    % Check if TOC is empty, if so don't display it
+    \etocchecksemptiness%
+}{}
+% =============================================================
+
+
+% =============================================================
+% Hyperref and PDF Options
+% =============================================================
+\usepackage[                    % setup the hyperref-package options
+    pdftitle={\reportTitle},    % title (PDF meta)
+    pdfauthor={\reportAuthor},  % author (PDF meta)
+    pdfsubject={\reportSubject},% subject (PDF meta)
+    pdfcreator={\reportAuthor}, % creator (PDF meta)
+    plainpages=false,           %
+    pdfborder={0 0 0},          %
+    breaklinks=true,            % allow line break inside links
+    bookmarksnumbered=true,     %
+    bookmarksopen=true,         %
+    colorlinks=true,            % colorize links?
+    allcolors=colorblack,%
+]{hyperref}
+
+\providecommand\phantomsection{} % TODO: explain
+% =============================================================
+

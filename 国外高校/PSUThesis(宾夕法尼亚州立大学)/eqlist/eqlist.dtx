@@ -1,0 +1,376 @@
+% \def\fileversion{1.2}\def\filedate{2001/08/17}\def\docdate{2001/08/18}
+%\iffalse These lines are necessary for the doc and docstrip utilities
+%<*metainfo>
+
+% With this package you can write lists with equal indentation.
+% This package requires the eqparbox package.
+%
+% Author:
+%
+% M. V\"ath      vaeth@mathematik.uni-wuerzburg.de
+%
+
+%\fi
+%
+% \def\basename{eqlist}
+%
+%% \CharacterTable
+%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%   Digits        \0\1\2\3\4\5\6\7\8\9
+%%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%%   Dollar        \$     Percent       \%     Ampersand     \&
+%%   Acute accent  \'     Left paren    \(     Right paren   \)
+%%   Asterisk      \*     Plus          \+     Comma         \,
+%%   Minus         \-     Point         \.     Solidus       \/
+%%   Colon         \:     Semicolon     \;     Less than     \<
+%%   Equals        \=     Greater than  \>     Question mark \?
+%%   Commercial at \@     Left bracket  \[     Backslash     \\
+%%   Right bracket \]     Circumflex    \^     Underscore    \_
+%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%   Right brace   \}     Tilde         \~}
+%
+% \CheckSum{111}
+%
+% \newcommand{\cmdcite}[1]{\texttt{\textbackslash#1}}
+% \newcommand{\envcite}[1]{\texttt{\{#1\}}}
+% \newcommand{\optcite}[1]{\texttt{#1}}
+% \newcommand{\filecite}[1]{\texttt{#1}}
+% \newcommand{\bracemeta}[1]{\texttt{\{}\meta{#1}\texttt{\}}}
+%
+% \iffalse
+%   \RecordChanges
+% \fi
+% \def\ChangesTab{}\let\orichanges\changes
+% \def\changes#1#2#3{\orichanges{#1}{#2}{#3}
+%   \expandafter\def\expandafter\ChangesTab\expandafter{\ChangesTab
+%   \item[v#1 {\mdseries(\emph{#2})}] {#3.}}}
+%
+% \changes{1.2}{2001/08/17}{Added the \envcite{Eqlist} and \envcite{Eqlist*}
+%   environments}
+% \changes{1.1}{2001/08/16}{First release}
+%
+% \iffalse
+%</metainfo>
+%
+% Everything between the following lines %<*driver> and %</driver> goes
+% into the file eqlist.tex. Also, this is the only code executed, if
+% this file here is run through latex.
+%
+%<*driver>
+\documentclass{ltxdoc}
+\OnlyDescription%% Comment this out, or
+%%\AlsoImplementation%% uncomment this line, if you want to see the source.
+
+%% If you want an index, uncomment one of the following lines.
+%% After running latex a first time, you have to use
+%%      makeindex -s gind.ist eqlist
+%% Then run latex again.
+%%\CodelineIndex% comment this out if you want an index referring to codelines
+%%\PageIndex% comment this out if you want an index referring to pages
+%%\OldMakeindex% uncomment this line, if your MakeIndex is pre-v2.9
+
+\setlength\hfuzz{15pt}
+\hbadness=7000
+\begin{document}
+\DocInput{eqlist.dtx}
+\end{document}
+%</driver>
+%<*metainfo>
+% \fi
+%
+% \MakeShortVerb{"}
+% \def\itemcmd#1{\item[\mdseries\texttt{\textbackslash#1}]}
+%
+% \title{The \texttt{eqlist} package\thanks
+%   {This  file has version number \fileversion{}, last revised \filedate.}}
+% \author{Martin V\"ath\\{\texttt{vaeth@mathematik.uni-wuerzburg.de}}}
+% \date{\docdate}
+% \maketitle
+
+% \begin{abstract}
+% With this package you can write lists with equal indentation.
+% This package requires the \filecite{eqparbox} package.
+% \end{abstract}
+%
+% You may copy this package freely, as long as you distribute only unmodified
+% and complete versions.
+%
+% \iffalse\tableofcontents\par\pagebreak\par\fi
+%
+% \section{Changes}
+%
+% \begin{description}
+%    \ChangesTab
+% \end{description}
+%
+% \section{Description}
+%
+% This package provides a list environment which sets a description-like list
+% but with the difference that the indentation corresponds to the longest item
+% of the list. The usage is simply
+% \begin{quote}
+% \DescribeEnv{eqlist}"\begin{eqlist}["\meta{optional modifications}"]"\\
+% "\item[First item] Text"\\
+% "\item[Second item] Text"\\
+% "..."\\
+% "\end{eqlist}"
+% \end{quote}
+% and there is also the environment \DescribeEnv{eqlist*}\envcite{eqlist*}
+% which is similar but has slightly different defaults
+% (which make the list appear more compact).
+% There is also the alternative call
+% \begin{quote}
+% \DescribeEnv{Eqlist}"\begin{Eqlist}["\meta{optional modifications}"]"\relax
+%\bracemeta{tag}\\
+% "\item[First item] Text"\\
+% "\item[Second item] Text"\\
+% "..."\\
+% "\end{eqlist}"
+% \end{quote}
+% and a corresponding \DescribeEnv{Eqlist*}\envcite{Eqlist*} environment.\par
+%
+% All texts within the list are intended by the length of the largest
+% "\item" entry (plus "\labelsep"). For the "Eqlist" or "Eqlist*"
+% environment, all lists with the same \meta{tag} are treated equally in the
+% sense that the indentation of these list is determined by the largest
+% "\item" of all these lists. In this case, you may also use the \meta{tag}
+% for the \filecite{eqparbox} package to read or modify the length of the
+% largest "\item" (which is internally treated as a "\eqparbox").\par
+%
+% The \meta{optional modifications} are any commands which are used to
+% initialize the list (you can modify here essentially the same variables as
+% for any \LaTeXe\ list). If this argument is not given, the default
+% initializations \DescribeMacro{\eqlistinit}"\eqlistinit" respectively
+% \DescribeMacro{\eqliststarinit}"\eqliststarinit" (for \envcite{eqlist*}
+% and \envcite{Eqlist*}) are used:
+% You can just modify these definitions to change the defaults.
+% If you have given the argument \meta{optional modifications} and additionally
+% want to use the defaults, you have to include the command "\eqlistinit"
+% respectively "\eqliststarinit" into the argument
+% \meta{optional modifications} (see example below).\par
+%
+% The macros "\eqlistinit" and "\eqliststarinit" both call
+% \DescribeMacro{\eqlistinitpar}"\eqlistinitpar" which sets the values for
+% "\parindent" and "\parskip" to the values outside the list
+% (this is not standard in \LaTeXe, but I prefer this style; if you do not like
+% this, use "\let\eqlistinit\relax").
+%
+% Currently, this is all which is done by "\eqlistinit"; for
+% "\eqliststarinit" additionally the values of
+% \DescribeMacro{\topsep}"\topsep" and \DescribeMacro{\itemsep}"\itemsep" are
+% set to $0$. Note that currently \DescribeMacro{\partopsep}"\partopsep" is
+% not changed from the \LaTeXe\ default. Note that the latter is by default
+% positive which means that if you are in vertical mode before the list
+% (e.g.\ if you have a "\par" in front of the list), you get slightly more
+% space above the list.\par
+%
+% Before \meta{optional modifications} (or "\eqlistinit" respectively
+% "\eqliststarinit") are expanded, the length of the largest label is already
+% stored in
+% \DescribeMacro{\labelwidth}"\labelwidth" and
+% \DescribeMacro{\leftmargin}"\leftmargin". After your modifications,
+% \DescribeMacro{\labelsep}"\labelsep" is added to the actual value of
+% "\leftmargin".
+%
+% The default value of \DescribeMacro{\makelabel}"\makelabel" is the
+% content of \DescribeMacro{\eqlistlabel}"\eqlistlabel" which in turn is
+% by default defined with
+%    \begin{verbatim}
+%       \def\eqlistlabel#1{#1\ }\end{verbatim}
+%
+% \noindent\textbf{Example:}
+% \begin{verbatim}
+%   \begin{eqlist}[\eqliststarinit\def\makelabel#1{\bfseries#1:}\labelsep1em]
+%   \item[Short label] Descriptive text
+%   \item[A longer label] Descriptive text
+%   \end{eqlist}\end{verbatim}
+% \begin{tabular}{@{}l@{}l}
+% \bfseries Short label:\hspace{1em}\null&Descriptive text\\
+% \bfseries A longer label:\hspace{1em}\null&Descriptive text
+% \end{tabular}
+%
+% \iffalse
+%</metainfo>
+% \fi
+% \iffalse--------------------------------------------------------------\fi
+% \StopEventually{\PrintChanges}
+%           \section{Implementation}
+%
+% \newcommand{\nocomment}{}
+% \setcounter{CodelineNo}{0}
+% \iffalse--------------------------------------------------------------
+%
+%
+%<*eqlist>
+% \fi
+%    \begin{macrocode}
+
+\typeout{eqlist.sty by M. Vaeth: Revision 1.2}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{eqlist}[2001/08/17 v1.2]
+
+\RequirePackage{eqparbox}
+
+%    \end{macrocode}
+% \begin{macro}{eqlist}\nocomment
+%    \begin{macrocode}
+\newenvironment{eqlist}[1][\eqlistinit]{\eql@start{#1}}{\eql@end}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{eqlist*}\nocomment
+%    \begin{macrocode}
+\newenvironment{eqlist*}[1][\eqliststarinit]{\eql@start{#1}}{\eql@end}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{Eqlist}\nocomment
+%    \begin{macrocode}
+\newenvironment{Eqlist}[2][\eqlistinit]{\eql@startp{#1}{#2}}{\eql@end}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{Eqlist*}\nocomment
+%    \begin{macrocode}
+\newenvironment{Eqlist*}[2][\eqliststarinit]{\eql@startp{#1}{#2}}{\eql@end}
+
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\eqlistinitpar}\nocomment
+%    \begin{macrocode}
+\ifx\eqlistinitpar\undefined
+  \def\eqlistinitpar{\relax\listparindent\parindent\relax\parsep\parskip\relax}
+\fi
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\eqlistinit}\nocomment
+%    \begin{macrocode}
+\ifx\eqlistinit\undefined
+  \def\eqlistinit{\eqlistinitpar}
+\fi
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\eqliststarinit}\nocomment
+%    \begin{macrocode}
+\ifx\eqliststarinit\undefined
+  \def\eqliststarinit{\topsep0pt\relax\itemsep0pt\relax%\partopsep0pt\relax
+    \eqlistinitpar}
+\fi
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\eqlistlabel}\nocomment
+%    \begin{macrocode}
+\ifx\eqlistlabel\undefined
+  \def\eqlistlabel#1{#1\ }
+\fi
+
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\eql@cnt}
+% The counter "\eql@cnt" is used to generate ``unique'' names for the labels.
+%    \begin{macrocode}
+\newcount\eql@cnt\relax\eql@cnt=0
+
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\eql@start}
+% The macro "\eql@start" advances the counter "\eql@cnt" (globally!) and then
+% starts a list, where for the initialization "\eql@mainprep" is called with
+% the corresponding ``unique'' name and the argument.
+%    \begin{macrocode}
+\long\def\eql@start#1{\global\advance\eql@cnt by1\begin{list}{}{\expandafter
+  \eql@mainprepn\expandafter{\romannumeral\eql@cnt}{#1}}}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\eql@startp}
+% The macro "\eql@startp" is similar to "\eql@start" with the difference that
+% the first argument is used as the ``unique'' name instead of a counter.
+% Thus, "\eql@startp" starts a list, where for the initialization
+% "\eql@mainprep" is used with the corresponding arguments.
+%    \begin{macrocode}
+\long\def\eql@startp#1#2{\begin{list}{}{\eql@mainprep{#2}{#1}}}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\eql@end}
+%    \begin{macrocode}
+\def\eql@end{\end{list}}
+
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\eql@mainprep}
+% In "\eql@mainprep", we initialize the length of the label (and the left
+% margin) with the length of the corresponding eqparbox with the ``unique''
+% name "#1", and we also initialize "\makelabel".
+% Then the (default or user) initialization "#2" is executed.
+% After this, "\makelabel" is appropriately defined. The
+% ``user'' definition of "\makelabel" is before saved into "\eql@makelabel"
+% (to be used by our new "\makelabel").
+%    \begin{macrocode}
+\long\def\eql@mainprep#1#2{\let\makelabel\eqlistlabel
+  \setlength{\labelwidth}{\eqboxwidth{#1}}%
+  \setlength{\leftmargin}{\labelwidth}\relax
+  #2\let\eql@makelabel\makelabel
+  \def\makelabel##1{\eqparbox[b]{#1}{\eql@makelabel{##1}}\hfil}%
+  \addtolength{\leftmargin}{\labelsep}}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\eql@mainprepn}
+% Despite of its definition, "\eql@mainprepn" actually expects two arguments:
+% "\eql@mainprepn" does the same as "\eql@mainprep" with the difference that
+% the first argument should be a unique roman number instead of a ``unique''
+% name: The actual name is then obtained by prepending the text "eqlistbox"
+% to the number. Note that the number must actually be roman, since otherwise
+% (some release(s) of) the \filecite{eqparbox} package becomes confused.
+%    \begin{macrocode}
+\def\eql@mainprepn#1{\eql@mainprep{eqlistbox#1}}
+
+%    \end{macrocode}
+% \end{macro}
+% \iffalse
+%</eqlist>
+% \fi
+%
+% \Finale\PrintIndex
+%
+% \iffalse
+%<*metainfo>
+% \fi
+\iffalse -------------------------------------------------------------
+%
+% Just in case that for some reason the file `eqlist.ins' got lost:
+% The content of this file is between the lines %<*insfile> and %</insfile>:
+%
+%\iffalse
+%</metainfo>
+%<*insfile>
+\def\batchfile{eqlist.ins}
+\input docstrip.tex
+\keepsilent
+\nopreamble
+\generateFile{eqlist.sty}{f}{\from{eqlist.dtx}{eqlist}}
+\generateFile{eqlist.tex}{f}{\from{eqlist.dtx}{driver}}
+%%\generateFile{eqlist.ins.dup}{f}{\from{eqlist.dtx}{insfile}}
+
+\Msg{***************************************************************}
+\Msg{*}
+\Msg{* To finish the installation, you have to move the}
+\Msg{* file 'eqlist.sty' in a directory searched by TeX.}
+\Msg{*}
+\Msg{*}
+\Msg{* Run the file 'eqlist.tex' through LaTeX to produce the}
+\Msg{* documentation}
+\Msg{*}
+\Msg{*}
+\Msg{***************************************************************}
+\endbatchfile
+%</insfile>
+%<*metainfo>
+% \fi
+\fi
+% \iffalse
+%</metainfo>
+% \fi
+\endinput
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "eqlist.tex"
+%%% End: 

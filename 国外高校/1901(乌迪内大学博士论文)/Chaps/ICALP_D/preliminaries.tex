@@ -1,0 +1,83 @@
+\section{Preliminaries}\label{sec:preliminaries}
+
+To start with, we introduce some preliminary notions.
+Let $\mathbb{S} = (\mathpzc{S}, <)$ be a  linear order. An
+\emph{interval} over $\mathbb{S}$ is an ordered pair $[x, y]$,
+where $x,y\in \mathpzc{S},\, x \leq y$, representing the set $\{z\in \mathpzc{S}\mid x\leq z\leq y\}$. We denote the set of all intervals over
+$\mathbb{S}$ by $\mathbb{I(S)}$.
+%
+We consider three possible \emph{sub-interval relations}: 
+\begin{enumerate}
+    \item the \emph{reflexive} sub-interval relation (denoted as
+    $\sqsubseteq$), defined by $[x, y] \sqsubseteq [x', y']$ if and only if
+    $x' \leq x$ and $y\leq y'$,
+    % 
+    \item the \emph{proper (or
+    irreflexive)} sub-interval relation (denoted as $\subint$), defined
+    by $[x, y]\subint  [x', y']$ if and only if $[x, y] \sqsubseteq
+    [x', y']$ and $[x, y] \neq [x', y']$, and 
+    %
+    \item the \emph{strict}
+    sub-interval relation (denoted as $\ssubint$), defined by 
+    $[x, y] \ssubint [x', y'] $ if and only if $x' < x$ and $y<y'$.
+\end{enumerate}
+
+The three modal logics $\Dref$, $\Dirr$, and $\Dstr$ feature the same
+language, consisting of a set $\AP$ of proposition
+letters, the logical connectives $\neg$ and $\vee$, and the
+modal operator $\hsD$. Formally, formulas are
+defined by the grammar: \[\varphi ::= p \ |\ \neg\varphi\ |\ \varphi \vee \varphi\ |\ \hsD \varphi,\]
+%\[
+%\varphi ::= p \ |\ \neg\varphi\ |\ \varphi \vee \varphi\ |\ \D \varphi ,
+%\]
+with $p\in\AP$.
+The other connectives, as well as
+the logical constants $\top$ (true) and $\bot$ (false), are defined as usual; moreover, the
+dual universal modal operator $\hsDu\varphi$ is defined as $\neg\hsD\neg\varphi$. The length of a formula
+$\varphi$, denoted as $|\varphi|$, is the number of subformulas of $\varphi$.
+
+The semantics of~\Dstr, \Dirr, and \Dref only differ in the
+interpretation of the $\hsD$ operator. For the sake of brevity, we use
+$\circ \in \{\ssubint,\subint,\subinteq \}$ as a shorthand for
+any of the three sub-interval relations. The semantics of a
+sub-interval logic \Dsim is defined in terms of \emph{interval models}\footnote{Not to be confused with the previously introduced \emph{abstract interval models}.}
+$\bM=(\mathbb{I(S)},\circ,\cV)$. The \emph{valuation
+function} $\cV : \AP \to 2^{\mathbb{I(S)}}$ assigns to
+every proposition letter $p$ the set of intervals $\cV(p)$ over
+which $p$ holds. The \emph{satisfiability relation} $\models$ is
+defined as:
+%
+\begin{itemize}
+  \item for every proposition letter  $p \in \AP$, $\bM, [x,y]
+        \models p$ if and only if $[x,y] \in \cV(p)$;
+
+  \item $\bM, [x,y] \!\models\! \neg \psi$ if and only if $\bM, [x,y]
+        \!\not\models\! \psi$ (i.e. it is not true that $\bM, [x,y]
+        \!\models\! \psi$);
+
+  \item $\bM, [x,y] \models \psi_1 \vee \psi_2$ if and only if $\bM, [x,y] \models \psi_1$ or $\bM, [x,y] \models \psi_2$;
+
+  \item $\bM, [x,y] \models \hsD \psi$ if and only if there exists an interval $[x',y'] \in
+        \bbI(\mathbb{S})$ such that $[x',y'] \circ [x,y]$ and
+        $\bM, [x',y'] \models \psi$.
+\end{itemize}
+%
+A \Dsim formula is \emph{satisfiable} if it holds over some interval of an interval model, and \emph{valid} if it holds over every interval of every interval model.
+
+As we mentioned earlier on, it can be shown that the logic $\Dref$ turns out to be equivalent to the standard modal logic S4 \cite{DBLP:journals/jphil/Benthem91}. 
+%The decidability of the satisfiability problem for the considered logics 
+%\Dsim has been widely studied by restricting the class of linear orders to the dense ones 
+%\cite{DBLP:journals/corr/MontanariPS15} and to the finite ones 
+%\cite{DBLP:journals/fuin/MarcinkowskiM14}. 
+%
+Here we restrict our attention to the finite SAT problem, that is, satisfiability over the class of finite linear orders. The problem has been shown to be \emph{undecidable} for $\Dirr$ and $\Dstr$~\cite{DBLP:journals/fuin/MarcinkowskiM14} and \emph{decidable} for $\Dref$~\cite{DBLP:conf/time/MontanariPS10}. In the following, we prove that decidability can be recovered for $\Dirr$ and $\Dstr$ by restricting to the class of \emph{homogeneous} interval models. We fully work out the case of $\Dirr$ (for the sake of simplicity, we will write $\D$\ for $\Dirr$), and then we briefly explain how to adapt the proofs to $\Dstr$. 
+
+\begin{definition}\label{def:homogeneous_models}
+An interval model
+$\bM=(\mathbb{I(S)},\circ,\cV)$ is \emph{homogeneous} if,
+for every interval $[x,y]  \in \mathbb{I(S)}$ and every proposition letter $p \in \AP$,
+it holds that $[x,y] \in \cV(p)$ if and only if $[x',x'] \in \cV(p)$
+for every $x\leq x'\leq y$.
+\end{definition}
+% 
+Hereafter we will assume the logic $\D$ to be interpreted over homogeneous interval models.
