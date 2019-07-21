@@ -1,0 +1,197 @@
+%% File: npu-report-style.tex (西北工业大学研究生学位论文选题报告表)
+%% Date: 2018/01/20
+%% Author: Yang Zongze  (yangzongze@gmail.com)
+%%
+%% 使用说明
+%% 1. 使用 `article' 类, 并使用 \input{npu-report-style.tex} 加载该文件。
+%% 2. 设置论文相关信息(参考 npu-report-sample.tex)
+%%       \nputitle{-开题报告题目-}
+%%       \npunumber{-学号-}
+%%       \npuschool{-学院-}
+%%       \npumajor{-专业-}
+%%       \npuname{-姓名-}
+%%       \npudegree{-学位-}
+%%       \npusupervisor{-导师-}
+%%       \nputype{-培养类别-}
+%%       \npudate{-日期-}
+%%       %% 设置 `论文类型': 取消或添加注释即可勾选相应类型
+%%       \npucheckbasetrue       %  基础研究
+%%       \npucheckapplytrue     %  应用研究
+%%       % \npucheckenginetrue    %  工程技术
+%%       % \npucheckoveralltrue   %  跨学科研究
+
+\usepackage{xeCJK}
+\usepackage{calc}
+\usepackage[heading=true]{ctex}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{geometry}
+\usepackage{fancybox}
+\usepackage{filecontents}
+
+\geometry{paperwidth=210mm,paperheight=297mm,%
+  left=2.5cm,right=2.5cm,top=2.54cm,bottom=2.54cm}
+
+\fancypage{%
+  \setlength{\fboxsep}{\npusep}%
+  \setlength{\shadowsize}{0pt}%
+  \shadowbox}{}
+
+\ifx\ctexset\undefined
+  \CTEXsetup[format={\heiti\zihao{4}}]{section}
+  \CTEXsetup[format={\heiti\zihao{-4}}]{subsection}
+\else
+  \ctexset{%
+    section={%
+      format={\heiti\zihao{4}},
+      beforeskip=5pt,
+      afterskip=5pt
+    }}
+  \ctexset{%
+    subsection={%
+      format={\heiti\zihao{-4}},
+      beforeskip=0pt,
+      afterskip=0pt
+    }}
+\fi
+
+\let\npusection\section
+\def\npustarsection#1{\npusection{#1}}
+\def\section{\secdef\npusection\npustarsection}
+
+\newlength{\npusep}
+\newlength{\npuwidth}
+\newlength{\npucorrect}
+\newlength{\npucorrecttop}
+\setlength{\npusep}{10pt}
+\setlength{\npuwidth}{\textwidth}
+\addtolength{\npuwidth}{2\npusep}
+\setlength{\npucorrect}{5pt}
+\addtolength{\npucorrect}{-\npusep}
+\setlength{\npucorrecttop}{-10pt}
+\addtolength{\npucorrecttop}{-\npusep}
+\newlength{\npucone}
+\setlength{\npucone}{2cm}
+\newlength{\npuctwo}
+\setlength{\npuctwo}{\npuwidth}
+\addtolength{\npuctwo}{-\npucone}
+\newcommand\npuitem[2][3cm]{\parbox[c][#1][c]{\npucone}{\centering #2}}
+\newcommand\npusig[2][2.5cm]{\parbox[c][#1][c]{\npuctwo}{%
+  \vskip 0pt plus15fil \hskip2cm #2：
+  \hskip 0pt plus15fil 201\quad 年\quad 月\quad 日}}
+
+\newif\ifnpucheckbase\npucheckbasefalse
+\newif\ifnpucheckapply\npucheckapplyfalse
+\newif\ifnpucheckengine\npucheckenginefalse
+\newif\ifnpucheckoverall\npucheckoverallfalse
+
+\def\npunew#1#2{%
+  \expandafter\def\csname npuinner#1\endcsname{#2}
+  \expandafter\def\csname npu#1\endcsname##1{%
+    \expandafter\def\csname npuinner#1\endcsname{##1}}}
+\npunew{title}{<开题报告题目>}
+\npunew{number}{<学号>}
+\npunew{school}{<学院>}
+\npunew{major}{<专业>}
+\npunew{name}{<姓名>}
+\npunew{degree}{<学位>}
+\npunew{supervisor}{<导师>}
+\npunew{type}{<培养类别>}
+\npunew{date}{<日期>}
+\def\maketitlepage{
+  \thisfancypage{}{}
+  \begin{titlepage}
+    \linespread{1.25}
+    \begin{center}
+      \newlength{\npunolenght}
+      \newlength{\nputmplenght}
+      \newcommand\npucu[1]{\uline{\hfill ##1 \hfill}}
+      \newcommand\npumb[2][\nputmplenght]{\makebox[##1][s]{##2}}
+      \newcommand\npucoveritem[2]{\npumb[\nputmplenght]{##1}\npucu{##2}\newline}
+      \zihao{-4}
+      \settowidth{\npunolenght}{20002010000000}
+      \hfill 学号: \npumb[\npunolenght]{\npucu{\npuinnernumber}}
+      \vskip 2cm
+      {\zihao{1}\noindent \makebox[7cm][s]{西北工业大学}}\par
+      \vskip 1.5cm
+      {\kaishu\zihao{1}\noindent 研究生学位论文选题报告表}\par
+      \kaishu\zihao{4}
+      \vskip 0pt plus 5fil
+      \settowidth{\nputmplenght}{学科、专业}
+      \begin{minipage}{8.5cm}\linespread{1.8}\selectfont
+        \noindent
+        \npucoveritem{学院}{\npuinnerschool}
+        \npucoveritem{学科、专业}{\npuinnermajor}
+        \npucoveritem{姓名}{\npuinnername} 
+        \npucoveritem{学位级别}{\npuinnerdegree}
+        \npucoveritem{导师}{\npuinnersupervisor}
+        \npucoveritem{培养类别}{\npuinnertype}
+        \npucoveritem{报告日期}{\npuinnerdate}
+      \end{minipage}
+      \vskip 0pt plus 5fil\zihao{3}
+      \makebox[3.5cm][s]{研究生院}
+    \end{center}
+  \end{titlepage}
+  \clearpage}
+
+\def\makeinnerpage{
+  \thisfancypage{}{}
+  \begin{center}
+    \zihao{-2}  研究生学位论文选题报告的要求
+  \end{center}\vskip1cm
+  \newcounter{npulc}{%
+  \zihao{-4}
+  \begin{list}{\chinese{npulc}、}{%
+    \settowidth\labelwidth{一、}\usecounter{npulc}}
+  \item 硕士生的选题报告内容应包括文献综述、选题意义、研究内容、研究方案，论文
+        工作量的估计、工作条件，预期达到的水平，存在的问题及拟采取的解决措施。
+  \item 博士生的选题报告内容应包括文献综述、选题背景及其意义、研究内容、研究特
+        色、工作难点、预期成果及其可能的创新点。
+  \item 选题报告会应以学术活动的方式公开进行。
+  \item 正式开题之前，研究生应在广泛阅读中、外文资料的基础上，深入了解拟选课题
+        的国内外研究动态，把握所选课题的目的、意义和预期结果，明确课题工作的设
+        想、方法和研究路径。
+  \item 研究生在规定的时间内，写出选题报告初稿，经指导教师审阅同意后，由指导教
+        师安排选题报告时间。选题报告未通过者，重新开题，若第二次选题报告仍通不
+        过者，则按有关规定终止学籍。
+  \item 选题报告不能按期完成者，应及时向研究生院培养办提出延期申请。
+  \item 本表可以打印或用钢笔认真填写，若不够填写时，可另加附页。
+  \end{list}}
+  \clearpage}
+
+\def\makehead{
+  \hrule height0pt\vskip\npucorrecttop{%
+  \renewcommand{\arraystretch}{1.5}
+  \newcolumntype{C}{>{\hfil}X<{\hfil}}
+  \noindent\hskip-\npusep
+  \begin{tabularx}{\npuwidth}{>{\centering}X|C|C|C|C}
+    论文题目 & \multicolumn{4}{c}{\npuinnertitle} \\ \hline
+    \multirow{2}*{\parbox{0.18\npuwidth}{%
+        \centering 论文类型\\(请在有关项目下作$\surd$记号)}} %
+    & 基础研究 & 应用研究 & 工程技术 & 跨学科研究 \\ \cline{2-5}
+    & \ifnpucheckbase $\surd$ \fi   & \ifnpucheckapply $\surd$ \fi  
+    & \ifnpucheckengine $\surd$ \fi & \ifnpucheckoverall $\surd$\fi \\\hline
+  \end{tabularx}}\vskip\npusep
+  \noindent{\kaishu
+    研究生在进行选题报告、听取意见后，整理成文（不少于3500字）。}
+  \par}
+
+\def\maketail{
+  \filbreak
+  \hrule height0pt \vfill
+  {\noindent\hskip-\npusep\tabcolsep=0pt%
+  \renewcommand{\arraystretch}{1.5}\zihao{-4}%
+  \begin{tabularx}{\npuwidth}{c|X}\hline
+  \npuitem[4.5cm]{指导教师\\意\qquad 见} & \npusig[4.5cm]{指导教师（签名）}  \\\hline
+  \npuitem[3.5cm]{院\quad 系\\意\quad 见}& \npusig[3.5cm]{院系负责人（签名）}\\\hline
+  \npuitem[]{研究生院\\复核时间}       & \npusig{复核人签名（签章）}\\\hline
+  \npuitem[2.5cm]{备注}                  &  \\
+  \end{tabularx}}
+  \vskip\npucorrect}
+
+\AtBeginDocument{\maketitlepage\makeinnerpage\makehead}
+\AtEndDocument{\maketail}
+\renewcommand{\normalsize}{\zihao{5}}
+\pagestyle{plain}
+%\linespread{1.5}

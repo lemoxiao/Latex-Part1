@@ -1,0 +1,103 @@
+%!TEX root = ../thesis.tex
+\section{非線性最佳化方法}
+\label{c:ch5.2}
+從上一小節當中，我們介紹了染整製程參數優化模型三個主要，分別以運作成本最小化模型、穩定度模型以及品質模型($\Delta E$模型)，並且轉化為QCQP問題的形式，接下來我們將導入序列二次規劃法(SQP,Sequential Quadratic Programming)方法並且介紹，搜尋最佳化問題的研究方法的理論原理，再針對本研究主要的以上三個模型進行求解介紹。
+\\\textbf{序列二次規劃法介紹}
+
+在\cite{Gill.etc}中表示，SQP方法在限制式以及目標函式為二次非線性的情況下被廣泛地使用，而且對於搜尋大範圍的非線性最佳化問題，是非常好用的方法，在本研究當中目標函式以及限制事皆為多維度非線性二次函式，所以以SQP方法將原問題重複簡化爲子問題，藉由搜尋子問題的最佳解作為下一參數組合的下一個移動的方向以及其距離，重複的迭代直到參數組合不再移動，就代表已經找到我們所需要的參數最佳解。
+
+我們將原模型示意為，如 \ref{eq:exmodel} 式：
+\begin{equation}
+	\begin{array}{c}
+	\min_{x} f(x) \\
+	h(x)=0 \\
+	g(x)\leq 0
+	\end{array}
+\label{eq:exmodel}
+\end{equation}
+目標函式以及限制式皆為非線性，我們可以將此非線性模型轉化為一子問題，在某一參數組合下以泰勒展開估計目標函式並將非線性的限制式線性化，如 \ref{eq:exmodel2} 式：
+\begin{equation}
+	\begin{array}{c}
+	\min_{d} f(x^{k})+ \bigtriangledown f(x^{k})^{T}d+1/2\cdot d^{T}H(x^{k})d\\
+	h(x^{k})+ \bigtriangledown h(x^{k})^{T}d=0\\
+	g(x^{k})+ \bigtriangledown g(x^{k})^{T}d\leq 0
+	\end{array}
+\label{eq:exmodel2}
+\end{equation}
+由 \ref{eq:exmodel2} 式當中$x^{k}$為當前的參數組合，而$d$為一組向量，而下一代次的參數組合為$x^{k+1}=x^{k}+d$，當$x^{k+1}\approx x^{k}$時則找到最佳參數組合。
+\\ \textbf{牛頓序列二次規劃法}
+
+在 \cite{Gill.etc} 中有提到，SQP方法其中一個優勢是一個不太受限於可行區域的方法，儘管起始點不在可行區域，也同樣可以進行搜尋，但也有在模型的目標函式限性轉化時，可能會減弱其限制能力，因此我們會以Lagrange乘數法，將原限制式的資訊加入原目標函式內，再將其轉化為子問題求解，如 \ref{eq:exmodel3} 式：
+\begin{equation}
+	\begin{array}{c}
+	\min_{d} \bigtriangledown L(x^{k},\lambda^{k},\mu^{k})^{T}d+1/2\cdot d^{T}\bigtriangledown^{2}L(x^{k},\lambda^{k},\mu^{k})d\\
+	h(x^{k})+ \bigtriangledown h(x^{k})^{T}d=0\\
+	g(x^{k})+ \bigtriangledown g(x^{k})^{T}d\leq 0
+	\end{array}
+\label{eq:exmodel3}
+\end{equation}
+因此在 \ref{eq:exmodel3} 我們做了些轉變，在目標函式中除了使用Lagrange乘數法，如 \ref{eq:exlagrange} 式：
+\begin{equation}
+L(x,\lambda,\mu)=f(x)-\lambda \cdot h(x)-\mu \cdot g(x)
+\label{eq:exlagrange}
+\end{equation}
+還將常數的部分去掉，因為在子問題中的常數部分不會受到變數的影響，簡化了不必要的部份，在3.22式中$\lambda$以及$\mu$分別為等號限制以及不等號限制的Lagrange乘數，在 \ref{eq:exlagrange} 式的子問題我們可以從簡化後的QP問題做$d$的求解，接下來將介紹本研究中序列二次規劃法的演算。
+
+在\cite{Nocedal.etc}一書，表示序列二次規劃法求取區域最佳解，在符合KKT條件下以牛頓法進行SQP求解，為了求得轉化後的子模型的變數向量$d$，首先在已知當前解$x^{k}$、$\lambda^k$以及$\mu^{k}$的目標函式，我們從Lagrange的條件下，假設\\
+\begin{equation*}
+	\Psi(x^{k},\lambda^{k})= \left[ 
+	\begin{array}{c} 
+		\bigtriangledown L(x^{k},\lambda^{k},\mu^{k}) \\
+		h(x^{k}) \\
+	\end{array}
+	\right]=0
+\end{equation*}
+其中為了符合KKT條件，在非等號限制式的部分只能保留受約束的限制式(set of active)，也就是當前解帶入非等號限制式時則等號會成立，為了達到同樣的效果，我們將原本的不等限制式的部分加上一個鬆弛變數(slack variable)，讓限制式都以等式限制式的$h(x)$表示。接下來我們假設Jacobian為
+\begin{equation*}
+	J(x^{k},\lambda^{k})= \left[ 
+	\begin{array}{cc} 
+		\bigtriangledown^{2} L(x^{k},\lambda^{k}) & \bigtriangledown h(x^{k})\\
+		\bigtriangledown h(x^{k})^{T} & 0 \\
+	\end{array}
+	\right]
+\end{equation*}
+為了得到下一代次的解$x^{k+1}$以及$\lambda^{k+1}$，其中
+\begin{equation*}
+	\begin{array}{c}
+	x^{k+1}=x^{k}+d_x,\\
+	\lambda^{k+1}=\lambda^{k}+d_{\lambda}
+	\end{array}
+\end{equation*}
+最後我們從 \ref{eq:solequation} 式中得到子問題中的$d=(d_x,d_{\lambda})$
+\begin{equation}
+J(x^{k},\lambda^{k})\cdot d =\Psi(x^{k},\lambda^{k})
+\label{eq:solequation}
+\end{equation}
+但在序列二次規劃法中以在符合Lagrange條件下的牛頓法計算最佳化問題時，必須符合以下幾個條件
+\begin{enumerate}[(1)]
+	\item 限制式的Jacobian必須是滿秩(full rank)
+	\item $J(x^{k},\lambda^{k})$必須要保持正定，牛頓法才可使用
+\end{enumerate}
+由於以上兩個條件限制下，便會無法對原問題如果是非凸集合下的非線性二次規劃問題尋找最佳解，為了這個問題，在\cite{Nocedal.etc}一書說明，如遇到$J(x^{k},\lambda^{k})$無法維持正定時，則以擬牛頓法(quasi-newton method)則可以解決非凸集合下的非線性規劃問題。
+\\ \textbf{擬牛頓法}
+
+從原本的模型藉由SQP轉化爲QP的問題，如果當此子問題的Hessian矩陣為正定矩陣，則我們可以使用牛頓法，由於牛頓法搜尋最佳解的收斂速度很快，故可以作為求解的方法，但在實際上染整所估計得目標函式以及限制式，其Hessian矩陣不一定會是正定，有可能為半正定或者兩者都不是，當Hessian矩陣不是正定或是半正定時，則我們的問題就會是非凸規劃問題(Non-convex programming problems)
+，則在這裡我們使用擬牛頓法(Quasi-newtons)和牛頓法比較下會比較適合。
+
+在牛頓法當中，雖然收斂速度很快，但是卻存在了兩個問題，一個是在迭代過程中計算量過大問題以及Hessian矩陣必須保持正定，但如果問題為非凸規劃問題時，就無法使用牛頓法求解，擬牛頓法主要能夠在割線條件(Secant condition)下，找出逼近Hessian矩陣的估計矩陣，此估計矩陣為正定，故擬牛頓法可以解決牛頓法的問題，也就是除了解決計算量過大外，可以解抉非凸規劃問題。
+
+在3.23式當中，$J(x^{k},\lambda^{k})$有可能無法維持正定，故我們以擬牛頓法來估計一個最接近$J(x^{k},\lambda^{k})$的矩陣$B_{k}$，在擬牛頓估計矩陣的方法有許多種，如：DFP (Davidon Fletcher Powell, DFP)方法、BFGS (Broyden Fletcher Goldfarb Shanno, BFGS)方法， Broyden等，而在\cite{Nocedal.etc}一書中說明了，目前使用擬牛頓法解決最佳化問題中，BFGS是效果較好且也較廣泛地使用的方法之一，故在本研究中也同樣以BFGS作為估計矩陣的方法，由於BFGS是使用迭代的方法，也就是$B_{k+1}=B_{k}+\Delta B_{k}$，由於起始的$B_{0}$通常為單位矩陣，故我們針對$\Delta B{k}$的部分進行說明，假設向量$y_k=\Psi(x^{k+1},\lambda^{k+1})-\Psi(x^{k},\lambda^{k})$而$s_{k}= - \alpha_{k} \cdot B_{k}^{-1} \cdot \Psi(x^{k},\lambda^{k})$其中$\alpha_{k}$為擬牛頓搜尋迭代過程中的步伐大小，通常我們以Line search的方法進行逼近，最後得到的步伐大小就為$\alpha_{k}$，而$x_{k+1}=x_{k}+s_{k}$，在符合割線條件下我們得到 \ref{eq:deltaB} 式
+\begin{equation}
+\Delta B_{k}=\frac{y_{k}y_{k}^{T}}{y_{k}^{T}s_{k}}+\frac{B_{k}s_{k}s_{k}^{T}B_{k}^{T}}{s_{k}^{T}B_{k}s_{k}}
+\label{eq:deltaB}
+\end{equation}
+由 \ref{eq:deltaB} 式得到$B_{k+1}$後，進而計算下一個代次，直到$x_{k+1} \approx x_{k}$時則停止演算。
+
+我們整理序列二次規劃法的演算流程，如圖 \ref{fig:flow3}
+\begin{figure} 
+\centering
+\input{Graph/flowChart3}
+\caption{序列二次規劃演算流程圖}
+\label{fig:flow3}
+\end{figure}
+在圖 \ref{fig:flow3} 首先我們會先給定起始值$x_{0}$、$\lambda_{0}$以及停止條件$\epsilon$，再來確立搜尋的方向$d_{k}=-B_{k}^{-1}\Psi_{k}$，確認方向後將給定值帶入後，以Line search方法計算$\alpha_{k}$，就會得到$s_{k}=\alpha_{k}d_{k}$以及$x^{k+1}=x^{k}+s_{k}$，最後判斷$s_{k}$是否小於$\epsilon$，如果是，則停止搜尋，反之則繼續將$y_{k}$以及$B_{k+1}$求出後，再回到確立搜尋方向繼續迭代。

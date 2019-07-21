@@ -1,0 +1,180 @@
+% !TEX encoding = System
+%%
+%% This file  "YangYuancong'Paper.tex"   which based `main.tex' is written by Yang Bo,  is the thesis template of China Univ. of Geosciences.
+%% It works with the configuration files, `CUGthesis.cls' or  "CUGthesis-c5size-270mm×195mm"and `CUGthesis.cfg'.
+%%
+%% Author: Yang Bo, Institute of Geophysics & Geomatics, China Univ. of Geoscience, Wuhan, China.
+%% Version: 0.1
+%% Date: 2011/04/23
+%% Copyright 2011-2015
+%% Special thanks to Dr. Linyun Wu and Dr. Yinnian Wu
+%%
+%%
+%%
+%%
+%% This file was generated from file(s) of the CUGthesis package project.
+%%
+%%如果你是首次打开此文档，如果想一步一步学习，了解LaTeX的博大精深，不妨先试着读这段小提示，如果你喜欢先探索再学习，那就跳过此处尽情的修改所有代码观察结果吧
+%%这儿列出的文档仅仅是一冰山一角的一角，遇到不会的就使用 Google ，到目前为止还没遇到过使用LaTeX遇到问题却找不到答案的情况 ，只要你有足够的耐心，就一定能解决问题，要学LaTeX 先学搜索，只有遇到问题时有足够的技巧，才不会慌乱因此首先建议学习这个：http://www.cnbeta.com/articles/64073.htm
+%%举一个例子，有同学输入一个矩阵时 编译出现  The error: Extra alignment tab has been changed to \cr，保证语法和结构都是没错的，初步猜想是矩阵过宽，显示页面显示不了，于是Google搜索各种关键词 “latex  矩阵太宽” “latex 矩阵” 等都无解 于是输入 “The error: Extra alignment tab has been changed to \cr” 和 “latex matrix  too wide” 便立即得到了答案  http://www.tex.ac.uk/cgi-bin/texfaq2html?label=altabcr 和http://stackoverflow.com/questions/2789416/typesetting-a-large-matrix-in-latex 都能圆满解决问题，在搜索时最好直接搜索错误提示，或者使用英文搜索效率更高
+%下面列出几个非常有用的网站，特别推荐“TikZ简介及资源汇总 ” 会了PGF/TikZ在排版上你就无所不能了
+%http://liushusheng914.blog.163.com/blog/static/3588318320104684938531/
+%http://latex.yo2.cn/articles/latex-thesis.html
+%https://github.com/billryan/xdba-thesis
+ % LaTeX 编辑部 http://zzg34b.w3.c361.com/package/font.htm
+ % 在LaTeX里实现最专业的程序源代码排版 http://qiuxing.wordpress.com/2010/12/30/latex-listings/
+ % 常用数学符号的 LaTeX 表示方法 http://www.cfsm.cn/info/symbols/symbols.htm
+ % TikZ简介及资源汇总  http://wiki.josephpan.net/tikz_intro.html
+%  http://www.math.ecnu.edu.cn/~latex/docs/Chs_doc/lshort32cn.pdf
+%%
+
+
+%%%常见错误列表
+%%%%  http://www.cs.utexas.edu/~witchel/errorclasses.html
+
+
+%Windows        Linux下注释此行  在windows下建议使用pdftex，因为windows默认是GBK编码比较方便，虽然使用xetex字体等设置更自由，但是编码为UTF8，需要更改，较麻烦
+\documentclass[pdftex,twoside,openright,undergraduate,nofundinfo]{Config/CUGthesis-c5size-270mm×195mm} % 学校要求,在资源学院打印时装订出来确实很不错
+
+%Linux TexLive
+%安装texlive最好使用官方源用apt安装，使用ISO安装会很麻烦，另外配置中文字体也比较麻烦，建议还是在windows平台写，如果非Linux不可，想速成请察看ReaderMe__Linuxer.txt，想自己探索就参考这几篇文章
+%    http://northcamel.com/how-to-install-texlive2012-in-ubuntu12-04/   字体建议使用这篇文章提供的下载
+%    http://forum.ubuntu.org.cn/viewtopic.php?f=35&t=389097
+%   http://linux-wiki.cn/wiki/zh-hans/LaTeX%E4%B8%AD%E6%96%87%E6%8E%92%E7%89%88%EF%BC%88%E4%BD%BF%E7%94%A8XeTeX%EF%BC%89
+%   http://luly.lamost.org/lulyblog/?p=385
+%%%
+%%% Linux      Linux 下启用此行
+%\documentclass[xetex,winfonts,twoside,openright,undergraduate,nofundinfo,CJKnumber,fallback]{Config/CUGthesis-c5size-270mm×195mm}
+
+
+%%可选参数：
+%
+%% 1, nofundinfo 取消资助基金信息[缺省则显示基金信息]
+%
+%% 2, 排版引擎(三选一, 推荐选择pdftex)
+%% dvipdfm 使用 dvipdfm(x) 生成最终的 PDF 文档 (缺省设置）
+%% dvips 使用 dvips 生成最终的 PS 文档
+%% pdftex 使用 pdfLaTeX 生成最终的 PDF 文档
+%%
+%
+%% 3, 排版方式(二选一)[缺省为twoside]
+%% oneside 生成电子版时选择,打印时建议不要选择此项，因为这样左右页边距是相等的，装订后不美观
+%% twoside 双面打印时选择, 自动将章首页排到奇数页，此项为默认项
+%
+%% 4, 文类只适用于本科论文(undergraduate)
+%% 5，每章应从奇数页开始，因此是openright
+%
+% 设置图形文件的搜索路径  %http://mirrors.ustc.edu.cn/CTAN/macros/latex/contrib/tagging/tagging.pdf
+\usetag{Email}  %如果要使文件最小则启用这一行，要求最好质量则注释 此行，目的是选用不同质量的图片，PictureData/Email里面的是低质量图片，PictureData/Print/ 里的是高质量图片，当然与前者中的文件名称是相同的，文件类型可以不同。PictureData/Common/ 里是普通图片，Email 只是个标识符，像C 语言的条件编译。
+\iftagged{Email}{
+\graphicspath{{PictureData/Email/}{PictureData/Common/}}}{\graphicspath{{PictureData/Print/}{PictureData/Common/}}}
+%%使用图片时最好不要加扩展名，增加自由度，LaTeX会自动按照.png->.pdf->.jpg->.mps->.jpeg->.jbig2->.jb2->.PNG->.PDF->.JPG->.JPEG->.JBIG2->.JB2 的优先级顺序来查找文件,也不要带路径，使用\graphicspath{{path1}{path2}{...}}来告诉latex该在哪些地方找图片
+\usetag{Digital}      %黑白打印时注释此行              % \iftagged{条件}{真}{假}   %http://mirrors.ustc.edu.cn/CTAN/macros/latex/contrib/tagging/tagging.pdf
+%设置链接
+\iftagged{Digital}{
+%电子版 or 彩色打印时
+\hypersetup{pdfstartview=FitH,bookmarksopen=true,colorlinks=true}}{
+% 黑白打印时
+\hypersetup{pdfstartview=FitH,bookmarksopen=true,citecolor=black,pdfborder=000,colorlinks=false}}
+
+% 小节标题靠左对齐
+%\CTEXsetup[format+={\flushleft}]{section}
+
+\begin{document}		%内容从此处开始，以上为导言区
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 封面部分
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  % 中文封面内容
+  \school{中国地质大学（武汉）}						%学校
+  \title{光切法显微镜探究荷叶效应}					%论文题目
+  \author{\underline{杨\hspace{1.5em}远\hspace{1.5em}聪\hspace{1.43em}}} %作者
+  \authorheader{杨远聪}                                  %重新定义的显示页眉作者，若用\author 会有下划线，版式不美观
+  \major{\underline{物\hspace{1.5em}理\hspace{1.5em}学\hspace{1.38em}}}	%专业
+  \advisorschool{\underline{韩\hspace{1.5em}艳\hspace{1.5em}玲\hspace{1.45em}}} % 指导老师
+  \institute{\underline{数学与物理学院\hspace{0.43em}}}			        %学院
+  \submitdatechs{\CJKdigits{\the\year}年\CJKnumber{\the\month}月}		%中文年月显示在封面 类似于 二〇一三年六月
+  \submitdate{\the \year.\the\month }						%阿拉伯数字年月 2013.6显示在页眉
+  \studentnumber{\underline{20091002501~~~~~~~}}				%学号
+  \advisorschooltitles{\underline{\hspace{1.8em} 教\hspace{1.5em} 授\hspace{1.5em}}}           % 指导老师职称
+  \reviewers{\underline{\hspace{7.4em}}}						%评阅人留空
+  \reviewerstitles{\underline{\hspace{2.8em}\hspace{2.5em}\hspace{2.0em}}}          % 评阅人职称
+
+  % 英文封面内容
+  %\englishdegree{Bachelor's degree}
+  \englishtitle{Explore The  Lotus Effect By Light-Section Method Microscope}  % 英文题目
+  \englishauthor{Yang Yuancong}						       %作者
+  \englishmajor{Physics}							%专业
+  \englishadvisorschool{Prof. Han Yanling}					%指导老师
+  %\englishadvisorenterprise{Prof. ShangWenbo}
+  \englishinstitute{Institute of Mathematics and Physics}		         %学院
+
+%============================ 用于测试的自定义文字块 ================================%
+
+%============================ 用于测试的自定义文字块 ================================%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%                                                                        %%%%%
+%%%%%                                                                        %%%%%
+%%%%%  封面1、中文 封面（包含详细信息）、英文封面、原创性声明、使用授权书    %%%%%
+%%%%%                                                                        %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{Chapters/CoveraAndTitleETC}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 前言部分
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+
+%   摘要  %中文 英文
+ \include{Chapters/Abstract}
+%   目录 %包含章节目录、插图目录和表格目录
+ \include{Chapters/Contents}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 正文部分
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+%  章节
+\zihao{5}                                                                       %正文使用5号字，在文档类中设置c5size貌似无效,四号为\zihao{4} 小四为\zihao{-4} 小三为\zihao{-3},具体查阅ctex说明文档
+  \include{Chapters/Chapter_0_Introduction}
+   \include{Chapters/Chapter_2_LotusEffect}
+  \include{Chapters/Chapter_1_Principle}
+  \include{Chapters/Chapter_Extra_Added}
+  \include{Chapters/Chapter_3_Experimental}
+ \include{Chapters/Chapter_4_Summary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%以下是原来的结构，后来发现改成上面的结构更紧凑一些，于是改成了上面的，然后按Chapters/References.tex中的说明按步骤更改参考文献Bib/ReferencesUgly.tex的内容，即：更改结构后取消\bibliography{Bib/References}  的注释同时注释掉\input{Bib/ReferencesUgly} ->重新编译得到bbl文件-> 将bbl 文件中的内容按照Bib/ReferencesUgly.tex的格式要求复回去->   再注释\bibliography{Bib/References}  同时取消\input{Bib/ReferencesUgly}的注释 编译即能生成参考文献标准的文档
+%  \include{Chapters/Chapter_0_Introduction}
+%  \include{Chapters/Chapter_1_Principle}
+%  \include{Chapters/Chapter_Extra_Added}
+%  \include{Chapters/Chapter_2_LotusEffect}
+%  \include{Chapters/Chapter_3_Experimental}
+% \include{Chapters/Chapter_4_Summary}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   %   致谢
+  \include{Chapters/Acknowledgement}
+
+ % ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+%   参考文献 % 使用 BibTeX
+%关于参考文献，务必认真阅读Chapters 目录下References.tex注释部分及里面提到的所有内容，这是整个论文最Ugly的但又不得不做的部分(对参考文献的要求一般是比较严的),千万不要因为参考文献论文被要求重打印啊，我的Bib/References.tex 可是完全按照地大要求和GBT7714-2005来的，可参照
+  \input{Chapters/References}%先读说明
+
+%   附录
+  \appendix
+%
+%%%%%%%%%%%%%%%%%附录，源代码 本篇文章中并不使用编程语言，因此没有源代码，想要查看效果，取消注释下面这一行即可看到效果
+  %\include{Chapters/SourceCode}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 附件部分
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+
+
+
+
+
+\end{document}

@@ -1,0 +1,82 @@
+
+\chapter{主要模型}
+\label{chap:model}
+这一部分将会依次介绍GCN\cite{kipf2017semi}、GHSOM\cite{2018UserInfluenc}、特征量化模型，为下一节实验做准备。我将经过GCN处理的数据作为GHSOM的输入，将高未特征映射到二维空间，结合特征量化模型输出影响力数值。将影响力排名与微博话题榜做比较，使得斯皮尔曼的等级相关系数最大化。
+
+\section{GCN模型}\label{sec:model1}
+
+图卷积神经网络是一种用于图形结构数据的半监督学习算法。通过叠加多个GCN层建立GCN模型。每个GCN层的输入是一个顶点特征矩阵，$H\in \mathbb{R}^{n\times F}$,其中n是顶点数,F是特征数,每行 H，用$h_i^T$表示，与一个顶点相关联。一般来说，GCN层的本质是一个非线性变换，输出如下$H'\in \mathbb{R}^{n\times F}$:
+\begin{equation}
+H'=GCN(H)=g(A(G)HW^T+b)
+\end{equation}
+其中$W\in \mathbb{R}^{F'\times F}$，$𝑏 \in \mathbb{R}^{F'}$是模型参数，g 为非线性激活函数，A(G)为获取图 G 结构信息 的 n×n 矩阵，GCN 将A(G)实例化为与归一化图 Laplaican密切相关的静态矩阵:
+\begin{equation}
+A_{GCN(H)} = D^{-1/2}AD^{-1/2}
+\end{equation}
+其中 A 是 G 的邻接矩阵，$D=diag(A1)$是度矩阵。
+
+引入一个简单而又灵活的图信息传播模型$f(X,A)$，我们可以返回到半监督节点分类问题。我们可以放宽通常在基于图的半监督学习中所作的某些假设，方法是对数据X和底层图结构的邻接矩阵A对我们的模型$f(X,A)$进行条件调整。在邻接矩阵包含不存在于数据X中的信息的场景中，例如引用网络中的文档之间的引用链接或知识图中的关系时，通常期望这种设置特别强大。总体模型，一个用于半监督学习的多层GCN。
+
+
+
+我们首先在预处理步骤中计算$\widehat{A}=\widetilde{D}^{(-1/2)}\widetilde{A}\widetilde{D}^{(-1/2)}$。然后，我们的传播模型采用了简单的形式:
+\begin{equation}
+Z=f(X,A)=softmax(\widehat{A}ReLU(\widehat{A}XW^{(0)})W^{(1)})
+\end{equation}
+这里，$W^{(0)}\in \mathbb{R}^{C\times H}$是一个具有H特征映射的隐藏层的输入到输出的权矩阵。$W^{(1)}\in \mathbb{R}^{C\times H}$是一个隐输出权矩阵。Softmax激活函数，定义为$softmax(X_i)=\frac{1}{Z}exp(X_i),Z=\sum_{i}exp(X_i)$,逐行应用。对于半监督的多类分类，对所有标号样本的交叉熵误差进行了评估:
+\begin{equation}
+\mathcal{L}=-\sum_{l\in y_L}\sum_{f=1}^{F}Y_{lf}lnZ_{lf},
+\end{equation}
+其中$Y_L$是一组具有标签的节点索引。利用梯度下降训练神经网络权值$W^{(0)}$和$W^{(1)}$。
+
+
+\section{GHSOM模型}\label{sec:model2}
+
+GHSOM网络是建立在SOM的基础上的一种延伸模型。
+简单地说，自组织映射是一种实现竞争学习的人工神经网络，可以认为是一种无监督学习形式。在地图上，神经元沿着$x_{dim}$和$y_{dim}$维数的矩形网格排列。对于每个训练实例$\vec{x}_k,k=1,2,3,...,M$，M是训练实例的数目。
+
+1、竞争步骤，在矩形网格上找到特定训练实例的最佳匹配神经元，
+\begin{equation}
+c=argmin_{i}(|| \vec{x}_i-\vec{x}_k||),
+\end{equation}
+
+其中$i,k=1,2,3,...,N$是MAP神经元上的一个指数，$N=x_{dim}×y_{dim}$是网格上的神经元数，$\vec{m}_i$是i索引的神经元。最后，c是映射上最佳匹配神经元的指标。
+
+2、更新步骤，训练实例$\vec{x}_k$影响最佳匹配神经元$\vec{m}_c$及其邻域。更新步骤可以由地图上神经元的以下更新规则表示，
+\begin{equation}
+\vec{m}_i\gets \vec{m}_i-\eta \vec{\delta}_ih(c,i)
+\end{equation}
+
+即$i=1,2,...,N$，这里$\vec{\delta}=\vec{m}_i-\vec{x}_k$，$\eta$是学习速率，$h(c,i)$是一个损失函数，
+\begin{equation}
+h(c,i)=\left\{
+\begin{aligned}
+1 &  & if~i \in \Gamma(x), \\
+0 &  & otherwise ,
+\end{aligned}
+\right.
+\end{equation}
+
+其中$\Gamma(c)$是最佳匹配神经元$\vec{m}_c$与$c\in \Gamma(c)$的邻域。通常情况下，邻居是时间的函数，它的大小在训练期间衰减。最初，神经元$\vec{m}_c$的邻域包括地图上的所有其他神经元，
+\begin{equation}
+\Gamma(c)|_{t=0}={1,2,...,N},
+\end{equation}
+
+随着训练的进行，$\vec{m}_c$的邻域缩小到仅限于神经元本身，
+\begin{equation}
+\Gamma(c)|_{t\gg0}={c},
+\end{equation}
+
+在这里，像以前一样，$N=x_{dim}×y_{dim}$是映射上的神经元数。这意味着每个最佳匹配神经元的更新规则最初都有一个很大的影响范围，逐渐缩小到影响域只包含最佳匹配神经元本身的程度。
+
+对每个训练实例重复上述两个训练步骤，直到给定的映射收敛为止。
+
+在SOM中，输出层的类神经网络单元是以一维或二维矩阵的方式排列，并根 据输入向量彼此竞争，获胜的神经元称之为优胜神经元，其可获得调整权重向量的机会，经过数个迭代的权重调整后，输出层的神经元便会呈现出代表输入向量特征的拓扑结构( topology) 。
+
+增长阶层式自组织映像图(以下简称GHSOM)增长阶层式自组织映像图模型是SOM的一种延伸模型，整体呈现多层次的阶层式结构，每层又由数个能自我调适的 SOM 所构成...
+
+
+GHSOM克服了固定大小数据的映射方式的限制; 因此，即使是在没有先验知识的情况下，依然可以提供最令人满意的结果的网络架构。由于所有数据都映射在不同的二维空间中，因此层次关系清晰。
+
+
+

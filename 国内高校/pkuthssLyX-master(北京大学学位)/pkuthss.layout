@@ -1,0 +1,91 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[pkuthss]{book (PKU Thesis)}
+# PKUthss textclass definition file.
+# Author : Qin Weilun <qinweilun@pku.edu.cn>
+#
+# No specific license is declared. This work is free to use, 
+# modify or (re)distribute.
+
+Format 35
+
+Input stdclass.inc
+Input numreport.inc
+
+NoStyle Part
+NoStyle Part*
+NoStyle Chapter*
+NoStyle Section*
+NoStyle Subsection*
+NoStyle Subsubsection*
+NoStyle Paragraph*
+NoStyle Subparagraph*
+NoStyle Address
+NoStyle Right_Address
+NoStyle Labeling
+NoStyle Bibliography
+
+
+Style Abstract
+    CopyStyle       Abstract
+    LatexName       cabstract
+    LabelString     "Abstract"
+End
+
+Style Keywords
+    CopyStyle       Abstract
+    LatexType       Command
+    LatexName       ckeywords
+    LabelType       Static
+    LabelString     "Keywords:"
+    LabelFont
+      Series        Bold
+      Size          Small
+    EndFont
+    Align           Center
+End
+
+Style Abstract(en)
+    CopyStyle       Abstract
+    LatexName       eabstract
+    LabelString     "Abstract(en)"
+End
+
+Style Keywords(en)
+    CopyStyle       Keywords               
+    LatexName       ekeywords
+    LabelType       Static
+    LabelString     "Keywords(en):"
+    Align           Center
+End
+
+Style Denotation
+    CopyStyle       Description               
+    LatexName       denotation
+End
+
+Style Acknowledge
+    CopyStyle       Standard
+    LatexType       Environment
+    Category        BackMatter
+    LatexName       ack
+End
+
+Style Appendix
+    CopyStyle       Standard
+    LatexType       Environment
+    Category        BackMatter
+    LatexName       appendix
+End
+
+Style Resume
+    CopyStyle       Standard
+    LatexType       Environment
+    Category        BackMatter
+    LatexName       resume
+    LabelType       Centered_Top_Environment
+    LabelString     "Resume"
+    LabelFont
+      Series        Bold
+      Size          Large
+    EndFont
+End

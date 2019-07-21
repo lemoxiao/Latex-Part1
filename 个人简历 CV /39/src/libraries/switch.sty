@@ -1,0 +1,82 @@
+%%
+%% Author: Ali Asghar Momeni Vesalian (momeni.vesalian@gmail.com)
+%% 12/30/2017 AD
+%%
+
+% Preamble
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{switch}[Some useful conditional commands, designed by momeni.vesalian@gmail.com]
+
+
+% General packages
+\usepackage{options}
+\usepackage{ifthen}
+\usepackage{xintexpr}
+
+
+% Variables
+\newboolean{default}
+
+
+% Options declaration
+\options{
+    /switch/.new family,
+    /switch/comparison type/.new choice = {number = 1, string = 2}
+}
+
+
+% Commands
+\newcommand{\switch@defaultoptions}{
+    \options{/switch, comparison type = string}
+}
+
+\newcommand{\xifthenelse}[4][]{
+    \switch@defaultoptions
+    \options{/switch, #1}
+    \xintifboolexpr{\option{/switch/comparison type} = 1}{
+        \xintifboolexpr{#2}{#3}{#4}
+    }{
+        \ifthenelse{#2}{#3}{#4}
+    }
+}
+
+\newcommand{\xifthen}[3][]{
+    \xifthenelse[#1]{#2}{#3}{}
+}
+
+\newcommand{\xifequalelse}[5][]{
+    \switch@defaultoptions
+    \options{/switch, #1}
+    \xintifboolexpr{\option{/switch/comparison type} = 1}{
+        \xintifboolexpr{#2 = #3}{#4}{#5}
+    }{
+        \ifthenelse{\equal{#2}{#3}}{#4}{#5}
+    }
+}
+
+\newcommand{\xifequal}[4][]{
+    \xifequalelse[#1]{#2}{#3}{#4}{}
+}
+
+
+% Temporal declaration
+\newcommand{\xcase}[2]{}
+\newcommand{\xother}[1]{}
+
+
+% Envirements
+\newenvironment{xswitch}[2][]{
+    \setboolean{default}{true}
+    \renewcommand{\xcase}[2]{
+        \xifequal[#1]{#2}{##1}{
+            \setboolean{default}{false}
+            ##2
+        }
+    }
+    \renewcommand{\xother}[1]{
+        \xifthen{\boolean{default}}{
+            ##1
+        }
+    }
+}{
+}

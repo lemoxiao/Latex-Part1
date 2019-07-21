@@ -1,0 +1,44 @@
+%# -*- coding: utf-8-unix -*-
+%==================================================
+\documentclass{csuthesis}
+
+% 逐个导入参考文献数据库
+\addbibresource{bib/thesis.bib}
+
+\begin{document}
+
+\include{tex/info}              %填入论文信息
+
+\maketitle
+\frontmatter 	
+\pagestyle{plain}
+\include{tex/abstract}           %摘要
+\tableofcontents                 %生成目录
+\mainmatter	
+% 正文内容
+\pagestyle{main}
+\include{tex/chapter1}           %第一章
+\include{tex/chapter2}           %第二章
+\include{tex/chapter3}           %第三章
+\include{tex/ack}                %致谢
+
+\appendix	                     %附录，比如文献翻译之类的，可以没有
+% 使用英文字母对附录编号，重新定义附录中的公式、图图表编号样式
+\renewcommand\theequation{\Alph{chapter}--\arabic{equation}}	
+\renewcommand\thefigure{\Alph{chapter}--\arabic{figure}}
+\renewcommand\thetable{\Alph{chapter}--\arabic{table}}
+\renewcommand\thealgorithm{\Alph{chapter}--\arabic{algorithm}}
+\renewcommand\thelstlisting{\Alph{chapter}--\arabic{lstlisting}}
+%% 附录内容
+\include{tex/appendA}           %附录A
+%\include{tex/appendB}           %附录B
+%\include{tex/appendC}           %附录C
+%\include{tex/appendD}           %附录D
+\backmatter	
+%% 参考资料
+\printbibliography[heading=bibintoc]   %生成参考文献
+\label{last}                           %最后一页标签，用于记录总的页数
+\makeatletter
+\makeatother
+
+\end{document}

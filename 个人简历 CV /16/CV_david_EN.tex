@@ -1,0 +1,399 @@
+%Document Class Definition
+\documentclass{article}
+
+%Required Packages
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}      % LaTeX
+\usepackage{fontawesome}
+\usepackage{tikz}
+	\usetikzlibrary{babel} %correction for the french version of the document with XeLaTeX
+	\usetikzlibrary{shapes.geometric}
+	\usetikzlibrary{calc}
+	\usetikzlibrary{decorations.pathreplacing}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry}
+\usepackage{setspace}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{coolstr}
+\usepackage{coolstr}
+\usepackage{textcase}
+\usepackage{amsmath}
+\usepackage{relsize}
+\usepackage{moresize}
+\usepackage{times}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{mathabx}
+\usepackage{graphicx}
+  	  	\graphicspath{{./fig/}} %fig path
+  	  	
+%Definition of the colors
+\definecolor{white}{RGB}{255,255,255}
+\definecolor{sidecolor}{RGB}{200,200,200}
+\definecolor{mainblue}{RGB}{0,0,153}
+\definecolor{maingray}{RGB}{144,144,144}
+
+%Define CV Variables
+\newcommand{\cvfirstname}{David}
+\newcommand{\cvlastname}{Beauchemin}
+\newcommand{\cvtitle}{B. Sc. Actuariat}
+\newcommand{\coverletter}{Cover letter}
+
+\newcommand{\cvemail}{david.beauchemin.5@ulaval.ca}
+\newcommand{\cvphonenumber}{(514) 250-3616}
+\newcommand{\cvaddress}{759, avenue Myrand, app 4  Quebec}
+\newcommand{\cvlocation}{Quebec, Canada}
+\newcommand{\cvlinkedin}{https://www.linkedin.com/in/david-beauchemin-918343108/}
+\newcommand{\github}{https://github.com/davebulaval}
+\newcommand{\Web}{https://davebulaval.github.io}
+
+%Command for vertical centering of text into tabular
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+
+%Command for horizontal centering of specified width into tabular
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+%Command for bold font and textcolor to apply to a specific column into tabular
+\newcolumntype{A}[1]{>{\bfseries\centering\color{mainblue}}m{#1}}
+
+%Command to print checkmark with desired format into Certificate Table
+\newcommand{\CheckMark}{\textcolor{mainblue}{\faCheck}}
+
+%Command to create the correct seperator for Interests
+\newcommand{\separator}{\textcolor{mainblue}{ $\blackdiamond$ }}
+
+%Command to produce a round shaped corner framebox with defined colors
+\newcommand{\mybox}[1]{
+	\tikz
+	\node[rectangle,rounded corners=1mm,draw=mainblue,anchor=text,fill=mainblue,inner sep=3pt,minimum height=0.5cm]
+		{\small\bfseries\textcolor{white}{#1}};}
+
+%Command to create the sidebar layout
+\newcommand{\sidebar}{
+	\begin{tikzpicture}[overlay]
+		\node [rectangle, fill=sidecolor, anchor=north west, minimum width=9.25cm, 
+		minimum height=\paperheight+2cm] (box) at (-2cm,3cm){};%
+	\end{tikzpicture}}
+
+%Command for printing the margin section titles
+\newcommand{\profilesection}[1]{
+	\vspace{6pt}
+	{\bfseries\Large #1\;\rule[0.15\baselineskip]{7cm-\widthof{\bfseries\Large #1\;}}{1pt}\normalfont\normalsize}
+	\vspace{6pt}}
+
+%Command for printing the icons
+\newcommand{\icon}[1]{
+	\begin{tikzpicture}[baseline=(char.base)]
+		\node[circle,draw,baseline=(char.base),mainblue,fill=mainblue,text=white,
+		inner sep=0.35pt, minimum size=10mm, align=center,text centered](char){\LARGE\textbf{{#1}}};
+	\end{tikzpicture}}
+
+%Command to create the star scale
+\newcommand\starscale[2]{
+	\pgfmathsetmacro\pgfxa{#1+1}
+	\tikzstyle{scorestars}=[star,star points=5,star point ratio=2,thick,mainblue,scale=1.5,draw,inner sep=0.125em,anchor=outer 	point 3]
+	\begin{tikzpicture}[baseline]
+		\foreach \i in {1,...,#2} {
+			\pgfmathparse{(\i<=#1?"mainblue":"maingray")}
+			\edef\starcolor{\pgfmathresult}
+			\draw (\i*1em,0) node[name=star\i,scorestars,fill=\starcolor]{};}
+		\pgfmathparse{(#1>int(#1)?int(#1+1):0}
+	\let\partstar=\pgfmathresult
+	\ifnum\partstar>0
+		\pgfmathsetmacro\starpart{#1-(int(#1))}
+		\path [clip] ($(star\partstar.outer point 3)!(star\partstar.outer point 2)!(star\partstar.outer point 4)$) 
+		rectangle 
+		($(star\partstar.outer point 2 |- star\partstar.outer point 1)!\starpart!(star\partstar.outer point 1 -| star\partstar.outer point 5)$);
+		\fill (\partstar*1em,0) node[scorestars,fill=mainblue]{};
+	\fi
+	\end{tikzpicture}}
+
+%Command for printing skill progress bars
+\newcommand{\progressbarthickness}{0.1}
+\newcommand\skillbar[1]{
+	\begin{tikzpicture}
+		\foreach [count=\i] \x/\y in {#1}{
+			\draw[fill=maingray,maingray] (0,\i) rectangle (7,\i+\progressbarthickness);
+			\draw[fill=white,mainblue](0,\i) rectangle (\y,\i+\progressbarthickness);
+			\node[circle,fill,mainblue] at (\y,\i+\progressbarthickness/2){};
+			\node[circle,fill,maingray,scale=0.5] at (\y,\i+\progressbarthickness/2){};
+			\node[above right] at (0,\i+\progressbarthickness){\x};}
+	\end{tikzpicture}}
+
+%Command for printing white words
+\newcommand\printww[1]{
+	\tiny\textcolor{white}{
+	\foreach \x in #1{\x \- \,}}}
+
+%Command to create section Title
+% The command \substr dont work with all the character such as é, à.
+% To make it work I used title without those character. Didn't found other solution.
+\newcommand\sectiontitle[1]{
+	\bfseries\LARGE
+	%\textcolor{mainblue}{\substr{#1}{1}{4}}%
+	\textcolor{black}{\substr{#1}{1}{end}}
+	\normalfont\normalsize}
+
+%Command to let mark in order to trace tikz picture
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node[circle,scale=0.01] (#1) {};}
+
+%Command to insert a new Education Statement
+\newcommand{\EduStatement}[5]{
+	%\normalfont\normalsize
+	\vspace{-\baselineskip}
+	\tikzmark{mark1}\\
+	#4\\
+	\large{\textbf{#5}}\\
+	\textcolor{mainblue}{#3\small\textbf{\hfill [#1 - #2]}}\\
+	%\normalfont\normalsize 
+	\tikzmark{mark2}
+	}
+
+%Command to insert a new title for cover letter
+\newcommand{\TitleCoverLetter}[5]{
+	%\normalfont\normalsize
+	\vspace{-\baselineskip}
+	\tikzmark{mark1}
+	\vspace{12pt}\\
+	%\LARGE\textcolor{mainblue}{\textit{#5}}
+	\sectiontitle{#5}
+	\\[5pt]
+	\normalsize 
+	\textbf{#4}\\
+	\textcolor{mainblue}{#2\small\textbf{\hfill #1}}\\
+	#3
+	%\normalfont\normalsize 
+	\tikzmark{mark2}
+	}
+
+%Command to insert a new Experience Statement
+\newenvironment{ExpStatement}[4]{
+	%\normalfont\normalsize
+	\vspace{-\baselineskip}
+	\tikzmark{mark1}
+	\vspace{15pt}\\
+	\textcolor{mainblue}{#3\small\textbf{\hfill [#1 - #2]}}\\
+	\large{\textbf{#4}}
+	\small
+	\begin{itemize}[label=\textcolor{mainblue}{\textbullet},topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt]}
+		{\vspace{-\baselineskip}
+	\end{itemize}
+	%\normalfont\normalsize
+	\tikzmark{mark2}
+	\\}
+
+\pagestyle{empty} % Disable headers and footers
+\setlength{\parindent}{0pt} 
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{1cm}
+\hypersetup{
+colorlinks,
+linkcolor={red!50!black},
+citecolor={blue!50!black},
+urlcolor={blue!80!black}}
+
+%Edition of the content
+\begin{document}
+\sidebar
+\begin{textblock}{7}(0.5,1)
+	\HUGE
+	\cvfirstname\\[6pt]
+	\bfseries
+	\cvlastname\\[6pt]
+	\large
+	\cvtitle\\
+\end{textblock}
+
+\begin{textblock}{7}(0.5, 3.75)
+	\profilesection{General Information}	
+	\vspace{-\baselineskip}
+	\begin{table}
+		\begin{tabularx}{7cm}{cX}
+			\icon{\faAt}&\bfseries\href{mailto:\cvemail}\cvemail\\
+			\icon{\faPhone}&\cvphonenumber\\
+			%\icon{\faHome}&\cvaddress\\
+			\icon{\faMapMarker}&\cvlocation\\
+			\icon{\faGithub}&\href{\github}{See GitHub} \\
+			\icon{\faRss}&\href{\Web}{Website}\\
+			\icon{\faLinkedin}&\href{\cvlinkedin}{See profil}\\
+		\end{tabularx}
+	\end{table}
+
+	\profilesection{Languages}
+	\vspace{-\baselineskip}
+	\begin{table}
+		\large
+		\begin{tabularx}{7cm}{Xc}
+			English & \starscale{3.8}{5}\\
+			French & \starscale{4.4}{5}\\
+		\end{tabularx}
+	\end{table}
+
+	\profilesection{Programming Skills}
+	\skillbar{C/2, HTML/3, Java/3, C++/3, \faGit /5,\LaTeX /6.5, Markdown /6, R/6.5, Python/6.2,VBA/6,SAS/2, SQL/5}
+	
+\begin{center}
+	\includegraphics[scale=0.20]{LogoDB.png}
+\end{center}
+\end{textblock}
+
+
+\begin{textblock}{11.35}(9.25, 1)
+	\sectiontitle{Education}\\
+	\EduStatement{09/2015}{Actual}{University Laval}{Bachelor Degree}{Actuariat Sciences}
+	\EduStatement{08/2017}{08/2017}{Ivado}{}{Formation d'été francophone en apprentissage profond}
+
+	\sectiontitle{Work \ Experience}
+	\begin{ExpStatement}{09/2016}{Actual}{University Laval, Actuarial School}{course assistant}
+		\item Examination correction and creating - Introduction to Actuarial Science I
+		\item Examination correction and creating exercices - Financial Risk Management I
+		\item Examination correction and IT workshop - IT for actuarary
+		\item Overview formation of \href{https://davebulaval.github.io/R_Markdown/}{R \& Markdown}
+		\item Rewritting of course notes - \href{https://github.com/davebulaval/act_2003}{Linear models for actuary}
+	\end{ExpStatement}
+	\begin{ExpStatement}{11/2013}{10/2014}{Industrial Alliance, Auto and Home Insurance}{Damage insurance agent}
+		\item Complete customer submissions
+		\item Meeting customer needs
+		\item Advise clients in damage insurance
+		\item Support the team in achieving objectives
+	\end{ExpStatement}
+	\\
+	\sectiontitle{Certificates}
+	\vspace{3pt}
+	\begin{table}
+		\begin{tabularx}{\textwidth}{A{1.5cm}XM{1.5cm}}
+			\toprule
+			\centering\textcolor{black}{Exam}&\centering\textbf{Description}&\textbf{Date}\\
+			\midrule
+			P/1 & Probability & \textcolor{mainblue}{\textbf{\textbf{01/2016}}}\\
+			FM/2 & Financial Mathematics & \textcolor{mainblue}{\textbf{06/2016}}\\
+			MFE/3 & Models for Financial Economics & \textcolor{mainblue}{\textbf{05/2017}}\\
+			ECON & VEE Economics & \textcolor{mainblue}{\textbf{11/2016}}\\
+			CORPFIN & VEE Corporate Finance & \textcolor{mainblue}{\textbf{11/2016}}\\
+			\bottomrule
+ 		\end{tabularx}
+ 	\end{table}
+ 	\vspace{\baselineskip}
+	\sectiontitle{Working\  Skills\  \&\ Strengths}\\
+	\mybox{Creativity} \mybox{Intellectual curiosity} \mybox{Entrepreneurship} \mybox{Hard-Worker} \mybox{Restorative}
+	\mybox{Individualization} \mybox{Activator} \mybox{Critical-Thinking} \mybox{Self-educated} \mybox{Quick Leaner}\\
+	\newline
+	
+	\sectiontitle{Achievements}\smallskip \newline
+	\textbf{Computer projects}
+	\begin{itemize}[label=\textcolor{mainblue}{\textbullet},topsep=0pt,partopsep=0pt,itemsep=0pt,
+	parsep=0pt]
+		\item Participation in the creation of the \href{https://github.com/davebulaval/raquebec-atelier-introduction-r}{introductory training} to R at the R colloquium in Quebec City 2017.
+		\item Involvement in the development of a \LaTeX \ \href{http://ctan.org/pkg/actuarialsymbol}{ package}.
+		\item Development of a tutorial on \href{https://davebulaval.github.io/git_tutorial/}{Git \& GitHub}.
+		\item Assembling a Home Server.
+		\item Assembling and programming a Pi-Top laptop.
+		\item Assembling of a domestic media center.
+	\end{itemize}
+	\textbf{Sport}
+	\begin{itemize}[label=\textcolor{mainblue}{\textbullet},topsep=0pt,partopsep=0pt,itemsep=0pt,
+	parsep=0pt]
+		\item Cross-country : 2010-2011
+		\item Half Marathon : Montreal 2008, Quebec 2012 (Best time 1h32)
+		\item Marathon : Ottawa 2011, Quebec 2011, Montreal 2011 (Best time 3h35)
+		\item Half Ironman Triathlon : Montreal 2011 (6h50)
+	\end{itemize}
+	\textbf{Community}
+		\begin{itemize}[label=\textcolor{mainblue}{\textbullet},topsep=0pt,partopsep=0pt,itemsep=0pt,
+	parsep=0pt]
+		\item Vice President of Social Events since April 2016
+		\item Volunteering with CFSA in 2015
+	\end{itemize}
+	\smallskip
+	\sectiontitle{Interests}\\
+	Science \separator Lecture \separator Sport \separator Machine Learning \separator Backpack trip \separator Finance
+\end{textblock}
+
+%% Cover letter
+\newpage
+
+\sidebar
+\begin{textblock}{7}(0.5,1)
+	\HUGE
+	\cvfirstname\\
+	\bfseries
+	\cvlastname\\
+	\huge
+	\textcolor{mainblue}{\coverletter}\\
+\end{textblock}
+\bigskip
+\begin{textblock}{7}(0.5, 3.75)
+	\profilesection{General Information}	
+	\vspace{-\baselineskip}
+	\begin{table}
+		\begin{tabularx}{7cm}{cX}
+			\icon{\faAt}&\bfseries\href{mailto:\cvemail}\cvemail\\
+			\icon{\faPhone}&\cvphonenumber\\
+			%\icon{\faHome}&\cvaddress\\
+			\icon{\faMapMarker}&\cvlocation\\
+			\icon{\faGithub}&\href{\github}{See GitHub} \\
+			\icon{\faRss}&\href{\Web}{Website}\\
+			\icon{\faLinkedin}&\href{\cvlinkedin}{See profil}\\
+		\end{tabularx}
+	\end{table}
+
+	\profilesection{Briefly}
+	\vspace{-\baselineskip}
+	
+	\ \ \ \ \ I am a native of Laval and I chose to come to study in Quebec to discover a new city. I originally undertook a professional training in welding assembly. At the end of my training, I decided to pursue my college education to join the Canadian Armed Forces and join the Officer Training Program at the Kingston Military College. Having not been selected for the program, I joined the reserve and began a bachelor's degree in sociology. My intellectual curiosity was not satisfied, so I decided to join work as an insurance agent. This decision led me to discover actuarial science. I then completed my secondary and college mathematics in less than 8 months in order to begin my university training in September 2015.
+	
+	\bigskip
+	\profilesection{Most proud of}
+	\vspace{-\baselineskip}
+	\begin{table}
+		\begin{tabularx}{7cm}{cX}
+			\icon{\faBicycle} & Half-Spirit Triathlon of  Montreal in less than 7 hours \\
+			\icon{\small\LaTeX} & Contribution in the \textit{actuarialsymbol} package\\
+			\icon{\faGlobe} & Several solo backpacking trip \\
+			\icon{\faBank} & Shareholder of a tattoo company \\
+		\end{tabularx}
+	\end{table}
+
+\begin{center}
+	\includegraphics[scale=0.20]{LogoDB.png}
+\end{center}
+\end{textblock}
+
+
+\begin{textblock}{11.35}(9.25, 1)
+	\TitleCoverLetter{\today}{2020 Boulevard Robert-Bourassa, office 100}{Montreal, QC, H3A 2A5}{Intact}{Application \ for \ actuarial \ analyst \ internship}\\
+	
+\bigskip
+\large
+%\textbf{\textcolor{mainblue}{\substr{Madame,}{1}{4}}%
+\textcolor{black}{\substr{Mrs,}{1}{end}} \\
+%\textbf{\textcolor{mainblue}{\substr{Monsieur,}{1}{4}}%
+\textcolor{black}{\substr{Mr.,}{1}{end}} \\
+
+\normalsize
+I am pleased to submit my candidacy for the post of Actuarial Analysis Intern. By consulting your internship offer, it seems to me that my profile and skills are appropriate to the requirements of the position.\newline
+
+My various professional experiences have allowed me to acquire several skills necessary for this internship. First of all, I developed a great adaptability during my military training as an officer of the Canadian reserve. During my training as an officer, I was confronted with various situations where my ease of adaptation was greatly solicited. Indeed, during simulations of operations, the environment is very dynamic and it is necessary to constantly adapt and react quickly. As an example, during an exercise simulating an operation in a conflict zone, in order to simulate the psychological stress undergone in such a situation, we had to spend 5 days without sleep. In the course of the day, each student officer had to carry out a series of various missions accompanied by the different members of his unit. At nightfall, we had to establish fortified positions, in order to support simulations of attack. Constantly, I found myself in situations I had never met before and had to perform these different tasks in a situation of extreme fatigue. Despite this difficulty, I managed to adapt.\newline
+	
+Subsequently, I also held various positions within the Steak fries St-Paul restaurants. I began as a server helper, but quickly my autonomy, my stress and priorities management were highlighted and allowed me to reach the position of assistant butler. When I held this position, these skills were constantly tested in the performance of my daily duties. From the beginning of my tenure as a assistant butler, I noticed that there was a lack of effective follow-up of the various requests of the clients and the time between the services was too long and generated dissatisfaction from both the customers and the staff. To remedy this situation, I took the initiative to talk to the butler in order to find a viable solution. After several meetings and tests, a new method was implemented to solicit more effective teamwork and reduce customer dissatisfaction. This method has proved very effective and productive and was still in used when I left. \newline
+
+To conclude, I hope that this brief description of myself has sparked your interest in my candidacy for future hiring. I greatly admire the values of IAAH: continuous development, social commitment, and integrity. I would greatly appreciate being able to make my contribution through an internship. I am convinced that my various skills and abilities will enable me to contribute to the values of the company and I would be enthusiastic to be able to meet you and discuss them in an interview.\newline
+
+%\textbf{\textcolor{mainblue}{\substr{Cordialement,}{1}{4}}%
+\textcolor{black}{\substr{Sincerely,}{1}{end}} \\
+
+\includegraphics[height=5\baselineskip]{signature.png}
+
+
+\end{textblock}
+
+\end{document}

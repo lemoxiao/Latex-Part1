@@ -1,0 +1,95 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gzhubylw}[2012/04/16 v3.0 Guangzhou University Thesis Package]
+\RequirePackage{ifthen}
+\RequirePackage{amsmath, amsfonts, mathrsfs, latexsym}
+\RequirePackage{graphicx}
+\RequirePackage{indentfirst}
+\RequirePackage{tikz}
+\usetikzlibrary{patterns,decorations.pathmorphing,calc}
+\RequirePackage[bookmarksnumbered=true,  bookmarksopen=true
+hyperindex, plainpages=false]{hyperref}
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%\defaultfontfeatures{Scale=MatchLowercase, Mapping=tex-text}
+\RequirePackage{titlesec}
+\RequirePackage[top=2.54cm,bottom=2.54cm,left=3.0cm,right=2.6cm]{geometry}%上下页边距为 2.54cm、左边距为 3.0cm、右边距为 2.6cm
+\RequirePackage{titletoc}
+\RequirePackage{fancyhdr}
+\RequirePackage[size=small]{caption}%改变图标标题字体大小为5号字。
+\pagestyle{fancy}
+\titleformat{\section}{\centering\LARGE\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\flushleft\bfseries}{\thesubsection}{1em}{}
+\headheight=1.26em
+\chead{\includegraphics[scale=0.3]{zhi.jpg}}\lhead{}\rhead{}
+\fancyhead[ER]{}
+\fancyhead[OL]{}
+%\fancyhead[EL,OR]{$\cdot$\ \thepage\ $\cdot$}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand\contentsname{目\hspace{1em}录}
+\renewcommand\refname{参考文 献}
+\renewcommand\indexname{索\hspace{1em}引}
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+\titlecontents{section}[0pt]{\vspace{.5\baselineskip}\bfseries}
+{\thecontentslabel\quad}{}
+{\hspace{.5em}\titlerule*[1em]{$\cdot$}\contentspage}
+\renewcommand{\today}{\number\year 年\number\month 月\number\day 日}
+\def\pgfsysdriver{pgfsys-dvipdfm.def}
+\renewcommand{\baselinestretch}{1.6}%要求行距为23磅，大约为这个行距参数。
+\setcounter{tocdepth}{3}
+\numberwithin{equation}{section}\numberwithin{figure}{section}\numberwithin{table}{section}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\allowdisplaybreaks%允许公式换页
+\parindent=2em%新段缩进量
+\def\@define@term#1{
+  \expandafter\gdef\csname #1\endcsname##1{%
+    \expandafter\gdef\csname @#1\endcsname{##1}}
+  \csname #1\endcsname{}}
+\@define@term{school}
+\@define@term{xibie}
+\@define@term{class}
+\@define@term{major}
+\@define@term{supervisor}
+\@define@term{studentnumber}
+\newcommand{\makecover}{
+\begin{titlepage}
+\vspace*{1em}
+\begin{center}
+\includegraphics[scale=0.6]{xiaohui.jpg}
+\includegraphics[scale=0.12]{gzhu.jpg}\\
+\vspace{1em}
+\includegraphics[scale=0.5]{benke.jpg}
+
+\vspace*{3.5cm}
+\LARGE{\textbf{
+\begin{tabular}{r@{\hspace{1ex}}p{7.8cm}}
+课题题目&\@title\\[-0.8ex]
+\cline{2-2}
+学\hfill 院&\@school\\[-0.8ex]
+\cline{2-2}
+系\hfill 别&\@xibie\\[-0.8ex]
+\cline{2-2}
+专\hfill 业&\@major\\[-0.8ex]
+\cline{2-2}
+班级名称&\@class\\[-0.8ex]
+\cline{2-2}
+学生姓名&\@author\\[-0.8ex]
+\cline{2-2}
+学\hfill 号&\@studentnumber\\[-0.8ex]
+\cline{2-2}
+指导教师&\@supervisor\\[-0.8ex]
+\cline{2-2}
+完成日期&\@date\\[-0.8ex]
+\cline{2-2}
+\end{tabular}
+}}
+
+\vspace{2.3cm}
+\Huge{\textbf{教务处}}
+\end{center}
+\end{titlepage}
+}
+\makeatletter
+    \def\@cite#1#2{\textsuperscript{[{#1\if@tempswa , #2\fi}]}}
+\makeatother
+\endinput

@@ -1,0 +1,8 @@
+PWD /Users/asparks/Development/AHSparks_CV
+INPUT /usr/local/texlive/2016basic/texmf.cnf
+INPUT /usr/local/texlive/2016basic/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2016basic/texmf-var/web2c/xetex/xelatex.fmt
+INPUT Aside_Work_Experience.tex
+OUTPUT Aside_Work_Experience.log
+INPUT /usr/local/texlive/2016basic/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/local/texlive/2016basic/texmf-dist/fonts/tfm/public/cm/cmti10.tfm

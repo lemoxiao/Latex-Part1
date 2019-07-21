@@ -1,0 +1,143 @@
+%
+% Celadon scheme 
+%
+\DeclareOption{celadon}{
+	\definecolorifnotdef{main}{RGB}{60,76,70}
+	\definecolorifnotdef{contrastmain}{RGB}{219,255,242}
+	\definecolorifnotdef{soft}{RGB}{50,64,58}
+}
+%
+% Tan scheme 
+%
+\DeclareOption{tan}{
+	\definecolorifnotdef{main}{RGB}{76,38,23}
+	\definecolorifnotdef{contrastmain}{RGB}{255,206,186}
+	\definecolorifnotdef{soft}{RGB}{51,25,15}
+}
+%
+% Gray scheme
+%
+\DeclareOption{gray}{
+	\definecolorifnotdef{main}{RGB}{76,73,73}
+	\definecolorifnotdef{contrastmain}{RGB}{216,208,208}
+	\definecolorifnotdef{soft}{RGB}{51,49,49}
+}
+%
+% Purple scheme
+%
+\DeclareOption{purple}{
+	\definecolorifnotdef{main}{RGB}{66,49,76}
+	\definecolorifnotdef{contrastmain}{RGB}{244,222,255}
+	\definecolorifnotdef{soft}{RGB}{44,33,51}
+}
+%
+% Teal scheme
+%
+\DeclareOption{teal}{
+	\definecolorifnotdef{main}{RGB}{31,117,96}
+	\definecolorifnotdef{contrastmain}{RGB}{186,255,236}
+	\definecolorifnotdef{soft}{RGB}{42,79,70}
+}
+%
+% Blue scheme
+%
+\DeclareOption{minuit}{
+	\definecolorifnotdef{main}{RGB}{0,51,102}
+	\definecolorifnotdef{contrastmain}{RGB}{156,205,255}
+	\definecolorifnotdef{soft}{RGB}{0,17,34}
+}
+\ProcessOptions
+
+\definecolorifnotdef{default}{rgb}{0,0,0}
+\definecolorifnotdef{contrast}{rgb}{1,1,1}
+\definecolorifnotdef{contrastmain}{RGB}{255,189,184}
+\definecolorifnotdef{main}{RGB}{127,47,40}
+\definecolorifnotdef{soft}{RGB}{64,23,20}
+\definecolorifnotdef{light}{rgb}{.5,.5,.5}
+
+% Color for main title
+\colorletifnotdef{title} {soft}
+% Color for person name
+\colorletifnotdef{name}{main}
+% Section title is used at each new section/skill subsection
+\colorletifnotdef{sectiontitle} {soft}
+% Subsection title is used at each job/education/skill entry
+\colorletifnotdef{subsectiontitle} {soft}
+% Section rule
+\colorletifnotdef{sectionrule} {soft}
+% Asset bullet (e.g. star)
+\colorletifnotdef{assetbullet} {soft}
+% Mission bullet (e.g. chevron)
+\colorletifnotdef{missionbullet} {soft} 
+% Icons color (e.g. contacts icons)
+\colorletifnotdef{icons} {soft}
+% Footnote
+\colorletifnotdef{footnote} {light}
+
+% General style
+\setmystyle[title] {\scshape\sffamily\color{title}\Huge\sloppy}
+\setmystyle[name] {\sffamily\color{name}\Huge}
+\setmystyle[sectiontitle] {\sffamily\color{sectiontitle}\Large}
+\setmystyle[subsectiontitle] {\bfseries\sffamily\color{subsectiontitle}\large}
+\setmystyle[default] {\color{default}\sffamily}
+\setmystyle[quote] {\color{light}}
+\setmystyle[section] {\sffamily}
+\setmystyle[icons] {\sffamily\color{icons}\small}
+\setmystyle[footnote] {\mystyle[default]\color{footnote}\scshape\footnotesize}
+\setmystyle[asset] {\mystyle[default]\sloppy}
+\setmystyle[assetbullet] {\mystyle[icons]{\faStar}}
+
+% Jobs items style
+\setmystyle[cvstorytitle] {\sffamily\color{main}\bfseries}
+\setmystyle[cvstorydatelocation] {\itshape\sffamily}
+\setmystyle[cvstoryshort] {\sffamily}
+\setmystyle[cvstorydescription] {\sffamily}
+\setmystyle[cvstoryquicknotes] {\small\scshape\sffamily}
+\setmystyle[missionbullet] {\color{missionbullet}$\rhd$}
+\setmystyle[mission] {\mystyle[default]}
+
+% Skills items style
+\setmystyle[cvskillname] {\mystyle[default]\color{main}}
+\setmystyle[cvskilldescription] {\mystyle[default]}
+
+%Contact items style
+\setmystyle[cvcontact]{\small\sffamily}
+\setmystyle[email]{\mystyle[cvcontact]}
+\setmystyle[facebook]{\mystyle[cvcontact]}
+\setmystyle[twitter]{\mystyle[cvcontact]}
+\setmystyle[github]{\mystyle[cvcontact]}
+\setmystyle[googleplus]{\mystyle[cvcontact]}
+\setmystyle[linkedin]{\mystyle[cvcontact]}
+\setmystyle[skype]{\mystyle[cvcontact]}
+\setmystyle[phone]{\mystyle[cvcontact]}
+\setmystyle[cellphone]{\mystyle[cvcontact]}
+\setmystyle[fax]{\mystyle[cvcontact]}
+\setmystyle[age]{\mystyle[cvcontact]}
+\setmystyle[vk]{\mystyle[cvcontact]}
+\setmystyle[pinterest]{\mystyle[cvcontact]}
+\setmystyle[homepage]{\mystyle[cvcontact]}
+\setmystyle[homepagessl]{\mystyle[cvcontact]}
+\setmystyle[customhomepage]{\mystyle[cvcontact]}
+\setmystyle[address]{\mystyle[cvcontact]\scshape}
+\setmystyle[spokenlanguages]{\mystyle[cvcontact]\scshape}
+%Contact bullets
+\setmystyle[githubbullet]{{\mystyle[icons]\faGithub}}
+\setmystyle[linkedinbullet]{{\mystyle[icons]\faLinkedin}}
+\setmystyle[twitterbullet]{{\mystyle[icons]\faTwitter}}
+\setmystyle[vkbullet]{{\mystyle[icons]\faVK}}
+\setmystyle[facebookbullet]{{\mystyle[icons]\faFacebook}}
+%\setmystyle[skypebullet]{{\mystyle[icons]\faSkype}} %% Not yet support by fontawesome
+\setmystyle[pinterestbullet]{{\mystyle[icons]\faPinterest}}
+\setmystyle[googleplusbullet]{{\mystyle[icons]\faGooglePlus}}
+\setmystyle[emailbullet]{{\mystyle[icons]\faEnvelope}}
+\setmystyle[cellphonebullet]{{\mystyle[icons]\faMobilePhone}}
+\setmystyle[phonebullet]{{\mystyle[icons]\faPhone}}
+\setmystyle[faxbullet]{{\mystyle[icons]\faPrint}}
+\setmystyle[homepagebullet]{{\mystyle[icons]\faLaptop}}
+\setmystyle[homepagesslbullet]{{\mystyle[icons]\faLaptop}}
+\setmystyle[customhomepagebullet]{{\mystyle[icons]\faLaptop}}
+\setmystyle[addressbullet]{{\mystyle[icons]\faHome}}
+\setmystyle[agebullet]{{\mystyle[icons]\faCalendar}}
+\setmystyle[spokenlanguagesbullet]{{\mystyle[icons]\faComments}}
+
+\endinput

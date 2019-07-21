@@ -1,0 +1,52 @@
+% A extension of Awesome Source CV LaTeX Template
+%
+%
+% This template is originally maintained by Christophe ROGER from:
+% https://github.com/darwiin/awesome-neue-latex-cv
+%
+% This modification has been download from:
+% https://github.com/innerTide/awesome-neue-latex-cv-extended
+% Author:
+% Yuefeng Wu
+%
+%
+% Render an experience in the experiences environment
+% Usage:
+% \experience
+%  {<End date>}      {<Title>}{<Enterprise>}{<Location>}
+%  {<Start date}     {
+%                      <Experience description (Could be a list)>
+%                    }
+%                    {<Technology list>}
+%  {<Logo parameter>}	{<Logo File Name>}
+\sectionTitle{\textsc{Internship}}{\faSuitcase}
+
+\begin{experiences}
+	\experience
+    {Sept. 2017}	{Master Thesis Intern}{imec}{Eindhoven, the Netherlands}
+    {Aug. 2016}	{
+    				\begin{itemize}
+              \item Title: a digital-intensive wakeup timer based on an RC frequency-locked loop for Internet of Things (IoT) applications
+    					\item Proposed a novel ultra-low-power oscillator architecture to fully exploit the small area and low supply voltage advantages in advanced CMOS processes
+              \item System-level modeling with MATLAB to estimate stabilities of the oscillator w.r.t. temperature, supply and noise
+              \item Transistor-level implementation in Cadence and tape-out in TSMC 40-nm CMOS
+              \item Measurements show the oscillator has the lowest supply voltage, the highest energy efficiency, and comparable stabilities w.r.t. the state-of-the-art
+    				\end{itemize}
+    			}
+                {Analog/Mixed-Signal, Ultra-Low Power, Oscillator, MATLAB, Low Noise, Cadence, Layout, Measurement, Git}
+     {height = 1.25cm}		{figs/imec}
+	\emptySeparator
+
+    \experience
+    {Aug. 2015}	{Intern}{Changzhou Research Institute of Zhejiang University}{Jiangsu, China}
+    {June 2015}{
+    				\begin{itemize}
+              \item Explored control algorithms in smart car systems
+    					\item Adapted the Kalman Filter into the navigation system of the car using data from multiple sensors, e.g., gyroscope and accelerometer
+              \item Collaborated with other colleagues in the PCB design of the hardware
+    				\end{itemize}
+    			}
+                {Control System, Embedded System, MATLAB, PCB, Team Collaboration}
+     {width = 1.5cm}		{figs/zju}
+
+\end{experiences}

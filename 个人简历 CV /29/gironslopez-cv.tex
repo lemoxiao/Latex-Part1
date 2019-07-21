@@ -1,0 +1,48 @@
+
+\documentclass{gironslopez-cv}
+
+% Switches
+\swedishtrue
+\academicfalse
+\picturefalse
+
+\begin{document}
+    % Update date
+    \lastupdated
+    % Name and contact information
+    \input{sections/header}
+    % Summary
+    \input{sections/summary}
+    % Professional experience
+    \input{sections/employment}
+    % Education
+    \input{sections/education}
+    \newpage
+    % Publications
+    \input{sections/publications}
+    % Teaching
+    \ifacademic
+        \input{sections/teaching}
+    \else
+    \fi
+    % Representation
+    \ifacademic
+        \input{sections/representation}
+    \else
+    \fi
+    % Skills
+    \input{sections/skills}
+    % Awards
+    \input{sections/awards}
+    % Other activities
+    \input{sections/activities}
+    % References
+    \vfill
+    \centering{
+    	\ifswedish
+    	    \textit{Referenser finns tillgängliga på begäran.}
+    	\else
+            \textit{References available on request.}
+        \fi
+    }
+\end{document}

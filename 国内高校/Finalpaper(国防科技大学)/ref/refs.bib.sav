@@ -1,0 +1,440 @@
+% This file was created with JabRef 2.10.
+% Encoding: UTF-8
+
+@InProceedings{c1:limitation,
+  author={Kulkarni, G. and Shelk, R. and Gaikwad, K. and Solanke, V. and Gujar, S. and Khatawkar, P.},
+  booktitle={Communication and Computing (ARTCom 2013), Fifth International Conference on Advances in Recent Technologies in},
+  title={Wireless sensor network security threats},
+  year={2013},
+  month={Sept},
+  pages={131-135},
+}
+
+@InProceedings{c1:attack,
+  author={Modares, H. and Salleh, R. and Moravejosharieh, A.},
+  booktitle={Computational Intelligence, Modelling and Simulation (CIMSiM), 2011 Third International Conference on},
+  title={Overview of Security Issues in Wireless Sensor Networks},
+  year={2011},
+  month={Sept},
+  pages={308-311},
+}
+
+@inproceedings{c1:jamming,
+  author = {Xu, Wenyuan and Trappe, Wade and Zhang, Yanyong and Wood, Timothy},
+  biburl = {http://www.bibsonomy.org/bibtex/265a94cbf641fa7b9c67979c8c1fc398b/dblp},
+  booktitle = {MobiHoc},
+  pages = {46-57},
+  publisher = {ACM},
+  title = {The feasibility of launching and detecting jamming attacks in wireless networks.},
+  year = 2005
+}
+
+@techreport{c1:RC5,
+  address = {Cambridge, Massachusetts},
+  author = {Rivest, Ronald L.},
+  index = {RC5},
+  institution = {{MIT Laboratory for Computer Science}},
+  month = {March},
+  title = {The RC5 Encryption Algorithm},
+  year = 1997
+}
+
+@inproceedings{c1:TEA,
+  author = {Wheeler, David J. and Needham, Roger M.},
+  booktitle = {FSE},
+  pages = {363-366},
+  publisher = {Springer},
+  series = {Lecture Notes in Computer Science},
+  title = {TEA, a Tiny Encryption Algorithm.},
+  volume = 1008,
+  year = 1994
+}
+
+@inproceedings{c1:RC6,
+  author = {Handschuh, Helena},
+  booktitle = {Encyclopedia of Cryptography and Security (2nd Ed.)},
+  pages = {1033-1034},
+  publisher = {Springer},
+  title = {RC6.},
+  year = 2011
+}
+
+
+@misc{c1:Camellia,
+  author = {Matsui, M. and Nakajima, J. and Moriai, S.},
+  howpublished = {RFC 3713 (Informational)},
+  month = {April},
+  number = 3713,
+  organization = {Internet Engineering Task Force},
+  publisher = {IETF},
+  series = {Request for Comments},
+  title = {{A Description of the Camellia Encryption Algorithm}},
+  year = 2004
+}
+
+@misc{c1:MISTY1,
+  author = {Ohta, H. and Matsui, M.},
+  howpublished = {RFC 2994 (Informational)},
+  month = {November},
+  number = 2994,
+  organization = {Internet Engineering Task Force},
+  publisher = {IETF},
+  series = {Request for Comments},
+  title = {{A Description of the MISTY1 Encryption Algorithm}},
+  year = 2000
+}
+
+
+@article{c1:encryptionCompare,
+  author = {Law, Yee Wei and Doumen, Jeroen and Hartel, Pieter H.},
+  journal = {TOSN},
+  number = 1,
+  pages = {65-93},
+  title = {Survey and benchmark of block ciphers for wireless sensor networks.},
+  volume = 2,
+  year = 2006
+}
+
+@InProceedings{c1:ECC,
+    author = {Nils Gura and Arun Patel and Arvinderpal W and Hans Eberle and Sheueling Chang Shantz},
+    title = {Comparing Elliptic Curve Cryptography and RSA on 8-bit CPUs},
+    booktitle = {2004 Workshop on Cryptographic Hardware and Embedded Systems(CHES2004)},
+    year = {2004},
+    pages = {119--132}
+}
+
+@inproceedings{c1:EC,
+  author = {Malan, David J. and Welsh, Matt and Smith, Michael D.},
+  booktitle = {SECON},
+  pages = {71-80},
+  publisher = {IEEE},
+  title = {A public-key infrastructure for key distribution in TinyOS based on elliptic curve cryptography.},
+  year = 2004
+}
+
+@inproceedings{c1:multiroute,
+  author = {Ganesan, Deepak and Govindan, Ramesh and Shenker, Scott and Estrin, Deborah},
+  booktitle = {MobiHoc},
+  pages = {251-254},
+  publisher = {ACM},
+  title = {Highly-resilient, energy-efficient multipath routing in wireless sensor networks.},
+  year = 2001
+}
+
+@article{c1:Karlof03,
+  author = {Karlof, Chris and Wagner, David},
+  journal = {Ad Hoc Networks},
+  number = {2-3},
+  pages = {293-315},
+  title = {Secure routing in wireless sensor networks: attacks and countermeasures.},
+  volume = 1,
+  year = 2003
+}
+
+@inproceedings{c1:Li,
+  author = {Li, Zang and Trappe, Wade and Zhang, Yanyong and Nath, Badri},
+  booktitle = {IPSN},
+  pages = {91-98},
+  publisher = {IEEE},
+  title = {Robust statistical methods for securing wireless localization in sensor networks.},
+  year = 2005
+}
+
+@inproceedings{c1:Priyanka,
+  author = {Priyanka ,S. Fulare and Nikita ,Chavhan },
+  booktitle = {International Journal of Smart Sensors and Ad Hoc Networks (IJSSAN)},
+  title = {False Data Detection in Wireless Sensor Network with Secure communication.},
+  year = 2005,
+  pages = {66-71},
+  number = 1,
+  volume = 1
+}
+
+@inproceedings{c1:Sivagami,
+  author = {Sivagami ,V.M and Kumar ,Chavhan },
+  booktitle = {International Journal of Smart Sensors and Ad Hoc Networks (IJSSAN)},
+  title = {False Data Detection Using MAC pairs in Wireless Sensor Networks},
+  year = 2013,
+  month = {April},
+  pages = {539-545},
+  number = 4,
+  volume = 4
+}
+
+@inproceedings{c1:zhu,
+  author = {Zhu, Sencun and Setia, Sanjeev and Jajodia, Sushil and Ning, Peng},
+  booktitle = {IEEE Symposium on Security and Privacy},
+  pages = {259-271},
+  publisher = {IEEE Computer Society},
+  title = {An Interleaved Hop-by-Hop Authentication Scheme for Filtering of Injected False Data in Sensor Networks.},
+  year = 2004
+}
+
+@article{c1:suat,
+  author = {Özdemir, Suat and Cam, Hasan},
+  journal = {IEEE/ACM Trans. Netw.},
+  number = 3,
+  pages = {736-749},
+  title = {Integration of False Data Detection With Data Aggregation and Confidential Transmission in Wireless Sensor Networks.},
+  volume = 18,
+  year = 2010
+}
+
+@inproceedings{c1:wang,
+  author={Wang, G. and Zhang, W. and Guohong Cao and La Porta, T.},
+  booktitle={Military Communications Conference, 2003. MILCOM '03. 2003 IEEE},
+  title={On supporting distributed collaboration in sensor networks},
+  year={2003},
+  month={Oct},
+  volume={2},
+  pages={752-757 Vol.2}
+}
+
+@article{c1:zhang,
+  author = {Zhang, Yanchao and Liu, Wei and Lou, Wenjing and Fang, Yuguang},
+  journal = {IEEE Journal on Selected Areas in Communications},
+  number = 2,
+  pages = {247-260},
+  title = {Location-based compromise-tolerant security mechanisms for wireless sensor networks.},
+  volume = 24,
+  year = 2006
+}
+
+@InProceedings{c1:Agah,
+  author = {Agah, Afrand and Das, Sajal K. and Basu, Kalyan and Asadi, Mehran},
+  booktitle = {NCA},
+  pages = {343-346},
+  publisher = {IEEE Computer Society},
+  title = {Intrusion Detection in Sensor Networks: A Non-Cooperative Game Approach.},
+  year = 2004
+}
+
+@article{c1:Tesla,
+  year={2002},
+  journal={Wireless Networks},
+  volume={8},
+  number={5},
+  title={SPINS: Security Protocols for Sensor Networks},
+  publisher={Kluwer Academic Publishers},
+  author={Perrig, Adrian and Szewczyk, Robert and Tygar, J.D. and Wen, Victor and Culler, DavidE.},
+  pages={521-534},
+}
+
+
+@article{c1:MultiTesla,
+  author = {Liu, Donggang and Ning, Peng},
+  journal = {ACM Trans. Embedded Comput. Syst.},
+  number = 4,
+  pages = {800-836},
+  title = {Multilevel µTESLA: Broadcast authentication for distributed sensor networks.},
+  volume = 3,
+  year = 2004
+}
+
+
+@article{c1:MMtesla,
+  title={无线传感器网络安全技术综述},
+  author={裴庆祺,沈玉龙,马建峰},
+  journal={通信学报},
+  volume={28},
+  year={2007}
+}
+
+@article{c1:anas,
+  author = {Husseini, Anas El and M'hamed, Abdallah and El-Hassan, Bachar and Mokhtari, Mounir},
+  journal = {Personal and Ubiquitous Computing},
+  number = 5,
+  pages = {1013-1023},
+  title = {Trust-based authentication scheme with user rating for low-resource devices in smart environments.},
+  volume = 17,
+  year = 2013
+}
+
+@inproceedings{c1:verifyfilter,
+  author = {Dong, Qi and Liu, Donggang and Ning, Peng},
+  booktitle = {WISEC},
+  pages = {2-12},
+  publisher = {ACM},
+  title = {Pre-authentication filters: providing dos resistance for signature-based broadcast authentication in sensor networks.},
+  year = 2008
+}
+
+@inproceedings{c1:Watro,
+  author = {Watro, Ronald J. and Kong, Derrick and fen Cuti, Sue and Gardiner, Charles and Lynn, Charles and Kruus, Peter},
+  booktitle = {SASN},
+  pages = {59-64},
+  publisher = {ACM},
+  title = {TinyPK: securing sensor networks with public key technology.},
+  year = 2004
+}
+
+
+
+
+
+
+@InProceedings{c2:chan2003random,
+  Title                    = {Random key predistribution schemes for sensor networks},
+  Author                   = {Chan, Haowen and Perrig, Adrian and Song, Dawn},
+  Booktitle                = {IEEE Symposium on Security and Privacy},
+  Year                     = {2003},
+  Organization             = {IEEE},
+  Pages                    = {197--213}
+}
+
+@article{c2:sha1,
+  author = {Stinson, Douglas R.},
+  journal = {SIGACT News},
+  number = 4,
+  pages = {17-21},
+  title = {Combinatorial designs: constructions and analysis.},
+  volume = 39,
+  year = 2008
+}
+
+
+
+@Article{1976new,
+  Title                    = {new directions in cryptography},
+  Author                   = {diffie, w.,hellman, m.e.},
+  Journal                  = {information theory, ieee transactions on},
+  Year                     = {1976},
+  Number                   = {6},
+  Pages                    = {644 - 654},
+  Volume                   = {22}
+}
+
+@InProceedings{c2:Blom84,
+  Title                    = {An Optimal Class of Symmetric Key Generation Systems},
+  Author                   = {Blom, Rolf},
+  Booktitle                = {EUROCRYPT},
+  Year                     = {1984},
+  Pages                    = {335-338},
+  Publisher                = {Springer},
+  Series                   = {Lecture Notes in Computer Science},
+  Volume                   = {209}
+}
+
+@article{c2:Blundo1998,
+  author = {Blundo, Carlo and Santis, Alfredo De and Vaccaro, Ugo and Herzberg, Amir and Kutten, Shay and Yong, Moti},
+  journal = {Information and Computation},
+  keywords = {imported},
+  number = 1,
+  pages = {1--23},
+  publisher = {Academic Press, Inc.},
+  title = {{P}erfectly secure key distribution for dynamic conferences},
+  volume = 146,
+  year = 1998
+}
+
+@inproceedings{c2:LiuN03,
+  author = {Liu, Donggang and Ning, Peng},
+  booktitle = {SASN},
+  pages = {72-82},
+  publisher = {ACM},
+  title = {Location-based pairwise key establishments for static sensor networks},
+  year = 2003
+}
+
+@article{c2:Du06,
+  author = {Du, Wenliang and Deng, Jing and Han, Yunghsiang S. and Varshney, Pramod K.},
+  journal = {IEEE Trans. Dependable Sec. Comput.},
+  number = 1,
+  pages = {62-77},
+  title = {A Key Predistribution Scheme for Sensor Networks Using Deployment Knowledge},
+  volume = 3,
+  year = 2006
+}
+
+@article{c2:CamtepeY07,
+  author = {Çamtepe, Seyit Ahmet and Yener, Bülent},
+  journal = {IEEE/ACM Trans. Netw.},
+  number = 2,
+  pages = {346-358},
+  title = {Combinatorial design of key distribution mechanisms for wireless sensor networks.},
+  volume = 15,
+  year = 2007
+}
+
+@Article{c2:du2005pairwise,
+  Title                    = {A pairwise key predistribution scheme for wireless sensor networks},
+  Author                   = {Du, Wenliang and Deng, Jing and Han, Yunghsiang S and Varshney, Pramod K and Katz, Jonathan and Khalili, Aram},
+  Journal                  = {ACM Transactions on Information and System Security (TISSEC)},
+  Year                     = {2005},
+  Number                   = {2},
+  Pages                    = {228--258},
+  Volume                   = {8},
+
+  Publisher                = {ACM}
+}
+
+@InProceedings{c2:Eschenauer2002,
+  Title                    = {A Key-Management Scheme for Distributed Sensor Networks},
+  Author                   = {Eschenauer, L. and Gligor, V. D.},
+  Booktitle                = {{ACM} Conference on Computer and Communications Security ({CCS}'02)},
+  Year                     = {2002},
+  Month                    = {November},
+
+  Biburl                   = {http://www.bibsonomy.org/bibtex/2852293a9551c595dbed616c076d1e5c6/fohv}
+}
+
+@InProceedings{c3:karp2000gpsr,
+  Title                    = {GPSR: Greedy perimeter stateless routing for wireless networks},
+  Author                   = {Karp, Brad and Kung, Hsiang-Tsung},
+  Booktitle                = {Proceedings of the 6th annual international conference on Mobile computing and networking},
+  Year                     = {2000},
+  Organization             = {ACM},
+  Pages                    = {243--254}
+}
+
+@Article{c2:liu2005establishing,
+  Title                    = {Establishing pairwise keys in distributed sensor networks},
+  Author                   = {Liu, Donggang and Ning, Peng and Li, Rongfang},
+  Journal                  = {ACM Transactions on Information and System Security (TISSEC)},
+  Year                     = {2005},
+  Number                   = {1},
+  Pages                    = {41--77},
+  Volume                   = {8},
+
+  Publisher                = {ACM}
+}
+
+@article{c2:LiuND08,
+  author = {Liu, Donggang and Ning, Peng and Du, Wenliang},
+  journal = {TOSN},
+  number = 2,
+  title = {Group-based key predistribution for wireless sensor networks},
+  volume = 4,
+  year = 2008
+}
+
+@inproceedings{c2:ChanP05,
+  author = {Chan, Haowen and Perrig, Adrian},
+  booktitle = {INFOCOM},
+  pages = {524-535},
+  publisher = {IEEE},
+  title = {PIKE: peer intermediaries for key establishment in sensor networks},
+  year = 2005
+}
+
+
+@InProceedings{c4:mathews2007detecting,
+  Title                    = {Detecting compromised nodes in wireless sensor networks},
+  Author                   = {Mathews, Mary and Song, Min and Shetty, Sachin and McKenzie, Rick},
+  Booktitle                = {SNPD 2007. Eighth ACIS International Conference on},
+  Year                     = {2007},
+  Organization             = {IEEE},
+  Pages                    = {273--278},
+  Volume                   = {1}
+}
+
+@Article{c3:zhu2006leap,
+  Title                    = {LEAP+: Efficient security mechanisms for large-scale distributed sensor networks},
+  Author                   = {Zhu, Sencun and Setia, Sanjeev and Jajodia, Sushil},
+  Journal                  = {ACM Transactions on Sensor Networks (TOSN)},
+  Year                     = {2006},
+  Number                   = {4},
+  Pages                    = {500--528},
+  Volume                   = {2},
+  Publisher                = {ACM}
+}

@@ -1,0 +1,102 @@
+%%
+%% This is file `sduthesis-cover.def',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% sduthesis.dtx  (with options: `cover')
+%% 
+%% -----------------------------------
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2012 -- 2014 by Liam Huang
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Liam Huang.
+%% 
+\newtoks\fenlei     % 中图分类号
+\newtoks\DWdaihao   % 单位代号
+\newtoks\miji       % 密级
+\newtoks\StuNum     % 学号
+\newtoks\Ctitle     % 中文标题
+\newtoks\Cauthor    % 作者中文名
+\newtoks\Cmajor     % 专业
+\newtoks\Csuperver  % 导师
+\newtoks\Cdate      % 中文日期
+\newtoks\Dpart      % 学院
+\newtoks\Grade      % 年级
+\newcommand{\LeftLength}{2.3cm}
+\newcommand{\RightLength}{5.5cm}
+\newcommand{\Mcs}[1]{\makebox[\LeftLength][s]{{\zihao{3}\fzdahei{}#1}}}
+\newcommand{\Mcc}[1]{\makebox[\RightLength][c]{{\zihao{4}\kaishu{}#1}}}
+\newcommand{\maketitlepage}{%
+\thispagestyle{empty}
+\begin{center}
+{
+  {\hskip -16mm   \includegraphics[width = 0.9\textwidth]{figures/sdu_logo.png}}
+  \par \vskip 8mm \relax
+  \centerline{\ershibahao \hwxw \hskip 18mm 毕业论文（设计）}
+}
+\par \vskip 22mm \relax
+{
+	\begin{tabular}{r@{   }l}
+    \hskip -13mm \zihao{4}\fzdahei{设计\hskip -1mm（\hskip -2mm 论文 \hskip -3mm）\hskip -1mm题目 }& \hskip 5mm \zihao{3}\heiti\parbox[c]{200pt}{\the\Ctitle}\\[7mm]\cline{2-1} %%[c] 使得左侧文字居中
+    \end{tabular}
+}
+\par \vskip 32mm \relax
+{
+  \begin{tabular}{p{\LeftLength}p{\RightLength}}    
+  \Mcs{姓\hskip 9mm名 ：}& \Mcc{\the\Cauthor}\\[3mm]\cline{2-2}\\[-4mm]
+  \Mcs{学\hskip 9mm号 ：}& \Mcc{\the\StuNum}\\[3mm]\cline{2-2}\\[-4mm]
+  \Mcs{学\hskip 9mm院 ：}& \Mcc{\the\Dpart}\\[3mm]\cline{2-2}\\[-4mm]
+  \Mcs{专\hskip 9mm业 ：}& \Mcc{\the\Cmajor}\\[3mm]\cline{2-2}\\[-4mm]
+  \Mcs{年\hskip 9mm级 ：}& \Mcc{\the\Grade}\\[3mm]\cline{2-2}\\[-4mm]
+  \Mcs{指导老师：}& \Mcc{\the\Csuperver}\\[3mm]\cline{2-2}
+  \end{tabular}
+}
+\par \vskip 20mm \relax
+{
+\zihao{3}\fzdahei \the\Cdate
+}
+\end{center}
+\clearpage
+}
+%% 
+%% Copyright (C) 2012 -- 2014 by Liam Huang
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%% 
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Liam Huang.
+%% 
+%% -----------------------------------
+%% 
+%% This work consists of the file  sduthesis.dtx and sduthesis.ins
+%% and the derived files           sduthesis.cls,
+%%                                 sduthesis-cover.def,
+%%                                 sduthesis-statement.def,
+%%                                 figures/,
+%%                                 sduthesis-demo.tex,
+%%                                 README.md,
+%%                                 LICENSE.md,
+%%                                 sduthesis.pdf and
+%%                                 sduthesis-demo.pdf.
+%%
+%% End of file `sduthesis-cover.def'.

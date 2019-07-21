@@ -1,0 +1,13 @@
+# Archivos de LaTeX
+*.aux
+*.log
+*.out
+log.txt
+*.synctex.gz
+
+# Otros archivos
+other.tex
+
+# PDF compilados
+cv.pdf
+cv_single.pdf

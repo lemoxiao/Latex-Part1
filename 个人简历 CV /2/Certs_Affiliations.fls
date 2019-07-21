@@ -1,0 +1,4 @@
+PWD /Users/U8004755/Development/AHSparks_CV
+INPUT /usr/local/texlive/2016basic/texmf-var/web2c/luatex/lualatex.fmt
+INPUT ./Certs_Affiliations.tex
+OUTPUT Certs_Affiliations.log

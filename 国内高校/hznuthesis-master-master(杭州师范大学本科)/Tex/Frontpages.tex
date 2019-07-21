@@ -1,0 +1,63 @@
+%---------------------------------------------------------------------------%
+%->> Titlepage information
+%---------------------------------------------------------------------------%
+%-
+%-> Chinese titlepage
+%-
+%\confidential{}% confidential level
+\schoollogo{scale=1}{logo}% university logo
+\schoolname{scale=0.1}{name}% university name
+\graduates{(2019届)}
+ %中文标题
+  \title{复杂网络理论及其应用}
+  \author{许宇星}
+  \id{2015210202018}
+  \advisor{李安水}
+  \advisortitles{讲师}
+  \degree{本科}
+  \major{信息与计算科学}
+  \class{信息151}
+  \submitdate{2019年4月30日}
+  \defenddate{2019年5月8日}
+  \institute{理学院}
+  \school{杭州师范大学}
+  \score{}
+  % 第二页的标题(为英文)
+  \englishtitle{Some aspects of complex network theory and its applications}
+%-
+%-> Create titlepages
+%-
+\maketitle
+\makeenglishtitle
+
+
+
+%-
+%-> Author's declaration 作者声明
+%-
+%\makedeclaration
+%-
+%-> Chinese abstract
+%-
+\chapter*{摘\quad 要 }
+
+\setcounter{page}{1}% set page number
+\pagenumbering{Roman}% set large roman
+%楷体
+\Abstract{
+Facebook、Twitter、微信和微博等社交和信息网络活动已经成为我们日常生活中不可或缺的一部分，在那里，我们可以很容易地接触到朋友的行为，并进而受到朋友的影响。因此，对每个用户进行有效的社会影响预测对于各种应用程序至关重要。传统的社会影响预测方法通常设计各种手工规则来提取特定于用户和网络的特征。然而，它们的有效性在很大程度上取决于领域专家的知识。因此，通常很难将它们推广到不同的领域。
+
+在社交相似性和GHSOM的启发下，本文研究了图特征以及手工特征输入的基于GHSOM的社交影响力算法，学习用户的潜在特征表示，以预测社会影响。将网络结构和特定用户特征在卷积神经网络中补齐。GHSOM将用户的特征作为输出到一个二维的表征网络，以表现其潜在的社会表征。在微博上进行的广泛实验表明，所提出的基于GHSOM的新模型显著优于传统的基于特征工程的方法。}
+
+\keywords{图卷积;GHSOM;社交影响力;社交网络}
+%-
+%-> English abstract
+%-
+\chapter*{Abstract}
+
+Social and information networking activities such as on Facebook, Twitter, WeChat, and Weibo have become an indispensable part of our everyday life, where we can easily access friends’ behaviors and are in turn influenced by them. Consequently, an effective social influence prediction for each user is critical for a variety of applications such as online recommendation and advertising.
+
+Conventional social influence prediction approaches typically design various hand-crafted rules to extract user- and network- specific features. However, their effectiveness heavily relies on the knowledge of domain experts. As a result, it is usually difficult to generalize them into different domains. Inspired by social similarity and GHSOM, We design a social influence algorithm based on GHSOM, which has both graph-fixed-point feature and manual feature input. We can learn the representation of users' potential features to predict the social impact. The structure of the network and the user-specific features are complemented in the convolution neural network. GHSOM outputs the user's features into a two-dimensional representation network to represent its potential social representation. Extensive experiments on Weibo show that the proposed GHSOM-based model is significantly superior to the traditional feature-based engineering method.
+
+\englishkeywords{Graph Convolution;Growing Hierarchical Self-Organizing Maps;Social Influence; Social Networks}
+%---------------------------------------------------------------------------%

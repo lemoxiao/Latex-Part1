@@ -1,0 +1,269 @@
+\section{}
+\subsection{批量下载图片bash脚本}\label{download_shell}
+\begin{lstlisting}[caption=批量下载图片bash脚本,language=bash]
+#!/bin/bash
+MAX=\$2;
+for ((MAX;MAX>0; MAX--));
+        do wget -vv  --no-check-certificate "$1" -O "$MAX";
+done;
+\end{lstlisting}
+
+\subsection{简单平均法灰度化图片}\label{gray_pic}
+\begin{lstlisting}[caption=简单平均法灰度化图片,language=matlab]
+pic=imread('../abc/1');
+[h,w,d]=size(pic);
+for m=1:h
+    for n=1:w
+        sum=0;
+        for v=pic(m,n,:)
+            sum=sum+v/3;
+        end
+        pic2(m,n)=sum;
+    end
+end
+figure,imshow(pic),figure,imshow(pic2);
+\end{lstlisting}
+
+\subsection{增强对比度}\label{contrast}
+\begin{lstlisting}[caption=增强对比度,language=matlab]
+pic=imread('../icbc/1');
+pic=rgb2gray(pic);%先灰度化处理
+pic2=imadjust(pic,[0.3 0.4],[0 1]);%增强对比度
+imcontrast(gcf);%使用imcontrast工具箱进行动态的对比度调整
+figure,imshow(pic2),figure,imshow(pic);
+\end{lstlisting}
+
+
+\subsection{采用均值滤波的积分投影算法}\label{means_filter}
+\begin{lstlisting}[caption=采用均值滤波的积分投影算法,language=matlab]
+pic=imread('../test.bmp');
+words_count=5;%已知识别的字符个数为5
+pic=rgb2gray(pic);
+pic=im2bw(pic);
+[h,w,d]=size(pic);
+row=[];%图像在x轴上的积分投影
+
+%计算积分投影
+for x=1:w
+    row(x)=sum(pic(:,x,1));
+end
+
+%为了演示方便，我们另外给出滤波后的积分投影
+row1=row;
+%对原来的积分投影进行滤波,注意滤波后的积分投影会比原来的少两个数据，分
+%别位于首尾 
+for x=2:w-1
+    new=sum(row1(x-1:x+1))/3;
+    row1(x)=new;
+end
+
+%使用滤波后的积分投影进行分析,从峰值到谷值扫描
+for std=max(row):-1:min(row1)
+    blocks=[];%保存每一个谷坡
+    inblock=0;%是否处于谷坡
+    for x=1:length(row1)
+        %如果从谷顶刚进入谷坡，则新建一个谷坡
+        if (row1(x)<std && inblock==0)
+            blocks=[blocks;x 0];
+            inblock=1;
+        %如果从谷坡爬回谷顶，则标记刚才的新建谷坡    
+        elseif(row1(x)>=std && inblock==1)
+            blocks(end)=x;
+            inblock=0;
+        end
+    end
+    %如果字符贴边上，则手动结束
+    if inblock==1
+        blocks(end)=length(row1);
+    end
+    [block_count,n]=size(blocks);
+    %当谷坡数量与要识别的字符个数相等就退出扫描
+    if block_count==words_count
+        break;
+    end
+end
+
+%绘制积分投影滤波前后的对比图
+figure,subplot(2,1,1),hold on;
+for x=1:block_count
+    rectangle('FaceColor','c','EdgeColor','none'...
+    ,'Position',[blocks(x,1) min(row) blocks(x,2)-blocks(x,1)
+max(row)-min(row)-1]);
+end
+
+plot([0,length(row1)],[std,std],'g--');
+plot(row,'b'),plot(row1,'r');
+legend('scanning line','before filter','after filter');
+subplot(2,1,2),imshow(pic);
+for x=1:block_count
+    line([blocks(x,1),blocks(x,1)],[h,0]);
+    line([blocks(x,2),blocks(x,2)],[h,0]);
+end
+hold off;
+\end{lstlisting}
+
+
+\subsection{带权重的连通区域聚类法}\label{segmentation_with_weight}
+\begin{lstlisting}[caption=带权重的连通区域聚类法,language=matlab]
+pic=imread('../test.bmp');
+%已知识别的字符个数为5
+k=5;
+
+%灰度并二值化
+pic=rgb2gray(pic);
+pic=im2bw(pic);
+
+figure,subplot(2,1,1);
+imshow(pic);%绘制原图
+
+[height,width]=size(pic);
+%采用4连通寻找图像连通域
+[L,num]=bwlabel(~pic,8);
+
+%计算连通域的质心
+r=regionprops(L);
+
+centroids=[];%质心
+for i=1:length(r)
+    centroids(i,:)=r(i).Centroid;
+end
+
+%根据连通域面积，加大质心的个数，以增加权重
+for i=1:length(r)
+    for x=2:r(i).Area
+        centroids=[centroids;r(i).Centroid];
+    end
+end
+
+%使用K-means把质心聚成k类
+km=kmeans(centroids,k,'distance','sqEuclidean','start','uniform','replicates',50);
+
+%在图像上标记k类区域
+for i=1:length(r)
+    L(find(L==i))=km(i)+num;
+end
+
+%彩色绘制k类区域
+RGB =label2rgb(L);
+subplot(2,1,2),imshow(RGB),hold on;
+
+%绘制各个区域的质点
+plot(centroids(1:length(r),1),centroids(1:length(r),2),'b*');
+
+%绘制聚类区域的质点
+for i=1:k
+    M=zeros(height,width);
+    M(find(L==i+num))=1;
+    s=regionprops(M);
+    plot(s.Centroid(1),s.Centroid(2),'c*');
+end
+legend('centroid of each connected object','centroid of each cluster');
+hold off;
+\end{lstlisting}
+
+\subsection{Jitendra采样法}\label{jitendra}
+\begin{lstlisting}[caption=演示程序,language=matlab]
+clc;
+close;
+close all;
+img=imread('../tmp/1.bmp');
+img=img(:,:,1);
+img=im2double(img);
+
+%把图片的周围空出一个像数宽，方便提取边缘
+[h,w]=size(img);
+img=[ones(h,1) img ones(h,1)];
+img=[ones(1,w+2);img;ones(1,w+2)];
+
+n=100;
+figure(1);
+hold on;
+subplot(1,3,1);
+imshow(img);
+title('original image');
+img=rot90(img');
+%提取边缘
+[x,y,t,c]=bdry_extract(img);
+subplot(1,3,2);
+plot(x,y,'b.');
+title('edge image');
+axis([0,140,0,140]);
+axis square; %长宽比例为 1
+%使用Jitendra采样法进行采样
+[xi,yi,ti]=get_samples(x,y,t,n);
+subplot(1,3,3);
+plot(xi,yi,'b+');
+title(sprintf('after sample(n=\%d)',n));
+axis([0,140,0,140]);
+axis square; %长宽比例为 1
+grid on;
+hold off;
+\end{lstlisting}
+
+
+\begin{lstlisting}[caption=Jitendra采样法,language=matlab]
+function [xi,yi,ti]=get_samples(x,y,t,nsamp)
+N=length(x);
+k=3;
+Nstart=min(k*nsamp,N);
+
+ind0=randperm(N);%生成一个1到N的乱序列
+ind0=ind0(1:Nstart);
+%将x，y打乱，但对应点保持不变
+xi=x(ind0);
+yi=y(ind0);
+ti=t(ind0);
+xi=xi(:);
+yi=yi(:);
+ti=ti(:);
+%计算xi yi各点的距离
+d2=dist2([xi yi],[xi yi]);
+d2=d2+diag(Inf*ones(Nstart,1));
+
+s=1;
+while s
+    % find closest pair
+    [a,b]=min(d2);%寻找每一列的最小值a，并把其所在行数保存在b，a为单行
+    [c,d]=min(a);%寻找a中最小的值c，并把其所在列数保存在d，矩阵d2最小值就为d
+    I=b(d);
+    J=d;
+    % remove one of the points删除d2中的最小点，并删除xi，yi，ti相应的点
+    xi(J)=[];
+    yi(J)=[];
+    ti(J)=[];
+    d2(:,J)=[];
+    d2(J,:)=[];
+    if size(d2,1)==nsamp
+        s=0;
+    end
+end
+      
+\end{lstlisting}
+
+\begin{lstlisting}[caption=利用梯度来提取边缘,language=matlab]
+function [x,y,t,c]=bdry_extract(V);
+Vg=V; % if no smoothing is needed
+%画等高线，就是轮廓
+c=contourc(Vg,[.5 .5]);
+%计算数值梯度
+[G1,G2]=gradient(Vg);
+
+%把c(1,:)里面不是0.5标记为1，是的标记为0，储存到fz
+fz=c(1,:)~=0.5;
+%把c(1,:)里面为0.5的，将其上下对应的两个数设置为NaN
+c(:,find(~fz))=NaN;
+%B为c，去掉c(1,:)里面为0.5后
+B=c(:,find(fz));
+
+npts=size(B,2);
+t=zeros(npts,1);
+for n=1:npts
+    x0=round(B(1,n));
+    y0=round(B(2,n));
+    t(n)=atan2(G2(y0,x0),G1(y0,x0))+pi/2;
+end
+
+x=B(1,:)';
+y=B(2,:)';
+
+\end{lstlisting}

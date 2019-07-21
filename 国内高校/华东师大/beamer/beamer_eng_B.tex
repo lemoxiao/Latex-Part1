@@ -1,0 +1,305 @@
+%
+% 使用 xelatex 编译
+%
+\documentclass[11pt,compress,t]{beamer}
+\usetheme{Boadilla}
+\useinnertheme{circles}
+\useoutertheme{shadow}
+\usecolortheme{seahorse}
+\usefonttheme{serif}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamercolor{myfootline}{bg=white,fg=blue}
+\definecolor{myfoot}{rgb}{0.5,0.2,0.5}
+\definecolor{darkblue}{rgb}{0.1,0,0.85}
+\setbeamertemplate{headline}
+  { \leavevmode\begin{beamercolorbox}[wd=\paperwidth,ht=1.25ex,dp=1ex,left]{}
+    \end{beamercolorbox}}
+\setbeamertemplate{footline}% 自定义页脚
+  { \leavevmode\mbox{%
+    \begin{beamercolorbox}[wd=.75\paperwidth,ht=2.25ex,dp=1ex,left]{myfootline}%
+        \rule{2em}{0pt}\color{myfoot}\ttfamily\scriptsize%
+        \insertshortauthor~(\insertshortinstitute)
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,right]{myfootline}%
+       {\color{myfoot}\ttfamily\scriptsize\insertframenumber{}/%
+        \inserttotalframenumber\hspace*{3ex}}
+    \end{beamercolorbox}}
+    \vskip0pt }
+
+\setbeamercolor{frametitle}{fg=darkblue,bg=white}
+\setbeamertemplate{frametitle}{%
+  \leavevmode\linespread{1}\large\textbf{\insertframetitle}\par
+  \color{green!50}\rule[8pt]{\linewidth}{2pt}\par\vspace{-1.2em}}
+
+\setbeamertemplate{blocks}[default]
+\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
+
+\setbeamercolor{bluebox}{fg=black,bg=blue!10}
+\setbeamercolor{redbox}{fg=black,bg=red!10}
+\newenvironment{Boxblue}[1][\textwidth]
+  {\begin{beamercolorbox}[sep=0.1em,shadow=true,wd=#1,rounded=true,center]{bluebox}}
+  {\end{beamercolorbox}}
+\newenvironment{Boxred}[1][\textwidth]
+  {\begin{beamercolorbox}[sep=0.1em,shadow=true,wd=#1,rounded=true,center]{redbox}}
+  {\end{beamercolorbox}}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx,xcolor}
+\usepackage{hyperref}
+\hypersetup{pdfborder=001,colorlinks=true,linkcolor=darkblue,urlcolor=blue}
+\usepackage{bbding}
+\newcommand{\Bullet}{{\fontsize{6pt}{6pt}\selectfont\CircleSolid}}
+\newcommand{\Hand}{{\fontsize{8pt}{6pt}\selectfont\HandRight}}
+\newcommand{\zhu}{{\color{blue!40}\Bullet}}
+\newcommand{\zhuu}{{\color{red!80}\Hand}}
+\newcommand{\labeli}{\zhu}
+\newenvironment{myitem}
+  {\begin{list}{{\hfill\raisebox{0pt}{\labeli}}}{%
+    \setlength{\leftmargin}{1.2em}\labelwidth0.8em\labelsep.4em%
+    \itemsep0pt\parsep2pt\itemindent0pt\topsep0pt}}{\end{list}}
+
+\usepackage[framemethod=tikz]{mdframed}
+\newmdenv[linecolor=green,middlelinewidth=0.5pt,%
+          %outerlinewidth=0.5pt,skipabove=0pt,
+          roundcorner=3pt,backgroundcolor=white,%
+          innerbottommargin=3pt,innerrightmargin=5pt,%
+          innerleftmargin=5pt,leftmargin=0ex]{mathbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\thefootnote}{}% 不要编号
+\setbeamertemplate{footnote}{% 首行不缩进
+  \noindent\insertfootnotemark%
+  \scriptsize\color{blue!85!green!85}\insertfootnotetext\par\kern1ex}
+\renewcommand\footnoterule%    更改横线属性：长度，粗细，颜色
+  {\color{red}\kern-3pt\rule{0.4\linewidth}{0.5pt}\par\kern2.6pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\baselinestretch}{1.1}
+%===== user defined commands =============================================
+\newcommand{\bbm}{\begin{bmatrix}}
+\newcommand{\ebm}{\end{bmatrix}}
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\lam}{\lambda}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\dis}{\displaystyle}
+\newcommand{\mycite}[1]{\textcolor{red}{\textrm{[#1]}}}
+\newcommand{\diag}{\mathrm{diag}}
+
+
+\begin{document}
+
+\title{\bfseries\Large %
+  This is title This is title\\[1ex]
+   This is title This is title}
+% \subtitle{subtitle if necessary}
+
+\author[Author]%
+  {Author\\ \url{email@email.edu.cn} }
+
+\institute[Dept.Math]%
+  {\small Department of xxxxx\\
+          xxx xxx xxx University}
+
+\date{{\small joint work with xxxx} \\[22pt]
+              xxxx, xxxx, August 20xx}
+
+% ===== title page =====
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ===== contents =====
+\begin{frame}
+  \frametitle{Outline}
+   \tableofcontents[hideallsubsections] %[pausesections]
+\end{frame}
+
+
+% ===== main part =====
+\section[Problem]{The Problem}
+\begin{frame}
+  \frametitle{The Problem}
+
+  The weighted Toeplitz least square (WTLS) problem
+  $$
+     \min_{x\in\R^n} \| \Xi(Kx-f)\|_2^2 + u\|x\|_2^2
+  $$
+  \begin{myitem}
+    \item[] - $\Xi \in\R^{m\times m}$ is a weighting matrix
+        (usually positive diagonal)
+    \item[] - $K\in\R^{m\times n}$ ($m\geq n$) is a full-rank
+       Toeplitz related matrix
+    \item[] - $\mu>0$ is a regularization parameter
+    \item[] - $f$ is a given right-hand side
+  \end{myitem}
+  \medskip
+
+  \zhuu\ Applications lead to WTLS
+  \begin{myitem}
+    \item[] - image reconstruction
+    \item[] - image restoration with colored noise
+    \item[] - nonlinear image restoration
+  \end{myitem}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Applications lead to WTLS}
+  \begin{myitem}
+    \item Nonlinear image restoration
+      $$ f = s(Kx) + \eta, $$
+      where $f$, $x$, and $\eta$ represent the observed,
+      the original image, and the noise vectors, respectively.
+
+    \begin{myitem}
+      \item[-] $s(\nu)$ denotes a point nonlinearity
+      \item[-] $K$ is a blurring matrix \mycite{NCT99}
+      \item[] - BTTB : Dirichlet boundary condition
+      \item[] - BCCB : periodic boundary condition
+      \item[] - BTHTHB : Neumann boundary condition
+    \end{myitem}
+  \end{myitem}
+
+  \footnote{[NCT99]
+    M. K. Ng, R. H. Chan and W.-C. Tang,
+    \emph{A fast algorithm for deblurring models with Neumann boundary conditions},
+    SIAM J. Sci. Comput., 21 (1999), 851--866.}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Equivalent Linear Systems -- Normal Equations}
+
+  \begin{mathbox}\centering
+    $\dis\min_{x\in\R^n} \| \Xi(Kx-f)\|_2^2 + u\|x\|_2^2 $
+  \end{mathbox}
+  \begin{myitem}
+    \item Normal equations of WTLS
+      $$ (K^T \Xi^T\Xi K + \mu I) x = K^T \Xi^T\Xi f $$
+
+    \item[] \zhuu\ We can employ CG to solve this system
+    \item[] \zhuu\ Disadvantages:
+      \begin{myitem}
+        \item[-] condition number is squared
+        \item[-] CG may converge slow
+        \item[-] well-suited preconditioner based on fast algorithms
+                 is difficult to find
+                  (because of the weighting matrix)
+      \end{myitem}
+  \end{myitem}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Equivalent Linear Systems -- Augmented System}
+  \begin{myitem}
+    \item Augmented system associated with WTLS problem
+      $$
+        \bbm W & K \\ K^T & -\mu I \ebm \bbm y\\x\ebm = \bbm f\\ 0\ebm,
+      $$
+      where $W = (\Xi^T \Xi)^{-1}$ and $y = \Xi^T \Xi(f - Kx)$
+
+    \item[] \zhuu\ This is a generalized saddle point problem
+
+    \item[] \zhuu\ Many solution methods are available
+    \begin{myitem}
+      \item[] - Uzawa, HSS, GSOR, ...
+      \item[] - preconditioned Krylov subspace methods
+    \end{myitem}
+    \medskip
+
+    \qquad
+    \begin{Boxred}[0.7\textwidth]
+      \textcolor{blue}{How to find a good preconditioner?}
+    \end{Boxred}
+
+  \end{myitem}
+\end{frame}
+
+% insert the contents at the beginning of every section.
+\AtBeginSection[] % Do nothing for \section*
+{ \begin{frame}<beamer> %\frametitle{Outline}
+  \tableofcontents[currentsection,hideallsubsections]%,currentsubsection]
+  \end{frame}
+}
+
+% ===== New frame =====
+\section{HSS and AHSS Preconditioners}
+\begin{frame}
+  \frametitle{HSS Preconditioner \mycite{BN06}}
+
+  Rewrite the augmented system into nonsymmetrix form
+      $$
+        \bbm W & K \\ -K^T & \mu I \ebm \bbm y\\x\ebm = \bbm f\\ 0\ebm
+        \quad\text{or}\quad
+        Au=c
+      $$
+
+  \begin{myitem}
+    \item Hermitian and skew-Hermitian splitting \mycite{BGN03}
+      $$ A=H+S $$
+      where
+      $$
+        H = \bbm W & 0\\ 0 & \mu I\ebm \ \text{and}\
+        S = \bbm 0 & K\\ -K^T & 0 \ebm
+      $$
+
+  \end{myitem}
+
+  \footnote{[BN06]
+    M. Benzi and M. K. Ng,
+    \emph{Preconditioned iterative methods for weighted toeplitz
+       least squares problems},
+    SIAM J. Matrix Anal. Appl., 27 (2006), 1106--1124. }
+  \footnote{[BGN03]
+    Z.-Z. Bai, G. H. Golub and M. K. Ng,
+    \emph{Hermitian and skew-Hermitian splitting methods for
+    non-Hermitian positive definite linear systems},
+    SIAM J. Matrix Anal. Appl., 24 (2003), 603--626. }
+
+\end{frame}
+
+
+\section{Numerical Experiments}
+\begin{frame}
+  \frametitle{Examples: One-Dimensional Problem \mycite{BN06}}
+
+  \begin{mathbox}
+  $K=[t_{ij}]\in\R^{n\times n}$ is a Toeplitz matrix defined by
+  \begin{align*}
+  \text{(i)}\quad
+    & t_{ij}=\frac{1}{\sqrt{|i-j|}+1}
+      &\to&\ \textcolor{blue}{well-conditioned} \\
+  \text{(ii)}\quad
+    & t_{ij}=\dfrac{1}{\sqrt{2\pi}\sigma}e^{\frac{-|i-j|^2}{2\sigma^2}}
+     \ \text{with}\ \sigma=2
+      &\to&\ \textcolor{blue}{ill-conditioned}
+  \end{align*}
+  \end{mathbox}
+
+  Other parameters
+  \begin{myitem}
+    \item[] - $\Xi$: positive diagonal random matrix with
+             $\kappa_2(\Xi)\approx 10^{3}$
+    \item[] - $\mu=0.001$
+    \item[] - stopping criterion:
+      $
+        \dfrac{\| c - Au\|_2}{\|c\|_2}<10^{-7}
+      $\medskip
+    \item[] -  Initial guess: zero vector
+    \item[] -  maximum iteration steps: $1000$
+  \end{myitem}
+\end{frame}
+
+
+% ===== New frame =====
+\begin{frame}[plain]
+\vspace{0.4\textheight}
+\begin{center}
+\Huge\color{red}\bfseries Thanks!
+\end{center}
+\end{frame}
+
+\end{document}

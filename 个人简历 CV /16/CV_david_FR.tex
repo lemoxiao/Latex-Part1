@@ -1,0 +1,398 @@
+%Document Class Definition
+\documentclass{article}
+
+%Required Packages
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}      % LaTeX
+\usepackage{fontawesome}
+\usepackage{tikz}
+	\usetikzlibrary{babel} %correction for the french version of the document with XeLaTeX
+	\usetikzlibrary{shapes.geometric}
+	\usetikzlibrary{calc}
+	\usetikzlibrary{decorations.pathreplacing}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry}
+\usepackage{setspace}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{coolstr}
+\usepackage{coolstr}
+\usepackage{textcase}
+\usepackage{amsmath}
+\usepackage{relsize}
+\usepackage{moresize}
+\usepackage{times}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{mathabx}
+\usepackage{graphicx}
+  	  	\graphicspath{{./fig/}} %fig path
+  	  	
+%Definition of the colors
+\definecolor{white}{RGB}{255,255,255}
+\definecolor{sidecolor}{RGB}{200,200,200}
+\definecolor{mainblue}{RGB}{0,0,153}
+\definecolor{maingray}{RGB}{144,144,144}
+
+%Define CV Variables
+\newcommand{\cvfirstname}{David}
+\newcommand{\cvlastname}{Beauchemin}
+\newcommand{\cvtitle}{B. Sc. Actuariat}
+\newcommand{\coverletter}{Lettre de présentation}
+
+\newcommand{\cvemail}{david.beauchemin.5@ulaval.ca}
+\newcommand{\cvphonenumber}{(514) 250-3616}
+\newcommand{\cvaddress}{2435, Chemin Sainte-foy, app 1B,  Québec}
+\newcommand{\cvlocation}{Québec, Canada}
+\newcommand{\cvlinkedin}{https://www.linkedin.com/in/david-beauchemin-918343108/}
+\newcommand{\github}{https://github.com/davebulaval}
+\newcommand{\Web}{https://davebulaval.github.io}
+
+%Command for vertical centering of text into tabular
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+
+%Command for horizontal centering of specified width into tabular
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+%Command for bold font and textcolor to apply to a specific column into tabular
+\newcolumntype{A}[1]{>{\bfseries\centering\color{mainblue}}m{#1}}
+
+%Command to print checkmark with desired format into Certificate Table
+\newcommand{\CheckMark}{\textcolor{mainblue}{\faCheck}}
+
+%Command to create the correct seperator for Interests
+\newcommand{\separator}{\textcolor{mainblue}{ $\blackdiamond$ }}
+
+%Command to produce a round shaped corner framebox with defined colors
+\newcommand{\mybox}[1]{
+	\tikz
+	\node[rectangle,rounded corners=1mm,draw=mainblue,anchor=text,fill=mainblue,inner sep=3pt,minimum height=0.5cm]
+		{\small\bfseries\textcolor{white}{#1}};}
+
+%Command to create the sidebar layout
+\newcommand{\sidebar}{
+	\begin{tikzpicture}[overlay]
+		\node [rectangle, fill=sidecolor, anchor=north west, minimum width=9.25cm, 
+		minimum height=\paperheight+2cm] (box) at (-2cm,3cm){};%
+	\end{tikzpicture}}
+
+%Command for printing the margin section titles
+\newcommand{\profilesection}[1]{
+	\vspace{6pt}
+	{\bfseries\Large #1\;\rule[0.15\baselineskip]{7cm-\widthof{\bfseries\Large #1\;}}{1pt}\normalfont\normalsize}
+	\vspace{6pt}}
+
+%Command for printing the icons
+\newcommand{\icon}[1]{
+	\begin{tikzpicture}[baseline=(char.base)]
+		\node[circle,draw,baseline=(char.base),mainblue,fill=mainblue,text=white,
+		inner sep=0.35pt, minimum size=10mm, align=center,text centered](char){\LARGE\textbf{{#1}}};
+	\end{tikzpicture}}
+
+%Command to create the star scale
+\newcommand\starscale[2]{
+	\pgfmathsetmacro\pgfxa{#1+1}
+	\tikzstyle{scorestars}=[star,star points=5,star point ratio=2,thick,mainblue,scale=1.5,draw,inner sep=0.125em,anchor=outer 	point 3]
+	\begin{tikzpicture}[baseline]
+		\foreach \i in {1,...,#2} {
+			\pgfmathparse{(\i<=#1?"mainblue":"maingray")}
+			\edef\starcolor{\pgfmathresult}
+			\draw (\i*1em,0) node[name=star\i,scorestars,fill=\starcolor]{};}
+		\pgfmathparse{(#1>int(#1)?int(#1+1):0}
+	\let\partstar=\pgfmathresult
+	\ifnum\partstar>0
+		\pgfmathsetmacro\starpart{#1-(int(#1))}
+		\path [clip] ($(star\partstar.outer point 3)!(star\partstar.outer point 2)!(star\partstar.outer point 4)$) 
+		rectangle 
+		($(star\partstar.outer point 2 |- star\partstar.outer point 1)!\starpart!(star\partstar.outer point 1 -| star\partstar.outer point 5)$);
+		\fill (\partstar*1em,0) node[scorestars,fill=mainblue]{};
+	\fi
+	\end{tikzpicture}}
+
+%Command for printing skill progress bars
+\newcommand{\progressbarthickness}{0.1}
+\newcommand\skillbar[1]{
+	\begin{tikzpicture}
+		\foreach [count=\i] \x/\y in {#1}{
+			\draw[fill=maingray,maingray] (0,\i) rectangle (7,\i+\progressbarthickness);
+			\draw[fill=white,mainblue](0,\i) rectangle (\y,\i+\progressbarthickness);
+			\node[circle,fill,mainblue] at (\y,\i+\progressbarthickness/2){};
+			\node[circle,fill,maingray,scale=0.5] at (\y,\i+\progressbarthickness/2){};
+			\node[above right] at (0,\i+\progressbarthickness){\x};}
+	\end{tikzpicture}}
+
+%Command for printing white words
+\newcommand\printww[1]{
+	\tiny\textcolor{white}{
+	\foreach \x in #1{\x \- \,}}}
+
+%Command to create section Title
+% The command \substr dont work with all the character such as é, à.
+% To make it work I used title without those character. Didn't found other solution.
+\newcommand\sectiontitle[1]{
+	\bfseries\LARGE
+	%\textcolor{mainblue}{\substr{#1}{1}{4}}%
+	\textcolor{black}{\substr{#1}{1}{end}}
+	\normalfont\normalsize}
+
+%Command to let mark in order to trace tikz picture
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node[circle,scale=0.01] (#1) {};}
+
+%Command to insert a new Education Statement
+\newcommand{\EduStatement}[5]{
+	%\normalfont\normalsize
+	\vspace{-\baselineskip}
+	\tikzmark{mark1}\\
+	#4\\
+	\large{\textbf{#5}}\\
+	\textcolor{mainblue}{#3\small\textbf{\hfill [#1 - #2]}}\\
+	%\normalfont\normalsize 
+	\tikzmark{mark2}
+	}
+
+%Command to insert a new title for cover letter
+\newcommand{\TitleCoverLetter}[5]{
+	%\normalfont\normalsize
+	\vspace{-\baselineskip}
+	\tikzmark{mark1}
+	\vspace{10pt}\\
+	%\LARGE\textcolor{mainblue}{\textit{#5}}
+	\sectiontitle{#5}
+	\\[5pt]
+	\normalsize
+	\textbf{#4}\\
+	\textcolor{mainblue}{#2\small\textbf{\hfill #1}}\\
+	#3
+	%\normalfont\normalsize 
+	\tikzmark{mark2}
+	}
+
+%Command to insert a new Experience Statement
+\newenvironment{ExpStatement}[4]{
+	%\normalfont\normalsize
+	\vspace{-\baselineskip}
+	\tikzmark{mark1}
+	\vspace{15pt}\\
+	\textcolor{mainblue}{#3\small\textbf{\hfill [#1 - #2]}}\\
+	\large{\textbf{#4}}
+	\small
+	\begin{itemize}[label=\textcolor{mainblue}{\textbullet},topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt]}
+		{\vspace{-\baselineskip}
+	\end{itemize}
+	%\normalfont\normalsize
+	\tikzmark{mark2}
+	\\}
+
+\pagestyle{empty} % Disable headers and footers
+\setlength{\parindent}{0pt} 
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{1cm}
+\hypersetup{
+colorlinks,
+linkcolor={red!50!black},
+citecolor={blue!50!black},
+urlcolor={blue!80!black}}
+
+%Edition of the content
+\begin{document}
+\sidebar
+\begin{textblock}{7}(0.5,1)
+	\HUGE
+	\cvfirstname\\[6pt]
+	\bfseries
+	\cvlastname\\[6pt]
+	\large
+	\cvtitle\\
+\end{textblock}
+
+\begin{textblock}{7}(0.5, 3.75)
+	\profilesection{Information générale}	
+	\vspace{-\baselineskip}
+	\begin{table}
+		\begin{tabularx}{7cm}{cX}
+			\icon{\faAt}&\bfseries\href{mailto:\cvemail}\cvemail\\
+			\icon{\faPhone}&\cvphonenumber\\
+			%\icon{\faHome}&\cvaddress\\
+			\icon{\faMapMarker}&\cvlocation\\
+			\icon{\faGithub}&\href{\github}{Voir GitHub} \\
+			\icon{\faRss}&\href{\Web}{Site Web}\\
+			\icon{\faLinkedin}&\href{\cvlinkedin}{Voir profil}\\
+		\end{tabularx}
+	\end{table}
+
+	\profilesection{Compétences linguistiques}
+	\vspace{-\baselineskip}
+	\begin{table}
+		\large
+		\begin{tabularx}{7cm}{Xc}
+			English & \starscale{3.8}{5}\\
+			Français & \starscale{4.4}{5}\\
+		\end{tabularx}
+	\end{table}
+
+	\profilesection{Langages de programmation}
+	\skillbar{C/2, HTML/3, Java/3, C++/3, \faGit /5,\LaTeX /6.5, Markdown /6, R/6.5, Python/6.2,VBA/6,SAS/2, SQL/5}
+	
+	\begin{center}
+	\includegraphics[scale=0.20]{LogoDB.png}
+	\end{center}
+\end{textblock}
+
+
+\begin{textblock}{11.35}(9.25, 1)
+	\sectiontitle{Formations}\newline
+	\EduStatement{09/2015}{Présent}{Université Laval}{Baccalauréat}{Actuariat}
+	\EduStatement{08/2017}{08/2017}{Ivado}{}{Formation d'été en apprentissage profond}
+
+	\sectiontitle{Parcours \ professionnel}
+	\begin{ExpStatement}{09/2016}{Présent}{Université Laval, École d'actuariat}{Auxiliaire de cours}
+		\item Correction d'examens et création d'exercices - Introduction à l'actuariat I
+		\item Correction d'examens et création d'exercices - Gestion du risque financier I
+		\item Correction d'examens, offrir des séances de dépannage aux étudiants et assistance des ateliers - Informatique pour actuaire
+		\item Présentation sur \href{https://davebulaval.github.io/R_Markdown/}{R \& Markdown}
+		\item Réécriture des notes de cours - \href{https://github.com/davebulaval/act_2003}{Modèles linéaires en actuariat}
+	\end{ExpStatement}
+	\begin{ExpStatement}{11/2013}{10/2014}{Industrielle alliance, Assurance auto et habitation}{Agent en assurance de dommage}
+		\item Compléter les soumissions clients
+		\item Répondre aux besoins clients
+		\item Conseiller les clients en assurance de dommage
+		\item Supporter l'équipe des services financiers dans l'atteinte des objectifs
+	\end{ExpStatement}
+	\\
+	\sectiontitle{Certifications}
+	\vspace{3pt}
+	\begin{table}
+		\begin{tabularx}{\textwidth}{A{1.5cm}XM{1.5cm}}
+			\toprule
+			\centering\textcolor{black}{Examen}&\centering\textbf{Description}&\textbf{Date}\\
+			\midrule
+			P/1 & Probability & \textcolor{mainblue}{\textbf{\textbf{01/2016}}}\\
+			FM/2 & Financial Mathematics & \textcolor{mainblue}{\textbf{06/2016}}\\
+			MFE/3 & Models for Financial Economics & \textcolor{mainblue}{\textbf{05/2017}}\\
+			ECON & VEE Economics & \textcolor{mainblue}{\textbf{11/2016}}\\
+			CORPFIN & VEE Corporate Finance & \textcolor{mainblue}{\textbf{11/2016}}\\
+			\bottomrule
+ 		\end{tabularx}
+ 	\end{table}
+ 	\vspace{\baselineskip}
+ 	
+	\sectiontitle{Aptitudes\ \&\ Forces}\\
+	\mybox{Créatif} \mybox{Curiosité intellectuelle} \mybox{Entrepreneur} \mybox{Individualisation} \mybox{Activateur} \mybox{Esprit critique}	\mybox{Sens des affaires}  \mybox{Autodidacte} \mybox{Facilité d'apprentissage} \mybox{Ambition}\\
+	
+	\sectiontitle{Accomplissements}\smallskip \newline
+	\textbf{Projets informatiques}
+	\begin{itemize}[label=\textcolor{mainblue}{\textbullet},topsep=0pt,partopsep=0pt,itemsep=0pt,
+	parsep=0pt]
+		\item Participation à la création de la \href{https://github.com/davebulaval/raquebec-atelier-introduction-r}{formation d'introduction}  à R au colloque R à Québec 2017.
+		\item Implication dans le développement d'un \href{http://ctan.org/pkg/actuarialsymbol}{package \LaTeX}.
+		\item Développement d'un tutoriel sur \href{https://davebulaval.github.io/git_tutorial/}{Git \& GitHub}.
+		\item Assemblage d'un serveur à domicile.
+		\item Assemblage et programmation d'un ordinateur portable Pi-Top.
+		\item Assemblage d'un centre média domestique.
+	\end{itemize}
+	\textbf{Sportifs}
+	\begin{itemize}[label=\textcolor{mainblue}{\textbullet},topsep=0pt,partopsep=0pt,itemsep=0pt,
+	parsep=0pt]
+		\item Cross-country collégial en 2010-2011
+		\item Demi-Marathon : Montréal 2008, Québec 2012 (Meilleur temps 1h32)
+		\item Marathon : Ottawa 2011, Québec 2011, Montréal 2011 (Meilleur temps 3h35)
+		\item Triathlon demi-Ironman : Montréal 2011 (6h50)
+	\end{itemize}
+	\textbf{Communautaires}
+		\begin{itemize}[label=\textcolor{mainblue}{\textbullet},topsep=0pt,partopsep=0pt,itemsep=0pt,
+	parsep=0pt]
+		\item Vice-président aux événements sociaux depuis avril 2016 
+		\item Bénévolat auprès de l'ACSA en 2015
+	\end{itemize}
+	\smallskip
+	\sectiontitle{Loisirs}\\
+	Science \separator Lecture \separator Activités sportives \separator Hockey \separator Machine Learning \separator Finance
+\end{textblock}
+
+\newpage
+
+\sidebar
+\begin{textblock}{7}(0.5,1)
+	\HUGE
+	\cvfirstname\\
+	\bfseries
+	\cvlastname\\
+	\huge
+	\textcolor{mainblue}{\coverletter}\\
+\end{textblock}
+\bigskip
+\begin{textblock}{7}(0.5, 3.75)
+	\profilesection{Information générale}	
+	\vspace{-\baselineskip}
+	\begin{table}
+		\begin{tabularx}{7cm}{cX}
+			\icon{\faAt}&\bfseries\href{mailto:\cvemail}\cvemail\\
+			\icon{\faPhone}&\cvphonenumber\\
+			%\icon{\faHome}&\cvaddress\\
+			\icon{\faMapMarker}&\cvlocation\\
+			\icon{\faGithub}&\href{\github}{Voir GitHub} \\
+			\icon{\faRss}&\href{\Web}{Site Web}\\
+			\icon{\faLinkedin}&\href{\cvlinkedin}{Voir profil}\\
+		\end{tabularx}
+	\end{table}
+
+	\profilesection{En bref}
+	\vspace{-\baselineskip}
+	
+	\ \ \ \ \ Je suis originaire de Laval et j'ai choisi de venir étudier à Québec afin de découvrir une nouvelle ville. J'ai originalement entrepris une formation professionnelle en soudure montage. À la fin de ma formation, j'ai décidé de poursuivre mes études collégiales afin d'intégrer les forces armées canadiennes et de joindre le programme de formation des officiers au collège militaire de Kingston. N'ayant pas été sélectionné pour le programme, j'ai intégré la réserve et entamer un baccalauréat en sociologie. Ma curiosité intellectuelle n'étant pas satisfaite, j'ai décidé d'intégrer le marché du travail à titre d'agent d'assurance. Cette décision m'a amené à découvrir l'actuariat. J'ai par la suite complété mes mathématiques secondaires et collégiales en moins de 8 mois afin d'entamer ma formation universitaire en septembre 2015.
+	
+	\bigskip
+	\profilesection{Plus grande fierté}
+	\vspace{-\baselineskip}
+	\begin{table}
+		\begin{tabularx}{7cm}{cX}
+			\icon{\faBicycle} & Triathlon Demi-Esprit de Montréal distance demi-Ironman en moins de 7h \\
+			\icon{\faLineChart} & Investisseurs boursiers actif avec un rendement annualisé de 15 \% depuis 5 ans \\
+			\icon{\small\LaTeX} & Contribution dans le package \textit{actuarialsymbol} \\
+			\icon{\faGlobe} & Plusieurs voyages sac à dos solitaire \\
+			\icon{\faBank} & Actionnaire d'une entreprise de tatouage \\
+		\end{tabularx}
+	\end{table}
+	
+\begin{center}
+	\includegraphics[scale=0.20]{LogoDB.png}
+\end{center}
+
+\end{textblock}
+
+
+\begin{textblock}{11.35}(9.25, 1)
+	\TitleCoverLetter{\today}{2020 Boulevard Robert-Bourassa, bureau 100}{Montréal, QC H3A 2A5}{Intact}{Candidature \ au \ stage \ d'analyste \ en \ actuariat}\\
+	
+%\textbf{\textcolor{mainblue}{\substr{Madame,}{1}{4}}%
+\textcolor{black}{\substr{Madame,}{1}{end}} \\
+%\textbf{\textcolor{mainblue}{\substr{Monsieur,}{1}{4}}%
+\textcolor{black}{\substr{Monsieur,}{1}{end}} \\
+
+\normalsize
+J'ai le plaisir de vous soumettre ma candidature au stage d'analyse en actuariat. En consultant votre offre d'emploi, il m’apparaît que mon profil et mes compétences conviennent aux exigences du stage. \newline
+
+Tout d'abord, j'ai un intérêt marqué pour la programmation, l'intelligence artificielle et les données massives. En janvier 2018, en parallèle avec mon baccalauréat, je débute un certificat en programmation afin d'acquérir des compétences plus rigoureuses en programmation avancée ainsi qu'en traitement des données massives. Ayant déjà effectué des cours du certificat, je planifie compléter celui-ci à la session automne 2018. Je planifie ensuite poursuivre une maîtrise en analytique d'affaires au HEC. \newline
+
+Durant mon parcours  professionnel très atypique, j'ai acquis différentes compétences. En effet, j’ai développé une grande capacité d’adaptation durant ma formation militaire à titre d’officier de la réserve canadienne.  Au fil de ma formation d’officier, j’ai été confronté à diverses situations où ma facilité d’adaptation a été grandement sollicitée. À titre d'exemple, lors des simulations d’opérations, l’environnement est très dynamique et il faut constamment s’y adapter. Lors d’un exercice de simulation d’opération, afin de simuler le stress psychologique subit dans une telle situation, nous avons dû passer 5 journées sans dormir. Durant le jour, à répétition, chaque élève officier devait accomplir une série de missions diverses avec l'aide des membres de son unité. La nuit tombée, nous devions établir des positions fortifiées, afin de soutenir des simulations d’attaque. Constamment, je me suis retrouvé dans des situations que je n’avais jamais rencontrées auparavant et j’ai dû accomplir ces différentes tâches dans une situation de fatigue extrême. Malgré cette difficulté, j’ai réussi à m’adapter. \newline
+	
+Par la suite, j’ai aussi occupé différents postes au sein  du Steak frites St-Paul de Laval. J’ai débuté à titre d’aide-serveur, mais rapidement mon autonomie, ma gestion du stress et des priorités ont été mises en valeur et m’ont permis d’atteindre le poste d’assistant maître d’hôtel. Lorsque j’ai occupé ce poste, ces compétences ont été constamment mises à l’épreuve dans l’exécution de mes fonctions quotidiennes.  Dès le début de mon mandat à titre de maître d’hôtel, j’ai remarqué qu’il manquait un suivi efficace des différentes demandes des clients générant une insatisfaction de la clientèle. Afin de remédier à cette situation, j’ai pris l’initiative d’en parler au maître d’hôtel dans le but de trouver une solution viable. Après diverses rencontres et essais, une nouvelle méthode a été implantée afin de solliciter un travail d’équipe plus efficace et de diminuer les insatisfactions de la clientèle.\newline
+	
+Pour conclure, j'espère que cette brève description de moi-même a suscité votre intérêt pour ma candidature. J’admire beaucoup les valeurs d'Intact: le développement continu, la responsabilité sociale et l’intégrité. J’aimerais grandement pouvoir y apporter ma contribution. J'ai la conviction que mes différentes compétences me permettront de contribuer aux valeurs de l'entreprise et je serais enthousiaste de pouvoir vous rencontrer pour en discuter lors d'un entretien. \newline
+
+%\textbf{\textcolor{mainblue}{\substr{Cordialement,}{1}{4}}%
+\textcolor{black}{\substr{Cordialement,}{1}{end}} \\
+
+\includegraphics[height=5\baselineskip]{signature.png}
+
+
+\end{textblock}
+\end{document}

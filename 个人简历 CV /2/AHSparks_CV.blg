@@ -1,0 +1,106 @@
+[0] Config.pm:354> INFO - This is Biber 2.7
+[0] Config.pm:357> INFO - Logfile is 'AHSparks_CV.blg'
+[103] biber-darwin:303> INFO - === Thu Jul 20, 2017, 10:48:44
+[200] Biber.pm:359> INFO - Reading 'AHSparks_CV.bcf'
+[391] Biber.pm:835> INFO - Found 0 citekeys in bib section 0
+[392] Biber.pm:832> INFO - Using all citekeys in bib section 1
+[392] Biber.pm:835> INFO - Found 0 citekeys in bib section 0
+[392] Biber.pm:832> INFO - Using all citekeys in bib section 2
+[392] Biber.pm:835> INFO - Found 0 citekeys in bib section 0
+[392] Biber.pm:832> INFO - Using all citekeys in bib section 3
+[392] Biber.pm:835> INFO - Found 0 citekeys in bib section 0
+[393] Biber.pm:832> INFO - Using all citekeys in bib section 4
+[393] Biber.pm:835> INFO - Found 0 citekeys in bib section 0
+[462] Biber.pm:3670> INFO - Processing section 1
+[595] Biber.pm:3840> INFO - Looking for bibtex format file 'Sparks_bibliography.bib' for section 1
+[636] bibtex.pm:1435> INFO - Decoding LaTeX character macros into UTF-8
+[691] bibtex.pm:1292> INFO - Found BibTeX data source 'Sparks_bibliography.bib'
+[707] Utils.pm:164> WARN - month field 'feb' in entry 'Sparks2017' is not an integer - this will probably not sort properly.
+[1137] Utils.pm:164> WARN - month field 'mar' in entry 'Savary2017' is not an integer - this will probably not sort properly.
+[1145] Utils.pm:164> WARN - month field 'oct' in entry 'Savary2011a' is not an integer - this will probably not sort properly.
+[1157] Utils.pm:164> WARN - month field 'nov' in entry 'Cheatham2009' is not an integer - this will probably not sort properly.
+[1160] Utils.pm:164> WARN - month field 'may' in entry 'Dossa2015' is not an integer - this will probably not sort properly.
+[1167] Utils.pm:164> WARN - month field 'mar' in entry 'Barnwal_2013' is not an integer - this will probably not sort properly.
+[1190] Utils.pm:164> WARN - month field 'dec' in entry 'Gaudin_2012' is not an integer - this will probably not sort properly.
+[1210] Utils.pm:164> WARN - month field 'jan' in entry 'Duku_2016' is not an integer - this will probably not sort properly.
+[1220] Utils.pm:164> WARN - month field 'junio' in entry 'Jimenz2013' is not an integer - this will probably not sort properly.
+[1224] Utils.pm:164> WARN - month field 'may' in entry 'Sparks2014' is not an integer - this will probably not sort properly.
+[1232] Utils.pm:164> WARN - month field 'jan' in entry 'Garrett2011' is not an integer - this will probably not sort properly.
+[1241] Utils.pm:164> WARN - month field 'apr' in entry 'H_Sparks_2017' is not an integer - this will probably not sort properly.
+[1257] Utils.pm:164> WARN - month field 'aug' in entry 'Laborte2015' is not an integer - this will probably not sort properly.
+[1261] Utils.pm:164> WARN - month field 'aug' in entry 'Sparks2011' is not an integer - this will probably not sort properly.
+[1326] Utils.pm:164> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
+[1326] Utils.pm:164> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
+[1436] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1436] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1436] Biber.pm:3499> INFO - Sorting list 'ydnt/global/' of type 'entry' with scheme 'ydnt' and locale 'en-US'
+[1436] Biber.pm:3505> INFO - No sort tailoring available for locale 'en-US'
+[1549] Biber.pm:3670> INFO - Processing section 2
+[1549] Biber.pm:3840> INFO - Looking for bibtex format file 'Sparks_bibliography.bib' for section 2
+[1552] Utils.pm:164> WARN - month field 'feb' in entry 'Sparks2017' is not an integer - this will probably not sort properly.
+[1605] Utils.pm:164> WARN - month field 'mar' in entry 'Savary2017' is not an integer - this will probably not sort properly.
+[1616] Utils.pm:164> WARN - month field 'oct' in entry 'Savary2011a' is not an integer - this will probably not sort properly.
+[1625] Utils.pm:164> WARN - month field 'nov' in entry 'Cheatham2009' is not an integer - this will probably not sort properly.
+[1628] Utils.pm:164> WARN - month field 'may' in entry 'Dossa2015' is not an integer - this will probably not sort properly.
+[1635] Utils.pm:164> WARN - month field 'mar' in entry 'Barnwal_2013' is not an integer - this will probably not sort properly.
+[1641] Utils.pm:164> WARN - month field 'dec' in entry 'Gaudin_2012' is not an integer - this will probably not sort properly.
+[1653] Utils.pm:164> WARN - month field 'jan' in entry 'Duku_2016' is not an integer - this will probably not sort properly.
+[1662] Utils.pm:164> WARN - month field 'junio' in entry 'Jimenz2013' is not an integer - this will probably not sort properly.
+[1666] Utils.pm:164> WARN - month field 'may' in entry 'Sparks2014' is not an integer - this will probably not sort properly.
+[1679] Utils.pm:164> WARN - month field 'jan' in entry 'Garrett2011' is not an integer - this will probably not sort properly.
+[1687] Utils.pm:164> WARN - month field 'apr' in entry 'H_Sparks_2017' is not an integer - this will probably not sort properly.
+[1709] Utils.pm:164> WARN - month field 'aug' in entry 'Laborte2015' is not an integer - this will probably not sort properly.
+[1716] Utils.pm:164> WARN - month field 'aug' in entry 'Sparks2011' is not an integer - this will probably not sort properly.
+[1752] Utils.pm:164> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
+[1752] Utils.pm:164> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
+[1892] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1892] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1892] Biber.pm:3499> INFO - Sorting list 'ydnt/global/' of type 'entry' with scheme 'ydnt' and locale 'en-US'
+[1892] Biber.pm:3505> INFO - No sort tailoring available for locale 'en-US'
+[1998] Biber.pm:3670> INFO - Processing section 3
+[1998] Biber.pm:3840> INFO - Looking for bibtex format file 'Sparks_bibliography.bib' for section 3
+[2000] Utils.pm:164> WARN - month field 'feb' in entry 'Sparks2017' is not an integer - this will probably not sort properly.
+[2051] Utils.pm:164> WARN - month field 'mar' in entry 'Savary2017' is not an integer - this will probably not sort properly.
+[2062] Utils.pm:164> WARN - month field 'oct' in entry 'Savary2011a' is not an integer - this will probably not sort properly.
+[2068] Utils.pm:164> WARN - month field 'nov' in entry 'Cheatham2009' is not an integer - this will probably not sort properly.
+[2071] Utils.pm:164> WARN - month field 'may' in entry 'Dossa2015' is not an integer - this will probably not sort properly.
+[2082] Utils.pm:164> WARN - month field 'mar' in entry 'Barnwal_2013' is not an integer - this will probably not sort properly.
+[2085] Utils.pm:164> WARN - month field 'dec' in entry 'Gaudin_2012' is not an integer - this will probably not sort properly.
+[2098] Utils.pm:164> WARN - month field 'jan' in entry 'Duku_2016' is not an integer - this will probably not sort properly.
+[2105] Utils.pm:164> WARN - month field 'junio' in entry 'Jimenz2013' is not an integer - this will probably not sort properly.
+[2109] Utils.pm:164> WARN - month field 'may' in entry 'Sparks2014' is not an integer - this will probably not sort properly.
+[2118] Utils.pm:164> WARN - month field 'jan' in entry 'Garrett2011' is not an integer - this will probably not sort properly.
+[2129] Utils.pm:164> WARN - month field 'apr' in entry 'H_Sparks_2017' is not an integer - this will probably not sort properly.
+[2142] Utils.pm:164> WARN - month field 'aug' in entry 'Laborte2015' is not an integer - this will probably not sort properly.
+[2147] Utils.pm:164> WARN - month field 'aug' in entry 'Sparks2011' is not an integer - this will probably not sort properly.
+[2182] Utils.pm:164> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
+[2182] Utils.pm:164> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
+[2280] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[2280] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[2280] Biber.pm:3499> INFO - Sorting list 'ydnt/global/' of type 'entry' with scheme 'ydnt' and locale 'en-US'
+[2280] Biber.pm:3505> INFO - No sort tailoring available for locale 'en-US'
+[2367] Biber.pm:3670> INFO - Processing section 4
+[2367] Biber.pm:3840> INFO - Looking for bibtex format file 'Sparks_bibliography.bib' for section 4
+[2370] Utils.pm:164> WARN - month field 'feb' in entry 'Sparks2017' is not an integer - this will probably not sort properly.
+[2411] Utils.pm:164> WARN - month field 'mar' in entry 'Savary2017' is not an integer - this will probably not sort properly.
+[2418] Utils.pm:164> WARN - month field 'oct' in entry 'Savary2011a' is not an integer - this will probably not sort properly.
+[2425] Utils.pm:164> WARN - month field 'nov' in entry 'Cheatham2009' is not an integer - this will probably not sort properly.
+[2429] Utils.pm:164> WARN - month field 'may' in entry 'Dossa2015' is not an integer - this will probably not sort properly.
+[2436] Utils.pm:164> WARN - month field 'mar' in entry 'Barnwal_2013' is not an integer - this will probably not sort properly.
+[2441] Utils.pm:164> WARN - month field 'dec' in entry 'Gaudin_2012' is not an integer - this will probably not sort properly.
+[2450] Utils.pm:164> WARN - month field 'jan' in entry 'Duku_2016' is not an integer - this will probably not sort properly.
+[2455] Utils.pm:164> WARN - month field 'junio' in entry 'Jimenz2013' is not an integer - this will probably not sort properly.
+[2459] Utils.pm:164> WARN - month field 'may' in entry 'Sparks2014' is not an integer - this will probably not sort properly.
+[2468] Utils.pm:164> WARN - month field 'jan' in entry 'Garrett2011' is not an integer - this will probably not sort properly.
+[2478] Utils.pm:164> WARN - month field 'apr' in entry 'H_Sparks_2017' is not an integer - this will probably not sort properly.
+[2492] Utils.pm:164> WARN - month field 'aug' in entry 'Laborte2015' is not an integer - this will probably not sort properly.
+[2497] Utils.pm:164> WARN - month field 'aug' in entry 'Sparks2011' is not an integer - this will probably not sort properly.
+[2529] Utils.pm:164> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
+[2530] Utils.pm:164> WARN - BibTeX subsystem: author, warning: comma(s) at end of name (removing)
+[2626] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[2626] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[2626] Biber.pm:3499> INFO - Sorting list 'ydnt/global/' of type 'entry' with scheme 'ydnt' and locale 'en-US'
+[2626] Biber.pm:3505> INFO - No sort tailoring available for locale 'en-US'
+[2698] bbl.pm:608> INFO - Writing 'AHSparks_CV.bbl' with encoding 'UTF-8'
+[2758] bbl.pm:712> INFO - Output to AHSparks_CV.bbl
+[2759] Biber.pm:109> INFO - WARNINGS: 64

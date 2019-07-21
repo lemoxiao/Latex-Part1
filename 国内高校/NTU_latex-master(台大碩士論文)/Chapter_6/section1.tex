@@ -1,0 +1,103 @@
+%!TEX root = ../thesis.tex
+\section{模型數值化}
+\label{c:ch6.1}
+在本研究三個主要模型數值化前，本小節將介紹染色過程中的基本參數，但由於品質模型以及穩定度模型參數，從關聯分析中便可得到估計回歸式，故我們主要針對運作成本模型的參數，詳細介紹各個估計參數的數值，如表\ref{tab:table1}所示
+\begin{enumerate}[(1)]
+	\item \textbf{熱容量及熱傳導係數：}\\由於染液的水占較大的比例，且熱容量會比水還高，估計染液的熱容量以水的熱容量做為下限估計係數，也就是每公斤的水升溫一度所需要4200焦耳的熱量做為估計數值。同時目前在熱散失估計上同樣以水的熱傳導係數做為估計係數，為每分鐘一公尺深的染液下降一度所散失33.6焦耳的熱能做為估計數值。
+	\item \textbf{常溫及最高溫：}\\由紡織廠估計一般常溫以25度為準，而最高溫則分為淺色染程及深色染程所需要的溫度，淺色染程中以110度做為最高溫度，而深色染程中以130度做為最高溫度。
+	\item \textbf{單位電價：}\\由於台電提供每度的電價會依照所消耗的電量而做不同的調整，但在這裡目前以平均每度3元做為係數下限值的估計，每度電為1000瓦而一焦耳為3600千瓦$\cdot$秒，所以可以得知每焦耳所花費的費用為1/12,000,000元。
+	\item \textbf{單位水價及廢水處理單價：}\\在這裡目前以每度水10元的定值設為係數估計，而一度水為1000公斤，故也可以說每公斤的水約為0.01元。而紡織廠也提出每公斤單位水價基本上以每公斤0.011元計算，而廢水處理則以每公斤0.035元的方式計價。
+	\item \textbf{第一段及第三段升溫速率：}\\由於限制式內第二階段升溫速率不超過每分鐘上升4.5度，而且在第一階段及第三階段升溫速率有不可過慢，所以目前以每分鐘上升3度為估計速率。
+	\item \textbf{機台占用成本：}\\機台占用成本可能根據廠商對於此種儀器在這些時間當中能夠有多少產能，做為估算占用機台時間的成本。由紡織廠提供現場的單位時間占用機台成本，在這裡目前以每分鐘所占用機台時間成本以每分鐘29元做為估計值。
+\end{enumerate}
+\begin{table}[!htbp]
+	\caption{模型參數估計值對照表}
+	\center
+	\input{Graph/table1}
+	\label{tab:table1}
+\end{table}
+\newpage
+在表\ref{tab:table1}中的估計參數，與實際情況會根據不同的紡織廠的環境有所不同，再加上表中的參數我們假設電價以及水價不會隨著季節的變動而不同，也就是設定為平均定值，但經由與紡織產業討論後，並不會對模型造成影響；除了運作成本外，還有與紡織產業討論後得到每個參數因子的上下屆值，如表\ref{tab:table2}
+\begin{table}
+	\caption{染整參數因子上下界值表}
+	\center
+	\input{Graph/table2}
+	\label{tab:table2}
+\end{table}
+其中，分別為$x_A$、$x_B$、$x_C$、$x_D$以及$x_E$的上下界值。
+\\ \textbf{運作成本數值最小化模型}\\
+從理論上的模型架構以及方法套用，到本章節要討論，當實際的參數帶入理論模型中，是否可以得到比傳統經驗更優的結果，接下來我們會將理論模型數值化，再針對數值化過後的結果進行求解，以及與傳統比較各個模型中的優劣。
+將表\ref{tab:table1}代入變數轉換後的運作成本模型，我們以\ref{model:cost}式表示
+	\begin{equation}
+	\begin{array}{c}
+	\min_{x_A,x_B,x_C,x_D,x_E} \{ 820.7+19x_D+232.7x_E+29t+9.7x_Bt \} \\
+	51 \leq x_A \leq 61,\\
+	1.2 \leq x_B \leq 1.8,\\
+	76 \leq x_C \leq 86,\\
+	11 \leq x_D \leq 19,\\
+	14 \leq x_E \leq 26,\\
+	8.3 \leq t \leq 29.2,\\
+	x_C-x_A-x_B\cdot t = 0,\\
+	0 \leq f_{\Delta E}(x_A,x_B,x_C,x_D,x_E) \leq 0.8,\\
+	95 \leq f_{K/S}(x_A,x_B,x_C,x_D,x_E) \leq 105
+	\end{array}
+	\label{model:cost}
+\end{equation}
+從上面式子中，可以觀察到運作成本模型的目標函式都為正數，參數因子愈小，則運作成本就愈小，但在限制式中有對品質進行限制，在求解中就不會那麼的直觀了。
+\\ \textbf{穩定度數值模型}\\
+從染整製程參數關聯性分析，以推估後的$(\Delta E's\ norm)^2$結果帶入回歸模型，我們以\ref{model:robust}式表示
+\begin{equation}
+	\begin{array}{c}
+	\min_{x_A,x_B,x_C,x_D,x_E} \{ 
+	(4.87-0.015z_A-0.17x_B-0.038x_C-0.029x_D)^2+\\
+	(-0.015x_B+0.00014x_E)^2+(-0.038x_B+0.0027x_E)^2+\\
+	(-0.029x_B-0.0011x_E)^2+(-0.45697+0.000148x_A+\\
+	0.00271x_C-0.0011x_D+0.011x_E)^2 \} \\
+	51 \leq x_A \leq 61,\\
+	1.2 \leq x_B \leq 1.8,\\
+	76 \leq x_C \leq 86,\\
+	11 \leq x_D \leq 19,\\
+	14 \leq x_E \leq 26,\\
+	0 \leq f_{\Delta E}(x_A,x_B,x_C,x_D,x_E) \leq 0.8,\\
+	95 \leq f_{K/S}(x_A,x_B,x_C,x_D,x_E) \leq 105
+	\end{array}
+	\label{model:robust}
+	\hfill
+\end{equation}
+\textbf{品質數值模型}\\
+從染整製程參數關聯性分析，以推估後的$\Delta E$結果帶入回歸模型，我們以\ref{model:deltaE}式表示
+\begin{equation}
+	\begin{array}{c}
+	\min_{x_A,x_B,x_C,x_D,x_E} \{ 2.54 + 4.87x_B - 0.46x_E - 0.015x_Ax_B + \\ 
+	0.00015x_Ax_E - 0.038x_Bx_C - 0.029x_Bx_D + 0.0027x_Cx_D - 0.0011x_Dx_E - \\
+	0.086x_B^2 + 0.0056x_E^2 \} \\
+	51 \leq x_A \leq 61,\\
+	1.2 \leq x_B \leq 1.8,\\
+	76 \leq x_C \leq 86,\\
+	11 \leq x_D \leq 19,\\
+	14 \leq x_E \leq 26,\\
+	0 \leq f_{\Delta E}(x_A,x_B,x_C,x_D,x_E) \leq 0.8,\\
+	95 \leq f_{K/S}(x_A,x_B,x_C,x_D,x_E) \leq 105
+	\end{array}
+	\label{model:deltaE}
+	\hfill
+\end{equation}
+至於限制式中，兩個主要的品質指標，由估計後得到的$\Delta E$以及$K/S$數值函式分別為$f_{\Delta E}$估計函式
+\begin{equation*}
+	\begin{split}
+	f_{\Delta E}(x_A,x_B,x_C,x_D,x_E)=2.54 + 4.87x_B - 0.46x_E - \\
+	0.015x_Ax_B + 0.00015x_Ax_E - 0.038x_Bx_C - 0.029x_Bx_D + \\
+	0.0027x_Cx_D - 0.0011x_Dx_E - 0.086x_B^2 + 0.0056x_E^2 
+	\end{split}
+\end{equation*}
+以及$f_{K/S}$估計函式
+\begin{equation*}
+	\begin{array}{c}
+	f_{K/S}(x_A,x_B,x_C,x_D,x_E)=-57.72+4.46x_A-36.52x_B+3.69x_D+3.51x_E+\\
+	0.25x_Ax_B-0.042x_Ax_C-0.029x_Ax_D-0.019x_Ax_E+
+	0.15x_Bx_C+0.36x_Bx_D+\\
+	0.085x_Bx_E-0.022x_Cx_D-0.022x_Cx_E-0.0019x_Dx_E-0.0027x_A^2+\\
+	0.82x_B^2+0.018x_C^2-0.026x_D^2-0.025x_E^2 
+	\end{array}
+\end{equation*}
+得到數值化後的模型從\ref{model:cost}式$\sim$ \ref{model:deltaE}式後，在下一小節我們以序列二次規劃法對數值化的模型進行求解。

@@ -1,0 +1,27 @@
+%!TEX root = ../thesis.tex
+\tikzstyle{endpoint} = [rectangle,draw,rounded corners, minimum width=7em, minimum height=2em,text centered, draw=black]
+
+\tikzstyle{decision} = [diamond, draw, 
+    text width=5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, 
+    text width=7em, text centered, minimum height=2em]
+\tikzstyle{line} = [draw, -latex']
+    
+\begin{tikzpicture}[node distance = 1.5cm, auto]
+    % Place nodes
+    \node [endpoint] (init) {給定初值};
+    \node [block, below of=init] (identify) {確立搜尋方向};
+    \node [block, below of=identify] (step) {計算步伐};
+    \node [block, below of=step] (cal) {計算搜尋結果};
+    \node [decision, below of=cal] (decide) {是否最佳};
+    \node [endpoint, below of=decide,node distance=3cm] (con) {停止搜尋};
+    \node [block, right of=cal,node distance=4cm] (update) {迭代資訊更新};
+    % Draw edges
+    \path [line] (init) -- (identify);
+    \path [line] (identify) -- (step);
+    \path [line] (step) -- (cal);
+    \path [line] (cal) -- (decide);
+    \path [line] (decide) -- node {Yes}(con);
+    \path [line] (decide) -| node {No}(update);
+    \path [line] (update) |- (identify);
+\end{tikzpicture}

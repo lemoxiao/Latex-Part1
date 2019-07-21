@@ -1,0 +1,37 @@
+%\part{附录}
+
+
+\chapter{程序语言代码}
+\begin{flushleft}
+
+\section{Matlab语言}\label{chap1:Language}
+代码引用{\large\textbf{王建威}}学长本科毕业论文《蓝黑墨水字迹与双氧水反应过程颜色变化规律的研究》中Matlab源代码。
+\lstinputlisting[language=Matlab]{SourceCode/MainFuction.m}
+\section{C语言}\label{chap2:Language}
+感谢{\large\textbf{杨一萌}}同学提供的C语言代码源文件
+\lstinputlisting[language=C]{SourceCode/SunPosition.c}
+\section{C++ 语言}\label{chap3:Language}
+代码引用{\large\textbf{翁正平}}老师C+\hspace{0.09em}+实习课编写简单类代码。
+\lstinputlisting[language=C++]{SourceCode/Test.cpp}
+\section{Mathematica语言}\label{chap3:Language}
+注意，根据\verb|\listings|宏包官方文档显示，Mathematica文档的引用不能为.nb文件或.m文件,只对纯文本生效，因此，若要引入Mathematica语言，应将其保存为纯文本。
+\lstinputlisting[language=Mathematica]{SourceCode/Mathematica.txt}
+\section{Python}
+ 引自{\large\textbf{phus.lu, HewigOvens}}大大的 Google Appengine 云计算程序。
+\lstinputlisting[language=Python]{SourceCode/Python.py}
+\section{JavaScript}
+\lstdefinelanguage{JavaScript}{%        定义新语言，关键词
+     keywords={attributes, class, classend, do, empty, endif, endwhile, fail, function, functionend, if, implements, in, inherit, inout, not, of, operations, out, return, set, then, types, while, use},
+     keywordstyle=\color{blue}\bfseries,
+     ndkeywords={},
+     ndkeywordstyle=\color{yellow}\bfseries,
+     identifierstyle=\color{black},
+     sensitive=false,
+     comment=[l]{//},
+     commentstyle=\color{green}\ttfamily,
+     stringstyle=\color{red}\ttfamily
+  }
+引自{\large\textbf{phus.lu, HewigOvens}}大大的 Google Appengine 云计算程序。
+\lstinputlisting[language=JavaScript]{SourceCode/JavaScript.js}
+\end{flushleft}
+

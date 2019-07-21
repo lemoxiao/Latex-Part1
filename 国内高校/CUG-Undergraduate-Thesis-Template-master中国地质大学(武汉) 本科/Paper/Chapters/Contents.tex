@@ -1,0 +1,18 @@
+% !TEX encoding = System
+%-------目录------------------------
+% \thispagestyle{empty} %取消当前页眉
+%\setcounter{page}{1}
+
+%目录中的点间距太大,改变 \@dotsep 的值可以减小
+\makeatletter
+    \renewcommand{\@dotsep}{0.8}
+\makeatother
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+%\songti\zihao{5}\listoffigures %显示所有插图目录
+%\songti\zihao{5}\listoftables %显示所有表格目录
+%显示所有定理类目录
+%\listtheorems{definition}
+%\listtheorems{example}
+%\listtheorems{theorem}

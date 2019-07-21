@@ -1,0 +1,1975 @@
+Switches: 247
+// Extracted from WinEdt 5
+
+Name:DTX: Guard start
+  Start:1DTX: Percent
+  Stop:1>
+  Start1:
+  Start2:<*
+  Stop1:
+  Stop2:
+  Enabled:1DTX
+  Strict Priority:0
+  Priority:9
+  Color:46736
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:1
+  Indented:0
+  BOLN:0
+
+Name:DTX: Guard end
+  Start:1DTX: Percent
+  Stop:1>
+  Start1:
+  Start2:</
+  Stop1:
+  Stop2:
+  Enabled:1DTX
+  Strict Priority:0
+  Priority:9
+  Color:46672
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:1
+  Indented:0
+  BOLN:0
+
+Name:DTX: Guard (one line)
+  Start:1DTX: Percent
+  Stop:1>
+  Start1:
+  Start2:<
+  Stop1:
+  Stop2:
+  Enabled:1DTX
+  Strict Priority:0
+  Priority:9
+  Color:46800
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:1
+  Indented:0
+  BOLN:0
+
+Name:DTX: % Documentation
+  Start:1DTX: Percent
+  Stop:1
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1DTX
+  Strict Priority:0
+  Priority:5
+  Color:34256
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:1
+  Indented:0
+  BOLN:0
+
+Name:DTX: \begin{macrocode}
+  Start:1\
+  Stop:1
+  Start1:%    
+  Start2:begin{macrocode}
+  Stop1:
+  Stop2:
+  Enabled:1DTX
+  Strict Priority:0
+  Priority:6
+  Color:13318
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:0
+  Indented:0
+  BOLN:0
+
+Name:DTX: \end{macrocode}
+  Start:1\
+  Stop:1
+  Start1:%    
+  Start2:end{macrocode}
+  Stop1:
+  Stop2:
+  Enabled:1DTX
+  Strict Priority:0
+  Priority:6
+  Color:13318
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:0
+  Indented:0
+  BOLN:0
+
+Name:DTX: \begin{macro}
+  Start:0{
+  Stop:1}
+  Start1:\begin{macro}
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1DTX
+  Strict Priority:0
+  Priority:6
+  Color:5136
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:0
+  Indented:0
+  BOLN:0
+
+Name:DTX: \begin{environment}
+  Start:0{
+  Stop:1}
+  Start1:\begin{environment}
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1DTX
+  Strict Priority:0
+  Priority:6
+  Color:5125
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:0
+  Indented:0
+  BOLN:0
+
+Name:DTX: ^^A Comment
+  Start:1DTX: Hat
+  Stop:0
+  Start1:
+  Start2:^A
+  Stop1:
+  Stop2:
+  Enabled:1DTX
+  Strict Priority:1
+  Priority:9
+  Color:36289
+  Case Sensitive:0
+  Scope Flag:1
+  Scope:1
+  Indented:0
+  BOLN:0
+
+Name:DTX: |verbatim|
+  Start:0|
+  Stop:1|
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1DTX
+  Strict Priority:1
+  Priority:8
+  Color:9221
+  Case Sensitive:0
+  Scope Flag:0
+  Scope:1
+  Indented:0
+  BOLN:0
+
+Name:% TeX Comment
+  Start:1%
+  Stop:0
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX;BibTeX
+  Strict Priority:1
+  Priority:9
+  Color:3077
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:2
+  Indented:0
+  BOLN:0
+
+Name:\verb*"?"
+  Start:1"
+  Stop:1"
+  Start1:\verb*
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX|DTX
+  Strict Priority:1
+  Priority:9
+  Color:34756
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:2
+  Indented:0
+  BOLN:0
+
+Name:\verb"?"
+  Start:1"
+  Stop:1"
+  Start1:\verb
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX|DTX
+  Strict Priority:1
+  Priority:9
+  Color:34753
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:2
+  Indented:0
+  BOLN:0
+
+Name:\verb*|?|
+  Start:1|
+  Stop:1|
+  Start1:\verb*
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX|DTX
+  Strict Priority:1
+  Priority:9
+  Color:34756
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:2
+  Indented:0
+  BOLN:0
+
+Name:\verb|?|
+  Start:1|
+  Stop:1|
+  Start1:\verb
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX|DTX
+  Strict Priority:1
+  Priority:9
+  Color:34753
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:2
+  Indented:0
+  BOLN:0
+
+Name:\begin{verbatim*} .. \end{verbatim*}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{verbatim*}
+  Stop1:
+  Stop2:end{verbatim*}
+  Enabled:1TeX|DTX
+  Strict Priority:1
+  Priority:9
+  Color:34241
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:4
+  Indented:0
+  BOLN:0
+
+Name:\begin{verbatim} .. \end{verbatim}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{verbatim}
+  Stop1:
+  Stop2:end{verbatim}
+  Enabled:1TeX|DTX
+  Strict Priority:1
+  Priority:9
+  Color:34241
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:4
+  Indented:0
+  BOLN:0
+
+Name:\begin{gather*} .. \end{gather*}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{gather*}
+  Stop1:
+  Stop2:end{gather*}
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34244
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:1
+  BOLN:0
+
+Name:\begin{gather} .. \end{gather}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{gather}
+  Stop1:
+  Stop2:end{gather}
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34244
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:1
+  BOLN:0
+
+Name:\begin{equation*} .. \end{equation*}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{equation*}
+  Stop1:
+  Stop2:end{equation*}
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34244
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:1
+  BOLN:0
+
+Name:\begin{equation} .. \end{equation}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{equation}
+  Stop1:
+  Stop2:end{equation}
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34244
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:1
+  BOLN:0
+
+Name:\begin{align*} .. \end{align*}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{align*}
+  Stop1:
+  Stop2:end{align*}
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34244
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:1
+  BOLN:0
+
+Name:\begin{align} .. \end{align}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{align}
+  Stop1:
+  Stop2:end{align}
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34244
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:1
+  BOLN:0
+
+Name:\begin{eqnarray*} .. \end{eqnarray*}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{eqnarray*}
+  Stop1:
+  Stop2:end{eqnarray*}
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34244
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:1
+  BOLN:0
+
+Name:\begin{eqnarray} .. \end{eqnarray}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{eqnarray}
+  Stop1:
+  Stop2:end{eqnarray}
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34244
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:1
+  BOLN:0
+
+Name:\begin{description} .. \end{description}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{description}
+  Stop1:
+  Stop2:end{description}
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34256
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:4
+  Indented:1
+  BOLN:0
+
+Name:\begin{enumerate} .. \end{enumerate}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{enumerate}
+  Stop1:
+  Stop2:end{enumerate}
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34256
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:4
+  Indented:1
+  BOLN:0
+
+Name:\begin{tabbing} .. \end{tabbing}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{tabbing}
+  Stop1:
+  Stop2:end{tabbing}
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34256
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:4
+  Indented:1
+  BOLN:0
+
+Name:\begin{tabular} .. \end{tabular}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{tabular}
+  Stop1:
+  Stop2:end{tabular}
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34241
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:4
+  Indented:1
+  BOLN:0
+
+Name:\begin{tabular*} .. \end{tabular*}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{tabular*}
+  Stop1:
+  Stop2:end{tabular*}
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34241
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:4
+  Indented:1
+  BOLN:0
+
+Name:\begin{itemize} .. \end{itemize}
+  Start:0\
+  Stop:1\
+  Start1:
+  Start2:begin{itemize}
+  Stop1:
+  Stop2:end{itemize}
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34256
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:4
+  Indented:1
+  BOLN:0
+
+Name:\begin{figure} .. \end{figure}
+  Start:1\
+  Stop:1\
+  Start1:
+  Start2:begin{figure}
+  Stop1:
+  Stop2:end{figure}
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34252
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:1
+  BOLN:0
+
+Name:\\[?]
+  Start:1\
+  Stop:1]
+  Start1:
+  Start2:\[
+  Stop1:
+  Stop2:
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:6
+  Color:1038
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:1
+  Indented:0
+  BOLN:0
+
+Name:\[?\]
+  Start:1\
+  Stop:1\
+  Start1:
+  Start2:[
+  Stop1:
+  Stop2:]
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34256
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\(?\)
+  Start:1\
+  Stop:1\
+  Start1:
+  Start2:(
+  Stop1:
+  Stop2:)
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34758
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\\
+  Start:1\
+  Stop:0FullSet
+  Start1:
+  Start2:\
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:6
+  Color:1036
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:0
+  Indented:0
+  BOLN:0
+
+Name:\
+  Start:1\
+  Stop:0~Alpha
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:1037
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:0
+  Indented:0
+  BOLN:0
+
+Name:$$?$$
+  Start:1$
+  Stop:1$
+  Start1:
+  Start2:$
+  Stop1:
+  Stop2:$
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34244
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:$?$
+  Start:1$
+  Stop:1$
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX|DTX
+  Strict Priority:0
+  Priority:5
+  Color:34758
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\begin{?}
+  Start:0{
+  Stop:1}
+  Start1:\begin
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9218
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:1
+  Indented:0
+  BOLN:0
+
+Name:\end{?}
+  Start:0{
+  Stop:1}
+  Start1:\end
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9218
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:1
+  Indented:0
+  BOLN:0
+
+Name:\documentclass{?}
+  Start:0[..]{...}
+  Stop:1}
+  Start1:\documentclass
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:1025
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\usepackage{?}
+  Start:0[..]{...}
+  Stop:1}
+  Start1:\usepackage
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:1036
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\include{?}
+  Start:0{
+  Stop:1}
+  Start1:\include
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:1026
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\input{?}
+  Start:0{
+  Stop:1}
+  Start1:\input
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:1036
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\bibliography{?}
+  Start:0{
+  Stop:1}
+  Start1:\bibliography
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:1025
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\bibliographystyle{?}
+  Start:0{
+  Stop:1}
+  Start1:\bibliographystyle
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:1038
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\index{?}
+  Start:0{
+  Stop:1}
+  Start1:\index
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9230
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\label{?}
+  Start:0{
+  Stop:1}
+  Start1:\label
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9230
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\pageref{?}
+  Start:0{
+  Stop:1}
+  Start1:\pageref
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9220
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\eqref{?}
+  Start:0{
+  Stop:1}
+  Start1:\eqref
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9220
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\ref{?}
+  Start:0{
+  Stop:1}
+  Start1:\ref
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9220
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\nocite{?}
+  Start:1{
+  Stop:1}
+  Start1:\nocite
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9217
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\cite{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\cite
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9217
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\citet{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\citet
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9217
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\citet*{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\citet*
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9217
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\citep{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\citep
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9217
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\citep*{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\citep*
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9217
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\citealt{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\citealt
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9217
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\citealt*{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\citealt*
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9217
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\citealp{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\citealp
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9217
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\citealp*{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\citealp*
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9217
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\footcite{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\footcite
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9217
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:{\em ?} (obsolete)
+  Start:0{
+  Stop:1}
+  Start1:
+  Start2:\em
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:3088
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\emph{?}
+  Start:0{
+  Stop:1}
+  Start1:\emph
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:3088
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\textbf{?}
+  Start:0{
+  Stop:1}
+  Start1:\textbf
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5136
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\textit{?}
+  Start:0{
+  Stop:1}
+  Start1:\textit
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:3073
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\textsl{?}
+  Start:0{
+  Stop:1}
+  Start1:\textsl
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:3076
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\texttt{?}
+  Start:0{
+  Stop:1}
+  Start1:\textsl
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:34756
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\underline{?}
+  Start:0{
+  Stop:1}
+  Start1:\underline
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9232
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\footnote{?}
+  Start:0{
+  Stop:1}
+  Start1:\footnote
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:34756
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\chapter*{?}
+  Start:0{
+  Stop:1}
+  Start1:\chapter*
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5121
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+  
+Name:\BiChapter*{?}
+  Start:0{
+  Stop:1}
+  Start1:\BiChapter*
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5121
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+  
+Name:\chapter{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\chapter
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5121
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+  
+Name:\BiChapter{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\BiChapter
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5121
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+  
+Name:\section*{?}
+  Start:0{
+  Stop:1}
+  Start1:\section*
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5124
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\BiSection*{?}
+  Start:0{
+  Stop:1}
+  Start1:\BiSection*
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5124
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\section{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\section
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5124
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\BiSection{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\BiSection
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5124
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\subsection*{?}
+  Start:0{
+  Stop:1}
+  Start1:\subsection*
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5126
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\BiSubsection*{?}
+  Start:0{
+  Stop:1}
+  Start1:\BiSubsection*
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5126
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\subsection{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\subsection
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5126
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\BiSubsection{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\BiSubsection
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5126
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\subsubsection*{?}
+  Start:0{
+  Stop:1}
+  Start1:\subsubsection*
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5136
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\BiSubsubsection*{?}
+  Start:0{
+  Stop:1}
+  Start1:\BiSubsubsection*
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5136
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\subsubsection{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\subsubsection
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5136
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\BiSubsubsection{?}
+  Start:1[..]{...}
+  Stop:1}
+  Start1:\BiSubsubsection
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:5136
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\href{?}
+  Start:0{
+  Stop:1}
+  Start1:\href
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9228
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\url{?}
+  Start:0{
+  Stop:1}
+  Start1:\url
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:9228
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\RCSMark{?}
+  Start:0{
+  Stop:1}
+  Start1:\RCSMark
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:33472
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\RCSRem{?}
+  Start:0{
+  Stop:1}
+  Start1:\RCSRem
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:3076
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\RCSAdd{?}
+  Start:0{
+  Stop:1}
+  Start1:\RCSAdd
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:1036
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:\RCSDel{?}
+  Start:0{
+  Stop:1}
+  Start1:\RCSDel
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:1033
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:{?}
+  Start:0{...}
+  Stop:1}
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:1040
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:HTML/XML Comment
+  Start:1<
+  Stop:1>
+  Start1:
+  Start2:!--
+  Stop1:--
+  Stop2:
+  Enabled:1HTML;XML
+  Strict Priority:1
+  Priority:9
+  Color:3077
+  Case Sensitive:0
+  Scope Flag:1
+  Scope:4
+  Indented:0
+  BOLN:0
+
+Name:&HTMLchar;
+  Start:0&
+  Stop:1;
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:0HTML
+  Strict Priority:0
+  Priority:5
+  Color:1038
+  Case Sensitive:0
+  Scope Flag:0
+  Scope:1
+  Indented:0
+  BOLN:0
+
+Name:"HREF"
+  Start:0"
+  Stop:1"
+  Start1:HREF=
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1HTML
+  Strict Priority:0
+  Priority:6
+  Color:9228
+  Case Sensitive:0
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:<H1>..</H1>
+  Start:0<
+  Stop:0<
+  Start1:
+  Start2:H1>
+  Stop1:
+  Stop2:/H1>
+  Enabled:1HTML
+  Strict Priority:0
+  Priority:5
+  Color:5124
+  Case Sensitive:0
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:<H2>..</H2>
+  Start:0<
+  Stop:0<
+  Start1:
+  Start2:H2>
+  Stop1:
+  Stop2:/H2>
+  Enabled:1HTML
+  Strict Priority:0
+  Priority:5
+  Color:5125
+  Case Sensitive:0
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:<H3>..</H3>
+  Start:0<
+  Stop:0<
+  Start1:
+  Start2:H3>
+  Stop1:
+  Stop2:/H3>
+  Enabled:1HTML
+  Strict Priority:0
+  Priority:5
+  Color:5126
+  Case Sensitive:0
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:<H4>..</H4>
+  Start:0<
+  Stop:0<
+  Start1:
+  Start2:H4>
+  Stop1:
+  Stop2:/H4>
+  Enabled:1HTML
+  Strict Priority:0
+  Priority:5
+  Color:5121
+  Case Sensitive:0
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:<i>..</i>
+  Start:0<
+  Stop:0<
+  Start1:
+  Start2:i>
+  Stop1:
+  Stop2:/i>
+  Enabled:1HTML
+  Strict Priority:0
+  Priority:5
+  Color:3088
+  Case Sensitive:0
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:<b>..</b>
+  Start:0<
+  Stop:0<
+  Start1:
+  Start2:b>
+  Stop1:
+  Stop2:/b>
+  Enabled:1HTML
+  Strict Priority:0
+  Priority:5
+  Color:5136
+  Case Sensitive:0
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:<em>..</em>
+  Start:0<
+  Stop:0<
+  Start1:
+  Start2:em>
+  Stop1:
+  Stop2:/em>
+  Enabled:1HTML
+  Strict Priority:0
+  Priority:5
+  Color:3088
+  Case Sensitive:0
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:<tt>..</tt>
+  Start:0<
+  Stop:0<
+  Start1:
+  Start2:tt>
+  Stop1:
+  Stop2:/tt>
+  Enabled:1HTML
+  Strict Priority:0
+  Priority:5
+  Color:1030
+  Case Sensitive:0
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:<strong>..</strong>
+  Start:0<
+  Stop:0<
+  Start1:
+  Start2:strong>
+  Stop1:
+  Stop2:/strong>
+  Enabled:1HTML
+  Strict Priority:0
+  Priority:5
+  Color:5136
+  Case Sensitive:0
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:<!...>
+  Start:0<
+  Stop:0>
+  Start1:
+  Start2:!
+  Stop1:
+  Stop2:
+  Enabled:1HTML
+  Strict Priority:0
+  Priority:6
+  Color:1037
+  Case Sensitive:0
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:<...>
+  Start:0<
+  Stop:0>
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1HTML
+  Strict Priority:0
+  Priority:6
+  Color:1030
+  Case Sensitive:0
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:"EDT String"
+  Start:0EDT "
+  Stop:1EDT "
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1EDT;INI
+  Strict Priority:1
+  Priority:6
+  Color:1026
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:'EDT String'
+  Start:0EDT ' (start)
+  Stop:1EDT '
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1EDT
+  Strict Priority:0
+  Priority:6
+  Color:1030
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:`EDT String`
+  Start:0EDT `
+  Stop:1EDT `
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1EDT
+  Strict Priority:0
+  Priority:6
+  Color:1027
+  Case Sensitive:1
+  Scope Flag:0
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name::EDT Label:
+  Start:1:
+  Stop:1:
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1EDT
+  Strict Priority:1
+  Priority:6
+  Color:5132
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:1
+  Indented:0
+  BOLN:1
+
+Name::EDT Label: (Indented)
+  Start:1Spaces:
+  Stop:1:
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1EDT
+  Strict Priority:1
+  Priority:6
+  Color:5133
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:1
+  Indented:0
+  BOLN:0
+
+Name://Comment
+  Start:1//
+  Stop:1
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1EDT
+  Strict Priority:1
+  Priority:9
+  Color:3077
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:1
+  Indented:0
+  BOLN:0
+
+Name:/* C++ Comment */
+  Start:1/
+  Stop:1/
+  Start1:
+  Start2:*
+  Stop1:*
+  Stop2:
+  Enabled:0
+  Strict Priority:1
+  Priority:9
+  Color:3077
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:X Fortran Comment
+  Start:1Alpha
+  Stop:0
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:0Fortran
+  Strict Priority:0
+  Priority:9
+  Color:3077
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:1
+  Indented:0
+  BOLN:1
+

@@ -1,0 +1,52 @@
+% !TEX TS-program = luatex
+% Awesome Source CV LaTeX Template
+%
+% This template is originally maintained by Christophe ROGER from:
+% https://github.com/darwiin/awesome-neue-latex-cv
+%
+% This version is based on the modification from:
+% https://github.com/innerTide/awesome-neue-latex-cv-extended
+% Author:
+% Zhihao Zhou
+%
+%
+
+%roman numeral
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\documentclass[localFont, alternative]{awesome-source-cv}
+
+% Name should be {<Given name>} {<Family name>}.
+% The display order is automatically reversed with Chinese support is enabled.
+
+\name{Zhihao}{Zhou}
+\photo{2.6cm}{figs/photo}
+\tagline{M.Sc. of Electrical Engineering}
+\socialinfo{
+	\smartphone{+31(0)651655432}
+	\email{zzh2616@hotmail.com}\\
+	\linkedin{zhihao-zhou-cn1992}\\
+  %   \linkedin{yuefeng-wu-cn1116}
+	% \github{innerTide}\\
+	\address{Burgwal 21, 2611 GE, Delft, the Netherlands}\\
+	\infos{Born on \textbf{Mar. 10, 1992} in \textbf{Shandong, China}}\\
+}
+%------------------------------------------
+\begin{document}
+
+% \makecvheader
+\makecvheaderwithoutphoto
+%--------------------SECTIONS-----------------------------------
+\input{secs/education}
+\input{secs/work_experience}
+\input{secs/projects}
+% \input{secs/papers}
+\input{secs/extracurricular}
+\input{secs/skills}
+\input{secs/language}
+\input{secs/awards}
+
+\end{document}

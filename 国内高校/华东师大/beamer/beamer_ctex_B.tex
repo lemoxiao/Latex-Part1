@@ -1,0 +1,333 @@
+%
+% 用 xelatex 编译
+%
+\documentclass[10pt,compress,t,noamsthm,notheorem,handout,table]{ctexbeamer}
+\usetheme{Boadilla}
+\useinnertheme{circles}
+\useoutertheme{shadow}
+\usecolortheme{seahorse}
+\usefonttheme[onlymath]{serif}
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{myfootline}{bg=white,fg=blue}
+\definecolor{myfoot}{rgb}{0.5,0.2,0.5}
+\definecolor{darkblue}{rgb}{0.1,0,0.85}
+\setbeamertemplate{headline}
+  { \leavevmode\begin{beamercolorbox}[wd=\paperwidth,ht=1.25ex,dp=1ex,left]{}
+    \end{beamercolorbox}}
+\setbeamertemplate{footline}% 自定义页脚
+  { \leavevmode\mbox{%
+    \begin{beamercolorbox}[wd=.75\paperwidth,ht=2.25ex,dp=1ex,left]{myfootline}%
+        \rule{2em}{0pt}\color{myfoot}\ttfamily\scriptsize%
+        %\insertshortauthor~(\insertshortinstitute)
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,right]{myfootline}%
+       {\color{myfoot}\ttfamily\scriptsize\insertframenumber{}/%
+        \inserttotalframenumber\hspace*{3ex}}
+    \end{beamercolorbox}}
+    \vskip0pt }
+
+\setbeamercolor{frametitle}{fg=blue,bg=white}
+\setbeamertemplate{frametitle}{%
+  \leavevmode\linespread{1}\large{\insertframetitle}\par
+  \color{structure.fg!30!bg}\rule[6pt]{\linewidth}{3pt}\par\vspace{-1.0em}}
+
+% \setbeamertemplate{blocks}[default] % beamer块（含定理类环境）不要阴影
+\setbeamertemplate{bibliography entry title}{}{}
+\setbeamertemplate{bibliography entry location}{}{}
+\setbeamertemplate*{bibliography entry note}{}{}
+\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
+
+\setbeamercolor{bluebox}{fg=black,bg=blue!10}
+\setbeamercolor{redbox}{fg=black,bg=red!10}
+\newenvironment{Boxblue}[1][\textwidth]
+  {\begin{beamercolorbox}[sep=0.1em,shadow=true,wd=#1,rounded=true,center]{bluebox}}
+  {\end{beamercolorbox}}
+\newenvironment{Boxred}[1][\textwidth]
+  {\begin{beamercolorbox}[sep=0.1em,shadow=true,wd=#1,rounded=true,center]{redbox}}
+  {\end{beamercolorbox}}
+
+%%%%% ===== 宏包 =====
+\usepackage{amsmath,amssymb,amsfonts,bm}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{pdfborder=001,colorlinks=true,linkcolor=darkblue,urlcolor=blue}
+\usepackage{bbding}
+\newcommand{\Bullet}{{\fontsize{6pt}{6pt}\selectfont\CircleSolid}}
+\newcommand{\Hand}{{\fontsize{8pt}{6pt}\selectfont\HandRight}}
+\newcommand{\zhu}{{\color{blue!40}\Bullet}}
+\newcommand{\zhuu}{{\color{red!80}\Hand}}
+\newcommand{\labeli}{\zhu}
+\newenvironment{myitem}
+  {\begin{list}{{\hfill\raisebox{0pt}{\labeli}}}{%
+    \setlength{\leftmargin}{1.2em}\labelwidth0.8em\labelsep.4em%
+    \itemsep1ex\parsep2pt\itemindent0pt\topsep0pt}}{\end{list}}
+\newenvironment{subitem}
+  {\begin{list}{{\hfill\raisebox{0pt}{\zhuu}}}{%
+    \setlength{\leftmargin}{1.2em}\labelwidth0.8em\labelsep.4em%
+    \itemsep0ex\parsep2pt\itemindent0pt\topsep0pt}}{\end{list}}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{stmaryrd}
+\usepackage{algorithm,algpseudocode,caption}
+
+\usepackage[framemethod=tikz]{mdframed}
+\newmdenv[linecolor=green,middlelinewidth=1pt,%
+          roundcorner=3pt,backgroundcolor=yellow!5,%
+          innertopmargin=0.5em,innerbottommargin=0.5em,%
+          innerleftmargin=3pt,innerrightmargin=3pt,%
+          skipbelow=0.5em,skipabove=1em,%
+          splittopskip=\topskip]{Block}
+\newmdenv[linecolor=green,middlelinewidth=0.5pt,%
+          %outerlinewidth=0.5pt,skipabove=0pt,
+          roundcorner=3pt,backgroundcolor=white,%
+          innerbottommargin=3pt,innerrightmargin=5pt,%
+          innerleftmargin=5pt,leftmargin=0ex]{mathbox}
+\newmdenv[linecolor=blue!5!green,middlelinewidth=0.5pt,%
+          roundcorner=3pt,backgroundcolor=yellow!5,%
+          % frametitle={Hello},frametitlebackgroundcolor=green!50,%
+          % skipabove=2pt,skipbelow=2pt,%
+          innerleftmargin=3pt,leftmargin=0ex]{notebox}
+\newmdenv[linecolor=white,font={\scriptsize},%
+          fontcolor=blue!85,backgroundcolor=yellow!5,%
+          skipabove=1ex,skipbelow=0pt,innerbottommargin=0.5ex,%
+          innerleftmargin=3pt,leftmargin=1em]{myref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\thefootnote}{}% 不要编号
+\setbeamertemplate{footnote}{% 首行不缩进
+  \noindent\insertfootnotemark%
+  \scriptsize\color{blue!85!green!85}\insertfootnotetext\par\kern1ex}
+\renewcommand\footnoterule%    更改横线属性：长度，粗细，颜色
+  {\color{red}\kern-3pt\rule{0.4\linewidth}{0.5pt}\par\kern2.6pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%===== 定理环境
+\usepackage[amsmath,thref,thmmarks,hyperref]{ntheorem}
+\theorempreskipamount1.2em  % spacing before the environment
+\theorempostskipamount0em % spacing after the environment
+%\theorempostwork{\noindent}
+\theoremstyle{nonumberbreak}%{nonumberplain}
+\theoremheaderfont{\color{blue}\upshape}
+%\theorembodyfont{\kaishu\color{black}}
+\theoremindent0em
+\theoremseparator{\hspace{0.2em}}
+\theoremnumbering{arabic}
+\colorlet{thmcolor}{green}
+\newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
+    roundcorner=3pt,backgroundcolor=white,%
+    innertopmargin=0.5em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{theorem}%
+    {定理}
+\newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
+    roundcorner=3pt,backgroundcolor=white,%
+    innertopmargin=0.5em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{corollary}%
+    {推论}
+\newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
+    roundcorner=3pt,backgroundcolor=white,%
+    innertopmargin=0.5em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{lemma}%
+    {引理}
+\newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
+    roundcorner=3pt,backgroundcolor=white,%
+    innertopmargin=0.5em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{definition}%
+    {定义}
+%
+%%\theoremheaderfont{\normalfont\itshape\color{blue}}
+%\theorembodyfont{\normalfont\rmfamily\color{black}}
+%\newtheorem{example}{\color{blue} Example}
+%
+%\newenvironment{proof}[1][proof]%
+%  {\par\noindent\normalfont{\hei\color{blue} #1.} \upshape}
+%  {\mbox{}\hfill\scalebox{1.2}{\ensuremath{\Box}}\medskip}
+
+\usepackage[ntheorem]{empheq}
+\usepackage[many]{tcolorbox}
+\tcbset{highlight math %
+  style={enhanced, colframe=blue!40,colback=yellow!20,arc=4pt,boxrule=1pt}}
+\newtcbox{\tcbhighmathinner}[1][]{nobeforeafter,math upper,tcbox raise base,
+enhanced,left=1ex,right=1ex,top=1ex,bottom=1ex,boxsep=0mm,
+colframe=green,colback=blue!5!white,arc=4pt,boxrule=1pt,#1}
+
+%\renewcommand{\baselinestretch}{1.1}
+\linespread{1.3}
+\setlength{\parskip}{1ex}
+%===== user defined commands =============================================
+\newcommand{\bbm}{\begin{bmatrix}}
+\newcommand{\ebm}{\end{bmatrix}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\myem}[1]{\textcolor{blue}{#1}}
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rn}{\mathbb{R}^{n\times n}}
+\newcommand{\IA}{\mathcal{A}}
+\newcommand{\IK}{\mathcal{K}}
+\newcommand{\lam}{\lambda}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\dis}{\displaystyle}
+\newcommand{\mycite}[1]{\textcolor{blue!50!white}{\upshape{#1}}}
+\renewcommand{\d}{\,\mathrm{d}}
+%\renewcommand{\T}{\intercal}
+
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rank}{rank}
+
+\begin{document}
+
+\title{\zihao{2} 学术报告标题}
+%  \subtitle{也可以有个副标题}
+
+\author{\zihao{-4} 报告人姓名}
+
+\institute{\zihao{-4}华东师范大学~数学系}
+
+\date{2017年5月}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}{内容提要}
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{背景介绍}
+
+% 在每节前插入目录
+\AtBeginSection[]{\frame{\tableofcontents[currentsection,hideallsubsections]}}
+
+\begin{frame}
+  \frametitle{背景介绍}
+\begin{myitem}
+\item 考虑问题
+    $$ a^2+b^2=c^2.$$
+
+\bigskip
+\item 问题应用背景
+    \begin{subitem}
+        \item  应用背景1
+        \item  应用背景2
+        \item  应用背景3
+        \item $\cdots\ \cdots$
+    \end{subitem}
+\end{myitem}
+\end{frame}
+
+\section{定义与定理}
+
+\begin{frame}
+  \frametitle{定义与定理}
+
+  \begin{definition}[连续]
+    这是连续的定义, 这是连续的定义, 这是连续的定义,
+    这是连续的定义, 这是连续的定义, 这是连续的定义,
+    这是连续的定义, 这是连续的定义, 这是连续的定义.
+  \end{definition}
+  \bigskip
+
+  \begin{theorem}[中值定理]
+    这是中值定理, 这是中值定理, 这是中值定理, 这是中值定理,
+    这是中值定理, 这是中值定理, 这是中值定理, 这是中值定理,
+    这是中值定理, 这是中值定理, 这是中值定理, 这是中值定理,
+    这是中值定理, 这是中值定理, 这是中值定理, 这是中值定理.
+  \end{theorem}
+\end{frame}
+
+\section{算法描述}
+
+\begin{frame}{算法描述}
+
+  基本思想 基本思想 基本思想 基本思想 基本思想 基本思想
+  基本思想 基本思想 基本思想 基本思想 基本思想 基本思想
+
+  基本思想 基本思想 基本思想 基本思想 基本思想 基本思想
+  基本思想 基本思想 基本思想 基本思想 基本思想 基本思想
+
+\begin{myitem}
+  \item 主要过程
+  \begin{subitem}
+    \item  xxxx
+    \item  xxxxx
+  \end{subitem}
+
+  \bigskip
+
+  \item 主要优点
+  \begin{subitem}
+    \item  xxxx
+    \item  xxxxx
+  \end{subitem}
+\end{myitem}
+\end{frame}
+
+\subsection{算法 1}
+\begin{frame}{算法 1}
+
+  算法 1
+
+\end{frame}
+
+
+
+\section{数值实验}
+\newcolumntype{A}{>{\columncolor{yellow!10!white}}c}
+\newcolumntype{B}{>{\columncolor{blue!5!white}}c}
+\newcolumntype{C}{>{\columncolor{green!10!white}}c}
+
+\begin{frame}{数值算例}
+
+\begin{center}
+{Numerical results for $\tcbhighmathinner{\beta=0.1}$}\smallskip
+
+\begin{tabular}{AABBCCBB} \toprule
+    &&\multicolumn{2}{B}{GMRES(C)}
+    &\multicolumn{2}{C}{GMRES(L)}
+    &\multicolumn{2}{B}{GMRES(P)} \\ \cline{3-8}
+ $\theta$ & $N$ & Iter & CPU & Iter & CPU & Iter & CPU \\\hline
+  0.5
+ & $2^{11}$ &  33&    0.04 &  13&    0.02 &  12&   0.01 \\
+ & $2^{12}$ &  33&    0.12 &  14&    0.04 &  12&   0.03 \\
+ & $2^{13}$ &  33&    0.26 &  14&    0.09 &  12&   0.08 \\
+ & $2^{14}$ &  33&    0.53 &  15&    0.19 &  12&   0.15 \\ \hline
+  0.8
+ & $2^{11}$ &  33&    0.04 &  13&    0.02 &  12&   0.01 \\
+ & $2^{12}$ &  33&    0.11 &  14&    0.04 &  12&   0.03 \\
+ & $2^{13}$ &  33&    0.25 &  15&    0.10 &  12&   0.08 \\
+ & $2^{14}$ &  33&    0.53 &  16&    0.21 &  12&   0.15 \\ \bottomrule
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+
+\section{结论与展望}
+\begin{frame}{结论与展望}
+
+   这里是结论与展望 conclusion 和 remarks
+
+\end{frame}
+
+
+\begin{frame}[c,plain]
+\begin{center}
+\Huge\color{red}\heiti\bfseries 谢\quad 谢!
+
+  Thank you!
+\end{center}
+\end{frame}
+
+\end{document} 

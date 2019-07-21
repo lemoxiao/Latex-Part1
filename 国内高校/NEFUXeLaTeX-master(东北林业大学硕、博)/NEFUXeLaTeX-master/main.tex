@@ -1,0 +1,73 @@
+%!Tex Program = xelatex
+% -*-coding: utf-8 -*-
+%  \author{初砚硕}
+\def\usewhat{xelatex} % 定义编译方式 pdflatex, dvipdfmx, or xelatex____ps:只有xelatex 能使用Arial字体
+
+\def\version{1.1} % 模板版本号
+
+\def\xueke{Engineering} % 定义学科 Engineering, Science, Management, or Arts
+
+\documentclass[12pt,openany,twoside]{book}
+
+\input{setup/package.tex} % 引用的宏包
+
+\graphicspath{{figures/}} %定义所有的eps文件在 figures 子目录下
+
+
+\begin{document}
+
+\input{setup/Definition} % 文本格式定义
+\input{setup/format}
+\fancyhead[CO]{\song \xiaowu \leftmark}
+\fancyhead[CE]{\song \xiaowu \leftmark}
+\frontmatter
+\input{preface/cover} % 封面
+
+%% 目录
+
+\defaultfont
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\pdfbookmark[0]{目~~~~录}{mulu}
+\tableofcontents    % 中文目录
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+%\addtocontents{toc}{\protect\vskip1\baselineskip} % 中文目录增加空行
+
+\clearpage{\pagestyle{empty}\cleardoublepage}     % 清除目录后面空页的页眉和页脚
+
+\mainmatter\defaultfont\sloppy\raggedbottom
+\fancyhead[CO]{\song \xiaowu 东北林业大学硕士学位论文}
+\fancyhead[CE]{\song \xiaowu \leftmark}%
+\titleformat{\chapter}{\center\xiaoer\bf\hei\arial}{\chaptername}{0.5em}{}% 实现英文摘要字体和正文章标题字体不一样
+\titlespacing{\chapter}{0pt}{-6.35mm}{15pt}
+
+
+\include{body/content}
+
+\include{body/conclusion}   % 结论
+%参考文献
+
+\fancyhead[CO]{\song \xiaowu \leftmark}
+\fancyhead[CE]{\song \xiaowu \leftmark}%
+\defaultfont
+
+\bibliographystyle{chinesebst2005_UTF8}%
+\addcontentsline{toc}{chapter}{参考文献}      % 参考文献加入到中文目录
+\addcontentsline{toe}{chapter}{\bfseries  References} % 参考文献加入到英文目录
+\addtolength{\bibsep}{-0.8em}
+%\nocite{*}
+\renewcommand\bibname{参考文献}%book 类
+%如果文档类是article之类的, 用\renewcommand\refname{参考文献}
+%如果文档类是book之类的, 用\renewcommand\bibname{参考文献}
+
+\bibliography{reference/reference}
+
+\include{appendix/appendix}% 致谢
+\include{appendix/publications}    % 所发文章
+\include{appendix/acknowledgements}% 致谢
+\include{appendix/Authorization}   % 承诺
+
+\clearpage
+
+
+\end{document}

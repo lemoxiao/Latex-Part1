@@ -1,0 +1,112 @@
+\documentclass{resume}
+\usepackage{float}
+\usepackage{tabularx}
+
+\author{Jasper Chan}
+\address{Windsor Court, Richmond, British Columbia, V6V 2W6}
+\phone{(778) 848-3610}
+\email{jasper.chan@alumni.ubc.ca}
+\extras{
+	Github: \href{https://github.com/Gigahawk}{Gigahawk}
+}
+\begin{document}
+\maketitle
+
+\TechnicalSkills
+\begin{table}[H]
+	\centering
+	\begin{tabularx}{\textwidth}{X X X}
+		\textbf{Electrical Equipment} & \textbf{Programming Languages} & \textbf{Software} \\
+		\begin{itemize}
+			\item Oscilloscope
+			\item Signal Generator
+			\item Multimeter
+			\item Soldering Iron
+			\item Perfboard/breadboard
+		\end{itemize} & 
+		\begin{itemize}
+			\item C
+			\item Java
+			\item JavaScript
+			\item Python
+			\item Qt/QML
+			\item C\#
+			\item MATLAB
+		\end{itemize} &
+		\begin{itemize}
+			\item SOLIDWORKS
+			\item Inventor
+			\item EAGLE
+			\item Git
+			\item Linux (multiple distros)
+		\end{itemize}
+	\end{tabularx}
+\end{table}
+\vspace{-4em} % Ugly hack for spacing
+\CoopStatus
+
+\CoopStatusFormat{Mechanical Engineering}{3}{May, 2020}{0}{4 or 8}{January, 2018}
+
+\TechnicalProjects
+
+\TechnicalProject{Custom 3D Printer}{December 2016 -- Present}
+\begin{itemize}
+	\item Lead a team of 5 in building an i3 based 3D printer
+	\item Designed custom mounting solutions to enable compatibility with readily availible parts
+	\item Added a servo actuated pen to the printhead, allowing for multicolor prints without swapping filaments
+\end{itemize} 
+
+\TechnicalProject{Electric Locomotive Prototype}{January 2018}
+\begin{itemize}
+	\item Working with a group of 6 other students, worked through a formal engineering design process to build a scale train for class wide competition
+	\item Implemented an optical encoder system to allow the train to be aware of its position along the track, allowing the full power output of the motors to be utilized on straightaways
+\end{itemize}
+
+\TechnicalProject{Offline Transit App}{June 2017 -- Present}
+\begin{itemize}
+	\item Wrote a Python script to scrape the Translink API for every bus stop and corresponding routes into an SQLite database
+	\item Built an Android app using the database that shows the user nearby bus stops with buttons to query individual bus times
+\end{itemize}
+
+\TechnicalProject{Automated Quoting Service Prototype}{October 2017 -- Present}
+\begin{itemize}
+	\item Wrote a Python program that would automatically generate price quotes whenever a user submitted a job to UBC Rapid's printing service, reducing quote times from up to 48 hours down to 10 minutes.
+	\item Leveraged multiple Google APIs to access Google Forms data.
+\end{itemize}
+
+\StudentTeams
+
+\StudentTeam{\href{http://ubc-rapid.com/}{UBC Rapid}}{October 2016 -- Present}
+\begin{itemize}
+	\item Team specializing in advancing rapid prototyping technologies, especially 3D printing
+	\item Currently running cheapest 3D printing service on campus
+\end{itemize}
+
+\OtherWorkExperience
+
+\Job{Hamilton Kumon (Richmond, BC)}{September, 2015 -- February, 2016}{Tutor/Marker}
+\begin{itemize}
+	\item Created a personal system to mark students' worksheets in an efficient manner
+	\item Taught children mathematics and English at various levels in a friendly way that encouraged self-growth
+\end{itemize}
+
+\VolunteerWorkExperience
+
+\Job{Richmond 19\textsuperscript{th}}{September, 2012 -- Present}{Scout Leader}
+\begin{itemize}
+	\item Plan and run engaging programs every week for youth aged 8-10
+	\item Teach survival and life skills at camping trips, fostering an appreciation for the outdoors.
+\end{itemize}
+
+\Education
+
+\School{The University of British Columbia}{Expected May 2021}{Bachelor of Applied Science -- Mechanical Engineering}
+
+\Intrests
+
+\begin{itemize}
+	\item Billiards -- summer leagues
+	\item Sports -- Ultimate Frisbee, snowboarding
+\end{itemize}
+
+\end{document}

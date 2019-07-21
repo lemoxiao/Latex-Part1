@@ -1,0 +1,142 @@
+\documentclass{beamer}
+
+\usepackage[british]{babel}
+\usepackage{graphicx,hyperref,ruc,url}
+
+%% 中文
+\usepackage{ctex}
+
+\usepackage{newtxmath}
+
+%% 字体
+\setCJKmainfont[ItalicFont={SimSun}]{SimSun}
+\setCJKsansfont{Microsoft YaHei}
+\setCJKmonofont{FangSong}       % macos word
+
+% \setCJKmonofont{SimSun}
+% \xeCJKsetcharclass{"0}{"2E7F}{0}
+% \xeCJKsetcharclass{"2E80}{"FFFF}{1}
+
+% Require XeLaTeX
+\RequirePackage{fontspec,xltxtra,xunicode}
+\setmainfont[Mapping=tex-text]{Times New Roman}
+\setsansfont[Mapping=tex-text]{Helvetica}
+\setmonofont{Monaco}
+
+
+% The title of the presentation:
+%  - first a short version which is visible at the bottom of each slide;
+%  - second the full title shown on the title slide;
+\title[RUC 样式 Beamer]{
+  人民大学Beamer样式 \LaTeX}
+
+% Optional: a subtitle to be dispalyed on the title slide
+\subtitle{这里是副标题}
+
+% The author(s) of the presentation:
+%  - again first a short version to be displayed at the bottom;
+%  - next the full list of authors, which may include contact information;
+\author[WANG Maomao]{
+  王猫猫 \\\medskip
+  {\small \url{your_id@ruc.edu.cn}} \\
+  {\small \url{http://www.ruc.edu.cn/}}}
+
+% The institute:
+%  - to start the name of the university as displayed on the top of each slide
+%    this can be adjusted such that you can also create a Dutch version
+%  - next the institute information as displayed on the title slide
+\institute[Renmin University of China]{
+  XX学院 \\ % 农业与农村发展学院 \\
+  中国人民大学}
+
+%% \today
+% Add a date and possibly the name of the event to the slides
+%  - again first a short version to be shown at the bottom of each slide
+%  - second the full date and event name for the title slide
+\date[Mar. 12 2015]{
+  2015年3月12日}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{提纲 Outline}
+
+  \tableofcontents
+\end{frame}
+
+% Section titles are shown in at the top of the slides with the current section
+% highlighted. Note that the number of sections determines the size of the top
+% bar, and hence the university name and logo. If you do not add any sections
+% they will not be visible.
+\section{提纲}
+
+\begin{frame}
+  \frametitle{介绍}
+
+  \begin{itemize}
+    \item 测试介绍
+    \item 请参考 \LaTeX\ 文件
+    \item 数学公式 $x_{100}$
+    \item 基于“人大红”颜色 \url{http://www.ruc.edu.cn/}
+  \end{itemize}
+\end{frame}
+
+\section{背景知识}
+
+\begin{frame}
+  \frametitle{背景消息}
+
+  \begin{block}{Slides with \LaTeX}
+    Beamer offers a lot of functions to create nice slides using \LaTeX.
+  \end{block}
+
+  \begin{block}{The basis}
+    内部使用以下主题
+    \begin{itemize}
+      \item split
+      \item whale
+      \item rounded
+      \item orchid
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{The important things}
+
+\begin{frame}
+  \frametitle{The important things}
+
+  \begin{enumerate}
+    \item This just shows the effect of the style
+    \item It is not a Beamer tutorial
+    \item Read the Beamer manual for more help
+    \item Contact me only concerning the style file
+  \end{enumerate}
+\end{frame}
+
+\section{Analysis of the work}
+
+\begin{frame}
+  \frametitle{Analysis of the work}
+
+  This style file gives your slides some nice Radboud branding.
+  When you know how to work with the Beamer package it is easy to use.
+  Just add:\\ ~~~$\backslash$usepackage$\{$ruc$\}$ \\ at the top of your file.
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}
+  \frametitle{Conclusion}
+
+  \begin{itemize}
+    \item Easy to use
+    \item Good results
+  \end{itemize}
+\end{frame}
+
+\end{document}

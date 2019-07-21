@@ -1,0 +1,28 @@
+\ttl@change@i {\@ne }{chapter}{0em}{}{\makebox [4.1em][l] {第\CJKnumber {\thecontentslabel }章}}{}{\titlerule *[0.7pc]{.}\contentspage }\relax 
+\ttl@change@v {chapter}{}{}{}\relax 
+\contentsline {chapter}{摘要}{ii}{chapter*.1}
+\contentsline {chapter}{Abstract}{iii}{chapter*.2}
+\contentsline {chapter}{目錄}{v}{chapter*.3}
+\contentsline {chapter}{圖目錄}{vi}{chapter*.4}
+\contentsline {chapter}{表目錄}{vii}{chapter*.5}
+\contentsline {chapter}{\numberline {1}介紹（主章結標題）}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}文獻探討}{2}{chapter.2}
+\contentsline {section}{\numberline {2.1}次章節標題}{2}{section.2.1}
+\contentsline {chapter}{\numberline {3}染整製程模型建立}{4}{chapter.3}
+\contentsline {section}{\numberline {3.1}製程參數因子描述}{4}{section.3.1}
+\contentsline {section}{\numberline {3.2}模型假設與符號表示}{7}{section.3.2}
+\contentsline {section}{\numberline {3.3}模型建立}{8}{section.3.3}
+\contentsline {chapter}{\numberline {4}染整製程參數優化方法}{12}{chapter.4}
+\contentsline {section}{\numberline {4.1}模型描述}{12}{section.4.1}
+\contentsline {section}{\numberline {4.2}非線性最佳化方法}{14}{section.4.2}
+\contentsline {section}{\numberline {4.3}染整製程模型求解}{18}{section.4.3}
+\contentsline {chapter}{\numberline {5}數值分析}{23}{chapter.5}
+\contentsline {section}{\numberline {5.1}模型數值化}{23}{section.5.1}
+\contentsline {section}{\numberline {5.2}染整製程數值求解}{27}{section.5.2}
+\contentsline {section}{\numberline {5.3}方法比較}{29}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}基因演算法概述}{29}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}基因演算法架構及求解}{30}{subsection.5.3.2}
+\contentsline {section}{\numberline {5.4}最佳化參數組合與其他業界常用組合比較}{33}{section.5.4}
+\contentsline {chapter}{\numberline {6}結論}{36}{chapter.6}
+\contentsline {chapter}{參考文獻}{37}{appendix*.6}
+\contentsfinish 

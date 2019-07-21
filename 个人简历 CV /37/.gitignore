@@ -1,0 +1,7 @@
+.svg/
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+amlesh_resume.pdf

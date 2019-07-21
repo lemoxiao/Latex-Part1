@@ -1,0 +1,139 @@
+﻿% !Mode:: "TeX:UTF-8"
+\chapter{插入程序代码}
+\label{chap:chap-5}
+
+使用lisitings宏包可以在正文中插入程序的代码，插入的代码有自己的字体，可以实现行号、关键字高亮等功能。该环境的参数language决定了程序
+的类型，例如\verb|language={[77]Fortran}|指定程序代码为FORTRAN语言；\verb|language={MATLAB}|指定程序代码为MATLAB的m语言。下边给出具体的例子。
+
+\section{FORTRAN}
+\begin{verbatim}
+\begin{lstlisting}[language={[77]Fortran},
+numbers=left,
+numberstyle=\tiny,
+basicstyle=\small\ttfamily,
+stringstyle=\color{purple},
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{brown},
+frame=single]
+C MATLAB gateway
+      subroutine mexFunction(nlhs, plhs, nrhs, prhs)
+C variables
+      integer nlhs, nrhs
+      integer plhs(*), prhs(*)
+C input pointers
+      pr_x=mxgetpr(prhs(1))
+      pr_x1=mxgetpr(prhs(2))
+C output pointers
+      plhs(1)=mxCreateDoubleScalar(0)
+      pr_y=mxGetPr(plhs(1))
+C calculation
+      call eim(%val(pr_x),%val(pr_x1),%val(pr_y))
+      end subroutine mexFunction
+\end{lstlisting}
+\end{verbatim}
+输出的结果为：
+\begin{lstlisting}[language={[77]Fortran},
+numbers=left,
+numberstyle=\tiny,
+basicstyle=\small\ttfamily,
+stringstyle=\color{purple},
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{brown},
+frame=single]
+C MATLAB gateway
+      subroutine mexFunction(nlhs, plhs, nrhs, prhs)
+C variables
+      integer nlhs, nrhs
+      integer plhs(*), prhs(*)
+C input pointers
+      pr_x=mxgetpr(prhs(1))
+      pr_x1=mxgetpr(prhs(2))
+C output pointers
+      plhs(1)=mxCreateDoubleScalar(0)
+      pr_y=mxGetPr(plhs(1))
+C calculation
+      call eim(%val(pr_x),%val(pr_x1),%val(pr_y))
+      end subroutine mexFunction
+\end{lstlisting}
+
+\section{MATLAB}
+\begin{verbatim}
+\begin{lstlisting}[language={MATLAB},
+numbers=left,
+numberstyle=\tiny,
+basicstyle=\small\ttfamily,
+stringstyle=\color{purple},
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{brown},
+frame=single]
+% bessel j
+
+n=-0:0.1:12;
+y=n*0;
+b0n=besselj(0,n);
+b1n=besselj(1,n);
+plot(n,b0n,'-',n,b1n,'-',0:0.1:12,y)
+
+ylabel('J_m(z)')
+xlabel('z')
+legend('J_0(z)','J_1(z)')
+\end{lstlisting}
+\end{verbatim}
+输出的结果为：
+\begin{lstlisting}[language={MATLAB},
+numbers=left,
+numberstyle=\tiny,
+basicstyle=\small\ttfamily,
+stringstyle=\color{purple},
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{brown},
+frame=single]
+% bessel j
+
+n=-0:0.1:12;
+y=n*0;
+b0n=besselj(0,n);
+b1n=besselj(1,n);
+plot(n,b0n,'-',n,b1n,'-',0:0.1:12,y)
+
+ylabel('J_m(z)')
+xlabel('z')
+legend('J_0(z)','J_1(z)')
+\end{lstlisting}
+
+\section{C++}
+\begin{verbatim}
+\begin{lstlisting}[language={C++},
+numbers=left,
+numberstyle=\tiny,
+basicstyle=\small\ttfamily,
+stringstyle=\color{purple},
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{brown},
+frame=single]
+# include{iostream.h}
+void main()
+int r;
+double n;
+{
+cout<<"hello, LaTeX!"<<endl;
+}
+\end{lstlisting}
+\end{verbatim}
+输出的结果为：
+\begin{lstlisting}[language={C++},
+numbers=left,
+numberstyle=\tiny,
+basicstyle=\small\ttfamily,
+stringstyle=\color{purple},
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{brown},
+frame=single]
+# include{iostream.h}
+void main()
+int r;
+double n;
+{
+cout<<"hello, LaTeX!"<<endl;
+}
+\end{lstlisting}

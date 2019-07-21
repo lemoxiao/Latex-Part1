@@ -1,0 +1,106 @@
+
+% -*- coding: utf-8 -*-
+%%
+%%
+%%
+%%
+%%
+%%
+%%  本模板可以使用以下两种方式编译:
+%%
+%%     1. PDFLaTeX
+%%
+%%     2. XeLaTeX [推荐]
+%%
+%%  注意：
+%%    1. 在改变编译方式前应先删除 *.toc 和 *.aux 文件，
+%%       因为不同编译方式产生的辅助文件格式可能并不相同。
+%%
+%%
+\documentclass[12pt,openright]{book}
+
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage[bookmarksnumbered]{hyperref}
+\else
+  \usepackage[unicode,bookmarksnumbered]{hyperref}
+\fi
+
+\usepackage[emptydoublepage]{NKThesis}   % 中文
+%\usepackage[emptydoublepage,English]{NKThesis} % 英文
+\usepackage{amssymb}
+%   根据需要选择 biblatex 宏包选项.
+\usepackage[backend = bibtex8, defernumbers = true,  sorting=none,  style = nkthesis]{biblatex}
+\hypersetup{colorlinks=true,
+            pdfborder=0 0 1,
+            citecolor=black,
+            linkcolor=black}
+%\usepackage{tikz}
+\usepackage{amsmath}
+\addbibresource{nkthesis.bib}
+\DeclareBibliographyCategory{cited}
+\AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
+
+\includeonly{
+abstract,
+manual,
+acknowledgements,
+references,
+appendices,
+resume
+}
+\newtheorem{Theorem}{\hskip 2em 定理}[chapter]
+\newtheorem{Lemma}[Theorem]{\hskip 2em 引理}
+\newtheorem{Corollary}[Theorem]{\hskip 2em 推论}
+\newtheorem{Proposition}[Theorem]{\hskip 2em 命题}
+\newtheorem{Definition}[Theorem]{\hskip 2em 定义}
+\newtheorem{Example}[Theorem]{\hskip 2em 例}
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
+\begin{document}
+
+%  设置基本信息
+%  注意:  逗号`,'是项目分隔符. 如果某一项的值出现逗号, 应放在花括号内, 如 {,}
+%
+\NKTsetup{%
+  论文题目(中文) = 现代绿色化学中的物理有机问题,
+  副标题         = ——酵母菌催化反应机理和咪唑类离子液体酸度的研究,
+  论文题目(英文) =  Physical Organic Concerns in Green Chemistry: Mechanistic
+                   Aspects of Baker's Yeast Mediated Reduction and
+                   Measurements of Acidity of Imidazolium Ionic Liquids,
+  论文作者       = 张十三,
+  学号           = 1020161111,
+  指导教师       = 张三\quad 教授,
+  申请学位       = 理学硕士,
+  培养单位       = 某某学院,
+  学科专业       = 某某某某,
+  研究方向       = 某某某某,
+  中图分类号     = ,
+  UDC            = ,
+  学校代码       = 10055,
+  密级           = 公开,
+                   % 公开 | 限制 | 秘密 | 机密, 若为公开, 不填以下三项
+  保密期限       = ,
+  审批表编号     = ,
+  批准日期       = ,
+  论文完成时间   = 二〇一九年三月,
+  答辩日期       = ,
+  论文类别       = 学历硕士,
+                   % 博士 | 学历硕士 | 硕士专业学位 | 高校教师 | 同等学力硕士
+  学院(单位)       = 某某学院,
+  答辩委员会主席       = 李四,
+  评阅人       = 李四\quad 王五,      
+  专业           = 某某某某,
+  联系电话       = 1234567,
+  Email          = 123@123.com,
+  通讯地址(邮编) = 天津市南开区卫津路94号(300071),
+  备注           = }
+
+
+\include{abstract}
+\tableofcontents
+\include{manual}
+\include{references}
+\include{acknowledgements}
+%\include{appendices}
+\include{resume}
+\end{document}

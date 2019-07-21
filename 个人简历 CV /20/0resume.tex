@@ -1,0 +1,91 @@
+%-------------------------------------------------------------------------------
+% Document info
+%-------------------------------------------------------------------------------
+% Author:   Javy de Koning
+% Version:  2017-12-11
+% Compiler: XeLaTeX using sharelatex.com
+% Requires: Font Awesome >= 5.0.1, XeLaTeX
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+% LOAD PACKAGES
+%-------------------------------------------------------------------------------
+\documentclass[11pt, a4paper]{awesome-cv} % A4 paper size
+\usepackage{fontawesome}                  % Load Font Awesome 5
+\usepackage{tabularx,colortbl}            % Advanced table configurations
+\usepackage{enumitem}                     % Allows enum lists
+
+%-------------------------------------------------------------------------------
+% CONFIG
+%-------------------------------------------------------------------------------
+
+\setlist{nolistsep}                      % Removes spacing from lists
+\newcommand{\gray}{\rowcolor[gray]{.90}} % color command for tables
+\fontdir[fonts/]                         % Specify fonts dir.
+
+% Configure page margins with geometry
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+%-------------------------------------------------------------------------------
+% COLORS
+%-------------------------------------------------------------------------------
+\colorlet{awesome}{awesome-red}
+\definecolor{awesome}{HTML}{F68D10}
+\definecolor{companycolor}{HTML}{00004D} 
+\definecolor{darktext}{HTML}{F68D10}
+\setbool{acvSectionColorHighlight}{true} % icons to be colored?
+
+% If you would like to change the social information separator from a pipe (|) to something else
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=FF6419, %FF6419
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+ 
+
+%-------------------------------------------------------------------------------
+%	PERSONAL INFORMATION
+%	Comment any of the lines below if they are not required
+%-------------------------------------------------------------------------------
+% Available options: circle|rectangle,edge/noedge,left/right
+\photo[circle,noedge,left]{profile}
+\name{Javy de Koning,}{MSc.}
+\position{Technical Account Manager}
+
+\address{{\faMapR} Bos en Lommerplnts. 97H {\large\textperiodcentered} 1055AA {\large\textperiodcentered} Amsterdam (The Netherlands)}
+
+\mobile{\texttt{+31(0)6 2047 3502}}
+\email{javydekoning@gmail.com}
+\homepage{javydekoning.com}
+\github{javydekoning}
+\linkedin{javydekoning}
+%\twitter{@javydekoning}
+%\quote{``Be the change that you want to see in the world. Now!"}
+
+%-------------------------------------------------------------------------------
+% DOCUMENT START
+%-------------------------------------------------------------------------------
+\begin{document}
+
+% Print the header with above personal informations
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader[R]
+
+%-------------------------------------------------------------------------------
+% CONTENT
+%-------------------------------------------------------------------------------
+\begin{cvletter}
+\input{summary.tex}
+\input{experience.tex}
+\input{certifications.tex}
+\input{publications.tex}
+\input{skills.tex}
+\input{education.tex}
+\input{hobbies.tex}
+\end{cvletter}
+
+\end{document}

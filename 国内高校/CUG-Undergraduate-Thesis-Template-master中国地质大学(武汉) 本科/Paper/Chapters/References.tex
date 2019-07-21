@@ -1,0 +1,24 @@
+%  % 参考文献
+  %使用\bibliography{Bib/References} 产生的参考文献不符合地大的规定，很多同学都在这儿翻船，因此不能自动生成参考文献了，需要自己在下面添加，按照下面的格式添加，这是非常Ugly的方法，但为了论文的通过，没办法。最终虽然肯定能得到符合要求的标准参考文献，但是此法的一个致命缺点是参考文献列表的顺序必须与正文中引用顺序一致，不然引用会错乱，如果写作过程中不确定参考文献的顺序，解决方法看\input{Bib/ReferencesUgly} 后的说明，否则直接在Bib/ReferencesUgly.tex中写吧，too ugly!!
+  %%%%%%%%%%%%%%%%%%%%%下面是一些说明，为了
+
+  % 其实参考文献实际上就是一个列表，只不过thebibliography环境有了特殊的地方，请看下面的解释
+\addcontentsline{toc}{chapter}{参考文献}                %将参考文献加入目录索引
+  \bibliographystyle{Config/GBT7714-2005NLang}  %采用的标准
+  \addtolength{\itemsep}{-0.5 em} % 缩小参考文献间的垂直间距
+ %\bibliography{Bib/References}    %使用bibtex方式的参考文献，有用的，请细读 \input{Bib/ReferencesUgly} 后的说明
+  %\nocite{*}
+
+  \input{Bib/ReferencesUgly}      %采用非常Ugly的手段加入参考文献,不然现阶段真没法满足国标和学校要求，细读 Bib目录下ReferencesUgly.tex
+
+
+
+%%%%%%%%%%%%%%                      省事但是依旧Ugly的方法
+%上面提到，的一个致命缺点是参考文献列表的顺序必须与正文中引用顺序一致，不然引用会错乱，此处提出一个比较折中的解决办法，虽然依旧Ugly
+% 如果使用\bibliography{Bib/References}这种形式，让latex自动索引便不会出现顺序的问题,我们便是要借助这一点。
+%在论文最终定稿前，使用\bibliography{Bib/References} ，即把\input{Bib/ReferencesUgly}  注释掉，这样就可随意输入参考文献
+%不必考虑顺序了，等论文完成，确定所有参考文献都已被正确引用之后，真正Ugly的行为来了，咱们来个卸磨杀驴再加偷梁换柱
+%具体做法是这样：在参考文献定下来之后，引用顺序也就被确定了，完整编译一次之后，主tex文件所在目录下有一个.bbl文件
+%这便是最后latex会加入到参考文献中的参考文件的源文件了，bibtex已经根据引用顺序制作好了参考文献列表，这时
+%打开该bbl文件，和Bib目录下的ReferencesUgly.tex文件对比你就会发现端倪了，没错照着ReferencesUgly.tex内部的说明，将bbl文件的
+%\begin{thebibliography} 到 \end{thebibliography} 的整个内容复制到ReferencesUgly.tex里面，文献就是“标准格式”了,千万注意引用标识一定要和Bib/References.bib中定义的一致

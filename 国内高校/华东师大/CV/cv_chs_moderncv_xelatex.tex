@@ -1,0 +1,117 @@
+%
+% 用 xelatex 编译, TeXLive 2017 测试通过, 2018.11
+%
+\XeTeXinputencoding "GBK"
+
+\documentclass[11pt,a4paper]{moderncv}
+
+\moderncvtheme[blue]{classic}
+\usepackage[noindent]{ctex}
+\usepackage[scale=0.78]{geometry}
+\pagecolor[rgb]{0.99, 0.99, 0.99}
+\setlength{\hintscolumnwidth}{3cm}
+\linespread{1.2}
+
+\makeatletter
+\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+\makeatother
+
+%%%%%===== 自定义命令
+\newcommand{\zz}[1]{\textcolor{blue}{#1}}
+\newcommand{\mycb}{\color{blue}}
+\newcommand{\mybl}{\textcolor{red}{$\bullet$}}
+\newcommand{\mybll}{\textcolor{blue}{$\bullet$}}
+\newcommand{\myindent}{$\!\!\!\!\!$}
+\newcommand{\mycdot}{\raisebox{2pt}[0pt][0pt]{\color{blue}\tiny\textbullet}}
+\newcommand{\myem}[1]{{\heiti #1}}
+\newcommand{\tit}[1]{\emph{#1}}
+
+%%%%%===== 个人信息
+
+\name{李}{小龙}
+% \title{\qquad\mycb ------ {教授}}
+
+\address{\mycb XXX大学XXX学院}
+
+\extrainfo{\mycb\upshape Tel: 86-21-54342646 \\[2pt]
+           \mycb\upshape Email: xxxx@xxxx.xxx.xxx}
+
+
+
+\begin{document}
+\maketitle
+
+\section{个人信息}
+\cvdoubleitem{出生日期：\myindent}{xxxx年xx月xx日}{籍贯：\myindent}{XXXX}
+\cvdoubleitem{性别：\myindent}{男}{国籍：\myindent}{中国}
+\cvitem{通讯地址：\myindent}{上海市XX区XX路xxx号, XX大学XX学院, 邮编: 200000}
+
+\medskip
+\section{教育背景}
+\cvitem{1998.09 -- 2001.06}{博士\ (方向: 计算数学,\quad 导师: XXX)}
+\cvitem{}{博士论文题目: xxx xxx }
+\cvitem{}{学校, 院系}
+
+\cvitem{1998.09 -- 2001.06}{硕士\ (方向: 基础数学, \quad 导师: XXX)}
+\cvitem{}{硕士论文题目: xxx xxx }
+\cvitem{}{学校, 院系}
+
+\cvitem{1998.09 -- 2001.06}{本科\ (专业: 数学与应用数学)}
+\cvitem{}{学校, 院系}
+
+
+\medskip
+\section{实践经历}
+\cvitem{1998.09 -- 2001.06}{数据分析师, 某某公司}
+\cvitem{1998.09 -- 2001.06}{技术研究员, 某某某公司}
+\cvitem{1998.09 -- 2001.06}{架构师, 某某某某公司}
+
+
+\medskip
+\section{研究兴趣}
+\cvitem{\mybll}{数学数学数学}
+\cvitem{\mybll}{数学数学数学数学}
+
+
+\medskip
+\section{所获奖励}
+\cvitem{1998.09}{三好学生, 某某某大学}
+\cvitem{1998.09}{一等奖学金, 某某某大学}
+\cvitem{1998.09}{优秀学生干部, 某某某大学}
+
+
+\medskip
+\section{我的自述}
+\cvline{}%
+{简单一点，列出一些实际情况，如本科成绩，免试报送研究生，%
+研究生阶段学习成绩等，不要用主观的话语。}
+
+\medskip
+%%%%%===== 科研成果
+\CTEXoptions[bibname={发表论文}]
+\begin{thebibliography}{99}
+
+\bibitem{Ale81}
+\newblock G. Alexander,
+\newblock \emph{Kronecker Products and Matrix Calculus},
+\newblock Ellis Horwood Limited, England, 1981.
+
+\bibitem{BZS92}
+\newblock C. Brezinski, M. R. Zaglia and H. Sadok,
+\newblock A breakdown-free Lanczos type algorithm for solving linear systems,
+\newblock \emph{Numerische Mathematik}, (63) 1992, 29--38.
+
+\bibitem{Ale81}
+\newblock G. Alexander,
+\newblock \emph{Kronecker Products and Matrix Calculus},
+\newblock Ellis Horwood Limited, England, 1981.
+
+\bibitem{BZS92}
+\newblock C. Brezinski, M. R. Zaglia and H. Sadok,
+\newblock A breakdown-free Lanczos type algorithm for solving linear systems,
+\newblock \emph{Numerische Mathematik}, (63) 1992, 29--38.
+
+\end{thebibliography}
+
+\end{document}
+

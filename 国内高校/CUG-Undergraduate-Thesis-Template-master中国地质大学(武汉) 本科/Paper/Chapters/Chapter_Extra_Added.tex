@@ -1,0 +1,191 @@
+\chapter{光切法显微镜观测植物表面的实例}\label{chapEtra:EtraAdd}
+光切法显微镜一般只用于工件表面的粗糙度检测，仅仅因为它可以保证被观测表面不被破坏，就选择它来观测植物的表面，植物可与一般的工件有所不同.是否能行呢?这需要实践的检验.洋葱，这个高级中学生物教材上最常提到的显微镜观测样品，表面看起来是凹凸不平的，正好也是常见的植物，可以用来验证光切法显微镜观测植物表面的可行性.
+\section{初步观测验证}
+刚从市场买回的洋葱，取下一片鳞片如图\ref{aaa-ExtraAdd-OnionFlake:subfig}，由于整块的太大而切下一小块，大约$2cm\times 4cm$大小，放到光切法显微镜工作台上，选择$30\times N.A.0.4$物镜组，调整物镜与样品高度，在目镜中观测，经过调整之后，在视野中看见了清晰的波浪形光带，如图\ref{aaa-ExtraAdd-OnionFlakeUnderLightSectionMethodMicroscopeTest:subfig} 所示，可以看到，视野中的光带非常清晰，光带的波峰和波谷非常明显，说明将光切法显微镜用来观测植物表面是可行的；由于其在光切法显微镜下轮廓清晰，可以把洋葱鳞片表面的观测作为典型的练习表面粗糙度的案例来练习光切法显微镜的使用，但为了得到可量化的观测结果，需要首先测定物镜的放大倍数V.
+%%需重复使用的脚注内容
+%使脚注计数器加1
+\stepcounter{footnote}
+\footnotetext{感谢韩老师提供\label{footnote:Onoion}}
+\begin{figure}[htbp]
+\centering
+\subfigure[新鲜的洋葱鳞片\protect \footref{footnote:Onoion}]{\label{aaa-ExtraAdd-OnionFlake:subfig}% 加\protect 保护脆弱命令\footref{}，不然编译不通过
+\includegraphics[width=0.30\textwidth]{aaa-ExtraAdd-OnionFlake}
+}
+\subfigure[观测测试($30\times N.A.0.4$物镜组)]{\label{aaa-ExtraAdd-OnionFlakeUnderLightSectionMethodMicroscopeTest:subfig}
+\includegraphics[width=0.25\textwidth]{aaa-ExtraAdd-OnionFlakeUnderLightSectionMethodMicroscopeTest}
+}
+\caption{洋葱鳞片和其初步观测测试}\label{aaa-ExtraAdd-OnionFlakePhotoTest}
+\end{figure}
+
+\section[物镜放大倍数V的确定]{物镜放大倍数$V$的确定}\label{chapEtra:section:EtraAdd}
+虽然在仪器使用手册中表\ref{Table:Specification}已经详细的说明了各物镜的放大倍数，但由于使用环境不同，物镜的实际放大倍数与标称值会有差异，为了减小测量的误差，有必要在当前使用环境下对物镜的实际放大倍数进行重新测量.9J型光切法显微镜附带了标准刻度尺，可使用该标准刻度尺对各物镜放大倍数重新测定.\ucite{DeterminationOfObjectiveAmplification,Light-sectionMethodMicroscopeCalibration}具体步骤如下:
+\begin{enumerate}
+  \item{将选定物镜正确安放到主体上， 调整仪器使标准分划尺刻线像清晰，由于印有标准刻度的范围在标准刻度尺上只是很小的一块区域，因此这一步是整个过程中较需要耐心的一步，具体过程如下:
+      \begin{enumerate}
+        \item{把标准刻度尺放置在仪器底盘的工作台上， 然后将镜头降到尽可能低， 但不能损伤标准刻度尺， 再缓慢上升直至发现亮带， 将亮带调至中间部位；}
+        \item{接着调焦， 同时移动工作台， 直到找到亮点 (刻度尺面上的特殊记号 )， 再把这个记号逐步移至视野中间部位， 同时须调焦与移动工作台， 保持亮点清晰；}
+        \item{找标尺刻线， 将找到的标尺刻线移至视野中间位置， 并使之清晰、平直；}
+        \item{将目镜分划板上的十字线调成倾斜45\textordmasculine ， 保证能准确读取数据；}
+      \end{enumerate}
+      \begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{03-ObjectiveMagnificationToDetermine-NsNe}
+    \caption{物镜放大倍数$V$的确定\label{03-ObjectiveMagnificationToDetermine-NsNe}}
+    \end{figure}
+      }
+  \item{调整标准刻度尺的刻线像与光带垂直；}
+  \item{使十字线交点移动方向与标准刻度尺的尺像平行；}
+  \item{如图\ref{03-ObjectiveMagnificationToDetermine-NsNe}， 分别对准标准刻度尺上的选定间隔格数$n$时的2条刻线鼓轮读数$N_s\mbox{和}N_e$，算得差值$N_l=N_e-N_s$，重复5次，取平均值$\bar{N}=\frac{\sum\limits_{i=1}^{5}N_{l_i}}{5}=\frac{\sum\limits_{i=1}^{5}N_{e_i}-N_{s_i}}{5}$， 则物镜放大倍数$V$ 为：
+      \begin{equation}\label{Equation:ObjectiveeAmplification}
+          V=\frac{\bar{N}}{nZ}=\frac{\sum\limits_{i=1}^{5}N_{e_i}-N_{s_i}}{5nZ}
+      \end{equation}
+      \begin{equation*}
+       Z\mbox{为标准刻度尺分格值，对9J型光切法显微镜，}Z=0.01mm
+      \end{equation*}
+      }
+\end{enumerate}
+按照上述步骤，分别对9J型光切法显微镜标配的四组物镜进行了放大倍数的测定，其结果在表\ref{Table:ObjectiveeAmplification}(第\pageref{Table:ObjectiveeAmplification}页)中记录.测量时通过目镜拍摄的观测图像如图\ref{08-PhotoOfObjectiveeAmplification} (第\pageref{08-PhotoOfObjectiveeAmplification}页)所示.\par
+从图中可以看到，尽管对照明光源进行了滤光处理，观测时只使用了单色的绿光，可是像差仍然存在且非常明显，标尺的像在视野中并不是完全清晰的，在水平方向，往往是中心部分成像较清晰，靠近边缘部分却成像模糊不清；在垂直方向，这种现象则更明显，每个刻度都只有很小一段是比较清晰的像，而越往上或越往下刻度的像均呈现出发散，像$ \curlyvee$ 或$ \curlywedge $ 这样，而且放大倍数越大该现象越明显，对于$60\times$ N.A.0.55 物镜组(图\ref{08-PhotoOfObjectiveeAmplification:subfig_d})，刻度只能成一个点.因此，由于像差比较明显，可以预见该因素对实验的影响将会很大\ucite{Light-sectionMethodMicroscopeFAQ}.
+                    %$\gamma$或\rotatebox[origin=c]{180}{$\gamma$}
+由实验数据表\ref{Table:ObjectiveeAmplification}(位于第\pageref{Table:ObjectiveeAmplification}页)可得各物镜组对应的放大倍数，物镜组$7\times$ N.A.0.12、$14\times$ N.A.0.22、$30\times$ N.A.0.40 和$60\times$ N.A.0.55的放大倍数分别为4.049、8.207、17.488、35.43.可见，实际放大倍数与标称值有很大差别，基本只有标称值得一半，这更加反映出对物镜放大倍数进行重新测定的必要性.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Table
+%\begin{table}
+  \begin{sidewaystable}[!htbp]
+
+\begin{center}
+\caption{物镜放大倍数$V$的测定数据\label{Table:ObjectiveeAmplification}}
+\begin{tabular}{Ic|c|c|c|c|c|cI}
+  \shline
+ %\multicolumn{1}{c}{\multirow{2}{2cm}{
+ \diagbox{物镜}{数据}{项目}&\multirow{2}{6em}{{标尺格数($n$)\\ $Z=0.01mm$}}&\multicolumn{4}{c|}{鼓轮读数($mm$)}& 物镜放大倍数($V$) \\ \cline{1-1} \cline{3-6}
+  &&初位置($N_s$)&末位置($N_e$)&差值($N_l$)&平均值($\bar{N}$)& \\ \cline{2-7}
+
+\multirow{5}{*}{$7\times$ N.A.0.12}&\multirow{5}{*}{20}& 0.421 &1.231  &0.810&\multirow{5}{*}{0.8098}&\multirow{5}{*}{
+\begin{minipage}{0.09\textwidth}
+\begin{equation*}
+\begin{aligned}
+V&=\frac{0.8098}{20 \times 0.01}\\
+&=4.049
+\end{aligned}
+\end{equation*}
+\end{minipage}
+} \\ \cline{3-5}
+  &&0.811&1.617&0.806&& \\ \cline{3-5}
+  &&1.617&2.441&0.824&&\\ \cline{3-5}
+  &&2.441&3.243&0.802&& \\ \cline{3-5}
+  &&3.243&4.040&0.807&& \\ \shline
+\multirow{5}{*}{$14\times$ N.A.0.20}&\multirow{5}{*}{20}& 0.429 &2.065  &1.636&\multirow{5}{*}{1.6414}&\multirow{5}{*}{
+\begin{minipage}{0.17\textwidth}
+\begin{equation*}
+\begin{aligned}
+V&=\frac{1.6414}{20 \times 0.01}\\
+&=8.207
+\end{aligned}
+\end{equation*}
+\end{minipage}
+} \\ \cline{3-5}
+  &&0.713&2.346&1.633&& \\ \cline{3-5}
+  &&0.531&2.817&1.656&&\\ \cline{3-5}
+  &&0.781&2.431&1.650&& \\ \cline{3-5}
+  &&0.199&1.831&1.632&& \\ \shline
+\multirow{5}{*}{$30\times$ N.A.0.40}&\multirow{5}{*}{15}& 0  & 2.641 &2.641 &\multirow{5}{*}{2.6232}&\multirow{5}{*}{
+\begin{minipage}{0.17\textwidth}
+\begin{equation*}
+\begin{aligned}
+V&=\frac{2.6232}{15 \times 0.01}\\
+&=17.488
+\end{aligned}
+\end{equation*}
+\end{minipage}
+} \\ \cline{3-5}
+  &&2.641&5.273&2.632&& \\ \cline{3-5}
+  &&5.273&7.896&2.623&&\\ \cline{3-5}
+  &&0.059&2.695&2.636&& \\ \cline{3-5}
+  &&2.695&5.299&2.604&& \\ \shline
+ \multirow{5}{*}{$60\times$ N.A.0.55}&\multirow{5}{*}{10}& 0.532 &4.105  &3.573&\multirow{5}{*}{3.543}&\multirow{5}{*}{
+\begin{minipage}{0.17\textwidth}
+\begin{equation*}
+\begin{aligned}
+V&=\frac{3.543}{10 \times 0.01}\\
+&=35.43
+\end{aligned}
+\end{equation*}
+\end{minipage}
+ } \\ \cline{3-5}
+  &&0.250&3.775&3.525&& \\ \cline{3-5}
+  &&0.904&4.441&3.537&&\\ \cline{3-5}
+  &&0.246&3.777&3.531&& \\ \cline{3-5}
+  &&0.640&4.189&3.549&& \\ \shline
+\end{tabular}
+\end{center}
+%\end{table}
+\end{sidewaystable}
+%%%%%%%%%%%%%%%%%%%%%%%%%Photos
+\begin{figure}[!htbp]
+\centering
+\subfigure[$7\times$ N.A.0.12]{
+\label{08-PhotoOfObjectiveeAmplification:subfig_a}
+\includegraphics[width=0.618\textwidth]{08-PhotoOfObjectiveeAmplification-a}
+}
+\\
+\subfigure[$14\times$ N.A.0.20]{
+\label{08-PhotoOfObjectiveeAmplification:subfig_b}
+\includegraphics[width=0.618\textwidth]{08-PhotoOfObjectiveeAmplification-b}
+}
+\\
+\subfigure[$30\times$ N.A.0.40]{
+\label{08-PhotoOfObjectiveeAmplification:subfig_c}
+\includegraphics[width=0.618\textwidth]{08-PhotoOfObjectiveeAmplification-c}
+}
+\\
+\subfigure[$60\times$ N.A.0.55]{
+\label{08-PhotoOfObjectiveeAmplification:subfig_d}
+\includegraphics[width=0.618\textwidth]{08-PhotoOfObjectiveeAmplification-d}
+}
+\caption{物镜放大倍数观测图像\label{08-PhotoOfObjectiveeAmplification}}
+\end{figure}
+
+\newpage
+\section{洋葱鳞片表面观测实例}\label{chapExtra:section3:ExtraAdded}
+剥下一片靠外层的洋葱鳞片(靠外层的表面粗糙形态更明显，同时外层鳞片的曲率小，取下的观测样片更趋于平整，便于观测)，取其靠近边缘出较平整的一块(约$3cm\times  5cm$ )样片，在观测台上垫上一张白纸(防止洋葱蒸发的水凝结到铁质工作台上使工作台锈蚀)，将样片放置到工作台上，使用$30\times N.A.0.4$物镜，按照~~~~~%此处加波浪线(表示空格)是因为系统只为编号预留1个字的宽度，而此处的\ref{chap1:chap1:subsection3:Principle}编译后是1.2.3，系统预留的宽度不够，会覆盖在文字表面；你可以去掉波浪线编译观察
+\ref{chap1:chap1:subsection3:Principle}和文献\cite{Light-sectionMethodMicroscopeFAQ}的说明进行观测.
+
+\begin{figure}[htbp]
+\centering
+\subfigure[鳞片内表面\footref{footnote:ExtraExplan}]{\label{aaa-ExtraAdd-OnionFlakeInnerUnderLightSectionMethodMicroscope:subfig}
+\includegraphics[width=0.45\textwidth]{aaa-ExtraAdd-OnionFlakeInnerUnderLightSectionMethodMicroscope}
+}
+\subfigure[鳞片外表面]{\label{aaa-ExtraAdd-OnionFlakeOuterUnderLightSectionMethodMicroscope:subfig}
+\includegraphics[width=0.45\textwidth]{aaa-ExtraAdd-OnionFlakeOuterUnderLightSectionMethodMicroscope}
+}
+\caption{洋葱鳞片和其初步观测测试}\label{aaa-ExtraAdd-OnionFlakeInnerOuterUnderLightSectionMethodMicroscope}
+\end{figure}
+图\ref{aaa-ExtraAdd-OnionFlakeInnerUnderLightSectionMethodMicroscope:subfig} 和图\ref{aaa-ExtraAdd-OnionFlakeOuterUnderLightSectionMethodMicroscope:subfig} 分别为鳞片内表面和外表面的观测图像，可以看见，内表面的光带轮廓非常明显且连续，因此选择内表面作为典型观测表面来记录数据.得到的内表面的数据在表\ref{Table:DataOfOnionFlakeInner}中.
+\begin{table}
+\centering
+\caption{$30\times$N.A.0.40~~物镜组洋葱鳞片内表面观测数据}\label{Table:DataOfOnionFlakeInner}
+\begin{tabular}{Ic|c|c|c|c|cI}%p{}表示固定表格宽度
+  \shline
+ \diagbox{对象}{数据}{项目}&\multicolumn{4}{c|}{鼓轮读数($mm$)}&表面粗糙度$R_z(um)$\\  \hline
+  &峰底($h_{min}$)&峰顶($h_{max}$)&差值($a$)&平均值($\bar{a}$)  &\multirow{6}{*}{
+\begin{minipage}{0.17\textwidth}               %小页环境 放公式，不然表格环境下无控制公式长度和换行
+ \begin{equation*}			    %无编号公式
+\begin{aligned}                             %公式对齐
+ R_z&=\frac{\bar{a}} {2V} \\&=\frac{0.354}{2\times17.488}\\ &=0.01012mm\\&\approx 10um
+ \end{aligned}
+\end{equation*}
+\end{minipage}
+}\\ \cline{2-5}
+\multirow{5}{4em}{洋葱鳞片\\ ~内表面~}& 0.943 & 1.312 &0.369&\multirow{5}{*}{0.354}&\\ \cline{2-4} %multirow 换行 http://bbs.ctex.org/forum.php?mod=viewthread&tid=44033 亦可以用\parbox{text \\ text}
+  &0.982&1.363&0.381&& \\ \cline{2-4}
+  &0.904&1.187&0.283&&\\ \cline{2-4}
+  &0.549&1.858&0.309&& \\ \cline{2-4}
+  &0.384&0.767&0.383&&\\ \shline
+\end{tabular}
+\end{table}
+最后测得样片的内表面的平均高度不平度为$10um$.这便是一个典型的测表面平均高度不平度的示例，通过观测练习，初步掌握了光切法显微镜的使用方法及注意事项，以及观测中遇见问题的解决方法.
+%%需重复使用的脚注内容
+%使脚注计数器加1
+\stepcounter{footnote}
+\footnotetext{视野中有杂乱光点是因为内表面反光较强烈\label{footnote:ExtraExplan}}
+

@@ -1,0 +1,389 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Developer CV - Doji edit
+% LaTeX Class
+% Version 1.0 (23/04/19)
+%
+% Authors:
+% Stijn Dejongh (stijn.c.dejongh@gmail.com)
+% Based on a template by Jan Vorisek (jan@vorisek.me)
+% Based on a template by Jan Küster (info@jankuester.com)
+% Modified for LaTeX Templates by Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% The MIT License (see included LICENSE file)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[9pt]{developercv} % Default font size, values from 8-12pt are recommended
+\PassOptionsToPackage{dvipsnames}{xcolor}
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+%\photo{}{img/picture_circle}
+
+\begin{minipage}[t]{0.85\textwidth} % 45% of the page width for name
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	\begin{minipage}[t][][c]{4cm}
+		\vspace{-\baselineskip} % Required for vertically aligning minipages
+		\tikz\path[fill overzoom image={img/george}]circle[radius=0.5\linewidth];
+	\end{minipage}
+	\begin{minipage}[t]{\textwidth}
+		\vspace{-\baselineskip} % Required for vertically aligning minipages	
+		\vspace{0.2cm}
+		
+		% If your name is very short, use just one of the lines below
+		% If your name is very long, reduce the font size or make the minipage wider and reduce the others proportionately
+		{\HUGE\textcolor{accentbackground}{\textbf{\MakeUppercase{Bob}}}} % First name
+		
+		{\HUGE\textcolor{accentbackground}{\textbf{\MakeUppercase{De Houwer}}}}\hspace{3.5mm}{\huge Builder} % Last name
+		
+		\setlength{\arrayrulewidth}{.2em}
+		\textcolor{accentbackground}{\divider}
+		
+		% INFO BOXES
+		\begin{minipage}[t]{0.35\textwidth} % 27.5% of the page width for the first row of icons
+			\vspace{-\baselineskip} % Required for vertically aligning minipages
+			\color{accentbackground}
+			% The first parameter is the FontAwesome icon name, the second is the box size and the third is the text
+			% Other icons can be found by referring to fontawesome.pdf (supplied with the template) and using the word after \fa in the command for the icon you want
+			\hspace{5mm}\location{Leuven, Belgium}
+			
+			\hspace{5mm}\phone{On request}		
+				
+		\end{minipage}
+		\begin{minipage}[t]{0.35\textwidth} % 27.5% of the page width for the second row of icons
+			\vspace{-\baselineskip} % Required for vertically aligning minipages
+			\color{accentbackground}
+			% The first parameter is the FontAwesome icon name, the second is the box size and the third is the text
+			% Other icons can be found by referring to fontawesome.pdf (supplied with the template) and using the word after \fa in the command for the icon you want
+			\hspace{5mm}\email{\href{mailto:blabla@gmail.com}{On request}}
+			
+			\hspace{5mm}\linkedin{\href{https://www.linkedin.com/in/stijn-dejongh/}{On request}}
+			
+		\end{minipage}
+	\end{minipage}
+\end{minipage}
+
+\vspace{2pt}
+
+
+\vspace{0.3cm}
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION, SKILLS AND TECHNOLOGIES
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}[t]{0.70\textwidth} % 40% of the page width for the introduction text
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	\cvsect{Who Am I?}
+	
+	\lorem \lorem\lorem\lorem\lorem\lorem\lorem\lorem
+
+	\cvsect{Education}
+	
+	\textcolor{soft}{2016 -- 2017} \hspace{5mm}\textbf{M. Sc. Awesomeness} -  \textcolor{accentbackground}{School of hard knocks} \\
+	\textcolor{soft}{2012 -- 2016} \hspace{5mm}\textbf{B. Sc. Awesomeness} - \textcolor{accentbackground}{School of hard knocks}
+	
+\end{minipage}
+\begin{minipage}[t]{0.25\textwidth} % 50% of the page for the skills bar chart
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	\vspace{1.5cm}
+	
+	\resizebox{\linewidth}{!}{
+		\smartdiagram[bubble diagram]{
+			\textbf{Schraal},
+			\textbf{Hotesemotse},
+			\textbf{Vegeuh},
+			\textbf{Peerdekop},
+			\textbf{Schraal},
+			\textbf{Palettekop}}}
+	
+\end{minipage}
+\hfill % Whitespace between
+
+%\begin{minipage}[t]{0.5\textwidth} % 50% of the page for the skills bar chart
+%	\vspace{-\baselineskip} % Required for vertically aligning minipages
+%	\begin{barchart}{5.5}
+%		\baritem{JavaScript}{60}
+%		\baritem{PHP}{100}
+%		\baritem{SASS/LESS}{70}
+%		\baritem{Bootstrap}{70}
+%		\baritem{Git}{40}
+%		\baritem{LaTeX}{60}
+%	\end{barchart}
+%\end{minipage}
+
+\vspace{0.65cm}
+
+\divider
+
+
+%----------------------------------------------------------------------------------------
+%	EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\cvsect{Experience}
+
+\begin{entrylist}
+	\entry
+	{mm/yyyy -- mm/yyyy}
+	{Project name}
+	{Full company name}
+	{
+		\vspace{0.2cm}
+		\begin{minipage}[t]{0.40\textwidth} % 27.5% of the page width for the first row of icons
+			\vspace{-\baselineskip}
+			\itemmarker Something I did there\\
+			\vspace{-3mm}\\
+			\itemmarker Something I did there\\
+			\vspace{-3mm}\\
+			\itemmarker Something I did there \\
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.40\textwidth} % 27.5% of the page width for the first row of icons
+			\vspace{-\baselineskip}
+			\itemmarker Something I did there\\
+			\vspace{-3mm}\\
+			\itemmarker Something I did there\\
+			\vspace{-3mm}\\
+			\itemmarker Something I did there\\
+			\vspace{-3mm}\\
+			\itemmarker Something I did there
+		\end{minipage}
+		\vspace{2mm}
+		
+		\textcolor{text!65}{\texttt{Relevant Skill}\slashsep \texttt{Relevant Skill}\slashsep \texttt{Relevant Skill}\slashsep \texttt{Relevant Skill}\slashsep \texttt{Relevant Skill}\slashsep}}
+	{Job Title \textcolor{text!65}{|} 2nd Job Title}
+	
+	\entry
+		{mm/yyyy -- mm/yyyy}
+		{Project name}
+		{Full company name}
+		{
+			\vspace{0.2cm}
+			\begin{minipage}[t]{0.40\textwidth} % 27.5% of the page width for the first row of icons
+				\vspace{-\baselineskip}
+				\itemmarker Something I did there\\
+				\vspace{-3mm}\\
+				\itemmarker Something I did there\\
+				\vspace{-3mm}\\
+				\itemmarker Something I did there \\
+			\end{minipage}
+			\hfill
+			\begin{minipage}[t]{0.40\textwidth} % 27.5% of the page width for the first row of icons
+				\vspace{-\baselineskip}
+				\itemmarker Something I did there\\
+				\vspace{-3mm}\\
+				\itemmarker Something I did there\\
+				\vspace{-3mm}\\
+				\itemmarker Something I did there\\
+				\vspace{-3mm}\\
+				\itemmarker Something I did there
+			\end{minipage}
+		\vspace{2mm}
+		
+		\textcolor{text!65}{\texttt{Relevant Skill}\slashsep \texttt{Relevant Skill}\slashsep \texttt{Relevant Skill}\slashsep \texttt{Relevant Skill}\slashsep \texttt{Relevant Skill}\slashsep}}
+		{Job Title \textcolor{text!65}{|} 2nd Job Title}
+\end{entrylist}
+
+
+%----------------------------------------------------------------------------------------
+%	ADDITIONAL INFORMATION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}[t]{0.3\textwidth}
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+
+	\cvsect{Languages}
+	
+	\begin{barchart}{3.5}
+		\baritem{Dutch}{100}
+		\baritem{English}{95}
+		\baritem{French}{65}
+	\end{barchart}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	\cvsect{Hobbies}
+	
+	I like: \lorem \lorem
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	\cvsect{Proud of}
+	\textcolor{accentbackground}{\faTrophy} \textbf{Some award or certification} - I am cool
+	
+	\vspace{0.2cm}
+	\textcolor{accentbackground}{\faHeartbeat} \textbf{Personal thing of importance}
+\end{minipage}
+
+%----------------------------------------------------------------------------------------
+
+\clearpage
+%----------------------------------------------------------------------------------------
+%	SKILL SECTIONS
+%----------------------------------------------------------------------------------------
+
+\cvsect{Skills}
+
+\vspace{0.8cm}
+
+\begin{minipage}[t]{0.45\textwidth}
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	\skillsect{Programming/scripting languages}
+	\\
+		\begin{minipage}[t]{\textwidth}
+			\hspace{7mm} \cvskill{Java}{5}
+			\hspace{7mm} \cvskill{Python}{4}
+			\hspace{7mm} \cvskill{xQuery}{3}
+			\hspace{7mm} \cvskill{JavaScript}{3}
+			\hspace{7mm} \cvskill{Prolog}{3}
+			\hspace{7mm} \cvskill{Haskell}{3}
+			\hspace{7mm} \cvskill{PHP}{4}
+			\vspace{2.5mm}
+		\end{minipage}
+	\vspace{8mm}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	\skillsect{Frameworks and libraries}
+	\\
+	\begin{minipage}[t]{\textwidth}
+		\hspace{7mm} \cvskill{Spring}{5}
+		\hspace{7mm} \cvskill{Spring Boot}{4}
+		\hspace{7mm} \cvskill{Hibernate}{5}
+		\hspace{7mm} \cvskill{JDBC}{4}
+		\hspace{7mm} \cvskill{Wicket}{3}
+		\hspace{7mm} \cvskill{Angular}{2}
+		\hspace{7mm} \cvskill{Java FX}{3}
+		\vspace{2.5mm}
+	\end{minipage}
+	\vspace{8mm}
+
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{minipage}[t]{0.45\textwidth}
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	\skillsect{Development tools}
+	\\
+	\begin{minipage}[t]{\textwidth}
+		\hspace{7mm} \cvskill{Maven}{5}
+		\hspace{7mm} \cvskill{Gradle}{2}
+		\hspace{7mm} \cvskill{Ant}{4}
+		\hspace{7mm} \cvskill{Git}{4}
+		\hspace{7mm} \cvskill{Jenkins}{4}
+		\hspace{7mm} \cvskill{Sonar}{3}
+		\hspace{7mm} \cvskill{IntelliJ}{4}
+		\hspace{7mm} \cvskill{Eclipse}{3}
+		\hspace{7mm} \cvskill{Puppet}{3}
+		\vspace{2.5mm}
+	\end{minipage}
+	\vspace{8mm}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	\skillsect{Platforms and server technology}
+	\\
+	\begin{minipage}[t]{\textwidth}
+		\hspace{7mm} \cvskill{Oracle Weblogic}{4}
+		\hspace{7mm} \cvskill{Oracle Service Bus}{3}
+		\hspace{7mm} \cvskill{Tomcat}{3}
+		\hspace{7mm} \cvskill{Docker}{3}
+		\hspace{7mm} \cvskill{LAMP stack}{4}
+		\hspace{7mm} \cvskill{JBoss Server / Wildfly}{3}
+		\vspace{2.5mm}
+	\end{minipage}
+	\vspace{8mm}
+
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{minipage}[t]{0.45\textwidth}
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	\skillsect{Methodologies}
+	\\
+	\begin{minipage}[t]{\textwidth}
+		\hspace{7mm} \cvskill{Design patterns}{4}
+		\hspace{7mm} \cvskill{Test-driven development}{4}
+		\hspace{7mm} \cvskill{Behaviour Driven development}{3}
+		\hspace{7mm} \cvskill{Domain Driven Design}{3}
+		\hspace{7mm} \cvskill{Application Testing Approaches}{3}
+		\hspace{7mm} \cvskill{Agile}{3}
+		\hspace{7mm} \cvskill{Prototyping}{3}
+		\hspace{7mm} \cvskill{Scrum}{4}
+		\hspace{7mm} \cvskill{LaTeX}{4}
+		\vspace{2.5mm}
+	\end{minipage}
+	\vspace{8mm}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	\skillsect{Markup languages}
+	\\
+	\begin{minipage}[t]{\textwidth}
+		\hspace{7mm} \cvskill{XML}{4}
+		\hspace{7mm} \cvskill{HTML}{4}
+		\hspace{7mm} \cvskill{CSS}{3}
+		\hspace{7mm} \cvskill{asciidoc / markdown}{3}
+		\hspace{7mm} \cvskill{LaTeX}{3}
+		\vspace{2.5mm}
+	\end{minipage}
+	\vspace{2mm}
+
+	
+	\skillsect{Miscellaneous}
+	\\
+	\begin{minipage}[t]{\textwidth}
+		\hspace{7mm} \cvskill{Adobe Photoshop Suite}{4}
+		\vspace{2.5mm}
+	\end{minipage}
+	\vspace{8mm}
+
+	
+\end{minipage}
+
+\vspace{0.3cm}
+
+\cvsect{References}
+
+\vspace{0.8cm}
+
+\vspace{-\baselineskip}
+\cvref{Dude mcDudeson}{Company}{}{Dude was senior to me}
+\vspace{-5.4\baselineskip} % Required for vertically aligning minipages
+\hfill
+\cvref{Dude mcDudeson}{Company}{}{Dude managed a project I worked on}
+
+\vspace{0.8cm}
+
+\vspace{-\baselineskip}
+\cvref{Dude mcDudeson }{Company}{}{Dude was a client of mine}
+\vspace{-5.4\baselineskip} % Required for vertically aligning minipages
+\hfill
+\cvref{Dude mcDudeson}{Company}{}{I was senior to Dude}
+
+\end{document}
+pl

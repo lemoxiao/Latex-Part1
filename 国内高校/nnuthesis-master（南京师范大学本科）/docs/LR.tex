@@ -1,0 +1,115 @@
+\chapter{Literature Review}
+
+\section{Syntactic Approaches to Pronoun Resolution}
+Syntactic structures play an important role in the interpretation of pronouns. \citet{ogrady2010} summarized several theories explaining the syntactic mechanism of pronoun resolution. First, they propose that reflexive pronoun and its antecedent must exist in the minimal inflection phrase (IP). Therefore in sentence like [\sub{\text{IP}}Claire knew that [\sub{\text{IP}}Alexis trusted her]] and [\sub{\text{IP}}Claire knew that [\sub{\text{IP}}Alexis trusted herself]], the pronoun \emph{her} points to to either Claire or the unmentioned third party, and the reflexive pronoun \emph{herself} can only mean Alexis.
+
+Generative Grammar, especially the Government and Binding Theory also contributes to the clarification of rules behind pronoun resolution. One crucial model worth noticing is the c-command theory: 
+\begin{definition}[C-Command]
+	NP\sub{\text{a}} c-commands NP\sub{\text{b}} if the first category above NP\sub{\text{a}} contains NP\sub{\text{b}}.
+\end{definition}
+Stemming from the theory are two principles:
+\begin{itemize}
+	\item \textbf{Principle A}: A reflexive pronoun must have an antecedent that c-commands it in the same minimal IP;
+	\item \textbf{Principle B}: A pronominal must not have an antecedent that c-commands it in the same minimal IP.
+\end{itemize}
+Therefore in \eqref{himself},
+\begin{align}
+	\mbox{\emph{That boy's teacher admires himself.}}\label{himself}
+\end{align}
+the reflexive pronoun himself can only be that boy's under Principle A, because as is illustrated in \autoref{fg:principlea}, \emph{that boy's teacher} c-commands \emph{himself}, the reflexive pronoun, in the same minimal IP.
+\begin{figure}[htb]\centering
+\begin{tikzpicture}[>=latex]
+\tikzset{
+	every tree node/.style={align=center,anchor=base}
+}
+\Tree [.\node(ip){\textbf{IP}}; \edge[thick]; 
+				[.\textbf{NP\sub{1}} \qroof{That boy's}.NP\sub{2}
+					   [.N\1 [.N teacher ] ] ]
+		   \edge[thick]; [.\textbf{I\1} I\\[-1ex]{\footnotesize-Pst} 
+		   \edge[thick]; [.\textbf{VP} 
+		   		\edge[thick]; [.\textbf{V\1} [.V admires ] 
+				   \edge[thick]; \node(rp){%
+					   		\qroof{himself}.\textbf{NP\sub{3}}}; 
+							   ] ] ] ]
+\node(textip)[right of=ip,xshift=4cm]{First category above NP\sub{1}};
+\node(textrp)[right of=rp,xshift=3cm,text width=4cm]
+									{Reflexive pronoun 
+									(contained within IP)};
+\draw (ip) [<-] -- (textip); 
+\draw (rp) [<-] -- (textrp);
+\end{tikzpicture}
+\caption{Structure illustrating c-command relations. NP\sub{1} c-commands NP\sub{3} but NP\sub{2} does not.}\label{fg:principlea}
+\end{figure}
+
+By contrast, in sentence like \eqref{him},
+\begin{align}
+	\mbox{\emph{That boy's teacher admires him.}}\label{him}
+\end{align}
+the pronoun him point solely to that boy, instead of anyone else, because under Principle B, \emph{that boy's teacher}, which c-commands the pronominal \emph{him} in the same minimal IP, should not its antecedent, as is clearly shown in \autoref{fg:principleb}.
+
+\begin{figure}[htb]\centering
+	\begin{tikzpicture}[>=latex]
+		\tikzset{
+			every tree node/.style={align=center,anchor=base}
+		}
+		\Tree [.\node(ip){IP}; \edge; 
+						[.\node(np1){\textbf{NP\sub{1}}}; \qroof{That boy's}.\textbf{NP\sub{2}}
+							   [.N\1 [.N teacher ] ] ]
+				   \edge; [.I\1 I\\[-1ex]{\footnotesize-Pst} 
+				   \edge; [.VP 
+						   \edge; [.V\1 [.V admires ]\edge; \node(pr){\qroof{him}.NP\sub{3}}; 
+									   ] ] ] ]
+		\node(textip)[right of=ip,xshift=4cm]{First category above NP\sub{1}};
+		\node(textpr)[right of=pr,xshift=3cm,text width=4cm]
+											{Pronoun};
+		\node(textnp1)[left of=np1,xshift=-3cm]{First category above NP\sub{2}};
+		\draw (ip) [<-] -- (textip); 
+		\draw (pr) [<-] -- (textpr);
+		\draw (np1) [<-] -- (textnp1);
+\end{tikzpicture}
+\caption{Structure containing a pronominal}\label{fg:principleb}
+\end{figure}
+
+The explicitness of traditional syntactic approaches sometimes might seem too ideal for describing linguistic phenomena. As Sapir puts it, ``all grammar leaks'' \citep{manning1999}, it is impossible for us to characterize a complete and precise set of rules that seperate well-formed utterances from ill-formed ones, because we are constantly bending and evolving those ``rules'' in order to meet our changeable communicative needs. The rationalist approach towards language studies, especially the TG Grammar, has motivated major development in modern linguistics and computer science, but they are in the meantime inadequate, and sometimes na\"{i}ve, when in lack of more robust mathematical foundations \citep{kornai2008}. Therefore, along with the development of artificial intelligence, we are witnessing corpus-based statiscal methods being widely applied in more and more major linguistic fields to solve problems such as word-sense disambiguation and anaphora resolution.  
+
+In more recent studies, for instance, dependency relations have also been taken into account in explaining the placing as well as the interpretation of anaphora. \citet{liu2017}, using data-driven analyses, find that there is a universal preference for dependency distance minimization (DDM), because the linear distance between two words related semantically or syntactically in one sentence, also are linked closely to our memory burden and syntactic complexity. Therefore, in the case of pronoun resolution, people tend to keep the referent at a closer position from the pronoun than other distracting words in the discourse, thus increasing the salience of the antecedent by reducing the syntactic zigzags.
+
+\section{Exploring the Focus Effect}
+Yet not everyone is familiar with the exact rules of anaphora or is equipped with a highly accurate probablistic analyzer, so that everyone is likely to generate ambiguous anaphora whether he or she is a native speaker or not. In writing guides such as \citet{pinker2014}, it is often advised that writers of all levels of proficiency should avoid ambiguous pronoun resolutions. Despite the challenges of understanding how human brain process anaphora, we are still able to perform complex pronoun resolutions every day without making errors. In practice, we quite intuitively pack key information into an easily accessible location for pronouns through both linguistic and non-linguistic approaches, among which focus is frequently used and is deemed as a gateway to the research of pronoun resolution.
+
+Studies show different results on how focus affect pronoun resolution. \citet{徐晓东2013} argue that focus interact with other information structures i.e. topic, verb semantics and distance-related factors in the interpretation of pronouns. By using a writing completion test and two reading acceptability tests, they find that (1) antecedents are more likely to be referred to when topicalized than in the non-topic positions; and (2) forward biased verbs exert more influence on the determination of pronoun's referents than backward biased verbs do. Interestingly, \citet{徐晓东2013} in their study also propose that the modality of tasks adopted in experiments also has an influence over how topic structure and verb semantics affect pronoun resolution. That is, in sentence production test, topic has greater impact over anaphora than the implicit causal relations of verb semantics, but in sentence comprehension test, the direction of verb semantics seems to play a bigger role.
+
+Some researches have also revealed L1 and L2 differences in pronoun resolution. \citet{patterson2017} conducted their experiment among native speakers of German and Russian, as well as non-native speakers of German whose mother tongue is Russian. Because Russian and German share similar patterns of focus construction, the impact of first language (Russian) on non-native language (German) pronoun resolution can be fairly excluded in the research. They discover that there is a clear difference of resolution preferences between native speakers and non-native speakers. For native speakers, they are less likely to resolve the pronoun to a clefted focus, which is termed as the “anti-focus effect”. However, non-native speakers do not show this tendency, and are often distracted by an antecedent accompanied by a focus-sensitive particle such as adverbs like “only” or “even”.
+
+The argument that focus structure does not necessarily increase the salience of an antecedent is echoed by \citet{colonna2012}. They find that among native speakers of German and French, focusing reduces while topicalization enhances the accessibility of antecedents of pronouns within the same sentence. In a follow-up study, \citet{colonna2015} compare the focus effect in intra- and inter-sentential pronoun resolution in German. They point out that previous researches such as \citet{kaiser2011} and \citet{cowles2007} base their results on inter-sentence pronoun resolutions, namely conditions in which the pronoun and its antecedent are in different discourse units. While in \eqref{slap} 
+\begin{align}
+	\mbox{\emph{It is Peter who slapped John when he was young.}}\label{slap}
+\end{align}
+where the pronoun occur with its antecedent in the same sentence, the preference for the clefted focus was not observed. They further hypothesize that the so-called salience mechanisms, such as topicalization and cleft structure, should have a stronger effect between processing units (between sentences) than within a single processing unit where the semantics of the verb and the connective are assumed to play the most central role \citep{grosz1995}. 
+
+In summary, focus is not an isolated factor of influence in pronoun resolution. Analysis of focus effect should be placed in the context of other information structures such as topic and perhaps verb semantic biases. The widely hold assumption that focus increases the sailience of a specific part of a discourse is no longer valid when intra- and inter-sentential differences are compared. Furthermore, the procedure of experiment should be considered, the format of which we believe is important, even decisive for subjects of experiments. Next, we will be reviewing the exsiting literature on a special type of focus, the cleft structure, and see its role in the anaphora resolution.
+
+\section{Subject and Object Cleft Sentences}
+The phenomenon that focus does not make the antecedent more accessible in intra-sentence experiments also finds explanation in the role of cleft in information structures. Almost all currently available studies agree that pronouns prefer topical antecedents. As a focused entity usually provides new and possibly unexpected information, it is not a good antecedent for a pronoun. However, the focus of an utterance may be related to the topic of the following one \citep{sgall1986}. More specifically, they propose that the cleft construction signals a potential topic-shift. Thus, a clefted antecedent may co-refer preferentially with a pronoun in a new sentence (or a new discourse unit) but not in the same sentence (or discourse unit). A topic-shift within a sentence (or discourse unit) reduces coherence whereas a topic-shift may occur in a new sentence (or a new discourse unit) without negatively affecting discourse coherence. 
+
+Aside from the focus effect of cleft structure itself, several studies also have been working on the problem of whether there is a difference between subject and object cleft. \citet{kaiser2011}, for instance, investigated the focus effect of both focused subject and focused object in reference resolution. In order to put a contrastive focus on one of the potential antecedents (subject vs. object), she used discourse contexts in which one speaker corrected another speaker. It clefts (It was John that he congratulated vs. It was John who congratulated him) and SVO structures (He congratulated John vs. John congratulated him), both preceded by the same discourse context, were examined. Clefted, as compared to SVO structures, did not increase participant's off-line choices for a referent, regardless of whether the clefted referent was the subject or the object. However, the eye-movement data showed marginal effects of clefting as manifested in a late interaction ($1500\sim2000\,\si{ms}$ from pronoun onset), indicating increased fixations to focused subjects compared to other conditions.
+
+\citet{reichle2014} also suggests such subject preference exists in anaphora resolution in French, despite object preference in English. He points out that while both English and French have versatile use of cleft structures, they are also affected by the different constraints on the formulation of focus. According to \citet{lambrecht2001}, a constraint allowing only topical material in preverbal subject position leads to an increased necessity to the use of clefts. Since preverbal subjects are generally topical, an agent receiving focal status is often expressed as an object (i.\,e.\,, in the focus phrase following the copula clause of the \emph{c'est} cleft) where it does not violate the language's prosodic and syntactic constraints. This use of the \emph{c'est} cleft, known as a subject cleft, marks focus on an NP referring to an agent that would have been a grammatical subject in the canonical version of the sentence. Conversely, an object cleft is a cleft that marks as focal an NP referring to a patient (the object in the canonical version of the sentence). 
+
+In the light of these proposed constraints on French information structure and the language's reliance on clefts for focus marking, it has been claimed that the French \emph{c'est} cleft is ``more important'' than the English \emph{it} cleft, and that subjects are commonly marked as focal via \emph{c'est} clefts in French. Besides, \citet{reichle2014} also finds processing advantage of subject clefts over object clefts. The explanation is three-folds, including syntactic complexity, corpus-based distributional frequency of structures, and heuristic strategies depending on semantic or thematic information. \citet{engelkamp1982} also finds that readers prefer subjects in clefted position than objects, and that subjects are easier to comprehend, which is in line with previous researches that subject relative clause is also processed faster than object relative clause \citep{hakes1976}. They proceed claiming that in formulating a sentence, the speaker tends to adopt as grammatical subject that concept upon which his or her attention is focused. Therefore, in their view, both the subjectivisation of a referent and the clefting of new information are strategies that direct the reader or listener's attention to that part of the utterance. Thus, clefted subject has greater facilitative effect in anaphora resolution than clefted object.
+
+However, in some cases where alternative non-ambiguous constructions exist, as is illustrated by \citet{colonna2012} in a cross-linguistic study of German and French, clefted object can also be preferred. Normally in French, when the subject of the matrix clause and that of the subordinate clause are co-referential, the use of the non-ambiguous infinitival structure is usually required, but co-reference with the object of the matrix clause can only be expressed with an explicit anaphora. Consequently, when presented with the sentence such as:
+\begin{align}
+	&\mbox{\emph{Le facteur a rencontré le balayeur avant qu'il rentre à la maison.}}\\
+	\label{facteur}
+	&\mbox{(\emph{The postal worker met the street-sweeper before he went home.})}\notag
+\end{align}
+French speakers can be influenced by the more idiomatic expression:
+\begin{align}
+	&\mbox{\emph{Le facteur a rencontré le balayeur avant de rentrer à la maison.}}\\
+	\label{facteur2}
+	&\mbox{(\emph{The postal worker met the street-sweeper before going home.})}\notag
+\end{align}
+Thus, the first redundant expression would force the reader or listener to pay extra attention to the inserted pronoun, and then resolve it to the object rather than the more natural subject.
+
+So far in this section, we have delved deeper into the effect of subject-clefted focus and object-clefted focus discussed in several researches. We can conclude from the literature reviewed above that subject position seems to be more often used as focus, and clefted subject has better processing advantages than clefted object, although distractive factors come up in cases such as alternative non-ambiguous expressions. However, the argument that object preference in English \citep{reichle2014} is still questionable to us. In the following chapter, we will be verifying these results.

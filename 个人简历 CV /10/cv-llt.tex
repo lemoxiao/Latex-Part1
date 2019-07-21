@@ -1,0 +1,75 @@
+\documentclass[a4paper,skipsamekey,11pt,british]{curve}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[tracking=smallcaps]{microtype}
+
+% Change the fonts if you want
+\usepackage{fbb}
+\usepackage[type1]{cabin}
+\usepackage[varqu,varl]{zi4}
+\useosf  %% Comment out if you prefer lining figures rather than old style figures
+
+\usepackage{settings}
+\usepackage{multicol}
+
+%% Only needed if you want a Publication List
+\addbibresource{own-bib.bib}
+
+% Change the page margins if you want
+% \geometry{left=1cm,right=1cm,top=1.5cm,bottom=1.5cm}
+
+% Change the colours if you want
+% \definecolor{SwishLineColour}{HTML}{00FFFF}
+% \definecolor{MarkerColour}{HTML}{0000CC}
+
+% Change the item prefix marker if you want
+% \prefixmarker{$\diamond$}
+
+%% Photo is only shown if "fullonly" is included
+\includecomment{fullonly}
+% \excludecomment{fullonly}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\leftheader{%
+  {\LARGE\bfseries\sffamily Lim Lian Tze, Ph.D.}
+
+  \makefield{\faEnvelopeO}{\texttt{liantze@gmail.com}}
+  \makefield{\faTwitter}{\texttt{@liantze}}
+
+  \makefield{\faGlobe}{\url{http://liantze.penguinattack.org/}}
+
+  \makefield{\faLinkedinSquare}
+  {\url{http://www.linkedin.com/in/limliantze/}}
+}
+
+\rightheader{~}
+\begin{fullonly}
+\photo[r]{photo}
+\photoscale{0.13}
+\end{fullonly}
+
+\title{Curriculum Vitae}
+
+% You can change the "ribbon" item markers here
+
+\begin{document}
+\makeheaders[c]
+
+\makerubric{employment}
+\makerubric{education}
+
+% If you're not a researcher nor an academic, you probably don't have any publications; delete this line.
+%% Sometimes when a section can't be nicely modelled with the \entry[]... mechanism; hack our own and use \input NOT \makerubric
+\input{publications}
+
+\makerubric{skills}
+\makerubric{misc}
+
+\makerubric{referee}
+% \input{referee-full}
+
+\end{document}

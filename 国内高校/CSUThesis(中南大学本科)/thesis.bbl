@@ -1,0 +1,719 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{Meta_CN}{book}{}
+      \name{author}{4}{}{%
+        {{hash=9ab9c3c09bd5878aad760c86df0c1249}{%
+           family={崔万照},
+           familyi={崔\bibinitperiod}}}%
+        {{hash=7411d149be89d05686ef42f238c8b89a}{%
+           family={马伟},
+           familyi={马\bibinitperiod}}}%
+        {{hash=493c452f58d9a599470959a9fe10e5c2}{%
+           family={邱乐德},
+           familyi={邱\bibinitperiod}}}%
+        {{hash=275c8273f40125901f852dc551ed8c92}{%
+           family={张洪太},
+           familyi={张\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {北京}%
+      }
+      \list{publisher}{1}{%
+        {国防工业出版社}%
+      }
+      \strng{namehash}{dbd1093849ff2969c9008232afef2307}
+      \strng{fullhash}{b2d984c076be9c31c280aaf5d097deac}
+      \strng{bibnamehash}{dbd1093849ff2969c9008232afef2307}
+      \strng{authorbibnamehash}{dbd1093849ff2969c9008232afef2307}
+      \strng{authornamehash}{dbd1093849ff2969c9008232afef2307}
+      \strng{authorfullhash}{b2d984c076be9c31c280aaf5d097deac}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{电磁超介质及其应用}
+      \field{usera}{M}
+      \field{userd}{电}
+      \field{usere}{崔万照 and 马伟 and 邱乐德 and 张洪太}
+      \field{userf}{崔万照 and 马伟 and 邱乐德 and 张洪太}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \keyw{Meta_CN}
+    \endentry
+    \entry{chen2007act}{article}{}
+      \name{author}{2}{}{%
+        {{hash=742f8103481c80bc5dcf8cf53a3fff91}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+        {{hash=26ab70a416fb2cbc5ab7faf41d686367}{%
+           family={Chan},
+           familyi={C\bibinitperiod},
+           given={C.\bibnamedelimi T.},
+           giveni={C\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {AIP}%
+      }
+      \strng{namehash}{3f949ec31b2f0e1410ab16a1ce8bdc35}
+      \strng{fullhash}{3f949ec31b2f0e1410ab16a1ce8bdc35}
+      \strng{bibnamehash}{3f949ec31b2f0e1410ab16a1ce8bdc35}
+      \strng{authorbibnamehash}{3f949ec31b2f0e1410ab16a1ce8bdc35}
+      \strng{authornamehash}{3f949ec31b2f0e1410ab16a1ce8bdc35}
+      \strng{authorfullhash}{3f949ec31b2f0e1410ab16a1ce8bdc35}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Applied Physics Letters}
+      \field{title}{Acoustic cloaking in three dimensions using acoustic metamaterials}
+      \field{usera}{J}
+      \field{userd}{A}
+      \field{usere}{Chen, H. and Chan, C. T.}
+      \field{userf}{Chen, H. and Chan, C. T.}
+      \field{volume}{91}
+      \field{year}{2007}
+      \field{dateera}{ce}
+      \field{pages}{183518}
+      \range{pages}{1}
+      \keyw{chen2007act}
+    \endentry
+    \entry{DPMG}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=3479841c92b895e18d797966288dc3a6}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Sangbum},
+           giveni={S\bibinitperiod}}}%
+        {{hash=40e9bf4635a74f0d6e7c54315737d88b}{%
+           family={Woo},
+           familyi={W\bibinitperiod},
+           given={Namyoon},
+           giveni={N\bibinitperiod}}}%
+        {{hash=fc410aad61e9e9e7949623bbb06de5cb}{%
+           family={Yeom},
+           familyi={Y\bibinitperiod},
+           given={Heon\bibnamedelima Y.},
+           giveni={H\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{hash=3f94fb2c4b76892f77ebad98034f39f5}{%
+           family={Park},
+           familyi={P\bibinitperiod},
+           given={Taesoon},
+           giveni={T\bibinitperiod}}}%
+        {{hash=6445f9c7cabab4b7fec5801aebadd264}{%
+           family={Park},
+           familyi={P\bibinitperiod},
+           given={Hyoungwoo},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Venice, Italy}%
+      }
+      \strng{namehash}{f7feb41fb3c85aacb9a5f3c9b1d28db1}
+      \strng{fullhash}{885bb1f0886f724c7cfdec6961777a56}
+      \strng{bibnamehash}{f7feb41fb3c85aacb9a5f3c9b1d28db1}
+      \strng{authorbibnamehash}{f7feb41fb3c85aacb9a5f3c9b1d28db1}
+      \strng{authornamehash}{f7feb41fb3c85aacb9a5f3c9b1d28db1}
+      \strng{authorfullhash}{885bb1f0886f724c7cfdec6961777a56}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{the 10th European PVM/MPI Users' Group Conference}
+      \field{month}{9}
+      \field{title}{Design and {I}mplementation of {D}ynamic {P}rocess {M}anagement for {G}rid-enabled {MPICH}}
+      \field{usera}{C}
+      \field{userd}{D}
+      \field{usere}{Kim, Sangbum and Woo, Namyoon and Yeom, Heon Y. and Park, Taesoon and Park, Hyoungwoo}
+      \field{userf}{Kim, Sangbum and Woo, Namyoon and Yeom, Heon Y. and Park, Taesoon and Park, Hyoungwoo}
+      \field{year}{2003}
+      \field{dateera}{ce}
+      \keyw{DPMG}
+    \endentry
+    \entry{JohnD}{book}{}
+      \name{author}{3}{}{%
+        {{hash=fa9afa226fa9a838261e3386e20890c2}{%
+           family={Joannopoulos},
+           familyi={J\bibinitperiod},
+           given={J.\bibnamedelimi D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=fe5be6ff1427708cf6dac16d929f043a}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={S.\bibnamedelimi G.},
+           giveni={S\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=94f42f3ff7461ae23843ac195d6c4663}{%
+           family={Winn},
+           familyi={W\bibinitperiod},
+           given={J.\bibnamedelimi N.},
+           giveni={J\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Princeton University Press}%
+      }
+      \strng{namehash}{5beddfed2a9a711d7c19a1b972ca0250}
+      \strng{fullhash}{5beddfed2a9a711d7c19a1b972ca0250}
+      \strng{bibnamehash}{5beddfed2a9a711d7c19a1b972ca0250}
+      \strng{authorbibnamehash}{5beddfed2a9a711d7c19a1b972ca0250}
+      \strng{authornamehash}{5beddfed2a9a711d7c19a1b972ca0250}
+      \strng{authorfullhash}{5beddfed2a9a711d7c19a1b972ca0250}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Photonic Crystals: Molding the Flow of Light}
+      \field{usera}{M}
+      \field{userd}{P}
+      \field{usere}{Joannopoulos, J. D. and Johnson, S. G. and Winn, J. N.}
+      \field{userf}{Joannopoulos, J. D. and Johnson, S. G. and Winn, J. N.}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \keyw{JohnD}
+    \endentry
+    \entry{zhubajie}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=a0f8671e1c021f9a2ec0e714e048044e}{%
+           family={猪八戒},
+           familyi={猪\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {广寒宫大学}%
+      }
+      \list{location}{1}{%
+        {北京}%
+      }
+      \strng{namehash}{a0f8671e1c021f9a2ec0e714e048044e}
+      \strng{fullhash}{a0f8671e1c021f9a2ec0e714e048044e}
+      \strng{bibnamehash}{a0f8671e1c021f9a2ec0e714e048044e}
+      \strng{authorbibnamehash}{a0f8671e1c021f9a2ec0e714e048044e}
+      \strng{authornamehash}{a0f8671e1c021f9a2ec0e714e048044e}
+      \strng{authorfullhash}{a0f8671e1c021f9a2ec0e714e048044e}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{论流体食物的持久保存}
+      \field{usera}{D}
+      \field{userd}{论}
+      \field{usere}{猪八戒}
+      \field{userf}{猪八戒}
+      \field{year}{2005}
+      \field{dateera}{ce}
+      \keyw{zhubajie}
+    \endentry
+    \entry{IEEE-1363}{book}{}
+      \name{author}{1}{}{%
+        {{hash=5bde7740f39e9feac08487ec40970e1e}{%
+           family={1363-2000},
+           familyi={1\bibinithyphendelim 2\bibinitperiod},
+           given={IEEE\bibnamedelima Std},
+           giveni={I\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{5bde7740f39e9feac08487ec40970e1e}
+      \strng{fullhash}{5bde7740f39e9feac08487ec40970e1e}
+      \strng{bibnamehash}{5bde7740f39e9feac08487ec40970e1e}
+      \strng{authorbibnamehash}{5bde7740f39e9feac08487ec40970e1e}
+      \strng{authornamehash}{5bde7740f39e9feac08487ec40970e1e}
+      \strng{authorfullhash}{5bde7740f39e9feac08487ec40970e1e}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{IEEE Standard Specifications for Public-Key Cryptography}
+      \field{usera}{M}
+      \field{userd}{I}
+      \field{usere}{IEEE Std 1363-2000}
+      \field{userf}{IEEE Std 1363-2000}
+      \field{year}{2000}
+      \field{dateera}{ce}
+      \keyw{IEEE-1363}
+    \endentry
+    \entry{chen2007ewi}{article}{}
+      \name{author}{4}{}{%
+        {{hash=742f8103481c80bc5dcf8cf53a3fff91}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+        {{hash=9ce1f63acd8fb5cd2ec0018e83beab1d}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={B.\bibnamedelimi I.},
+           giveni={B\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+        {{hash=3254f17a53363f18d15ee5f7d89c3560}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=d54da81e67bdfae1e90757c84c40d392}{%
+           family={Kong},
+           familyi={K\bibinitperiod},
+           given={J.\bibnamedelimi A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{5bd9313cfc6de360b5ccf3d334807a5a}
+      \strng{fullhash}{c37e3978e051ec8bd93fbe55e562d0ee}
+      \strng{bibnamehash}{5bd9313cfc6de360b5ccf3d334807a5a}
+      \strng{authorbibnamehash}{5bd9313cfc6de360b5ccf3d334807a5a}
+      \strng{authornamehash}{5bd9313cfc6de360b5ccf3d334807a5a}
+      \strng{authorfullhash}{c37e3978e051ec8bd93fbe55e562d0ee}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review Letters}
+      \field{number}{6}
+      \field{title}{Electromagnetic Wave Interactions with a Metamaterial Cloak}
+      \field{usera}{J}
+      \field{userd}{E}
+      \field{usere}{Chen, H. and Wu, B. I. and Zhang, B. and Kong, J. A.}
+      \field{userf}{Chen, H. and Wu, B. I. and Zhang, B. and Kong, J. A.}
+      \field{volume}{99}
+      \field{year}{2007}
+      \field{dateera}{ce}
+      \field{pages}{63903}
+      \range{pages}{1}
+      \keyw{chen2007ewi}
+    \endentry
+    \entry{kocher99}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=6f15ea65e88e08cdd58c202a4ab1201d}{%
+           family={Kocher},
+           familyi={K\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=0e3eb0aabb9956de097b43bfb5206c4b}{%
+           family={Jaffe},
+           familyi={J\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a07883e1c3baf26ef265e925ab8653a5}{%
+           family={Jun},
+           familyi={J\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+      }
+      \name{bookauthor}{1}{}{%
+        {{hash=ac3b1641dc986a28e40ae6b0ac6f53c7}{%
+           family={Wiener},
+           familyi={W\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=ac3b1641dc986a28e40ae6b0ac6f53c7}{%
+           family={Wiener},
+           familyi={W\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{eed5167643af5f05e06792562888ee12}
+      \strng{fullhash}{eed5167643af5f05e06792562888ee12}
+      \strng{bibnamehash}{eed5167643af5f05e06792562888ee12}
+      \strng{authorbibnamehash}{eed5167643af5f05e06792562888ee12}
+      \strng{authornamehash}{eed5167643af5f05e06792562888ee12}
+      \strng{authorfullhash}{eed5167643af5f05e06792562888ee12}
+      \strng{bookauthorbibnamehash}{ac3b1641dc986a28e40ae6b0ac6f53c7}
+      \strng{bookauthornamehash}{ac3b1641dc986a28e40ae6b0ac6f53c7}
+      \strng{bookauthorfullhash}{ac3b1641dc986a28e40ae6b0ac6f53c7}
+      \strng{editorbibnamehash}{ac3b1641dc986a28e40ae6b0ac6f53c7}
+      \strng{editornamehash}{ac3b1641dc986a28e40ae6b0ac6f53c7}
+      \strng{editorfullhash}{ac3b1641dc986a28e40ae6b0ac6f53c7}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Cryptology ({CRYPTO}~'99)}
+      \field{month}{9}
+      \field{series}{Lecture Notes in Computer Science}
+      \field{title}{Differential Power Analysis}
+      \field{usera}{C}
+      \field{userd}{D}
+      \field{usere}{C. Kocher and J. Jaffe and B. Jun}
+      \field{userf}{C. Kocher and J. Jaffe and B. Jun}
+      \field{volume}{1666}
+      \field{year}{1999}
+      \field{dateera}{ce}
+      \field{pages}{388\bibrangedash 397}
+      \range{pages}{10}
+      \keyw{kocher99}
+    \endentry
+    \entry{cnproceed}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=5c1d920c2f2030fa01233f446674ecc3}{%
+           family={王重阳},
+           familyi={王\bibinitperiod}}}%
+        {{hash=66947c11a37e621750e789f25bdcd581}{%
+           family={黄药师},
+           familyi={黄\bibinitperiod}}}%
+        {{hash=77167b0a58af42d8ff396e506ba2f962}{%
+           family={欧阳峰},
+           familyi={欧\bibinitperiod}}}%
+        {{hash=81d7b79dfcb2b5fc6b57e0c51dd964f7}{%
+           family={洪七公},
+           familyi={洪\bibinitperiod}}}%
+        {{hash=fcb8bbbae41ccb07250331e7c0576ad4}{%
+           family={段皇帝},
+           familyi={段\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {西安, 中国}%
+      }
+      \list{publisher}{1}{%
+        {中国古籍出版社}%
+      }
+      \strng{namehash}{35bb91ff606e9f3f95493608483409c3}
+      \strng{fullhash}{f805963ba6e890904fa77805c4227ad8}
+      \strng{bibnamehash}{35bb91ff606e9f3f95493608483409c3}
+      \strng{authorbibnamehash}{35bb91ff606e9f3f95493608483409c3}
+      \strng{authornamehash}{35bb91ff606e9f3f95493608483409c3}
+      \strng{authorfullhash}{f805963ba6e890904fa77805c4227ad8}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{第~$N$~次华山论剑}
+      \field{month}{9}
+      \field{title}{武林高手论文集}
+      \field{usera}{C}
+      \field{userd}{武}
+      \field{usere}{王重阳 and 黄药师 and 欧阳峰 and 洪七公 and 段皇帝}
+      \field{userf}{王重阳 and 黄药师 and 欧阳峰 and 洪七公 and 段皇帝}
+      \field{year}{2006}
+      \field{dateera}{ce}
+      \keyw{cnproceed}
+    \endentry
+    \entry{metamori2004}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=6105585c555fccb87d78d94be4842e83}{%
+           family={Jeyakumar},
+           familyi={J\bibinitperiod},
+           given={Ashwin\bibnamedelima Raju},
+           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Virgina Tech}%
+      }
+      \list{location}{1}{%
+        {Blacksburg}%
+      }
+      \strng{namehash}{6105585c555fccb87d78d94be4842e83}
+      \strng{fullhash}{6105585c555fccb87d78d94be4842e83}
+      \strng{bibnamehash}{6105585c555fccb87d78d94be4842e83}
+      \strng{authorbibnamehash}{6105585c555fccb87d78d94be4842e83}
+      \strng{authornamehash}{6105585c555fccb87d78d94be4842e83}
+      \strng{authorfullhash}{6105585c555fccb87d78d94be4842e83}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{7}
+      \field{title}{Metamori: A library for Incremental File Checkpointing}
+      \field{usera}{D}
+      \field{userd}{M}
+      \field{usere}{Ashwin Raju Jeyakumar}
+      \field{userf}{Ashwin Raju Jeyakumar}
+      \field{year}{2004}
+      \field{dateera}{ce}
+      \keyw{metamori2004}
+    \endentry
+    \entry{shaheshang}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=123ccc47ad74b8f4e6906a4f28ee0d0e}{%
+           family={沙和尚},
+           familyi={沙\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {清华大学}%
+      }
+      \list{location}{1}{%
+        {北京}%
+      }
+      \strng{namehash}{123ccc47ad74b8f4e6906a4f28ee0d0e}
+      \strng{fullhash}{123ccc47ad74b8f4e6906a4f28ee0d0e}
+      \strng{bibnamehash}{123ccc47ad74b8f4e6906a4f28ee0d0e}
+      \strng{authorbibnamehash}{123ccc47ad74b8f4e6906a4f28ee0d0e}
+      \strng{authornamehash}{123ccc47ad74b8f4e6906a4f28ee0d0e}
+      \strng{authorfullhash}{123ccc47ad74b8f4e6906a4f28ee0d0e}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{论流沙河的综合治理}
+      \field{usera}{D}
+      \field{userd}{论}
+      \field{usere}{沙和尚}
+      \field{userf}{沙和尚}
+      \field{year}{2005}
+      \field{dateera}{ce}
+      \keyw{shaheshang}
+    \endentry
+    \entry{FistSystem01}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=6c79b4d2fa53538347e4a5f171a1cd36}{%
+           family={Zadok},
+           familyi={Z\bibinitperiod},
+           given={Erez},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Computer Science Department, Columbia University}%
+      }
+      \list{location}{1}{%
+        {USA}%
+      }
+      \strng{namehash}{6c79b4d2fa53538347e4a5f171a1cd36}
+      \strng{fullhash}{6c79b4d2fa53538347e4a5f171a1cd36}
+      \strng{bibnamehash}{6c79b4d2fa53538347e4a5f171a1cd36}
+      \strng{authorbibnamehash}{6c79b4d2fa53538347e4a5f171a1cd36}
+      \strng{authornamehash}{6c79b4d2fa53538347e4a5f171a1cd36}
+      \strng{authorfullhash}{6c79b4d2fa53538347e4a5f171a1cd36}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{FiST: A System for Stackable File System Code Generation}
+      \field{usera}{D}
+      \field{userd}{F}
+      \field{usere}{Erez Zadok}
+      \field{userf}{Erez Zadok}
+      \field{year}{2001}
+      \field{dateera}{ce}
+      \keyw{FistSystem01}
+    \endentry
+    \entry{bai2008}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=0e68fa9b72078f5bfa16728621030a03}{%
+           family={白云芬},
+           familyi={白\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {上海交通大学}%
+      }
+      \list{location}{1}{%
+        {上海}%
+      }
+      \strng{namehash}{0e68fa9b72078f5bfa16728621030a03}
+      \strng{fullhash}{0e68fa9b72078f5bfa16728621030a03}
+      \strng{bibnamehash}{0e68fa9b72078f5bfa16728621030a03}
+      \strng{authorbibnamehash}{0e68fa9b72078f5bfa16728621030a03}
+      \strng{authornamehash}{0e68fa9b72078f5bfa16728621030a03}
+      \strng{authorfullhash}{0e68fa9b72078f5bfa16728621030a03}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{信用风险传染模型和信用衍生品的定价}
+      \field{usera}{D}
+      \field{userd}{信}
+      \field{usere}{白云芬}
+      \field{userf}{白云芬}
+      \field{year}{2008}
+      \field{dateera}{ce}
+      \keyw{bai2008}
+    \endentry
+    \entry{NPB2}{report}{}
+      \name{author}{6}{}{%
+        {{hash=529e52f9a7bfb1480c4a9184449d2a93}{%
+           family={Woo},
+           familyi={W\bibinitperiod},
+           given={Alex},
+           giveni={A\bibinitperiod}}}%
+        {{hash=07539ff50924d8011bbdd60c37daff3f}{%
+           family={Bailey},
+           familyi={B\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=d4303dfc1a98308752efcab8f6bc9c09}{%
+           family={Yarrow},
+           familyi={Y\bibinitperiod},
+           given={Maurice},
+           giveni={M\bibinitperiod}}}%
+        {{hash=34d298deec4bef8bc2b506bb4eab035c}{%
+           family={Wijngaart},
+           familyi={W\bibinitperiod},
+           given={Wijngaart},
+           giveni={W\bibinitperiod}}}%
+        {{hash=0074fd9f9da537e51b88596b5f635943}{%
+           family={Harris},
+           familyi={H\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod}}}%
+        {{hash=5555d1cae21fad4a5a7111aecf1bf7c9}{%
+           family={Saphir},
+           familyi={S\bibinitperiod},
+           given={William},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {The Pennsylvania State University CiteSeer Archives}%
+      }
+      \strng{namehash}{d612d1522527164cdbeb9e7b9b91cb6c}
+      \strng{fullhash}{964f274815d873ed0f7795fe5f0adab1}
+      \strng{bibnamehash}{d612d1522527164cdbeb9e7b9b91cb6c}
+      \strng{authorbibnamehash}{d612d1522527164cdbeb9e7b9b91cb6c}
+      \strng{authornamehash}{d612d1522527164cdbeb9e7b9b91cb6c}
+      \strng{authorfullhash}{964f274815d873ed0f7795fe5f0adab1}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{12}
+      \field{title}{The {NAS} Parallel Benchmarks 2.0}
+      \field{usera}{R}
+      \field{userd}{T}
+      \field{usere}{Alex Woo and David Bailey and Maurice Yarrow and Wijngaart Wijngaart and Tim Harris and William Saphir}
+      \field{userf}{Alex Woo and David Bailey and Maurice Yarrow and Wijngaart Wijngaart and Tim Harris and William Saphir}
+      \field{year}{1995}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://www.nasa.org/
+      \endverb
+      \verb{url}
+      \verb http://www.nasa.org/
+      \endverb
+      \keyw{NPB2}
+    \endentry
+    \entry{xiaoyu2001}{article}{}
+      \name{author}{1}{}{%
+        {{hash=cc33f4f9702ebe9e9ae90ce8b26e8109}{%
+           family={萧钰},
+           familyi={萧\bibinitperiod}}}%
+      }
+      \strng{namehash}{cc33f4f9702ebe9e9ae90ce8b26e8109}
+      \strng{fullhash}{cc33f4f9702ebe9e9ae90ce8b26e8109}
+      \strng{bibnamehash}{cc33f4f9702ebe9e9ae90ce8b26e8109}
+      \strng{authorbibnamehash}{cc33f4f9702ebe9e9ae90ce8b26e8109}
+      \strng{authornamehash}{cc33f4f9702ebe9e9ae90ce8b26e8109}
+      \strng{authorfullhash}{cc33f4f9702ebe9e9ae90ce8b26e8109}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{出版业信息化迈人快车道}
+      \field{usera}{J}
+      \field{userd}{出}
+      \field{usere}{萧钰}
+      \field{userf}{萧钰}
+      \field{year}{2001}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://www.creader.com/news/20011219/200112190019.html
+      \endverb
+      \verb{url}
+      \verb http://www.creader.com/news/20011219/200112190019.html
+      \endverb
+      \keyw{xiaoyu2001}
+    \endentry
+    \entry{CHRISTINE1998}{article}{}
+      \name{author}{1}{}{%
+        {{hash=494bf82c50994ec2bd31db64927f56a5}{%
+           family={Christine},
+           familyi={C\bibinitperiod},
+           given={Mlot},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{494bf82c50994ec2bd31db64927f56a5}
+      \strng{fullhash}{494bf82c50994ec2bd31db64927f56a5}
+      \strng{bibnamehash}{494bf82c50994ec2bd31db64927f56a5}
+      \strng{authorbibnamehash}{494bf82c50994ec2bd31db64927f56a5}
+      \strng{authornamehash}{494bf82c50994ec2bd31db64927f56a5}
+      \strng{authorfullhash}{494bf82c50994ec2bd31db64927f56a5}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Science}
+      \field{title}{Plant physiology: plant biology in the Genome Era}
+      \field{usera}{J}
+      \field{userd}{P}
+      \field{usere}{Christine, Mlot}
+      \field{userf}{Christine, Mlot}
+      \field{volume}{281}
+      \field{year}{1998}
+      \field{dateera}{ce}
+      \field{pages}{331\bibrangedash 332}
+      \range{pages}{2}
+      \verb{urlraw}
+      \verb http://www.sciencemag.org/cgi/collection/anatmorp
+      \endverb
+      \verb{url}
+      \verb http://www.sciencemag.org/cgi/collection/anatmorp
+      \endverb
+      \keyw{CHRISTINE1998}
+    \endentry
+    \entry{RManual}{book}{}
+      \name{author}{1}{}{%
+        {{hash=a902f7a1275f47f57554b7ea75ccd0bc}{%
+           family={{R Core Team}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Vienna, Austria}%
+      }
+      \list{organization}{1}{%
+        {R Foundation for Statistical Computing}%
+      }
+      \strng{namehash}{a902f7a1275f47f57554b7ea75ccd0bc}
+      \strng{fullhash}{a902f7a1275f47f57554b7ea75ccd0bc}
+      \strng{bibnamehash}{a902f7a1275f47f57554b7ea75ccd0bc}
+      \strng{authorbibnamehash}{a902f7a1275f47f57554b7ea75ccd0bc}
+      \strng{authornamehash}{a902f7a1275f47f57554b7ea75ccd0bc}
+      \strng{authorfullhash}{a902f7a1275f47f57554b7ea75ccd0bc}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{{ISBN} 3-900051-07-0}
+      \field{title}{R: A Language and Environment for Statistical Computing}
+      \field{usera}{M}
+      \field{userd}{R}
+      \field{usere}{{R Core Team}}
+      \field{userf}{{R Core Team}}
+      \field{year}{2012}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://www.R-project.org/
+      \endverb
+      \verb{url}
+      \verb http://www.R-project.org/
+      \endverb
+      \keyw{RManual,{ISBN} 3-900051-07-0}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

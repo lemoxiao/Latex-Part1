@@ -1,0 +1,74 @@
+\documentclass[degree=doctor,bibtype=numeric]{tongjithesis}
+% 选项：
+%   degree=[master|doctor], 							% 必选
+%   bibtype=[numeric|authoryear], 						% 可选，数字式引用|作者-年份引用，默认为数字式（上标）引用
+%   degreetype=[academic|profession|equaleducation],  	% 可选, 学术型|专业型|同等学力，默认为学术型
+% 	electronic,                                 		% 可选, 电子版，(打印时删除)
+%   secret,                                     		% 可选，是否保密，基本不用
+%   pifootnote,                                 		% 可选，默认已打开
+%   romantitle                                  		% 可选，默认已打开
+%   注：默认已打开的选项可以使用arialtitle=false的形式关闭。
+
+% 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。
+\usepackage{tongjiutils}
+
+%参考文献更新使用biblatex包, 使用gb7714-2015标准, 具体参数设置可在cls文件中搜索biblatex进行了解
+%加入bib文件(老版本文件依然能够使用)
+\addbibresource{ref/refs.bib}   %
+
+
+\begin{document}
+
+% 定义所有的eps文件在 figures 子目录下
+\graphicspath{{figures/}}
+
+
+%%% 封面部分
+\frontmatter
+\input{data/cover}
+\makecover
+
+
+% 目录
+\tableofcontents
+% 符号对照表
+\begin{denotation}
+\input{data/denotation}
+\end{denotation}
+
+%%% 以下索引按需要选择
+% 插图索引
+\listoffigures
+% 表格索引
+\listoftables
+% 公式索引
+% \listofequations
+
+%%% 正文 
+\mainmatter
+\include{data/chap01}
+\include{data/chap02}
+
+%%% 其它部分
+\backmatter
+
+% 致谢
+\begin{acknowledgement}
+\input{data/ack}
+\end{acknowledgement}
+
+% 参考文献
+\printTJbibliography
+
+
+% 附录
+\begin{appendix}
+\input{data/appendix}
+\end{appendix}
+
+% 个人简历
+\begin{resume}
+\input{data/resume}
+\end{resume}
+
+\end{document}

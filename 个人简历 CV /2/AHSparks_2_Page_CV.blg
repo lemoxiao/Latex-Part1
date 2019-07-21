@@ -1,0 +1,28 @@
+[1] Config.pm:354> INFO - This is Biber 2.7
+[1] Config.pm:357> INFO - Logfile is 'AHSparks_2_Page_CV.blg'
+[104] biber-darwin:303> INFO - === Tue Jul 18, 2017, 16:44:35
+[163] Biber.pm:359> INFO - Reading 'AHSparks_2_Page_CV.bcf'
+[398] Biber.pm:835> INFO - Found 0 citekeys in bib section 0
+[398] Biber.pm:832> INFO - Using all citekeys in bib section 1
+[398] Biber.pm:835> INFO - Found 0 citekeys in bib section 0
+[398] Biber.pm:832> INFO - Using all citekeys in bib section 2
+[398] Biber.pm:835> INFO - Found 0 citekeys in bib section 0
+[459] Biber.pm:3670> INFO - Processing section 1
+[519] Biber.pm:3840> INFO - Looking for bibtex format file 'bibliography_2_Page_CV.bib' for section 1
+[525] bibtex.pm:1435> INFO - Decoding LaTeX character macros into UTF-8
+[540] bibtex.pm:1292> INFO - Found BibTeX data source 'bibliography_2_Page_CV.bib'
+[575] Utils.pm:164> WARN - month field 'apr' in entry 'AHSparks2017a' is not an integer - this will probably not sort properly.
+[645] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[646] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[646] Biber.pm:3499> INFO - Sorting list 'ydnt/global/' of type 'entry' with scheme 'ydnt' and locale 'en-US'
+[646] Biber.pm:3505> INFO - No sort tailoring available for locale 'en-US'
+[678] Biber.pm:3670> INFO - Processing section 2
+[679] Biber.pm:3840> INFO - Looking for bibtex format file 'bibliography_2_Page_CV.bib' for section 2
+[704] Utils.pm:164> WARN - month field 'apr' in entry 'AHSparks2017a' is not an integer - this will probably not sort properly.
+[774] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[774] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[774] Biber.pm:3499> INFO - Sorting list 'ydnt/global/' of type 'entry' with scheme 'ydnt' and locale 'en-US'
+[775] Biber.pm:3505> INFO - No sort tailoring available for locale 'en-US'
+[811] bbl.pm:608> INFO - Writing 'AHSparks_2_Page_CV.bbl' with encoding 'UTF-8'
+[827] bbl.pm:712> INFO - Output to AHSparks_2_Page_CV.bbl
+[827] Biber.pm:109> INFO - WARNINGS: 2

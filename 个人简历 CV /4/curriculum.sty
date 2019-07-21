@@ -1,0 +1,63 @@
+% AM-CV : Latex CV
+% Version 1.0
+% Copyright Andrew Mellor 2016 <mellor91@hotmail.co.uk>
+%
+% Created using a combination of these two freely available CV templates
+% https://www.sharelatex.com/templates/cv-or-resume/professional-cv
+% https://www.sharelatex.com/templates/cv-or-resume/kjh-vita
+
+\ProvidesPackage{curriculum}
+
+% Packages
+\usepackage{fontspec} 						% Font loading
+\usepackage{parskip}						% Formatting
+\RequirePackage{color,graphicx}				% Colors, Graphics
+\usepackage[big]{layaureo} 					% Formatting
+\usepackage{titlesec}						% Custom \section 
+\usepackage{fontawesome}					% Icons for header
+
+% Link colours
+\usepackage{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+
+% Prevent hyphen-ation
+\hyphenpenalty=10000
+
+% Page setup
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ right=20mm,
+ top=20mm,
+ bottom=20mm 
+ }
+
+% Used to create columns of a fixed size with particular alignment.
+\usepackage{array}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% Custom Fonts
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[
+SmallCapsFont = Fontin-SmallCaps.otf,
+BoldFont = Fontin-Bold.otf,
+ItalicFont = Fontin-Italic.otf
+]
+{Fontin.otf}
+
+% Title
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{3pt}{3pt}
+
+\usepackage[absolute]{textpos}
+\setlength{\TPHorizModule}{30mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{2mm}{0.65\paperheight}
+
+\setlength{\parindent}{0pt}		% Remove paragraph indent
+\pagestyle{empty} 				% Remove page numbers
+\font\fb=''[cmr10]''  			% For use with \LaTeX command

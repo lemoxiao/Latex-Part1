@@ -1,0 +1,65 @@
+%!TEX root = ../thesis.tex
+\section{模型描述}
+\label{c:ch5.1}
+接下來在本小節當中，我們分別對此三個模型進行轉換，以及模型環境上的描述。但在模型轉換前，我們先列出從Datacolor MATCH提供的資訊而預估的兩個品質控管模型的細節；由於我們從染整參數關聯分析當中，得到已知的$\Delta E$以及$K/S$的估計式，基本上兩者都為二次的函式，由於不同的環境會有不同的係數組合，故在本節當中，我們已通用式表示，如 \ref{eq:deltaEf} 式以及 \ref{eq:KSf} 式：
+\begin{equation}
+	\begin{array}{c}
+	f_{\Delta E}(x_A,x_B,x_C,x_D,x_E)=\sum_i C_i\cdot x_i + \sum_i C_{ii}\cdot x_i^2+\sum_i\sum_j C_{ij}\cdot x_{i}\cdot x_{j},\\i=A,B\dots E,j=A,B\dots E , i\neq j
+	\end{array}
+\label{eq:deltaEf}
+\end{equation}
+\begin{equation}
+	\begin{array}{c}
+	f_{K/S}(x_A,x_B,x_C,x_D,x_E)=\sum_i C_i^{'}\cdot x_i+ \sum_i C_{ii}^{'}\cdot x_i^2+\sum_i\sum_j C_{ij}^{'}\cdot x_{i}\cdot x_{j},\\i=A,B\dots E,j=A,B\dots E,i\neq j
+	\end{array}
+\label{eq:KSf}
+\end{equation}
+\ref{eq:deltaEf}式以及 \ref{eq:KSf} 式，$C_{i}$以及$C_i^{'}$分別為$\Delta E$以及$K/S$一次因子的係數，而$C_{ii}$以及$C_{ii}^{'}$分別為$\Delta E$以及$K/S$二次因子的係數，$C_{ij}$以及$C_{ij}^{'}$分別為$\Delta E$以及$K/S$各因子交互作用係數。
+\\ \textbf{運作成本最小化模型}
+
+在 \ref{eq:cost1} 式中，我們可以知道此目標函式除了為非線性函式外，變數$x_B$在分母的位置，為了降低計算上的複雜度，我們以變數變換的方式將其轉換為，如下 \ref{eq:cost2} 式：
+\begin{equation}
+	\begin{split}
+	\min_{x_A,x_B,t,x_D,x_E} [C_1SM(T_H-T_L)+(C_2+c)MK]\cdot x_E+\\
+	C_3 \cdot [t\cdot (v-x_B)+(T_H-T_L)/v+x_D]
+	\end{split}
+\label{eq:cost2}
+\end{equation}
+由 \ref{eq:cost2} 式中，我們將設定一個新變數$t=(x_C-x_A)/x_B$其意義為，第一段升溫溫度到第二段升溫溫度所需花費的時間，由這樣的變數變換下，我們將\ref{eq:EC}式轉換為一個標準二次函式，如 \ref{eq:cost2} 式。
+
+在變數變換時，為了將目標函數的複雜度將低，同時我們也會增加其變數以及限制式作為代價，因此在運作成本模型當中的目標函式，從原來的 \ref{eq:constraint} 式新增為，如 \ref{eq:constraint2} 式：
+\begin{equation}
+	\begin{array}{c}
+	A_{lower} \leq x_A \leq A_{upper},\\
+	B_{lower} \leq x_B \leq B_{upper},\\
+	C_{lower} \leq x_C \leq C_{upper},\\
+	D_{lower} \leq x_D \leq D_{upper},\\
+	E_{lower} \leq x_E \leq E_{upper},\\
+	(C_{lower}-A_{upper})/B_{upper} \leq t \leq (C_{upper}-A_{lower})/B_{lower},\\
+	x_C-x_A-x_B\cdot t = 0,\\
+	\Delta E_{lower} \leq f_{\Delta E} \leq \Delta E_{upper},\\
+	K/S_{lower} \leq f_{K/S} \leq K/S_{upper}
+	\end{array}
+\label{eq:constraint2}
+\end{equation}
+由 \ref{eq:constraint2} 式中主要是多增加了兩個限制式，分別為$(C_{lower}-A_{upper})/B_{upper} \leq t \leq (C_{upper}-A{lower})/B_{lower}$以及$x_C-x_A-x_B\cdot t = 0$，前者為時間的範圍限制，後者則表示為與$x_A$以及$x_B$兩因子之間的關係，雖然額外增加了一個變數以及兩條限制，但 \ref{eq:constraint2} 中還是為二次不等式。
+我們將轉型的目標函式以及不等式合併後，就成為了一個二次規劃中二次限制式的問題，也就是QCQP(Quadratic Constraints Quadratic Programming)問題。
+\\\textbf{穩健度模型}
+
+而在穩健度模型，同樣可以將模型轉化為二次函式，首先我們將 \ref{eq:deltaEf} 式帶入 \ref{eq:KSf} 式，再將目標函式取平方，如 \ref{eq:robust2} 式：
+\begin{equation}
+	\begin{array}{c}
+	\min_{x_i} \sum_{i}[C_{i}+2C_{ii}\cdot x_i+\sum_j(C_{ij}+C_{ji})\cdot x_i]^{2},\\i=A,B\dots E,j=A,B\dots E , i\neq j
+	\end{array}
+\label{eq:robust2}
+\end{equation}
+而其限制函式一樣為 \ref{eq:constraint} 式，沒有額外的轉換，將 \ref{eq:robust2} 式與限制式 \ref{eq:constraint} 合併後，同樣為QCQP的問題。
+\\\textbf{品質模型（$\Delta E$模型）}
+
+品質模型的目標函式以及限制式，不需要做任何轉換以及更改，合併後就是為QCQP問題。我們將 \ref{eq:deltaEf} 式帶入 \ref{eq:deltaE1} ，如 \ref{eq:deltaE2} 式：
+\begin{equation}
+	\begin{array}{c}
+	\min_{x_i}\sum_i C_i\cdot x_i + \sum_i C_{ii}\cdot x_i^2+\sum_i\sum_j C_{ij}\cdot x_{i}\cdot x_{j},\\i=A,B\dots E,j=A,B\dots E , i\neq j
+	\end{array}
+\label{eq:deltaE2}
+\end{equation}

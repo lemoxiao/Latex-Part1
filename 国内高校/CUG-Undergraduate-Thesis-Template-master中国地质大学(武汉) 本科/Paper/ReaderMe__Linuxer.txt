@@ -1,0 +1,39 @@
+特别説明: gbk 转换到 utf-8 需要 安装enca ，请首先安装enca ： sudo apt-get install enca 
+	 在Makefile中有一段转换全部编码为UTF-8的调用过程，为了不重复该过程，造成每次make都要调用转换，因此在/tmp目录下touch了一个标识文件isFirstRun,具体请查看Makefile文件中的代码
+
+建议：了解一下xeCJK，会有很大帮助 http://ctan.mirrorcatalogs.com/macros/xetex/latex/xecjk/xeCJK.pdf
+
+1、以完全方式安装TexLive(我的经验是直接apt-get，不要使用其他方式，很麻烦且不灵，为此还重装了两次系统)关于Ubuntu12.04安装TeXLive2012 参考http://forum.ubuntu.org.cn/viewtopic.php?f=35&t=389097 ，Ubuntu12.10的源已经是TeXLive2012 直接apt-get
+	sudo apt-get install texlive-full
+2、配置字体
+	2.1 下载字体,建议下载这篇文章中提到的windows字体 http://northcamel.com/how-to-install-texlive2012-in-ubuntu12-04/ ，地址为 http://sdrv.ms/Q8O5hz ，字体配置文件在/usr/share/texlive/texmf-dist/tex/latex/ctex/fontset 目录下，具体设置参考Config目录下的LinuxFontSe.tar中的内容
+	2.3 例子：比如我安装字体后(我的字体是从windows7下复制过来的)，运行 fc-list :lang=zh 后显示如下
+		幼圆,YouYuan:style=Regular
+		AR PL UMing TW:style=Light
+		AR PL UMing HK:style=Light
+		文泉驿等宽微米黑,文泉驛等寬微米黑,WenQuanYi Micro Hei Mono:style=Regular
+		新宋体,NSimSun:style=Regular
+		仿宋,FangSong:style=Regular,Normal,obyčejné,Standard,Κανονικά,Normaali,Normál,Normale,Standaard,Normalny,Обычный,Normálne,Navadno,Arrunta
+		AR PL UMing CN:style=Light
+		楷体,KaiTi:style=Regular,Normal,obyčejné,Standard,Κανονικά,Normaali,Normál,Normale,Standaard,Normalny,Обычный,Normálne,Navadno,Arrunta
+		Adobe 楷体 Std,Adobe Kaiti Std,Adobe Kaiti Std R,Adobe 楷体 Std R:style=R,Regular
+		宋体,SimSun:style=Regular
+		AR PL UKai TW MBE:style=Book
+		AR PL UKai CN:style=Book
+		AR PL UKai HK:style=Book
+		AR PL UKai TW:style=Book
+		文泉驿正黑,文泉驛正黑,WenQuanYi Zen Hei:style=Regular
+		黑体,SimHei:style=Regular,Normal,obyčejné,Standard,Κανονικά,Normaali,Normál,Normale,Standaard,Normalny,Обычный,Normálne,Navadno,Arrunta
+		Adobe 黑体 Std,Adobe Heiti Std,Adobe Heiti Std R,Adobe 黑体 Std R:style=R,Regular
+		文泉驿微米黑,文泉驛微米黑,WenQuanYi Micro Hei:style=Regular
+		Adobe 宋体 Std,Adobe Song Std,Adobe Song Std L,Adobe 宋体 Std L:style=L,Regular
+		文泉驿等宽正黑,文泉驛等寬正黑,WenQuanYi Zen Hei Mono:style=Regular
+		隶书,LiSu:style=Regular
+		AR PL UMing TW MBE:style=Light
+		Adobe 仿宋 Std,Adobe Fangsong Std,Adobe Fangsong Std R,Adobe 仿宋 Std R:style=R,Regular
+		文泉驿点阵正黑,文泉驛點陣正黑,WenQuanYi Zen Hei Sharp:style=Regular
+
+	Config目录下的LinuxFontSe.tar中的两个文件 ctex-xecjk-adobefonts.def  ctex-xecjk-winfonts.def 中的内容即是根据上面显示的内容配置的，对照着依葫芦画瓢即可
+
+
+完成以上后，cd 到当前目录 make 或make  Realse 即可

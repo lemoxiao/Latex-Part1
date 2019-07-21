@@ -1,0 +1,193 @@
+% AM-CV : Latex CV
+% Version 1.0
+% Copyright Andrew Mellor 2016 <mellor91@hotmail.co.uk>
+%
+% Created using a combination of these two freely available CV templates
+% https://www.sharelatex.com/templates/cv-or-resume/professional-cv
+% https://www.sharelatex.com/templates/cv-or-resume/kjh-vita
+
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{curriculum}
+\usepackage{info}
+
+%--------------------BEGIN DOCUMENT----------------------%
+
+\begin{document}
+
+%----------------------HEADER----------------------------%
+
+\hfill
+\begin{minipage}[t]{2.95in}
+ \flushright {\footnotesize 
+ \href{\mydepartmentemail}{\mydepartment} \\ \myaddrone \\ \myaddrtwo \\ }
+\end{minipage}
+%
+\begin{minipage}[t]{1.3in}
+  \flushright \footnotesize  \myphone \, \faPhone  \\ 
+%  {\scriptsize  \texttt{}{\mytwitter}} \, \faTwitter }  \\
+  {\scriptsize  \texttt{\href{mailto:\myemail}{\myemail}} \, \faEnvelope} \\
+  {\scriptsize  \texttt{\href{\myweb}{\myweb}} \, \faGlobe}
+\end{minipage}
+
+\medskip
+
+%----------------------TITLE----------------------------%
+
+\noindent{\fontsize{40}{50}\selectfont \textsc{\myauthor}}
+
+%----------------------EDUCATION------------------------%
+
+\section{Education}
+
+\begin{tabular}{r|p{15cm}}	
+%
+\textsc{Current} 	& Doctoral Candidate in \textsc{Latex} (PhD) \\
+2013-2017 			& \textbf{University of Latex}, London, UK \\
+					& Funding (£30,0000) \\
+					& Thesis: ``How long is too long when designing a latex template?'' \\ 
+					& \small Advisors: Prof. A \textsc{Nonymous}, Prof. I \textsc{ncognito} \\ 
+%
+\multicolumn{2}{c}{} \\
+2009-2013 			& Masters in \textsc{Latex} (MTex) \\
+					& \textbf{University of Latex}, London, UK\\
+					& First Class Honours\\
+%
+\end{tabular}
+
+%------PUBLICATIONS, CONFERENCES, AND WORKSHOPS--------%
+
+\section{Publications, Conferences, and Workshops}
+
+\textbf{Publications}
+
+\begin{tabular}{rp{11cm}}
+%
+\textsc{TBC}  		& \textsc{Optimising Latex Usage Part II} \\
+					& {\footnotesize \textbf{Smith, J.}; Nonymous, A; \& Ncognito, I} \\
+					& {\footnotesize In Preparation} \\
+
+\textsc{Sept.} 2015 & \textsc{Optimising Latex Usage Part I} \\
+					& {\footnotesize \textbf{Smith, J.}; Nonymous, A; \& Ncognito, I} \\
+					& {\footnotesize Journal of Advanced Latex} \\
+%
+\end{tabular} 
+
+\textbf{Conferences \& Workshops} 
+
+\begin{tabular}{rp{15cm}}
+%
+\textsc{Jan.} 2016 	& \textsc{Big Conference Example}, Location \\
+					& {\footnotesize Invited Talk: \textit{Example conference presentation title}} \\
+					& {\footnotesize \textbf{Smith, J.}; Nonymous, A; \& Ncognito, I} \\
+%
+\textsc{Aug.} 2015 	& \textsc{Big Conference Example}, Location \\
+					& {\footnotesize Invited Talk: \textit{Example conference presentation title}} \\
+					& {\footnotesize \textbf{Smith, J.}; Nonymous, A; \& Ncognito, I} \\	
+%
+\textsc{Jul.} 2015 	& \textsc{Big Conference Example}, Location \\
+					& {\footnotesize Invited Talk: \textit{Example conference presentation title}} \\
+					& {\footnotesize \textbf{Smith, J.}; Nonymous, A; \& Ncognito, I} \\	
+%
+\textsc{Nov.} 2014 	& \textsc{Big Conference Example}, Location \\
+					& {\footnotesize Invited Talk: \textit{Example conference presentation title}} \\
+					& {\footnotesize \textbf{Smith, J.}; Nonymous, A; \& Ncognito, I} \\
+%
+\textsc{Sept.} 2014 & \textsc{Big Conference Example}, Location \\
+					& {\footnotesize Invited Talk: \textit{Example conference presentation title}} \\
+					& {\footnotesize \textbf{Smith, J.}; Nonymous, A; \& Ncognito, I} \\
+					& \\
+%
+\textsc{Sept.} 2015 & \textsc{Lesser Conference example}, Location \\
+\textsc{Aug.} 2015 	& \textsc{Lesser Conference example}, Location \\
+\textsc{Jun.} 2015 	& \textsc{Lesser Conference example}, Location \\
+\textsc{Apr.} 2014 	& \textsc{Lesser Conference example}, Location \\
+\textsc{Nov.} 2013 	& \textsc{Lesser Conference example}, Location \\
+%
+\end{tabular}
+
+%-----------------WORK EXPERIENCE-----------------------%
+
+\section{Work Experience}
+\begin{tabular}{R{3.1cm}|p{13cm}}
+%
+ \textsc{Jun-Oct 2013} 		& \textsc{Lipsum Generating Lab}, Oxford, UK \\ 
+ 							& \emph{Intern} \\
+ 							& \footnotesize{Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.} \\ 
+%
+ \multicolumn{2}{c}{} \\
+ \textsc{Jun-Sep 2012} 		& \textsc{Latex HQ}, London, UK \\
+ 							& \emph{Latex Template Designer}\\
+ 							& \footnotesize{Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}\\ 
+%
+\end{tabular}
+
+
+%----------------------MISCELLANEOUS-------------------%
+
+\section{Miscellaneous}
+
+\begin{tabular}{R{3.1cm}p{13cm}}
+%
+\textbf{Teaching:} 		& \textsc{Tutor}, CV Writing, University of Latex (2014-16)\\
+						& \textsc{Tutor}, Latex for Dummies, University of Latex (2014-15) \\
+						& \\
+%
+\textbf{Journals:} 		& \textsc{Referee} for Journal of advanced Latex (JAL) \\
+						& \\
+%
+\textbf{Memberships:} 	& \textsc{Member} of the Latex Users Society (LUS) \\
+						& \textsc{Member} of the Society for Industrial and Applied Latex (SIAL) \\ 
+						& \\
+%
+\textbf{Interviews:} & \textsc{Student Representative} on the interview panel for University of Latex Academic Fellowships (2015) \\
+%
+\end{tabular}
+
+%-------------COMPUTER SKILLS--------------------------%
+
+\section{Computer Skills}
+\begin{tabular}{R{3.1cm}l}
+%
+\textbf{Programming:}		& Python (extensive use), R (working knowledge), \\ 
+							& MATLAB (working knowledge), Java (working knowledge) \\
+\textbf{Version Control:}	& Git (extensive use), SVN (working knowledge) \\
+\textbf{Databases:}			& mySQL, SQL Server, NoSQL \\
+\textbf{Web:}				& HTML, CSS, Javascript \\
+\textbf{Operating Systems:}	& Linux, Windows \\
+%
+\end{tabular}
+
+%----------------------INTERESTS-----------------------%
+
+\section{Interests and Activities}
+
+
+\begin{tabular}{R{3.1cm}ll}
+%
+\textbf{Academic:} 		& Network Science 		& Dynamical Processes on Complex Networks \\
+						& Stochastic Processes 	& Data Visualisation \\
+						& Markovian Processes 	& Statistical Mechanics \\
+						& Social Networks 		& Agent-based Modelling \\
+						& Data-driven Modelling & Machine Learning \\
+%
+& & \\
+%
+\textbf{Recreational:}	& Road Cycling 			& Football 
+%
+\end{tabular}
+
+%----------------------REFERENCES-----------------------%
+
+\section{References}
+
+\begin{tabular}{R{3.1cm}l}
+\textsc{Prof. A. Nonymous} 	& School of Mathematics, University of Latex, TEX2 2BBL \\ 
+							& \href{mailto:a.non@tex.com}{a.non@tex.com}, 00000 000000 \\
+\textsc{Prof. I. ncognito} 	& School of Mathematics, University of Latex, TEX2 2BBL \\ 
+							& \href{mailto:i.ncognito@tex.com}{i.ncognito@tex.com}, 00000 000000 \\
+\end{tabular}
+
+%-----------------END DOCUMENT--------------------------%
+
+\end{document}

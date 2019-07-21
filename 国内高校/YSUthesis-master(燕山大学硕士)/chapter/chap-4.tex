@@ -1,0 +1,174 @@
+% !Mode:: "TeX:UTF-8"
+\chapter{公式}
+\label{chap:equ}
+本章介绍基本公式的输入方法；矩阵和向量的输入；方程组的输入；多行公式的换行与对齐。
+\LaTeX 中数学公式的输入依赖于数学环境。
+
+在正文中用到的简短公式，可以直接使用两个美元符号“\$”括起来，如：
+\begin{verbatim}
+直角三角形三边长度满足关系式$a^2+b^2=c^2$
+\end{verbatim}
+得到的结果是：\\
+直角三角形三边长度满足关系式$a^2+b^2=c^2$\\
+
+而对于一些较为重要或者较复杂、需要编号的公式，则需要使用各种数学环境，例如使用equation环境：
+\begin{verbatim}
+\begin{equation}\label{chp-mode}
+\mathbfit{E}=\mathrm{Re}(\mathbfit{E}(\mathbfit{r}))e^{j\omega t}
+\end{equation}
+\end{verbatim}
+得到的结果是：
+\begin{equation}\label{chp-mode}
+\mathbfit{E}=\mathrm{Re}(\mathbfit{E}(\mathbfit{r}))e^{j\omega t}
+\end{equation}
+对它的引用方式为：\verb|公式\eqref{chp-mode}|\\
+得到的结果为：公式\eqref{chp-mode}
+
+如果不想对公式进行编号，则可以使用equation*环境：
+\begin{verbatim}
+\begin{equation*}\label{chp-m2}
+\mathbfit{E}=\mathrm{Re}(\mathbfit{E}(\mathbfit{r}))e^{j\omega t}
+\end{equation*}
+\end{verbatim}
+得到的结果是：
+\begin{equation*}\label{chp-m2}
+\mathbfit{E}=\mathrm{Re}(\mathbfit{E}(\mathbfit{r}))e^{j\omega t}
+\end{equation*}
+
+\section{上下标}
+\verb|a_1+b^2\times c_1^2=0|输出结果为：$a_1+b^2\times c_1^2=0$
+
+\section{分式}
+命令\verb|\frac, \dfrac\ tfrac|可以用来输出分式：
+\begin{verbatim}
+\begin{equation}\label{fr}
+  \sin\dfrac{\cos\dfrac{a}{b}}{c}=
+  \sin\frac{\cos\frac{a}{b}}{c}=
+  \sin\tfrac{\cos\tfrac{a}{b}}{c}
+\end{equation}
+\end{verbatim}
+输出的结果是：
+\begin{equation}\label{fr}
+\sin\dfrac{\cos\dfrac{a}{b}}{c}=
+\sin\frac{\cos\frac{a}{b}}{c}=
+\sin\tfrac{\cos\tfrac{a}{b}}{c}
+\end{equation}
+
+当使用括号来括起纵向尺寸较大的对象例如分式时，要使用\verb|\left| 和
+\verb|\right| 命令使括号在纵向上伸长。例如：
+\begin{verbatim}
+\begin{equation}\label{frr}
+  \left(\frac{a}{b}\right)=(\frac{a}{b})
+\end{equation}
+\end{verbatim}
+的输出结果是：
+\begin{equation}\label{frr}
+\left(\frac{a}{b}\right)=(\frac{a}{b})
+\end{equation}
+
+\section{矢量点乘与叉乘}
+矢量点乘：\verb|$\mathbfit{A}\cdot\mathbfit{B}$|输出：$\mathbfit{A}\cdot\mathbfit{B}$
+
+矢量叉乘：\verb|$\mathbfit{C}\times\mathbfit{D}$|输出：$\mathbfit{C}\times\mathbfit{D}$
+
+\section{求和与积分}
+命令\verb|\sum|和命令\verb|\int|负责输出求和与积分号。例如：
+\begin{verbatim}
+\begin{equation}\label{equ-sum}
+  \sum_{i=1}^n\sin\beta_i^2=0
+\end{equation}
+\end{verbatim}
+输出结果为：
+\begin{equation}\label{equ-sum}
+\sum_{i=1}^n\sin\beta_i^2=0
+\end{equation}
+\begin{verbatim}
+\begin{equation}\label{equ-int}
+  \int_a^b\frac{c}{d}\,\mathrm{d}x=0
+\end{equation}
+\end{verbatim}
+输出结果为：
+\begin{equation}\label{equ-int}
+  \int_a^b\frac{c}{d}\,\mathrm{d}x=0
+\end{equation}
+
+
+\section{矩阵与数组}
+矩阵与数组使用array环境：
+\begin{verbatim}
+\begin{equation}\label{equ-array}
+  \left(
+    \begin{array}{c} a \\ c \end{array}
+  \right)=
+  \left(
+    \begin{array}{cc} a & b \\ c & d \end{array}
+  \right)
+\end{equation}
+\end{verbatim}
+输出结果是：
+\begin{equation}\label{equ-array}
+  \left(
+  \begin{array}{c} a \\ c \end{array}
+  \right)=
+  \left(
+  \begin{array}{cc} a & b \\ c & d \end{array}
+  \right)
+\end{equation}
+也可以使用matrix环境：
+\begin{verbatim}
+\begin{equation}\label{equ-matrix}
+  \begin{matrix} 0 & 1 \\ 1 & 0\end{matrix}=
+  \begin{pmatrix}0 &-i \\ i & 0\end{pmatrix}=
+  \begin{bmatrix}1 & 0 \\ 0 &-1\end{bmatrix}=
+  \begin{vmatrix}a & b \\ c & d\end{vmatrix}
+\end{equation}
+\end{verbatim}
+输出结果是：
+\begin{equation}\label{equ-matrix}
+  \begin{matrix} 0 & 1 \\ 1 & 0\end{matrix}=
+  \begin{pmatrix}0 &-i \\ i & 0\end{pmatrix}=
+  \begin{bmatrix}1 & 0 \\ 0 &-1\end{bmatrix}=
+  \begin{vmatrix}a & b \\ c & d\end{vmatrix}
+\end{equation}
+
+\section{多行公式与对齐方法}
+多行公式排列，每个公式都有自己的编号通常使用align环境。例如：
+\begin{verbatim}
+\begin{align}
+  a_1+a_2+a_3 &=0 \label{equ-s1}\\
+  b_1+b_2+b_3+b_4 &=0 \label{equ-s2}\\
+  c_1+c_2 &=0 \label{equ-v1}
+\end{align}
+\end{verbatim}
+输出结果为：
+\begin{align}
+  a_1+a_2+a_3 &=0 \label{equ-s1}\\
+  b_1+b_2+b_3+b_4 &=0 \label{equ-s2}\\
+  c_1+c_2 &=0 \label{equ-v1}
+\end{align}
+其中符号“\&”为对齐符号。这里实现了等号对齐。
+
+\section{带有大括号的方程组}
+与多行公式不同，方程组左侧使用“\verb|\left{|”加了一个大括号，另外只有一个公式编号，因此采用equation和aligned结合的方式，例如：
+\begin{verbatim}
+\begin{equation}\label{equ-fml}
+  \left\{
+  \begin{aligned}
+    x^2+y^2 &=0\\
+    x+y+z^2 &=0\\
+    x^2+y+z &=0
+  \end{aligned}
+  \right.
+\end{equation}
+\end{verbatim}
+输出结果为：
+\begin{equation}\label{equ-fml}
+  \left\{
+  \begin{aligned}
+    x^2+y^2 &=0\\
+    x+y+z^2 &=0\\
+    x^2+y+z &=0
+  \end{aligned}
+  \right.
+\end{equation}
+

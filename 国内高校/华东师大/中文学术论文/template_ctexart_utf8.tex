@@ -1,0 +1,337 @@
+%
+%  使用 xelatex 编译
+%
+\documentclass[UTF8]{ctexart}
+\usepackage[a4paper,top=2.54cm,bottom=2.54cm,left=3.17cm,right=3.17cm,%
+            includehead,includefoot]{geometry}
+
+%%%%% ===== 设置章节
+\ctexset{%
+  section/name = {第,节},
+  section/number = \chinese{section},
+  section/format = \centering,
+  section/nameformat = \large\bfseries,
+  section/titleformat = \large\bfseries,
+  section/beforeskip = 5.5ex plus 1ex minus .2ex,
+%
+  subsection/format=\raggedright,
+  subsection/nameformat=\bfseries,
+  subsection/titleformat=\bfseries
+}
+
+%%%%%===== 宏包调用
+\usepackage{amsmath,amssymb,amsfonts} % 数学宏包
+\usepackage{bm} % 数学宏包
+\usepackage{cases} % 数学宏包
+\usepackage{yhmath} % 数学宏包
+\usepackage{graphicx,subfigure} % 插图宏包
+\usepackage{epstopdf} % eps转pdf宏包
+\usepackage{xcolor,float} % 颜色与浮动对象宏包
+\usepackage[breaklinks,colorlinks]{hyperref} % 超链接宏包
+\hypersetup{citecolor=blue,         % 引用标记颜色
+            linkcolor=blue,         % 内部普通链接的颜色
+            urlcolor=blue,          % url 链接的颜色
+            bookmarksnumbered=true, % 书签带章节编号
+            bookmarksopen=true     % 书签目录展开
+           }
+\usepackage{booktabs} % 表格宏包
+\usepackage{fancyvrb} % 摘录宏包
+  \fvset{formatcom=\color{blue},frame=single,rulecolor=\color{red}}
+\usepackage[numbers,square,sort&compress]{natbib} % 参考文献
+
+%%%%% ===== 定理环境
+\usepackage[amsmath,thref,thmmarks,hyperref]{ntheorem} % 定理宏包
+\theorempreskipamount1em % spacing before the environment
+\theorempostskipamount0em  % spacing after the environment
+\theoremstyle{plain}
+\theoremheaderfont{\normalfont\heiti}
+\theorembodyfont{\normalfont\kaishu}
+\theoremindent0em
+\theoremseparator{\hspace{0.2em}}
+\theoremnumbering{arabic}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{property}{性质}[section]
+\newtheorem{definition}{定义}[section]
+\newtheorem{lemma}{引理}[section]
+\newtheorem{remark}{注记}[section]
+\newtheorem{corollary}{推论}[section]
+\newtheorem{example}{例}[section]
+%
+\theoremstyle{nonumberplain}
+\theorembodyfont{\normalfont}
+\theoremsymbol{\ensuremath{\Box}}
+\newtheorem{proof}{证明}
+
+
+%===== 算法与源代码
+\usepackage{algorithm,algpseudocode}  % 算法
+\usepackage{listings} % 源代码
+\renewcommand{\lstlistlistingname}{源代码目录}
+\renewcommand{\lstlistingname}{源代码}
+\lstset{language=Matlab}
+\lstset{escapechar=`}
+\lstset{basicstyle=\ttfamily\small,showstringspaces=false,tabsize=2}
+\lstset{flexiblecolumns=true}
+\lstset{xleftmargin=1ex,xrightmargin=1ex}
+\lstset{frame=tblr,frameround=tttt}  %单线, 圆角框
+%%\lstset{frame=TBLR}  %双线方框
+%\lstset{frame=shadowbox,rulesepcolor=\color{blue}}
+\lstset{commentstyle=\color{red},keywordstyle=\color{blue},caption=\lstname,%
+        breaklines=true,backgroundcolor=\color{lightgray!20}}
+\lstset{numbers=left, numberstyle=\small, stepnumber=1, numbersep=1em}
+
+%%%%%===== 页眉页脚 =====================================================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\sectionmark}[1]{\markboth{\uppercase{#1}}{}}
+\chead{\leftmark}
+\cfoot{\thepage}
+
+%%%%% ===== 其他设置
+\numberwithin{equation}{section} % 数学公式编号方式
+\allowdisplaybreaks  % 允许在长公式中换页
+
+%%%%% ===== 自定义命令
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\lam}{\lambda}
+\newcommand{\ii}{\bm{\mathrm{i}}\,} % 虚部
+
+
+%%%%% ===== 论文开始 =====================================================
+\begin{document}
+
+\title{复对称线性方程组的广义修正 HSS 迭代方法}
+
+\author{赵某某, 张某某\thanks{通信作者: email@ecnu.edu.cn, 本文由某某某基金资助.} \\[1em]
+  华东师范大学数学科学学院\\
+  上海, 200241, 中国}
+
+\date{}
+
+\maketitle % 生成标题
+
+\begin{abstract}
+复系数线性方程组广泛存在于科学与工程计算的众多应用领域中.
+目前求解大规模稀疏线性方程组的主要方法是迭代法,
+而预处理方法是当前改善迭代法收敛性和稳定性的主要技术.
+事实上, 迭代法能否取得成功的关键因素之一就是能否构造出合适的预处理子.
+\end{abstract}
+
+
+\section{引言}
+考虑复系数线性方程组
+\begin{equation}\label{eq:problem}
+  \A x \equiv (W + \ii T) x = b
+\end{equation}
+其中 $\ii$ 表示虚部单位, $W \in \RR^{n \times n}$ 对称正定, 
+$T\in\RR^{n\times n}$ 对称半正定, $x, b\in\CC^n$.
+此时 $\A $ 的 Hermitian 与 skew-Hermitian 部分分别为
+$$
+  \mathcal{H} = \frac12 (\A + \A^*) = W, \qquad 
+  \mathcal{S} = \frac12 (\A - \A^{*}) = \ii T,
+$$
+即 HSS \cite{BGN03} 算法中的 $\mathcal{H}$ 和 $\mathcal{S}$ 分别为 $W$ 和 $\ii T$.
+关于这类问题的研究可参见 \cite{BBC10,BBC11,NMP84,VM90}
+
+
+\subsection{MHSS 和 PMHSS 迭代方法}
+为了避免在迭代过程中求解复系数线性方程组,
+Bai, Benzi 和 Chen \cite{BBC10, BBC11} 针对 HSS 方法进行了适当地修正,
+提出了 MHSS 算法和 PMHSS 算法.  
+
+\begin{algorithm}[H]
+\caption{PMHSS 算法\label{Alg:PMHSS}}
+\begin{algorithmic}[1]
+  \State 给定一个初值 $ x^{(0)} \in \CC^{n} $  和常数 $\alpha>0$
+  \For{$k = 1,2, \ldots $ 直到序列 $\{x^{(k)}\}_{k=0}^{\infty}$ 收敛}
+  \State 解方程: $(\alpha V+W)x^{(k+\frac{1}{2})}=(\alpha V-\ii T)x^{(k)}+b $
+  \State 解方程: $(\alpha V+T)x^{(k+1)}=(\alpha V+\ii W)x^{(k+\frac{1}{2})}-\ii b$
+  \EndFor
+\end{algorithmic}
+\end{algorithm}
+
+在 PMHSS 算法中, 如果取 $V=I$, 则可得到 MHSS 算法.
+文献中还证明了对于任意 $\alpha>0$,
+MHSS 和 PMHSS 算法都无条件收敛到问题 \eqref{eq:problem} 的唯一的解.
+
+以上算法是针对 $W$ 和 $T$ 都是实对称矩阵时的情形进行的推广.
+文献 \cite{GW12} 则考虑了 $W$, $T$ 是非对称矩阵时的情形,
+并给出了 $W$ 和 $T$ 非对称时, MHSS 算法的收敛性.
+\begin{theorem}
+  设 $\A = W + \ii T$, 其中 $W, T \in \RR^{n \times n}$.
+  若 $(1-\ii)W$ 正定, $(1+\ii)T$ 半正定, 则
+  $$
+    \rho(M(\alpha))<1, \quad\forall \ \alpha>0.
+  $$
+\end{theorem}
+
+\section{GMHSS 迭代方法}
+我们考虑对 MHSS 算法做进一步的推广. 设
+$$
+  \A = W + \ii T,
+$$
+其中 $W$, $T$ 都是实对称矩阵.
+并假定存在某个实数 $\beta$, 使得 $\beta W+T$ 正定, $W-\beta T$ 半正定.
+分别在原线性方程组 \eqref{eq:problem} 两边同时乘以
+$(\beta-\ii)$ 和 $(1+\beta\ii)$, 可得
+$$
+  \begin{cases}
+    (\beta-\ii)(W+\ii T)x = (\beta-\ii)b, \\
+    (1+\beta\ii)(W+\ii T)x = (1+\beta\ii)b.
+  \end{cases}
+$$
+由此, 我们可以构造出如下的广义修正 HSS 迭代方法, 记为 GMHSS.
+
+\begin{algorithm}[H]
+\caption{GMHSS 算法\label{Alg:GMHSS}}
+\begin{algorithmic}[1]
+  \State 给定一个初值 $ x^{(0)} \in \CC^{n} $ 和常数 $\alpha>0$
+  \For{$k = 1,2, \ldots $ 直到序列 $\{x^{(k)}\}_{k=0}^{\infty}$ 收敛}
+  \State 解方程:
+    $(\alpha I + \beta W + T) x^{(k+\frac{1}{2})}
+     =(\alpha I + \ii W - \ii\beta T) x^{(k)} + (\beta-\ii)b$
+  \State 解方程:
+    $(\alpha I + W - \beta T) x^{(k+1)}
+      =(\alpha I - \ii\beta W - \ii T) x^{(k+\frac{1}{2})} + (1+\ii\beta)b$
+  \EndFor
+\end{algorithmic}
+\end{algorithm}
+
+根据假设, $\beta W + T \in \RR^{n\times n}$ 正定, $W - \beta T \in \RR^{n\times n}$ 半正定,
+所以当 $\alpha>0$ 时, $\alpha I + \beta W + T$ 和 $\alpha I + W - \beta T$ 都是实对称正定矩阵.
+因此在 GMHSS 算法的两步交替迭代中, 需要求解的子线性方程组的系数矩阵都是对称正定的,
+我们可以用不完全 Cholesky 分解或者不精确的共轭梯度法来计算.
+
+\subsection{GMHSS 算法收敛性分析}
+我们首先给出可以一个描述一般两步分裂迭代算法收敛的准则 \cite{BGN03}.
+
+\begin{lemma} \label{lemma1}
+  设 $A \in \CC^{n\times n}$, $A=M_{1}-N_{1}=M_{2}-N_{2}$ 是矩阵 $A$ 的两个分裂,
+  给定初值 $ x^{(0)} \in \CC^{n} $, 对于序列 $\left\{x^{(k)}\right\}(k = 0,1,2...)$
+  并通过以下的迭代方法求解 $x^{(k+1)}$:
+  $$
+    \begin{cases}
+      M_{1}x^{(k+\frac{1}{2})}=N_{1}x^{(k)}+b\\
+      M_{2}x^{(k+1)}=N_{2}x^{(k+\frac{1}{2})}+b
+    \end{cases}
+  $$
+  则对于 $\forall x^{(0)} \in\CC^{n}$, 迭代序列 ${x^{(k)}}$ 均收敛到
+  线性方程组 $Ax=b$ 的唯一解 $x_* \in\CC^{n}$.
+\end{lemma}
+
+我们通过直接计算可知 GMHSS 方法的迭代格式为
+\begin{equation}\label{GMHSS}
+  x^{(k+1)} = M(\alpha) x^{(k)} + G(\alpha) b, \quad k=0,1,2,....
+\end{equation}
+利用引理 \ref{lemma1}, 我们可以得到以下定理.
+\begin{theorem}\label{Th:GMHSS-convergence}
+  设 $\A = W + \ii T \in\CC^{\times n}$, $W\in\RR^{n\times n}$, $T\in\RR^{n\times n}$,
+  并且存在某个实数 $\beta$, 使得 $\beta W + T$ 对称正定, $W - \beta T$ 对称半正定.
+  那么, 对于 $\forall\ \alpha > 0$, 我们有
+  $$ \rho(M(\alpha)) \leq \sigma(\alpha). $$
+\end{theorem}
+\begin{proof}
+  此处省略若干字 ... ...
+\end{proof}
+
+\begin{corollary}
+  设上述定理中的条件都满足, 矩阵 $\beta W + T$
+  的最小和最大特征根分别记为 $\lam_{\min}$ 和 $\lam_{\max}$, 则
+  $$
+    \alpha_* \triangleq \arg\min_{\alpha}
+      \max_{\lam_{\min} \leq \lam \leq \lam_{\max}} \sigma(\alpha)
+    =\sqrt{\lam_{\min}\lam_{\max}}.
+  $$
+\end{corollary}
+\begin{proof}
+  此处省略若干字 ... ...
+\end{proof}
+
+\section{数值算例}
+在本节中, 我们使用文献 \cite{BBC10} 中的两个数值算例来测试
+GMHSS 算法的数值效果.
+
+\begin{example} \label{example11}
+  考虑线性方程组
+  $$
+    \left[\left(K+\frac{3-\sqrt{3}}{\tau} I\right)
+     + \ii\left(K+\frac{3+\sqrt{3}}{\tau} I\right)\right]x=b,
+  $$
+  其中 $\tau$ 表示时间步长,
+  该问题来源于抛物方程 $R_{22}$-Pad\'{e} 近似的中心差分离散,
+  更多的细节可参见文献 \cite{AK00,BBC10,BBC11}.
+\end{example}
+
+表格 \ref{Tab:11} 中列出的是 MHSS 和 GMHSS 算法的数值结果.
+
+\begin{table}[H]
+\begin{center}
+\caption{MHSS 和 GMHSS 数值结果比较\label{Tab:11}}\smallskip
+\begin{tabular}{|c|c|c|c|c|c|c|} \hline
+  \multicolumn{2}{|c|}{$n$}& $2^8$ &$2^{10}$ &$2^{12}$ &$2^{14}$ &$2^{16}$  \\ \hline
+      & $\alpha_{*}$ & 1.16  & 0.78  & 0.55  & 0.40    & 0.30     \\ \cline{2-7}
+ MHSS & IT           &  39   &  53   &  72   &  98     & 133      \\ \cline{2-7}
+      & CPU          &2.25e-2&7.36e-2& 1.02e+0& 1.46e+1 & 1.55e+2  \\ \hline
+      & $\alpha_{*}$ & 0.23  & 0.11  & 0.06  & 0.03    & 0.01     \\ \cline{2-7}
+GMHSS & IT           &  36   &  37   &  39   &  40     & 41       \\ \cline{2-7}
+      & CPU          &1.36e-2&3.76e-2&3.16e-1&  2.58e+0 & 2.20e+1  \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+从表 \ref{Tab:11} 中可以看出, 无论是迭代步数, 还是迭代时间, GMHSS 算法都优于 MHSS 算法.
+
+
+%%%%% ===== 参考文献
+\begin{thebibliography}{99}
+
+\bibitem{AK00}
+\newblock O. Axelsson and A. Kucherov,
+\newblock Real valued iterative methods for solving complex symmetric linear systems,
+\newblock \emph{Numer. Linear Algebra Appl.}, 7 (2000), 197--218.
+
+
+\bibitem{BBC10}
+\newblock Z-Z Bai, M. Benzi and F. Chen,
+\newblock Modified HSS iteration methods for a class of complex symmetric linear systems,
+\newblock \emph{Computing}, 87 (2010), 93--111.
+
+\bibitem{BBC11}
+\newblock Z-Z Bai, M. Benzi and F. Chen,
+\newblock On preconditioned MHSS iteration methods for complex symmetric linear systems,
+\newblock \emph{Numer. Algorithms}, 56 (2011), 297--317.
+
+\bibitem{BGN03}
+\newblock Z-Z Bai, G. H. Golub and M. K. Ng,
+\newblock Hermitian and skew-Hermitian splitting methods for non-Hermitian 
+  positive definite linear systems,
+\newblock \emph{SIAM J.Matrix. Anal.Appl.}, 24 (2003), 603--626.
+
+\bibitem{GW12}
+\newblock X-X Guo and S. Wang,
+\newblock Modified HSS iteration methods for a class of non-Hermitian
+  positive-definite linear systems,
+\newblock \emph{Applied Mathematics and Computation}, 218 (2012), 10122--10128.
+
+\bibitem{NMP84}
+\newblock S. Novikov, S. V. Manakov, L. P. Pitaevski, V. E. Zakharov,
+\newblock \emph{Theory of Solitons. The Inverse Scattering Method},
+\newblock Translated from Russian. Contemporary Soviet Mathematics. Consultants Bureau[Plenum], New York (1984).
+
+\bibitem{VM90}
+\newblock H. van der Vorst, J. Melissen,
+\newblock A Petrov-Galerkin type method for solving $Ax=b$, where A is symmetric complex,
+\newblock \emph{IEEE Trans Magn.}, 26 (1990), 706--708.
+
+\bibitem{Wan12}
+\newblock 王珅,
+\newblock \emph{两类非 Hermitian 线性方程组的迭代法研究}, 
+\newblock 硕士论文, 中国海洋大学, 2012.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,14 @@
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.xdv
+auto/
+photos/
+photo.*
+submitted/
+dist/
+*.tar.bz2
+resume-en.pdf
+resume-zh.pdf

@@ -1,0 +1,4 @@
+* 西北工业大学研究生选题报告表 \LaTeX 模板
+如何使用请参考文件 =npu-report-sample.tex=.
+
+另, 文件使用 UTF-8 编码以及 XeLaTeX 编译.

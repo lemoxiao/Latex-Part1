@@ -1,0 +1,66 @@
+%%
+%% Author: Ali Asghar Momeni Vesalian (momeni.vesalian@gmail.com)
+%% 12/30/2017 AD
+%%
+
+
+% Preamble
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sleekprogressbar}[Sleek progressbar, designed by momeni.vesalian@gmail.com]
+
+
+% Packages
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage{options}
+\usepackage{../libraries/switch}
+
+
+%% Variables
+\newlength{\radius}
+\setlength{\radius}{0.45pt}
+
+\newlength{\borderwidth}
+\setlength{\borderwidth}{0.001pt}
+
+
+% Temporal declaration
+\newcommand{\ratio}{}
+
+
+% Options declaration
+\options{
+    /progressbar/.new family,
+    /progressbar/height/.new dim,
+    /progressbar/width/.new dim,
+    /progressbar/color/.new color,
+    /progressbar/color difference/.new value
+}
+
+
+% Commands
+\newcommand{\progressbar}[2][]{
+    \options{/progressbar, width = 0.4\textwidth, height = 2pt, color = Aquamarine, color difference = 30}
+    \options{/progressbar, #1}
+
+    \colorlet{emptycolor}{\option{/progressbar/color}!\option{/progressbar/color difference}!white}
+    \xifthenelse[comparison type = number]{#2 > 1}{
+        \renewcommand{\ratio}{1}
+    }{
+        \xifthenelse[comparison type = number]{#2 < 0}{
+            \renewcommand{\ratio}{0}
+        }{
+            \renewcommand{\ratio}{#2}
+        }
+    }
+
+    \begin{tikzpicture}
+        \draw[line width = \borderwidth, emptycolor, fill = emptycolor, rounded corners = \radius * \option{/progressbar/height}]
+             (0, 0.13pt) rectangle (\option{/progressbar/width}, \option{/progressbar/height} + 0.13);
+
+        \xifthen[comparison type = number]{\ratio >= 0.028}{
+            \draw[line width = \borderwidth, \option{/progressbar/color}, fill = \option{/progressbar/color}, rounded corners = \radius * \option{/progressbar/height}]
+                 (0, 0) rectangle (\ratio * \option{/progressbar/width}, \option{/progressbar/height} + 0.3);
+        }
+    \end{tikzpicture}
+}

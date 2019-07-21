@@ -1,0 +1,75 @@
+% !Mode:: "TeX:UTF-8"
+\chapter{表格}
+\label{chap:table}
+
+\section{普通三线表}
+科技文献中常用的三线表：
+\begin{table}[htbp]
+ \centering\zihao{5}
+ \caption{燕山大学硕士学位论文参考文献规则}\label{tab:ysubof}
+ \begin{tabular}{llr}
+ \toprule
+    论文版本    & 参考文献标准    & 实施年份（年）  \\
+ \midrule
+    旧版        & BF7714-87       & 1987            \\
+    新版        & GBT7714-2005    & 2005            \\
+ \bottomrule
+ \end{tabular}
+\end{table}
+
+实现代码如下：
+\begin{verbatim}
+\begin{table}[htbp]
+ \centering\zihao{5}
+ \caption{燕山大学硕士学位论文参考文献规则}\label{tab:ysubof}
+ \begin{tabular}{llr}
+ \toprule
+    论文版本    & 参考文献标准    & 实施年份（年）  \\
+ \midrule
+    旧版        & BF7714-87       & 1987            \\
+    新版        & GBT7714-2005    & 2005            \\
+ \bottomrule
+ \end{tabular}
+\end{table}
+\end{verbatim}
+
+\section{有合并列的三线表}
+合并列通常见于表格的第一行，在适当的位置使用\verb|\multicolumn| 命令即可。
+\begin{table}[htbp]
+\centering\zihao{5}
+\caption{带有合并列的三线{\zihao{5}表}}\label{tab:test}
+\begin{tabular}{llr} \toprule
+\multicolumn{2}{c}{Item} \\ \cmidrule(r){1-2}
+Animal & Description & Price (\$)\\ \midrule
+Gnat & per gram & 13.65 \\
+& each & 0.01 \\
+Gnu & stuffed & 92.50 \\
+Emu & stuffed & 33.33 \\
+Armadillo & frozen & 8.99 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+
+该表格是采用如下代码实现的：
+\begin{verbatim}
+\begin{table}[htbp]
+ \centering
+ \caption{三线表}\label{tab:test}
+ \begin{tabular}{llr}
+ \toprule
+    \multicolumn{2}{c}{Item}            \\
+ \cmidrule(r){1-2}
+    Animal  & Description   & Price (\$)\\
+ \midrule
+    Gnat    & per gram      & 13.65     \\
+            & each          & 0.01      \\
+    Gnu     & stuffed       & 92.50     \\
+    Emu     & stuffed       & 33.33     \\
+    Armadillo & frozen      & 8.99      \\
+ \bottomrule
+ \end{tabular}
+\end{table}
+\end{verbatim}
+
+\section{表格的引用}
+表格的引用同样是使用\verb|\ref{}| 命令实现的。例如“表\verb|\ref{tab:ysubof}|” 输出的结果为：表\ref{tab:ysubof}

@@ -1,0 +1,121 @@
+\documentclass[8pt,oneside,final]{article}
+
+% set all margins to 0 and set business card size
+\usepackage[paperwidth=2in,paperheight=3.5in,margin=0cm,noheadfoot]{geometry}
+\setlength{\baselineskip}{0cm}
+\setlength{\topskip}{0pt}
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{parskip}         % remove paragraph indents
+\usepackage[T1]{fontenc}     % load external fonts
+\usepackage{tikz}            % drawing
+\usepackage{fontawesome}     % icon font
+\usepackage{xcolor}          % more colour options
+\usepackage{graphics}        % load images
+\usepackage[nolinks]{qrcode} % create QR codes
+
+% local path for my logo
+\usepackage{graphicx}
+  	  	\graphicspath{{./fig/}} %fig path
+%Define CV Variables
+\newcommand{\cvfirstname}{David}
+\newcommand{\cvlastname}{Beauchemin}
+\newcommand{\cvtitle}{B. Sc. Actuariat}
+
+\newcommand{\cvemail}{david.beauchemin.5@ulaval.ca}
+\newcommand{\cvphonenumber}{(514) 250-3616}
+\newcommand{\github}{davebulaval}
+
+% load and configure tikz libraries
+\usetikzlibrary{matrix,calc,positioning}
+
+% define some lengths for internal spacing
+\newlength{\seplinewidth}    \setlength{\seplinewidth}{2cm}
+\newlength{\seplineheight}   \setlength{\seplineheight}{1pt}
+\newlength{\seplinedistance} \setlength{\seplinedistance}{0.3cm}
+
+% colour options
+\definecolor{white}{RGB}{255,255,255}
+\definecolor{seplinecolour}{RGB}{0,0,153}  % blue
+\definecolor{iconcolour}{RGB}{90, 94, 107}     % dark
+\definecolor{textcolour}{RGB}{90, 94, 107}   % dark
+\definecolor{jobtitlecolour}{RGB}{90, 94, 107} % light dark
+
+% define some lengths for internal spacing
+\newlength{\qrheight}  \setlength{\qrheight}{1in}
+\newlength{\edgemargin} \setlength{\edgemargin}{0.2in}
+\newlength{\logowidth}  \setlength{\logowidth}{0.5in}
+
+%Command to produce a round shaped corner framebox with defined colors
+\newcommand{\mybox}[1]{
+	\tikz
+	\node[rectangle,rounded corners=1mm,draw=iconcolour,anchor=text,fill=iconcolour,inner sep=3pt,minimum height=0.1cm]
+		{\bfseries\textcolor{white}{#1}};}
+
+%Command for printing white words
+\newcommand\printww[1]{
+	\textcolor{white}{
+	\foreach \x in #1{\x \- \,}}}
+
+
+% change global colour
+\makeatletter
+\newcommand{\globalcolor}[1]{%
+  \color{#1}\global\let\default@color\current@color
+}
+\makeatother
+\AtBeginDocument{\globalcolor{textcolour}}
+
+\begin{document}
+  \thispagestyle{empty}
+  \vspace*{\fill}
+  \tiny
+  \begin{center}
+    \begin{tikzpicture}
+      % name
+      \matrix[every node/.style={anchor=center,font=\huge},anchor=center] (name) {
+        \node{\textbf{\cvfirstname}}; \\
+        \node{\textbf{\cvlastname}}; \\
+        \node{\color{jobtitlecolour}\normalsize\textit{\cvtitle}}; \\
+        \node{\includegraphics[width=.25\textwidth]{LogoDB.png}}; \\
+      };
+      % sep line 1
+      \node[below=\seplinedistance of name] (hl1) {};
+      \draw[line width=\seplineheight,color=seplinecolour] (hl1)++(-\seplinewidth/2,0) -- ++(\seplinewidth,0);
+      % contact info
+      \matrix [below=\seplinedistance of hl1,%
+               column 1/.style={anchor=center,color=iconcolour},%
+               column 2/.style={anchor=west}] (contact){
+        \node{\faAt}; &\node{\cvemail};\\
+        \node{\faPhone}; &\node{\cvphonenumber}; \\
+        \node{\faGithub}; &\node{\github}; \\
+        %\node{\faLinkedin}; &\node{\cvlinkedin}; \\
+      };
+			% sep line 2
+      \node[below=\seplinedistance of contact] (hl2) {};
+      \draw[line width=\seplineheight,color=seplinecolour] (hl2)++(-\seplinewidth/2,0) -- ++(\seplinewidth,0);
+      % interests
+      \matrix [below=\seplinedistance of hl2,
+         every node/.style={anchor=center,font=\LARGE}]
+         (interests) {
+        \node{\faCode}; & \node{\faBicycle}; &
+        \node{\faLineChart}; & \node{\faMap}; &
+        \node{\faDatabase}; \\
+      }; 
+  		% sep line 3
+      \node[below=\seplinedistance of interests] (hl3) {};
+      \draw[line width=\seplineheight,color=seplinecolour] (hl3)++(-\seplinewidth/2,0) -- ++(\seplinewidth,0);
+      % interests
+      \matrix [below=\seplinedistance of hl3,
+         every node/.style={anchor=center,font=\tiny}]
+         (interests) {
+         \node{\mybox{Actuarial risk}}; &  \node{\mybox{Coding}};\\
+      };     
+      
+    \end{tikzpicture}
+  \end{center}
+  \vspace*{\fill}
+  \clearpage
+  
+\end{document}

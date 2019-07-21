@@ -1,0 +1,124 @@
+This is LuaTeX, Version 0.95.0 (TeX Live 2016)  (format=lualatex 2016.6.8)  9 JAN 2017 13:14
+ restricted system commands enabled.
+ file:line:error style messages enabled.
+**Certs_Affiliations.tex
+(./Certs_Affiliations.tex
+LaTeX2e <2016/03/31>
+Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
+./Certs_Affiliations.tex:1: Undefined control sequence.
+l.1       \section
+                *{organizational service}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./Certs_Affiliations.tex:1: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1       \section*
+                 {organizational service}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+./Certs_Affiliations.tex:2: LaTeX Error: Environment entrylist undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2         \begin{entrylist}
+                           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./Certs_Affiliations.tex:3: Undefined control sequence.
+l.3           \entry
+                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./Certs_Affiliations.tex:8: Undefined control sequence.
+l.8 	      \entry
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./Certs_Affiliations.tex:13: LaTeX Error: \begin{document} ended by \end{entrylist}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13         \end{entrylist}
+                          
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./Certs_Affiliations.tex:14: Undefined control sequence.
+l.14         \section
+                   *{professional certifications}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--16
+[]*organizational
+ []
+
+./Certs_Affiliations.tex:17: Undefined control sequence.
+l.17         \section
+                   *{professional affiliations}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./Certs_Affiliations.tex:17: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17         \section*
+                    {professional affiliations}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+)
+! Emergency stop.
+<*> Certs_Affiliations.tex
+                       
+*** (job aborted, no legal \end found)
+
+
+
+Here is how much of LuaTeX's memory you used:
+ 9 strings out of 495119
+ 100000,89155 words of node,token memory allocated 2827 words of node memory still in use:
+   4 hlist, 2 local_par, 1 dir, 58 glue, 6 penalty, 354 glyph, 32 glue_spec, 1 temp nodes
+   avail lists: 2:12,4:28,5:1,7:11,10:27
+ 3674 multiletter control sequences out of 65536+600000
+ 14 fonts using 591559 bytes
+ 6i,0n,6p,107b,19s stack positions out of 5000i,500n,10000p,200000b,100000s
+!  ==> Fatal error occurred, no output PDF file produced!

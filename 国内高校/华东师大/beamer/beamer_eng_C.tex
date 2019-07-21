@@ -1,0 +1,514 @@
+\documentclass[10pt,compress,t,noamsthm,notheorem,table,handout]{beamer}
+% ,table,handout
+\usetheme{Boadilla}
+\useinnertheme{circles}
+\useoutertheme{shadow}
+\usecolortheme{seahorse}
+\usefonttheme[onlymath]{serif}
+\setbeamertemplate{navigation symbols}{}
+% \setbeamercovered{transparent}
+
+\setbeamercolor{myfootline}{bg=white,fg=blue}
+\definecolor{myfoot}{rgb}{0.5,0.2,0.5}
+\definecolor{darkblue}{rgb}{0.1,0,0.85}
+\setbeamertemplate{headline}
+  { \leavevmode\begin{beamercolorbox}[wd=\paperwidth,ht=1.25ex,dp=1ex,left]{}
+    \end{beamercolorbox}}
+\setbeamertemplate{footline}% 自定义页脚
+  { \leavevmode\mbox{%
+    \begin{beamercolorbox}[wd=.75\paperwidth,ht=2.25ex,dp=1ex,left]{myfootline}%
+        \rule{2em}{0pt}\color{myfoot}\ttfamily\scriptsize%
+        %\insertshortauthor~(\insertshortinstitute)
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,right]{myfootline}%
+       {\color{myfoot}\ttfamily\scriptsize\insertframenumber{}/%
+        \inserttotalframenumber\hspace*{3ex}}
+    \end{beamercolorbox}}
+    \vskip0pt }
+
+\setbeamercolor{frametitle}{fg=blue,bg=white}
+\setbeamertemplate{frametitle}{%
+  \leavevmode\linespread{1}\large\textbf{\insertframetitle}\par
+  \color{structure.fg!30!bg}\rule[6pt]{\linewidth}{2pt}\par\vspace{-1.0em}}
+
+% \setbeamertemplate{blocks}[default] % beamer块（含定理类环境）不要阴影
+\setbeamertemplate{bibliography entry title}{}{}
+\setbeamertemplate{bibliography entry location}{}{}
+\setbeamertemplate*{bibliography entry note}{}{}
+\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
+
+\setbeamercolor{bluebox}{fg=black,bg=blue!10}
+\setbeamercolor{redbox}{fg=black,bg=red!10}
+\newenvironment{Boxblue}[1][\textwidth]
+  {\begin{beamercolorbox}[sep=0.1em,shadow=true,wd=#1,rounded=true,center]{bluebox}}
+  {\end{beamercolorbox}}
+\newenvironment{Boxred}[1][\textwidth]
+  {\begin{beamercolorbox}[sep=0.1em,shadow=true,wd=#1,rounded=true,center]{redbox}}
+  {\end{beamercolorbox}}
+
+\usepackage{amsmath,amssymb,amsfonts,bm}
+\usepackage{graphicx,xcolor}
+\graphicspath{{figures/}}
+\usepackage{hyperref}
+\hypersetup{pdfborder=001,colorlinks=true,linkcolor=darkblue,urlcolor=blue}
+\usepackage{bbding}
+\newcommand{\Bullet}{{\fontsize{6pt}{6pt}\selectfont\CircleSolid}}
+\newcommand{\Hand}{{\fontsize{8pt}{6pt}\selectfont\HandRight}}
+\newcommand{\zhu}{{\color{blue!40}\Bullet}}
+\newcommand{\zhuu}{{\color{red!80}\Hand}}
+\newcommand{\labeli}{\zhu}
+\newenvironment{blist}%
+    {\begin{list}{{\hfill\raisebox{1.12pt}{\color{blue!60}\zhu}}}{%
+     \leftmargin2em\labelwidth1.5em\labelsep0.5em
+     \itemsep1ex\itemindent0pt\parsep0pt\topsep0pt}}
+    {\end{list}}
+\newenvironment{myitem}
+  {\begin{list}{{\hfill\raisebox{0pt}{\labeli}}}{%
+    \setlength{\leftmargin}{1.2em}\labelwidth0.8em\labelsep.4em%
+    \itemsep1ex\parsep2pt\itemindent0pt\topsep0pt}}{\end{list}}
+\newenvironment{subitem}
+  {\begin{list}{{\hfill\raisebox{0pt}{-}}}{%
+    \setlength{\leftmargin}{1.2em}\labelwidth0.8em\labelsep.4em%
+    \itemsep0ex\parsep2pt\itemindent0pt\topsep0pt}}{\end{list}}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{stmaryrd}
+\usepackage{algorithm,algpseudocode,caption}
+\usepackage{booktabs}
+\usepackage[framemethod=tikz]{mdframed}
+\newmdenv[linecolor=green,middlelinewidth=1pt,%
+          roundcorner=3pt,backgroundcolor=white,%
+          innertopmargin=0.8em,innerbottommargin=0.5em,%
+          innerleftmargin=3pt,innerrightmargin=3pt,%
+          skipbelow=0.5em,skipabove=1em,%
+          splittopskip=\topskip]{Block}
+\newmdenv[linecolor=green,middlelinewidth=1pt,%
+          roundcorner=3pt,backgroundcolor=red!5!white,%
+          innertopmargin=0.5em,innerbottommargin=0.5em,%
+          innerleftmargin=3pt,innerrightmargin=3pt,%
+          skipbelow=0.5em,skipabove=1em,%
+          splittopskip=\topskip]{redbox}
+\newmdenv[linecolor=green,middlelinewidth=0.5pt,%
+          %outerlinewidth=0.5pt,skipabove=0pt,
+          roundcorner=3pt,backgroundcolor=white,%
+          innerbottommargin=3pt,innerrightmargin=5pt,%
+          innerleftmargin=5pt,leftmargin=0ex]{mathbox}
+\newmdenv[linecolor=blue!5!green,middlelinewidth=0.5pt,%
+          roundcorner=3pt,backgroundcolor=yellow!5,%
+          % frametitle={Hello},frametitlebackgroundcolor=green!50,%
+          % skipabove=2pt,skipbelow=2pt,%
+          innerleftmargin=3pt,leftmargin=0ex]{notebox}
+\newmdenv[linecolor=white,font={\scriptsize},%
+          fontcolor=blue!85,backgroundcolor=yellow!5,%
+          skipabove=1ex,skipbelow=0pt,innerbottommargin=0.5ex,%
+          innerleftmargin=3pt,leftmargin=1em]{myref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\thefootnote}{}% 不要编号
+\setbeamertemplate{footnote}{% 首行不缩进
+  \noindent\insertfootnotemark%
+  \scriptsize\color{blue!85!green!85}\insertfootnotetext\par\kern1ex}
+\renewcommand\footnoterule%    更改横线属性：长度，粗细，颜色
+  {\color{red}\kern-3pt\rule{0.4\linewidth}{0.5pt}\par\kern2.6pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%===== 定理环境
+\usepackage[amsmath,thref,thmmarks,hyperref]{ntheorem}
+\theorempreskipamount1.2em  % spacing before the environment
+\theorempostskipamount0em % spacing after the environment
+%\theorempostwork{\noindent}
+\theoremstyle{nonumberbreak}%{nonumberplain}
+\theoremheaderfont{\bfseries\color{blue}}
+\theorembodyfont{\normalfont}
+\theoremindent0em
+\theoremseparator{\hspace{0.2em}}
+\theoremnumbering{arabic}
+\colorlet{thmcolor}{green}
+\newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
+    roundcorner=3pt,backgroundcolor=white,%
+    innertopmargin=0.8em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{theorem}%
+    {Theorem}
+\newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
+    roundcorner=3pt,backgroundcolor=white,%
+    innertopmargin=0.8em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{corollary}%
+    {Corollary}
+\newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
+    roundcorner=3pt,backgroundcolor=white,%
+    innertopmargin=0.8em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{lemma}%
+    {Lemma}
+\newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
+    roundcorner=3pt,backgroundcolor=white,%
+    innertopmargin=0.8em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{definition}%
+    {Definition}
+\newmdtheoremenv[linecolor=thmcolor,middlelinewidth=0.5pt,
+    roundcorner=3pt,backgroundcolor=white,%
+    innertopmargin=0.8em,innerbottommargin=0.5em,%
+    innerleftmargin=3pt,innerrightmargin=3pt,%
+    skipbelow=0.5em,skipabove=1em,%
+    splittopskip=\topskip,ntheorem]{example}%
+    {Example}
+
+\usepackage[many]{tcolorbox}
+\tcbset{highlight math %
+  style={enhanced, colframe=blue!40,colback=yellow!20,arc=4pt,boxrule=1pt}}
+\newtcbox{\subsubtit}[1][]{%
+  after skip=1em,boxrule=0.5pt,
+  fontupper=\color{blue}\bfseries,top=0.5ex,bottom=0.5ex,
+  left=1ex,right=1ex,
+  colframe=green,colback=red!5!white,#1}
+
+%\renewcommand{\baselinestretch}{1.1}
+\linespread{1.1}
+\setlength{\parskip}{1ex}
+
+\newcommand{\myem}[2][blue]{{\color{#1} #2}}
+%\newcommand{\myref}[1]{\textcolor{blue}{\scriptsize #1}}
+
+%%%%%========自定义命令=======================================
+\newcommand{\lam}{\lambda}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\dis}{\displaystyle}
+\newcommand{\mycite}[1]{\textcolor{red}{\normalfont\upshape{#1}}}
+\newcommand{\bbm}{\begin{bmatrix}}
+\newcommand{\ebm}{\end{bmatrix}}
+
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\zp}{\{0\}}
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand{\ga}{\gamma}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\si}{\sigma}
+\newcommand{\ph}{\varphi}
+\newcommand{\ry}{\forall}
+\newcommand{\cz}{\exists}
+\newcommand{\htt}{\Leftrightarrow}
+\newcommand{\tc}{\Rightarrow}
+
+\renewcommand{\rm}{\mathrm}
+
+\newcommand{\xb}{\bar{x}}
+\newcommand{\db}{\bar{\delta}}
+\newcommand{\td}{\nabla}
+\newcommand{\fh}{\hat{f}}
+
+\begin{document}
+
+%%%%% =======================================================================
+\title{\LARGE %
+  Shifted Power Method for\\ H-eigenvalue of Symmetric Tensors}
+
+\institute{%
+  \normalsize xxxx xxx \\[1em]
+  Department of Mathematics\\
+  East China Normal University, Shanghai, China
+  \bigskip\bigskip}
+
+\date{SIAM: xxx Conference 20xx \\ xxx, June 20xx}
+
+% ===== title page =====
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ===== contents =====
+\begin{frame}
+  \frametitle{Outline}
+   \tableofcontents[hideallsubsections] %[pausesections]
+\end{frame}
+
+% ===== main part =====
+\section{Tensor and Eigenvalue}
+\AtBeginSection[]{\frame{\tableofcontents[currentsection,hideallsubsections]}}
+
+\begin{frame}{Tensor}
+
+The real-valued tensor of order $m$ and dimension $n$
+is defined as follows
+$$ \A=(a_{i_1\cdots i_m}),\quad a_{i_1\cdots i_m}\in \mathbb{R},
+   \quad 1\leq i_1,\cdots,i_m\leq n.
+$$
+
+\begin{blist}
+\item \myem{Symmetric Tensor}:
+ $\A$ is called \myem{symmetric} if its entries do not change
+under any permutation of its $m$ indices.\medskip
+
+\item \myem{Nonnegative Tensor}:
+$\A=$ is called \myem{nonnegative} if $a_{i_1\cdots i_m} \geq 0 .$
+\medskip
+
+\item \myem{Irreducible Tensor \mycite{[CPZ '08]}}:
+$\A$ is called \myem{reducible}
+if there exists a nonempty proper index subset
+$I\subset\{1,2,\ldots,n\}$ such that
+$$ a_{i_1\cdots i_m}=0 \quad\text{for all } i_1\in I
+  \quad\text{and } i_2,\ldots,i_m\notin I.
+$$
+If $\A$ is not reducible, then we call $\A$ \myem{irreducible}.
+\end{blist}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Tensor-vector product}
+
+Let $r$ be an integer such that $0\leq r\leq m-1$.
+
+\begin{Block}
+The $(m-r)$-times product of a symmetric tensor $\A$
+with a vector $x$ is denoted by $\A x^{m-r}$
+and defined as % \mycite{[KM '11]}
+$$
+  (\A x^{m-r})_{i_1\cdots i_r}
+  := \sum_{i_{r+1},\ldots, i_m}a_{i_1\cdots i_m}
+  x_{i_{r+1}}\cdots x_{i_m}
+$$
+for all $i_1,\ldots,i_r\in\{1,\ldots,n\}$.
+\end{Block}
+
+\bigskip
+
+In particular, $\A x^m$ is a scalar and $\A x^{m-1}$ is a vector
+
+\end{frame}
+
+
+\begin{frame}{Eigenvalue and H-eigenvalue}
+
+
+\begin{definition} [Eigenvalue, \mycite{[Qi '05, Lim '05]}]
+  Let $\A$ be a tensor of order $m$ and dimension $n$.
+  Then $\lambda\in\mathbb{C}$ is an eigenvalue of $\A$ if there exists a nonzero vector
+  $x\in\mathbb{C}^n$ such that
+  $$ % \label{H-eigenpair}
+    \A x^{m-1}=\lambda x^{[m-1]},
+  $$
+  where $x^{[m-1]}=[x_1^{m-1},\cdots,x_n^{m-1}]^T$.
+  The vector $x$ is the corresponding eigenvector.
+\end{definition}
+
+\bigskip
+\subsubtit{H-eigenvalue}
+  If, in addition, both $\lambda$ and $x$ are real, then
+  they are called the \myem{H-eigenvalue} and \myem{H-eigenvector}, respectively.
+
+\end{frame}
+
+
+
+\section{NQZ Algorithm for largest Eigenvalue}
+\begin{frame}{NQZ algorithm}
+
+NQZ algorithm \mycite{[NQZ '09]} : an iterative method for finding
+the largest eigenvalue of irreducible nonnegative tensors.
+
+\begin{Block}\linespread{1.5}\selectfont
+  \begin{algorithmic}[1]
+  \State Choose a \myem{positive} vector $x^{(0)}$ and compute
+     $y^{(0)}=\A (x^{(0)})^{m-1}$
+  \For{$k=1,2,\ldots$, until convergence}
+
+  \State $x^{(k)}=\dfrac{\left(y^{(k-1)}\right)^{[\frac1{m-1}]}}%
+                          {\left\|\left(y^{(k-1)}\right)^{[\frac1{m-1}]}\right\|}$
+
+  \State $y^{(k)}=\A (x^{(k)})^{m-1}$
+
+  \State $\lam^-_{k}=\min\limits_{x^{(k)}_i>0}
+    \dfrac{y^{(k)}_i}{\left(x^{(k)}_i\right)^{m-1}}$
+
+  \State $\lam^+_{k}=\max\limits_{x^{(k)}_i>0}
+    \dfrac{y^{(k)}_i}{\left(x^{(k)}_i\right)^{m-1}}$
+
+  \EndFor
+  \end{algorithmic}
+\end{Block}
+
+\end{frame}
+
+\begin{frame}{Convergence of NQZ}
+  Let $\A$ be an \myem{irreducible nonnegative} tensor of order $m$ and dimension $n$.
+  Then
+  $$
+    \tcbhighmath{\lam^-_k\leq \lam^-_{k+1} \quad\text{and}\quad
+     \lim_{k\to\infty} \lam^-_k = \lam^-}
+  $$
+  and
+  $$
+    \tcbhighmath{\lam^+_k\geq \lam^+_{k+1} \quad\text{and}\quad
+     \lim_{k\to\infty} \lam^+_k = \lam^+}
+  $$
+
+  Moreover,
+  $$ \tcbhighmath{\lam^- \leq \rho(\A) \leq \lam^+} $$
+  where $\rho(\A)$ is the spectral radius  of $\A$.
+  % $$ \rho(\A):=\max\{\,|\lam|\ :\ \lam\ \text{is an eigenvalue of } \A\}$$
+
+  \begin{notebox}
+    In general, the convergence of NQZ for irreducible nonnegative tensors
+    is not guaranteed.
+  \end{notebox}
+
+\end{frame}
+
+
+
+
+\section{HOPM Algorithm for Z-eigenvalue}
+
+\begin{frame}{HOPM algorithm}
+
+HOPM \mycite{[LMV '00]} : Higher-Order Power Method
+% for \myem{Z-eigenvalue}
+
+\begin{Block}\linespread{1.5}\selectfont
+  \begin{algorithmic}[1]
+  \State Choose a vector $x^{(0)}\in \R^n$ with $\|x^{(0)}\|=1$
+  \State Compute $\lam_0=\A (x^{(0)})^m$
+  \For{$k=1,2,\ldots$, until convergence}
+  \State $y^{(k)}=\A (x^{(k-1)})^{m-1}$
+  \State $x^{(k)}= {y^{(k)}}/{\|y^{(k)}\|}$\smallskip
+  \State $\lam_{k}=\A (x^{(k)})^m$
+  \EndFor
+  \end{algorithmic}
+\end{Block}
+
+\begin{blist}
+  \item HOPM is proposed for the low-rank tensor approximation
+   and predates the definition of tensor eigenvalue problem
+  \item The initial vector is not required to be positive
+  
+  \item HOPM can be used to compute \myem{Z-eigenvalue} of symmetric tensors
+\end{blist}
+
+\end{frame}
+
+
+\begin{frame}{SS-HOPM algorithm}
+
+SS-HOPM \mycite{[KM '11]} : Shifted Symmetric Higher-Order Power Method
+
+\begin{Block}\linespread{1.4}\selectfont
+  \begin{algorithmic}[1]
+  \State Choose a vector $x^{(0)}\in \R^n$ with $\|x^{(0)}\|=1$
+    and a shift $\alpha$
+  \State Compute $\lam_0=\A (x^{(0)})^m$
+  \For{$k=1,2,\ldots$, until convergence}
+  \If{$\al\geq0$}
+  \State $y^{(k)}=\A (x^{(k-1)})^{m-1}+\myem{\bm{\alpha x^{(k-1)}}}$
+  \Else
+  \State $y^{(k)}=-\left(\A (x^{(k-1)})^{m-1}+\myem{\bm{\alpha x^{(k-1)}}}\right)$
+  \EndIf
+  \State $x^{(k)}=y^{(k)}/\|y^{(k)}\|$
+  \State $\lam_{k}=\A (x^{(k)})^m$
+  \EndFor
+  \end{algorithmic}
+\end{Block}
+
+\end{frame}
+
+
+
+\section{Shifted Power Method for H-eigenvalue}
+
+\begin{frame}{Power method for H-eigenvalue (S-HOPM-H)}
+
+  $\lambda\in\R$ is an H-eigenvalue if there exists a nonzero vector
+  $x\in\R^n$ such that
+  $$ \tcbhighmath{\A x^{m-1}=\lambda x^{[m-1]}} $$
+
+  \myem{Symmetric High Order Power Method for H-eigenvalue (S-HOPM-H)}
+
+  \begin{Block}\linespread{1.4}\selectfont
+  \begin{algorithmic}[1]
+  \State Given a symmetric \myem{even-order} tensor $\A$
+  \State choose $x^{(0)}\in \mathbb{R}^n$ with $\|x^{(0)}\|_m=1$
+         and compute $\lambda_0=\A \left(x^{(0)}\right)^m$
+  \For{$k=1,2,\ldots$, until convergence}
+  \State $y^{(k)}=\A \left(x^{(k-1)}\right)^{m-1}$\smallskip
+  \State \myem{$z^{(k)}=\left(y^{(k)}\right)^{[\frac{1}{m-1}]}$}
+  \State $x^{(k)}=z^{(k)}/\|z^{(k)}\|_m$
+  \State $\lambda_{k}=\A \left(x^{(k)}\right)^m$
+  \EndFor
+  \end{algorithmic}
+  \end{Block}
+\end{frame}
+
+
+\begin{frame}{Example 1}
+
+\begin{example}[\mycite{[KR '02]}]
+Let $\A$ be a symmetric tensor of order 4 and dimension 3,
+whose entries are defined by
+
+\scalebox{0.95}{
+$
+\begin{array}{llll}
+a_{1111}= 0.2883,& a_{1112}= -0.0031, &a_{1113}= 0.1973, &a_{1122}=-0.2485,\\
+a_{1123}= -0.2939,& a_{1133}= 0.3847, &a_{1222}= 0.2972, &a_{1223}=0.1862,\\
+a_{1233}= 0.0919,& a_{1333}= -0.3619, &a_{2222}= 0.1241, &a_{2223}=-0.3420,\\
+a_{2233}= 0.2127,& a_{2333}= 0.2727, &a_{3333}= -0.3054.
+\end{array}
+$}
+\end{example}
+
+\begin{blist}
+  \item
+  There are totally 27 different eigenvalues, among which 11 are real
+
+\end{blist}
+
+\end{frame}
+
+\begin{frame}{Example}
+
+\renewcommand{\arraystretch}{1.15}
+\begin{center}
+\begin{table}
+\caption{All H-eigenpairs generated by \texttt{Mathematica}}
+\centering
+\begin{tabular}{r|rrr}\toprule
+$\lambda$  &  &   $x^T$ & \\\midrule
+2.3129  & [ 0.7875&  0.6483& -0.8138 ]\\
+1.9316  & [ 0.8749& -0.6536&  0.6936 ]\\
+0.9780  & [ 0.1474& -0.9540&  0.6432 ]\\
+0.8944  & [ 0.5223&  0.8048&  0.8434 ]\\
+0.7228  & [ 0.8526&  0.4939&  0.8012 ]\\
+0.4108  & [ 0.2035& -0.5145& -0.9816 ]\\
+0.2528  & [ 1.0000&  0.1020& -0.0868 ]\\
+0.2499  & [ 0.4178&  0.9917&  0.2184 ]\\
+-0.0887 & [ 0.9158&  0.7376&  0.1559 ]\\
+-0.6665 & [ 0.2291& -0.2579&  0.9982 ]\\
+-2.6841 & [ 0.7793& -0.8675& -0.5044 ]\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[c]
+\frametitle{}
+  \begin{center}\Huge\color{red}
+    Thank you!
+  \end{center}
+\end{frame}
+
+\end{document}

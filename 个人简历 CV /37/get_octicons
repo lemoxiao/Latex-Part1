@@ -1,0 +1,8 @@
+#!/bin/sh
+
+git clone https://github.com/primer/octicons.git
+
+mv ./octicons/lib/svg ./.svg
+rm -r ./octicons
+
+

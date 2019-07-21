@@ -1,0 +1,77 @@
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm  
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm  
+
+\chapter[附  录]{附录}
+\chaptermark{附录}
+\section*{数据说明}
+\nomenclatureitem[\textbf{说明}]{}{\textbf{字段名称}}
+\nomenclatureitem[微博的 ID]{1}{$id$}
+\nomenclatureitem[微博的 MID]{2}{$mid$}
+\nomenclatureitem[微博作者的 UID]{3}{$uid$}
+\nomenclatureitem[该条微博直接转发微博的MID]{4}{$parent$}
+\nomenclatureitem[微博的类型]{5}{$type$}
+\nomenclatureitem[微博发布时间，Unix Timestamp]{6}{$t$}
+\nomenclatureitem[微博的评论数]{6}{$comments_{count}$}
+\nomenclatureitem[微博的转发数]{7}{$reposts_{count}$}
+\nomenclatureitem[微博作者创建时间]{8}{$user_{created}$}
+\nomenclatureitem[微博作者的粉丝数]{9}{$followers_{count}$}
+\nomenclatureitem[微博作者的微博数]{10}{$statuses_{count}$}
+\nomenclatureitem[微博作者的关注数]{11}{$friends_{count}$}
+\nomenclatureitem[微博作者的用户名]{12}{$username$}
+\nomenclatureitem[作者的用户描述]{13}{$user_{description}$}
+\nomenclatureitem[微博作者的城市编号]{14}{$city$}
+\nomenclatureitem[微博作者的省份编号]{15}{$province$}
+\nomenclatureitem[作者的性别m为男f为女n为未知]{16}{$gender$}
+\nomenclatureitem[微博作者是否已加V]{17}{$verified$}
+\nomenclatureitem[微博作者加V原因]{18}{$verified_{reason}$}
+\nomenclatureitem[微博加V类型]{19}{$verified_{type}$}
+\nomenclatureitem[微博文本]{20}{$original_{text}$}
+\nomenclatureitem[作者本人文本]{21}{$text$}
+\nomenclatureitem[分词结果]{22}{$words$}
+\nomenclatureitem[情感分析]{23}{$emotion$}
+
+%\section*{缩写}
+%\nomenclatureitem{BFS}{Breadth First Search}
+%\nomenclatureitem{DFS}{Depth First Search}
+%\nomenclatureitem{GHSOM}{Growing Hierarchical Self-Organizing Maps}
+%\nomenclatureitem{PSO}{Particle Swarm Optimization}
+
+\section*{伪代码}
+
+\begin{algorithm}[!htbp]
+    \small
+    \caption{The node2vec algorithm}\label{alg:node2vec}
+    \begin{algorithmic}[1]
+        \Function{LearnFeatures}{Graph $G=(V,E,W)$,Dimensions $d$,Walks per node r,Walk length $l$,Context size $k$,Return $p$,In-out $q$}
+        \State $\pi=PreprocessModifiedWeights(G,p,q)$
+        \State $G'=(V,E,\pi)$
+        \State Initialize $walks$ to Empty
+
+        \For{$iter=1~to~r$ }
+        	\ForAll{ nodes $u \in V$}
+        	\State $walk=node2vecWlak(G',u,l)$ 
+        	\State $walk~to~walks$
+        	\EndFor 
+        \EndFor
+        \State $f=StochasticGradientDescent(k,d,walks$)
+        \State\Return $f$ 
+        \EndFunction
+    \end{algorithmic}
+ 
+    \begin{algorithmic}[1]
+        \Function{node2vecWalk}{Graph $G'=(V,E,\pi)$,Start node $u$,Length $l$}
+        \State Initialize $walks$ to [u]
+        \For{$walk\_iter=1~to~l$}
+        \State $curr=walk[-1]$
+        \State $V_{curr} =GetNeighbors(surr,G')$
+        \State $s=AliasSample(V_{curr},\pi)$
+        \State Append $s~to~walk$
+        \EndFor
+        \State \Return $walk$
+        \EndFunction
+    \end{algorithmic}
+
+\end{algorithm}
+
+
+

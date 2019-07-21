@@ -1,0 +1,2 @@
+# Ecust_Bachelor_LaTeX_Template-
+华东理工大学本科毕业设计LaTeX模板

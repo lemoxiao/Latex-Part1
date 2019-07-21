@@ -1,0 +1,142 @@
+%!TEX TS-program = lualatex
+
+\documentclass[letterpaper,10pt]{hawthorn-resume}
+%\usepackage{geometry}
+ %\geometry{
+ %letterpaper,
+ %left=10mm,
+ %right=10mm,
+ %top=10mm,
+ %}
+%\usepackage[margin=1in]{geometry}
+
+\begin{document}
+\thispagestyle{empty}
+\header{Matthew}{ Hawthorn}
+       {data science + mathematics}
+
+% In the aside, each new line forces a line break
+\begin{aside}
+  \section{contact}
+    \href{tel:15024408676}{+502.440.8676}\\
+    \href{mailto:hawthorn.matthew@gmail.com}{hawthorn.matthew@\\gmail.com}\\
+    \href{https://github.com/mattHawthorn}{github://mattHawthorn}\\
+   \vspace{\baselineskip}
+  \section{languages}
+    Python\\
+    \smallitem{+ numpy/scipy/pandas}\\
+    \smallitem{+ scikit-learn}\\
+    \smallitem{+ PyTorch}\\
+    \smallitem{+ numba}\\
+    \smallitem{+ dask}\\
+    \smallitem{+ bokeh}\\
+    \_ => Scala\\
+    \smallitem{+ breeze}\\
+    \smallitem{+ typeclass pattern}\\
+    \smallitem{+ higher-kinded types}\\
+    SQL\\
+    regex(pressions)?\\
+    \LaTeX \\
+   \vspace{\baselineskip}
+  \section{computing}
+   Linux (debian/Ubuntu)\\
+   bash shell\\
+   git\\
+   \vspace{\baselineskip}
+\section{interests}
+  record linkage\\
+  text analysis\\
+  \smallitem{+ entity resolution}\\
+  \smallitem{+ distributional semantics}\\
+  network analysis\\
+  \smallitem{+ spectral methods}\\
+  unsupervised learning\\
+  \smallitem{+ clustering algorithms}\\
+  \smallitem{+ dimensionality reduction}\\
+\end{aside}
+
+\begin{body}
+\section{education}
+\begin{entrylist}
+  \entry
+    {2015–2016}
+    {M.S. Data Science}
+    {University of Virginia}
+    {Capstone Project + Course work in Data Mining, Machine Learning,
+    Text Mining, Computer Science, Linear Models, and Ethics}
+  \entry
+    {2012-2014}
+    {M.A., Mathematics}
+    {University of Louisville}
+    {Graduate course sequences in Combinatorics/Graph Theory, Probability/Statistics,
+    \\Algebra, Complex Analysis; electives in Functional Analysis, Spectral Graph Theory}
+  \entry
+    {2003-2006}
+    {B.S., Mathematics}
+    {University of Louisville}
+    {Pure mathematics concentration.  Courses in Analysis, Algebra, Combinatorics, Probability; 
+    \\electives in Fractal Geometry, Symbolic Logic, Coding Theory}
+\end{entrylist}
+
+\section{experience}
+\begin{entrylist}
+  \entry
+    {9/2017-now}
+    {S\&P Global Market Intelligence}
+    {Senior Data Scientist}
+    {Developed internal library for record linkage to facilitate merging of 3rd party data sets with internal data, and detection of internal duplicates. Optimized for speed with Cython and developed a modular architecture to for isolation and extensibility of blocking (search space reduction), feature generation, and classification. SQL backend for out-of-memory blocking and linking against a dynamic data set. Employed active learning to reduce bias and maximize impact of limited analyst-annotated training data.}
+  \entry
+    {6/2016-9/2017}
+    {Commonwealth Computer Research, Inc.}
+    {Data Scientist}
+    {Contributed to CCRi's custom text mining platform. Evaluated various clustering algorithms for speed and accuracy on clustering dense word representations. Added a custom clustering module, significantly improving downstream entity resolution tasks. Modularized portions of the code base and improved interface to Postgres. Served in a supervisory role on a research contract with the NGA to develop a tool for measuring value of data sources to analyst communities.}
+  \entry
+    {12/2015-1/2016}
+    {L3 Data Tactics}
+    {Data Science Intern}
+    {Developed an application to topically summarize, cluster, and visualize a corpus of RFPs (requests for proposal), to assist the company in future decisions regarding which contracts to bid on.}
+  \entry
+    {9/2012-5/2014}
+    {University of Louisville}
+    {Teaching Assistant}
+    {Assisted professors in teaching general education mathematics courses: lectured in recitation sections, administered tests and quizzes, tutored students, and graded assignments.}
+\end{entrylist}
+
+\section{projects}
+\begin{entrylist}
+  \projectentry
+    {summer 2017}
+    {sk-torch}
+    {Hobby project}
+    {Library to wrap PyTorch deep neural nets in an interface mimicking sklearn, allowing substitution of advanced deep learning models in place of sklearn models in ML pipelines. API allows declarative specification of optimizer, loss, input/output transformations, stopping criteria.}
+  \projectentry
+    {9/2015-4/2016}
+    {Trend detection in a large corpus of scientific documents}
+    {M.S. Capstone Project, UVA (Advisor: Rafael Alvarado)}
+    {Developed a dashboard for Battelle for the exploration of a
+corpus of hundreds of thousands of scientific articles from 7 commercial databases.  
+Documents are searchable by topical similarity and semantically summarized with an LDA topic model.
+Frequency trends for terms of interest are visualized, and a trend detection classifier flags trending terms.}
+%  \projectentry
+%  {11/2015}
+%  {Filtering Terms of Service for Improved Readability}
+%  {Data Mining course, UVA (w/ Katherine Schinkel, Hope McIntyre, John Lazenby)}
+%  {Developed logistic regression model for classification of paragraphs of Terms of Service (ToS) by importance.  
+%Scraped ToS agreements from 12 major online companies, used experimental block design for efficient manual annotation of documents by 4 raters allowing comparison of each rater pair.  
+%Trained logistic regression on annotations using engineered features and and topic proportions from an LDA model.  
+%Found positive correlation between interrater agreement (using Cohen's kappa) and held-out recall of model, suggesting improvement with more careful annotation.}
+\end{entrylist}
+
+\section{awards}
+\begin{entrylist}
+ \awardentry
+   {5/2016}
+   {Best Paper Award, IEEE SIEDS Conference 2016}
+   {For the paper \emph{``Revealing the landscape: Detecting trends in a scientific corpus,''} co-authored with Rafael Alvaraodo, Juan Arrivillaga, Dylan Greenleaf}
+% \awardentry
+%   {5/2016}
+%   {Best Analyst}
+%   {As voted by peers in the Data Science Institute}
+\end{entrylist}
+\end{body}
+\end{document}

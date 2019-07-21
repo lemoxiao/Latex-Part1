@@ -1,0 +1,36 @@
+\documentclass{usstthesis}
+
+\usstthesisset{%
+    session=2015,   % 2015 届
+    title=上海理工大学本科毕业设计(论文) \LaTeX 文档类, % 论文中文标题
+    titleen=A \LaTeX{} document class for the Final Project/Thesis for Undergraduates of USST,  % 论文英文标题
+    institute=光电信息与计算机工程学院, % 学院
+    major=计算机科学与技术, % 专业
+    name=你的名字,  % 姓名
+    number=1234567, % 学号
+    mentor=指导教师,    % 指导教师
+    date=2019年1月1日   % 完成日期
+}
+
+\lstset{language=C} % 代码清单使用的是 C 语言
+
+\renewcommand{\arraystretch}{1.2}   % 表格行高 1.2 倍
+
+\begin{document}
+\outputfrontmatter  % 输出封面、承诺书、摘要和目录
+% 注意，摘要请在 ./elements/abstract.tex 编辑
+    
+\mainmatter % 中间内容
+% 可以使用分文件编辑，最后 input 每个章节
+% 也可以直接在此文件中编写，但是比较乱
+\input{chapter/chapter1.tex} % 引言
+\input{chapter/chapter2.tex} % 论文的内容要求
+\input{chapter/chapter3.tex} % 论文的格式要求
+\input{chapter/chapter4.tex} % 论文的写作细则
+% 表格、插图等内容在 chapter/chapter3.tex 中有所体现
+
+\backmatter % 结尾内容
+\input{chapter/citation.tex}
+\input{chapter/thanking.tex} % 致谢
+
+\end{document}

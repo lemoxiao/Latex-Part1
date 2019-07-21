@@ -1,0 +1,116 @@
+%%
+%% Author: Ali Asghar Momeni Vesalian (momeni.vesalian@gmail.com)
+%% 12/30/2017 AD
+%%
+
+% Preamble
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{jresume}[Professional java resume layout, designed by momeni.vesalian@gmail.com]
+
+
+% Packages
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{options}
+\usepackage{setspace}
+
+
+% Variables declaration
+\newcommand{\headerratio}{0.2}
+\newcommand{\bodyratio}{0.8}
+
+
+% Options declaration
+\options{
+    /jresume/.new family,
+    /jresume/jrsection/.new family,
+    /jresume/jrsection/location/.new choice = {sidebar, mainbar},
+}
+
+
+% Commands
+\newcommand{\jrcaption}[1]{%
+    {%
+        \setfontsize{12}%
+        #1%
+    }%
+    \vspace{2pt}%
+}
+
+\newcommand{\jrsubcaption}[1]{%
+    {%
+        \setfontsize{11}%
+        \bfseries%
+        #1%
+    }%
+}
+
+\newcommand{\jrsubsubcaption}[1]{%
+    {%
+        \setfontsize{11}%
+        #1%
+    }%
+}
+
+\newcommand{\jskill}[3][]{
+    \skill[#1]{#2}{#3}
+    \vspace{3pt}
+}
+
+\newcommand{\jeducation}[5]{
+    \education{#1}{#2}{#3}{#4}{#5}
+    \\[1pt]
+}
+
+\newcommand{\jproject}[3]{
+    \project{#1}{#2}{#3}
+    \\[1pt]
+}
+
+\newcommand{\jexperience}[4]{
+    \experience{#1}{#2}{#3}{#4}
+    \vspace{0pt}
+}
+
+\newcommand{\jreference}[5]{
+    \reference{#1}{#2}{#3}{#4}{#5}
+    \vspace{12pt}
+}
+
+
+% Environments
+\newenvironment{jrsection}[2][]{
+    \begin{rsection}[font size = 12]{#2}
+        \options{/jresume/jrsection, location = mainbar}
+        \options{/jresume/jrsection, #1}
+        \xifequalelse{\option{/jresume/jrsection/location}}{mainbar}{
+            \vspace{8pt}
+        }{
+            \vspace{4pt}
+        }
+}{
+    \end{rsection}
+}
+
+\newenvironment{jrdescription}{
+    \begin{spacing}{1.15}
+    \setfontsize{11}
+}{
+    \end{spacing}\
+}
+
+
+% Options
+\DeclareOption{gray}{
+    \AtEndOfPackage{
+        \usepackage[gray]{../libraries/resume}
+    }
+}
+\DeclareOption{cream}{
+    \AtEndOfPackage{
+        \usepackage[cream]{../libraries/resume}
+    }
+}
+\DeclareOption*{
+    \PackageError{jresume}{Unknown '\CurrentOption' option}{Choose 'gray' or 'cream' as a theme}
+}
+\ProcessOptions\relax

@@ -1,0 +1,104 @@
+% !TEX TS-program = luatex
+% Awesome Source CV LaTeX Template
+%
+% This template is originally maintained by Christophe ROGER from:
+% https://github.com/darwiin/awesome-neue-latex-cv
+%
+% This version is based on the modification from:
+% https://github.com/innerTide/awesome-neue-latex-cv-extended
+% Author:
+% Zhihao Zhou
+%
+%
+
+%roman numeral
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\documentclass[localFont, alternative]{awesome-source-cv}
+
+% Name should be {<Given name>} {<Family name>}.
+% The display order is automatically reversed with Chinese support is enabled.
+
+\name{Zhihao}{Zhou}
+\photo{2.6cm}{figs/photo}
+\tagline{M.Sc. of Electrical Engineering}
+\socialinfo{
+	\smartphone{+31(0)651655432}
+	\email{zzh2616@hotmail.com}\\
+	\linkedin{zhihao-zhou-cn1992}\\
+  %   \linkedin{yuefeng-wu-cn1116}
+	% \github{innerTide}\\
+	\address{Burgwal 21, 2611 GE, Delft, the Netherlands}\\
+	\infos{Born on \textbf{Mar. 10, 1992} in \textbf{Shandong, China}}\\
+}
+%------------------------------------------
+\begin{document}
+
+% \makecvheader
+\makecvheaderwithoutphoto
+%--------------------SECTIONS-----------------------------------
+\input{secs/education}
+%Project Experience
+\sectionTitle{\textsc{Project Experience}}{\faCode}
+\begin{experiences}
+	\experience
+		{Sept. 2017}	{Master Thesis Intern}{imec}{Eindhoven, the Netherlands}
+		{Aug. 2016}	{
+						\begin{itemize}
+							\item Title: a digital-intensive wakeup timer based on an RC frequency-locked loop for Internet of Things (IoT) applications
+							\item A novel ultra-low-power oscillator was modeled with MATLAB and designed in Cadence to fully exploit the small area and low supply voltage advantages in advanced CMOS processes
+							\item An automated measurement script was developed with Python and the results show the oscillator has the lowest supply voltage, the highest energy efficiency, and comparable stabilities w.r.t. the state-of-the-art
+						\end{itemize}
+					}
+								{Integrated Circuit design, Verilog-HDL, MATLAB, Python, Git, \LaTeX}
+		 {height = 1.25cm}		{figs/imec}
+	\emptySeparator
+
+	\experience
+	{Aug. 2015}	{Intern}{Changzhou Research Institute of Zhejiang University}{Jiangsu, China}
+	{June 2015}{
+					\begin{itemize}
+						\item Explored control algorithms in smart car systems
+						\item Adapted the Kalman Filter into the navigation system of the car using data from multiple sensors, e.g., gyroscope and accelerometer
+						\item Collaborated with other colleagues in the PCB design of the hardware
+					\end{itemize}
+				}
+							{Control System, Embedded System, MATLAB, PCB, Team Collaboration}
+	 {width = 1.5cm}		{figs/zju}
+\end{experiences}
+
+\begin{projects}
+	\project %add name of the algorithm used!!!!!!!!!!!!
+		{June 2014}   {Bachelor Thesis: Design of An Object Tracking Software}
+		{Dec. 2013} {
+											\begin{itemize}
+												\item Conducted research on various object tracking algorithms
+												\item Designed a Windows software that can track multiple objects in a video file with OpenCV libraries using Visio Studio
+												\item Optimized the software to handle real-time camera input for demonstration purposes
+											\end{itemize}
+										}
+										{C++, Object Tracking, Windows, OpenCV, Visio Studio}
+\end{projects}
+
+% \input{secs/work_experience}
+% \input{secs/projects}
+% \input{secs/papers}
+%\input{secs/extracurricular}
+%\input{secs/skills}
+\sectionTitle{\textsc{Professional Skills}}{\faTasks}
+\renewcommand{\arraystretch}{1.1}
+
+	\begin{tabular}{>{}r>{}p{13cm}}
+		%\textsc{Development Tools:}	  			&   Cadence, LTspice, ADS, Vivado, Quartus \Rmnum{2}, Altium Designer, ANSYS, Git\\
+		\textsc{Programming Languages:}  		&   C/C++, MATLAB, Java, Python, Verilog-HDL, VHDL\\
+		\textsc{Operating Systems:}	        &   Windows, Linux, macOS\\
+    \textsc{Miscellaneous:}							&   Team Collaboration, \LaTeX, Microsoft Office, Computer Maintenance\\
+	\end{tabular}
+
+%\input{secs/language}
+\input{secs/awards}
+
+\end{document}

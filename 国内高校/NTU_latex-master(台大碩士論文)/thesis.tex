@@ -1,0 +1,110 @@
+\documentclass{ntuthesis}
+%套件安裝處
+\usepackage{times}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{wallpaper} 
+\usepackage{titlesec}
+\usepackage{indentfirst}
+\usepackage{titletoc}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{xeCJK}
+\usepackage{CJKnumb}
+\usepackage{hyperref}
+\usepackage{apacite}
+\usepackage{multirow}
+
+\defaultCJKfontfeatures{AutoFakeBold=1}
+\usetikzlibrary{shapes, arrows}
+% Using the tex-text mapping for ligatures etc.
+\defaultfontfeatures{Mapping=tex-text}
+% Set the default fonts 
+\setmainfont{Times New Roman}
+\setCJKmainfont{BiauKai}
+% Your information goes here
+\input{ntuvars}
+\begin{document}
+\let\cleardoublepage\clearpage
+%台大浮水印位置設定
+\CenterWallPaper{0.174}{watermark.pdf}
+  \setlength{\wpXoffset}{6.1725cm}
+  \setlength{\wpYoffset}{10.5225cm}
+%封面設定
+\frontmatter
+\makecover
+\titleformat{\chapter}{\centering\Huge\bfseries}{第\,\CJKnumber{\thechapter}\,章}{1em}{}
+\titlecontents{chapter}[0em]
+{}{\makebox[4.1em][l]
+{第\CJKnumber{\thecontentslabel}章}}{}
+{\titlerule*[0.7pc]{.}\contentspage}
+% \makecertification
+% acknowledgements為致謝
+%\input{acknowledgements}
+
+\input{abstract}
+\renewcommand\contentsname{目錄}
+\tableofcontents
+\addcontentsline{toc}{chapter}{\contentsname}
+
+\renewcommand{\figurename}{圖}
+\renewcommand\listfigurename{圖目錄}
+\newcommand{\loflabel}{圖}
+\renewcommand{\numberline}[1]{\loflabel~#1\hspace*{1em}}
+\listoffigures
+\addcontentsline{toc}{chapter}{\listfigurename}
+
+\renewcommand{\tablename}{表}
+\renewcommand\listtablename{表目錄}
+\newcommand{\lotlabel}{表}
+\renewcommand{\numberline}[1]{\lotlabel~#1\hspace*{1em}}
+\listoftables
+\addcontentsline{toc}{chapter}{\listtablename}
+\mainmatter
+\setlength{\parindent}{2em}
+% 主要文章位置
+% Chapter 1
+\input{Chapter_1/introduction}
+% Chapter 2
+\input{Chapter_2/literature_review}
+\input{Chapter_2/section1}
+% \input{Chapter_2/section2}
+% Chapter 3
+% \input{Chapter_3/description}
+% \input{Chapter_3/section1}
+% \input{Chapter_3/section2}
+% Chapter 4
+\input{Chapter_4/model_building}
+\input{Chapter_4/section1}
+\input{Chapter_4/section2}
+\input{Chapter_4/section3}
+% Chapter 5
+\input{Chapter_5/opt_method}
+\input{Chapter_5/section1}
+\input{Chapter_5/section2}
+\input{Chapter_5/section3}
+% Chapter 6
+\input{Chapter_6/numerical_analysis}
+\input{Chapter_6/section1}
+\input{Chapter_6/section2}
+\input{Chapter_6/section3}
+\input{Chapter_6/section3.1}
+\input{Chapter_6/section3.2}
+\input{Chapter_6/section4}
+% \input{Chapter_6/section5}
+% \input{Chapter_6/section6}
+% Chapter 7
+\input{Chapter_7/conclution}
+\appendix
+\backmatter
+%參考文獻
+\renewcommand\bibname{參考文獻}
+%\addcontentsline{toc}{chapter}{\bibname}
+% \bibliographystyle{abbrv}
+\bibliographystyle{apacite}
+\bibliography{thesis}
+\end{document}

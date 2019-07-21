@@ -1,0 +1,100 @@
+%!TEX root = ../thesis.tex
+\section{模型建立}
+\label{c:ch4.3}
+本研究中我們主要以三個模型進行介紹，分別為，成本模型、穩健度模型以及品質模型（$\Delta E$模型），而這三個模型的主要差異在於其目標函式的設立，因此在本小節中我們將分別以這三個部分進行數學模式的建立。
+\\ \textbf{運作成本模型}
+
+成本目標函式主要分成電耗成本、水耗成本及機台占用時間成本，在此小節我們將根據此三個部分進行討論。
+在電耗成本當中，我們以主染程在染布浸泡染液中，為了讓染布能有效吸收染液的顏色，故需要藉由提高溫度讓布料有效吸收顏料，因此在電耗成本的估算上，我們以染液加溫及持溫所需要消耗的熱能來估算機台所需提供的電耗，進而估算電耗成本，可得 \ref{eq:EC} 式：
+\begin{equation}
+	EC=C_1 \cdot \sum_i E_i, i=1 \dots 3
+\label{eq:EC}
+\end{equation}
+其中為每焦耳所需要耗費的成本，為主染程前三段中第$i$段所需消耗的熱能，我們又可再將各階段的耗能依據主染程分成如 \ref{eq:EC_1} 式：
+\begin{equation}
+	\begin{array}{c}
+	E_1=S \cdot M \cdot (x_A-T_L) \cdot x_E,\\
+	E_2=S \cdot M \cdot (x_C-x_A) \cdot x_E,\\
+	E_3=S \cdot M \cdot (T_H-x_C) \cdot x_E
+	\end{array}
+\label{eq:EC_1}
+\end{equation}
+由 \ref{eq:EC_1} 式子中可以知道第一段的熱能主要為升溫所需的熱能，第二段及第三段除了升溫的熱能。
+
+水耗成本在染程中，水所消耗的部分除了染液所需要的耗水外，由於過程中需要多次的換水洗淨，故使用後的廢水也需要考量在內，而可得 \ref{eq:WC} 式：
+\begin{equation}
+	WC=(C_2+c) \cdot M \cdot K \cdot x_E
+\label{eq:WC}
+\end{equation}
+其中為公斤的耗水量所需要的耗費成本，而$c$為每公斤的廢水所需要的處理成本，$K$為換水次數。由於除了主染程內的水需要更換外，還包含其他製程也需要換水，在耗水方面其他染程也會有所影響，故現階段這裡的水消耗成本利用總染程的水消耗成本來估算。
+
+機台占用時間成本，每次在染色期間，由於布料需要時間吸收染料，機台就必須等待布料吸收完整後才能進入下一個階段，而機台在染程的階段，卻占用了機台可使用在別地方的時間成本及人力成本，所以我們根據機台在主染程估算的時間做為機台所被占用的時間，並乘上單位時間所需的成本做為我們的機台占用成本，並可得到 \ref{eq:TC} 式：
+\begin{equation}
+	TC=C_3 \cdot (\sum_i t_i + x_D), i=1\dots 3
+\label{eq:TC}
+\end{equation}
+其中$C_3$為機台占用每分鐘所需的成本，而則為主染程第$i$階段的時間。
+\\ \textbf{穩健度模型}
+
+由前面章節提到，
+，我們藉由前面實驗設計所得到$\Delta E$的函式，將函式根據各個因子做偏微分，並且平方後加總，值越大則代表該組合所在的位置並不穩定，反之則較為穩定，故我們將搜尋其最小化作為我們建構模型之一。製程參數因子關聯分析中，預估$\Delta E$迴歸式$f_{\Delta E}(x_A,x_B,x_C,x_D,x_E)$，為了找出其穩定的程度，我們藉由對此函式先分別進行對各因子的偏微分
+\begin{equation*}
+	\bigtriangledown f_{\Delta E}(x_A,x_B,x_C,x_D,x_E) = {
+		\left[
+			\begin{array}{c}
+			\partial f_{\Delta E}(x_A,x_B,x_C,x_D,x_E)/\partial x_A\\
+			\vdots\\
+			\partial f_{\Delta E}(x_A,x_B,x_C,x_D,x_E)/\partial x_E\\
+			\end{array}
+		\right]
+	}
+\end{equation*}
+，由此得到一組向量解，在這裡我們以$\bigtriangledown f_{\Delta E}$表示，其表示的意義為搜尋時，最佳化最快的方向，也可以由$\bigtriangledown f_{\Delta E}$觀察出此組解各自在該函式穩定的程度，為了將這些值統合起來以一個質的方式表示，找出對所有組合中找出最為穩定的解，故我們將取$(\bigtriangledown f_{\Delta E})^T \cdot (\bigtriangledown f_{\Delta E} )$，在此我們定義為$\bigtriangledown f_{\Delta E}$ norm的平方，作為我們簡化的依據，為了讓結果不會過於敏感故我們最後將$\bigtriangledown f_{\Delta E}$ norm的平方開根號，作為本研究中穩健度的指標。
+
+根據上敘述整理後，我們將此目標函式的數學模式設立為 \ref{eq:robust} 式：
+\begin{equation}
+	f_{robust}(x_A,x_B,x_C,x_D,x_E) = \left[
+			\sum_{i=A\dots E}\partial f_{\Delta E}(x_A,x_B,x_C,x_D,x_E)/\partial x_i)^2
+		\right]^{1/2}
+\label{eq:robust}
+\end{equation}
+\textbf{品質模型（$\Delta E$模型）}
+
+由前面介紹過$\Delta E$愈小則表示，與目標顏色的差距越低，所以當越小則代表我們的品質越高
+，因此我們由染整製程參數因子關聯分析中得到$\Delta E$迴歸式$f_{\Delta E}(x_A,x_B,x_C,x_D,x_E)$，為了找出影響品質最大的參數因子組合，本研究根據紡織業者使用的Datacolor MATCH的數據，藉由關聯分析得到$\Delta E$迴歸式，由於$\Delta E$為主要的評判染色布料加工後是否為報廢品的依據，故我們以$\Delta E$的回歸模型為我們的品質模型。
+
+由上面介紹了本研究根據染整製程參數所建構出的三個模型，我們將此三個目標函式整理為 \ref{eq:cost1} $
+\sim$ \ref{eq:deltaE1} 式
+\begin{equation}
+	\begin{split}
+	\min_{x_A,x_B,x_C,x_D,x_E} [C_1SM(T_H-T_L)+(C_2+c)MK]\cdot x_E+\\
+	C_3 \cdot [(x_C-x_A)(v-x_B)/(v\cdot x_B) +(T_H-T_L)/v+x_D]
+	\end{split}
+\label{eq:cost1}
+\end{equation}
+\begin{equation}
+	\min_{x_A,x_B,x_C,x_D,x_E} \left[
+		\sum_{i=A\dots E}\partial f_{\Delta E}(x_A,x_B,x_C,x_D,x_E)/\partial x_i)^2
+	\right]^{1/2}
+\label{eq:robust1}
+\end{equation}
+
+\begin{equation}
+	\min_{x_A,x_B,x_C,x_D,x_E} f_{\Delta E}(x_A,x_B,x_C,x_D,x_E)
+\label{eq:deltaE1}
+\end{equation}
+而在限制式方面，基本上大同小異，以下為其三個目標函式所要配對的限制式，如 \ref{eq:constraint} 式：
+\begin{equation}
+	\begin{array}{c}
+	A_{lower} \leq x_A \leq A_{upper},\\
+	B_{lower} \leq x_B \leq B_{upper},\\
+	C_{lower} \leq x_C \leq C_{upper},\\
+	D_{lower} \leq x_D \leq D_{upper},\\
+	E_{lower} \leq x_E \leq E_{upper},\\
+	\Delta E_{lower} \leq f_{\Delta E} \leq \Delta E_{upper},\\
+	K/S_{lower} \leq f_{K/S} \leq K/S_{upper}
+	\end{array}
+\label{eq:constraint}
+\end{equation}
+由式 \ref{eq:constraint} 中，$A_{lower}$為染整參數因子$x_A$的下屆值，而$A_{upper}$則為其上屆值，依此類推$\dots$，由前面三個目標函式 \ref{eq:cost1} $
+\sim$ \ref{eq:deltaE1} 式分別與以上七個限制式，分別組合為前面所提到本研究所要探討的模型，架構以上模型後，可以發現本研究的目標函式以及限制式都為非線性的模式，在下面的章節當中，我們會介紹如何以非線性規劃求解的方法，去尋找這三個染整製程最佳化模型。

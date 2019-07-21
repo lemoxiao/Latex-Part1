@@ -1,0 +1,391 @@
+// -*- ASCII:EDT -*-
+// Gather Control: Ends with End;
+//
+// Page("Caption", "Mode Filter", "External File?", Case Insensitive: 0..1, Always Sorted: 0..1);
+//
+//       Mode Filter, Indent, Global?, BOLN?, String         Case Insensitive? Tree? Tree Only? Prefix Suffix Balance
+// Item(     ",       ",      #0..1,   #0..2, ",             #0..1             #0..1     #0..1);
+// Item( 'TeX',       '>>*',  1,       1,     '\section{?}', 0,                 1         0     'Section: ','' );
+//                      ^^^
+//  *  Indicates that "\section{" and "}" is a part of collected data
+//  +- Indicates that "\section{" is a part string but "}" is not
+//  -+ Indicates that "\section{" is not a part string but "}" is
+//
+// If this parameter ends with "." the search is limited to one
+// line: by default two lines are searched for Item's completion
+// The number of ">"'s in the beginning specifies the indentation
+//
+// Prefix and Suffix may be specified. These two strings are a part
+// of data displayed in the list control...
+//
+// - If the Tree Search parameter is set to 1 then WinEdt collects data
+// in non-opened documents that are present in the current project tree...
+//
+// - Tree only requires the tree and the main file to be build or else the
+// search is limited to the current document.
+//
+// ! The Global Parameter must be set to 1 in order for the tree options
+// to become effective (otherwise only the current document is searched).
+//
+// See also the comments at the end...
+
+Page("TOC","TeX"); // TeX Mode Only
+ OnGDIActivate("GlobalMark;");
+ OnGDIShow("GlobalMark;");
+ OnGDIClick("GDITrack;");
+ OnGDIDblClick("GDIKillFocus;");
+ OnGDIEnter("GDIKillFocus;");
+ OnGDICancel("GlobalReturn;GDIKillFocus;");
+  //  Old configuration:
+  //  ==================
+  //  Item('TeX','*',1,1,'\chapter?',0,1,1);
+  //  Item('TeX','*',1,1,'\appendix?',0,1,1);
+  //  Item('TeX','*',1,1,'\bibliography?',0,1,1);
+  //  Item('TeX','*',1,1,'\nonumchapter?',0,1,1);
+  //  Item('TeX','*',1,1,'\prefacesection?',0,1,1);
+  //  Item('TeX','>>*',1,1,'\section?',0,1,1);
+  //  Item('TeX','>>>>>>*',1,1,'\subsection?',0,1,1);
+  //  Item('TeX','>>>>>>>>>>*',1,1,'\subsubsection?',0,1,1);
+  //  Appendix is not a "proper" sectioning command:
+  //   The \appendix command changes the way sectional units are numbered.
+  //   The \appendix command generates no text and does not affect the
+  //   numbering of parts. The normal use of this command is something like
+  //
+  //   \chapter{The First Chapter}
+  //   …
+  //   \appendix
+  //   \chapter{The First Appendix}
+  // \appendix does not expect any arguments. (using a dirty trick):
+  // Item('TeX','',1,1,'\appendi?x',0,1,1,'','==== Appendix =====','{}\');
+  Item('TeX','',1,1,'\part{?}',0,1,1,'Part: ','','{}\');
+  Item('TeX','',1,1,'\part[?]',0,1,1,'Part: ','','{}\');
+  Item('TeX','',1,1,'\part*{?}',0,1,1,'Part*: ','','{}\');
+  Item('TeX','',1,1,'\part*[?]',0,1,1,'Part*: ','','{}\');
+  Item('TeX','>',1,1,'\chapter{?}',0,1,1,'Chapter: ','','{}\');
+  Item('TeX','>',1,1,'\BiChapter{?}',0,1,1,'Chapter: ','','{}\');
+  Item('TeX','>',1,1,'\BiAppendixChapter{?}',0,1,1,'AppendixChapter: ','','{}\');
+  Item('TeX','>',1,1,'\BiAppChapter{?}',0,1,1,'AppChapter: ','','{}\');
+  Item('TeX','>',1,1,'\chapter[?]',0,1,1,'Chapter: ','','{}\');
+  Item('TeX','>',1,1,'\BiChapter[?]',0,1,1,'Chapter: ','','{}\');
+  Item('TeX','>',1,1,'\BiAppendixChapter[?]',0,1,1,'AppendixChapter: ','','{}\');
+  Item('TeX','>',1,1,'\BiAppChapter[?]',0,1,1,'AppChapter: ','','{}\');
+  Item('TeX','>',1,1,'\chapter*{?}',0,1,1,'Chapter*: ','','{}\');
+  Item('TeX','>',1,1,'\BiChapter*{?}',0,1,1,'Chapter*: ','','{}\');
+  Item('TeX','>',1,1,'\BiAppendixChapter*{?}',0,1,1,'AppendixChapter: ','','{}\');
+  Item('TeX','>',1,1,'\BiAppChapter*{?}',0,1,1,'AppChapter: ','','{}\');
+  Item('TeX','>',1,1,'\chapter*[?]',0,1,1,'Chapter*: ','','{}\');
+  Item('TeX','>',1,1,'\BiChapter*[?]',0,1,1,'Chapter*: ','','{}\');
+  Item('TeX','>',1,1,'\BiAppendixChapter*[?]',0,1,1,'AppendixChapter: ','','{}\');
+  Item('TeX','>',1,1,'\BiAppChapter*[?]',0,1,1,'AppChapter: ','','{}\');
+  Item('TeX','>>',1,1,'\section{?}',0,1,1,'Section: ','','{}\');
+  Item('TeX','>>',1,1,'\BiSection{?}',0,1,1,'Section: ','','{}\');
+  Item('TeX','>>',1,1,'\section[?]',0,1,1,'Section: ','','{}\');
+  Item('TeX','>>',1,1,'\BiSection[?]',0,1,1,'Section: ','','{}\');
+  Item('TeX','>>',1,1,'\section*{?}',0,1,1,'Section*: ','','{}\');
+  Item('TeX','>>',1,1,'\BiSection*{?}',0,1,1,'Section*: ','','{}\');
+  Item('TeX','>>',1,1,'\section*[?]',0,1,1,'Section*: ','','{}\');
+  Item('TeX','>>',1,1,'\BiSection*[?]',0,1,1,'Section*: ','','{}\');
+  Item('TeX','>>>>',1,1,'\subsection{?}',0,1,1,'Subsection: ','','{}\');
+  Item('TeX','>>>>',1,1,'\BiSubsection{?}',0,1,1,'Subsection: ','','{}\');
+  Item('TeX','>>>>',1,1,'\subsection[?]',0,1,1,'Subsection: ','','{}\');
+  Item('TeX','>>>>',1,1,'\BiSubsection[?]',0,1,1,'Subsection: ','','{}\');
+  Item('TeX','>>>>',1,1,'\subsection*{?}',0,1,1,'Subsection*: ','','{}\');
+  Item('TeX','>>>>',1,1,'\BiSubsection*{?}',0,1,1,'Subsection*: ','','{}\');
+  Item('TeX','>>>>',1,1,'\subsection*[?]',0,1,1,'Subsection*: ','','{}\');
+  Item('TeX','>>>>',1,1,'\BiSubsection*[?]',0,1,1,'Subsection*: ','','{}\');
+  Item('TeX','>>>>>>',1,1,'\subsubsection{?}',0,1,1,'subsection: ','','{}\');
+  Item('TeX','>>>>>>',1,1,'\BiSubsubsection{?}',0,1,1,'subsection: ','','{}\');
+  Item('TeX','>>>>>>',1,1,'\subsubsection[?]',0,1,1,'subsection: ','','{}\');
+  Item('TeX','>>>>>>',1,1,'\BiSubsubsection[?]',0,1,1,'subsection: ','','{}\');
+  Item('TeX','>>>>>>',1,1,'\subsubsection*{?}',0,1,1,'subsection*: ','','{}\');
+  Item('TeX','>>>>>>',1,1,'\BiSubsubsection*{?}',0,1,1,'subsection*: ','','{}\');
+  Item('TeX','>>>>>>',1,1,'\subsubsection*[?]',0,1,1,'subsection*: ','','{}\');
+  Item('TeX','>>>>>>',1,1,'\BiSubsubsection*[?]',0,1,1,'subsection*: ','','{}\');
+  Item('TeX','>>>>>>>>',1,1,'\paragraph{?}',0,1,1,'Paragraph: ','','{}\');
+  Item('TeX','>>>>>>>>',1,1,'\paragraph[?]',0,1,1,'Paragraph: ','','{}\');
+  Item('TeX','>>>>>>>>',1,1,'\paragraph*{?}',0,1,1,'Paragraph*: ','','{}\');
+  Item('TeX','>>>>>>>>',1,1,'\paragraph*[?]',0,1,1,'Paragraph*: ','','{}\');
+  Item('TeX','>>>>>>>>>>',1,1,'\subparagraph{?}',0,1,1,'Subparagraph: ','','{}\');
+  Item('TeX','>>>>>>>>>>',1,1,'\subparagraph[?]',0,1,1,'Subparagraph: ','','{}\');
+  Item('TeX','>>>>>>>>>>',1,1,'\subparagraph*{?}',0,1,1,'Subparagraph*: ','','{}\');
+  Item('TeX','>>>>>>>>>>',1,1,'\subparagraph*[?]',0,1,1,'Subparagraph*: ','','{}\');
+  // A few extras ...
+  Item('TeX','',1,1,'\bibliography{?}',0,1,1,'Bibliography: ','','{}\');
+  Item('TeX','>',1,1,'\prefacesection{?}',0,1,1,'Preface: ','','{}\');
+  Item('TeX','>',1,1,'\nonumchapter{?}',0,1,1,'chapter: ','','{}\');
+
+Page("Label","TeX","",0,0); // TeX Mode Only: not Sorted!
+ OnGDIActivate("GlobalMark;");
+ OnGDIShow("GlobalMark;");
+ OnGDIEnter("GDIKillFocus;");
+ OnGDICancel("GlobalReturn;GDIKillFocus;");
+ OnGDIClick("GDITrack;","Relax;");
+ OnGDIDblClick(!"GlobalReturn;SetSel(0);ExtractByIndex(0,'%L',%c-2,%c-2);IfStr('%!0','{','=','Relax','Ins('','')');Ins('%?');GlobalMark;GDIKillFocus;");
+  Item('TeX','.',1,0,'\label{?}',0,1,1);
+  Item('TeX','.',1,0,'\tag{?}',0,1,1);
+
+Page("Bib","TeX;BibTeX","",0,1); // TeX and BibTeX Mode Only: One Line and Sorted!
+ OnGDIActivate("GlobalMark;");
+ OnGDIShow("GlobalMark;");
+ OnGDIEnter("GDIKillFocus;");
+ OnGDICancel("GlobalReturn;GDIKillFocus;");
+ OnGDIClick("GDITrack;","Relax;");
+ OnGDIDblClick(!"GlobalReturn;SetSel(0);ExtractByIndex(0,'%L',%c-2,%c-2);IfStr('%!0','{','=','Relax','Ins('','')');Ins('%?');GlobalMark;GDIKillFocus;");
+  Item('BibTeX','.',1,1,'@?{?,',0,1,0);     // %input"c:\TeX\...\*.bib"
+  Item('BibTeX','.',1,1,'@?(?,',0,1,0);     // %input"c:\TeX\...\*.bib"
+  // Faster without these (only for DATA mode)
+  Item('DATA;TeX;BibTeX','.',1,1,'\bibitem[?]{?}',0,0,1); // %input"*.bbl"
+  Item('DATA;TeX;BibTeX','.',1,1,'\bibitem{?}',0,0,1);    // %input"*.bbl"
+
+Page("Cite","TeX;BibTeX"); // TeX and BibTeX Mode Only
+ OnGDIActivate("GlobalMark;");
+ OnGDIShow("GlobalMark;");
+ OnGDIEnter("GDIKillFocus;");
+ OnGDICancel("GlobalReturn;GDIKillFocus;");
+ OnGDIClick("GDITrack;");
+ OnGDIDblClick("GDIKillFocus;");
+  Item('TeX','*',1,0,'\nocite?{?}',0,1,1, '','','{}\');
+  Item('TeX','*',1,0,'\cite{?}',0,1,1, '','','{}\');
+  Item('TeX','*',1,0,'\cite[?]{?}',0,1,1, '','','[]\');
+  // NatBib extension
+  Item('TeX','*',1,0,'\citep{?}',0,1,1, '','','{}\');
+  Item('TeX','*',1,0,'\citep[?]{?}',0,1,1, '','','[]\');
+  Item('TeX','*',1,0,'\citet{?}',0,1,1, '','','{}\');
+  Item('TeX','*',1,0,'\citet[?]{?}',0,1,1, '','','[]\');
+  Item('TeX','*',1,0,'\citealp{?}',0,1,1, '','','{}\');
+  Item('TeX','*',1,0,'\citealp[?]{?}',0,1,1, '','','[]\');
+  Item('TeX','*',1,0,'\citealt{?}',0,1,1, '','','{}\');
+  Item('TeX','*',1,0,'\citealt[?]{?}',0,1,1, '','','[]\');
+  Item('TeX','*',1,0,'\citefullauthor{?}',0,1,1, '','','{}\');
+  Item('TeX','*',1,0,'\citefullauthor[?]{?}',0,1,1, '','','[]\');
+  Item('TeX','*',1,0,'\citeauthor{?}',0,1,1, '','','{}\');
+  Item('TeX','*',1,0,'\citeauthor[?]{?}',0,1,1, '','','[]\');
+  Item('TeX','*',1,0,'\citeyear{?}',0,1,1, '','','{}\');
+  Item('TeX','*',1,0,'\citeyear[?]{?}',0,1,1, '','','[]\');
+
+Page("Ref","TeX"); // TeX Mode Only
+ OnGDIActivate("GlobalMark;");
+ OnGDIShow("GlobalMark;");
+ OnGDIEnter("GDIKillFocus;");
+ OnGDICancel("GlobalReturn;GDIKillFocus;");
+ OnGDIClick("GDITrack;");
+ OnGDIDblClick("GDIKillFocus;");
+  Item('TeX','*',1,0,'\ref{?}',0,1,1);
+  Item('TeX','*',1,0,'\vref{?}',0,1,1);
+  Item('TeX','*',1,0,'\eqref{?}',0,1,1);
+  Item('TeX','*',1,0,'\pageref{?}',0,1,1);
+
+Page("Env","TeX"); // TeX Mode Only
+ OnGDIActivate("GlobalMark;");
+ OnGDIShow("GlobalMark;");
+ OnGDIEnter("GDIKillFocus;");
+ OnGDICancel("GlobalReturn;GDIKillFocus;");
+ OnGDIClick("GDITrack;");
+ OnGDIDblClick("GDIKillFocus;");
+  Item('TeX','*.',1,0,'\begin{?}',0,1,1);
+  Item('TeX','*.',1,0,'\end{?}',0,1,1);
+
+// -------------------------------------------------------------
+// Needs Three modes definition
+//      AddMode("GlossTeX","*.gdf");
+//      AddMode(":AC","*.gdf");
+//      AddMode(":GLS","*.gdf");
+//
+// Page("Glos","TeX;GlossTeX:GLS"); // TeX and GlossTeX:GLS Mode Only
+// // Glos page definition for Gather Configuration (TeX and GlossTeX modes)
+//  OnGDIActivate("GlobalMark;");
+//  OnGDIShow("GlobalMark;");
+//  OnGDIEnter("GDIKillFocus;");
+//  OnGDICancel("GlobalReturn;GDIKillFocus;");
+//  OnGDIClick("GDITrack;");
+//  OnGDIDblClick("GlobalReturn;SetSel(0);Ins('%%?');GDIKillFocus;");
+//   Item('GlossTeX:GLS','',1,1,'@entry{?,',0,1,1);
+//   Item('*','',1,1,'BLOURF',0,1,1);
+//
+// Page("Acr","TeX;GlossTeX:AC"); // TeX and GlossTeX:AC Mode Only
+// // Glos page definition for Gather Configuration (TeX and GlossTeX modes)
+//  OnGDIActivate("GlobalMark;");
+//  OnGDIShow("GlobalMark;");
+//  OnGDIEnter("GDIKillFocus;");
+//  OnGDICancel("GlobalReturn;GDIKillFocus;");
+//  OnGDIClick("GDITrack;");
+//  OnGDIDblClick("GlobalReturn;SetSel(0);Ins('%%?');GDIKillFocus;");
+//   Item('GlossTeX:AC','',1,1,'@entry{?,',0,1,1);
+//   Item('*','',1,1,'BLOURF',0,1,1);
+//
+// -------------------------------------------------------------
+
+Page("* TOC","ANSI;ASCII;DATA"); // non-TeX Mode Only
+// Collect Lines starting with *
+ OnGDIActivate("GlobalMark;");
+ OnGDIShow("GlobalMark;");
+ OnGDIEnter("GDIKillFocus;");
+ OnGDICancel("GlobalReturn;GDIKillFocus;");
+ OnGDIClick("GDITrack;");
+ OnGDIDblClick("GDIKillFocus;");
+  Item('','*',0,2,'*?',0,0);
+
+// -------------------------------------------------------------
+
+// Additions for HTML by D.Stancer
+
+Page("TOC","HTML","",1,0); // HTML Mode Only
+ OnGDIActivate("GlobalMark;");
+ OnGDIShow("GlobalMark;");
+ OnGDIEnter("GDIKillFocus;");
+ OnGDICancel("GlobalReturn;GDIKillFocus;");
+ OnGDIClick("GDITrack;");
+ OnGDIDblClick("GDIKillFocus;");
+  Item('HTML','',1,0,'<TITLE>?</TITLE>',1,1,1);
+  Item('HTML','>>>',1,0,'<H1>?</H1>',1,1,0);
+  Item('HTML','>>>>>>',1,0,'<H2>?</H2>',1,1,0);
+  Item('HTML','>>>>>>>>>',1,0,'<H3>?</H3>',1,1,0);
+  Item('HTML','>>>>>>>>>>>',1,0,'<H4>?</H4>',1,1,0);
+
+Page("Links","HTML","",1,0); // HTML Mode Only
+ OnGDIActivate("GlobalMark;");
+ OnGDIShow("GlobalMark;");
+ OnGDIEnter("GDIKillFocus;");
+ OnGDICancel("GlobalReturn;GDIKillFocus;");
+ OnGDIClick("GDITrack;");
+ OnGDIDblClick("GDIKillFocus;");
+  Item('HTML','',1,0,'HREF="?"',1,1,0);
+
+Page("Objects","HTML","",1,0); // HTML Mode Only
+ OnGDIActivate("GlobalMark;");
+ OnGDIShow("GlobalMark;");
+ OnGDIEnter("GDIKillFocus;");
+ OnGDICancel("GlobalReturn;GDIKillFocus;");
+ OnGDIClick("GDITrack;");
+ OnGDIDblClick("GDIKillFocus;");
+  Item('HTML','',1,0,'SRC="?"',1,1,0);
+
+// -------------------------------------------------------------
+
+Page("Labels","Fortran"); // Fortran Mode Only
+ OnGDIActivate("GlobalMark;");
+ OnGDIShow("GlobalMark;");
+ OnGDIClick("GDITrack;");
+ OnGDIDblClick("GDIKillFocus;");
+ OnGDIEnter("GDIKillFocus;");
+ OnGDICancel("GlobalReturn;GDIKillFocus;");
+  Item('Fortran','*',1,1,'0?',0,1,0);
+  Item('Fortran','*',1,1,'1?',0,1,0);
+  Item('Fortran','*',1,1,'2?',0,1,0);
+  Item('Fortran','*',1,1,'3?',0,1,0);
+  Item('Fortran','*',1,1,'4?',0,1,0);
+  Item('Fortran','*',1,1,'5?',0,1,0);
+  Item('Fortran','*',1,1,'6?',0,1,0);
+  Item('Fortran','*',1,1,'7?',0,1,0);
+  Item('Fortran','*',1,1,'8?',0,1,0);
+  Item('Fortran','*',1,1,'9?',0,1,0);
+
+// -------------------------------------------------------------
+
+// No predefined Items: it can be redefined through a dialog that
+// is executed before an item is collected (only 1 item per update)
+
+Page("Item","Binary;ANSI;ASCII;HTML","?"); // "?" - Enter parameters on spot
+ OnGDIActivate("GlobalMark;");
+ OnGDIShow("GlobalMark;");
+ OnGDIEnter("GDIKillFocus;");
+ OnGDICancel("GlobalReturn;GDIKillFocus;");
+ OnGDIClick("GDITrack;");
+ OnGDIDblClick("GDIKillFocus;");
+  Item('','*',1,1,'*{?}',1,0);
+
+End;
+
+____________________________________________________________________
+
+
+GDI Interface consists of a sequence of Pages with Response
+definitions for GDI Events and a sequence of Items to be collected.
+
+  Page("Caption", "Mode Filter", "External", Case_Insesitive, Sorted: 0..1);
+
+  - Caption is displayed  in the corresponding Tab
+
+  - This page is only visible if the main file (or the current
+  document) belongs to the mode filter.
+
+  - The Page directive has an optional third parameter "External".
+  If this parameter is set to "?" then its Item is defined through a
+  special dialog displayed in response to the "Define" command in
+  the Gather Context Menu. This allows you to utilize the Gather
+  Interface in order to search for any string and display the result
+  in the Gather Form. Any other non-empty value of the third
+  parameter is interpreted as a filename containing the definition
+  of the page. This definition is read each time the Page is
+  updated. This allows you to define a Page whose Items may be
+  changed on the run... See also "WinEdt.gdi" for examples of
+  different Page definitions. Find in Files functionality makes this
+  use of Gather functionality pretty much obsolete.
+
+  - Optional forth and fifth parameters for the Page directive are
+  interpreted as Case-insensitive and Always-Sorted switches,
+  respectively (when their value is 1).
+
+
+It remains to describe the meaning of parameters in an Item's
+definition:
+
+  Item("Mode Filter", "Indent", Global:0..1, BOLN: 0..2,
+       "Find String", Case_Insensitive,Tree,Tree Only:0..1,
+       "Prefix","Suffix","Balance");
+
+  - The Mode Filter defines the Modes for which this Item is valid.
+
+  - The Indent parameter can contain any number of ">" characters
+  instructing WinEdt to display this item indented (as many spaces as
+  the length of this string). If the "Indent" String ends with "*"
+  then the "Key" is a part of the collected data otherwise only the
+  part substituted for "?" is displayed. By specifying "+-" or "-+"
+  you can include only the string preceding or following "?",
+  respectively. WinEdt can collect Items that spread over two lines.
+  If this is not desirable you should include "." as the last
+  character in the "Indent" parameter.
+
+  - Nonzero value of the Global parameter indicates that this Item
+  should be collected in all files in the project tree when the Main
+  file is enabled and the project tree has been generated in Project
+  Setup Dialog (see below).
+
+  - Non-zero value of BOLN parameter indicates that this Item is always
+  present at the beginning of Line which makes it faster to collect it
+  (usually true for sectioning commands but not true for labels).
+  Value 1 allows indented items while 2 requires the item to start at
+  the beginning of line.
+
+  - The "Find String" is the actual string that is being searched for
+  and "?" corresponds to to the value of the context register "%?"
+  which can be used in the response procedures.
+
+  - By default search is performed case sensitively. Nonzero value of
+  Case_Insensitive can be used to suppress the default behavior.
+
+  - As long as you are working on projects with main file and you have a
+  habit of building the project tree (strongly recommended) the
+  options Tree and Tree_Only should be enabled so as to instruct
+  WinEdt to collect items in all relevant files regardless of whether
+  they are opened or not. This settings are used in all default
+  items...
+
+  You - can also specify strings that are inserted before and after the
+  item in the list.
+
+  - Balanced parameter ({}\) forces WinEdt to collect balanced wildcards
+  and thus properly display TOC in case the title contains nested
+  braces. The third (optional) character in the string ignores control
+  characters \{ and \} which do not have to balanced if control
+  character is specified...
+
+    This parameter can also be used to collect data with ANSI Strings
+    and strings using an ESCAPE convention by setting:
+
+         BALANCED="""""" or BALANCED="''" (depending on ANSI Quote)
+     and
+         BALANCED="\", (depending on the ESCAPE character)
+     respectively. Defaults have been fixed appropriately...
+
+____________________________________________________________________

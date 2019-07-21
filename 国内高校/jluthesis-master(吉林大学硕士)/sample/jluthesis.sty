@@ -1,0 +1,292 @@
+% this is file `jluthesis.sty' of jluthesis package
+%
+% jlu thesis style package created by Zhang Yinhe
+% it provides a master's thesis formating template in LaTeX
+
+\NeedsTeXFormat{LaTeX2e}[2003/12/01]
+\def\fileversion{v0.1}
+\def\filedate{2008/08/01}
+\ProvidesPackage{jluthesis}
+  [\filedate\space\fileversion\space
+    style definitions for Master's thesis writing
+    conforming to Jilin University's clauses]
+
+% three phase of thesis writing: draft, and final(output electronic 
+% or paper version)
+% default: final
+\newif\ifjludebug
+\DeclareOption{debug}{%
+  \jludebugtrue\jluelectronicfalse\jlufinalfalse}
+\newif\ifjluelectronic
+\DeclareOption{electronic}{%
+  \jluelectronictrue\jludebugfalse\jlufinalfalse}
+\newif\ifjlufinal
+\DeclareOption{final}{%
+  \jlufinaltrue\jludebugfalse\jluelectronicfalse}
+
+% use one of three ways to produce output (pdf or dvi):
+% pdflatex+xpdf, latex+dvipdfm[x]+xpdf, or latex+xdvi
+% default: dvipdfm
+\newif\ifpdftex
+\DeclareOption{pdftex}{\pdftextrue\dvipdfmfalse\dvifalse}
+\newif\ifdvipdfm
+\DeclareOption{dvipdfm}{\dvipdfmtrue\pdftexfalse\dvifalse}
+\newif\ifdvi
+\DeclareOption{dvi}{\dvitrue\pdftexfalse\dvipdfmfalse}
+
+% if use adjusted non-aequilaus Chinese punctuations
+\newif\ifchinesepunct                       
+\DeclareOption{chinesepunct}{\chinesepuncttrue}
+
+% pass options we don't known to package `geometry' 
+% for page layout setups
+\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{geometry}}
+
+% default options: jlufinal，dvipdfm
+\ExecuteOptions{final,dvipdfm}    
+
+\ProcessOptions
+
+% PLEASE read the docs of package geometry carefully
+% debug infomation can be found in your log file
+% N.B: 当纸张为非LaTeX/TeX标准纸张时，geometry 宏包的driver必须设定，
+%           此外，此时只可使用pdftex 和dvipdfm 驱动来输出pdf 文件，
+%           dvips 驱动在剪裁纸张时会出现错误(原因我还不明白)
+% page layout setup
+\RequirePackage[%
+  paperwidth=18.4cm,paperheight=26.0cm,% 16开纸，18.4cm X 26.0cm
+  textwidth=14.5cm,textheight=21.0cm,  % 论文版芯145mm X 210mm
+  bindingoffset=0.0cm,  % 装订线宽度
+  inner=1.95cm,         % 内侧空白（左页边距）
+  hmarginratio=1:1,     % 左右页边距之比，1:1 为左右页边距相等
+  bottom=2.5cm,         % 底部空白（下右边距）
+  headheight=0.6cm,     % 页眉高度
+  headsep=0.8cm,        % 页眉距上部正文文本高度
+  footskip=0.9cm,       % 页脚底部距底部正文文本的距离
+  marginparsep=0.2cm,   % marginparsep, marginparwidth 可以不设定
+  marginparwidth=1.5cm, % 设定旁注
+  nomarginpar,    %
+  dvipdfm         % 必须设定此driver，以利用dvipdfmx生成正确的纸张大小
+]{geometry}
+
+\ifjludebug  % test page layout effect
+  \geometry{showframe,verbose} % show page layout in frames
+  \RequirePackage{layouts}     % print page layout parameters
+  \RequirePackage{layout}      % another
+\fi
+
+% enable more counters(originally 256),require eTeX
+%\RequirePackage{etex}        
+% \ifpdf to judge if we are running pdf[la]tex
+\RequirePackage{ifpdf}     
+% include figures
+\RequirePackage{graphicx}
+% use color
+\RequirePackage{color}
+% do length calculations using + - * /
+\RequirePackage{calc}
+% indent first line of first paragraph of sections
+\RequirePackage{indentfirst}  
+% set up heading and footer
+\RequirePackage{fancyhdr}     
+% produce box-contained texts
+\RequirePackage{fancybox}
+% reformat Chapter and Section names and displays
+\RequirePackage{titlesec}
+\RequirePackage{titletoc}
+% AMS formulae
+\RequirePackage{amsmath}
+% AMS math fonts
+\RequirePackage{amsfonts}
+% AMS math symbols
+\RequirePackage{amssymb}
+% Greek letters
+\RequirePackage{txfonts}
+% special symbols
+\RequirePackage{stmaryrd}
+% enhance tabular function
+\RequirePackage{array}
+% enable multi-row in tables
+\RequirePackage{multirow} 
+% enable tables span pages
+\RequirePackage{longtable}
+% Chinese support
+\RequirePackage{CJK}[2005/08/11]
+% Chinese numbers
+\RequirePackage{CJKnumb}[2005/08/11]
+
+\ifchinesepunct  % we use Chinese non-aequilatus punctuations
+  \RequirePackage{CJKpunct}[2005/08/11]
+\fi
+
+% enable hyperlink (cites, ref, urls etc.) in output dvi or pdf files
+\ifpdf % if we are running pdf[la]tex
+  \RequirePackage[pdftex,unicode]{hyperref}
+  \RequirePackage{cmap}
+\else
+  \ifpdftex
+    \RequirePackage[pdftex,unicode]{hyperref}
+    \RequirePackage{cmap}
+  \else
+    \ifdvi % driver dvipdf enable hyperlink-enabled dvi
+      % geometry driver: dvips, produce the right paper size really??
+      \geometry{dvips}
+      \RequirePackage[dvipdf,unicode]{hyperref}
+    \else               
+      % produce the right paper size using dvipdfm
+      \geometry{dvipdfm}
+      \RequirePackage[dvipdfm,unicode]{hyperref}       
+      \AtBeginDvi{\special{pdf:tounicode GBK-EUC-UCS2}}% GBK -> Unicode
+    \fi
+  \fi
+\fi
+
+% support citations: compress and %superscripted
+\RequirePackage[sort&compress,numbers,square,super]{natbib}  
+\RequirePackage{hypernat}     % must be loaded after natbib and hyperref
+
+\hypersetup{
+  CJKbookmarks=true,%
+  bookmarksnumbered=true,%
+  bookmarksopen=true,%
+  breaklinks=true%
+}  
+
+\ifjludebug
+  \hypersetup{%
+    colorlinks=true,%
+    pdfborder={0 0 1},%
+    citecolor=blue,%
+    linkcolor=red,%
+    anchorcolor=green,%
+    urlcolor=blue%
+    debug=true
+  }
+\else
+  \ifjluelectronic
+    \hypersetup{%
+      colorlinks=true,%
+      pdfborder={0 0 1},%
+      citecolor=blue,%
+      linkcolor=red,%
+      anchorcolor=green,%
+      urlcolor=blue%
+    }
+  \else
+    \hypersetup{%
+      colorlinks=false,
+      pdfborder={0 0 0}
+    }
+  \fi
+\fi
+
+% Chinese font name declaration
+\newcommand*{\song}{\CJKfamily{song}} % Songti
+\newcommand*{\hei}{\CJKfamily{hei}}   % Heiti
+\newcommand*{\kai}{\CJKfamily{kai}}  % Kaishu
+\newcommand*{\fs}{\CJKfamily{fs}} % Fangsong
+\newcommand*{\li}{\CJKfamily{li}}    % Lishu
+\newcommand*{\you}{\CJKfamily{you}} % Youyuan
+
+% Chinese font size declaration (cf. ctex.sty), 
+% \baselinskip usually is set to 1.2 times of font size by experience
+\newcommand{\chuhao}{\fontsize{42.16}{50.59}\selectfont} % 初号字  42bp
+\newcommand{\xiaochu}{\fontsize{36.14}{43.36}\selectfont}% 小初号  36bp
+\newcommand{\yihao}{\fontsize{26.10}{31.32}\selectfont}  % 一号字  26bp
+\newcommand{\xiaoyi}{\fontsize{24.09}{28.91}\selectfont} % 小一号  24bp
+\newcommand{\erhao}{\fontsize{22.08}{26.50}\selectfont}  % 二号字  22bp
+\newcommand{\xiaoer}{\fontsize{18.07}{21.68}\selectfont} % 小二号  18bp
+\newcommand{\sanhao}{\fontsize{16.06}{19.27}\selectfont} % 三号字  16bp
+\newcommand{\xiaosan}{\fontsize{15.06}{18.07}\selectfont}% 小三号  15bp
+\newcommand{\sihao}{\fontsize{14.05}{16.86}\selectfont}  % 四号字  14bp
+\newcommand{\xiaosi}{\fontsize{12.05}{14.45}\selectfont} % 小四号  12bp
+\newcommand{\wuhao}{\fontsize{10.54}{12.65}\selectfont}  % 五号字10.5bp
+\newcommand{\xiaowu}{\fontsize{9.03}{10.84}\selectfont}  % 小五号   9bp
+\newcommand{\liuhao}{\fontsize{7.53}{9.03}\selectfont}   % 六号字 7.5bp
+\newcommand{\xiaoliu}{\fontsize{6.52}{7.83}\selectfont}  % 小六号 6.5bp
+\newcommand{\qihao}{\fontsize{5.52}{6.62}\selectfont}    % 七号字 5.5bp
+\newcommand{\bahao}{\fontsize{5.02}{6.02}\selectfont}    % 八号字   5bp
+
+% math font size declartion (cf. ctex.sty)
+% \DeclareMathSizes{<t-size>}{<mt-size>}{<s-size>}{<ss-size>} :
+% declares that <mt-size> is the (main) math text size, <s-size> is the
+% `script' size and <ss-size> the `scriptscript' size to be used in math
+% when <t-size> is the current text size.
+\DeclareMathSizes{5.02}{5.02}{5}{5}
+\DeclareMathSizes{5.52}{5.52}{5}{5}
+\DeclareMathSizes{6.52}{6.52}{5}{5}
+\DeclareMathSizes{7.53}{7.53}{5}{5}
+\DeclareMathSizes{9.03}{9.03}{6}{5}
+\DeclareMathSizes{10.54}{10.54}{7}{5}
+\DeclareMathSizes{12.05}{12.05}{8}{6}
+\DeclareMathSizes{14.05}{14.05}{10.54}{7.53}
+\DeclareMathSizes{15.06}{15.06}{12.05}{9.03}
+\DeclareMathSizes{16.06}{16.06}{14.05}{10.54}
+\DeclareMathSizes{18.07}{18.07}{15.06}{12.05}
+\DeclareMathSizes{22.08}{22.08}{16.06}{14.05}
+\DeclareMathSizes{24.09}{24.09}{18.07}{15.06}
+\DeclareMathSizes{26.10}{26.10}{22.08}{16.06}
+\DeclareMathSizes{36.14}{36.14}{24.09}{18.07}
+\DeclareMathSizes{42.16}{42.16}{26.10}{22.08}
+
+\newcommand{\defaultfont}{
+  % \baselinestretch MUST be followed by fontsize change command
+  \renewcommand{\baselinestretch}{1.37}
+  \small\normalsize
+  \xiaosi
+  \song}
+
+\providecommand{\bibpreamble}{}
+\renewcommand\bibpreamble{ % add item \bibname to toc
+  \addcontentsline{toc}{chapter}{\bibname}}
+% space between bibliography items
+\setlength{\bibsep}{0pt plus 1pt minus 1pt} 
+
+% Initialize Chinese documenting environment
+\def\jlu@beginCJK{\begin{CJK*}{GBK}{song}}
+\def\jlu@endCJK{\clearpage\end{CJK*}}
+\AtBeginDocument{\jlu@beginCJK}
+\AtEndDocument{\jlu@endCJK}
+
+\AtBeginDocument{\makeatletter\InputIfFileExists{jluthesis.cfg}{}{%
+  \PackageError{jluthesis}{%
+    Can't find jluthesis}{%
+    There will be unexpected errors if you continue.}}
+  \makeatother}
+
+% CJKindent is redefined in jluthesis.cfg
+\AtBeginDocument{\CJKtilde \CJKindent}
+
+\ifjludebug
+ \newcommand\printjlulayout{{
+   \large
+   \printinunitsof{cm}  
+   paperwidth = \prntlen{\paperwidth}.
+
+   paperheight = \prntlen{\paperheight}.
+
+   textwidth = \prntlen{\textwidth}.
+
+   textheight = \prntlen{\textheight}.
+
+   headheight = \prntlen{\headheight}.
+
+   headsep = \prntlen{\headsep}.
+
+   footskip = \prntlen{\footskip}.
+   \clearpage
+   \layout
+   \setcounter{page}{0}
+ }}
+ \AtBeginDocument{\typeout{debug geometry}\printjlulayout}
+\fi
+
+\endinput
+%%
+%% end of file `jluthesis.sty'.
+
+%%% Local Variables:
+%%% coding: euc-china
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

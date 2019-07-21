@@ -1,0 +1,10 @@
+Table0=Table[{i^2+j^3,(i+j)^2},{i,1,8},{j,1,3}]
+Table1=Table[{i^2+j^3,(i+j)^2},{j,1,8},{i,1,3}]
+Plot[Sin[x+Pi],{x,-2Pi,2Pi}]
+FactorComplete
+Flatten[Table1]
+Sort[Flatten[Table0]]
+Log[14,Table1]
+Plot[Evaluate[Table[BesselJ[n,x],{n,4}]],{x,0,10},Filling->Axis]
+Plot3D[Sin[xy]/Cos[y],{x,-2E,6E},{y,10^34*}]
+ListPlot[Table0,AxesLabel->{"x","y"},Joined->True,ImageSize->{400,523}]

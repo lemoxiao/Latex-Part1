@@ -1,0 +1,74 @@
+%!TEX program = xelatex
+\documentclass[a4paper,11pt]{article}%A4纸，正文为小四号字，对应12pt
+%\usepackage[UTF8]{ctex}
+
+%Add by Karl_Lok
+\usepackage[BoldFont,SlantFont,CJKchecksingle]{xeCJK}
+\setCJKmainfont{SimSun}
+\setCJKmonofont{SimSun}% 设置缺省中文字体
+
+\usepackage{diagbox}
+
+\usepackage{multido}
+%\usepackage{underscore}
+\usepackage{float}
+
+\usepackage{algorithmic}
+
+\usepackage{listings}
+
+
+
+\usepackage{xcolor}
+\lstset{escapechar=`,numbers=left
+,extendedchars=false, escapeinside=`'
+,basicstyle=\ttfamily
+,backgroundcolor=\color[RGB]{245,245,244}
+,keywordstyle=\bfseries\color[RGB]{130,0,0},identifierstyle=\bfseries\color[RGB]{0,0,130},numberstyle=\color[RGB]{41,41,255},commentstyle=\it\color[RGB]{130,130,130},stringstyle=\rmfamily\slshape\color[RGB]{255,0,0},showstringspaces=false,tabsize=4,texcl=true,frame=shadowbox,breaklines=true,float}
+
+%设置引用
+\usepackage[square]{natbib}
+\bibliographystyle{GBT7714-2005NLang-UTF8} 
+
+\setcitestyle{super}
+
+%End
+
+\usepackage{gzhubylw}
+\begin{document}
+\input{title.tex}
+\makecover
+\makeatletter
+\begin{center}{ \textbf{ \LARGE{\@title}}}\end{center}
+\makeatother
+{\flushleft\textbf{\large 摘要}\hspace{2em}}
+\input{cabstract.tex}\\
+{\flushleft\textbf{\large 关键词}\hspace{2em}}
+\input{ckeywords.tex}\\
+{\flushleft\textbf{\large ABSTRACT}\hspace{2em}}
+\input{eabstract.tex}\\
+{\flushleft\textbf{\large KEY WORDS}\hspace{2em}}
+\input{ekeywords.tex}
+\newpage
+\tableofcontents
+\newpage
+\section{前\hspace{1em}言}
+\input{preface.tex}
+\input{chapter01.tex}
+\input{chapter02.tex}
+\input{chapter03.tex}
+\input{chapter04.tex}
+\input{chapter05.tex}
+\input{chapter06.tex}
+%\section{引\hspace{1em}用}
+\input{references.tex}
+\appendix\titlecontents{section}[0pt]{\vspace{.5\baselineskip}\bfseries}
+{附录\thecontentslabel\quad}{}
+{\hspace{.5em}\titlerule*[10pt]{$\cdot$}\contentspage}
+\titleformat{\section}{\centering\LARGE\bfseries}{附录%
+\,\thesection}{1em}{}
+%\input{appendix01.tex}
+\section*{致谢}\addcontentsline{toc}{section}{致谢}
+\input{acknowledgement.tex}
+
+\end{document}

@@ -1,0 +1,117 @@
+%
+% 说明：使用 xelatex 编译，在 texlive 2017 中编译通过
+%
+\XeTeXinputencoding "GBK"
+%\XeTeXinputencoding "cp936"
+%\XeTeXdefaultencoding "UTF8"
+\documentclass{ctexart}
+\usepackage[a4paper,top=2.0cm,bottom=2.5cm,left=2.8cm,right=2.8cm,%
+            includehead,includefoot]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,bm}
+\usepackage{makecell,interfaces-makecell}
+\usepackage{calc}
+\renewcommand{\baselinestretch}{1.3}
+
+%%%%% ===== 自定义命令 ===========================================================
+\newcommand{\ul}[1]{\underline{\makebox[#1]{}}}
+\newcommand{\ull}[2]{\underline{\makebox[#1]{\kaishu #2}}}
+\newcommand{\ulaa}[1]{\underline{\makebox[3em]{\Large\textcircled{\normalsize #1}}}}
+\newcommand{\dis}{\displaystyle}
+
+\pagestyle{plain}
+
+\begin{document}
+\zihao{-4} % 小四号字体
+
+%%%%% ===== 试卷头 ===============================================================
+\begin{center}
+{\heiti\LARGE 华东师范大学期末试卷 （A）} \bigskip
+
+$20xx-20xx$ 学年第 X 学期
+
+\bigskip\bigskip
+
+%%%%% ===== 课程信息，包括课程名，课程性质等 ========================================
+\setlength{\tabcolsep}{1mm}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{p{7.5cm}p{6.5cm}}
+  课程名称：\ull{4.0cm}{\zihao{4} 数~值~分~析} & \\
+  学生姓名：\ul{4.0cm}          &
+  学\hspace{10.5mm}号：\ul{4.0cm} \\
+  专\hspace{2em}业：\ull{4.0cm}{数学与应用数学}  &
+  年级/班级：\ull{4.0cm}{20xx级} \\
+  课程性质：\ {\kaishu 专业X修} \\
+\end{tabular}\smallskip
+
+%%%%% ===== 得分表，其中 numexer 表示题号个数，这里设为 8，可根据实际需要修改，其他可以不用修改。
+\newcounter{numexer}\setcounter{numexer}{8} % 题号个数，这里为 8
+\newcounter{numcol}\setcounter{numcol}{\value{numexer}+2}
+\newlength{\cellwidth}\setlength{\cellwidth}{\textwidth*\ratio{0.6pt}{\value{numexer} pt}}
+\begin{tabular}{|*{\thenumcol}{c|}} \hline
+  \repeatcell{\thenumexer}{rows=1,text=\makebox[\cellwidth]{\zhnumber{\column}}}
+   & \makebox[0.12\textwidth]{总分} &\makebox[0.16\textwidth]{阅卷人签名} \\ \hline
+  \repeatcell{\thenumcol}{rows=1,end=\\ \hline} \\ \hline
+\end{tabular}
+\end{center}
+
+\medskip \noindent\dotfill \medskip
+
+\linespread{1.5}\selectfont   % 1.5 倍行距
+
+\noindent{\heiti 一、填充题} （每空 2 分，共 24 分）
+
+\newcounter{forlist}
+\begin{list}{\arabic{forlist}.}
+            {\setlength{\topsep}{2mm}
+             \setlength{\listparindent}{0pt}
+             \setlength{\labelsep}{5pt}
+             \setlength{\itemsep}{0.8em}
+             \setlength{\parsep}{5pt}
+             \usecounter{forlist}}
+
+\item
+十进制数与二进制数的转换： $(123)_{10}= (\ulaa{1})_2$，
+$(110)_2 = (\ulaa{2})_{10}$。
+
+\item
+十进制数与二进制数的转换： $(123)_{10}= (\ulaa{3})_2$，
+$(110)_2 = (\ulaa{4})_{10}$。
+
+\item
+十进制数与二进制数的转换： $(123)_{10}= (\ulaa{5})_2$，
+$(110)_2 = (\ulaa{6})_{10}$。
+
+
+\end{list}
+
+
+\newpage
+\linespread{1.3}\selectfont
+
+\begin{list}{\heiti\Chinese{forlist}、}
+            {\setlength{\topsep}{1mm}
+             \setlength{\listparindent}{0pt}
+             \setlength{\itemsep}{2em}
+             \setlength{\labelsep}{0pt}
+             \usecounter{forlist}
+             \setcounter{forlist}{1}}
+
+\item （15 分） % ========================================================
+设 $x_0,x_1,\ldots,x_n$ 为互异节点，求证: \\[1ex]
+（1）$\dis\sum\limits_{j=0}^n x_j^k l_j(x) \equiv x^k $\quad ($k=0,1,\ldots,n$); \\
+（2）$\dis\sum\limits_{j=0}^n (x_j-x)^k l_j(x) \equiv 0$\quad ($k=0,1,\ldots,n$)。
+
+\item （15 分） % ========================================================
+设 $x_0,x_1,\ldots,x_n$ 为互异节点，求证: \\[1ex]
+（1）$\dis\sum\limits_{j=0}^n x_j^k l_j(x) \equiv x^k $\quad ($k=0,1,\ldots,n$); \\
+（2）$\dis\sum\limits_{j=0}^n (x_j-x)^k l_j(x) \equiv 0$\quad ($k=0,1,\ldots,n$)。
+
+\item （15 分） % ========================================================
+设 $x_0,x_1,\ldots,x_n$ 为互异节点，求证: \\[1ex]
+（1）$\dis\sum\limits_{j=0}^n x_j^k l_j(x) \equiv x^k $\quad ($k=0,1,\ldots,n$); \\
+（2）$\dis\sum\limits_{j=0}^n (x_j-x)^k l_j(x) \equiv 0$\quad ($k=0,1,\ldots,n$)。
+
+
+\end{list}
+
+\end{document}

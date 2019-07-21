@@ -1,0 +1,133 @@
+﻿% !Mode:: "TeX:UTF-8"
+%% Thesis Template of Yanshan University
+%% for using YSUthesis package with XeLaTeX
+% 2012年3月17日
+%% 文档参数配置开始：
+%%===========================%
+\documentclass[showtypeinfo]{YSUthesis}
+%  showtypeinfo 显示扉页的LaTeX版本信息，去掉即可隐藏版本信息。
+%  openany      可以去掉章节起始页必须为奇数页的限制，使章节连续，不出现空白页。
+%  推荐的编译顺序为：XeLaTeX > BibTeX > XeLaTeX > XeLaTeX，
+%  这样可以生成正确的参考文献和交叉引用链接。
+
+%  设置图形文件的搜索路径。支持图形格式：pdf; png; jpg.
+\graphicspath{{chapter/}{figures/}}
+
+%  执行下面的命令可以取消PDF文件中的链接颜色，使用 Adobe Acrobat Reader 查看
+%  时，链接可能会有边框，但是在打印时不会出现。
+%\hypersetup{colorlinks=false}
+
+% 启用以下这段代码可以让你更改目录的缩进，以备学院有特殊要求。
+%\usepackage{titletoc}
+%\titlecontents{chapter}[4\ccwd]{}
+%                {\bf\contentslabel{4\ccwd}}
+%                {\hspace{-4\ccwd}\bf}
+%                {\titlerule*[5pt]{.}\contentspage}
+%\titlecontents{subsection}[68pt]{}
+%                {\contentslabel{40pt}}
+%                {\hspace{-4\ccwd}}
+%                {\titlerule*[5pt]{.}\contentspage}
+
+% 选择数学字体，xits-math.otf为类Times字体，Cambria Math与Office2010数学公式格式相同。
+\setmathfont{xits-math.otf}
+%%===========================%
+%% 文档参数配置结束
+
+
+%% 文档正式开始
+%============================%
+\begin{document}
+
+
+% 以下为封面部分
+%----------------------------%
+  % 中文封面内容
+  \classification{O441.4}                           % 中图分类号
+  \UDC{537.8}                                       % UDC
+  \title{燕山大学硕士学位论文\LaTeX 模板使用说明}  % 论文题目
+  \author{×××}                                      % 作者姓名
+  \advisor{×××教授}                                % 导师姓名
+  \degree{理学硕士}                                 % 申请学位
+  \major{凝聚态物理}                                % 专业
+  \institute{理学院}                                % 所在单位
+  \defenddate{2011年11月}                        % 答辩日期
+  \school{燕山大学}                                 % 院校名称
+
+  % 英文封面内容
+  \enstatement{Science}                             % 学科或领域
+  \entitle{OPTIMIZATION OF PHOTONIC CRYSTAL FIBER DISPERSION PROPERTIES USING GENETIC ALGORITHM}    % 英文题目
+  \enauthor{×××}                                    % 作者英文姓名
+  \enadvisor{Professor ×××}                         % 导师英文姓名
+  \enschool{Yanshan University}                     % 院校英文名称
+  \enathdate{2011.11}                               % 英文答辩日期
+
+  % 生成封面
+  \makecover
+
+  % 生成中文封里
+  \maketitle
+
+  % 生成英文封里
+  \makeenglishtitle
+
+  % 生成原创性声明
+  \makelicense
+
+
+% 以下为前言部分
+%----------------------------%
+\frontmatter
+\pagenumbering{Roman}
+
+  % 摘要
+  \include{chapter/abstract}
+
+  % 目录
+  \tableofcontents
+  % 表格目录
+  %\listoftables
+  % 插图目录
+  %\listoffigures
+
+
+% 以下为正文部分
+%----------------------------%
+\mainmatter
+  \include{chapter/chap-intro}
+  \include{chapter/chap-2}
+  \include{chapter/chap-3}
+  \include{chapter/chap-4}
+  \include{chapter/chap-5}
+  \include{chapter/chap-6}
+  \include{chapter/chap-7}
+  \include{chapter/chap-conclusion}
+
+  %% 附录
+  %\appendix
+  %\include{chapter/appendix}
+
+
+% 以下为附件部分
+%----------------------------%
+\backmatter
+
+  % 参考文献
+  %|- 使用 BibTeX
+    \bibliography{bib/tex}
+    %\nocite{*}
+  %|-不使用 BibTeX
+    %\include{chapter/bib}
+
+  % 发表文章目录
+  \include{chapter/achive}
+
+  % 致谢
+  \include{chapter/thanks}
+
+  % 作者简介
+  \include{chapter/resume}
+
+
+\end{document}
+%%===========================%
+%% 全文结束

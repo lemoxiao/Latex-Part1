@@ -1,0 +1,126 @@
+%
+%  用 xelatex 编译, TeXLive 2017 测试通过, 2018.11
+%
+\documentclass[11pt,a4paper,sans]{moderncv}
+\usepackage[UTF8]{ctex}
+\moderncvstyle{classic}
+\moderncvcolor{blue}
+\usepackage[scale=0.75]{geometry} % Reduce document margins
+%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+
+
+\firstname{John}
+\familyname{Smith}
+
+\title{Curriculum Vitae}
+\address{123 Broadway}{City, State 12345}
+\mobile{(000) 111 1111}
+\phone{(000) 111 1112}
+\fax{(000) 111 1113}
+\email{john@smith.com}
+\photo[70pt][0.4pt]{picture.jpg}
+
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+\makecvtitle % Print the CV title
+
+\section{Education}
+
+\cventry{2011--2012}
+        {Masters of Commerce}
+        {The University of California}
+        {Berkeley}
+        {\textit{GPA -- 8.0}}
+        {First Class Honours}  % Arguments not required can be left empty
+
+\cventry{2007--2010}
+        {Bachelor of Business Studies}
+        {The University of California}
+        {Berkeley}
+        {\textit{GPA -- 7.5}}
+        {Specialized in Commerce}
+
+\section{Masters Thesis}
+\cvitem{Title}
+       {\emph{Money Is The Root Of All Evil -- Or Is It?}}
+
+\cvitem{Supervisors}
+       {Professor James Smith \& Associate Professor Jane Smith}
+
+\cvitem{Description}
+       {This thesis explored the idea that money has been the cause of untold anguish
+        and suffering in the world. I found that it has, in fact, not.}
+
+\section{Experience}
+\cventry{2012--Present}
+        {1\textsuperscript{st} Year Analyst}
+        {\textsc{Lehman Brothers}}
+        {Los Angeles}
+        {}
+        {Developed spreadsheets for risk analysis on exotic derivatives on a wide array of commodities.}
+
+\cventry{2011--2012}
+        {Summer Intern}
+        {\textsc{Lehman Brothers}}
+        {Los Angeles}
+        {}
+        {Rated "truly distinctive" for Analytical Skills and Teamwork.}
+
+\cventry{2010--2011}
+        {Summer Intern}
+        {\textsc{Lehman Brothers}}
+        {Los Angeles}
+        {}
+        {Spent some time finding myself.
+         This was a courageous endeavour that didn't have a job title. }
+
+\section{Awards}
+\cvitem{2011}
+       {School of Business Postgraduate Scholarship}
+
+\cvitem{2010}
+       {Top Achiever Award -- Commerce}
+
+
+\section{Computer skills}
+\cvitem{Basic}
+       {\textsc{java}, Adobe Illustrator}
+
+\cvitem{Intermediate}
+       {\textsc{python}, \textsc{html}, \LaTeX, OpenOffice, Linux, Microsoft Windows}
+
+\cvitem{Advanced}
+       {Computer Hardware and Support}
+
+
+\section{Communication Skills}
+\cvitem{2010}
+       {Oral Presentation at the California Business Conference}
+
+\cvitem{2009}
+       {Poster at the Annual Business Conference in Oregon}
+
+
+\section{Languages}
+\cvitemwithcomment{English}
+                  {Mothertongue}
+                  {}
+
+\cvitemwithcomment{Spanish}
+                  {Intermediate}
+                  {Conversationally fluent}
+
+\cvitemwithcomment{Dutch}
+                  {Basic}
+                  {Basic words and phrases only}
+
+
+\section{Interests}
+\renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
+
+\cvlistdoubleitem{Piano}{Chess}
+\cvlistdoubleitem{Cooking}{Dancing}
+\cvlistitem{Running}
+
+\end{document} 

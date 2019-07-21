@@ -1,0 +1,126 @@
+﻿% !Mode:: "TeX:UTF-8"
+\chapter{数字物理量与单位}
+\label{chap:unit}
+模板加载了siunitx 宏包，可以实现长串数字位数的正确分割和各种物理量单位的自动格式化，避免
+手工调用数学环境输入单位。尤其适用于理工科各种物理量的输入。该宏包的引入主要是为了解决论文
+格式标准中的这个要求：
+数字的书写不必每格一个数码，一般每两数码占一格，数字间分节不用分位号"，"，\emph{凡4位或4位以上的数都从个位起每3位数空\textbf{半个数码(1/4汉字)}。“\num{3 000000}”，不要写成}“3,000,000”，\emph{小数点后的数从小数点起向右按\textbf{每三位一组分节}。一个用阿拉伯数字书写的多位数不能从数字中间转行。}
+
+\section{数字}
+使用\verb|\num| 命令可以输入正确格式的长数字，包括科学计数法格式的数字。
+
+\begin{table}[htbp]
+\centering\zihao{5}
+\caption{siunitx 宏包与\LaTeX 数学环境输出效果对比}
+\begin{tabular}{ll|ll}
+\toprule
+siunitx 输出样式    & siunitx 输入方式          & \LaTeX 数学环境输出样式  & \LaTeX 数学环境输入方式     \\
+\midrule
+\num{123456789}     & \verb|\num{123456789}|    & 123456789             & \verb|123456789|         \\
+\num{-1000000}      & \verb|\num{-1000000}|     & $-1000000$            & \verb|$-1000000$|        \\
+\num{3.2e-8}        & \verb|\num{3.2e-8}|       & $3.2\times 10^{-8}$   & \verb|$3.2\times 10^{-8}$|\\
+\num{1.2345678}     & \verb|\num{1.2345678}|    & 1.2345678             & \verb|1.2345678|          \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{单位}
+单独输入单位时，可以采用\verb|\si|命令。
+
+\begin{table}[htbp]
+\centering\zihao{5}
+\caption{单位的不同输入方式}
+\begin{tabular}{ll}
+\toprule
+输出样式  &输入方式     \\
+\midrule
+\si{kg.m/s^2}                           & \verb|\si{kg.m/s^2}|         \\
+\si{g_{polymer}mol_{cat}.s^{-1}}       & \verb|\si{g_{polymer}mol_{cat}.s^{-1}}|\\
+\si{\kilo\gram\metre\per\square\second} & \verb|\si{\kilo\gram\metre\per\square\second}|\\
+\si{\gram\per\cubic\centi\metre}        &\verb|\si{\gram\per\cubic\centi\metre}|\\
+\si{\square\volt\cubic\lumen\per\farad} &\verb|\si{\square\volt\cubic\lumen\per\farad}|\\
+\si{\metre\squared\per\gray\cubic\lux}  &\verb|\si{\metre\squared\per\gray\cubic\lux}|\\
+\si{\henry\second}                      &\verb|\si{\henry\second}|\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{同时输入数字与单位}
+
+通常情况下，数字与单位是共同给出的，这时可以采用\verb|\SI| 命令。注意这里的 SI 是大写的。并且加入不同的可选项，最终的效果也不同。
+
+\begin{table}[htbp]
+\centering\zihao{5}
+\caption{同时输入数字与单位}
+\begin{tabular}{ll}
+\toprule
+输出样式    & 输入方式  \\
+\midrule
+\SI[mode=text]{1.23}{J.mol^{-1}.K^{-1}}         & \verb|\SI[mode=text]{1.23}{J.mol^{-1}.K^{-1}}| \\
+\SI{.23e7}{\candela}                            & \verb|\SI{.23e7}{\candela}|\\
+\SI[per-mode=symbol]{1.99}[\$]{\per\kilogram}   & \verb|\SI[per-mode=symbol]{1.99}[\$]{\per\kilogram}|\\
+\SI[per-mode=fraction]{1,345}{\coulomb\per\mole}& \verb|\SI[per-mode=fraction]{1,345}{\coulomb\per\mole}|\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{附1：国际标准单位与导出单位输入方式}
+
+\begin{table}[htbp]
+\centering\zihao{5}
+\caption{国际标准单位输入方式}
+\begin{tabular}{lllp{10pt}lll}
+\toprule
+单位    & 命令  & 符号  &   & 单位    & 命令  & 符号  \\
+\midrule
+安培    & \verb|\ampere|    & \si{\ampere}   && 坎德拉  & \verb|\candela|   & \si{\candela}  \\
+开尔文  & \verb|\kelvin|    & \si{\kelvin}   && 千克    & \verb|\kilogram|  & \si{\kilogram}    \\
+米      & \verb|\meter|     & \si{\meter}    && 摩尔    & \verb|\mole|      & \si{\mole}    \\
+秒      & \verb|\second|    & \si{\second}   &&     &        &      \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering\zihao{5}
+\caption{国际标准导出单位输入方式}
+\begin{tabular}{lllp{10pt}lll}
+\toprule
+单位    & 命令  & 符号  &   & 单位    & 命令  & 符号  \\
+\midrule
+becquerel       & \verb|\becquerel|     & \si{\becquerel}       & & newton      & \verb|\newton|    & \si{\newton} \\
+degree Celsius  & \verb|\degreeCelsius| & \si{\degreeCelsius}   & & ohm         & \verb|\ohm|       & \si{\ohm}\\
+coulomb         & \verb|\coulomb|       & \si{\coulomb}         & & pascal      & \verb|\pascal|    & \si{\pascal}\\
+farad           & \verb|\farad|         & \si{\farad}           & & radian      & \verb|\radian|    & \si{\radian} \\
+gray            & \verb|\gray|          & \si{\gray}            & & siemens     & \verb|\siemens|   & \si{\siemens}    \\
+hertz           & \verb|\hertz|         & \si{\hertz}           & & sievert     & \verb|\sievert|   & \si{\sievert}\\
+henry           & \verb|\henry|         & \si{\henry}           & & steradian   & \verb|\steradian| & \si{\steradian}\\
+joule           & \verb|\joule|         & \si{\joule}           & & tesla       & \verb|\tesla|     & \si{\tesla}\\
+katal           & \verb|\katal|         & \si{\katal}           & & volt        & \verb|\volt|      & \si{\volt}\\
+lumen           & \verb|\lumen|         & \si{\lumen}           & & watt        & \verb|\watt|      & \si{\watt}\\
+lux             & \verb|\lux|           & \si{\lux}             & & weber       & \verb|\weber|     & \si{\weber}\\
+\bottomrule
+\end{tabular}
+\end{table}
+\section{附2：国际标准单位前缀}
+
+\begin{table}[htbp]
+\centering\zihao{5}
+\caption{国际标准单位前缀输入方式}
+\begin{tabular}{llllp{10pt}llll}
+\toprule
+名称    & 命令          & 符号          & 指数  &   & 名称      & 命令          & 符号      & 指数 \\
+\midrule
+yocto   & \verb|\yocto| & \si{\yocto}   & -24   &   & deca      &\verb|\deca|   &\si{\deca} & 1     \\
+zepto   & \verb|\zepto| & \si{\zepto}   & -21   &   & hecto     &\verb|\hecto|  &\si{\hecto}& 2\\
+atto    & \verb|\atto|  & \si{\atto}    & -18   &   & kilo      &\verb|\kilo|   &\si{\kilo} & 3\\
+femto   & \verb|\femto| & \si{\femto}   & -15   &   & mega      &\verb|\mega|   &\si{\mega} & 6\\
+pico    & \verb|\pico|  & \si{\pico}    & -12   &   & giga      &\verb|\giga|   &\si{\giga} & 9\\
+nano    & \verb|\nano|  & \si{\nano}    & -9    &   & tera      &\verb|\tera|   &\si{\tera} & 12\\
+micro   & \verb|\micro| & \si{\micro}   & -6    &   & peta      &\verb|\peta|   &\si{\peta} & 15\\
+milli   & \verb|\milli| & \si{\milli}   & -3    &   & exa       &\verb|\exa|    &\si{\exa}  & 18\\
+centi   & \verb|\centi| & \si{\centi}   & -2    &   & zetta     &\verb|\zetta|  &\si{\zetta}& 21\\
+deci    & \verb|\deci|  & \si{\deci}    & -1    &   & yotta     &\verb|\yotta|  &\si{\yotta}& 24\\
+\bottomrule
+\end{tabular}
+\end{table}

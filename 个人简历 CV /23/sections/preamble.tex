@@ -1,0 +1,33 @@
+%!TEX root = ../resume.tex
+
+% Packages
+
+\usepackage{enumitem}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage[compact]{titlesec}
+\usepackage{textcomp}
+\usepackage[T1]{fontenc}
+\usepackage[defaultsans]{droidsans}
+
+% General Formatting
+
+\renewcommand{\familydefault}{\sfdefault}
+\pagestyle{empty} % turn off page numbering
+\setlength{\parindent}{0pt}
+\setlist[itemize]{noitemsep,nolistsep}
+
+% Section Title Formatting
+
+\titleformat{\section}
+    {\bfseries\uppercase} % format
+    {}                    % label
+    {0pt}                 % separation from left margin
+    {}                    % text before title
+    [\hrule]              % text after title
+
+\titlespacing*{\section}
+    {0pt} % horizontal separation from left margin
+    {8pt} % vertical spacing before title
+    {5pt} % vertical spacing after title

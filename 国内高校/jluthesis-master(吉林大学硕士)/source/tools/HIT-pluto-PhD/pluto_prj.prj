@@ -1,0 +1,140 @@
+247 Patch Control
+
+0
+0
+1
+main.tex
+35
+16
+0
+
+
+
+
+
+
+main.tex
+TeX:UNIX
+403812346 0 93 47 66 42 44 58 733 350 0 350 154 -1 -1 0 0 64 0 0 64 1 0 42 66   0
+appendix\publications.tex
+TeX:UNIX
+1159163 0 1 106 1 1 88 116 777 408 0 22 18 -1 -1 0 0 13 0 0 13 1 0 1 1   0
+setup\Definition.tex
+TeX:UNIX
+1159162 2 192 14 192 26 44 58 830 350 0 222 154 -1 -1 0 0 64 0 0 64 1 0 26 192   0
+preface\cover.tex
+TeX
+1060858 0 2 48 52 1 88 116 874 408 0 22 418 -1 -1 0 0 109 0 0 109 1 0 1 52   0
+reference\reference.bib
+BibTeX:UNIX
+1147890 0 54 108 42 2 66 87 808 489 0 30 307 -1 -1 0 0 15 0 0 15 1 0 2 42   0
+setup\format.tex
+TeX
+1060858 0 494 4 499 20 66 87 755 379 0 174 528 -1 -1 0 0 68 0 0 68 1 0 20 499   0
+appendix\acknowledgements.tex
+TeX:UNIX
+1159162 0 6 1 4 50 22 29 808 321 0 414 69 -1 -1 0 0 13 0 0 13 1 0 50 4   0
+body\ToTemplateMaintainers.tex
+TeX
+1060858 0 0 1 2 62 0 0 742 383 0 510 35 -1 -1 0 0 13 0 0 13 1 0 62 2   0
+appendix\appA.tex
+TeX:UNIX
+1159162 0 2 16 5 1 66 87 808 489 0 22 86 -1 -1 0 0 13 0 0 13 1 0 1 5   0
+setup\package.tex
+TeX:UNIX
+1159162 0 133 59 132 24 44 58 689 460 0 206 443 -1 -1 0 0 45 0 0 45 1 0 24 132   0
+body\Introduction.tex
+TeX:UNIX
+1159162 0 174 100 173 49 22 29 711 321 0 406 494 -1 -1 0 0 13 0 0 13 1 0 49 173   0
+appendix\Authorization.tex
+TeX:UNIX
+1159162 0 13 103 13 1 0 0 786 292 0 22 154 -1 -1 0 0 142 0 0 142 1 0 1 13   0
+body\UpdateLog.tex
+TeX
+1060858 0 253 53 237 15 66 87 852 379 0 134 137 -1 -1 0 0 13 0 0 13 1 0 15 237   0
+body\copyright.tex
+TeX:UNIX
+1159162 0 3 110 3 1 132 174 874 557 0 22 52 -1 -1 0 0 13 0 0 13 1 0 1 3   0
+body\Tricks.tex
+TeX:UNIX
+1159162 0 198 30 27 148 0 0 689 292 0 814 460 -1 -1 0 0 13 0 0 13 1 0 148 27   0
+appendix\Resume.tex
+TeX:UNIX
+1159162 0 2 101 17 16 44 58 830 350 0 142 290 -1 -1 0 0 13 0 0 13 1 0 16 17   0
+D:\Program\CTEX\WinEdt\Samples\Bib\Xbib.tex
+TeX
+403714042 0 0 1 28 20 0 0 774 237 0 174 256 -1 -1 0 0 -1 -1 -1 -1 1 0 20 28   0
+pluto_prj.prj
+DATA
+273678578 0 0 1 0 1 22 29 764 412 1 78 1 -1 -1 0 0 -1 -1 -1 -1 1 0 1 0   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\doctor_main.tex
+TeX:UNIX
+269594619 0 122 7 119 7 110 145 998 547 0 70 334 -1 -1 0 0 61 0 0 61 1 0 7 119   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\setup\package.tex
+TeX:UNIX
+1159162 0 141 7 122 32 110 145 712 547 0 270 2075 -1 -1 0 0 45 0 0 45 1 0 32 122   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\reference\doctor_reference.bib
+BibTeX:UNIX
+1147890 0 0 105 0 1 44 58 762 460 0 22 1 -1 -1 0 0 15 0 0 15 1 0 1 0   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\appendix\doctor_Authorization.tex
+TeX:UNIX
+1159163 0 89 4 8 35 88 116 976 499 0 294 137 -1 -1 0 0 136 0 0 136 1 0 35 8   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\appendix\doctor_publications.tex
+TeX:UNIX
+1159163 0 0 1 11 1 22 29 667 412 0 22 188 -1 -1 0 0 -1 -1 -1 -1 1 0 1 11   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\body\doctor_conclusion.tex
+TeX
+1060858 0 0 1 5 19 132 174 1020 576 0 166 86 -1 -1 0 0 13 0 0 13 1 0 19 5   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\reference\reference.bib
+BibTeX:UNIX
+1147890 0 0 1 0 1 0 0 719 402 0 22 1 -1 -1 0 0 15 0 0 15 1 0 1 0   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\setup\doctor_Definition.tex
+TeX:UNIX
+1159162 0 157 105 227 1 22 29 740 431 0 22 443 -1 -1 0 0 64 0 0 64 1 0 1 227   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\body\doctor_chapter5.tex
+TeX
+1060858 0 13 1 21 7 110 145 998 547 0 70 358 -1 -1 0 0 1 22 22 1 1 0 7 21   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\body\doctor_chapter4.tex
+TeX
+1060859 0 11 1 18 7 66 87 954 489 0 70 307 -1 -1 0 0 13 0 0 13 1 0 7 18   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\body\doctor_chapter3.tex
+TeX
+1060858 0 32 21 40 7 44 58 932 460 0 70 514 -1 -1 0 0 13 0 0 13 1 0 7 40   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\body\doctor_chapter2.tex
+TeX
+1060858 0 33 35 41 5 0 0 888 402 0 54 324 -1 -1 0 0 13 0 0 13 1 0 5 41   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\body\doctor_Introduction.tex
+TeX
+1060858 0 15 1 21 7 132 174 1020 576 0 70 358 -1 -1 0 0 13 0 0 13 1 0 7 21   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\preface\doctor_cover.tex
+TeX
+1060858 0 1 89 53 7 22 29 910 431 0 70 511 -1 -1 0 0 87 0 0 87 1 0 7 53   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\body\doctor_chapter6.tex
+TeX
+1060858 0 2 12 21 7 44 58 932 460 0 70 358 -1 -1 0 0 1 0 0 1 1 0 7 21   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\setup\doctor_format.tex
+TeX
+1060858 0 481 105 494 7 110 145 998 547 0 70 511 -1 -1 0 0 68 0 0 68 1 0 7 494   0
+D:\subversion\Project\PaperWriting\trunk\DoctorThesis\setup\format.tex
+TeX
+1060858 0 0 1 9 24 132 174 777 576 0 206 103 -1 -1 0 0 68 0 0 68 1 0 24 9   0
+
+*main.tex
+>
+*reference\reference.bib
+*setup/package.tex
+*setup/Definition
+*setup/format
+*preface/cover
+*body/Introduction
+*body/Tricks
+*body/UpdateLog
+*body/ToTemplateMaintainers
+*body/copyright
+*body/conclusion
+*appendix/appA
+*appendix/publications
+*appendix/Authorization
+*appendix/acknowledgements
+*appendix/Resume
+<

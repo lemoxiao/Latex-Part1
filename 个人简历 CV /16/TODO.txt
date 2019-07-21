@@ -1,0 +1,44 @@
+sidebar level accomplished in exam
+
+P     FM      MFE     VEE    C
+x-----x--------x-------x----- 
+
+Rajouter description sidebar
+
+EX :
+SQL
+Intermédiaire					Avancée
+-------------------o
+
+SAS
+Concept de base          intermédiaire
+-----------o
+
+Retrait de Québec, canada
+
+
+Ajouter certificat en programmation
+Ajouter correction ATCR
+Ajouter correction, dépannage et assistance ateliers méthode nummérique actuaire
+
+Retrait d'une bande de force et aptitudes
+ : Créatif - ... - changer entrepreneur pour sens des affaires - ...
+ 
+Retrait des assemblages dans accomplissements
+Ajout d'une section Académique :
+	Bourse d'excellence implication
+	Actulab
+
+Retrait loisir machine learning remplacer par.. jeux vidéo ??
+
+Update en brief
+
+update actif boursier
+update package par publication dans tugboat
+
+
+Lettre : parler de mon influence dans l'ajout de Git, RMarkdown et shiny dans le parcours de formation.
+
+
+
+

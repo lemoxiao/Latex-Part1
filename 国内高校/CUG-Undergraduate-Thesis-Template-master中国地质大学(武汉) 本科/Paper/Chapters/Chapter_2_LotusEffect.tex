@@ -1,0 +1,146 @@
+\chapter{荷叶效应}\label{chap2}
+\section{荷叶效应简介}\label{chap2:section1:LotusEffect}
+雨过天晴后多数的叶子上，水珠是像图\ref{04-PictureOfLeaves:subfig_a}那样的；而有的叶子上，水珠晶莹剔透，可以滚来滚去，就象图\ref{04-PictureOfLeaves:subfig_b}的荷叶上的水珠上的那样，即使在上面浇一些污水，也不会在叶子上留下污痕.同样的，荷花也有这样的特性，因此能“出淤泥而不染”.水滴能在荷叶表面自由地滚落，同时带走其表面的灰尘和杂质，这种现象被称作荷叶效应或荷花效应.\par
+%%需重复使用的脚注内容
+%使脚注计数器加1
+\stepcounter{footnote}
+\footnotetext{图片来源:科学松鼠会~~~~http://songshuhui.net/archives/12204 \label{footnote:WaterOnLeaves}}
+\begin{figure}[htbp]
+\centering
+\subfigure[普通叶片上的水珠\footref{footnote:WaterOnLeaves}]{
+\label{04-PictureOfLeaves:subfig_a}
+\includegraphics[width=0.45\textwidth]{04-PictureOfCommonLeaves}
+}
+\subfigure[荷叶表面的水珠\footref{footnote:WaterOnLeaves}]{
+\label{04-PictureOfLeaves:subfig_b}
+\includegraphics[width=0.45\textwidth]{04-PictureOfLotus}
+}
+\caption{不同植物叶片面的水珠\ucite{LotusEffectAndNano-coating}\label{04-PictureOfLeaves}}
+\end{figure}
+荷叶效应的发现已经有差不多半个世纪了，十九世纪七十年代，德国植物学分类的科学家威$\cdot$巴特洛特，他和同事在试验中，偶然发现了一个反常的现象\ucite{LotusEffect-Wiki}，按照惯例，实验时使用的植物都是要被清洗干净的，可是他们注意到：通常只有那些表面光滑的叶子才需要清洗，而看起来粗糙的叶子，往往很干净.尤其是荷叶，它的表面不但不带灰尘，而且连水都不粘.可是为什么这些叶子有这样的特性呢？最开始人们认为是荷叶上那层白色的蜡质结晶决定的.那么再跟其它植物的叶片做个比较.远了不提，就拿跟荷花同一科的睡莲来说，它的叶子正面也有蜡，可是水滴上去，很快就铺平、蔓延开了，更达不到水珠在荷叶上大珠小珠落玉盘的效果.所以除了蜡质结晶之外，一定还另有门道.那么到底是什么原因呢？\par
+
+
+
+\section{荷叶效应的产生原因}\label{chap2:section2:LotusEffect}
+\subsection{从接触角到疏水性根源}\label{chap2:section2:subsction1:LotusEffect}
+为什么有的叶子上的水珠是球形，可以滚来滚去，而在有的叶子上却很扁，呆在一个地方不动呢？这得从接触角谈起，让我们看看图
+\ref{05-ContactAngle-1}，一滴水在固体表面上，划分出了三个界面.线段$BC$ 段是固体和水的界面，$AB$ 段和$CD$ 段是固体和空气的界面，弧$\wideparen{BC} $ 段的是水和空气的界面.如果我们从线段$BC$、 $CD$ 和弧$\wideparen{BC} $交界的地方沿着$\wideparen{BC} $ 曲面的方向画一条线，就叫做$\wideparen{BC}  $在点$C$的切线，即$CE$.$BC $ 和$CE$之间有个夹角$\theta$，叫作接触角.\ucite{ContactAngleWettability,LotusEffectAndNano-coating, InterfacialChemistryFoundation} \par
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.618\textwidth]{05-ContactAngle-1}
+\caption{接触角图示\label{05-ContactAngle-1}}
+\end{figure}
+当接触角很大的时候，水珠就呈现球形\ref{05-ContactAngle-2}，水和叶子接触的地方便非常小，水不会在一个地方呆着，水珠便可以自由的滚来滚去.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.618\textwidth]{05-ContactAngle-2}
+\caption{大接触角时\label{05-ContactAngle-2}}
+\end{figure}
+如果接触角很小时，如图\ref{05-ContactAngle-3}所示那样，一般的叶子上水珠的形状就是这样的.水滴只能平摊在页面上.水珠便不能随意滚动了.\par
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.618\textwidth]{05-ContactAngle-3}
+\caption{小接触角时\label{05-ContactAngle-3}}
+\end{figure}
+
+探究液体(水滴)在物体表面接触角变化的原因则要从表面润湿理论\ucite{ThePhysicalChemistryOfSurfaceFilms}出发.表面润湿是指水从固体的表面取代空气的过程
+\ucite{PlantSurfaceSmoothRelationship,ContactAngleAndSurfaceChemistry,PurityOfTheSacredLotu,ResistanceOfSolidSurfaces}，在固(植物表面) 、 液(水) 、 气(空气) 三相交界处 ，自固--液界面经过液体内部到气--液界面之间的夹角$\theta$ 即为接触角(图\ref{06-ContactAngleMathematica}).
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.618\textwidth]{06-ContactAngleMathematica}
+\caption{接触角图解\label{06-ContactAngleMathematica}}
+\end{figure}
+$\theta$与三个界面张力的关系为$\mathrm{Young}$方程，表示为\ref{Equation_Young}式.
+\begin{equation}\label{Equation_Young}
+ \gammaup_{SG}-\gammaup_{SL}=\gammaup_{LG}\cos\theta
+\end{equation}
+式中$\gammaup_{SG}~~\gammaup_{SL}~~\gammaup_{LG}$ 分别为固气、固液和液气界面张力.$\mathrm{Young}$方程也称为润湿方程 ，表达了接触角$\theta$与三相(固体、液体、气体) 界面张力之间的关系.根据表面热力学理论 ，设接触面为单位面积 ，
+常温常压条件下 ，水对固体表面的粘湿能力可以用粘湿功$W_a$(欲使液体脱离固体表面外界需要做功的最小值)表征，其表达式为\ref{Equation_Wa}式:
+\begin{equation}\label{Equation_Wa}
+\begin{split}
+ W_a=\gammaup_{SG}+\gammaup_{LG}-\gammaup_{SL}\\
+ \mbox{\zihao{6} 等式右边长度取标准单位长度(略写)}
+\end{split}
+\end{equation}
+
+$\mathrm{Young}$方程结合\ref{Equation_Wa}式得到\ref{Equation_Young_Wa} 式
+
+\begin{equation}\label{Equation_Young_Wa}
+  W_a=\gammaup_{LG}(\cos\theta+1)
+\end{equation}
+
+由式\ref{Equation_Young_Wa}分析可知 ，液体为水时(水的表面张力为$72 mN/m$) ，$\gammaup_{LG}$是常数 ，此时接触角大小便成为判断润湿性能的度量标准 ， 即接触角越小 ，润湿性越好，反之亦然.\par
+
+由于自然进化 ，生物界中大多数的固体表面都是非光滑表面 ， Wenzel\ucite{WenzelR}引入了表征固体表面平整程度的(固液真实接触面积和视觉评估的接触面积的比率) 表面粗糙度系数$r$ 修正了上述公式 ，描述了表面粗糙性对润湿性的影响\ucite{Roughness}，称之为Wenzel方程：
+\begin{equation}\label{Equation_RelationshipOfRoughAndEttability}
+  \cos\theta_{\omega}=r\cos\theta
+  \end{equation}
+式\ref{Equation_RelationshipOfRoughAndEttability}中$\theta$是液体在平滑表面上的接触角； $\theta_{\omega}$是在表面粗糙因子为$r$的同种表面上的接触角，对于粗糙表面 ，由于液固真实接触面积总是大于视觉评估接触面积 ，因此总有$r>1$.当$\theta > 90^\circ $时 ，必有$\theta_{\omega} > 90^\circ $， 水在固体表面的视觉评估接触角$\theta_{\omega}$越大 ，$ r $ 越大 ， 固体表面越不平整； 当$\theta < 90^\circ $ 时同理.因此 ，固体与液体相接触时 ， 液体在固体表面的视觉评估接触角越大 ，固体表面的粗糙度越大 ，即固液真实接触面积越大.换而言之 ，固体表面的粗糙性增强了表面对液体的疏水性\ucite{TypicalLeaf}.\par
+同时由式\ref{Equation_RelationshipOfRoughAndEttability}得知 ， 在相同条件下 ，固液在平滑表面的接触角$\theta$是常值 ，固液实际接触角$\theta_{\omega}$ 随粗糙因子$r$ 的变化而变化 ，即水滴与植物表面的实际接触面积越大 ，粗糙因子$r$越大 ，接触角越大 ，疏水性越强.\par
+
+\textbf{结论引用:}\ucite{SurfaceEnergyAndHydrophobic} 水介质中的固体表面与水之间总是存在范德华吸引力或疏水性引力 ，在没有空气存在情况下 ，任何固体的表面均是亲水性的 ， 固体表面的亲水性程度与固液界面相互作用自由能的大小是密切相关的.水介质中固体表面与气泡之间总是存在范德华排斥力 ，但同时又存在大小不等的疏水性引力 ，  pH接近中性的 固体表面与气泡之间同时还存在在静电斥力.以上这些作用力是固体表面与水以及气体之间相互作用的决定性因素. \par
+
+一般来说固体的表面能越高越容易被液体润湿；液体在固体表面上的接触角越小， 润湿性能就越好\ucite{ContactAngleAndSurfaceChemistry}.因此，固体的表面能越小，沾湿功$W_a$则越小，对外表现出疏水性，同时疏水性还与表面粗糙度有关，而亲疏水性最终以接触角的大小来表征.\par
+
+
+波恩大学的植物学家们曾组织过一场各类植物间的抗污比赛：先将从340种植物中选出的防水性的植物置于含有复印机墨粉、大量石英粉尘和二氧化硫的污染环境中，然后，再将这些植物置于自然雨水 中或人工喷雾中，以检验它们在直径为$0.5mm$ 的水滴中的自洁性能.借助于高倍电子显微镜的帮助，在研究人员进行了一系列试验之后，取得了综合性的数据.他们还特别测量了水滴和叶面之间的接触的大小，得到结论：接触角越大，清洁所需的水量就越少.荷叶叶面与水滴的接触角平均为$160^\circ$，最接近$180^\circ$ 的极限值，因此获得了比赛的冠军.\par
+
+
+由于观测设备的局限，荷叶表面的秘密一直未能被发现，人们反倒把注意力放到其表面的蜡质上，认为它是导致荷叶效应的根本原因，直到20 世纪90 年代扫描电子显微镜发明后，巴特洛特及其领导的小组通过电子显微镜对荷叶等一万多种植物的表面结构进行了观测.最终揭开了荷叶效应的神秘面纱.那么神秘的荷叶表面到底有何特别之处呢？
+\subsection{荷叶的表面结构}\label{chap2:section2:subsction2:LotusEffect}
+中国科学院的研究人员经过采集荷叶样品、脱水干燥等方法处理，用扫描电子显微镜对荷叶表面进行了微观形态观察，终于揭开了这个奥秘的神秘面纱\ucite{LotusSurfaceUnderSTEM}.图\ref{07-LotusSurfaceUnderSTEM}、 图\ref{07-LotusSurfaceOfTheMastoid-1} 、图\ref{07-LotusSurfaceOfTheMastoid-2} 和图\ref{07-LotusSurfaceOfTheMastoid-3} 分别展示了荷叶表面的在不同视角下的情况.\par
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.618\textwidth]{07-LotusSurfaceUnderSTEM}
+\caption{荷叶表面电镜照片及结构示意图\ucite{LotusEffect}}
+\label{07-LotusSurfaceUnderSTEM}
+\end{figure}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{07-LotusSurfaceOfTheMastoid-1}
+\caption{荷叶表面的乳突 \protect \footref{footnote:LotusSurfaceOfTheMastoid}}
+\label{07-LotusSurfaceOfTheMastoid-1}
+\end{figure}
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{07-LotusSurfaceOfTheMastoid-2}
+\caption{荷叶表面乳突顶端 \protect \footref{footnote:LotusSurfaceOfTheMastoid} \label{07-LotusSurfaceOfTheMastoid-2}}
+\end{figure}
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.618\textwidth]{07-LotusSurfaceOfTheMastoid-3}
+\caption{荷叶表面乳突的侧面 \protect \footref{footnote:LotusSurfaceOfTheMastoid} \label{07-LotusSurfaceOfTheMastoid-3}}
+\end{figure}
+
+原来，在荷叶的上表面布满非常多微小的乳突，乳突的平均大小约为$6\sim8um$，平均高度在$11\sim13um$左右，平均间距约为$19\sim21um$. 在这些微小乳突之中还分布有一些较大的乳突，平均大小约为$53\sim57um$，它们也是由$6\sim13um$大小的微型突起聚集在一起构成的.乳突的顶端均呈扁平状且中央略微有凹陷.这种微小的乳突结构用肉眼以及普通显微镜是很难观察到的，这种结构通常被称作多重微米和纳米级的超微结构，类似于分形，这些大大小小的乳突和突起在荷叶表面上犹如一个挨一个隆起的“小山包”，“小山包”之间的凹陷部分充满空气，这样就在紧贴叶面上形成一层极薄，只有纳米级厚的空气层屏障.一般水滴最小直径在$1\sim2mm$左右， 这相比荷叶表面上的乳突结构要大得多，因此雨水落到叶面上后，隔着一层极薄的空气，只能同叶面上“小山包”的顶端形成几个接触点，从而水滴不能润湿到荷叶表面上.水滴在自身的表面张力作用下形成球状体，水球在滚动过程中吸附灰尘，然后滚出叶面，从而达到清洁荷叶叶面的效果.\par
+%%需重复使用的脚注内容
+%使脚注计数器加1
+\stepcounter{footnote}
+\footnotetext{图片来源:~~中国科学院华南植物园~~http://www.scib.cas.cn/lyfw/hx/201207/t20120710\_3612648.html \label{footnote:LotusSurfaceOfTheMastoid}}
+图\ref{10-PhotoOfExperimentalPlants:LotusLeaves}显示的是荷叶表面在光切法显微镜下的图像.虽然清晰度较差，但基本可以看到凸起的分布.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.618\textwidth]{10-PhotoOfExperimentalPlants-LotusLeaves}
+\caption{光切法显微镜下荷叶观测照片\footref{footnote:LiAng}}\label{10-PhotoOfExperimentalPlants:LotusLeaves}
+\end{figure}
+%%脚注内容
+%使脚注计数器加1
+\stepcounter{footnote}
+\footnotetext{图片来源 :  2011年本科毕业论文,李昂,《光切法显微镜应用开发》\label{footnote:LiAng}}
+
+\section{荷叶效应的应用}\label{chap2:section3:LotusEffect}
+荷叶效应被广泛应用于光学及工业中，比如 化妆品，建筑涂料，纺织物表面涂料等，印刷行业，电子制造业，薄膜制造业，TFT-LCD，建材行业等.几乎包含在日常生活中的各项物品中\ucite{ProgressInSuperhydrophobicSurfaces}，如：用于大楼帷幕的玻璃表面能够疏水自洁，达到节能的效果；衣料、织布等不易沾附水或油滴污渍(图\ref{07-NanofilamentsWaterdroplet}展示了水珠在具有超疏水表面的纳米纤维上的情形)，清洗变得方便简单；用于汽车和飞机的挡风玻璃，可提高雨天行车安全性；用于卫浴陶瓷表面可达到抗菌、自动祛除污垢，增加舒适度等效果；木质的构件和 建材、森林中的小木屋的防潮，防腐；在医疗用口罩外层涂上一层疏水材料，可以增强隔离飞沫的效果，更加卫生安全；在是在救生衣或救生圈上附着超疏水涂料，便可以大幅提升救生效率.\par
+船舶 、游艇等在水面航行时需要消耗很多的能量来克服行进过程中的摩擦阻力，对于水下航行的潜艇等的能量损耗甚至可达到80\%；而对于运输管道如输油（水）管道，其能量几乎全部被用来克服流过表面时产生的摩擦阻力.随着微机电的发展， 部件的尺度越来越小，固液界面中的摩擦力变得越来越大，如今微通道流的摩擦阻力问题已成为制约相关器件发展的一个重要的因素.因此减少表面摩擦阻力是提高航速和节约能源的主要途径.近年来利用超疏水表面减阻的研究越来越受到研究者的重视.如利用超疏水硅表面进行减阻的研究表明，其减阻能力可达30\%-40\%. 利用改性硅橡胶和聚氨酯树脂为主，添加低表面能无机填料或有机填料，在制成的双组分涂料的疏水表面减阻的实验中发现，在相对较低的流速条件下，其最大表面减阻能力可达到30\%，但随着流速的增加这种减阻效果显著下降，原因要归咎于表面粗糙度变化的影响.目前，有关这方面的研究还有待进一步深入\ucite{SecretSuperhydrophobicSurface}.
+
+%%需重复使用的脚注内容
+%使脚注计数器加1
+\stepcounter{footnote}
+\footnotetext{图片来源:~~维基百科~~http://zh.wikipedia.org/zh-cn/疏水性 \label{footnote:NanofilamentsWaterdroplet}}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.618\textwidth]{07-NanofilamentsWaterdroplet}
+\caption{纳米纤维表面的水珠\footref{footnote:NanofilamentsWaterdroplet} \label{07-NanofilamentsWaterdroplet}}
+\end{figure}

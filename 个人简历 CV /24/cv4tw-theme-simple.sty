@@ -1,0 +1,72 @@
+
+\newlength{\cvtitlewidth}\setlength{\cvtitlewidth}{8cm}
+\newlength{\cvnamewidth}\setlength{\cvnamewidth}{6cm}
+\newlength{\cvpicturewidth}\setlength{\cvpicturewidth}{2.4cm}
+\newlength{\cvassetspanelwidth}\setlength{\cvassetspanelwidth}{12cm}
+\newlength{\cvassetitemsep}\setlength{\cvassetitemsep}{2em}
+\newlength{\cvassetspanelleftmargin}\setlength{\cvassetspanelleftmargin}{1cm}
+\newlength{\cvcontactpanelwidth}\setlength{\cvcontactpanelwidth}{7cm}
+
+\renewcommand*{\maketitle}{
+	\@ifundefined{@cvpicture}{}{ \begin{minipage}[m]{\cvpicturewidth} \fboxsep=1mm\fboxrule=0.05pt \fcolorbox{black}{white}{ \includegraphics[keepaspectratio=true,width=\cvpicturewidth]{\@cvpicture} }\end{minipage}\hspace{5ex}}
+	\begin{minipage}[m]{\cvtitlewidth}
+	\@ifundefined{@cvtitle}{~}{\mystyle[title]\@cvtitle}
+	\end{minipage}\hfill
+	\begin{minipage}[m]{\cvnamewidth}
+	\begin{flushright}
+	\mystyle[name]\@cvfirstname\\[0em]\@cvlastname
+	\end{flushright}
+	\end{minipage}
+	\begin{minipage}[!t]{\cvassetspanelwidth}
+		\begin{multicols}{2}
+		\ifcvasset[0]{\begin{list}{\mystyle[assetbullet]}{\setlength{\leftmargin}{\cvassetspanelleftmargin}}
+\setlength{\itemsep}{\cvassetitemsep}
+\renderassetifdefined{0}
+\renderassetifdefined{1}
+\renderassetifdefined{2}
+\renderassetifdefined{3}
+\renderassetifdefined{4}
+\renderassetifdefined{5}
+\renderassetifdefined{6}
+\renderassetifdefined{7}
+\renderassetifdefined{8}
+\renderassetifdefined{9}
+\end{list}}{}
+		\end{multicols}
+	\@ifundefined{@cvquote}{}{\mystyle[quote]\@cvquote}
+	\end{minipage}\hfill
+\begin{minipage}[!t]{\cvcontactpanelwidth}
+\begin{flushright}
+\begin{tabular}{@{}c@{}l@{}}
+	\rendercontactifdefined{email}
+	\rendercontactifdefined{homepage}
+	\rendercontactifdefined{homepagessl}
+	\rendercontactifdefined{customhomepage}
+	\rendercontactifdefined{cellphone}
+	\rendercontactifdefined{phone}
+	\rendercontactifdefined{fax}
+	\rendercontactifdefined{github}
+	\rendercontactifdefined{linkedin}
+	\rendercontactifdefined{twitter}
+	\rendercontactifdefined{googleplus}
+	\rendercontactifdefined{vk}
+	\rendercontactifdefined{pinterest}
+	\rendercontactifdefined{facebook}
+	\rendercontactifdefined{age}
+	\rendercontactifdefined{spokenlanguages}
+	\rendercontactifdefined{address}
+\end{tabular}
+\end{flushright}
+	\end{minipage}
+\\[1em]
+}
+
+\renewcommand*{\renderasset}[1]{\item{\mystyle[asset] \cvasset[#1]}}
+
+\renewcommand*{\renderassetifdefined}[1]{\ifcvasset[#1]{\renderasset{#1}}{\ignorespaces}}
+
+\renewcommand*{\rendercontact}[1]{\mystyle[#1bullet] & \begin{tabular}[t]{>{\mystyle[#1]}l}\cvcontactlink{#1}\end{tabular} \\[0.3em]}
+
+\renewcommand*{\rendercontactifdefined}[1]{\ifcvcontact[#1]{\rendercontact{#1}}{\ignorespaces}}
+
+\endinput

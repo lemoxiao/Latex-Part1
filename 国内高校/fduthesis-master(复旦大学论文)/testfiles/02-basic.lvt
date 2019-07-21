@@ -1,0 +1,48 @@
+\input{fduthesis-regression-test}
+
+\documentclass{fduthesis}
+
+\DEFAULTSETUP
+
+\begin{document}
+
+\START
+
+\loggingoutput
+
+\frontmatter
+
+% \tableofcontents
+
+\begin{abstract}
+  中文摘要
+\end{abstract}
+
+\begin{abstract*}
+  English abstract
+\end{abstract*}
+
+\begin{notation}
+  $x$                          & 坐标        \\
+  $p$                          & 动量        \\
+  $\psi(x)$                    & 波函数      \\
+  $\langle x |$                & 左矢（bra） \\
+  $| x \rangle$                & 右矢（ket） \\
+  $\langle\alpha|\beta\rangle$ & 内积
+\end{notation}
+
+\mainmatter
+
+\chapter{第一章}
+
+\section{第一节}
+\section{第二节}
+\section{第三节}
+
+\chapter{第二章}
+
+\backmatter
+
+\END
+
+\end{document}

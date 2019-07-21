@@ -1,0 +1,272 @@
+%%
+%% Author: Ali Asghar Momeni Vesalian (momeni.vesalian@gmail.com)
+%% 12/30/2017 AD
+%%
+
+% Preamble
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{resume}[Set of layout commands to generate a professional graphical resume, designed by momeni.vesalian@gmail.com]
+
+
+% Packages
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage[skins]{tcolorbox}
+\usepackage{ragged2e}
+\usepackage{trimspaces}
+\usepackage{options}
+\usepackage{calc}
+\usepackage{../libraries/switch}
+\usepackage{../libraries/sleekprogressbar}
+
+
+% Colors declaration
+\definecolor{darkbg}{HTML}{2D2C2A}
+\definecolor{lightbg}{HTML}{EBEBEB}
+\definecolor{boxbg}{HTML}{D2D2D2}
+\definecolor{rulerclr}{HTML}{BE662F}
+\definecolor{progressclr}{HTML}{848484}
+\definecolor{circleclr}{HTML}{868686}
+\definecolor{captionclr}{HTML}{B35A2F}
+\definecolor{textclr}{HTML}{373536}
+\definecolor{headerclr}{HTML}{D8D8D7}
+\definecolor{linkclr}{HTML}{484848}
+
+
+% Column types
+\newcolumntype{F}{>{\columncolor{boxbg}}   p{\sidebar@widthratio\currentwidth}}
+\newcolumntype{S}{>{\columncolor{lightbg}} p{\mainbar@widthratio\currentwidth}}
+\newcolumntype{N}{>{\columncolor{lightbg}} p{\halfpage@widthratio\currentwidth}}
+
+
+% Variables declaration
+\newlength{\currentwidth}
+\setlength{\currentwidth}{\paperwidth}
+
+\newlength{\currentheight}
+\setlength{\currentheight}{\paperheight}
+
+\newlength{\textmargin}
+\setlength{\textmargin}{0.5cm}
+
+\newcommand{\sidebar@widthratio}{0.35}
+\newcommand{\mainbar@widthratio}{0.65}
+\newcommand{\halfpage@widthratio}{0.5}
+
+
+% Page layout initializing
+\setlength\topsep{0pt}
+\renewcommand{\tabcolsep}{0pt}
+\renewcommand{\arraystretch}{0}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=linkclr
+}
+
+
+% Temporal declaration
+\newlength{\linespace}
+\newcommand{\colordiff}{}
+
+
+% Options declaration
+\options{
+    /resume/.new family,
+    /resume/height/.new dim,
+    /resume/font size/.new num,
+    /resume/partition type/.new choice = {sidebar, equal},
+    /resume/align/.new family,
+    /resume/align/vertical/.new choice = {top, middle, bottom},
+    /resume/align/horizontal/.new choice = {left, right, center, justify},
+    /resume/skill/.new family,
+    /resume/skill/location/.new choice = {sidebar, mainbar},
+}
+
+
+% Environments
+\newenvironment{textbox}[2]{
+    \begin{center}
+        \begin{minipage}[c][#2][c]{#1}
+            \begin{center}
+                \setlength{\currentwidth}{#1-2\textmargin}
+                \setlength{\currentheight}{#2-2\textmargin}
+                \begin{minipage}[c][\currentheight][c]{\currentwidth}
+}{
+                \end{minipage}
+            \end{center}
+        \end{minipage}
+    \end{center}
+}
+
+\newenvironment{rsection}[2][]{
+    \rsectioncmd[#1]{#2}
+}{
+}
+
+% Commands
+\newcommand{\trim}[1]{\trim@spaces{#1}}
+
+\newcommand{\setfontsize}[1]{%
+    \setlength{\linespace}{#1pt}%
+    \fontsize{#1}{1.2\linespace}%
+    \selectfont%
+}
+
+\newcommand{\twopart@setoptions}[1]{
+    \options{/resume, partition type = equal, height = \currentheight}
+    \options{/resume, #1}
+}
+
+\newcommand{\twopart}[3][]{
+    \twopart@setoptions{#1}
+    \xifequalelse{\option{/resume/partition type}}{sidebar}{
+        \begin{tabular}{FS}
+            \setlength{\currentwidth}{\sidebar@widthratio\currentwidth}
+    }{
+        \begin{tabular}{NN}
+            \setlength{\currentwidth}{\halfpage@widthratio\currentwidth}
+    }
+            \begin{textbox}{\currentwidth}{\option{/resume/height}}
+                #2
+            \end{textbox}
+            &
+            \twopart@setoptions{#1}
+            \xifequalelse{\option{/resume/partition type}}{sidebar}{
+                \setlength{\currentwidth}{\mainbar@widthratio\currentwidth}
+            }{
+                \setlength{\currentwidth}{\halfpage@widthratio\currentwidth}
+            }
+            \begin{textbox}{\currentwidth}{\option{/resume/height}}
+                #3
+            \end{textbox}
+        \end{tabular}
+}
+
+\newcommand{\align@vertical}[2]{
+    \begin{xswitch}{#1}
+        \xcase{top}{\begin{minipage}[t][\currentheight][t]{\currentwidth} #2 \end{minipage}}
+        \xcase{middle}{\begin{minipage}[c][\currentheight][c]{\currentwidth} #2 \end{minipage}}
+        \xcase{bottom}{\begin{minipage}[b][\currentheight][b]{\currentwidth} #2 \end{minipage}}
+    \end{xswitch}
+}
+
+\newcommand{\align@horizontal}[2]{
+    \begin{xswitch}{#1}
+        \xcase{left}{\begin{FlushLeft} #2 \end{FlushLeft}}
+        \xcase{right}{\begin{FlushRight} #2 \end{FlushRight}}
+        \xcase{center}{\begin{Center} #2 \end{Center}}
+        \xcase{justify}{\begin{justify} #2 \end{justify}}
+    \end{xswitch}
+}
+
+\newcommand{\align}[2][]{
+    \options{/resume/align, vertical = top, horizontal = justify}
+    \options{/resume/align, #1}
+    \align@vertical{\option{/resume/align/vertical}}{
+        \align@horizontal{\option{/resume/align/horizontal}}{#2}
+    }
+}
+
+\newcommand{\rsectioncmd}[2][]{
+    \options{/resume, font size = 12}
+    \options{/resume, #1}
+    {\setfontsize{\option{/resume/font size}} \bfseries \color{captionclr} \uppercase{#2}}
+    \vspace{3pt}
+    {\color{rulerclr} \hrule height 0.8pt}
+    \vspace{7pt}
+}
+
+\newcommand{\header}[3][]{
+    \twopart[#1, partition type = sidebar]{
+        \align[vertical = middle, horizontal = center]{
+            \begin{tikzpicture}
+                \node[circle,draw=circleclr,thin,inner sep=0.22\currentwidth,fill overzoom image=#2]{};
+            \end{tikzpicture}
+        }
+    }{
+        \color{headerclr}
+        \cellcolor{darkbg}
+        \align[vertical = middle, horizontal = left]{#3}
+    }
+}
+
+\newcommand{\skill}[3][]{
+    \options{/resume/skill, location = mainbar}
+    \options{/resume/skill, #1}
+    \xifequalelse{\option{/resume/skill/location}}{mainbar}{\renewcommand{\colordiff}{52}}{\renewcommand{\colordiff}{64}}
+    \begin{spacing}{0.25}
+        #2 \\
+        \progressbar[width = 0.95\currentwidth, height = 1.5pt, color = progressclr, color difference = \colordiff]{#3}
+    \end{spacing}\
+    \vspace{6pt}
+}
+
+\newcommand{\education}[5]{
+    #2from#1in#3from#4to\trim@post@space{#5}.
+}
+
+\newcommand{\project}[3]{
+    \begin{tabularx}{\currentwidth}{lXr}
+        \trim{#1} && \trim{#2}
+    \end{tabularx}
+    \nolinebreak
+    #3 \\
+}
+
+\newcommand{\experience}[4]{
+    #1 \\
+    \project{#2}{#3}{#4}
+}
+
+\newcommand{\contactitem}[2]{%
+    \begin{FlushLeft}%
+        #1: \trim{#2}%
+    \end{FlushLeft}%
+}
+
+\newcommand{\email}[1]{
+    \contactitem{Email}{
+        \href{mailto:#1}{#1}
+    }
+}
+
+\newcommand{\mobile}[1]{
+    \contactitem{Mobile}{
+        \href{tel:#1}{#1}
+    }
+}
+
+\newcommand{\linkedin}[2]{
+    \contactitem{LinkedIn}{
+        \href{#2}{\trim@post@space{#1}'s profile}
+    }
+}
+
+\newcommand{\reference}[5]{
+    \contactitem{Name}{#1}
+    \contactitem{Position}{#2}
+    \contactitem{Company}{#3}
+    \email{#4}
+    \mobile{#5}
+}
+
+
+% Options
+\DeclareOption{gray}{
+    % Default theme is gray
+}
+\DeclareOption{cream}{
+    \definecolor{lightbg}{HTML}{E9E8E9}
+    \definecolor{boxbg}{HTML}{D9D2C8}
+    \definecolor{rulerclr}{HTML}{CCB7AB}
+    \definecolor{progressclr}{HTML}{848484}
+    \definecolor{circleclr}{HTML}{AB6955}
+    \definecolor{captionclr}{HTML}{AB6955}
+    \definecolor{linkclr}{HTML}{552A2A}
+}
+\DeclareOption*{
+    \PackageError{resume}{Unknown '\CurrentOption' option}{Choose 'gray' or 'cream' as a theme}
+}
+\ProcessOptions\relax

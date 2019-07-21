@@ -1,0 +1,104 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass pkuthss
+\begin_preamble
+% please do NOT remove these lines!
+% set file encoding for WinEdt
+% !Mode:: "TeX:UTF-8"
+% set typesetting program for TeXworks
+% !TEX program = XeLaTeX
+
+%\usepackage[CJKtextspaces,CJKnumber]{xeCJK}                                      
+%\setCJKmainfont[BoldFont=SimHei]{SimSun}
+%\setCJKsansfont{SimHei}         
+%\setCJKmonofont{NSimSun}  
+
+%\setCJKfamilyfont{song}{SimSun}
+%\setCJKfamilyfont{hei}{SimHei}
+\PassOptionsToPackage{no-math}{fontspec}
+
+\input{preamble}
+\end_preamble
+\options UTF8,nomath
+\use_default_options false
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding utf8-plain
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\pdf_title "LyTeX xeCJK template"
+\pdf_author "zoho@ctex"
+\pdf_subject "latex"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "unicode=false"
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index 索引
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+致谢
+\end_layout
+
+\begin_layout Standard
+感谢妈妈爸爸
+\end_layout
+
+\end_body
+\end_document

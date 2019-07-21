@@ -1,0 +1,248 @@
+	%%%%%%%%%%%%%%%%%
+% This is an example CV created using altacv.cls (v1.1.2, 1 February 2017) written by
+% LianTze Lim (liantze@gmail.com), based on the 
+% Cv created by BusinessInsider at http://www.businessinsider.my/a-sample-resume-for-marissa-mayer-2016-7/?r=US&IR=T
+% 
+%% It may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%%%%%%%%%%%%%%%
+
+%% If you want to use \orcid or the
+%% academicons icons, add "academicons"
+%% to the \documentclass options. 
+%% Then compile with XeLaTeX or LuaLaTeX.
+% \documentclass[10pt,a4paper,academicons]{altacv}
+\documentclass[10pt,a4paper]{altacv}
+
+%% AltaCV uses the fontawesome and academicon fonts
+%% and packages. 
+%% See texdoc.net/pkg/fontawecome and http://texdoc.net/pkg/academicons for full list of symbols.
+%% When using the "academicons" option,
+%% Compile with LuaLaTeX for best results. If you
+%% want to use XeLaTeX, you may need to install
+%% Academicons.ttf in your operating system's font %% folder.
+
+
+% Change the page layout if you need to
+\geometry{left=1cm,right=9cm,marginparwidth=6.8cm,marginparsep=1.2cm,top=1cm,bottom=1cm}
+
+% Change the font if you want to.
+
+% If using pdflatex:
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[default]{lato}
+\usepackage{hyperref}
+
+% If using xelatex or lualatex:
+% \setmainfont{Lato}
+
+% Change the colours if you want to
+\definecolor{VividPurple}{HTML}{1B1B1B}
+\definecolor{SlateGrey}{HTML}{464646}
+\definecolor{LightGrey}{HTML}{444444}
+\colorlet{heading}{VividPurple}
+\colorlet{accent}{VividPurple}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+\hypersetup{
+colorlinks,
+linkcolor=VividPurple,
+urlcolor=VividPurple
+}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+%% sample.bib contains your publications
+\addbibresource{sample.bib}
+
+\begin{document}
+\name{Himanshu Shekhar}
+\tagline{Software Developer}
+\title{Himanshu Shekhar's Resume}
+% Cropped to square from https://en.wikipedia.org/wiki/Marissa_Mayer#/media/File:Marissa_Mayer_May_2014_(cropped).jpg, CC-BY 2.0
+%I don't need photo :P
+%\photo{2.5cm}{mmayer-wikipedia-cc-by-2_0}
+\personalinfo{%
+  % Not all of these are required!
+  % You can add your own with \printinfo{symbol}{detail}
+  \normalsize\email{himanshushekharb16@gmail.com}
+%   \phone{000-00-0000}
+%  \mailaddress{Address, Street, 00000 County}
+% \location{Sunnyvale, CA}
+  \normalsize\homepage{https://himanshub16.github.io}
+  \normalsize\github{himanshub16}
+  \normalsize\twitter{himanshub16}
+  \normalsize\linkedin{himanshub16}
+}
+
+%% Make the header extend all the way to the right, if you want. Extend the right margin by 8cm (=6.8cm marginparwidth + 1.2cm marginparsep)
+\begin{adjustwidth}{}{-8cm}
+\makecvheader
+\end{adjustwidth}
+
+%% Provide the file name containing the sidebar contents as an optional parameter to \cvsection.
+%% You can always just use \marginpar{...} if you do
+%% not need to align the top of the contents to any
+%% \cvsection title in the "main" bar.
+\cvsection[page1sidebar]{experience}
+
+\cvproject
+	{\href{https://socialcops.com}{SocialCops}}
+    {Backend Development Intern}
+    {May 2017 - July 2017}
+\begin{itemize}
+	\item {Created product toolbox to provide API level access over database}
+    \item {Created reporting tool to automate reports for support tasks}
+\end{itemize}
+
+\divider
+
+\cvproject 
+	{\href{https://geekhaven.iiita.ac.in}{Technical Society, IIIT-A}}
+    {Software Development Coordinator}
+    {April 2017 - Present}
+\begin{itemize}
+	\item{Mentor students to get started with software development}
+	\item{Developed alumni portal to manage profiles and events}
+	\item{Organize workshops/talks/events to promote hacker culture}
+\end{itemize}
+
+\cvsection{projects}
+
+%% do not include other file, a blank page is made
+%% copy the projects from projects.tex
+
+\cvproject
+    {\href{https://github.com/himanshub16/ProxyMan/}{ProxyMan}}
+    {Bash}
+    {2016 (Maintained)}
+\begin{itemize}
+	\item {Tool to set up system-wide proxy configuration for Linux}
+    \item {Supports other developer tools like apt, git, npm too}
+    \item {150+ stars on GitHub}
+\end{itemize}
+
+\divider
+
+\cvproject
+    {\href{https://github.com/himanshub16/dexter/}{Dexter}}
+    {JavaScript}
+    {Feb 2018}
+\begin{itemize}
+    \item {Winner at Hack36, MNNIT Allahabad}
+	\item {Lets you code with your voice}
+    \item {Have boring tasks done fast in text editor with a voice command}
+\end{itemize}
+
+\divider
+
+\cvproject
+    {Expedite.ai}
+    {Python, Django, IBM Watson, NLP}
+    {Oct 2017}
+\begin{itemize}
+	\item {Winner at annual intra-college hackathon}
+    \item {Bridging customer issues on social media to support desk}
+    \item {NLP classifier categorizes issues and helps the right team track it}
+\end{itemize}
+
+\divider
+
+\cvproject
+	{\href{https://github.com/himanshub16/21Lane/}{21Lane}}
+    {Python, FTP, PyQt5}
+    {May 2016 - Dec 2016}  
+\begin{itemize}
+	\item {Cross-platform peer-to-peer file sharing based on FTP}
+    \item {Removes dependency of central hub as in DC++}
+    \item {Deployed at IIIT-Allahabad to compensate the need of similar service}
+\end{itemize}
+
+\divider
+
+\cvproject
+    {\href{https://github.com/himanshub16/moodmonk}{MoodMonk}}
+    {NodeJS, Analytics, IBM Watson}
+    {March 2017}
+\begin{itemize}
+	\item {Won 6th prize at Hack in The North}
+    \item {Lets you speak your feelings, and analyse your mood from the transcript generated}
+    \item {Generates insights about your mood, and maps your stress levels for the last week}
+\end{itemize}
+
+\divider
+
+% \cvproject 
+% 	{\href{https://github.com/himanshub16/backbone}{Backbone}}
+%     {Django, SQL, SocketIO}
+%     {August 2017}
+% \begin{itemize}
+%     \item {Database as a Service with real-time notifications/triggers on custom events}
+% 	\item {Created at CodeNCounter2.0 hackathong final round at Naggaro}
+% \end{itemize}
+% \cvproject
+%     {\href{https://github.com/himanshub16/IPScanner}{IPScanner}}
+%     {Python, Networking}
+%     {April 2016}
+% \begin{itemize}
+% 	\item {Checks for IP addresses on your local network with functional Internet connection}
+%     \item {Useful when Internet usage is limited to certain IPs on a local network}
+% \end{itemize}
+
+% \divider
+
+% \cvproject
+%     {\href{https://github.com/himanshub16/python-resolver}{Python Resolver}}
+%     {Python}
+%     {Feb. 2016}
+% \begin{itemize}
+% 	\item {Generates list of modules used by analysing the source code of a project}
+%     \item {Installs missing modules if necessary}
+% \end{itemize}
+
+% \divider
+
+% \cvevent{Product Engineer}{Google}{23 June 1999 -- 2001}{Palo Alto, CA}
+
+% \begin{itemize}
+% \item Joined the company as employe \#20 and female employee \#1
+% \item Developed targeted advertisement in order to use user's search queries and show them related ads
+% \end{itemize}
+
+% \cvsection{A Day of My Life}
+
+% Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
+% \wheelchart{outer radius}{inner radius}{
+% comma-separated list of value/text width/color/detail}
+% \wheelchart{1.5cm}{0.5cm}{%
+%   10/13em/accent!30/Sleeping \& dreaming about work, 
+%   25/9em/accent!60/Public resolving issues with Yahoo!\ investors,
+%   5/12em/accent!10/New York \& San Francisco Ballet Jawbone board member, 
+%   20/12em/accent!40/Spending time with family,
+%   5/8em/accent!20/Business development for Yahoo!\ after the Verizon acquisition,
+%   30/9em/accent/Showing Yahoo!\ employees that their work has meaning,
+%   5/8em/accent!20/Baking cupcakes
+% }
+
+\clearpage
+
+
+%% If the NEXT page doesn't start with a \cvsection but you'd
+%% still like to add a sidebar, then use this command on THIS
+%% page to add it. The optional argument lets you pull up the 
+%% sidebar a bit so that it looks aligned with the top of the
+%% main column.
+% \addnextpagesidebar[-1ex]{page3sidebar}
+
+
+\end{document}

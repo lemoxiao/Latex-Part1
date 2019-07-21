@@ -1,0 +1,247 @@
+%避免宏包 hyperref 和 arydshln 不兼容带来的目录链接失效的问题。
+\def\temp{\relax}
+\let\temp\addcontentsline
+\gdef\addcontentsline{\phantomsection\temp}
+\newcommand*{\subfigencaptionlist}{} % 子图形加入目录时用
+
+\makeatletter
+\gdef\hitfor{\@for}
+\gdef\hitempty{}
+\gdef\hittwo{\tw@}
+\makeatother
+
+\newcommand{\mr}[1]{\mathrm{#1}} %定义新命令，用\mr来代替\mathrm
+\def \ReferenceEName {References} %%定义参考文献的标题
+\def \ReferenceCName {参考文献}
+
+%定义图表章节双标题命令
+\newcommand{\figenname}{Fig}
+\newcommand{\listfigenname}{List of Figures}
+\newfloatlist[chapter]{figen}{fen}{\listfigenname}{\figenname}
+\newfixedcaption{\figencaption}{figen}
+\renewcommand{\thefigen}{\thechapter-\arabic{figure}}
+\makeatletter
+\renewcommand{\@cftmakefentitle}{\chapter*{\listfigenname\@mkboth{\bfseries\listfigenname}{\bfseries\listfigenname}}}
+\makeatother
+
+\newcommand{\FigureBiCaption}[2]
+{\renewcommand{\figurename}{图}
+\caption{\protect\setlength{\baselineskip}{1.5em}#1} %\protect\setlength{\baselinestretch}{1.3}\selectfont
+\vspace{-0.5ex}
+\figencaption{\protect\setlength{\baselineskip}{1.5em}#2}%
+%%
+%%其子图形加入目录
+\makeatletter
+\def\hittemp{}
+ \hitfor \hittemp:=\subfigencaptionlist \do {%
+        \ifx \hitempty\hittemp\relax \else
+          \addcontentsline{fen}{subfigen}{\protect\numberline\hittemp}
+        \fi}
+ \gdef\subfigencaptionlist{}
+\makeatother
+}
+
+
+\setcounter{fendepth}{2} %英文图形目录的深度 1(只有一级目录) 2(有两级目录)
+\setcounter{lofdepth}{2} %中文图形目录的深度 1(只有一级目录) 2(有两级目录)
+\makeatletter
+\renewcommand*{\l@subfigure}{\@dottedxxxline{\ext@subfigure}{2}{3.8em}{1.5em}} %中文图形目录 subfigure
+\gdef\l@subfigen{\@dottedtocline{0}{3.8em}{1.5em}}%英文图形目录 latex
+\newif\ifsubfigtoc
+\ifnum \tw@ > \@nameuse{c@fendepth} \subfigtocfalse \else \subfigtoctrue \fi
+\makeatother
+\newbox\tempbox
+\newcommand{\SubfigEnCaption}[1]
+{\makeatletter
+ \ifsubfigtoc
+    %加入目录这个动作，一定要在 父图 之后,所在先暂存在 subfigencaptionlist
+    \xdef\subfigencaptionlist{\subfigencaptionlist,%
+        {{\thesubfigure}\protect\ignorespaces{#1}}}
+\else
+    \relax
+\fi
+\makeatother
+%产生caption
+\vspace{-1.7ex}
+\sbox{\tempbox}{\thesubfigure\hskip\subfiglabelskip #1}%
+\ifthenelse{\lengthtest{\wd\tempbox > \linewidth}}%
+{\\\parbox[t]{\linewidth}{\flushleft\noindent\thesubfigure\hskip\subfiglabelskip #1\hangafter=1\hangindent=15pt}}%
+{\\[2ex]\centerline{\thesubfigure\hskip\subfiglabelskip #1}}
+}
+
+%\newcommand{\SubfigureCaption}[2]  % Two Parameters, the first one is the width of the subfigure,
+%{
+%\addtocounter{subfigure}{-1}       % the second one is the caption of the subfigure
+%\vspace{-2ex}
+%\subfigure[#2]{\rule{#1}{0pt}}
+%}
+
+\newcommand{\tblenname}{Table} %define tbl instead of table
+\newcommand{\listtblenname}{List of Tables}
+\newfloatlist[chapter]{tblen}{ten}{\listtblenname}{\tblenname}
+\newfixedcaption{\tblencaption}{tblen}
+\renewcommand{\thetblen}{\thechapter-\arabic{table}}% 将tblen换成table，因为table和tablen编号一致，而tablen在\longbitoccaption定义中无效。
+\makeatletter
+\renewcommand{\@cftmaketentitle}{\chapter*{\listtblenname\@mkboth{\bfseries\listtblenname}{\bfseries\listtblenname}}}
+\makeatother
+
+\newcommand{\TableBiCaption}[2]
+{
+\renewcommand{\tablename}{表}
+\caption{\protect\setlength{\baselineskip}{1.5em}#1}
+\vspace{-2ex}
+\tblencaption{\protect\setlength{\baselineskip}{1.5em}#2}
+\vspace{1ex}
+}
+
+%%%% 长表格的caption在中英文表格目录中正常显示
+\makeatletter
+\def\@cont@LT@LTBiToeCaption#1[#2]#3{%
+  \LT@makecaption#1\fnum@table{#3}%
+  \def\@tempa{#2}%
+  \ifx\@tempa\@empty\else
+    {\let\\\space
+      %\phantomsection
+      \addcontentsline{ten}{tblen}{\protect\numberline{\thetable}{#2}}}%%\addcontentsline{lot}{table}{\protect\numberline{}{#2}}}%
+  \fi}
+\def\LT@c@ption#1[#2]#3{%
+  \LT@makecaption#1\fnum@table{#3}%
+  \def\@tempa{#2}%
+  \ifx\@tempa\@empty\else
+     {\let\\\space
+     %\phantomsection
+     \addcontentsline{lot}{table}{\protect\numberline{\thetable}{#2}}}%
+  \fi}
+\let\@cont@oldLT@c@ption\LT@c@ption
+\newcommand*{\LTBiTocCaption}[5]{
+  \@if@contemptyarg{#1}{\caption{#2}}{\caption[#1]{#2}}%
+  \global\let\@cont@oldtablename\tablename
+  \gdef\tablename{Table} %#3
+  \global\let\LT@c@ption\@cont@LT@LTBiToeCaption
+  \\
+  \@if@contemptyarg{#4}{\caption{#5}}{\caption[#4]{#5}}%
+  \global\let\tablename\@cont@oldtablename
+  \global\let\LT@c@ption\@cont@oldLT@c@ption}
+\makeatother
+
+\renewcommand{\cfttblendotsep}{1} %自定义图表目录中的点间距大小
+\renewcommand{\cftfigendotsep}{1}
+
+%\renewcommand{\tablename}{表}  %jdg提供的一种方法，英文长表会添加到中文目录中去，上面定义
+%\newcommand{\LTBiCaption}[2]   %\bicaptiontwotoc 主要就是解决这个问题。
+%{%
+%\caption{#1} \gdef\tablename{Table}
+%\\ %[-3.5ex]
+%\caption{#2}
+%\gdef\tablename{表}\\ %[-1.5ex]
+%}
+
+%%%---公式中符号描述----start----
+%\begin{formulasymb}{式中}{-3pt}%-3pt,-20pt调与上方的间距。
+%  \fdesfirst{第一标签}{控制控制控制控制控制}
+%  \fdes{其他标签}{控制控制控制控制控制}
+%\end{formulasymb}
+\newenvironment{formulades}[1]%
+{\noindent\begin{list}{}{%
+\setlength\topsep{0pt}
+\settowidth{\labelwidth}{#1}
+\setlength{\labelsep}{1mm}
+\setlength{\leftmargin}{\labelwidth+\labelsep}
+}}{\end{list}}
+\newenvironment{formulasymb}[2]%-\!-\!-\!-
+{\vspace*{#2}\newcommand{\fdesfirst}[2]%
+{\begin{formulades}{#1\hspace*{26pt}##1~\cdash}\item[#1\hspace*{26pt}##1~\cdash]{##2}\end{formulades}\vspace*{-21pt}}%自己调距
+\newcommand{\fdes}[2]{\begin{formulades}{#1\hspace{26pt}##1~\cdash}\item[##1~\cdash]{##2}\end{formulades}\vspace*{-21pt}}}%自己调距
+{\vspace{21pt}\relax}%21pt调距
+%%----公式中符号描述----end-----
+
+\makeatletter%重新定义BiChapter命令，可实现标题手动换行，但不影响目录
+\def\BiChapter{\relax\@ifnextchar [{\@BiChapter}{\@@BiChapter}}
+\def\@BiChapter[#1]#2#3{\chapter[#1]{#2}
+    \addcontentsline{toe}{chapter}{\bfseries Chapter \thechapter\hspace{0.5em} #3}}
+\def\@@BiChapter#1#2{\chapter{#1}
+    \addcontentsline{toe}{chapter}{\bfseries Chapter \thechapter\hspace{0.5em} #2}}
+\makeatother
+%\newcommand{\BiChapter}[2]
+%{
+%    \chapter{#1}
+%    \addcontentsline{toe}{chapter}{\bfseries Chapter \thechapter\hspace{0.5em} #2}
+%}
+
+\newcommand{\BiSection}[2]
+{   \section{#1}
+    \addcontentsline{toe}{section}{\protect\numberline{\csname thesection\endcsname}#2}
+}
+
+\newcommand{\BiSubsection}[2]
+{    \subsection{#1}
+    \addcontentsline{toe}{subsection}{\protect\numberline{\csname thesubsection\endcsname}#2}
+}
+
+\newcommand{\BiSubsubsection}[2]
+{    \subsubsection{#1}
+    \addcontentsline{toe}{subsubsection}{\protect\numberline{\csname thesubsubsection\endcsname}#2}
+}
+
+\newcommand{\BiAppendixChapter}[2] % 该附录命令适用于发表文章，简历等
+{\phantomsection
+\markboth{#1}{#1}%\markboth{\MakeUppercase{#1}}{\MakeUppercase{#1}}
+\addcontentsline{toc}{chapter}{\hei #1}
+\addcontentsline{toe}{chapter}{\bfseries #2}  \chapter*{#1}
+}
+
+\newcommand{\BiAppChapter}[2]    % 该附录命令适用于有章节的完整附录
+{\phantomsection
+\markboth{#1}{#1}  \chapter{#1}   %\markboth{\MakeUppercase{#1}}{\MakeUppercase{#1}}
+%\addcontentsline{toc}{chapter}{\hei #1}
+\addcontentsline{toe}{chapter}{\bfseries Appendix A~~#2}
+}
+
+\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}%使图编号为 7-1 的格式 %\protect{~}
+%\makeatletter
+%\renewcommand\fnum@figure{\figurename\nobreakspace\thefigure\protect{~~~~~~~~~}} %
+%\makeatother
+
+\renewcommand{\thesubfigure}{\alph{subfigure})}%使子图编号为 a)的格式
+\makeatletter
+\renewcommand{\p@subfigure}{\thefigure(} %%使子图引用为 7-1(a) 的格式
+\makeatother
+%\renewcommand{\thesubfigure}{\alph{subfigure}}
+%\makeatletter
+%\renewcommand{\p@subfigure}{\thefigure} %%使子图引用为 7-1a 的格式
+%\renewcommand{\@thesubfigure}{\thesubfigure)\hskip\subfiglabelskip}%使子图编号为 a)的格式
+%\makeatother
+
+\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}%%使表编号为 7-1 的格式
+\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}%%使公式编号为 7-1 的格式
+
+\setlength\jot{2.5ex}%设置公式之间的垂直距离 默认value = 3pt
+
+%定义 学科 学位
+\def \xuekeEngineering {Engineering}
+\def \xuekeScience {Science}
+\def \xuekeManagement {Management}
+\def \xuekeArts {Arts}
+
+\ifx \xueke \xuekeEngineering
+\newcommand{\cxueke}{工学}
+\newcommand{\exueke}{Engineering}
+\fi
+
+\ifx \xueke \xuekeScience
+\newcommand{\cxueke}{理学}
+\newcommand{\exueke}{Science}
+\fi
+
+\ifx \xueke \xuekeManagement
+\newcommand{\cxueke}{管理学}
+\newcommand{\exueke}{Management}
+\fi
+
+\ifx \xueke \xuekeArts
+\newcommand{\cxueke}{文学}
+\newcommand{\exueke}{Arts}
+\fi
+
+\newcommand{\cdash}{\mbox{—\!\!\!\!—\!\!\!\!—}}%输入中文破折号的命令
+\newcommand{\dif}{\mathrm{d}}%在数学模式中输入微分dx

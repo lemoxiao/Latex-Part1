@@ -1,0 +1,60 @@
+%% File: npu-report-sample.tex (西北工业大学研究生学位论文选题报告表)
+%% Date: 2018/01/20
+%% Author: Yang Zongze  (yangzongze@gmail.com)
+\documentclass{article}
+
+\input{npu-report-style.tex}
+
+%% 示例 bib 文件
+\begin{filecontents}{\jobname.bib}
+@Book{Knuth1986,
+  Title                    = {The {\TeX} book},
+  Author                   = {Donald~Ervin Knuth},
+  Publisher                = {Addison-Wesley},
+  Year                     = {1986}
+}
+@Book{Lamport1994,
+  Title                    = {A Document Preparation System},
+  Author                   = {Leslie Lamport},
+  Publisher                = {Addison-Wesley},
+  Year                     = {1994}
+}
+@Book{Liu2013,
+  Title                    = {{\LaTeX} 入门},
+  Author                   = {刘海洋},
+  Publisher                = {电子工业出版社},
+  Year                     = {2013}
+}
+\end{filecontents}
+
+%% 设置 `论文题目' 
+\nputitle{-开题报告题目-}
+\npunumber{-学号-}
+\npuschool{-学院-}
+\npumajor{-专业-}
+\npuname{-姓名-}
+\npudegree{-学位-}
+\npusupervisor{-导师-}
+\nputype{-培养类别-}
+\npudate{-日期-}
+%% 设置 `论文类型': 取消或添加注释即可勾选相应类型
+\npucheckbasetrue       %  基础研究
+%\npucheckapplytrue     %  应用研究
+%\npucheckenginetrue    %  工程技术
+\npucheckoveralltrue   %  跨学科研究
+
+\begin{document}
+
+\section{研究现状}
+\lipsum[1]
+\subsection{发展历史}
+\lipsum[2]
+\section{研究内容}
+\lipsum[1-4]
+\section{进度安排}
+\lipsum[2]
+\nocite{*}
+\bibliographystyle{abbrv}
+\bibliography{\jobname}
+
+\end{document}

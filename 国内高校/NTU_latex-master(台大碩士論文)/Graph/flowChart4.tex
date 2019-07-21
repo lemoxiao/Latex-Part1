@@ -1,0 +1,26 @@
+%!TEX root = ../thesis.tex
+\tikzstyle{endpoint} = [rectangle,draw,rounded corners, minimum width=7em, minimum height=2em,text centered, draw=black]
+\tikzstyle{decision} = [diamond, draw, 
+    text width=5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, 
+    text width=7em, text centered, minimum height=2em]
+\tikzstyle{line} = [draw, -latex']
+    
+\begin{tikzpicture}[node distance = 1.5cm, auto]
+    % Place nodes
+    \node [endpoint] (init) {隨機產生染色體};
+    \node [block, below of=init] (fitness) {計算適應函數};
+    \node [decision, below of=fitness] (decide) {是否滿足終止條件};
+    \node [endpoint, below of=decide,node distance=3cm] (sol) {求得最佳解};
+    \node [block, right of=decide,node distance=4cm] (reprod) {複製};
+    \node [block, below of=reprod] (cross) {交配};
+    \node [block, below of=cross] (mutate) {突變};
+    % Draw edges
+    \path [line] (init) -- (fitness);
+    \path [line] (fitness) -- (decide);
+    \path [line] (decide) -- node {Yes}(sol);
+    \path [line] (decide) -- node {No}(reprod);
+    \path [line] (reprod) -- (cross);
+    \path [line] (cross) -- (mutate);
+    \draw [line] (mutate) -- +(2,0) -- +(2,6) -- +(-2.4,6);
+\end{tikzpicture}

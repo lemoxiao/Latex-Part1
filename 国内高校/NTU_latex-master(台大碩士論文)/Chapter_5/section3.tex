@@ -1,0 +1,131 @@
+%!TEX root = ../thesis.tex
+\section{染整製程模型求解}
+\label{c:ch5.3}
+在上一小節當中，我們介紹了本研究的求解方法，而在本小節當中我們會序列二次規劃法套用到本研究主要三個模型當中，並根據圖3.3的序列二次規劃演算流程，搜尋此三個模型的最佳染整參數組合。
+\\\textbf{運作成本最小化模型}
+
+在進行演算流程前，我們先將模型進行轉化以及整理，由3.16式當中，首先我們藉由增加鬆弛變數(slack variable) $w_{ij}$將不等式型態轉為等式的型態$h_{i}(x)$，在第一行到第五行不等式中，將其轉換為
+\begin{equation}
+	\begin{array}{c}
+	x_{i}-i_{upper}-w_{i0}=0,\\
+	i_{lower}-x{i}-w_{i1}=0,\\
+	i\in \{A,B,C,D,E\}
+	\end{array}
+\label{eq:hx1}
+\end{equation}
+由 \ref{eq:hx1} 式中我們從 \ref{eq:constraint2} 式中的前五行不等式的轉換下，我們得到$h_{1}(x) \sim h_{10}(x)$，在 \ref{eq:constraint2} 式的第六行不等式，我們將其轉換為 \ref{eq:hxt} 式而得到$h_{11}(x) \sim h_{12}(x)$
+\begin{equation}
+	\begin{array}{c}
+	t-(C_{upper}-A_{lower})/B_{lower}-w_{t0}=0,\\
+	(C_{lower}-A_{upper})/B_{upper}-t-w_{t1}=0
+	\end{array}
+\label{eq:hxt}
+\end{equation}
+而第七行則為$h_{13}(x)=x_C-x_A-x_B\cdot t$，最後把 \ref{eq:deltaEf} 及 \ref{eq:KSf}式帶入 \ref{eq:constraint2} 式中轉換，並得到$h_{14}(x) \sim h_{17}(x)$，如 \ref{eq:hx2} 式
+\begin{equation}
+	\begin{array}{c}
+	\sum_i C_i\cdot x_i + \sum_i C_{ii}\cdot x_i^2+\sum_i\sum_j C_{ij}\cdot x_{i}\cdot x_{j}-\Delta E_{upper}-w_{\Delta E0}=0,\\
+	\Delta E_{lower}-\sum_i C_i\cdot x_i + \sum_i C_{ii}\cdot x_i^2+\sum_i\sum_j C_{ij}\cdot x_{i}\cdot x_{j}-w_{\Delta E1}=0,\\
+	\sum_i C_i^{'}\cdot x_i+ \sum_i C_{ii}^{'}\cdot x_i^2+\sum_i\sum_j C_{ij}^{'}\cdot x_{i}\cdot x_{j}-K/S_{upper}-w_{K/S0}=0,\\
+	K/S_{lower}-\sum_i C_i^{'}\cdot x_i+ \sum_i C_{ii}^{'}\cdot x_i^2+\sum_i\sum_j C_{ij}^{'}\cdot x_{i}\cdot x_{j}-w_{K/S1}=0,\\
+	i,j\in \{A,B,C,D,E\} , i\neq j
+	\end{array}
+\label{eq:hx2}
+\end{equation}
+因此我們可以從 \ref{eq:cost2} 式與上面轉換後的限制式合併後，得到 \ref{eq:cost3} 式
+\begin{equation}
+	\begin{split}
+	L(x,t,\lambda)=[C_1SM(T_H-T_L)+(C_2+c)MK]\cdot x_E+\\
+	C_3 \cdot [t\cdot (v-x_B) +(T_H-T_L)/v+x_D]-\sum_{i=1}^{17} \lambda_{i}\cdot h_{i}(x)
+	\end{split}
+\label{eq:cost3}
+\end{equation}
+並從 \ref{eq:cost3} 式推得$\bigtriangledown L(x,t,\lambda)$，如 \ref{eq:costg}式
+\begin{equation}
+\bigtriangledown L(x,\lambda)=\left[ 
+	\begin{array}{c}
+	\lambda_{2}-\lambda_{1}-(\lambda_{14}-\lambda_{15}) \frac{\partial f_{\Delta E}}{\partial x_{A}}-(\lambda_{16}-\lambda_{17}) \frac{\partial f_{K/S}}{\partial x_{A}} \\
+
+	\lambda_{4}-\lambda_{3}-(\lambda_{14}-\lambda_{15}) \frac{\partial f_{\Delta E}}{\partial x_{B}}-(\lambda_{16}-\lambda_{17}) \frac{\partial f_{K/S}}{\partial x_{B}}+C_{3} \Delta T t/v \\
+
+	\lambda_{6}-\lambda_{5}-(\lambda_{14}-\lambda_{15}) \frac{\partial f_{\Delta E}}{\partial x_{C}}-(\lambda_{16}-\lambda_{17}) \frac{\partial f_{K/S}}{\partial x_{C}} \\
+
+	C_{3}+\lambda_{8}-\lambda_{7}-(\lambda_{14}-\lambda_{15}) \frac{\partial f_{\Delta E}}{\partial x_{D}}-(\lambda_{16}-\lambda_{17}) \frac{\partial f_{K/S}}{\partial x_{D}} \\
+
+	Const+\lambda_{10}-\lambda_{9}-(\lambda_{14}-\lambda_{15}) \frac{\partial f_{\Delta E}}{\partial x_{E}}-(\lambda_{16}-\lambda_{17}) \frac{\partial f_{K/S}}{\partial x_{E}} \\
+
+	\end{array}
+	\right]
+\label{eq:costg}
+\end{equation}
+其中$Const=[C_1SM(T_H-T_L)+(C_2+c)MK]$以及$\Delta T=(T_{H}-T_{L})$，而$\Delta E$和$K/S$估計式的偏微分分別為\\
+\begin{equation*}
+	\begin{array}{c}
+		\frac{\partial f_{\Delta E}}{\partial x_{i}}=C_{i}+2C_{ii}x_{i}+(\sum_{i} C_{iA} x_{i}+\sum_{j} c_{Aj} x_{j}) \\
+		\frac{\partial f_{K/S}}{\partial x_{i}}=C_{i}^{'}+2C_{ii}^{'}x_{i}+(\sum_{i} C_{iA}^{'} x_{i}+\sum_{j} c_{Aj}^{'} x_{j})\\
+		i,j\in {A,B,C,D,E}
+	\end{array}
+\end{equation*}
+再將$\bigtriangledown L(x,\lambda)$以及$h_{1}(x)\sim h_{17}(x)$得到$\Psi(x,\lambda)$以及$J(x,\lambda)$。
+\\\textbf{穩健度模型}
+
+在穩健度模型中，我們同樣先將模型進行轉化以及整理，由 \ref{eq:constraint} 式當中，首先我們藉由增加鬆弛變數$w_{ij}$將不等式型態轉為等式的型態$h_{i}(x)$，在第一行到第五行不等式中，與 \ref{eq:hx1} 式相同，便可得到$h_{1}(x) \sim h_{10}(x)$，最後把 \ref{eq:deltaEf} 及 \ref{eq:KSf} 帶入 \ref{eq:constraint} 式中轉換，並得到$h_{11}(x) \sim h_{14}(x)$，與 \ref{eq:hx2} 式相同，因此我們可以從 \ref{eq:robust2} 式與上面轉換後的限制式合併後，得到 \ref{eq:robust3} 式
+\begin{equation}
+	\begin{split}
+	L(x,\lambda)=\sum_{i}[C_{i}+2C_{ii}\cdot x_i+\sum_j(C_{ij}+C_{ji})\cdot x_i]^{2}-\sum_{i=1}^{14} \lambda_{i}\cdot h_{i}(x)
+	\end{split}
+\label{eq:robust3}
+\end{equation}
+並從 \ref{eq:robust3} 式推得$\bigtriangledown L(x,t,\lambda)$，如 \ref{eq:robustg} 式 \newpage
+\begin{equation}
+\bigtriangledown L(x,\lambda)=\left[ 
+	\begin{array}{c}
+	\lambda_{2}-\lambda_{1}-(\lambda_{14}-\lambda_{15}+Const_{A}) \frac{\partial f_{\Delta E}}{\partial x_{A}}-(\lambda_{16}-\lambda_{17}) \frac{\partial f_{K/S}}{\partial x_{A}} \\
+
+	\lambda_{4}-\lambda_{3}-(\lambda_{14}-\lambda_{15}+Const_{B}) \frac{\partial f_{\Delta E}}{\partial x_{B}}-(\lambda_{16}-\lambda_{17}) \frac{\partial f_{K/S}}{\partial x_{B}} \\
+
+	\lambda_{6}-\lambda_{5}-(\lambda_{14}-\lambda_{15}+Const_{C}) \frac{\partial f_{\Delta E}}{\partial x_{C}}-(\lambda_{16}-\lambda_{17}) \frac{\partial f_{K/S}}{\partial x_{C}} \\
+
+	\lambda_{8}-\lambda_{7}-(\lambda_{14}-\lambda_{15}+Const_{D}) \frac{\partial f_{\Delta E}}{\partial x_{D}}-(\lambda_{16}-\lambda_{17}) \frac{\partial f_{K/S}}{\partial x_{D}} \\
+
+	\lambda_{10}-\lambda_{9}-(\lambda_{14}-\lambda_{15}+Const_{E}) \frac{\partial f_{\Delta E}}{\partial x_{E}}-(\lambda_{16}-\lambda_{17}) \frac{\partial f_{K/S}}{\partial x_{E}} 
+	\end{array}
+	\right]
+\label{eq:robustg}
+\end{equation}
+其中$Const_{i}=4C_{ii}$而$i\in \{A,B,C,D,E\}$，再將$\bigtriangledown L(x,\lambda)$以及$h_{1}(x)\sim h_{14}(x)$得到$\Psi(x,\lambda)$以及$J(x,\lambda)$。
+\\\textbf{品質模型（$\Delta E$模型）}
+
+品質模型（$\Delta E$模型）中，我們同樣先將模型進行轉化以及整理，由 \ref{eq:constraint} 式當中，首先我們藉由增加鬆弛變數$w_{ij}$將不等式型態轉為等式的型態$h_{i}(x)$，在第一行到第五行不等式中，與 \ref{eq:hx1} 式相同，便可得到$h_{1}(x) \sim h_{10}(x)$，最後把 \ref{eq:deltaEf} 及 \ref{eq:KSf} 帶入 \ref{eq:constraint} 式中轉換，並得到$h_{11}(x) \sim h_{14}(x)$，與 \ref{eq:hx2} 式相同，因此我們可以從 \ref{eq:deltaE2} 式與上面轉換後的限制式合併後，得到 \ref{eq:deltaE3} 式
+\begin{equation}
+	\begin{split}
+	L(x,\lambda)=\sum_i C_i\cdot x_i + \sum_i C_{ii}\cdot x_i^2+\sum_i\sum_j C_{ij}\cdot x_{i}\cdot x_{j}-\sum_{i=1}^{14} \lambda_{i}\cdot h_{i}(x)
+	\end{split}
+\label{eq:deltaE3}
+\end{equation}
+並從 \ref{eq:deltaE3} 式推得$\bigtriangledown L(x,t,\lambda)$，如 \ref{eq:deltaEg} 式
+\begin{equation}
+\bigtriangledown L(x,\lambda)=\left[ 
+	\begin{array}{c}
+	\lambda_{2}-\lambda_{1}-(\lambda_{14}-\lambda_{15}+Const_{A}) \frac{\partial f_{\Delta E}}{\partial x_{A}}-(\lambda_{16}-\lambda_{17}) \frac{\partial f_{K/S}}{\partial x_{A}} \\
+
+	\lambda_{4}-\lambda_{3}-(\lambda_{14}-\lambda_{15}+Const_{B}) \frac{\partial f_{\Delta E}}{\partial x_{B}}-(\lambda_{16}-\lambda_{17}) \frac{\partial f_{K/S}}{\partial x_{B}} \\
+
+	\lambda_{6}-\lambda_{5}-(\lambda_{14}-\lambda_{15}+Const_{C}) \frac{\partial f_{\Delta E}}{\partial x_{C}}-(\lambda_{16}-\lambda_{17}) \frac{\partial f_{K/S}}{\partial x_{C}} \\
+
+	\lambda_{8}-\lambda_{7}-(\lambda_{14}-\lambda_{15}+Const_{D}) \frac{\partial f_{\Delta E}}{\partial x_{D}}-(\lambda_{16}-\lambda_{17}) \frac{\partial f_{K/S}}{\partial x_{D}} \\
+
+	\lambda_{10}-\lambda_{9}-(\lambda_{14}-\lambda_{15}+Const_{E}) \frac{\partial f_{\Delta E}}{\partial x_{E}}-(\lambda_{16}-\lambda_{17}) \frac{\partial f_{K/S}}{\partial x_{E}} 
+	\end{array}
+	\right]
+\label{eq:deltaEg}
+\end{equation}
+其中$Const_{i}=C_{i}+2C_{ii}x_{i}+\sum_{j} (C_{ij}+C_{ji})x_{j}$而$i,j\in \{A,B,C,D,E\},i\neq j$，再將$\bigtriangledown L(x,\lambda)$以及$h_{1}(x)\sim h_{14}(x)$得到$\Psi(x,\lambda)$以及$J(x,\lambda)$。
+
+我們從三個染整製程模型進行計算後，我們開始圖 \ref{fig:flow3} 的演算步驟搜尋運作成本模型的最佳解。在給定初始值的步驟當中，雖然序列二次規劃對於初始解的選擇可以不限於可行解當中，但在本研究會根據紡織廠所限定的可行解範圍內隨機挑選，\cite{Nocedal.etc}也表示，由於序列二次規劃法在估計原模型問題時好的起始解對於好的起始解對於結果來說，也會比較精確，故起始組合$x_{0}$從經驗上選取一組較為常用的解作為起始組合，而起始的Lagrange乘數$\lambda_{0}$我們則根據KKT條件下，我們以
+\begin{equation*}
+\lambda^{0}=-[\bigtriangledown h(x^{0})^{T}\bigtriangledown h(x^{0})]^{-1}\bigtriangledown h(x^{0})^{T}\bigtriangledown f(x^{0})
+\end{equation*}
+作為乘數的起始值，此外我們還需要設定迭代停止的依據，本研究以$x^{k+1}-x^{k}\leq \epsilon$作為演算終止的依據，而$\epsilon$在這裡我們設定在$10^{-5}$，而起始估計矩陣$B_{0}$通常則以單位矩陣作為起始的估計矩陣，確定各個起始值後，我們將起始值根據不同的模型分別帶入3.29、3.31及3.33式後，再與當前的$B_{k}$帶入$d_{k}=-B_{k}^{-1}\Psi_{k}$便能得到搜尋的方向，將搜尋方向乘以步伐後得到$x^{k+1}=x^{k}+\alpha_{k}d_{x}$以及$\lambda^{k+1}=\lambda^{k}+\alpha_{k}d_{\lambda}$。
+
+將得到的$x^{k+1}$以及$\lambda^{k+1}$帶回$L(x,\lambda)$後以線搜索(line search)的方法求取$\alpha_{k}$便可得到$x^{k+1}$以及$\lambda^{k+1}$的值，最後判斷$x^{k+1}-x^{k}\leq \epsilon$如果符合條件，則停止演算，最佳解即為運做成本模型的最佳染整製程參數組合，反之則繼續將$y_{k}$以及$B_{k+1}$求出後，再回到確立搜尋方向繼續迭代。

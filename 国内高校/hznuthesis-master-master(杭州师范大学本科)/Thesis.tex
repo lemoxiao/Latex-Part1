@@ -1,0 +1,103 @@
+%---------------------------------------------------------------------------%
+%-                                                                         -%
+%-                           LaTeX Template                                -%
+%-                                                                         -%
+%---------------------------------------------------------------------------%
+%- Copyright (C) Yuxing Xu <tengyuanchangye222@gmail.com> 
+%- This is free software: you can redistribute it and/or modify it
+%- under the terms of the GNU General Public License as published by
+%- the Free Software Foundation, either version 3 of the License, or
+%- (at your option) any later version.
+%---------------------------------------------------------------------------%
+%->> Document class declaration
+%---------------------------------------------------------------------------%
+\documentclass[singlesided,fontset=fandol,tikz]{Style/hznuthesis}%
+%- Multiple optional arguments:
+%- [<singlesided|doublesided|printcopy>]% set one or two sided eprint or print
+%- [showmj]% show confidential information
+%- [draftversion]% show draft version information
+%- [fontset=<fandol|...>]% specify font set to replace automatic detection
+%- [scheme=plain]% thesis writing of international students
+%- [standard options for ctex book class: draft|paper size|font size|...]%
+%---------------------------------------------------------------------------%
+%->> Document settings
+%---------------------------------------------------------------------------%
+\usepackage[super,myhdr,list]{Style/artratex}% document settings
+%- usage: \usepackage[option1,option2,...,optionN]{artratex}
+%- Multiple optional arguments:
+%- [bibtex|biber]% set bibliography processor and package
+%- [<numbers|super|authoryear|alpha>]% set citation and reference style
+%- <numbers>: textual: Jones [1]; parenthetical: [1]
+%- <super>: textual: Jones superscript [1]; parenthetical: superscript [1]
+%- <authoryear>: textual: Jones (1995); parenthetical: (Jones, 1995)
+%- <alpha>: textual: not available; parenthetical: [Jon95]
+%- [geometry]% reconfigure page layout via geometry package
+%- [lscape]% provide landscape layout environment
+%- [myhdr]% enable header and footer via fancyhdr package
+%- [color]% provide color support via xcolor package
+%- [background]% enable page background
+%- [tikz]% provide complex diagrams via tikz package
+%- [table]% provide complex tables via ctable package
+%- [list]% provide enhanced list environments for algorithm and coding
+%- [math]% enable some extra math packages
+\usepackage{Style/artracom}% user defined commands
+%---------------------------------------------------------------------------%
+%->> Document inclusion
+%---------------------------------------------------------------------------%
+%\includeonly{Tex/Chap_1,...,Tex/Chap_N}% selected files compilation
+%---------------------------------------------------------------------------%
+%->> Document content
+%---------------------------------------------------------------------------%
+\begin{document}
+%-
+%-> Frontmatter: title page, abstract, content list, symbol list, preface
+%-
+\frontmatter% initialize the environment
+% 导入封面摘要
+\input{Tex/Frontpages}% title page, abstract
+
+{% content list region
+\linespread{1.2}% local line space
+%\intotoc{\contentsname}% add link to contents table and bookmark
+
+%目录
+\tableofcontents% contents catalog
+%\intotoc{\listfigurename}% add link to contents table and bookmark
+
+%图形列表
+%\listoffigures% figures catalog
+%\intotoc{\listtablename}% add link to contents table and bookmark
+
+%表格列表
+%\listoftables% tables catalog
+}
+
+%->符号列表
+%\input{Tex/Prematter}% list of symbols, preface content
+%-
+%-> Mainmatter
+%-
+% 论文主体
+\mainmatter% initialize the environment
+\input{Tex/Mainmatter}% main content
+%-
+%-> Appendix
+%-
+%\cleardoublepage%
+%\appendix% initialize the environment
+%\input{Tex/Appendix}% appendix content
+%-
+%-> Backmatter: bibliography, glossary, index
+%-
+% 初始化环境
+\backmatter% initialize the environment
+%附录
+\input{Tex/Appendix}% appendix content
+\intotoc{\bibname}% add link to contents table and bookmark
+%参考文献
+\bibliography{Biblio/ref}% bibliography
+%作者简历和致谢
+\input{Tex/Backmatter}% other information
+\end{document}
+%---------------------------------------------------------------------------%
+

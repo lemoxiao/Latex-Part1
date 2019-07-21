@@ -1,0 +1,35 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Goossens, Mittlebach, and Samarin}{Goossens
+  et~al.}{1993}]{goossens93}
+Goossens, M., F.~Mittlebach, and A.~Samarin (1993).
+\newblock {\em The Latex Companion}.
+\newblock Reading, Massachusetts: Addison-Wesley.
+
+\bibitem[\protect\citeauthoryear{Greenwade}{Greenwade}{1993}]{greenwade93}
+Greenwade, G.~D. (1993).
+\newblock The {C}omprehensive {T}ex {A}rchive {N}etwork ({CTAN}).
+\newblock {\em TUGBoat\/}~{\em 14\/}(3), 342--351.
+
+\bibitem[\protect\citeauthoryear{Knuth}{Knuth}{1979}]{knuth79}
+Knuth, D.~E. (1979).
+\newblock {\em Tex and Metafont, New Directions in Typesetting}.
+\newblock Stanford: American Mathematical Society and Digital Press.
+
+\bibitem[\protect\citeauthoryear{Lamport}{Lamport}{1994}]{lamport94}
+Lamport, L. (1994).
+\newblock {\em Latex: A Document Preparation System\/} (Second ed.).
+\newblock Reading, Massachusetts: Addison-Wesley.
+
+\bibitem[\protect\citeauthoryear{Patashnik}{Patashnik}{1988}]{patashnik88}
+Patashnik, O. (1988).
+\newblock {B}ib{T}e{X}ing. documentation for general {B}ib{T}e{X} users.
+\newblock Electronic document accompanying BibTeX distribution.
+
+\bibitem[\protect\citeauthoryear{Rahtz}{Rahtz}{1989}]{rahtz89}
+Rahtz, S. (1989).
+\newblock A survey of {T}ex and graphics.
+\newblock Technical Report CSTR 89-7, Department of Electronics and Computer
+  Science, University of Southampton, UK.
+
+\end{thebibliography}

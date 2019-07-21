@@ -1,0 +1,14 @@
+#pdfTex
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.gz
+
+#Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+#Others
+*.directory

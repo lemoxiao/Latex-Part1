@@ -1,0 +1,80 @@
+% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+\documentclass{my_cv}
+
+% adjust the page margins
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+%\extrainfo{additional information}                 % optional, remove / comment the line if not wanted
+%photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+
+\quote{Seeking a full time position in software development }
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+%-----       letter       ---------------------------------------------------------
+% recipient dat
+\newcommand{\companyName}{YPlan} % use a space at the end to make things easier below
+\newcommand{\jobTitle}{Junior Python Engineer }
+\recipient{\companyName \ Recruitment team}{\jobTitle Position }
+\date{\today}
+\opening{Dear Sir or Madam,}
+\closing{Sincerely,}
+\enclosure[Attached]{curriculum vit\ae{}}          % use an optional argument to use a string other than "Enclosure", or redefine \enclname
+\makelettertitle
+
+I am extremely interested in the position of \jobTitle with
+\companyName.
+
+I would treasure the opportunity to be able to work at a fast paced company
+where many different tasks are required for each individual.  Also, as a US
+citizen I would need a sponsored visa to be able to work in London.  Relocating
+is not a problem for me. I do have experience with Python through my university,
+I co-taught a intro to Python class with a professor for two semesters.
+
+I am a creative, yet focused, professional with strong software engineering
+skills.  My knowledge of algorithms and design patterns has enabled me to
+implement complicated programs with large amounts of data parsing.  For example,
+In my last semester of undergrad, I created a bus tracker iOS app for my school.
+ Students were then able to view the bus schedule, maps of the route, and set
+ reminders of when to catch their bus.  I am an intrapeneur who aims to promote
+ creative thinking and product development inside my organization.
+
+Verbal and written communication are two of my strengths.
+For the last four years I have managed a Youtube channel explaining programming
+concepts.  Doing so consisted of writing notes to accompany my videos,
+answering questions to promote community engagement, and refining my abilities
+through listening to criticism. 
+
+The programming and planning perspective required for a \jobTitle  position
+align with my abilities and experiences.  I am enthusiastic about expanding my
+knowledge of programming, and embarking on new challenges.  In addition, I
+believe I have a lot to offer \companyName \ in terms of programming expertise and
+I am excited about the prospect of working for you.
+
+Thank you for your consideration.  I look forward to meeting you to discuss how
+I can support the mission of \companyName.
+
+\makeletterclosing
+%\clearpage\end{CJK*}% if you are typesetting your resume in Chinese using CJK; the \clearpage is required for fancyhdr to work correctly with CJK, though it kills the page numbering by making \lastpage undefined
+\end{document}

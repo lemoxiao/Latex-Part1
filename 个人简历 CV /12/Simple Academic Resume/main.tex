@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[margin=2cm, a4paper]{geometry}
+
+\usepackage{simple-academic-cv}
+
+% colours
+\definecolor{blackgray}{rgb}{0.25,0.25,0.25}
+\colorlet{cvgray}{blackgray!70}
+
+\title{Jack Sparrow}
+\author{Curriculum Vitae}
+\date{}
+
+
+\usepackage[default]{raleway}
+
+
+\pagestyle{empty}
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\vspace{1cm}
+
+%\headerbox{2.6cm}{blackgray}{white}{Captain}{medal.jpeg}
+
+\namebox{2.6cm}{blackgray}{white}{Captain}
+% usage \namebox{paper margin size (geometry)}{background color}{font color}{text}
+
+\vspace{1cm}
+
+\begin{minipage}[t]{0.55\textwidth}
+\section*{Short Resumé}
+
+\begin{tabular}{r| p{0.4\textwidth} c}
+    \cvevent{2018--2021}{Captain of the Black Pearl}{Lead}{East Indies \color{cvgray!30}}{Finally got the goddamn ship back.}{disney.png} \\
+    \cvevent{2019}{Freelance Pirate}{Bucaneering}{Tortuga \color{cvgray!30}}{This and that. The usual, aye?}{medal.jpeg} \\
+    \cvevent{2016--2017}{Captain of the Black Pearl}{Lead}{Tortuga \color{cvgray!30}}{Found a secret treasure, lost the ship.}{medal.jpeg}
+\end{tabular}
+
+\vspace{2em}
+
+\section*{Certificates \& Grants}
+\begin{tabular}{>{\footnotesize\bfseries}r >{\footnotesize}p{0.55\textwidth}}
+    1708 & Captain's Certificates \\
+    1710 & Travel grant \\
+    1715--1716 & Grant from the Pirate's Company
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.4\textwidth}
+\section*{Degrees}
+\begin{tabular}{r p{0.6\textwidth} c}
+    \cvdegree{1710}{Captain}{Certified}{Tortuga \color{cvgray!30}}{}{disney.png} \\
+    \cvdegree{1715}{Bucaneering}{M.A.}{London \color{cvgray!30}}{}{medal.jpeg} \\
+    \cvdegree{1720}{Bucaneering}{B.A.}{London \color{cvgray!30}}{}{medal.jpeg}
+\end{tabular}
+
+\vspace{2em}
+
+\section*{Publications}
+\begin{tabular}{>{\footnotesize\bfseries}r >{\footnotesize}p{0.7\textwidth}}
+    1729 & \emph{How I almost got killed by Lady Swan}, Tortuga Printing Press. \\
+    1720 & ``Privateering for Beginners'', in: \emph{The Pragmatic Pirate} (1/1720).
+\end{tabular}
+
+\vspace{2em}
+
+\section*{Talks}
+\begin{tabular}{>{\footnotesize\bfseries}r >{\footnotesize}p{0.6\textwidth}}
+    Nov. 1726 & ``How I lost my ship (\& and how to get it back)'', at: \emph{Annual Pirate's Conference} in Tortuga, Nov. 1726.
+\end{tabular}
+\end{minipage}
+
+
+\vspace{2em}
+
+\section*{Hobbies}
+% usage \hobbyicon{<fontawesome icon}{Text}{background color of circle}{size of icon}{space text below icon}
+\hobbyicon{\faFlask}{Rhum}{cvgray!30}{\huge}{2em} \hfill
+\hobbyicon{\faBook}{The Code}{cvgray!30}{\huge}{2em} \hfill
+\hobbyicon{\faComment}{Parler}{cvgray!30}{\huge}{2em} \hfill
+\hobbyicon{\faLaptop}{Phising}{cvgray!30}{\huge}{2em} \hfill
+\hobbyicon{\faBeer}{Beer}{cvgray!30}{\huge}{2em}
+
+
+\footer{black!70}{cvgray!30}{Jack Sparrow}{The Black Pearl}{Tortuga}{0099/333 5647380}{jack@sparrow.com}
+% \footer{font color}{icon color}{name}{Street}{Town}{phone number}{email}
+
+\end{document}

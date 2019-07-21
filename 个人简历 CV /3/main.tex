@@ -1,0 +1,82 @@
+\documentclass[10pt,a4paper]{altacv}
+
+\geometry{left=1cm,right=9cm,marginparwidth=6.8cm,marginparsep=1.2cm,top=1cm,bottom=1cm}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[default]{lato}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+
+\definecolor{VividPurple}{HTML}{AA1645}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\colorlet{heading}{VividPurple}
+\colorlet{accent}{VividPurple}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+\addbibresource{publications.bib}
+
+\begin{document}
+\name{Alexandru Boboc}
+\tagline{DevOps Engineer \& Software Developer}
+\photo{2.5cm}{me}
+
+\personalinfo{
+% Add your own with \printinfo{symbol}{detail}
+  \email{\href{mailto:me@alexboboc.com}{me@alexboboc.com}}
+  \phone{+34 688-994-447}
+% \mailaddress{1230 East Alexander Ave, Merced, CA 95340}
+  \location{Barcelona}
+  \homepage{\href{http://www.alexboboc.com}{www.alexboboc.com}}
+  \twitter{\href{https://twitter.com/lxbbc}{@lxbbc}}
+% \linkedin{linkedin.com/in/alexboboc}
+ \github{\href{https://github.com/alexboboc}{alexboboc}}
+}
+
+\begin{adjustwidth}{}{-8cm}
+\makecvheader
+\end{adjustwidth}
+
+\cvsection[sidebar]{Work}
+
+\cvevent{DevOps Engineer \& AI Developer}{\href{https://www.kompyte.com}{Kompyte}}{2017 -- 2018}{Barcelona, Spain}
+\begin{itemize}
+\item Developed tools to automate the execution of 500,000 daily critical tasks on a \textbf{Kubernetes cluster managed with AWS}.
+\item Optimized and automated deploy of the core application with Docker and Azure resources, decreasing downtime drastically.
+\item Managed and maintained large \textbf{MongoDB databases}.
+\item Documented development processes and provided internal training to other members.
+\item Designed and implemented predictive systems with over 90\% precision, using \textbf{Python, Tensorflow and Sklearn}.
+\item Wrote complex data-scraping workflows using Node.JS.
+\item Actively participated in internal strategic meetings and \textbf{worked hand in hand with the CTO}. Joined the department as employee \#2.
+\end{itemize}
+
+\divider
+
+\cvevent{DevOps Architecture Intern}{\href{https://www.everis.com}{Everis Consulting}}{2016 -- 2017}{Barcelona, Spain}
+\begin{itemize}
+\item Maintained an Ansible project employing Docker and Nginx to deploy and test a distributed cache.
+\item Implemented the automatic deploy of a proof-of-concept \textbf{CI/CD pipeline} composed by Gitlab, Jenkins and Nexus using Vagrant and Docker.
+\item Designed and implemented an AI Python tool to provide a \textbf{Docker Swarm} with self-healing capabilities. Employed Docker Compose, ElasticSearch, Kibana, JMeter and Vagrant.
+\item Provided support in formative enterprise sessions.
+\end{itemize}
+
+\cvsection{Experience}
+
+\wheelchart{1.5cm}{0.5cm}{%
+  60/9em/accent!100/DevOps \& Cloud Infrastructure, 
+  13/9em/accent!40/ML \& Data Science,
+  13/8em/accent!30/Scraping \& Automation,
+  14/12em/accent!10/Application Backend
+}
+
+\cvsection{Publications}
+
+\nocite{*}
+
+\printbibliography[heading=pubtype,title={\printinfo{\faBook}{Dissertations}},type=book]
+
+\end{document}
+

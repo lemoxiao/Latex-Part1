@@ -1,0 +1,102 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+\documentclass{my_cv}
+
+% adjust the page margins
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+%\extrainfo{additional information}                 % optional, remove / comment the line if not wanted
+%photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+
+%\quote{Seeking a full time position in software development }
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+%\usepackage{fontawesome}
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+
+\section{Education \faBook}
+\cventry{2011--2015}{Computer Science}{\college \ University}{Blacksburg, VA}{GPA: \textit{3.85/4.00}}{}  % arguments 3 to 6 can be left empty
+\begin{itemize}
+\item Computer Science Major with a Mathematics Minor; Graduate June 2015, Summa
+  Cum Laude, Phi Beta Kappa
+%\item Studied business information technology, Oxford Brookes University,
+%  England, Spring 2015
+\end{itemize}
+\cventry{Jan 2015--June 2015}{ Technology}{ Oxford Brookes University}{Oxford, UK}{}{}
+\begin{itemize}
+\item Completed Computer Science courses with focus on learning business
+  perspectives
+\end{itemize}
+
+\section{Work \faSuitcase}
+\cventry{Summer 2014}{Software Developer Intern}{Amazon}{Seattle, WA}{}{Compiled
+semantic analyzer in Java/Xtext; Eclipse plugin}  % arguments 3 to 6 can be left empty
+\cventry{Summer 2013}{Software Intern}{Cvent}{McLean, VA}{}{Implemented new
+error logging; library permits corrections by graphing and searching, debugged information in Javascript}  % arguments 3 to 6 can be left empty
+%\cventry{Winter 2012}{Digital Content Intern}{Modea}{Blacksburg,
+%VA}{}{Created Verizon Galaxy S3 customer support phone simulator using Photoshop}  % arguments 3 to 6 can be left empty
+
+\section{Projects \faLightbulbO}
+\cvitemwithcomment{Ephemeral Hadoop}{Utilize unshared computer resources to
+run Hadoop batch jobs}{JAVA, Hadoop}
+\cvitemwithcomment{Hokie Links}{Share class notes, comments, and links about Virginia Tech classes}{Rails, JS, SASS}
+\cvitemwithcomment{Oxford Brookes Bus App}{Real time updates of the
+Oxford  bus schedule, stops, and routes}{iOS}
+\cvitemwithcomment{Schools Out API}{Built a REST API to predict school closures based on weather}{Ruby On Rails}
+
+\section{Leadership \faBolt}
+\cvitemwithcomment{Computer Science Teaching Assistant}{Held office hours for more than 400 CS students (15 hours/week)}{}
+\cvitemwithcomment{Hokie Ambassador}{Gave tours and presentations to aspiring Computer Science students every week}{}
+\cvitemwithcomment{Eagle Scout}{Major refurbishment of elementary school (100+
+hours of community service)}{}
+%\cvitemwithcomment{Entrepreneur Club Treasurer}{Financed campus events: pitching
+%competitions, hackathons, meet ups}{}
+
+\section{Experience \faCogs}
+%\cventry{2015}{ESN Developer}{ Website Maintainer }{Oxford Brookes}{}{}
+%\begin{itemize}
+%\item Create content and perform updates on Oxford Brookes ESN website
+%\end{itemize}
+\cventry{2013}{Undergraduate Research}{ S.O.F.I.A Android project}{\college}{}{}  % arguments 3 to 6 can be left empty
+\begin{itemize}
+\item Development of game logic: Development of leaderboard and achievement functionality
+\end{itemize}
+\cventry{2012--Present}{Channel Name: AppleJuiceTeaching}{ Youtube Channel}{Internet}{}{}  % arguments 3 to 6 can be left empty
+\begin{itemize}
+\item Developed tutorials and references about CS topics
+  such as Algorithms and Version Control
+\item Generated more than 400,000 views and 1,700 subscribers
+\end{itemize}
+
+\section{Skills \faBullseye}
+\cvlistdoubleitem{Ruby/Rails}{Linux }
+\cvlistdoubleitem{Java}{Git }
+\cvlistdoubleitem{C}{Javascript/Coffeescript}
+\cvlistdoubleitem{\LaTeX}{Swift (iOS Development)}
+
+\section{Familiar With \faPlus}
+\cvlistdoubleitem{Adobe Illustrator}{CSS/SASS}
+
+%\clearpage\end{CJK*}                              % if you are typesetting your resume in Chinese using CJK; the \clearpage is required for fancyhdr to work correctly with CJK, though it kills the page numbering by making \lastpage undefined
+\end{document}

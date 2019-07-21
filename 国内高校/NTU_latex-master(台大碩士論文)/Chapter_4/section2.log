@@ -1,0 +1,246 @@
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2017.4.21)  14 MAY 2017 17:58
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**section2.tex
+(./section2.tex
+LaTeX2e <2016/03/31>
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+! Undefined control sequence.
+l.1 \section
+            {染整製程參數優化方法}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \section{染
+                整製程參數優化方法}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 染 in font nullfont!
+Missing character: There is no 整 in font nullfont!
+Missing character: There is no 製 in font nullfont!
+Missing character: There is no 程 in font nullfont!
+Missing character: There is no 參 in font nullfont!
+Missing character: There is no 數 in font nullfont!
+Missing character: There is no 優 in font nullfont!
+Missing character: There is no 化 in font nullfont!
+Missing character: There is no 方 in font nullfont!
+Missing character: There is no 法 in font nullfont!
+Missing character: There is no 根 in font nullfont!
+Missing character: There is no 據 in font nullfont!
+Missing character: There is no 前 in font nullfont!
+Missing character: There is no 面 in font nullfont!
+! Undefined control sequence.
+<write> ...: Reference `c:ch3.1' on page \thepage 
+                                                  \space undefined\on@line .^^J
+l.3 根據前面 \ref{c:ch3.1}
+                               節，我們介紹了染整製程參數優化...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `c:ch3.1' on page  undefined on input line 3.
+
+Missing character: There is no 節 in font nullfont!
+Missing character: There is no ， in font nullfont!
+Missing character: There is no 我 in font nullfont!
+Missing character: There is no 們 in font nullfont!
+Missing character: There is no 介 in font nullfont!
+Missing character: There is no 紹 in font nullfont!
+Missing character: There is no 了 in font nullfont!
+Missing character: There is no 染 in font nullfont!
+Missing character: There is no 整 in font nullfont!
+Missing character: There is no 製 in font nullfont!
+Missing character: There is no 程 in font nullfont!
+Missing character: There is no 參 in font nullfont!
+Missing character: There is no 數 in font nullfont!
+Missing character: There is no 優 in font nullfont!
+Missing character: There is no 化 in font nullfont!
+Missing character: There is no 模 in font nullfont!
+Missing character: There is no 型 in font nullfont!
+Missing character: There is no 的 in font nullfont!
+Missing character: There is no 建 in font nullfont!
+Missing character: There is no 立 in font nullfont!
+Missing character: There is no ， in font nullfont!
+Missing character: There is no 分 in font nullfont!
+Missing character: There is no 別 in font nullfont!
+Missing character: There is no 為 in font nullfont!
+Missing character: There is no 運 in font nullfont!
+Missing character: There is no 作 in font nullfont!
+Missing character: There is no 成 in font nullfont!
+Missing character: There is no 本 in font nullfont!
+Missing character: There is no 模 in font nullfont!
+Missing character: There is no 型 in font nullfont!
+Missing character: There is no 、 in font nullfont!
+Missing character: There is no 穩 in font nullfont!
+Missing character: There is no 健 in font nullfont!
+Missing character: There is no 度 in font nullfont!
+Missing character: There is no 模 in font nullfont!
+Missing character: There is no 型 in font nullfont!
+Missing character: There is no 以 in font nullfont!
+Missing character: There is no 及 in font nullfont!
+Missing character: There is no 品 in font nullfont!
+Missing character: There is no 質 in font nullfont!
+Missing character: There is no 模 in font nullfont!
+Missing character: There is no 型 in font nullfont!
+Missing character: There is no （ in font nullfont!
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
+Missing character: There is no 模 in font nullfont!
+Missing character: There is no 型 in font nullfont!
+Missing character: There is no ） in font nullfont!
+Missing character: There is no ， in font nullfont!
+Missing character: There is no 在 in font nullfont!
+! Undefined control sequence.
+<write> ...: Reference `c:ch3.2' on page \thepage 
+                                                  \space undefined\on@line .^^J
+l.3 ...�（$\Delta E$模型），在 \ref{c:ch3.2}
+                                                   我們會根據這三個�...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `c:ch3.2' on page  undefined on input line 3.
+
+Missing character: There is no 我 in font nullfont!
+Missing character: There is no 們 in font nullfont!
+Missing character: There is no 會 in font nullfont!
+Missing character: There is no 根 in font nullfont!
+Missing character: There is no 據 in font nullfont!
+Missing character: There is no 這 in font nullfont!
+Missing character: There is no 三 in font nullfont!
+Missing character: There is no 個 in font nullfont!
+Missing character: There is no 模 in font nullfont!
+Missing character: There is no 型 in font nullfont!
+Missing character: There is no 分 in font nullfont!
+Missing character: There is no 別 in font nullfont!
+Missing character: There is no 進 in font nullfont!
+Missing character: There is no 行 in font nullfont!
+Missing character: There is no 最 in font nullfont!
+Missing character: There is no 佳 in font nullfont!
+Missing character: There is no 化 in font nullfont!
+Missing character: There is no 求 in font nullfont!
+Missing character: There is no 解 in font nullfont!
+Missing character: There is no 。 in font nullfont!
+Missing character: There is no 在 in font nullfont!
+Missing character: There is no 本 in font nullfont!
+Missing character: There is no 節 in font nullfont!
+Missing character: There is no 當 in font nullfont!
+Missing character: There is no 中 in font nullfont!
+Missing character: There is no 我 in font nullfont!
+Missing character: There is no 們 in font nullfont!
+Missing character: There is no 分 in font nullfont!
+Missing character: There is no 為 in font nullfont!
+Missing character: There is no 三 in font nullfont!
+Missing character: There is no 個 in font nullfont!
+Missing character: There is no 部 in font nullfont!
+Missing character: There is no 分 in font nullfont!
+Missing character: There is no 討 in font nullfont!
+Missing character: There is no 論 in font nullfont!
+Missing character: There is no ， in font nullfont!
+Missing character: There is no 首 in font nullfont!
+Missing character: There is no 先 in font nullfont!
+Missing character: There is no 會 in font nullfont!
+Missing character: There is no 先 in font nullfont!
+Missing character: There is no 對 in font nullfont!
+Missing character: There is no 模 in font nullfont!
+Missing character: There is no 型 in font nullfont!
+Missing character: There is no 環 in font nullfont!
+Missing character: There is no 境 in font nullfont!
+Missing character: There is no 進 in font nullfont!
+Missing character: There is no 行 in font nullfont!
+Missing character: There is no 描 in font nullfont!
+Missing character: There is no 述 in font nullfont!
+Missing character: There is no ， in font nullfont!
+Missing character: There is no 再 in font nullfont!
+Missing character: There is no 針 in font nullfont!
+Missing character: There is no 對 in font nullfont!
+Missing character: There is no 此 in font nullfont!
+Missing character: There is no 非 in font nullfont!
+Missing character: There is no 線 in font nullfont!
+Missing character: There is no 性 in font nullfont!
+Missing character: There is no 模 in font nullfont!
+Missing character: There is no 型 in font nullfont!
+Missing character: There is no 提 in font nullfont!
+Missing character: There is no 出 in font nullfont!
+Missing character: There is no 符 in font nullfont!
+Missing character: There is no 合 in font nullfont!
+Missing character: There is no 條 in font nullfont!
+Missing character: There is no 件 in font nullfont!
+Missing character: There is no 的 in font nullfont!
+Missing character: There is no 最 in font nullfont!
+Missing character: There is no 佳 in font nullfont!
+Missing character: There is no 化 in font nullfont!
+Missing character: There is no 方 in font nullfont!
+Missing character: There is no 法 in font nullfont!
+Missing character: There is no ， in font nullfont!
+Missing character: There is no 最 in font nullfont!
+Missing character: There is no 後 in font nullfont!
+Missing character: There is no 介 in font nullfont!
+Missing character: There is no 紹 in font nullfont!
+Missing character: There is no 三 in font nullfont!
+Missing character: There is no 個 in font nullfont!
+Missing character: There is no 優 in font nullfont!
+Missing character: There is no 化 in font nullfont!
+Missing character: There is no 模 in font nullfont!
+Missing character: There is no 型 in font nullfont!
+Missing character: There is no 進 in font nullfont!
+Missing character: There is no 行 in font nullfont!
+Missing character: There is no 求 in font nullfont!
+Missing character: There is no 解 in font nullfont!
+Missing character: There is no 。 in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--4
+[]
+ []
+
+
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 1--4
+[]
+ []
+
+
+Overfull \hbox (16.29167pt too wide) in paragraph at lines 1--4
+\OT1/cmr/m/n/10 ^^A\OML/cmm/m/it/10 E$
+ []
+
+
+Overfull \hbox (10.86105pt too wide) in paragraph at lines 1--4
+[]
+ []
+
+)
+! Emergency stop.
+<*> section2.tex
+                
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 11 strings out of 493591
+ 117 string characters out of 6143546
+ 53754 words of memory out of 5000000
+ 3519 multiletter control sequences out of 15000+600000
+ 3948 words of font info for 15 fonts, out of 8000000 for 9000
+ 1347 hyphenation exceptions out of 8191
+ 19i,2n,19p,210b,89s stack positions out of 5000i,500n,10000p,200000b,80000s
+No pages of output.

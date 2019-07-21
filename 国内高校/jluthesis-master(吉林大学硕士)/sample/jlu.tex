@@ -1,0 +1,120 @@
+% 吉林大学硕士论文LaTeX模板
+% by: Zhang Yinhe, for graduate thesis in 2009.05
+% 参考: 哈尔滨工业大学Pluto博硕士模板1.8rc1
+%
+
+
+%\def\degree{Master}
+%\def\subject{Engineering}
+%\def\usewhat{dvipdfmx}      % 你喜欢哪种编译方式，pdf[la]tex dvipdfm dvi
+
+% 导言区使用中文
+%\makeatletter
+%\@tempcnta=128
+%\loop \catcode\@tempcnta=13 \ifnum\@tempcnta<255 \advance \@tempcnta \@ne
+%\repeat
+%\makeatother
+
+\documentclass[openany,twoside]{book}
+
+%%% 宏包jluthesis，吉林大学硕士论文package
+% 选项：(其它不识别arguments转递至宏包geometry)
+% chinesepunct: 用非等宽(调整後的)的中文标点，默认不使用
+% debug: 电子稿选项，打开调试，开启颜色,开启链接框
+% electronic: 电子稿选项，关闭调试，开启颜色，关闭链接框
+% final: 打印稿选项，关闭调试，关闭颜色，关闭链接框，default
+% pdftex: 使用pdf[la]tex 编译
+% dvipdfm: 使用dvipdfm[x]编译，default
+% dvi： 使用Latex编译，利用yap查看，不输出pdf，使链接在dvi中有效
+%\usepackage[debug,dvi]{jluthesis}
+%\usepackage[debug]{jluthesis}
+\usepackage[electronic]{jluthesis}
+%\usepackage[\usewhat]{jluthesis}
+
+
+%%% 利用宏包geometry 设定纸张和页面layout (geometry)
+% 可参考宏包jlumasterthesis.sty
+%\geometry{key=value,}
+
+%%% 一些个人设定，显示在pdf文件的属性标签上(hyperref)
+% pdftitle: 文件题目
+% pdfsubject: 主题
+% pdfkeywords:　关键字
+% pdfauthor: 作者
+\hypersetup{
+  pdftitle    = {Study on numerical simulation of multiscale %
+                 phenomena in microfluidic and nanofluidic chips},
+  pdfsubject  = {a unified framework for multiscale simulation of micro-%
+                 and nano-fluidics},
+  pdfkeywords = {multiscale,microfluidics,nanofluidics,mems,electroosmosis},
+  pdfauthor   = {Zhang Yinhe}
+}
+
+% 注意：body/chap0, 其中的目录分隔符是 正斜线，不是反斜线
+%%% 论文包含的内容
+\includeonly{%
+                body/chap0,
+                body/Motive,
+                body/ResearchStatus,
+                body/ResearchContents,
+                body/ResearchSchedule,
+                appendix/app1
+}
+
+%%% 定义所有的eps文件在 figures 子目录下
+\graphicspath{{figures/}}
+
+\begin{document}
+
+%%% 前页(封皮，各种声明，目录等)
+\frontmatter
+\sloppy % 解决中英文混排的断行问题，会加入间距，但不会影响断行 ????
+
+\input{preface/cover}
+
+\pagenumbering{Roman} 
+%\pdfbookmark[0]{目~~~~录}{contents}
+\tableofcontents
+% 清除目录后面空页的页眉和页脚
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+%%% 正文
+\mainmatter
+\defaultfont                        % 正文使用默认字体，小四，宋体
+
+\include{body/chap0}
+\typeout{body/chap0 readed}
+
+\include{body/Motive}
+
+\include{body/ResearchStatus}
+
+\include{body/ResearchContents}
+
+\include{body/ResearchSchedule}
+
+\backmatter
+
+%%% 参考文献
+\defaultfont
+
+% bibtex database style conforming to rules of Jilin University
+% made from makebst By Zhang Yinhe, see makebst-jlu.log for details
+
+\bibliographystyle{jlu}
+%\fancyhead[CO]{\wuhao\songti\leftmark}% 使参考文献的页眉奇偶页都显示为``参考文献''
+%\fancyhead[CE]{\wuhao \songti \leftmark}
+%\newpage
+%\nocite{*}                            % 论文中没有引用但需列出的参考文献，列于此 *
+\bibliography{bibliography/plan}
+
+%%% 附录
+\appendix
+\defaultfont
+
+\end{document}
+%%% Local Variables:
+%%% coding: euc-china
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

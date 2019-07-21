@@ -1,0 +1,166 @@
+%
+% 使用 xelatex 编译
+%
+\documentclass[10pt,compress,t]{beamer}
+%%%%% ===== 设置主题 *****
+\usetheme{Berlin}
+\usefonttheme[onlymath]{serif}
+\setbeamertemplate{navigation symbols}{} % remove the navigation
+\setbeamersize{text margin left=0.8cm, text margin right=0.8cm}
+
+%%%%% ===== 宏包 *****
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx,xcolor}
+\usepackage{hyperref}
+\hypersetup{breaklinks=true}
+\usepackage{bm}
+
+\renewcommand{\baselinestretch}{1.1}
+
+%%%%% ===== 自定义命令 *****
+\newcommand{\myem}[1]{\textcolor{blue}{#1}}
+
+\begin{document}
+
+\title[\textcolor{blue}{abbreviation of the title}]%
+  {your report title \\ your report title your report title}
+% \subtitle{subtitle if necessary}
+
+\author[author]%
+  {author \rule[0pt]{0pt}{20pt}\\
+  \textcolor{blue}{\texttt{xxxx@xxxx.xxx}}}
+
+\institute[aaaa.aaaa]{\textcolor[rgb]{0.0,0.0,0.10}%
+  {\small\ttfamily Department of Mathematics\\[0pt]
+                   aaaa aaaa aaaa}}
+
+\date[22/10/2020]{\small October 22, 2020}
+
+% ===== title page ========================================================
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Outline}
+   \tableofcontents[hideallsubsections] %[pausesections]
+\end{frame}
+
+%===== Main part start here ==============================================
+\section[Problem]{The Problem}
+% insert the contents at the beginning of every section.
+\AtBeginSection[] % Do nothing for \section*
+{ \begin{frame}<beamer> %\frametitle{Outline}
+  \tableofcontents[currentsection,hideallsubsections]%,currentsubsection]
+  \end{frame}
+}
+
+\begin{frame}
+  \frametitle{The Problem}
+\begin{itemize}
+\item Consider
+     $$ a^2+b^2=c^2.$$
+\smallskip
+
+\item<2-> This kind of problem arises from
+    \begin{itemize}
+        \item  ddddd
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{\bf Definition and Theorem}
+\begin{definition}[Hello]
+  This is a definition, This is a definition,
+  This is a definition, This is a definition,
+  This is a definition, This is a definition,
+  This is a definition, This is a definition,
+\end{definition}
+\bigskip
+
+\begin{theorem}[World]
+  This is a theorem, This is a theorem,
+  This is a theorem, This is a theorem,
+  This is a theorem, This is a theorem,
+  This is a theorem, This is a theorem,
+\end{theorem}
+\end{frame}
+
+
+
+\section[Algorithms]{Algorithms}
+\begin{frame}%<+->
+  \frametitle{\bf Algorithms}
+
+\begin{itemize}
+\item Main idea
+    \begin{itemize}
+        \item ccc
+        \item dddd
+    \end{itemize}\smallskip
+
+\item<2-> The advantage
+    \begin{itemize}
+        \item  eeee
+        \item  ffff
+    \end{itemize}\smallskip
+
+\end{itemize}
+
+\end{frame}
+
+
+\section[Experiments]{Numerical Experiments}
+\begin{frame}
+  \frametitle{Numerical results}
+\begin{center}
+\begin{small}
+ Numerical results\bigskip
+
+\begin{tabular}{|*{6}{c|}}    \hline
+\multicolumn{2}{|c|}{$ N^2 $}
+        & $10^2$
+        & $50^2$ & $80^2$ & $100^2$  \\\hline
+        & $ \omega$
+        & 1.555
+        & 1.864  & 1.9112 & 1.929 \\\cline{2-6}
+\raisebox{1.5ex}[0pt]{A1} & IT
+        & \myem{35}
+        & \myem{168}    & \myem{271}    & \myem{338}  \\\hline
+        & $ \phi_{opt}$
+        & 14.0
+        & 60.0   & 93.6   & 115  \\\cline{2-6}
+\raisebox{1.5ex}[0pt]{A2} & IT
+        & \myem{27}
+        & \myem{115}    & \myem{179}    & \myem{219} \\\hline
+        & $ \phi_{opt}$
+        & 59.0
+        & 1293.2 & 4828.0 & 52578  \\\cline{2-6}
+\raisebox{1.5ex}[0pt]{A3} & IT
+        & \myem{74}
+        & \myem{$>$500} & \myem{$>$500} & \myem{$>$500} \\\hline
+\end{tabular}
+\end{small}
+\end{center}
+
+\end{frame}
+
+\section[Concluding]{Concluding and Remarks}
+\begin{frame}
+  \frametitle{Concluding and Remarks}
+
+  Here is for the concluding and remarks
+
+\end{frame}
+
+
+\begin{frame}[plain]
+\vspace{0.4\textheight}
+\begin{center}
+\Huge\color{blue}\bfseries Thank you!
+\end{center}
+\end{frame}
+
+\end{document}

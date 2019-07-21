@@ -1,0 +1,91 @@
+% Set page layout
+\geometry{
+    a4paper,
+    marginpar=0pt,
+    includeheadfoot,
+    vmargin={1in,1in},
+    hmargin={1.25in,1.25in},
+    headsep=4mm
+}
+
+% 1.5 linespread, using Microsoft Word's rule
+\linespread{1.5}
+
+% Enable subsubsection's numbering
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% Common header & footer
+\newcommand{\commonhead}
+{
+    \fancyhead{}
+    \fancyhead[EL]{\zihao{-5} 浙江大学本科生毕业论文（设计）}
+    \fancyhead[OR]{\zihao{-5} \Title}
+    \renewcommand{\headrulewidth}{0.6pt}
+}
+
+% Common page header & footer
+\fancypagestyle{common}
+{
+    \commonhead{}
+    \fancyfoot{}
+    \fancyfoot[OC,EC]{\zihao{-5} \thepage}
+}
+
+% Previous part header & footer
+\fancypagestyle{previous}
+{
+    \commonhead{}
+    \fancyfoot{}
+    \fancyfoot[OC,EC]{\zihao{-5}\Roman{page}}
+}
+
+% Explicitly remove plain page style
+\fancypagestyle{plain}
+{
+    \fancyhead{}
+    \fancyfoot{}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+% Set default page styles
+\pagestyle{common}
+\assignpagestyle{\chapter}{common}
+\tocloftpagestyle{previous}
+
+% TOC title format
+\renewcommand{\cfttoctitlefont}{\hfill\zihao{3}\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{0pt}
+
+% TOC entry format
+\cftpagenumbersoff{part}
+
+\renewcommand{\cftchapfont}         {\zihao{-4}}
+\renewcommand{\cftchapleader}       {\cftdotfill{\cftchapdotsep}}
+\renewcommand{\cftchappagefont}     {}
+\renewcommand{\cftsecfont}          {\zihao{-4}}
+\renewcommand{\cftsubsecfont}       {\zihao{-4}}
+\renewcommand{\cftsubsubsecfont}    {\zihao{-4}}
+
+\renewcommand{\cftchapdotsep}       {0.5}
+\renewcommand{\cftsecdotsep}        {0.5}
+\renewcommand{\cftsubsecdotsep}     {0.5}
+\renewcommand{\cftsubsubsecdotsep}  {0.5}
+
+\renewcommand{\cftchapnumwidth}       {1.5em}
+\renewcommand{\cftsecnumwidth}        {1.5em}
+\renewcommand{\cftsubsecnumwidth}     {1.5em}
+\renewcommand{\cftsubsubsecnumwidth}  {1.5em}
+
+\setlength{\cftchapindent}      {0em}
+\setlength{\cftsecindent}       {2em}
+\setlength{\cftsubsecindent}    {4em}
+\setlength{\cftsubsubsecindent} {6em}
+
+% Change biblography title style for `biblatex`
+\defbibheading{bibliography}[\bibname]{
+    \section{#1}
+    \markboth{#1}{#1}
+}

@@ -1,0 +1,266 @@
+\section{开发环境}
+
+\subsection{开发工具}
+
+使用Microsoft visual c++ 6.0，C语言编写。
+
+\subsection{MIRACL 大数库的使用}
+
+\subsubsection{MIRACL 简介}
+
+在信息安全技术领域中各种加密解密算法的软件实现上基本都会有一个共同的问题，就是怎么在PC机上实现大整数的运算。如今，人们日常生活中普遍使用的电脑，也就是我们通常所说的PC机大部分的机器内部字长还是32位的，最近才开始向64位的字长过渡，但是在各种加密解密的算法中为了达到算法所需要的安全强度，都是要求在128位、512位或者是1024位这样的字长下进行加减乘除求模求逆等各种大数运算。在个情况下，如何在PC机上快速高效的实现大数运算就成为了在计算机上实现加密解密算法最为基础和重要的问题。
+
+为了解决这个问题，世界各国的密码研究学者都进行了很多的开发和研究。越来越多的研究人员开始关注软件工程的作用，以减少重复劳动，提高代码重用和软件质量，许多的优秀的大数运算库应运而生。
+
+MIRACL(Multiprecision Integer and Rational Arithmetic C/c++ Library)是一套由Shamus Software Ltd.开发的一个大数运算函数库，用来设计与大数运算相关的密码学的应用，它的使用许可针对非商业目的应用或者教育科学研究事业是免费的。在应用上它是一个c语言的库，同时提供一些较为简单的c++包装类有了miracl这样的函数库，你可以直接调用函数，来实现你要的公钥密码学的某个功能 \cite{cyu282}。
+
+\subsubsection{实现Elgamal签名和代签名方案需要调用的一些函数原型}
+
+注：$\leftarrow$代表需要调用或获得的参数； $\rightarrow$代表得到的参数，或者返回的参数
+
+void irand (mr\_unsign32 seed)
+
+内部随机数初始化系统。
+
+参数：
+
+
+
+$\leftarrow$seed 用于启动随机数生成器的seed
+
+void bigbits (int n, big x)
+
+生成一个给定长度的随机数
+
+参数：
+
+$\leftarrow n$：随机大数的所需长度
+
+$\rightarrow x$：随机数
+
+
+
+BOOL nxprime (big w, big x)
+
+寻找下一个素数
+
+参数：
+
+$\leftarrow W$
+
+$\leftarrow X$：下一个比W更大的素数
+
+返回：
+
+成功返回TURE,否则返回FALSE
+
+
+
+void expb2 (int n, big x)
+
+x为一个大整数
+
+参数：
+
+$\leftarrow n$
+
+$\rightarrow x=2^n$
+
+
+
+void divide (big x, big y, big z)
+
+大整数运算，Z=X/Y,X=X(MOD Y)，当x=z时返回所得商，当y=z时返回余数\cite{Cyuyan}
+
+参数
+
+$\leftarrow \rightarrow x$
+
+$\leftarrow y$
+
+$\rightarrow z$
+
+前提条件：
+
+$x$和$y$必须是不同的，$y$必须非0。
+
+
+
+void subtract (big x, big y, big z)
+
+两个大数相减
+
+参数：
+
+$\leftarrow x$
+
+$\leftarrow y$
+
+$\rightarrow z =x-y$
+
+
+
+void bigrand (big w, big x)
+
+随机生成一个大数.使用内部随机数生成器 irand()
+
+参数：
+
+$\leftarrow w$
+
+$\rightarrow x$ 大数$x$的取值范围是$0<=x<w$
+
+
+
+void add (big x, big y, big z)
+
+两大数相加
+
+参数：
+
+$\leftarrow x$
+
+$\leftarrow y$
+
+$\rightarrow z =x+y$
+
+
+
+int subdiv (big x, int n, big z)
+
+一个大整数除以一个整数
+
+参数：
+
+$\leftarrow x$
+
+$\leftarrow n$
+
+$\rightarrow z =x/n$
+
+返回：
+
+整数余数
+
+前提条件：
+
+$n$不能为0
+
+
+
+void incr (big x, int n, big z)
+
+大数的递增
+
+参数：
+
+$\leftarrow x$
+
+$\leftarrow n$
+
+$\rightarrow z =x+n$
+
+
+
+void premult (big x, int n, big z)
+
+整数与大数相乘
+
+参数：
+
+$\leftarrow x$
+
+$\leftarrow n$
+
+$\rightarrow z =nx$
+
+
+
+void shs\_init* (sha*sh)
+
+调用之前必须初始化安全散列算法（SHA-1）的一个实例
+
+Parameters:
+
+$\rightarrow sh$ 指针指向头文件MIRACL.H中定义的一个实例
+
+
+
+void shs\_process* (sha*sh, int byte)
+
+处理一个字节. 通常通过多次调用提供数据输入到散列过程\cite{一些不需要安全通道代理签名的分析与改进}.
+
+后续调用的shs\_hash()可以检索到所有字节
+
+参数：
+
+$\leftarrow sh$ 指向当前实例
+
+$\leftarrow byte$ 被处理的字符
+
+
+
+int cotnum (flash x, FILE *file  p)
+
+把一个大数输出到屏幕或者存如到一个文件中
+
+参数：
+
+$\leftarrow x$ 被输出的大数
+
+$\rightarrow file$ $p$
+
+
+
+
+void decr (big x, int n, big z)
+
+大数的递减
+
+参数：
+
+$\leftarrow x$
+
+$\leftarrow n$
+
+$\rightarrow z =x-n$
+
+
+
+
+void mad (big x, big y, big z, big w, big q, big r)
+
+Multiplies, adds and divides big numbers. The initial product is stored in a double-length internal variable
+to avoid the possibility of overflow at this stage
+
+Parameters:
+
+$\leftarrow x$
+
+$\leftarrow y$
+
+$\leftarrow z$
+
+$\leftarrow w$
+
+$\rightarrow q =(xy+z)/w$
+
+$\rightarrow r$ The remainder
+
+
+
+
+void mirkill* (big x)
+
+安全的丢弃数据，并释放内存
+
+
+
+
+int egcd (big x, big y, big z)
+
+计算两个大数的最大公因子
+
+参数：
+
+$\leftarrow x$

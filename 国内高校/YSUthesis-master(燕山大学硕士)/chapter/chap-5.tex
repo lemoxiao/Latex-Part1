@@ -1,0 +1,56 @@
+% !Mode:: "TeX:UTF-8"
+\chapter{参考文献}
+\label{chap:bib}
+
+所有被引用的参考文献信息均存储在模板目录中的“bib”目录下，文件名为“tex.bib”。
+由于使用了BibTeX，参考文献的格式是不需要手动调整。模板中的ysubst.bst文件负责
+文献格式输出。这里推荐您使用软件JabRef 来对文献进行管理。JabRef 支持中文，它可
+以在这个网址下载到。\url{http://jabref.sourceforge.net/}
+
+首先需要了解一个概念叫“BibTeX key”，也称作“BibTeX键”。它可以简单的理解为一篇
+参考文献的“身份证号”。每一篇参考文献均有一个属于自己的不会重复的BibTeX key。
+在引用文献的时候，需要使用引用命令\verb|\supercite{}|。
+
+\section{单一参考文献}
+例如这里我引用一篇文献：
+\begin{verbatim}
+P.Russell 是光子晶体光纤之父\supercite{Knight1996}
+\end{verbatim}
+其中“Knight1996”是我要引用的文献的BibTeX 键。输出的结果为：\\[5pt]
+ P.Russell 是光子晶体光纤之父\supercite{Knight1996}\\[5pt]
+ 注意文献的编号是自动生成的，并且具有超链接功能。单击编号可以定位到文末的参考文献章节。
+
+\section{多个连续参考文献}
+ 如果要一次引用多个文献，只要在引用命令中用英文逗号隔开各个BibTeX键即可，例如：
+ \begin{verbatim}
+我要引用2 篇文献\supercite{Knight1996,Knight2000}
+\end{verbatim}
+输出结果为： \\[5pt]
+我要引用2 篇文献\supercite{Knight1996,Knight2000}
+
+
+如果是3 篇或者以上，加入更多BibTeX 键即可。例如：
+ \begin{verbatim}
+3 篇文献\supercite{Knight1996,Knight2000,Knight2002}
+\end{verbatim}
+输出结果为： \\[5pt]
+3 篇文献\supercite{Knight1996,Knight2000,Knight2002}
+
+更多文献的例子：
+ \begin{verbatim}
+很多很多文献\supercite{Kivshar2008,John1987,Jing2010,Jeon2005,%
+Jastrow2008,Jackson2008,Huttunen2005,Hou2008,Hilligsoe2004,%
+Hassani2008,Han2002}
+\end{verbatim}
+
+输出的结果为：很多很多文献\supercite{Kivshar2008,John1987,Jing2010,Jeon2005,%
+Jastrow2008,Jackson2008,Huttunen2005,Hou2008,Hilligsoe2004,%
+Hassani2008,Han2002}
+
+
+
+\section{多个不连续参考文献}
+ \begin{verbatim}
+四个不连续文献\supercite{Zhu2004,Zhu2001,Yin2011,Knight1996}
+\end{verbatim}
+四个不连续文献\supercite{Zhu2004,Zhu2001,Yin2011,Knight1996}

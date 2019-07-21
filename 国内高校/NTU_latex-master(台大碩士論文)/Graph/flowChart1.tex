@@ -1,0 +1,24 @@
+\tikzstyle{decision} = [diamond, draw, 
+    text width=5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, 
+    text width=7em, text centered, minimum height=2em]
+\tikzstyle{line} = [draw, -latex']
+    
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [block] (init) {研究主題設立};
+    \node [block, below of=init] (identify) {文獻探討};
+    \node [block, left of=identify,node distance=4cm] (update) {環境修正};
+    \node [decision, below of=identify] (decide) {問題確定};
+    \node [block, below of=decide,node distance=3cm] (modeling) {模型建立};
+    \node [block, below of=modeling] (numerical) {數值分析};
+    \node [block, below of=numerical] (con) {結論};
+    % Draw edges
+    \path [line] (init) -- (identify);
+    \path [line] (identify) -- (decide);
+    \path [line] (decide) -- node {Yes}(modeling);
+    \path [line] (decide) -| node {No}(update);
+    \path [line] (update) |- (identify);
+    \path [line] (modeling) -- (numerical);
+    \path [line] (numerical) -- (con);
+\end{tikzpicture}

@@ -1,0 +1,113 @@
+% THIS IS AN EXAMPLE DOCUMENT FOR VLDB 2010
+% based on ACM SIGPROC-SP.TEX VERSION 2.7
+% Modified by  Gerald Weber <gerald@cs.auckland.ac.nz>
+
+
+% This example *does* use the .bib file (from which the .bbl file
+% is produced). REMEMBER HOWEVER: After having produced the .bbl file,
+% and prior to final submission, you need to 'insert'  your .bbl file into
+% your source .tex file so as to provide ONE 'self-contained' source file.
+
+\documentclass[a4paper,12pt,oneside,titlepage]{book}
+\renewcommand{\baselinestretch}{1.5}
+
+%==============================================================
+\usepackage[BoldFont, SlantFont, CJKchecksingle]{xeCJK}
+\setCJKmainfont[Mapping=tex-text]{DFKai-SB}
+\setCJKsansfont[Mapping=tex-text]{DFKai-SB}
+\setCJKmonofont[Mapping=tex-text]{DFKai-SB Mono}
+
+\usepackage{wallpaper}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{pdfpages}
+
+% Configure your package here
+
+%==============================================================
+% page setup for NTHU thesis format
+\CenterWallPaper{.30}{images/nthu-logo.pdf}
+
+% set paper size
+\special{papersize=8.5in,11in}
+\topmargin=14.7mm		% bottom margin 14.7mm
+\oddsidemargin=30mm		% left & right margin 17.45mm
+
+% text sizes (Keep these values unchanged!)
+\textwidth=150mm \textheight=250mm
+\columnsep=5.0mm
+\parindent=3.5mm
+
+% misc parameters
+\headsep=0mm  \headheight=0mm \footskip=18mm
+
+% conversion to values for LaTeX
+\advance\topmargin-1in\advance\oddsidemargin-1in
+\evensidemargin\oddsidemargin
+%==============================================================
+
+\begin{document}
+
+\input{data/cover}
+
+\title{\bf \Huge Accelerate Reed-Solomon Codes on GPUs}
+\date{}
+\author{
+\begin{tabular}{c}
+\\
+\\
+{\LARGE \bf Student: <English Name>}\\
+{\LARGE \bf Advisor: Prof. <English Name>}\\
+\\
+\\
+\\
+\\
+{\LARGE \bf Department of Computer Science}\\
+{\LARGE \bf National Tsing Hua University}\\
+{\LARGE \bf Hsinchu, Taiwan, 30013, R.O.C.}\\
+\\
+{\large June 2014}
+\end{tabular}
+}
+
+% make the title area
+\maketitle
+
+%==============================================================
+\frontmatter
+\pagenumbering{gobble}
+\input{data/abstract-en}
+\input{data/abstract-tc}
+
+\tableofcontents
+\listoffigures
+
+\mainmatter
+\pagenumbering{arabic}
+\input{data/chap1}
+\input{data/chap2}
+\input{data/chap3}
+\input{data/chap4}
+\input{data/chap5}
+\input{data/chap6}
+
+%==============================================================
+\backmatter
+
+% The following two commands are all you need in the
+% initial runs of your .tex file to
+% produce the bibliography for the citations in your paper.
+{
+\bibliographystyle{abbrv}
+\bibliography{data/thesis}
+}
+% You must have a proper ".bib" file
+%  and remember to run:
+% latex bibtex latex latex
+% to resolve all references
+
+%==============================================================
+
+\input{data/acknowledgement}
+
+\end{document}

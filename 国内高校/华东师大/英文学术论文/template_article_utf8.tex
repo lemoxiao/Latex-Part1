@@ -1,0 +1,198 @@
+%
+% 建议用 pdflatex 编译
+%
+\documentclass{article}
+
+%%%%%===== 页面设置 =====================================================
+\usepackage[a4paper,top=2.54cm,bottom=2.54cm,left=3.17cm,right=3.17cm,%
+            includehead,includefoot]{geometry}
+
+%%%%%===== 常用宏包 =====================================================
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage[numbers,square,sort&compress]{natbib}
+\usepackage{hyperref}
+  \hypersetup{colorlinks,citecolor=blue,linkcolor=blue,breaklinks=true}
+\usepackage{epstopdf}
+\usepackage{yhmath} % \wideparen 弧 \adots
+
+%%%%%===== 行间距 ======================================================
+\renewcommand{\baselinestretch}{1.1}
+
+%%%%%===== 数学公式 =====================================================
+\allowdisplaybreaks
+
+%%%%%===== 定义定理 =====================================================
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+%%%%%===== 自定义命令 ====================================================
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\dis}{\displaystyle}
+\newcommand{\bbm}{\begin{bmatrix}}
+\newcommand{\ebm}{\end{bmatrix}}
+\newcommand{\lam}{\lambda}
+
+%
+\DeclareMathOperator{\diag}{diag}
+
+\begin{document}
+
+\title{\uppercase{Title of the paper Title of \\ the paper Title of the paper}}
+
+\author{
+  First Author
+    \thanks{Address of the first author ... ... }
+  \and
+  Second Author
+    \thanks{Address of the second author ... ...}
+}
+
+\date{}
+
+\maketitle
+
+\begin{abstract}
+The main aim of this paper is to develop a fast algorithm for solving
+problems arising from image restoration.
+Abstract abstract abstract abstract abstract abstract abstract abstract
+abstract abstract abstract abstract abstract abstract abstract abstract
+abstract abstract abstract abstract abstract abstract abstract abstract.
+\end{abstract}
+
+\section{Introduction}
+
+Linear systems with Toeplitz and Toeplitz-related coefficient
+matrices arise in many different applications.
+While many efficient algorithms have been developed for solving problems
+with Toeplitz structure, a few emerging applications lead to Toeplitz-related
+problems for which the available algorithms are not directly applicable.
+
+In this paper, we consider the preconditioned iterative method for
+weighted Toeplitz regularized least squares problems
+\begin{align}\label{wtls01}\
+  \min_{x\in\R^n} \| B x - b \|_2^2,
+\end{align}
+where the rectangular coefficient matrix $B$ and
+the right-hand side $b$ are of the form
+$$
+  B = \left[ \begin{array}{c} \Xi K \\ \sqrt{\mu} I \end{array} \right ]
+  \quad {\rm and} \quad
+  b = \left[ \begin{array}{c} \Xi f \\ 0  \end{array} \right ].
+$$
+Here $K\in\R^{m\times n}$ ($m\geq n$) is a full-rank Toeplitz matrix,
+$\Xi \in\R^{m\times m}$ is a symmetric positive definite matrix (as a weighting matrix),
+$I$ is the identity matrix,
+$f\in\R^m$ is a given right-hand side,
+and $\mu>0$ is a regularization parameter.
+
+
+\section{A New Preconditioner}
+
+We propose to study the following HSS preconditioner:
+\begin{align}\label{preconditioner}
+  M_\alpha = \frac12 \Sigma^{-1}(\Sigma + H)(\Sigma + S),
+\end{align}
+where
+$$
+\Sigma=\bbm \alpha I & 0\\ 0 & \mu I\ebm\quad\text{with}\quad \alpha>0.
+$$
+
+We note that $A$ has the following decomposition:
+\begin{align*}
+A = M_\alpha - N_\alpha,
+\end{align*}
+where
+$$
+N_\alpha = \frac12 \Sigma^{-1}(\Sigma - H)(\Sigma - S).
+$$
+It implies that $M_\alpha^{-1} A = I - M_\alpha^{-1} N_\alpha$,
+and therefore we have
+\begin{align*}
+  \lam(M_\alpha^{-1} A) = 1 - \lam(M_\alpha^{-1} N_\alpha).
+\end{align*}
+Here $\lam(\cdot)$ denotes the spectrum of a matrix.
+We further rewrite the matrix $M_\alpha^{-1} N_\alpha$
+as follows:
+\begin{align*}
+  M_\alpha^{-1} N_\alpha
+  & = \left[\frac12\Sigma^{-1}(\Sigma+H)(\Sigma+S)\right]^{-1}
+      \left[\frac12\Sigma^{-1}(\Sigma-H)(\Sigma-S)\right]\\
+  & = (\Sigma + S)^{-1}(\Sigma + H)^{-1}(\Sigma -H)(\Sigma -S)\\
+  & = \bbm\alpha I & K \\ -K^T & \mu I\ebm^{-1}
+      \bbm\alpha I + W & 0 \\ 0 & 2\mu I\ebm^{-1}
+      \bbm\alpha I - W & 0 \\ 0 & 0\ebm
+      \bbm\alpha I & -K \\ K^T & \mu I\ebm.
+\end{align*}
+By mean of the Schur complement, we have
+$$
+  \bbm\alpha I & K \\ -K^T & \mu I\ebm^{-1}
+  = \bbm\frac1\alpha I-\frac{1}{\alpha^2}K\Phi^{-1}K^T
+        & -\frac1\alpha K\Phi^{-1}\\
+          \frac1\alpha \Phi^{-1}K^T & \Phi^{-1}\ebm,
+$$
+where
+\begin{align*}
+  \Phi = \mu I +\frac1\alpha K^T K.
+\end{align*}
+
+
+\begin{theorem}\label{th:01}
+  Let $K\in\R^{m\times n}$ with $m\geq n$.
+  Then $M_\alpha^{-1} A$ has
+  \begin{itemize}
+    \item[(1)] an eigenvalue at $1$ with multiplicity $n$, and
+    \item[(2)] $m$ eigenvalues of the form $1-\lam_j$ $(j=1,2,\ldots,m)$ where
+  $\lam_j$ is the eigenvalue of the matrix
+  $$
+    G = FE \quad\text{with}\quad F=I-\frac2\alpha K\Phi^{-1}K^T.
+  $$
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+  It follows from \eqref{eq:MN} that we can rewrite
+  $M_\alpha^{-1} N_\alpha$ into
+  \begin{align*}
+  M_\alpha^{-1} N_\alpha
+  & = \bbm I & -\frac1\alpha K \\ 0 & I \ebm^{-1}
+      \bbm (I-\frac2\alpha K\Phi^{-1}K^T)E & 0 \\ \Phi^{-1}K^TE & 0 \ebm
+      \bbm I & -\frac1\alpha K \\ 0 & I \ebm.
+  \end{align*}
+  As the matrix $(I-\frac2\alpha K\Phi^{-1}K^T)E$ is of $m\times m$,
+  it follows that $M_\alpha^{-1} N_\alpha$ has $m$ eigenvalues which are
+  same as that of $(I-\frac2\alpha K\Phi^{-1}K^T)E$ and
+  an eigenvalues at $0$ with multiplicity $n$.
+  Since $M_\alpha^{-1} A = I - M_\alpha^{-1} N_\alpha$,
+  the result follows.
+\end{proof}
+
+
+\begin{thebibliography}{99}
+
+\bibitem{BN06}
+\newblock M. Benzi and M. K. Ng,
+\newblock Preconditioned iterative methods for weighted toeplitz
+    least squares problems,
+\newblock \emph{SIAM J. Matrix Anal. Appl.}, 27 (2006), 1106--1124.
+
+\bibitem{Ng04}
+\newblock M. K. Ng,
+\newblock \emph{Iterative Methods for Toeplitz Systems},
+\newblock Oxford University Press, New York, 2004.
+
+\bibitem{TA77}
+\newblock A. N. Tikhonov and V. Y. Arsenin,
+\newblock \emph{Solutions of Ill-Posed Problems},
+\newblock John Wiley and Sons, New York, 1977.
+
+\end{thebibliography}
+
+\end{document}

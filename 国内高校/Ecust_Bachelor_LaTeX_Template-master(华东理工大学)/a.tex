@@ -1,0 +1,336 @@
+% !TEX program = xelatex
+\documentclass{Ecust_Bachelor}
+% \graphicspath{{aimg/}}
+% \graphicspath{{oimg/}}
+% \graphicspath{{timg/}}
+\renewcommand{\thesistype}{}
+\renewcommand{\thesistitle}{ECUST模板和简易的\LaTeX 教程 }
+\hypersetup{
+  pdfinfo={
+    Author={Yunong Liu},
+    Title={\thesistitle{}\thesistype{}},
+    CreationDate={2017/5/2},
+    ModDate={D:\pdfdate},
+    Keywords={\LaTeX , ECUST},
+    Subject={ECUST模板和简易的\LaTeX 教程 }
+  }
+}
+\addbibresource{myref.bib}
+\begin{document}
+    \begin{abstractzh}{华东理工大学, 本科生毕业论文，\LaTeX 模板}
+        本文是一份参考华东理工大学商学院2017年本科生毕业论文格式要求而制作的\LaTeX 模板的论文示例,涉及了模板的用法及基础的\LaTeX 教程。
+    \end{abstractzh}
+    \begin{abstracten}{ECUST, Bachelor Thesis, \LaTeX}
+        This paper is a \LaTeX model which refer the ECUST business college 2017 bachelor thesis document.The whole article is about how to use the .cls file and the fundament of \LaTeX .
+    \end{abstracten}
+
+    \mktableofcontents
+
+    \section{\LaTeX 简介}
+    简单言之，\LaTeX 是一种基于\TeX 的文档排版系统。对于其初学者来讲，理解这个概念可能有点困难。但要使用它并不需要理解什么是\LaTeX 。下一个完整的\LaTeX 发行版，就可以愉快和\LaTeX 玩耍了。
+
+    \subsection{\LaTeX 发行版}
+    现代的\TeX 系统都是包含了引擎，编译脚本，格式转换工具，管理配置界面，成千上万宏包和文档的集合体，将这些统一打包，就是一个\TeX 发行版。
+
+    目前，流行的\TeX 发行版有\CTeX ，MiK\TeX ，\TeX Live 三个。本文推荐\TeX Live。对于\LaTeX 新用户来说，最快组装一个能用的\TeX 系统才是最关键的。而这只需要两步。
+    \begin{compactenum}
+        \item 下载\TeX Live
+        \item 下载任意\LaTeX 编辑器
+    \end{compactenum}
+    对\TeX 入门者，推荐使用TeXstudio编辑。其提供的文档一键编译，命令提示，pdf反编译等功能可以减少入门者学习\LaTeX  遇到的障碍。对于爱好传统编辑器，如Vim，Emacs等的用户，请自行寻找相关插件。
+
+    \subsection{\LaTeX 历史}
+    Knuth教授为了排版他的七卷本著作《计算机程序设计艺术》而编制了\TeX 系统的。Lamport博士基于Knuth教授开发的\TeX 系统开发了\LaTeX。作为一套开源的排版系统，\LaTeX 素来以其在数学公式上精美的排版而闻名。从\TeX 系统诞生起，其变化与电子排版体系一起发展。感兴趣的读者可自行寻找相关资料。
+
+    \subsection{\LaTeX 功能}
+    对于学术研究人员来讲，\LaTeX 系统，可以几乎满足你的任何要求，得益于强大的开源社区力量，你想做的任何事情，都有相关的包来解决。只要你有一个善于发现的眼睛，你可以使用\LaTeX 进行任何排版。
+    \clearpage
+
+    \section{华东理工大学\LaTeX 模板}
+    本文的整体版式基于华东理工大学商学院2017年本科生毕业论文格式要求。由于word与\LaTeX 的区别。不保证完全一致。开题报告，文献翻译，论文的模板，请分别参考o.tex，t.tex，a.tex三个文件自行修改。本文档简要介绍\LaTeX 的部分基础概念，并引出本模板的用法。若你从未听说过\LaTeX ，请先阅读刘海洋编著的《\LaTeX 入门》\cite{_latex_2013}
+    \subsection{\LaTeX 文档基础}
+    每一篇\LaTeX 文档，都有一个基本的框架，进行必要的基本设置，就可以填入内容了。一个标准中文环境设置大概如下：
+        \begin{lstlisting}
+\documentclass{ctexart}
+\title{}
+\author{}
+\date{}
+\begin{documnet}
+\maketitle
+内容
+\end{documnet}
+        \end{lstlisting}
+    在对应的大括号内填入内容，并编译后，就可以得到一份完整排版的文档了。现对其逐条进行说明：
+    \begin{compactitem}
+        \item 第一行是文档类，ctexart是中文文档类。
+        \item 第二行到第四行声明了整个文章的标题，作者和写作日期。这些内容并不会马上出现在编译的结果内，而是要通过第六行的\\maketitle来排版。
+        \item 第六行到第九行的doucument环境内是文档的主体，也是我们要填充的地方。
+    \end{compactitem}
+    \subsubsection{开题报告和文献翻译模板}
+    参考这个基础的\LaTeX 文档结构。我们的模板与之类似。开题报告和文献翻译的模板如下：
+    \begin{lstlisting}
+\documentclass{Ecust_Bachelor}
+\renewcommand{\thesistype}{（开题报告）}%可改为（文献翻译）
+\renewcommand{\thesistitle}{}
+\hypersetup{
+pdfinfo={
+    Author={},
+    Title={\thesistitle{}\thesistype},
+    CreationDate={},
+    ModDate={D:\pdfdate},
+    Keywords={},
+    Subject={}
+  }
+}
+\addbibresource{myref.bib}
+\begin{document}
+\label{title:t1}
+\pdfbookmark[0]{标题}{title:t1}
+\mktitle{\thesistitle}{班级（学号）姓名}
+\mkabstract{摘要}{关键字}
+
+\end{document}
+    \end{lstlisting}
+
+对其解释如下：
+\begin{compactitem}
+    \item 第一行指明了模板类型。用户无须修改。
+    \item 第二行和第三行分别指明了文档类型和开题报告（文献翻译）的标题，需要用户自行修改。
+    \item 第四行到第十三行内为生成文档的元数据。不会出现在正文中。
+    \item 第十四行引入了参考文献bib文件
+    \item 第十八行为作者的相关信息。
+    \item 第十九行内分别需要填入文档的摘要和关键字。
+\end{compactitem}
+具体使用方法，用户可参考o.tex文档。
+\subsubsection{正文模板}
+论文正文模板如下：
+\begin{lstlisting}
+\documentclass{Ecust_Bachelor}
+\renewcommand{\thesistype}{}
+\renewcommand{\thesistitle}{}
+\hypersetup{
+    pdfinfo={
+        Author={},
+        Title={\thesistitle{}\thesistype},
+        CreationDate={},
+        ModDate={D:\pdfdate},
+        Keywords={},
+        Subject={}
+      }
+    }
+\addbibresource{myref.bib}
+\begin{document}
+   \begin{abstractzh}{}
+
+   \end{abstractzh}
+   \begin{abstracten}{}
+
+   \end{abstracten}
+   \mktableofcontents
+\end{document}
+\end{lstlisting}
+模板的用法与开题报告（文献翻译）用法类似，唯一区别在于摘要的写法，请用户自行参考a.tex（同样为本文tex原文档）
+\clearpage
+\section{正文内容}
+\subsection{章节题目}
+文章的章节，子章节，孙章节由以下三个命令提供。
+\begin{lstlisting}
+    \section{章节题目}
+    \subsection{子章节题目}
+    \subsubsection{孙章节题目}
+    %\clearpage
+\end{lstlisting}
+在一个章节结束后输入$\backslash$clearpage可强制换页。
+\subsection{致谢}
+致谢请在以下环境中输入：
+\begin{lstlisting}
+    \begin{acknowledgement}
+        致谢内容
+    \end{acknowledgement}
+\end{lstlisting}
+\subsection{列表环境}
+\subsubsection{普通列表}
+\begin{lstlisting}
+    \begin{compactitem}
+        \item 普通列表
+        \item 普通列表
+    \end{compactitem}
+\end{lstlisting}
+效果如下：
+\begin{compactitem}
+    \item 普通列表
+    \item 普通列表
+\end{compactitem}
+\subsubsection{数字列表}
+\begin{lstlisting}
+    \begin{compactenum}
+        \item 数字列表
+        \item 数字列表
+    \end{compactenum}
+\end{lstlisting}
+效果如下：
+\begin{compactenum}
+    \item 数字列表
+    \item 数字列表
+\end{compactenum}
+\subsection{图片}
+    \begin{lstlisting}
+        \begin{figure}[!htb]
+            \centering
+            \includegraphics[width=14cm]{图片全名}%图片路径
+            \caption{图片标题}%标题
+            \label{图片标签}%引用所需
+        \end{figure}
+    \end{lstlisting}
+    效果如图\ref{f1}所示
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[width=8cm]{images.png}%图片路径
+        \caption{ECUST}%标题
+        \label{f1}%引用所需
+    \end{figure}
+    \subsection{表格}
+    \subsubsection{普通表格}
+    \begin{lstlisting}
+        \begin{table}
+            \centering
+            \caption{}
+            \label{}
+            \begin{tabular}{|c|c|c|}
+                \hline
+                1 & 2 & 3 \\
+                \hline
+                4 & 5 & 6 \\
+                \hline
+                7 & 8 & 9 \\
+                \hline
+            \end{tabular}
+        \end{table}
+    \end{lstlisting}
+    效果如表\ref{t1}
+    \begin{table}
+        \centering
+        \caption{普通表格}
+        \label{t1}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            1 & 2 & 3 \\
+            \hline
+            4 & 5 & 6 \\
+            \hline
+            7 & 8 & 9 \\
+            \hline
+        \end{tabular}
+    \end{table}
+    \subsubsection{三线表}
+    \begin{lstlisting}
+        \begin{table}
+            \centering
+            \caption{}
+            \label{}
+            \begin{tabular}{ccc}
+                \toprule
+                1 & 2 & 3 \\
+                \midrule
+                4 & 5 & 6 \\
+                7 & 8 & 9 \\
+                \bottomrule
+            \end{tabular}
+        \end{table}
+    \end{lstlisting}
+    效果如表\ref{t2}
+    \begin{table}
+        \centering
+        \caption{三线表}
+        \label{t2}
+        \begin{tabular}{ccc}
+            \toprule
+            1 & 2 & 3 \\
+            \midrule
+            4 & 5 & 6 \\
+            7 & 8 & 9 \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+    \subsection{公式}
+    \begin{lstlisting}
+        \begin{equation}
+            1+2=3
+        \end{equation}
+        \begin{equation}
+            a+b=c
+        \end{equation}
+        \begin{equation}
+            \frac{1}{2}+\frac{1}{2}=1
+        \end{equation}
+    \end{lstlisting}
+结果如下：
+    \begin{equation}
+        1+2=3
+    \end{equation}
+    \begin{equation}
+        a+b=c
+    \end{equation}
+    \begin{equation}
+        \frac{1}{2}+\frac{1}{2}=1
+    \end{equation}
+关于\LaTeX 的数学输入，用户请自行查找amsmath宏包，参考其说明文档。
+\subsection{文档内引用}
+\LaTeX 内部有计数器控制标题，图片，表格的序号。用户若想引用文档的某个章节，表格，图片。只需在被引用位置输入命令$\backslash$label\{任意标签\}，在引用位置位置输入$\backslash$ref\{被引位置标签\}。一个简单的例子如下:
+\begin{lstlisting}
+    .......
+    \begin{document}
+        \section{被引用章节}
+        \label{l1}
+        第\ref{l1}章啦啦啦啦啦啦。
+    .......
+    \end{document}
+\end{lstlisting}
+\subsection{参考文献}
+本模板使用bibLaTeX来管理参考文献，用户只需将其涉及到的参考文献统一输入一个bib文件中。将其在文档头部引入，并在文档末尾输入如下命令即可：
+\begin{lstlisting}
+    %\nocite{*}
+     \printbibliography[heading=bibliography,title=参考文献}
+\end{lstlisting}
+对参考文献的引用类似于文档内的引用，命令是$\backslash$cite\{bibtex引用关键词\}。
+
+注意：参考文献中只会打印出正文中有引用的文献，若想将所有bib文献中的参考文献打印，需在打印文献命令前输入$\backslash$nocite\{*\}。
+
+关于bib文件的制作，有以下几个方式：
+\begin{compactitem}
+    \item Google学术
+    \item Zotero的浏览器插件
+    \item 一些学术旗杆官网直接获取
+\end{compactitem}
+一个bib条目的示例如下：
+\begin{lstlisting}
+@Book{张三123−−,  %biblatex引用关键词
+    Title = {论如何与傻逼相处},
+    Author = {张三},
+    Publisher = {SB出版社},
+    Year = {2017},
+    Location = {上海},
+    }
+\end{lstlisting}
+\subsection{特殊需求}
+\LaTeX 系统几乎可以实现用户排版的任何想法。由于篇幅所限，本文不是\LaTeX 的教科书，如果用户有额外的需求，可以从以下渠道获取：
+\begin{compactitem}
+    \item 命令行下texdoc加关键词获取说明文档
+    \item TUG（\TeX 用户组织）获取\LaTeX 的教程
+    \item Google，Baidu搜索引擎
+    \item \CTeX 中文论坛
+\end{compactitem}
+\clearpage
+\section{文档编译}
+由于字符系统的限制，对于中文环境的编译来说，xelatex引擎是最佳选择。同时，bib文件编译的后端请使用biber。若你是\TeX studio等专业\LaTeX 编辑器的用户，在设置好引擎后可一键编译。对于使用命令行的用户，需要编译四次，编译顺序及代码如下：
+（以论文正文为例）
+\begin{lstlisting}
+    xelatex a
+    biber a
+    xelatex a
+    xelatex a
+\end{lstlisting}
+第一次编译输出论文主体，第二次编译输入参考文献，第三次和第四次输入交叉引用的部分。具体工作原理，请自行查询相关资料。
+\clearpage
+\printbibliography[heading=bibliography,title=参考文献]
+\end{document}

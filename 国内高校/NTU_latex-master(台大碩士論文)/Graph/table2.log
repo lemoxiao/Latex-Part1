@@ -1,0 +1,108 @@
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2017.4.21)  17 MAY 2017 16:19
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**table2.tex
+(./table2.tex
+LaTeX2e <2016/03/31>
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2 \begin{tabular}
+                   {|c|c|c|c|c|c|}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 2.
+Missing character: There is no 參 in font nullfont!
+Missing character: There is no 數 in font nullfont!
+Missing character: There is no 範 in font nullfont!
+Missing character: There is no 圍 in font nullfont!
+Missing character: There is no 第 in font nullfont!
+Missing character: There is no 一 in font nullfont!
+Missing character: There is no 段 in font nullfont!
+Missing character: There is no 目 in font nullfont!
+Missing character: There is no 標 in font nullfont!
+Missing character: There is no 溫 in font nullfont!
+Missing character: There is no 度 in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no 第 in font nullfont!
+Missing character: There is no 二 in font nullfont!
+Missing character: There is no 段 in font nullfont!
+Missing character: There is no 升 in font nullfont!
+Missing character: There is no 溫 in font nullfont!
+Missing character: There is no 速 in font nullfont!
+Missing character: There is no 率 in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no 第 in font nullfont!
+Missing character: There is no 三 in font nullfont!
+Missing character: There is no 段 in font nullfont!
+Missing character: There is no 目 in font nullfont!
+Missing character: There is no 標 in font nullfont!
+Missing character: There is no 溫 in font nullfont!
+Missing character: There is no 度 in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no 持 in font nullfont!
+Missing character: There is no 溫 in font nullfont!
+Missing character: There is no 時 in font nullfont!
+Missing character: There is no 間 in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no 浴 in font nullfont!
+Missing character: There is no 比 in font nullfont!
+Missing character: There is no 值 in font nullfont!
+Missing character: There is no 下 in font nullfont!
+Missing character: There is no 界 in font nullfont!
+Missing character: There is no 值 in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 7 in font nullfont!
+Missing character: There is no 6 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 4 in font nullfont!
+Missing character: There is no 上 in font nullfont!
+Missing character: There is no 界 in font nullfont!
+Missing character: There is no 值 in font nullfont!
+Missing character: There is no 6 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 8 in font nullfont!
+Missing character: There is no 8 in font nullfont!
+Missing character: There is no 6 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 6 in font nullfont!
+)
+! Emergency stop.
+<*> table2.tex
+              
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 7 strings out of 493591
+ 75 string characters out of 6143546
+ 54754 words of memory out of 5000000
+ 3516 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 1347 hyphenation exceptions out of 8191
+ 19i,13n,13p,91b,149s stack positions out of 5000i,500n,10000p,200000b,80000s
+No pages of output.

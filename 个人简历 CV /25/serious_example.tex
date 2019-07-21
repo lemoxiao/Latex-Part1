@@ -1,0 +1,362 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Developer CV - Doji edit
+% LaTeX Class
+% Version 1.0 (23/04/19)
+%
+% Authors:
+% Stijn Dejongh (stijn.c.dejongh@gmail.com)
+% Based on a template by Jan Vorisek (jan@vorisek.me)
+% Based on a template by Jan Küster (info@jankuester.com)
+% Modified for LaTeX Templates by Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% The MIT License (see included LICENSE file)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[9pt, blue, square]{developercv} % Default font size, values from 8-12pt are recommended
+\PassOptionsToPackage{dvipsnames}{xcolor}
+%----------------------------------------------------------------------------------------
+\begin{document}
+	
+	%----------------------------------------------------------------------------------------
+	%	TITLE AND CONTACT INFORMATION
+	%----------------------------------------------------------------------------------------
+	
+	\begin{minipage}[t]{0.45\textwidth} % 45% of the page width for name
+		\vspace{-\baselineskip} % Required for vertically aligning minipages
+		
+		% If your name is very short, use just one of the lines below
+		% If your name is very long, reduce the font size or make the minipage wider and reduce the others proportionately
+		\colorbox{darkCalmBlue}{{\HUGE\textcolor{white}{\textbf{\MakeUppercase{Stijn}}}}} % First name
+		
+		\colorbox{darkCalmBlue}{{\HUGE\textcolor{white}{\textbf{\MakeUppercase{Dejongh}}}}} % Last name
+		
+		\vspace{6pt}
+		
+		{\huge Technical Application Engineer} % Career or current job title
+	\end{minipage}
+	\begin{minipage}[t]{0.275\textwidth} % 27.5% of the page width for the first row of icons
+		\vspace{-\baselineskip} % Required for vertically aligning minipages
+		\color{darkCalmBlue}
+		% The first parameter is the FontAwesome icon name, the second is the box size and the third is the text
+		% Other icons can be found by referring to fontawesome.pdf (supplied with the template) and using the word after \fa in the command for the icon you want
+		\location{Leuven, Belgium}\\
+		\phone{Redacted}\\
+		\email{\href{}{Redacted}}\\	
+	\end{minipage}
+	\begin{minipage}[t]{0.275\textwidth} % 27.5% of the page width for the second row of icons
+		\vspace{-\baselineskip} % Required for vertically aligning minipages
+		\color{darkCalmBlue}
+		% The first parameter is the FontAwesome icon name, the second is the box size and the third is the text
+		% Other icons can be found by referring to fontawesome.pdf (supplied with the template) and using the word after \fa in the command for the icon you want
+		\github{\href{https://github.com/justDoji}{github.com/justDoji}}\\
+		\linkedin{\href{https://linkedin.com/in/stijn-dejongh}{in/stijn-dejongh}}
+		
+	\end{minipage}
+	
+	\vspace{0.5cm}
+	
+	%----------------------------------------------------------------------------------------
+	%	INTRODUCTION, SKILLS AND TECHNOLOGIES
+	%----------------------------------------------------------------------------------------
+	
+	
+	
+	\begin{minipage}[t]{0.25\textwidth} % 50% of the page for the skills bar chart
+		\vspace{-\baselineskip} % Required for vertically aligning minipages
+		\vspace{0.38cm}
+		
+		\colorbox{darkCalmBlue}{\includegraphics[width=\linewidth]{img/stijn}}
+		
+	\end{minipage}
+	\hfill % Whitespace between
+	\begin{minipage}[t]{0.70\textwidth} % 40% of the page width for the introduction text
+		\vspace{-\baselineskip} % Required for vertically aligning minipages
+ 		\cvsect{Who Am I?}
+		
+		I am a software development professional who loves learning and exploring new skills, technologies, and approaches. I enjoy a challenge and thrive when I can help others achieve their goals. I am eager to learn, and highly motivated to reach goals. I tend to look for  both technical as proces related improvements in my working environment, pragmatically ballancing the desire to deliver elegant and robust solutions with practical constraints.
+		
+		\cvsect{Education}
+		
+		\textbf{M. Sc. Toegepaste Infomatica} - \textcolor{accentbackground}{Vrije Universiteit Brussel} \\
+		\textbf{Ba. Sc. Infomatica} - \textcolor{accentbackground}{KU Leuven}
+		
+	\end{minipage}
+	
+	%\begin{minipage}[t]{0.5\textwidth} % 50% of the page for the skills bar chart
+	%	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	%	\begin{barchart}{5.5}
+	%		\baritem{JavaScript}{60}
+	%		\baritem{PHP}{100}
+	%		\baritem{SASS/LESS}{70}
+	%		\baritem{Bootstrap}{70}
+	%		\baritem{Git}{40}
+	%		\baritem{LaTeX}{60}
+	%	\end{barchart}
+	%\end{minipage}
+	
+	\vspace{0.65cm}
+	
+	\divider
+	
+	
+	%----------------------------------------------------------------------------------------
+	%	EXPERIENCE
+	%----------------------------------------------------------------------------------------
+	
+	\cvsect{Experience}
+	
+	\begin{entrylist}
+		\entry
+		{03/2019 -- Present}
+		{Ventouris}
+		{Cegeka Belgium}
+		{\vspace{0.2cm}
+			\begin{minipage}[t]{0.40\textwidth} % 27.5% of the page width for the first row of icons
+				\vspace{-\baselineskip}
+				\itemmarker Working in a mature agile environment\\
+				\vspace{-3mm}\\
+				\itemmarker Technical impact analysis and cost estimation\\
+				\vspace{-3mm}\\			
+				\itemmarker Maintanance and refactoring of a legacy application\\
+			\end{minipage}
+			\hfill
+			\begin{minipage}[t]{0.40\textwidth} % 27.5% of the page width for the first row of icons
+				\vspace{-\baselineskip}
+				\itemmarker Task automation\\
+				\vspace{-3mm}\\
+				\itemmarker Maintaining a CI pipeline\\
+			\end{minipage}
+			\vspace{-5mm}
+			\textcolor{text!65}{\texttt{Java8}\slashsep\texttt{SOAP}\slashsep\texttt{Hibernate}\slashsep\texttt{WildFly}\slashsep\texttt{Oracle SQL}\slashsep\texttt{Jenkins}\slashsep\texttt{Puppet}}}
+		{Technical Application Engineer}
+		\entry
+		{10/2015 -- 02/2019}
+		{Magda Platform - Vlaamse Overheid, Informatie Vlaanderen}
+		{ES Field Delivery Belgium BVBA}
+		{
+			\vspace{0.2cm}
+			\begin{minipage}[t]{0.40\textwidth} % 27.5% of the page width for the first row of icons
+				\vspace{-\baselineskip}
+				\itemmarker Assisting developers in day-to-day activities (coding, debugging, communication)\\
+				\vspace{-3mm}\\
+				\itemmarker Advising on technical solutions fitting the current architecture and codebase based on business cases provided by product owners\\
+				\vspace{-3mm}\\
+				\itemmarker Maintaining and improving the platform and the application structure\\
+			\end{minipage}
+			\hfill
+			\begin{minipage}[t]{0.40\textwidth} % 27.5% of the page width for the first row of icons
+				\vspace{-\baselineskip}
+				\itemmarker Advising on optimizing the workflow of release and operations team\\
+				\vspace{-3mm}\\
+				\itemmarker Reporting status to the client and project management on a regular basis\\
+				\vspace{-3mm}\\
+				\itemmarker Creation of proof-of-concept applications\\
+				\vspace{-3mm}\\
+				\itemmarker Solving of business-critical technical issues
+			\end{minipage}
+			\vspace{-5mm}
+			\textcolor{text!65}{\texttt{Java7}\slashsep\texttt{SOAP}\slashsep\texttt{Spring}\slashsep\texttt{Hibernate}\slashsep\texttt{OSB}\slashsep\texttt{WebLogic}\slashsep\texttt{Tomcat}\slashsep\texttt{Oracle SQL}}}
+		{Technical Lead \textcolor{text!65}{|} Java Developer}
+		\entry
+		{01/2014 -- 06/2015\\\small{Discontinous}}
+		{Internship - Various Projects}
+		{Belgian Federal Police}
+		{
+			\vspace{0.2cm}
+			\begin{minipage}[t]{0.40\textwidth} % 27.5% of the page width for the first row of icons
+				\vspace{-\baselineskip}
+				\itemmarker Creating an algorithm to group burglary data by temporal and spatial properties\\
+				\vspace{-3mm}\\
+				\itemmarker Developing a Quantum GIS plugin in Python2\\
+			\end{minipage}
+			\hfill
+			\begin{minipage}[t]{0.40\textwidth} % 27.5% of the page width for the first row of icons
+				\vspace{-\baselineskip}
+				\itemmarker Daily feedback meetings with the end-users\\
+				\vspace{-3mm}\\
+				\itemmarker Solving of business-critical technical issues
+			\end{minipage}
+			\vspace{-5mm}
+			\textcolor{text!65}{\texttt{Python}\slashsep\texttt{Quantum GIS}}
+		}
+		{Developer \textcolor{text!65}{|} Analyst}
+	\end{entrylist}
+	
+	
+	%----------------------------------------------------------------------------------------
+	%	ADDITIONAL INFORMATION
+	%----------------------------------------------------------------------------------------
+	
+	\begin{minipage}[t]{0.3\textwidth}
+		\vspace{-\baselineskip} % Required for vertically aligning minipages
+		
+		\cvsect{Languages}
+		
+		\textbf{Dutch} - native\\	
+		\textbf{English} - proficient\\
+		\textbf{French} - adequate
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.3\textwidth}
+		\vspace{-\baselineskip} % Required for vertically aligning minipages
+		
+		\cvsect{Hobbies}
+		
+		I love being creative, practising new skills, and teaching others.
+		This is why I enjoy making digital designs, playing games, and expanding my knowledge on technical subjects. 
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.3\textwidth}
+		\vspace{-\baselineskip} % Required for vertically aligning minipages
+		
+		\cvsect{Proud of}
+		\textcolor{accentbackground}{\faTrophy} \textbf{European Sharing and Reuse Award} - $2^{nd}$ place with Magda
+		
+		\vspace{0.2cm}
+		\textcolor{accentbackground}{\faHeartbeat} \textbf{Personal effort in Task Automatization}
+	\end{minipage}
+	
+	%----------------------------------------------------------------------------------------
+	
+	\clearpage
+	%----------------------------------------------------------------------------------------
+	%	SKILL SECTIONS
+	%----------------------------------------------------------------------------------------
+	
+	\cvsect{Skills}
+	
+	\vspace{0.8cm}
+	
+	\begin{minipage}[t]{0.45\textwidth}
+		\vspace{-\baselineskip} % Required for vertically aligning minipages
+		\skillsect{Programming/scripting languages}
+		\\
+		\begin{minipage}[t]{\textwidth}
+			\hspace{7mm} \cvskill{Java}{5}
+			\hspace{7mm} \cvskill{Python}{4}
+			\hspace{7mm} \cvskill{xQuery}{3}
+			\hspace{7mm} \cvskill{JavaScript}{3}
+			\hspace{7mm} \cvskill{Prolog}{3}
+			\hspace{7mm} \cvskill{Haskell}{3}
+			\hspace{7mm} \cvskill{PHP}{4}
+			\vspace{2.5mm}
+		\end{minipage}
+		\vspace{8mm}
+		
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.45\textwidth}
+		\vspace{-\baselineskip} % Required for vertically aligning minipages
+		\skillsect{Frameworks and libraries}
+		\\
+		\begin{minipage}[t]{\textwidth}
+			\hspace{7mm} \cvskill{Spring}{5}
+			\hspace{7mm} \cvskill{Spring Boot}{4}
+			\hspace{7mm} \cvskill{Hibernate}{5}
+			\hspace{7mm} \cvskill{JDBC}{4}
+			\hspace{7mm} \cvskill{Wicket}{3}
+			\hspace{7mm} \cvskill{Angular}{2}
+			\hspace{7mm} \cvskill{Java FX}{3}
+			\vspace{2.5mm}
+		\end{minipage}
+		\vspace{8mm}
+		
+	\end{minipage}
+	
+	\vspace{0.5cm}
+	
+	\begin{minipage}[t]{0.45\textwidth}
+		\vspace{-\baselineskip} % Required for vertically aligning minipages
+		\skillsect{Development tools}
+		\\
+		\begin{minipage}[t]{\textwidth}
+			\hspace{7mm} \cvskill{Maven}{5}
+			\hspace{7mm} \cvskill{Gradle}{2}
+			\hspace{7mm} \cvskill{Ant}{4}
+			\hspace{7mm} \cvskill{Git}{4}
+			\hspace{7mm} \cvskill{Jenkins}{4}
+			\hspace{7mm} \cvskill{Sonar}{3}
+			\hspace{7mm} \cvskill{IntelliJ}{4}
+			\hspace{7mm} \cvskill{Eclipse}{3}
+			\hspace{7mm} \cvskill{Puppet}{3}
+			\vspace{2.5mm}
+		\end{minipage}
+		\vspace{8mm}
+		
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.45\textwidth}
+		\vspace{-\baselineskip} % Required for vertically aligning minipages
+		\skillsect{Platforms and server technology}
+		\\
+		\begin{minipage}[t]{\textwidth}
+			\hspace{7mm} \cvskill{Oracle Weblogic}{4}
+			\hspace{7mm} \cvskill{Oracle Service Bus}{3}
+			\hspace{7mm} \cvskill{Tomcat}{3}
+			\hspace{7mm} \cvskill{Docker}{3}
+			\hspace{7mm} \cvskill{LAMP stack}{4}
+			\hspace{7mm} \cvskill{JBoss Server / Wildfly}{3}
+			\vspace{2.5mm}
+		\end{minipage}
+		\vspace{8mm}
+		
+	\end{minipage}
+	
+	\vspace{0.5cm}
+	
+	\begin{minipage}[t]{0.45\textwidth}
+		\vspace{-\baselineskip} % Required for vertically aligning minipages
+		
+		\skillsect{Methodologies}
+		\\
+		\begin{minipage}[t]{\textwidth}
+			\hspace{7mm} \cvskill{Design patterns}{4}
+			\hspace{7mm} \cvskill{Test-driven development}{4}
+			\hspace{7mm} \cvskill{Behaviour Driven development}{3}
+			\hspace{7mm} \cvskill{Domain Driven Design}{3}
+			\hspace{7mm} \cvskill{Application Testing Approaches}{3}
+			\hspace{7mm} \cvskill{Agile}{3}
+			\hspace{7mm} \cvskill{Prototyping}{3}
+			\hspace{7mm} \cvskill{Scrum}{4}
+			\hspace{7mm} \cvskill{LaTeX}{4}
+			\vspace{2.5mm}
+		\end{minipage}
+		\vspace{8mm}
+		
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.45\textwidth}
+		\vspace{-\baselineskip} % Required for vertically aligning minipages
+		\skillsect{Markup languages}
+		\\
+		\begin{minipage}[t]{\textwidth}
+			\hspace{7mm} \cvskill{XML}{4}
+			\hspace{7mm} \cvskill{HTML}{4}
+			\hspace{7mm} \cvskill{CSS}{3}
+			\hspace{7mm} \cvskill{asciidoc / markdown}{3}
+			\hspace{7mm} \cvskill{LaTeX}{3}
+			\vspace{2.5mm}
+		\end{minipage}
+		\vspace{2mm}
+		
+		
+		\skillsect{Miscellaneous}
+		\\
+		\begin{minipage}[t]{\textwidth}
+			\hspace{7mm} \cvskill{Adobe Photoshop Suite}{4}
+			\vspace{2.5mm}
+		\end{minipage}
+		\vspace{8mm}
+		
+		
+	\end{minipage}
+	
+	\vspace{0.3cm}
+
+	\divider
+\end{document}

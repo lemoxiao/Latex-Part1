@@ -1,0 +1,41 @@
+%!TEX root = ../thesis.tex
+\section{染整製程數值求解}
+\label{c:6.2}
+在前面數值模型建立中，我們帶入了數值化參數後，得到 \ref{model:cost}式$\sim$ \ref{model:deltaE}式，再者我們經由序列二次規劃法求解，在本研究我們使用python套件中的pyOpt套件SLSQP方法，針對本研究三個主要的模型進行最佳化搜尋。
+
+在\cite{Perez.etc}表示pyOpt是一個專門去解決有限制式的非線性規劃問題，而其中slsqp就是一個有效解決序列二次規劃方法的演算法之一，經過演算後，則表\ref{tab:table6}到表\ref{tab:table4}為經過序列二次規劃法的搜尋後，分別將運作成本模型、穩定度模型以及品質成本模型的搜尋結果分別列出
+
+\begin{table}[!htbp]
+	\caption{SQP方法搜尋運作成本模型最佳化結果表}
+	\center
+	\input{Graph/table6}
+	\label{tab:table6}
+\end{table}
+
+從表\ref{tab:table6}中，由於在實際紡織產業中溫度的調節、浴比值以及時間的調節，無法控制到整數以下的部分，而調節速率最多也只能調解至小數點下一位，因此我們從此組合當中調整為$[x_A,x_B,x_C,x_D,x_E]=[52,1.2,76,15,14]$而分別得到的結果為，運作成本為5044台幣、穩健度為0.558而$\Delta E$為0.775。
+
+\begin{table}[!htbp]
+	\caption{SQP方法搜尋穩健度模型最佳化結果表}
+	\center
+	\input{Graph/table5}
+	\label{tab:table5}
+\end{table}
+
+從表\ref{tab:table5}中，同樣由於在實際紡織產業中溫度的調節、浴比值以及時間的調節，無法控制到整數以下的部分，而調節速率最多也只能調解至小數點下一位，因此我們從此組合當中調整為$[x_A,x_B,x_C,x_D,x_E]=[59,1.2,86,18,20]$而分別得到的結果為，運作成本為6561台幣、穩健度為0.061而$\Delta E$為0.225。
+
+\begin{table}[!htbp]
+	\caption{SQP方法搜尋品質模型最佳化結果表}
+	\center
+	\input{Graph/table4}
+	\label{tab:table4}
+\end{table}
+
+從表\ref{tab:table4}中，同樣由於在實際紡織產業中溫度的調節、浴比值以及時間的調節，無法控制到整數以下的部分，而調節速率最多也只能調解至小數點下一位，因此我們從此組合當中調整為$[x_A,x_B,x_C,x_D,x_E]=[61,1.2,78,19,25]$而分別得到的結果為，運作成本為7545台幣、穩健度為0.255而$\Delta E$為0.042。
+
+我們將以上的搜尋結果整理後如表\ref{tab:table3}，將上述的最佳化模型參數組合表現相對應的結果，並從表中最佳化數值比較模型之間的最佳參數組合以及業界常用的染整製程參數組合的差異。
+\begin{table}[!htbp]
+	\caption{模型最佳化結果與業界常用製程參數對照表}
+	\center
+	\input{Graph/table3}
+	\label{tab:table3}
+\end{table}

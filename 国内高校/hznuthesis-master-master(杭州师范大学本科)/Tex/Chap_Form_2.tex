@@ -1,0 +1,80 @@
+\newtheorem{theorem}{定义}[section]
+\chapter{问题特征}
+\label{chap:formulation}
+在这一部分中，我们引入必要的定义,主要分为图结构特征和手工特征，然后制定预测社会影响的问题。
+\section{顶点特征}
+\begin{theorem}[度中心性]
+连结度中心性为该节点与其邻居节点的所有连结数的总合。
+\end{theorem}
+如式\ref{con:degreeCentrality}所示。式\ref{con:degreeCentrality}中，$degree_{in}(n_i)$ 代表其 他使用者连到$n_i$使用者的连结数，$degree_{out}(n_i)$为使用者$n_i$连到其他使用者的连结数。
+\begin{equation}
+C_D(n_i)=degree_{in}(n_i)+degree_{out}(n_i)
+\label{con:degreeCentrality}
+\end{equation}
+
+
+
+
+\begin{theorem}[邻近度中心性]
+邻近度中心性则是以该节点与其余所有在同一网络中的节点的距离总和来做计算
+\end{theorem}
+如式\ref{con:closenessCentrality}所示。式\ref{con:closenessCentrality}中，$distance(n_i,n_j)$为$n_i$到$n_j$节点的距离。
+\begin{equation}
+C_c(n_i)=\frac{1}{\sum_{k\neq1} distance(n_i,n_j)}
+\label{con:closenessCentrality}
+\end{equation}
+
+
+
+
+
+\begin{theorem}[中介度中心性]
+中介度中心性则是用来计算除了该节点外的所有节点中，任两节点之间的路径中，通过该节点的路径数除以此两节点所有路径数比值的总合。
+\end{theorem}
+当节点在网络 中扮演着链接两个原先互不相连的节点之角色时，该 节点中介度中心性的值则会较高，如下式\ref{con:betweennessCentrality}所示。式\ref{con:betweennessCentrality}中，$path_{via n_i}(n_i,n_k)$为节点$n_j$通过节点$n_i$而连结到节点$n_k$的最短路径数，$path_{total}(n_j,n_k)$则为节点$n_j$连 结到节点$n_k$的所有最短路径数。
+\begin{equation}
+C_B(n_i)=\sum_{j,k\neq i}\frac{|path_{via n_i}(n_i,n_k)|}{|path_{total}(n_j,n_k)|}
+\label{con:betweennessCentrality}
+\end{equation}
+
+
+
+
+
+
+\section{手工特征}
+Repost influence 则是用户本月所 发布的信息被转发次数的平均，该项指针能反映出使 用者所发布之言论的价值。
+式\ref{con:repostInf}中，
+$N_m$为使用者每月所发布之信息量，而$\sum N_R$则为每月 每则信息被转发次数之总和。
+\begin{equation}
+I_r=1-\sqrt{\frac{N_m}{N_m+\sum N_R}}
+\label{con:repostInf}
+\end{equation}
+
+Repost depth 转发深度，用章节\ref{sec:analyse}中的被转发的层数的最大值来评估。
+
+
+Mention influence 为用户每月所发布之信息被 回复及评论的次数，该项指标反映出使用者能吸引多 少追随者来参与对话的能力，也就是言论话题性。
+式\ref{con:mentionInf}中，$N_M$为使用者每月所发布之信息
+量，$\sum N_M$则为每月每则信息被讨论次数之总和。
+\begin{equation}
+I_m=1-\sqrt{\frac{N_m}{N_m+\sum N_M}}
+\label{con:mentionInf}
+\end{equation}
+
+
+Geographical influence 地理影响分布，参考\href{https://open.weibo.com/wiki/%E7%9C%81%E4%BB%BD%E5%9F%8E%E5%B8%82%E7%BC%96%E7%A0%81%E8%A1%A8}{新浪微博的省份城市编码},比如,宁夏的省份编号是64,其下的主要城市分别为1银川、2石嘴山、3吴忠、4固原，青海的省份编号是63，其下主要城市有8个。我们发现地理上相邻的省份及城市，其编号也非常接近，我们建立影响广度特征公式\ref{con:geoInf}。其中$P$表示省份,$C$表示城市,$I_{i,j}$表示在省份P下的城市C被影响的个数。
+\begin{equation}
+I_g=\frac{1}{P}\sum_{i\in P}\sum_{j\in C}\frac{I_{i,j}}{I_{i,total}}
+\label{con:geoInf}
+\end{equation}
+
+
+检验预测结果的方法。
+Spearman’s rank correlation coefficients是用来 分析两种排名算法之间相关性的量测方法。
+如式\ref{con:spearman}所示。该分析方法是根据等级数据研究两个变量间相关 性的方法，相关性越高其分析结果越接近+1，相关性 越低其分析结果越接近-1。
+
+\begin{equation}
+\rho=1-\sqrt{\frac{6\sum (x_i-y_i)}{N(N^2-1)}}
+\label{con:spearman}
+\end{equation}

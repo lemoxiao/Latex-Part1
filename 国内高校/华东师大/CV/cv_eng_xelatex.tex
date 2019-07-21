@@ -1,0 +1,159 @@
+%
+% ”√ xelatex ±‡“Î, TeXLive 2017 ≤‚ ‘Õ®π˝, 2018.11 
+%
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,textwidth=15cm,textheight=22cm,left=3cm]{geometry}
+
+\usepackage{fontspec} % for loading fonts
+\usepackage{xunicode,xltxtra,url,parskip} 	%other packages for formatting
+\usepackage{graphicx,xcolor}
+\pagecolor[rgb]{0.99,0.99,0.99}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, citecolor=blue, linkcolor=blue,
+  urlcolor=blue, bookmarksopen=true, bookmarksopenlevel=1, breaklinks=true }
+\usepackage{titlesec}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[RO,LE]{$\cdot$\ \thepage\ / \pageref{LastPage} $\cdot$}
+
+
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont{Minion Pro} % roman \rmfamily
+\setsansfont{Myriad Pro} % sans serif \sffamily
+\setmonofont{Consolas}   % typewriter \ttfamily
+\newcommand{\Arial}{\fontspec{Arial}}
+\newcommand{\Times}{\fontspec{Times New Roman}}
+
+\titleformat{\section}{\Large\scshape\raggedright\color{blue}}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{1.2ex plus .1ex minus .2ex}{1.0\wordsep}
+
+% user defined commands
+\newcommand{\mycb}{\color{blue}}
+\newcommand{\zz}[1]{\textcolor{blue}{#1}}
+\newcommand{\tit}[1]{\emph{#1}}
+\newcommand{\Name}[1]{\noindent{\scshape\color{blue} \Huge #1}}
+\newcommand{\Title}[1]{{{\color{blue!80}\rule[0.4ex]{4em}{0.3ex}\ \Large #1}}}
+
+
+
+\begin{document}
+
+%===== TITLE
+\Name{Xiaolong Li}\par\qquad\qquad
+\Title{Professor of Mathematics}
+\medskip
+
+%=====SECTIONS
+\section{Contact Information}
+\begin{tabular}{rl}
+  Address: & Department of Mathematics\\
+           & XXX University \\
+           & xxx xxxxxx Rd., Shanghai 200000, China\\
+  Phone:   & +86 21-xxxxxxxx   \\
+  Email:   & \href{mailto:xxx@xxx.xxx.xxx}{xxx@xxx.xxx.xxx}  \\
+%  URL:     & \url{http://xxx.xxx.xxx/~xxx}  
+\end{tabular}
+
+\section{Personal Data}
+\begin{tabular}{rl}
+  Gender:      & Male/Female \\
+  Citizenship: & China  % Nationality
+\end{tabular}
+
+\section{Education}
+\begin{tabular}{ll}
+  09/2000--07/2003 & {\mycb Ph.D., Computational Mathematics} \\
+  & Supervisor: {\mycb Prof. Xxxxx XXX} \\
+  & Title: \emph{\rmfamily Title of PhD thesis Title of PhD thesis Title of PhD thesis} \\
+  & Department of Mathematics, University of xxxx, China \\[1ex]
+
+  09/1997--07/2000 & {\mycb  M.S., Mathematics} \\
+  & Supervisor: {\mycb Prof. Xxxxx XXX} \\
+  & Title: \emph{\rmfamily Title of thesis Title of thesis Title of thesis} \\
+  & Department of Mathematics, University of xxxxxx, China \\[1ex]
+
+  09/1993--07/1997 & {\mycb  B.S., Mathematics} \\
+  & Department of Mathematics, University of xxxxxx, China
+\end{tabular}
+
+\section{Professional Experience}
+\begin{tabular}{ll}
+  09/2010--now & Professor, \\
+    & Department of Mathematics, University of xxxxxx, City, China \\[1ex]
+  09/2005--08/2010 & Associate professor, \\
+    & Department of Mathematics, University of xxxxxx, City, China \\[1ex]
+  09/2003--08/2005 & Lecturer, \\
+    & Department of Mathematics, University of xxxxxx, City, China
+\end{tabular}
+
+\section{Research Interests}
+\begin{itemize}
+  \item[$\bullet$] Mathematics
+  \item[$\bullet$] Physics
+  \item[$\bullet$] Chemistry
+\end{itemize}
+
+\section{Research Grants}
+\begin{itemize}
+  \item[$\bullet$]
+    Title of grants, NSFC xxxxxxx, 01/2014--12/2017
+
+  \item[$\bullet$]
+    Title of grants, NSFC xxxxxxx, 01/2011--12/2013
+
+  \item[$\bullet$]
+    Title of grants, NSFC xxxxxxx, 01/2008 -- 12/2010
+
+  \item[$\bullet$]
+    Title of grants, NSFC xxxxxxx, 01/2005 -- 12/2007
+
+\end{itemize}
+
+\renewcommand{\refname}{Selected Publications}
+\begin{thebibliography}{99}
+\addtolength{\itemsep}{-2pt}
+
+\bibitem{NP14}
+  C. Brezinski, M. R. Zaglia and H. Sadok,
+  \tit{A breakdown-free Lanczos type algorithm for solving linear systems},
+  \zz{SIAM Journal on Scientific Computing},
+  Vol. 30, No. 11, 94--121, 2010
+
+\bibitem{NP14}
+  C. Brezinski, M. R. Zaglia and H. Sadok,
+  \tit{A breakdown-free Lanczos type algorithm for solving linear systems solving linear systems},
+  \zz{SIAM Journal on Scientific Computing},
+  Vol. 30, No. 11, 94--121, 2010
+
+\bibitem{NP14}
+  C. Brezinski, M. R. Zaglia and H. Sadok,
+  \tit{A breakdown-free Lanczos type algorithm},
+  \zz{SIAM Journal on Scientific Computing},
+  Vol. 30, No. 11, 94--121, 2010
+
+\bibitem{NP14}
+  C. Brezinski, M. R. Zaglia and H. Sadok,
+  \tit{A breakdown-free Lanczos type for solving linear systems},
+  \zz{SIAM Journal on Scientific Computing},
+  Vol. 30, No. 11, 94--121, 2010
+
+\bibitem{NP14}
+  C. Brezinski, M. R. Zaglia and H. Sadok,
+  \tit{solving linear systems algorithm for solving linear systems},
+  \zz{SIAM Journal on Scientific Computing},
+  Vol. 30, No. 11, 94--121, 2010
+
+\bibitem{NP14}
+  C. Brezinski, M. R. Zaglia and H. Sadok,
+  \tit{A breakdown-free solving linear systems solving linear systems 
+       Lanczos type solving linear algorithm for solving linear systems},
+  \zz{SIAM Journal on Scientific Computing},
+  Vol. 30, No. 11, 94--121, 2010
+
+\end{thebibliography}
+
+\end{document}
+

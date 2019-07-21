@@ -1,0 +1,44 @@
+%!Tex Program = xelatex
+% -*-coding: utf-8 -*-
+        \BiChapter{模版简介}{Review}
+
+        \BiSection{模版来源}{} 
+
+本模版是从哈工大\LaTeX 模版2.0改版而来。
+
+\BiSection{模版使用方法}{} 
+本模版的插图、公式、图表命令与哈工大\LaTeX 模版2.0一致。
+其具体方式可查看哈工大\LaTeX 模版2.0的模版说明。
+不同之处有如下几点：
+\begin{nefulist}
+  \item 列表命令
+  
+  \begin{verbatim}
+    \begin{nefulist}
+      \item *
+      \item *
+      \item *      
+    \end{nefulist}
+  \end{verbatim}
+  \item 公式引用命令
+  
+  \begin{verbatim}
+    \nefuEqRef{label}
+  \end{verbatim}
+\end{nefulist}
+ \BiSection{模版更改之处}{} 
+\begin{nefulist}
+  \item 页面大小更改
+  \item 页眉页脚  
+  
+  页眉双杠线的粗细与word一致，
+  奇数偶数页眉交替。
+  
+  \item 字体设置
+  \item 封皮设置  
+  \item  参考文献应用
+  
+  在文后的参考文献列表使用与哈工大一致，使用05版的国标（林大太落后了该用新标准了）。
+  但在正文中引用三篇连续的参考文献时候，林大规定用波浪线“$\sim$”。
+\end{nefulist}
+

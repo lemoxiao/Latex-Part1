@@ -1,0 +1,162 @@
+%
+% 用 xelatex 编译, TeXLive 2017 测试通过, 2018.11
+%
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[textwidth=15cm,textheight=23cm,left=3cm]{geometry}
+
+\usepackage{graphicx,xcolor}
+\pagecolor[rgb]{0.99,0.99,0.99}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue,breaklinks=true}
+
+\usepackage{titlesec}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[RO,LE]{$\cdot$\ \thepage\ / \pageref{LastPage} $\cdot$}
+
+% 设置节的标题格式：字体，大小，颜色等
+\titleformat{\section}{\kaishu\color{blue}\large\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{3.2ex plus .1ex minus .2ex}{2.0\wordsep}
+
+\newenvironment{blist}%
+    {\begin{list}{{\hfill\raisebox{1.12pt}{$\bullet$}}}{%
+     \leftmargin2.6em\labelwidth1.5em\labelsep0.5em
+     \itemsep3pt\itemindent0pt\parsep0pt\topsep0pt}}
+    {\end{list}}
+
+\setlength{\parindent}{1.0em}
+\linespread{1.1}
+\renewcommand{\arraystretch}{1.1}
+
+% user defined commands
+\newcommand{\mycb}{\color{blue}}
+\newcommand{\zz}[1]{\textcolor{blue}{#1}}
+\newcommand{\tit}[1]{\emph{#1}}
+\newcommand{\Name}[1]{{\color{blue}\yahei\LARGE #1}}
+\newcommand{\Title}[1]{{\ \songti\large #1}} 
+
+
+\begin{document}
+
+\noindent
+\Name{李小龙}
+\Title{博士}\bigskip 
+
+\section{联系方式}
+\begin{tabular}{rl}
+  通信地址:  & 上海市XX区XX路 xxx 号, XXX大学XXX学院, 200241\\
+  电话:      & 021-xxxxxxxx \\
+  Email:     & abc123@ecnu.edu.cn 
+\end{tabular}
+
+
+\section{个人信息}
+\begin{tabular}{rllrl}
+  性别:& 男 & \hspace{2cm}   &   国籍: & 中国
+\end{tabular}
+
+
+\section{教育背景}
+\begin{tabular}{ll}
+  1998.09 -- 2001.06 & 学校, 院系, 本科 \\
+  1998.09 -- 2001.06 & 学校, 院系, 硕士 \\
+  1998.09 -- 2001.06 & 学校, 院系, 博士
+\end{tabular}
+
+
+\section{实践经历}
+\begin{tabular}{ll}
+  1998.09 -- 2001.06 & 数据分析师, 某某公司 \\
+  1998.09 -- 2001.06 & 技术研究员, 某某某公司\\
+  1998.09 -- 2001.06 & 架构师, 某某某某公司
+\end{tabular} 
+
+
+\section{研究兴趣}
+\begin{blist}
+  \item 数学数学数学
+  \item 数学数学数学数学
+\end{blist}
+
+
+\section{所获奖励}
+\begin{tabular}{ll}
+  1998.09 & 学校, 三好学生 \\
+  1998.09 & 学校, 一等奖学金 \\
+  1998.09 & 学校, 优秀学生干部
+\end{tabular}
+
+\section{语言技能}
+\begin{blist}
+  \item 英语: 大学英语六级
+  \item 德语: 基本交流
+\end{blist}
+
+\section{计算机技能}
+\begin{blist}
+  \item 操作系统: Windows, Linux
+  \item 编程语言: C/C++, Fortran, Matlab, Mathematica, Python
+  \item 排版软件: \LaTeX{}, Word
+\end{blist}
+
+
+%%%%% ===== 科研成果 =====
+\linespread{1.1}\selectfont
+
+\ctexset{bibname={学术论文}}
+\begin{thebibliography}{99}
+
+\bibitem{Ale81}
+\newblock G. Alexander,
+\newblock \emph{Kronecker Products and Matrix Calculus},
+\newblock Ellis Horwood Limited, England, 1981.
+
+\bibitem{BZS92}
+\newblock C. Brezinski, M. R. Zaglia and H. Sadok,
+\newblock A breakdown-free Lanczos type algorithm for solving linear systems,
+\newblock \emph{Numerische Mathematik}, (63) 1992, 29--38.
+
+\bibitem{Ale81}
+\newblock G. Alexander,
+\newblock \emph{Kronecker Products and Matrix Calculus},
+\newblock Ellis Horwood Limited, England, 1981.
+
+\bibitem{BZS92}
+\newblock C. Brezinski, M. R. Zaglia and H. Sadok,
+\newblock A breakdown-free Lanczos type algorithm for solving linear systems,
+\newblock \emph{Numerische Mathematik}, (63) 1992, 29--38.
+
+\end{thebibliography}
+
+
+\ctexset{bibname={学术报告}}
+\begin{thebibliography}{99}
+
+\bibitem{Ale81}
+\newblock G. Alexander,
+\newblock \emph{Kronecker Products and Matrix Calculus},
+\newblock Ellis Horwood Limited, England, 1981.
+
+\bibitem{BZS92}
+\newblock C. Brezinski, M. R. Zaglia and H. Sadok,
+\newblock A breakdown-free Lanczos type algorithm for solving linear systems,
+\newblock \emph{Numerische Mathematik}, (63) 1992, 29--38.
+
+\bibitem{Ale81}
+\newblock G. Alexander,
+\newblock \emph{Kronecker Products and Matrix Calculus},
+\newblock Ellis Horwood Limited, England, 1981.
+
+\bibitem{BZS92}
+\newblock C. Brezinski, M. R. Zaglia and H. Sadok,
+\newblock A breakdown-free Lanczos type algorithm for solving linear systems,
+\newblock \emph{Numerische Mathematik}, (63) 1992, 29--38.
+
+\end{thebibliography}
+
+
+\end{document}

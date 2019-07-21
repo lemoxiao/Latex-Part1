@@ -1,0 +1,88 @@
+\RequirePackage[left=1cm,right=1cm,top=1cm,bottom=1.8cm]{geometry}
+\RequirePackage{libertine}
+\RequirePackage{multicol}
+\RequirePackage{pifont}
+\RequirePackage{pbox}
+\RequirePackage{needspace}
+\RequirePackage{amssymb}
+\RequirePackage{fontspec}
+\RequirePackage{fontawesome}
+\RequirePackage{realboxes}
+\RequirePackage{array}
+
+\AtBeginDocument{\maketitle}
+
+% Set \emph command with "em" color
+\DeclareTextFontCommand{\emph}{\color{main}}
+
+% Default header
+\fancypagestyle{cvsimple}{
+ \renewcommand{\headrulewidth}{0pt}
+ \renewcommand{\footrulewidth}{0pt}
+ \fancyhf{}
+ \lfoot{\mystyle[footnote]\@cvfirstname~\@cvlastname}
+ \cfoot{\mystyle[footnote]\@ifundefined{@cvtitle}{}{\@cvtitle}}
+ \rfoot{\mystyle[footnote]\thepage/\pageref{LastPage}}
+}
+\pagestyle{cvsimple}
+
+
+%Useful lengths
+\newlength{\cvleftwidth}\setlength{\cvleftwidth}{4.5cm}
+\newlength{\cvrightwidth}\setlength{\cvrightwidth}{14cm}
+\newlength{\cvskillitemparskip}\setlength{\cvskillitemparskip}{-0.8em}
+\newlength{\cvmissionsitemsep}\setlength{\cvmissionsitemsep}{0em}
+
+% Set \emph command with "em" color
+\DeclareTextFontCommand{\emph}{\color{main}}
+
+% Section title
+\renewcommand*{\section}[1]{
+\needspace{4\baselineskip}
+\begin{center}
+  {\mystyle[sectiontitle] #1}\\[-0.8em]
+  {\color{sectionrule}\rule{\textwidth}{0.05pt}}
+\end{center}
+}
+
+% Write a story relevant about you (job, education, journey, ...)
+\renewcommand*{\story}[5]{
+	\begin{flushleft}
+	\begin{minipage}[t]{\cvleftwidth}
+		{\mystyle[cvstorydatelocation] #3}
+		\if\relax\detokenize{#4}\relax
+		\relax
+		\else 
+			\\[1em]
+			{\mystyle[cvstoryquicknotes] #4}
+		\fi
+	\end{minipage}
+	\begin{minipage}[t]{\cvrightwidth}
+  		\vspace*{-0.7em}
+		{\mystyle[cvstorytitle] #1}{\mystyle[cvstoryshort],~#2}
+		\if\relax\detokenize{#5}\relax
+		\relax
+		\else
+			\\[0.8em]
+			{\mystyle[cvstorydescription] #5}
+		\fi
+	\end{minipage}
+	\\
+	\end{flushleft}
+}
+
+% Describe missions related to a job
+\renewenvironment*{missions}{
+	\begin{list}{\mystyle[missionbullet]}{ \setlength{\itemsep}{\cvmissionsitemsep} \setlength{\leftmargin}{2em}\mystyle[mission] }
+}{
+	\end{list}
+}
+
+% Skills environment (use \skill command to add items)
+\renewenvironment*{skills}[1]{ 
+	\newcommand*{\skill}[2][]{ ##1\hspace*{2ex} & ##2 \\[\cvskillitemparskip] }
+	\begin{minipage}[t]{\textwidth}
+	{\hspace*{\cvleftwidth}\mystyle[subsectiontitle] #1}\\[-0.4em]
+	\begin{tabular}[t]{@{}>{\mystyle[cvskillname]\hfill}p{\cvleftwidth}@{}>{\mystyle[cvskilldescription]}p{\cvrightwidth}@{}} } 
+	{ \end{tabular}\\[2em] \end{minipage} }
+\endinput

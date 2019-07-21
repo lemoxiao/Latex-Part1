@@ -1,0 +1,143 @@
+% Awesome Source CV LaTeX Template
+%
+% This template is originally maintained by Christophe ROGER from:
+% https://github.com/darwiin/awesome-neue-latex-cv
+%
+% This modification has been download from:
+% https://github.com/innerTide/awesome-neue-latex-cv-extended
+% Author:
+% Yuefeng Wu
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+% Section: Projects
+% Usage:
+% \project
+%  {<End date>}      {<Project Title>}
+%  {<Start date}     {
+%                      <Contribution to the project>
+%                    }
+%                    {<Technology list>}
+%
+%
+
+
+\sectionTitle{\textsc{Project Experience}}{\faCode}
+\begin{projects}
+
+  \project
+    {June 2016} {All Digital Phase-Locked Loop (ADPLL)}
+    {May. 2016} {
+                      \begin{itemize}
+                        \item Course project of Digital RF
+                        \item Learned knowledge about digital RF and frequency synthesis
+                        \item Built a time-domain model of the ADPLL based on its phase operation
+                        \item System-level design with the model for behavior-level noise simulation in using MATLAB
+                      \end{itemize}
+                    }
+                    {Digital RF, ADPLL, Frequency Synthesis, Modeling, MATLAB}
+  \emptySeparator
+
+
+  \project
+    {May. 2016}   {Transistor Fabrication}
+    {Apr. 2016} {
+                      \begin{itemize}
+                        \item Course project of IC-technology lab.
+                        \item Learned basic CMOS fabrication steps and their physical mechanisms with a 1-μm Bi-CMOS process in Else Kooi Lab at Delft University of Technology
+                        \item Simulation and hands-on operation of the fabrication of MOS transistors in a clean room
+                        \item Lab measurement of the fabricated transistors using a microscope and a probe station
+                      \end{itemize}
+                    }
+                    {CMOS process, Simulation, Fabrication, Clean Room, Measurement}
+  \emptySeparator
+
+  \project
+    {Mar. 2016}   {Audio Amplifier Design}
+    {Feb. 2016} {
+                      \begin{itemize}
+                        \item Course project of Analog CMOS Design
+                        \item Designed a class-AB amplifier architecture to handle a low-ohmic load with a rail-to-rail swing
+                        \item Implemented the amplifier using LTspice in 0.18-μm CMOS, and it achieved a high SNR, a high SFDR, and a low IM3
+                        \item Optimized the gain and phase margins of the amplifier to achieve a stable operation within the given bandwidth
+                      \end{itemize}
+                    }
+                    {Analog Design, Amplifier Design, Low Noise, Stability Margins, LTspice}
+  \emptySeparator
+
+  \project
+    {Jan. 2016}   {Time-to-Digital Converter (TDC)}
+    {Dec. 2015} {
+                      \begin{itemize}
+                        \item Course Project of Digital IC Design
+                        \item Designed a 10-bit TDC with a 4-bit delay line and a counter to save area and power
+                        \item Implemented the TDC using Cadence in UMC 90-nm CMOS, and it achieved a worst-case 27-ps resolution with both DNL and INL smaller than 1 at every process corner
+                        \item Optimized the area of the TDC in the layout
+                      \end{itemize}
+                    }
+                    {Mixed-Signal Design, TDC, Corner Simulation, Layout, Cadence}
+  \emptySeparator
+
+  \project
+    {Dec. 2015}   {Low-Noise Amplifier (LNA)}
+    {Nov. 2015} {
+                      \begin{itemize}
+                        \item Course project of Microwave Circuit Design
+                        \item Learned impedance matching, stability, and noise figure in microwave/RF designs
+                        \item Designed a CMOS LNA with an inductive degeneration for simultaneous input noise and impedance matching using ADS
+                        \item Designed the corresponding output matching network of the LNA to achieve stability
+                      \end{itemize}
+                    }
+                    {Microwave/RF Design, LNA, Matching Network, Stability, ADS}
+    \emptySeparator
+
+    % \project %add name of the algorithm used!!!!!!!!!!!!
+    %   {June 2014}   {Bachelor Thesis: Design of An Object Tracking Software}
+    %   {Dec. 2013} {
+    %                     \begin{itemize}
+    %                       \item Conducted research on various object tracking algorithms
+    %                       \item Designed a Windows software that can track multiple objects in a video file with OpenCV libraries using Visio Studio
+    %                       \item Optimized the software to handle real-time camera input for demonstration purposes
+    %                     \end{itemize}
+    %                   }
+    %                   {C++, Object Tracking, Windows, OpenCV, Visio Studio}
+    %   \emptySeparator
+
+  \project
+    {May. 2014}   {Micro-Electro-Mechanical System (MEMS) Magnetic Sensor}
+    {Mar. 2013} {
+                      \begin{itemize}
+                        \item Student research project at Ministry of Education Key Lab. of MEMS, funded by National Science Foundation of China (No. 61201032)
+                        \item Designed a two-dimensional MEMS magnetic sensor in collaboration with other students using ANSYS
+                        \item Simulation and optimization of the sensor under various electrical and magnetic (EM) conditions and at process corners
+                        \item Resulted in two patent applications
+                      \end{itemize}
+                    }
+                    {MEMS, Sensor, Team Collaboration, Modeling, Simulation, ANSYS}
+  %   \emptySeparator
+  %
+  % \project
+  %   {Apr. 2013}   {Smart Car based on Camera Input}
+  %   {Mar. 2013} {
+  %                     \begin{itemize}
+  %                       \item A prototype for the 7\textsuperscript{th} Freescale Smart Car competition at Southeast University
+  %                       \item Built a smart car model with two PWM motors for driving and steering, a greyscale camera for capturing road information, and a microcontroller for overall control
+  %                       \item Designed the PCB for the microcontroller in collaboration with my teammates
+  %                       \item Implemented the PID motor control part of the car control software in μC/OS-\Rmnum{2}
+  %                     \end{itemize}
+  %                   }
+  %                   {C, μC/OS-\Rmnum{2}, PCB Design, Altium Designer, Team Collaboration}
+  %   \emptySeparator
+  %
+  %   \project
+  %     {Dec. 2012}   {Digital Altimeter}
+  %     {June 2012} {
+  %                       \begin{itemize}
+  %                         \item Funded by Student Research Training Program of Southeast University
+  %                         \item Designed the altimeter hardware with a microcontroller PCB, a barometric sensor, a temperature sensor, and a LCD display
+  %                         \item Implemented the altimeter software using barometric information with temperature error correction in μC/OS-\Rmnum{2}
+  %                       \end{itemize}
+  %                     }
+  %                     {C, μC/OS-\Rmnum{2}, Sensor, PCB Design, Altium Designer}
+
+\end{projects}

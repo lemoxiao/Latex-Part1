@@ -1,0 +1,93 @@
+% !Mode:: "TeX:UTF-8"
+\chapter{快速入门}
+\label{chap:introduction}
+
+本模板的意义是为了让从未接触过\LaTeX 的新手能尽快的上手，熟悉
+本模板的使用。因此本文介绍的大部分内容都将以实例的形式给出，您
+可以通过目录快速检索感兴趣的内容。作为一个学文论文作者，你的主
+要精力应该是论文的内容而不是论文的格式。字体字号对齐方式是否有
+背题图和图注是否在同一页参考文献作者是否缩写期刊名是否缩写——
+这些不应该成为一个即将具有硕士学位的人花费大量精力去考虑的问题。
+这也是本模板要解决的问题。
+
+本说明的结构安排如下：第\ref{chap:introduction}章是一篇简易教程，完整的示例了论文的
+一章可能会遇到的各种问题如插图、公式、图形引用、公式引用和文献
+的插入及引用。第\ref{chap:figures}章是关于插图的进阶内容，会涉及到图形的不同排
+列形式，图形的大小缩放等。第\ref{chap:table}章是关于表格的内容，涉及如何插入表格，
+科技文献常用的三线表以及跨页长表格等问题。第\ref{chap:equ}章是关于公式的进阶内容，涉及公式
+的编号、对齐、矩阵和方程组的编写等问题。第\ref{chap:bib}章是关于参考文献，
+涉及文献的压缩引用，排序等。第\ref{chap:chap-5}章则介绍了在文章
+内加入计算机程序源代码的方法。第\ref{chap:unit}章介绍输入数字和物理量的方法。
+
+\section{高楼大厦始于一砖一瓦}
+简单的说，\LaTeX 是一种对文字进行排版处理的程序语言，尽管它的功
+能不仅限于此。它与我们常用的Microsoft Word在使用上有较大的区
+别。例如我们在MSWord中输入标题时，先输入标题文字，如“绪论”，
+然后将其选中，选择MSWord中的“章标题”样式。这是在已经定义好
+了章标题样式的前提下。如果从未听说过样式或者没有使用过MSWord样
+式的同学，可能会采取更为繁琐的操作，例如分别设定字体，字号，大
+纲级别，缩进，对齐方式和自动编号等等。在\LaTeX 中，是这样输入
+章标题的：\\[2pt]
+\hspace*{5cm}\verb|\chapter{绪论}|\\[2pt]
+仅此而已。这里的\verb|\chapter|是一个\textbf{命令}，它告诉\LaTeX
+“绪论”是章标题，然后\LaTeX 会按照预先定义好的章标题格式来对其
+进行处理——这不是我们应该关心的内容。同样，你可以使用
+\verb|\section{课题背景}|、\verb|\subsection{理论基础}|和
+\verb|\subsubsection{公式推导}|来告诉\LaTeX 这些分别是节标题、
+条标题和款标题。\LaTeX 会自动对它们进行格式的设置，并且会自动
+为你生成编号。
+
+而图形的插入通常则是通过以下形式：
+\begin{verbatim}
+\begin{figure}
+ \includegraphics{ysulogo}
+\end{figure}
+\end{verbatim}
+其中ysulogo为插图的文件名，不包含后缀名（\XeLaTeX 支持PDF, PNG, JPG 格式）。与命令不同，这里使用了\\
+\verb|\begin{figure}|
+和
+\verb|\end{figure}|\\
+这一对命令来构成一个\textbf{环境}。使用本模板完成学位论文时将会经常
+用到命令与环境。一般使用者只要能区分开二者即可，其实只要完成论文的
+第一幅插图，后续的插图可以将原来的插图环境复制并稍加修改即可。
+
+\section{一个完整的章节实例}
+下边我们使用命令与环境的概念，完成一个迷你章节的例子。
+
+进入YSUthesis文件夹，打开主文件template.tex。进入chapter文件夹，
+打开chap-intro.tex文件。该文件对应论文的第一章“绪论”。然后输入如下内容：
+\begin{verbatim}
+% !Mode:: "TeX:UTF-8"
+\chapter{绪论}
+我是绪论中的正文文本。
+
+\section{课题背景}
+我要使用引用命令为我的文章引用文献：
+\ldots加速度为\SI{12345}{\square\micro\meter\per\nano\second}，是一般加速度的\num{1.2345e3}倍\supercite{Yablonovitch1987}，
+误差\SI{+-2e-6}{\square\micro\meter\per\nano\second}。
+
+\subsection{该小节插图}
+这里我要使用图形环境插图。注意该插图拥有中英双语图注和自动生成的图形编号。同时我要引用该图形：该图的编号是\ref{fig-pcf}。
+\begin{figure}[hptb]
+ \centering
+ \includegraphics{chp-1_pcf}
+ \caption{形式多样的光子晶体光纤。} \label{fig-pcf}
+\end{figure}
+
+\subsection{该小节插入公式}
+我还要使用公式环境插入公式。注意公式是自动居中编号。同时我也要引用该公式，该公式的编号是\eqref{equ-sample}
+\begin{equation}\label{equ-sample}
+\sum_{i=1}^n\sin\beta_i^2+\int_a^b\frac{D}{c}\,\mathrm{d}x=0
+\end{equation}
+
+\section{本章小结}
+以上为本章的所有内容。
+\end{verbatim}
+保存该文件。切换到template.tex主文件，依次执行菜单``TeX"下的``XeLaTeX" - ``BibTeX" - ``XeLaTeX" - ``XeLaTeX"，（这些步骤也可以通过工具栏上的
+按钮完成）。之后会在主目录下自动生成PDF文件，您不妨亲自动手试试看！
+生成的参考文献如图\ref{fig-ctt}所示。
+\begin{figure}[hptb]
+ \centering
+ \includegraphics[width=\linewidth]{citation}
+\caption{自动生成的参考文献。}\label{fig-ctt}
+\end{figure} 

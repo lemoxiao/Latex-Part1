@@ -1,0 +1,99 @@
+Mourjo Sen
+Email: mourjo.sen@inria.fr
+Email:sen.mourjo@etu.unice.fr
+Phone (India): +91 98307  47541
+Mobile (France): +33 7586 87393
+Website: http://mourjo.github.io/
+
+----------------------------------------
+EDUCATION
+----------------------------------------
+1. University of Nice, France
+MS in Computer Science (2013-2015, Nice, France)
+First year: 75.9 % (Rank 2nd)
+Second year (Ubinet): 80.1% (Rank 1st), currently ongoing
+Award: Scholarship: Laboratory of Excellence (LABEX) scholarship of Euro 12,500 awarded by Labex UCN@Sophia for ﬁrst and second year of MS.
+
+2. ST. XAVIER'S COLLEGE (University of Calcutta)
+BSc in Computer Science (2010-2013, Kolkata, India)
+Honours: 83.6% (Rank 4th)
+
+------------------------------------------------------
+EXPERIENCE AND PROJECTS
+------------------------------------------------------
+1. Finding spam tweets on Twitter with Dr Arnaud Legout (http://www-sop.inria.fr/members/Arnaud.Legout/), Inria, France (April 2014 - February 2015)
+- Using Twitter REST APIs and Streaming APIs to crawl Twitter and collect data from a remote cluster using a Python parallel crawler.
+- Working with Twitter's social graph to find a measure of "trust" for users based on their activities and connections on Twitter, which involved handling a large amount of data and running analyses on it.
+- Using the trust metric to deduce which the probability of a tweet being spam.
+
+
+Internships
+..................................
+
+1. Microsoft Research/Inria, France: Working as a research intern for a six-month full-time internship for further work on spam analysis of Twitter, with Microsoft Research and Inria. In total, I worked for a year on the spam analysis of Twitter.
+
+2. Braindrops, India: Worked as a web developer at a start-up company Braindrops, responsible for the project SharodInfo and the website www.sharodinfo.com.
+
+
+Pet Projects
+..................................
+
+1. JChirp: A Java library to access the Twitter REST and Streaming APIs, with implementation of OAuth authentication protocol. Development team of two members. github.com/vabh/JChirp.
+
+2.  Alienvation: Developing a GUI game using Java Swing in which a player controls spaceships and fights against aliens. github.com/mourjo/Alienvation.
+
+3.  Shape detector: A Java project to find all shapes formed by inputted lines in a 2D space. github.com/mourjo/ShapeDetection.
+
+4.  SXC-CMS: A web application to manage the St Xavier's College's credit system using PHP framework CodeIgniter and CSS framework Bootstrap. Development team of two members. github.com/mourjo/SXCCMS.
+
+
+Other Projects
+..................................
+
+1. Edusoc: A web-based social network for education for teaching and learning over the Internet, using dynamics of social networking to promote educational activities, especially in developing countries like India. Development team of two members. github.com/vabh/EduSoc.
+
+2. Scheduling virtual machines in a simulated datacentre to meet the SLA, minimize energy consumption and maximize revenue. Implemented in Java
+using the CloudSim framework. Development team of two members.
+
+3. AI game engine in Java. Implemented a computer-vs-player console-based version of the African game Oware.
+
+4. Implementation of Extensible Authentication Protocol (EAP) in Java for a point-to-point socket-based connection.
+
+5. Android project on a safety-critical traffic lighting system.
+
+6. CreatureSim: Java project to simulate an environment with communicating independent agents that move around, form groups, search for interest points and have real-time plugin-based behaviour.
+
+7. An Eclipse plugin to convert inputted theoretical models of computation to runnable programs with multi-threaded components. Implemented using the Eclipse modeling framework. Development team of five members.
+
+8. Image processing on Matlab, creating an optimal edge detector, based on the Canny-Deriche filter.
+
+------------------------------------------------------
+PROGRAMMING LANGUAGES & TOOLS
+------------------------------------------------------
+Proﬁcient:
+Java, Python, PHP, Matlab, JavaScript, MySQL, CSS, Eclipse Modeling Framework, Shell Script
+Familiar:
+C, C++, OpenCV, Android, LATEX, OpenGL, R, Amazon EC2, NuSMV, Eclipse Plugin Development
+
+
+----------------------------------------
+PUBLICATIONS
+----------------------------------------
+1. Battling the Fear of Heights: Pros and Cons of the 'Personal Cloud'.
+ http://doi.ieeecomputersociety.org/10.1109/CSNT.2012.159
+
+2. Issues of privacy and security in the role of software in smart cities.
+ http://doi.ieeecomputersociety.org/10.1109/CSNT.2013.113
+
+3. A study on Green Software and Green Technology to develop a smart urbanized world. 
+http://mourjo.github.io/ICETT2012.pdf
+
+
+----------------------------------------
+LINKS
+----------------------------------------
+github.com/mourjo
+linkedin.com/in/mourjosen
+twitter.com/mourjo_sen
+quora.com/Mourjo-Sen
+facebook.com/sen.mourjo

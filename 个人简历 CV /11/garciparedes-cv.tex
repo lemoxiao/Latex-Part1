@@ -1,0 +1,329 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass{friggeri-cv}
+\usepackage{enumitem}
+\usepackage{verbatim}
+\usepackage[english]{babel}
+\usepackage{fontawesome}
+\usepackage{fancyhdr}
+
+\newcommand{\myhref}[2]{\href[pdfnewwindow=true]{#1}{#2}}
+\newcommand{\important}[1]{\textbf{\mbox{#1}}}
+\newcommand{\importanthref}[2]{\myhref{#1}{\textbf{\mbox{#1}}}}
+
+\newcommand{\UVa}{\myhref{http://www.uva.es}{University of Valladolid, Spain}}
+\newcommand{\Brooktec}{\myhref{https://brooktec.com/}{Brooktec}}
+\newcommand{\EvaluaMe}{\myhref{https://play.google.com/store/apps/details?id=com.garciparedes.evaluame}{EvaluaMe}}
+\newcommand{\TFGraph}{\myhref{https://github.com/tfgraph}{TFGraph}}
+\newcommand{\ngkatex}{\myhref{https://github.com/garciparedes/ng-katex}{ng-katex}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{junior data \{ engineer, scientist \}}
+\lhead{Sergio García Prado}
+
+\begin{document}
+
+  \header{Sergio}{GarcíaPrado}{junior data \{ engineer, scientist \}}
+
+%-------------------------------------------------------------------------------
+%	SIDEBAR SECTION
+%-------------------------------------------------------------------------------
+
+  \section{social}
+
+    \begin{center}
+      \renewcommand{\arraystretch}{1.5}
+      \begin{tabular}{ p{16em} p{16em} p{16em} }
+        \myhref{https://garciparedes.me}{\faHome\quad Website: garciparedes.me}
+        &
+        \myhref{tel:34696904878}{\faPhone\quad Phone: +34 696 904 878}
+        &
+        \myhref{mailto:sergio@garciparedes.me}{\faEnvelope\quad Email: sergio@garciparedes.me}
+        \\
+
+        \myhref{https://github.com/garciparedes}{\faGithub\quad GitHub: @garciparedes}
+        &
+        \myhref{https://es.linkedin.com/in/garciparedes/en}{\faLinkedin\quad LinkedIn: Sergio García Prado}
+        &
+        \myhref{https://scholar.google.es/citations?user=X3Mb7BAAAAAJ}{\faGraduationCap\quad Scholar: Sergio García Prado}
+        \\
+
+        \myhref{https://stackoverflow.com/users/3921457/garciparedes}{\faStackOverflow\quad StackOverflow: @garciparedes}
+        &
+        \myhref{https://www.kaggle.com/garciparedes}{\faTrophy\quad Kaggle: @garciparedes}
+        &
+        \myhref{https://medium.com/@garciparedes}{\faMedium\quad Medium: @garciparedes}
+        \\ \\
+
+      \end{tabular}
+    \end{center}
+
+%-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------
+%	SUMMARY SECTION
+%-------------------------------------------------------------------------------
+
+  \section{summary}
+
+    Hi! My name is Sergio and now I'm enrolled in Bachelor's Degree in \important{Statistics} at \UVa. The reason is because during my Bachelor's Degree in \important{Computer Engineering} the mathematical curiosity arose me. For this reason, I think the merge of my previous engineering knowledge combined with my future scientific learning will enrich me to raise and solve complex problems. In following paragraphs I will describe my professional profile.
+
+    During my first years of coding I've learned \texttt{Java} at University, and \texttt{Android} at my home, then I developed \important{\EvaluaMe} app. After that, I started to be curious about web development (I really like \texttt{TypeScript}, especially when is boosted with \texttt{Angular}). Also, I've worked with \texttt{PHP} and \texttt{WordPress} in during my internship at \important{\Brooktec}, but I prefer not to work with those technologies anymore.
+
+    In the writing area, I've started to use \LaTeX\ as a clean way to submit class assignments in a cleaner way, but it has become in one of my passions. Another of my favourite ways to communicate things (especially when code is involved) is \texttt{Jupyter Notebook}.
+
+    During my Computer's Engineering Degree last year I focused my work on numerical computation, statistical methods, machine learning algorithms and graph problems. Mostly using \texttt{Python} and libraries like \texttt{NumPy}, \texttt{Pandas}, \texttt{NetworkX}, etc. Also, for my final degree project of Computer Engineering, I've started an open source project called \important{\TFGraph} which consist of a graph library  on top of \texttt{TensorFlow}. To learn more about packaging and library distribution I've developed \important{\ngkatex}, an Angular module distributed over \texttt{npm} that allows you to visualize \TeX\ math expressions on browsers boosted by \texttt{KaTeX}.
+
+    Due to my data passion I want to focus my future work on statistical computation, that is everything related with the research and implementation of new techniques of process, analyze and and predict it. For this reason I've learned \texttt{R} language and libraries like \texttt{tidyverse}, \texttt{data.table}, etc. Currently, I'm involved in learning amazing things related with probability theory, inference techniques, classification methods, multivariate analysis, etc.
+
+    In previous paragraphs I've explained my background and favorite technologies that I love to use. Bellow, I'll show you some of my skills in more abstract way:
+
+    \noindent
+    \begin{minipage}[t]{0.5\linewidth}
+      \begin{itemize}
+      	\item{High Performance Algorithms}
+  	    \item{Data Structures}
+        \item{Parallel Programming}
+        \item{Statistical Computation}
+        \item{Data Visualization}
+        \item{Machine Learning Techniques}
+      \end{itemize}
+    \end{minipage}%
+    \begin{minipage}[t]{0.5\linewidth}
+      \begin{itemize}
+        \item{Graph Theory}
+      	\item{Academic Writting}
+        \item{Research Work}
+        \item{Code Standards (OOP - Docs - Tests)}
+        \item{Agile Methodologies}
+        \item{Version Control Systems (VCS)}
+      \end{itemize}
+    \end{minipage}
+    \par\bigskip
+
+    As you've seen I want to work in positions related with Machine Learning, Big Data and Data Analysis. If you're offering for a related job don't hesitate to contact me. In the following pages you can visualize my background in a more classical way.
+
+%-------------------------------------------------------------------------------
+
+  \pagebreak
+
+%-------------------------------------------------------------------------------
+%	WORK SECTION
+%-------------------------------------------------------------------------------
+
+  \section{work}
+
+    \begin{entrylist}
+
+      \entry
+      {2016}
+      {Full Stack Developer}
+      {\Brooktec}
+      {Internship (4 months)}
+
+    \end{entrylist}
+
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+%	PROJECTS SECTION
+%-------------------------------------------------------------------------------
+
+  \section{projects}
+
+    \begin{entrylist}
+
+      \entry
+      {2017--present}
+      {\ngkatex}
+      {Angular}
+      {\TeX\ math expressions processing on browsers boosted by KaTeX}
+
+      \\
+      \entry
+      {2017}
+      {\TFGraph}
+      {Python}
+      {Graph networks processing on GPUs}
+
+      \\
+      \entry
+      {2015--2016}
+      {\EvaluaMe}
+      {Android}
+      {Tracker app for your school marks}
+
+    \end{entrylist}
+
+%-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------
+%	PUBLICATIONS SECTION
+%-------------------------------------------------------------------------------
+
+  \section{publications}
+
+    \begin{entrylist}
+
+      \entry
+      {2017}
+      {\myhref{https://arxiv.org/abs/1708.07829}{Algorithms for Big Data: Graphs and PageRank}}
+      {\UVa}
+      {Final Degree Project}
+
+    \end{entrylist}
+
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%-------------------------------------------------------------------------------
+
+  \section{education}
+
+    \begin{entrylist}
+
+      \entry
+      {2017--present}
+      {\myhref{http://www.eio.uva.es/}{Statistics}}
+      {\UVa}
+      {Bachelor's Degree}
+
+      \\
+      \entry
+      {2013--2017}
+      {\myhref{https://www.inf.uva.es/}{Computer Engineering, mention in Computation}}
+      {\UVa}
+      {Bachelor's Degree}
+
+      \\
+      \entry
+      {2010--2012}
+      {Social Sciences}
+      {IES Alonso Berruguete, Spain}
+      {High School}
+
+    \end{entrylist}
+
+%-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------
+%	ACADEMIC REMARKS SECTION
+%-------------------------------------------------------------------------------
+
+  \section{academic remarks}
+
+    \begin{entrylist}
+
+      \entry
+      {2017}
+      {\myhref{https://www.inf.uva.es/wp-content/uploads/2016/06/G46929.pdf}{Parallel Computing}}
+      {\UVa}
+      {Score: 9.9/10.0 with Honors}
+
+      \entry
+      {}
+      {\myhref{https://www.inf.uva.es/wp-content/uploads/2016/06/G46959.pdf}{Operation Research Models}}
+      {\UVa}
+      {Score: 9.5/10.0 with Honors}
+
+      \entry
+      {}
+      {\myhref{https://www.inf.uva.es/wp-content/uploads/2016/06/G46970.pdf}{Data Mining}}
+      {\UVa}
+      {Score: 9.0/10.0}
+
+      \entry
+      {}
+      {\myhref{https://www.inf.uva.es/wp-content/uploads/2016/06/G46932.pdf}{Machine Learning Techniques}}
+      {\UVa}
+      {Score: 9.0/10.0}
+
+      \\
+      \entry
+      {2016}
+      {\myhref{https://www.inf.uva.es/wp-content/uploads/2015/07/G46948.pdf}{Codes and Cryptography}}
+      {\UVa}
+      {Score: 10.0/10.0 with Honors}
+
+      \entry
+      {}
+      {\myhref{https://www.inf.uva.es/wp-content/uploads/2015/07/G46944.pdf}{Algorithms and Computing}}
+      {\UVa}
+      {Score: 9.5/10.0 with Honors}
+
+      \entry
+      {}
+      {\myhref{https://www.inf.uva.es/wp-content/uploads/2015/07/G46931.pdf}{Web Services and Systems}}
+      {\UVa}
+      {Score: 9.0/10.0}
+
+      \\
+      \entry
+      {2015}
+      {\myhref{https://www.inf.uva.es/wp-content/uploads/2014/07/G46915.pdf}{Operating Systems Structures}}
+      {\UVa}
+      {Score: 9.5/10.0 with Honors}
+
+      \\
+      \entry
+      {2014}
+      {\myhref{https://www.inf.uva.es/wp-content/uploads/2012/07/C12-45187-RED.pdf}{Fundamentals of Computer Networks}}
+      {\UVa}
+      {Score: 9.0/10.0}
+
+    \end{entrylist}
+
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+%	COURSES SECTION
+%-------------------------------------------------------------------------------
+
+  \section{courses}
+
+    \begin{entrylist}
+
+      \entry
+      {2017}
+      {Scratch Monitor}
+      {FUNGE UVa}
+      {12 hours}
+
+      \\
+      \entry
+      {2016}
+      {SG Academy}
+      {SolidGear}
+      {20 hours}
+
+      \\
+      \entry
+      {2014}
+      {Plastic SCM (Software Control Manager)}
+      {Codice Software}
+      {8 hours}
+
+    \end{entrylist}
+
+%-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------
+%	INTERESTS SECTION
+%-------------------------------------------------------------------------------
+
+
+  \section{interests}
+
+    \textbf{professional:} computing problems, data analysis, algorithms, machine learning, design patterns, web design, software design, internet of things
+
+    \textbf{personal:} motor sports, rap and classic music, turntablism, cooking, technology
+
+%-------------------------------------------------------------------------------
+
+
+\end{document}

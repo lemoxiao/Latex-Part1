@@ -1,0 +1,99 @@
+% Awesome CV LaTeX Template
+%
+% This template has been downloaded from:
+% https://github.com/huajh/huajh-awesome-latex-cv
+%
+% Author:
+% Junhao Hua
+
+
+%Section: Work Experience at the top
+\sectionTitle{实习/项目经历}{\faCode}
+ 
+\begin{experiences}
+			
+ \experience
+    {2015年5月}   {计算机视觉与图像处理研究}{ 浙江大学}{C/Matlab/Python编程}
+    {2013年10月} {
+                      \begin{itemize}
+                        \item Matlab和C混合编程实现图像的SIFT特征提取，并将其应用于目标检测和分类；
+                        \item 通过矩阵分解实现基于隐因子模型的协同过滤，学习用户的喜好偏向，实现推荐系统。
+                        \item Python编程实现基于求解Poissn方程的图像无缝拼接，以及基于热传导的图像去噪。
+                        \item \faGithub: 
+                        \link{https://github.com/huajh/sift}{sift}, 
+                        \link{https://github.com/huajh/mf_re_sys}{MFResys},
+                        \link{https://github.com/huajh/Poisson_image_editing}{PoissonImageEditing},
+                        \link{https://https://github.com/huajh/Image_denoising}{ImageDenoising}.                                                                                       
+                      \end{itemize}
+                    }
+                    {目标检测, 图像处理, 推荐系统, Python}
+  \emptySeparator
+  \experience
+    { 2014年4月} {视频中的行为检测与识别方法研究}{浙江大学}{ 独立开发}
+    {2014年2月}    {
+                      \begin{itemize}
+                        \item 提取视频序列的\emph{时空特征点}，并用K-Means对兴趣点\emph{聚类}并建立\emph{词库}，得到词袋模型; 
+                        \item 采用无监督的pLSA/LDA模型推断后验概率P(动作|词)实现动作类别归类;
+                        \item 以及采用监督学习（KNN,SVM）对每帧图像的字典分类;                    
+                        \item 提出一种简单的投票（``voting''）方法 实现单相机中的多目标检测任务。
+                        \item \faGithub: \link{https://github.com/huajh/action_recognition} {github.com/huajh/action\_recognition}                                                                                          
+                      \end{itemize}
+                    }
+                    {动作识别, 聚类, LDA, Voting, Bag of Words}
+	
+  \emptySeparator
+  \experience
+  {2013年5月} {基于变分贝叶斯方法的医学图像分割}{，浙江工业大学}{本科毕业设计}
+  {2012年12月 }    {
+				  	\begin{itemize}
+				  		\item 将GMM，student-t有限混合模型以及基于Dirichlet process的无限混合模型应用于聚类问题；
+				  		\item 用变分贝叶斯方法推断这三个模型，并推导出详细的算法流程；
+				  		\item 通过考虑laplacian graph 提升了以上三种方法的性能。
+				  		\item \faGithub: \link{https://github.com/huajh/variational_bayesian_clusterings} {github.com/huajh/variational\_bayesian\_clusterings}                                                                                    
+				  	\end{itemize}
+				  }
+				  {混合模型, 聚类, Dirichlet过程, 变分贝叶斯, 流形学习}
+
+  \emptySeparator
+  \experience
+  {2012年11月} {C/C++ 工程师实习生}{研发部分}{道富信息科技（浙江）有限公司， 杭州}
+  {2012年7月}    {
+  	\begin{itemize}
+  		\item  负责\link{http://www.statestreet.com/solutions/by-capability/ssgx/software-solutions/accounting.html}{Princeton Financial Systems}底层技术的维护和开发；
+  		\item  将旧系统中C语言写的部分重构成C++模块，并优化旧系统的性能。
+  	\end{itemize}
+  }
+  {C/C++编程, 性能优化}
+  	
+  \emptySeparator
+  \experience
+  {2012年7月} {项目组成员}{智能系统研究所}{计算机学院，浙江工业大学}
+  {2011年5月 }    {
+				  	\begin{itemize}
+				  		\item  2011年10月- 2012年5月, 研究\emph{基于空间复杂网络的交通路由算法}；
+				  		主要思想是通过\emph{潜在度量空间}建立空间网络模型，设计基于全局和局部信息的路由策略及其导航性能。
+				  		\item  2011年5月 - 9月,  以Microsoft Kinect SDK (C\#)为开发工具编程实现\emph{PPT体感操控系统设计}。
+				  	\end{itemize}
+				  }
+				  {complex networks, kinect, C\#}
+
+	
+		  				  
+  \emptySeparator
+  \experience
+  {2011年12月} {\emph{软件开发}}{浙江工业大学}{本科小项目}
+  {2011年10月}    {
+				  	\begin{itemize}
+				  		\item Oct-Dec 2011, \emph{竞赛作品展示平台} | JavaBeans+Servlet+Jsp框架| \emph{队长}. 
+				  		独立设计并实现了JDBC的轻量级对象关系封装,并用于服务端开发， 淘宝UED评审获第二名。    
+						  		\faGithub: \link{https://github.com/huajh/showplatform}{github.com/huajh/showplatform}                                                                           
+				  		\item Nov 2011, \emph{Unix文件系统} | C/C++ | \emph{独立开发}. 
+						  		实现系统的格式化、安装、加载，用户组管理，打开文件管理，内存分配，文件读写，以及基本的shell命令，
+						  		包括目录文件的添加、删除、重命名、拷贝等。
+						  		\faGithub: \link{https://github.com/huajh/unix_file_sys}{github.com/huajh/unix\_file\_sys}
+				  	\end{itemize}
+				  }
+				  {软件开发, 数据库, JAVA, Unix, Sql Server}
+	
+		
+\end{experiences}

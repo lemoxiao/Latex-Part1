@@ -1,0 +1,42 @@
+@echo on
+del *.aux
+del *.toc
+del *.lof
+del *.lot
+del *.ilg
+del *.idx
+del *.ind
+del *.out
+del *.log
+del *.exa
+del *.thm
+del *.bbl
+del *.blg
+del *.gz
+del *.bak
+del  *.nav
+del  *.snm
+del Chapters\*.aux
+del Chapters\*.bak
+del Chapters\*.aux
+del Chapters\*.toc
+del Chapters\*.lof
+del Chapters\*.lot
+del Chapters\*.ilg
+del Chapters\*.idx
+del Chapters\*.ind
+del Chapters\*.out
+del Chapters\*.log
+del Chapters\*.exa
+del Chapters\*.thm
+del Chapters\*.bbl
+del Chapters\*.blg
+del Chapters\*.gz
+del Chapters\*.bak
+del Chapters\*.nav
+del Chapters\*.snm
+del  Bib\*.aux
+
+@pause
+
+@echo on

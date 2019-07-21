@@ -1,0 +1,87 @@
+\usepackage[T1]{fontenc}
+\usepackage{fontawesome}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{tikz}
+
+
+\newcommand{\hobbyicon}[5]{%
+\begin{tikzpicture}%
+\draw[draw=none,fill=#3] (0,0) circle (0.5);%
+\node[](icon) at (0,0) {#4#1};%
+\node[below=#5,align=center] at (icon) {#2};%
+\end{tikzpicture}
+}
+
+ \newcommand{\cvkeyword}[3]{
+ \colorbox{#2}{\textcolor{#3}{#1}} \phantom{}%
+ }
+ 
+%------------------------
+\newcommand{\cvtag}[1]{% from alta-cv: https://www.overleaf.com/latex/templates/altacv-template/trgqjpwnmtgv
+  \tikz[baseline]\node[draw=black!40,rounded corners,inner sep=0.4em]{\color{black!50}#1};
+}
+
+\newcommand{\namebox}[4]{
+\hspace{-#1}% has to be the same amount as the paper margin
+\colorbox{#2}{
+\begin{minipage}{\paperwidth}
+\Large\bfseries \color{#2}.
+
+\hfill\color{#3} #4
+\hspace{#1}
+
+\vspace{0.5em}
+\end{minipage}
+}}
+
+\newcommand{\headerbox}[5]{
+\hspace{-#1}% has to be the same amount as the paper margin
+\colorbox{#2}{
+\begin{minipage}{\paperwidth}
+\begin{minipage}[t][][b]{0.2\textwidth}
+
+\end{minipage}\hfill
+\begin{minipage}[t][][b]{0.3\textwidth}
+\Large\bfseries 
+
+\vspace{1.5cm}
+\color{#3}{#4} 
+
+
+\end{minipage}\hfill
+\begin{minipage}[t][][c]{0.3\textwidth}
+
+\vspace{1em}
+
+\includegraphics[width=0.7\textwidth]{#5}
+\hspace{#1}
+\end{minipage}
+
+\vspace{0.5em}
+
+\end{minipage}
+}}
+
+
+\newcommand{\cvevent}[6]{{#1} & \textbf{#2}\newline\textsc{#3} $\cdot$ {#4 \faMapMarker}\newline{\color{black!70}\footnotesize #5}\vspace{1.5em} & \raisebox{-0.7\height}{\includegraphics[height=1cm]{#6}}}
+
+\newcommand{\cvdegree}[6]{{#1} & \textbf{#2}\newline\textsc{#3} $\cdot$ {#4 {\phantom{i}\footnotesize \faUniversity}}\newline{\color{black!70}\scriptsize #5}\vspace{0.5em} & \raisebox{-0.7\height}{\includegraphics[height=0.5cm]{#6}}}
+
+\newcommand{\icon}[3]{\phantom{x}{#3\color{#2}#1}\phantom{x}}
+
+\newcommand{\footer}[7]{
+\vfill{} % Whitespace before final footer
+
+%----------------------------------------------------------------------------------------
+%	FINAL FOOTER
+%----------------------------------------------------------------------------------------
+\setlength{\parindent}{0pt}
+\begin{minipage}[t]{\textwidth}
+\begin{center}\fontfamily{\sfdefault}\selectfont \color{#1}
+{\small #3 \icon{\faEnvelopeO}{#2}{} #4 \icon{\faMapMarker}{#2}{} #5 \icon{\faPhone}{#2}{} #6 \icon{\faAt}{#2}{} \protect\url{#7}
+}
+\end{center}
+\end{minipage}
+}

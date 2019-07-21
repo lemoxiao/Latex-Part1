@@ -1,0 +1,2321 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2019 by Zangwei Zheng <zhengzangw@gmail.com>
+%
+% This file may be distributed and/or modified under the conditions of
+% the LaTeX Project Public License, either version 1.3c of this license
+% or (at your option) any later version. The latest version of this 
+% license is in:
+%
+%   http://www.latex-project.org/lppl.txt
+%
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{njurepo.dtx}[2019/01/29 1.0.1 Nanjing University Report Template]
+\documentclass{ltxdoc}
+\usepackage{dtx-style}
+    \EnableCrossrefs
+    \CodelineIndex
+    \RecordChanges
+\begin{document}
+    \DocInput{njurepo.dtx}
+    \PrintChanges
+    \PrintIndex
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{0}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \DoNotIndex{\newenvironment,\@bsphack,\@empty,\@esphack,\sfcode}
+% \DoNotIndex{\addtocounter,\label,\let,\linewidth,\newcounter}
+% \DoNotIndex{\noindent,\normalfont,\par,\parskip,\phantomsection}
+% \DoNotIndex{\providecommand,\ProvidesPackage,\refstepcounter}
+% \DoNotIndex{\RequirePackage,\setcounter,\setlength,\string,\strut}
+% \DoNotIndex{\textbackslash,\texttt,\ttfamily,\usepackage}
+% \DoNotIndex{\begin,\end,\begingroup,\endgroup,\par,\\}
+% \DoNotIndex{\if,\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
+% \DoNotIndex{\let,\def,\xdef,\edef,\newcommand,\renewcommand}
+% \DoNotIndex{\expandafter,\csname,\endcsname,\relax,\protect}
+% \DoNotIndex{\Huge,\huge,\LARGE,\Large,\large,\normalsize}
+% \DoNotIndex{\small,\footnotesize,\scriptsize,\tiny}
+% \DoNotIndex{\normalfont,\bfseries,\slshape,\sffamily,\interlinepenalty}
+% \DoNotIndex{\textbf,\textit,\textsf,\textsc}
+% \DoNotIndex{\hfil,\par,\hskip,\vskip,\vspace,\quad}
+% \DoNotIndex{\centering,\raggedright,\ref}
+% \DoNotIndex{\c@secnumdepth,\@startsection,\@setfontsize}
+% \DoNotIndex{\ ,\@plus,\@minus,\p@,\z@,\@m,\@M,\@ne,\m@ne}
+% \DoNotIndex{\@@par,\DeclareOperation,\RequirePackage,\LoadClass}
+% \DoNotIndex{\AtBeginDocument,\AtEndDocument}
+%
+% \changes{v1.0.0}{2019/01/22}{Initial version}
+% \changes{v1.0.1}{2019/01/29}{Add more ability}
+% \changes{v1.1.0}{2019/01/29}{Stable version}
+%
+% \GetFileInfo{\jobname.dtx}
+%
+% \def\indexname{索引}
+% \def\glossaryname{修改记录}
+% \IndexPrologue{\section{\indexname}}
+% \GlossaryPrologue{\section{\glossaryname}}
+
+% \title{\bfseries\color{violet}\njurepo： 南京大学本科生范用报告}
+% \author{郑奘巍 \\[5pt]\texttt{zhengzangw@gmail.com}}
+% \date{\fileversion\ (\filedate)}
+% \maketitle\thispagestyle{empty}
+%
+% \begin{abstract}\noindent
+% 此宏包旨在建立一个免于配置的、指令相对简单的南京大学作业、实验报告通用模板。
+% \end{abstract}
+%
+%
+% \vskip2cm
+% \def\abstractname{免责声明}
+% \begin{abstract}
+% \noindent
+% \begin{enumerate}
+% \item 本模板的发布遵守 \LaTeX\ Project Public License，使用前请认真阅读协议内
+%   容。
+% \item \textbf{本模板为作者自己通常使用的报告模板，与南京大学官方没有任何关系}。任何使用该宏包进行实验报告制作时，请\textbf{务必根据课程要求进行写作}。由于使用本模板而引起的作业验收问题，均与本模板作者无关。
+% \item 本模板借鉴\thuthesis{}宏包的大量内容，需要稳定模板的同学也可以选择使用清华大学的\thuthesis{}宏包并自己进行配置。
+% \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵
+%   守 \LaTeX\ Project Public License 协议。由于违犯协议而引起的任何纠纷争端均与
+%   本模板作者无关。
+% \end{enumerate}
+% \end{abstract}
+%
+% \clearpage
+% \pagestyle{fancy}
+% \begin{multicols}{2}[
+%   \setlength{\columnseprule}{.4pt}
+%   \setlength{\columnsep}{18pt}]
+%   \tableofcontents
+% \end{multicols}
+% \clearpage
+%
+% \section{模板介绍}
+% \njurepo\ (\textbf{N}an\textbf{jing} \textbf{U}niversity \LaTeX\ Versatile \textbf{Repo}rt Template)是根据作者用\LaTeX{}制作南京大学课程实验报告的模板文件，可帮助本科生快速的制作实验报告和作业。
+% 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档或者根据第 3.1 节说明提问，有兴趣者都可以参与完善此手册，也非常欢迎对代码的贡献。
+% 
+% \section{安装}
+% \label{sec:installation}
+% \njurepo 开发版需要自行前往github主页：\\
+% https://github.com/zhengzangw/njurepo下载。
+%
+% \subsection{字体安装}
+% 字体存放在font文件夹中，使用模板前先自行安装。
+%
+% \subsection{模板的组成}
+% 下表列出了\njurepo 的主要文件及其功能介绍：
+%
+% \begin{longtable}{l|p{8cm}}
+% \toprule
+% {\heiti 文件（夹）} & {\heiti 功能描述}\\\midrule
+% \endfirsthead
+% \midrule
+% {\heiti 文件（夹）} & {\heiti 功能描述}\\\midrule
+% \endhead
+% \endfoot
+% \endlastfoot
+% njurepo.ins & \textsc{DocStrip} 驱动文件（开发用） \\
+% njurepo.dtx & \textsc{DocStrip} 源文件（开发用）\\\midrule
+% example.pdf & 实例文档\\
+% main.tex & 主文件\\
+% figs/ & 图片路径\\
+% figs/logos/ & 示例文档图片路径\\
+% fonts/ & 字体\\
+% parts/ & 具体内容\\
+% parts/examples & 示例文档具体内容\\
+% ref/ & 参考文献和参考文献样式文件\\
+% njurepo.cls & 模板类文件\\
+% \textbf{njurepo.pdf} & 用户手册（本文档）\\ \bottomrule
+% \end{longtable}
+%
+% \subsection{生成模板}
+% 使用Makefile或\XeLaTeX 生成模板文件
+% \begin{shell}
+% make cls
+% xelatex njurepo.dtx # 两句选一句即可
+% \end{shell}
+% \subsection{生成论文}
+% \subsubsection{latexmk}
+% latexmk 命令支持全自动生成\LaTeX{}编写的文档，并且支持使用不同的工具链来进行生成，它会自动运行多次工具直到交叉引用都被解决。下面给出了一个用 latexmk 调用 xelatex 生成最终文档的示例:
+% \begin{shell}
+% latexmk -xelatex main
+% \end{shell}
+% \subsubsection{make}
+% \njurepo{}提供了一个Makefile：
+% \begin{shell}
+% make clean
+% make cls # 生成 njurepo.cls
+% make doc # 生成说明文档 njurepo.pdf
+% make main # 生成示例文档main.pdf
+% \end{shell}
+% \subsection{升级}
+% 在github上下载最新版，运行:
+% \begin{shell}
+% make cls
+% \end{shell}
+% 生成新的类文件和配置文件即可。也可以直接拷贝 njurepo.cls，免去上面命令的执行。
+% 
+%
+% \section{使用说明}
+% \subsection{示例文件}
+% 推荐从模板自带的示例文档入手，其中包括了论文写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可以。对于不清楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示例文档，具体内容可以参考模板附带的 main.tex 和 parts/examples/。
+% \begin{latex}
+% \documentclass[language=english,open=any]{njurepo}
+% \begin{document}
+% \frontmatter
+% \input{parts/examples/cover}
+% \input{parts/examples/abstract}
+% \maketitlepage
+% \makecover
+% \makeabstract
+% \tableofcontents
+% \input{parts/examples/denotation}
+% \mainmatter
+% \maketitle
+% \input{parts/examples/problemsolving}
+% \input{parts/examples/mathpro}
+% \include{parts/examples/chap01}
+% \include{parts/examples/chap02}
+% \include{parts/examples/digitalexp}
+% \include{parts/examples/code}
+% \backmatter
+% \listoffigures
+% \listoftables
+% \listofequations
+% \bibliographystyle{ref/numeric} % ref/numeric,ref/author-year,plainnat,IEEEtran
+% \bibliography{ref/refs}
+% \include{parts/examples/ack}
+% \begin{appendix}
+%   \input{parts/examples/appendix01}
+% \end{appendix}
+% \end{document}
+% \end{latex}
+%
+% \subsection{选项}
+% \label{sec:option}
+% \DescribeOption{language}
+% 论文的主要语言（默认：中文）。可选：\option{chinese}，\option{english}。决定了封面、标题、定理的语言。
+% \DescribeOption{open}
+% 正规出版物的章节出现在奇数页，也就是右手边的页面，这就是 \option{right}，。在这种情况下，如果前一章的最后一页也是奇数，那么模板会自动生成一个纯粹的空白页。
+% 提交的作业如果是电子稿的话，可以使用连续页，即使用\option{any}
+% \DescribeOption{wide}
+% 是否使用宽页面。如果生成作业的话，宽页面或许好看。
+% \DescribeOption{awesomefont}
+% 是否使用awesomefont图标。
+%
+% \subsection{字体配置}
+% \label{sec:font-config}
+% 使用\CTeX\ 默认字体配置
+% \subsubsection{字体命令}
+% \label{sec:fontcmds}
+% \myentry{字体}
+% \DescribeMacro{\songti}
+% \DescribeMacro{\fangsong}
+% \DescribeMacro{\heiti}
+% \DescribeMacro{\kaishu}
+% 用来切换宋体、仿宋、黑体、楷体四种基本字体。
+% \myentry{字号}
+% \DescribeMacro{\chuhao}
+% \DescribeMacro{\xiaochu}
+% \DescribeMacro{\yihao}
+% \DescribeMacro{\xiaoyi}
+% \DescribeMacro{\bahao}
+% 定义字体大小，分别为
+% \begin{center}
+% \begin{tabular}{llllll}
+% \toprule
+% \cs{chuhao} & \cs{xiaochu} & \cs{yihao}  & \cs{xiaoyi}    & \cs{erhao}  & \cs{xiaoer}\\
+% \cs{sanhao} & \cs{xiaosan} & \cs{sihao}  & \cs{banxiaosi} & \cs{xiaosi} & \cs{dawu}\\
+% \cs{wuhao}  & \cs{xiaowu}  & \cs{liuhao} & \cs{xiaoliu}   & \cs{qihao}  & \cs{bahao}\\\bottomrule
+% \end{tabular}
+% \end{center}
+% 使用方法为：\cs{command}\oarg{num}，其中 command 为字号命令，num 为行距。比
+% 如 \cs{xiaosi}[1.5] 表示选择小四字体，行距 1.5 倍。写作指南要求表格中的字体
+% 是 \cs{dawu}，模板已经设置好了。
+% 对于英文，开发版中smallcaps默认使用了spinweradC字体。可以使用\cs{setmainfont}进行重新定义。
+%
+% \subsection{封面信息}
+% 仿照parts/examples/cover.tex 进行设置
+% \subsection{问求}
+% 为问求特制了一些宏，具体可见parts/examples/problemsolving.tex 
+% \subsection{表格}
+% \begin{latex}
+%  \figpf{parameter}{filename}
+%  \figpfc{parameter}{filename}{caption}
+% \end{latex}
+% \subsection{图片}
+% \begin{latex}
+%  \tabncc{number per row}{content}{caption}
+%  \tabnc{number per row}{content}
+% \end{latex}
+% \subsection{代码}
+%预设了如下的lstlisting环境
+% \begin{longtable}{ccccc}
+% \toprule
+% code & codedisplay & cplus & shell & commandshell \\
+% verilog & python & & &\\  
+% \bottomrule
+% \end{longtable}
+% \subsection{文字}
+% \begin{latex}
+% \href{link}{words} # 插入链接
+% \magenta{品红色字}
+% \CJKunderline{下划线字}
+% \end{latex}
+% 更多的预置宏包，可见\ref{sec:loadpkg}
+%
+%
+% \section{致谢}
+% 感谢以下宏包的作者为本宏包提供了借鉴：
+% \begin{itemize}
+%  \item 清华大学\thuthesis https://github.com/xueruini/thuthesis
+%  \item 南京大学 NJUBachelor https://github.com/ZLCao/NJUBachelor
+% \end{itemize}
+% 
+% \StopEventually{}
+%
+% \section{实现细节}
+% \subsection{基本信息}
+%    \begin{macrocode}
+%<*cls>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{njurepo}[2019/01/25 1.0.0 Nanjing University Report Template]
+%    \end{macrocode}
+%
+% \subsection{定义选项}
+% \label{sec:defoption}
+% 使用kvoptions宏包进行选项设置
+%    \begin{macrocode}
+\hyphenation{NJU-repo}
+\def\njurepo{\textsc{NJU}\-\textsc{repo}}
+\def\thuthesis{\textsc{Thu}\-\textsc{Thesis}}
+\def\version{1.0.1}
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+    family=nju,
+    prefix=nju@,
+    setkeys=\kvsetkeys
+}
+\DeclareStringOption[chinese]{language}[chinese]
+\DeclareStringOption[any]{open}[any]
+\DeclareBoolOption{wide}
+\DeclareBoolOption{color}
+\DeclareBoolOption{draft}
+\DeclareBoolOption{awesomefont}
+\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
+
+\ProcessKeyvalOptions*
+%    \end{macrocode}
+%
+% 检测选项是否合法
+%    \begin{macrocode}
+\newcommand\nju@validate@key[1]{%
+  \@ifundefined{nju@\csname nju@#1\endcsname true}{%
+    \ClassError{njurepo}{Invalid value '\csname nju#1\endcsname'}{}
+    }{%
+      \csname nju@\csname nju@#1\endcsname true\endcsname
+    }
+}
+\newif\ifnju@chinese
+\newif\ifnju@english
+\nju@validate@key{language}
+\newif\ifnju@any
+\newif\ifnju@right
+\nju@validate@key{open}
+%    \end{macrocode}
+% 
+% 使用ctexbook宏包
+%    \begin{macrocode}
+\LoadClass[a4paper,openany,UTF8,zihao=-4,scheme=plain]{ctexbook}
+%    \end{macrocode}
+%
+% \subsection{加载宏包}
+% \label{sec:loadpkg}
+% 用于开发的宏包
+%    \begin{macrocode}
+\RequirePackage{etoolbox}
+\RequirePackage{ifxetex}
+\RequirePackage{xparse}
+%    \end{macrocode}
+% 用于图片的宏包
+%    \begin{macrocode}
+\RequirePackage{graphicx}
+\graphicspath{{figs/}}
+\graphicspath{{figs/logo/}}
+\RequirePackage[labelformat=simple]{subcaption}
+\RequirePackage{pdfpages}
+\includepdfset{fitpaper=true}
+\RequirePackage{tikz,tikzducks}
+\usetikzlibrary{decorations.pathmorphing,graphs,calc}
+\RequirePackage{dirtree}
+%    \end{macrocode}
+% 用于表格的宏包
+%    \begin{macrocode}
+\RequirePackage{array}
+\RequirePackage{longtable}
+\RequirePackage{booktabs}
+\RequirePackage{multirow}
+\RequirePackage{bbding,stmaryrd}
+\RequirePackage{tabularx}
+\RequirePackage{diagbox}
+\RequirePackage{makecell}
+\RequirePackage{float}
+%    \end{macrocode}
+% 用于数学的宏包
+%    \begin{macrocode}
+\RequirePackage{CJKfntef}
+\RequirePackage{amsmath}
+\RequirePackage[amsmath, thmmarks, hyperref]{ntheorem}
+\RequirePackage{physics}
+%    \end{macrocode}
+% 其它宏包
+%    \begin{macrocode}
+\RequirePackage[sort&compress]{natbib}
+%    \end{macrocode}
+%
+% 超链接
+%    \begin{macrocode}
+\RequirePackage{hyperref}
+\ifxetex
+  \hypersetup{%
+    CJKbookmarks=true}
+\else
+  \hypersetup{%
+    unicode=true,
+    CJKbookmarks=false}
+\fi
+\hypersetup{%
+  linktoc=all,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  breaklinks=true,
+  colorlinks=false,
+  plainpages=false,
+  pdfborder=0 0 0}	
+\urlstyle{same}
+\def\UrlBreaks{%
+  \do\/%
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l%
+     \do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z%
+  \do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L%
+     \do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z%
+  \do0\do1\do2\do3\do4\do5\do6\do7\do8\do9\do=\do/\do.\do:%
+  \do\*\do\-\do\~\do\'\do\"\do\-}
+\Urlmuskip=0mu plus 0.1mu
+%    \end{macrocode}
+%
+% 页眉页脚设置
+%    \begin{macrocode}
+\RequirePackage{fancyhdr}
+\RequirePackage{notoccite}	
+%    \end{macrocode}
+%
+% \subsection{页面设置}
+% 使用了thuthesis的非本科生默认配置。
+%    \begin{macrocode}
+\RequirePackage{geometry}
+\ifnju@wide 
+\geometry{
+    a4paper, %210*297mm
+    hcentering,
+    ignoreall,
+    nomarginpar,
+    left=10mm,
+    headheight=5mm,
+    headsep=5mm,
+    textheight=237mm,
+    bottom=29mm,
+    footskip=6mm
+}\else
+\geometry{
+    a4paper, %210*297mm
+    hcentering,
+    ignoreall,
+    nomarginpar,
+    left=30mm,
+    headheight=5mm,
+    headsep=5mm,
+    textheight=237mm,
+    bottom=29mm,
+    footskip=6mm
+}
+\fi
+%    \end{macrocode}
+%
+% \subsection{主文档格式}
+% \label{sec:mainbody}
+%
+% \begin{macro}{\cleardoublepage}
+%    \begin{macrocode}
+\let\nju@cleardoublepage\cleardoublepage
+\newcommand{\nju@clearemptydoublepage}{%
+  \clearpage{\pagestyle{nju@empty}\nju@cleardoublepage}}
+\let\cleardoublepage\nju@clearemptydoublepage
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\frontmatter}
+% \begin{macro}{\mainmatter}
+% \begin{macro}{\backmatter}
+%    \begin{macrocode}
+\renewcommand\frontmatter{%
+    \ifnju@right\cleardoublepage\else\clearpage\fi
+    \@mainmatterfalse
+    \pagenumbering{Roman}
+    \pagestyle{nju@empty}}
+\renewcommand\mainmatter{%
+    \ifnju@right\cleardoublepage\else\clearpage\fi
+    \@mainmattertrue
+    \pagenumbering{arabic}
+    \pagestyle{nju@headings}}
+\renewcommand\backmatter{%
+    \ifnju@right\cleardoublepage\else\clearpage\fi
+    \@mainmattertrue}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \subsection{字体与字号}
+% \label{sec:font}
+% \subsubsection{英文字体}
+% 配置英文字体。
+%    \begin{macrocode}
+\newcommand\nju@fontset{\csname g__ctex_fontset_tl\endcsname}
+\ifthenelse{\equal{\nju@fontset}{fandol}}{
+  \setmainfont[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]{texgyretermes}
+  \setsansfont[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]{texgyreheros}
+  \setmonofont[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+    Scale          = MatchLowercase,
+  ]{texgyrecursor}
+}{
+  \setmainfont{Times New Roman}
+  \setsansfont{Arial}
+  \ifthenelse{\equal{\nju@fontset}{mac}}{
+    \setmonofont[Scale=MatchLowercase]{Menlo}
+  }{
+    \setmonofont[Scale=MatchLowercase]{Courier New}
+  }
+}
+%    \end{macrocode}
+%
+% \subsubsection{数学环境字体}
+% 配置数学字体（使用unicode-math）
+%    \begin{macrocode}
+\RequirePackage{unicode-math}
+\unimathsetup{
+  math-style = ISO,
+  bold-style = ISO,
+  nabla      = upright,
+  partial    = upright,
+}
+\IfFontExistsTF{STIX2Math.otf}{
+  \setmathfont[StylisticSet=8]{STIX2Math.otf}
+  \setmathfont[range={scr,bfscr},StylisticSet=1]{STIX2Math.otf}
+  \IfFontExistsTF{XITSMath-Regular.otf}{
+    \setmathfont[range={\partial,\lbrace,\rbrace}]{XITSMath-Regular.otf}
+  }{
+    \setmathfont[range={\partial,\lbrace,\rbrace}]{xits-math.otf}
+  }
+}{
+  \setmathfont[
+    Extension    = .otf,
+    BoldFont     = *bold,
+    StylisticSet = 8,
+  ]{xits-math}
+  \setmathfont[range={cal,bfcal},StylisticSet=1]{xits-math.otf}
+}
+%    \end{macrocode}
+%
+% \subsubsection{数学环境符号}
+% \begin{macro}{\ldots}
+% 省略号一律居中，所以 \cs{ldots} 不再居于底部。
+%    \begin{macrocode}
+\ifnju@chinese
+  \def\mathellipsis{\cdots}
+\fi
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\le}
+% \begin{macro}{\ge}
+% \begin{macro}{\leq}
+% \begin{macro}{\geq}
+% 小于等于号要使用倾斜的形式。
+%    \begin{macrocode}
+\protected\def\le{\leqslant}
+\protected\def\ge{\geqslant}
+\AtBeginDocument{%
+  \renewcommand\leq{\leqslant}%
+  \renewcommand\geq{\geqslant}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\int}
+% 积分号 \cs{int} 使用正体，并且上下限默认置于积分号上下两侧。
+%    \begin{macrocode}
+\removenolimits{%
+  \int\iint\iiint\iiiint\oint\oiint\oiiint
+  \intclockwise\varointclockwise\ointctrclockwise\sumint
+  \intbar\intBar\fint\cirfnint\awint\rppolint
+  \scpolint\npolint\pointint\sqint\intlarhk\intx
+  \intcap\intcup\upint\lowint
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\Re}
+% \begin{macro}{\Im}
+% \begin{macro}{\nabla}
+% 实部、虚部操作符使用罗马体 $\mathrm{Re}$、$\mathrm{Im}$ 而不是 fraktur 体
+% $\Re$、$\Im$。\cs{nabla} 使用粗正体。
+%    \begin{macrocode}
+\AtBeginDocument{%
+  \renewcommand{\Re}{\operatorname{Re}}%
+  \renewcommand{\Im}{\operatorname{Im}}%
+  \renewcommand\nabla{\mbfnabla}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\bm}
+% \begin{macro}{\boldsymbol}
+% 兼容旧的粗体命令：\pkg{bm} 的 \cs{bm} 和 \pkg{amsmath} 的 \cs{boldsymbol}。
+%    \begin{macrocode}
+\newcommand\bm{\symbf}
+\renewcommand\boldsymbol{\symbf}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\square}
+% 兼容 \pkg{amssymb} 中的命令。
+%    \begin{macrocode}
+\newcommand\square{\mdlgwhtsquare}
+%    \end{macrocode}
+% \end{macro}
+%
+% 允许太长的公式断行、分页等。
+%    \begin{macrocode}
+\allowdisplaybreaks[4]
+\renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi\@arabic\c@equation}
+%    \end{macrocode}
+%
+% 公式距前后文的距离由 4 个参数控制，参见 \cs{normalsize} 的定义。
+%    \begin{macrocode}
+\def\make@df@tag{\@ifstar\nju@make@df@tag@@\make@df@tag@@@}
+\def\nju@make@df@tag@@#1{\gdef\df@tag{\nju@maketag{#1}\def\@currentlabel{#1}}}
+\def\nju@maketag#1{\maketag@@@{(\ignorespaces #1\unskip\@@italiccorr)}}
+\def\tagform@#1{\maketag@@@{(\ignorespaces #1\unskip\@@italiccorr)\equcaption{#1}}}
+%    \end{macrocode}
+% 修改 \cs{tagform} 会影响 \cs{eqref}。
+%    \begin{macrocode}
+\renewcommand{\eqref}[1]{\textup{(\ref{#1})}}
+%    \end{macrocode}
+%
+% \subsubsection{中文字体}
+% \pkg{ctex}在微软下使用雅黑字体，在macOS下使用苹方字体。这里不做更改。
+%
+% \subsubsection{字号}
+% WORD 中的字号对应该关系如下（1bp = 72.27/72 pt）:
+% \begin{center}
+% \begin{tabular}{llll}
+% \toprule
+% 初号 & 42bp & 14.82mm & 42.1575pt \\
+% 小初 & 36bp & 12.70mm & 36.135 pt \\
+% 一号 & 26bp & 9.17mm & 26.0975pt \\
+% 小一 & 24bp & 8.47mm & 24.09pt \\
+% 二号 & 22bp & 7.76mm & 22.0825pt \\
+% 小二 & 18bp & 6.35mm & 18.0675pt \\
+% 三号 & 16bp & 5.64mm & 16.06pt \\
+% 小三 & 15bp & 5.29mm & 15.05625pt \\
+% 四号 & 14bp & 4.94mm & 14.0525pt \\
+% 小四 & 12bp & 4.23mm & 12.045pt \\
+% 五号 & 10.5bp & 3.70mm & 10.59375pt \\
+% 小五 & 9bp & 3.18mm & 9.03375pt \\
+% 六号 & 7.5bp & 2.56mm & \\
+% 小六 & 6.5bp & 2.29mm & \\
+% 七号 & 5.5bp & 1.94mm & \\
+% 八号 & 5bp & 1.76mm & \\\bottomrule
+% \end{tabular}
+% \end{center}
+%
+% \begin{macro}{\normalsize}
+% 默认正文小四号 (12bp) 字，行距为固定值 20 bp。
+%    \begin{macrocode}
+\renewcommand\normalsize{%
+  \@setfontsize\normalsize{12bp}{20bp}%
+  \abovedisplayskip=12bp \@plus 2bp \@minus 2bp
+  \abovedisplayshortskip=12bp \@plus 2bp \@minus 2bp
+  \belowdisplayskip=\abovedisplayskip
+  \belowdisplayshortskip=\abovedisplayshortskip}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\nju@def@fontsize}
+% 根据习惯定义字号。用法：
+% \cs{nju@def@fontsize}\marg{字号名称}\marg{磅数}
+%
+% 避免了字号选择和行距的紧耦合。所有字号定义时为单倍行距，并提供选项指定行距倍数。
+%    \begin{macrocode}
+\def\nju@def@fontsize#1#2{%
+  \expandafter\newcommand\csname #1\endcsname[1][1.3]{%
+    \fontsize{#2}{##1\dimexpr #2}\selectfont}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\chuhao}
+% \begin{macro}{\xiaochu}
+% \begin{macro}{\yihao}
+% \begin{macro}{\xiaoyi}
+% \begin{macro}{\erhao}
+% \begin{macro}{\xiaoer}
+% \begin{macro}{\sanhao}
+% \begin{macro}{\xiaosan}
+% \begin{macro}{\sihao}
+% \begin{macro}{\banxiaosi}
+% \begin{macro}{\xiaosi}
+% \begin{macro}{\dawu}
+% \begin{macro}{\wuhao}
+% \begin{macro}{\xiaowu}
+% \begin{macro}{\liuhao}
+% \begin{macro}{\xiaoliu}
+% \begin{macro}{\qihao}
+% \begin{macro}{\bahao}
+% 一组字号定义。
+%    \begin{macrocode}
+\nju@def@fontsize{chuhao}{42bp}
+\nju@def@fontsize{xiaochu}{36bp}
+\nju@def@fontsize{yihao}{26bp}
+\nju@def@fontsize{xiaoyi}{24bp}
+\nju@def@fontsize{erhao}{22bp}
+\nju@def@fontsize{xiaoer}{18bp}
+\nju@def@fontsize{sanhao}{16bp}
+\nju@def@fontsize{xiaosan}{15bp}
+\nju@def@fontsize{sihao}{14bp}
+\nju@def@fontsize{banxiaosi}{13bp}
+\nju@def@fontsize{xiaosi}{12bp}
+\nju@def@fontsize{dawu}{11bp}
+\nju@def@fontsize{wuhao}{10.5bp}
+\nju@def@fontsize{xiaowu}{9bp}
+\nju@def@fontsize{liuhao}{7.5bp}
+\nju@def@fontsize{xiaoliu}{6.5bp}
+\nju@def@fontsize{qihao}{5.5bp}
+\nju@def@fontsize{bahao}{5bp}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+%
+% \subsubsection{中文标点}
+%
+% \newcommand\unicodechar[1]{U+#1（\symbol{"#1}）}
+% 由于 Unicode 的一些标点符号是中西文混用的：
+% \unicodechar{00B7}、
+% \unicodechar{2013}、
+% \unicodechar{2014}、
+% \unicodechar{2018}、
+% \unicodechar{2019}、
+% \unicodechar{201C}、
+% \unicodechar{201D}、
+% \unicodechar{2025}、
+% \unicodechar{2026}、
+% \unicodechar{2E3A}，
+% 所以要根据语言设置正确的字体。
+% \footnote{\url{https://github.com/CTeX-org/ctex-kit/issues/389}}
+% 所以要根据语言设置正确的字体。
+%    \begin{macrocode}
+\newcommand\nju@setchinese{%
+  \xeCJKResetPunctClass
+}
+\newcommand\nju@setenglish{%
+  \xeCJKDeclareCharClass{HalfLeft}{"2018, "201C}%
+  \xeCJKDeclareCharClass{HalfRight}{
+    "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
+  }%
+}
+\newcommand\nju@setdefaultlanguage{%
+  \ifnju@chinese
+    \nju@setchinese
+  \else
+    \nju@setenglish
+  \fi
+}
+%    \end{macrocode}
+%
+% \subsection{局部设置}
+% \subsubsection{页眉页脚}
+% \label{sec:headerfooter}
+%
+% 定义页眉和页脚样式。
+% \begin{macro}{\ps@nju@empty}
+% \begin{macro}{\ps@nju@plain}
+% \begin{macro}{\ps@nju@headings}
+% \begin{itemize}
+% \item \texttt{nju@empty}：页眉页脚都没有
+% \item \texttt{nju@plain}：只显示页脚的页码。\cs{chapter} 自动调用
+% \cs{thispagestyle\{nju@plain\}}。
+% \item \texttt{nju@headings}：页眉页脚同时显示
+% \end{itemize}
+%    \begin{macrocode}
+\fancypagestyle{nju@empty}{%
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}}
+\fancypagestyle{nju@plain}{%
+  \fancyhead{}
+  \fancyfoot[C]{\xiaowu\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}}
+\fancypagestyle{nju@headings}{%
+  \fancyhead{}
+  \fancyhead[C]{\wuhao\normalfont\leftmark}
+  \fancyfoot{}
+  \fancyfoot[C]{\wuhao\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0pt}}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \subsubsection{段落}
+% \label{sec:paragraph}
+%
+% 全文首行缩进 2 字符，标点符号用全角
+%    \begin{macrocode}
+\ctexset{%
+  punct=quanjiao,
+  space=auto,
+  autoindent=true}
+%    \end{macrocode}
+%
+% \subsubsection{列表}
+% 利用 \pkg{enumitem} 命令调整默认列表环境间的距离，以符合中文习惯。
+%    \begin{macrocode}
+\RequirePackage[shortlabels]{enumitem}
+\RequirePackage{environ}
+\setlist{nosep}
+%    \end{macrocode}
+%
+%
+% \subsubsection{脚注}
+% \label{sec:footnote}
+% 脚注符合中文习惯，数字带圈。
+%    \begin{macrocode}
+\ifthenelse{\equal{\nju@fontset}{mac}}{
+  \newfontfamily\nju@circlefont{Songti SC Light}
+}{
+  \ifthenelse{\equal{\nju@fontset}{windows}}{
+    \newfontfamily\nju@circlefont{SimSun}
+  }{
+    \IfFontExistsTF{XITS-Regular.otf}{
+      \newfontfamily\nju@circlefont{XITS-Regular.otf}
+    }{
+      \newfontfamily\nju@circlefont{xits-regular.otf}
+    }
+  }
+}
+\def\nju@textcircled#1{%
+  \ifnum\value{#1} >9%
+    \ClassError{njurepo}%
+      {Too many footnotes in this page.}{Keep footnote less than 10.}%
+  \fi
+  {\nju@circlefont\symbol{\numexpr\value{#1}+"245F\relax}}%
+}
+\renewcommand{\thefootnote}{\nju@textcircled{footnote}}
+\renewcommand{\thempfootnote}{\nju@textcircled{mpfootnote}}
+%    \end{macrocode}
+%
+% 定义脚注分割线，字号（宋体小五），以及悬挂缩进（1.5字符）。
+%    \begin{macrocode}
+\def\footnoterule{\vskip-3\p@\hrule\@width0.3\textwidth\@height0.4\p@\vskip2.6\p@}
+\let\nju@footnotesize\footnotesize
+\renewcommand\footnotesize{\nju@footnotesize\xiaowu[1.5]}
+%\footnotemargin1.5em\relax
+%    \end{macrocode}
+%
+% \cs{@makefnmark} 默认是上标样式，而在脚注部分要求为正文大小。利用\cs{patchcmd} 动态调整 \cs{@makefnmark} 的定义。
+%    \begin{macrocode}
+\let\nju@makefnmark\@makefnmark
+\def\nju@@makefnmark{\hbox{{\normalfont\@thefnmark}}}
+\pretocmd{\@makefntext}{\let\@makefnmark\nju@@makefnmark}{}{}
+\apptocmd{\@makefntext}{\let\@makefnmark\nju@makefnmark}{}{}
+%    \end{macrocode}
+%
+%
+% \subsubsection{定理环境}
+% \label{sec:equation}
+%
+% 定理标题使用黑体，正文使用宋体，冒号隔开。
+%    \begin{macrocode}
+\theorembodyfont{\normalfont}
+\theoremheaderfont{\normalfont\heiti}
+\theoremsymbol{\ensuremath{\square}}
+\newtheorem*{proof}{证明}
+\theoremstyle{plain}
+\theoremsymbol{}
+\theoremseparator{：}
+\ifnju@chinese
+  \newcommand\nju@assumption@name{假设}
+  \newcommand\nju@definition@name{定义}
+  \newcommand\nju@proposition@name{命题}
+  \newcommand\nju@lemma@name{引理}
+  \newcommand\nju@theorem@name{定理}
+  \newcommand\nju@axiom@name{公理}
+  \newcommand\nju@corollary@name{推论}
+  \newcommand\nju@exercise@name{练习}
+  \newcommand\nju@example@name{例}
+  \newcommand\nju@remark@name{注释}
+  \newcommand\nju@problem@name{问题}
+  \newcommand\nju@conjecture@name{猜想}
+  \newcommand\nju@solution@name{解}
+\else
+  \newcommand\nju@assumption@name{Assumption}
+  \newcommand\nju@definition@name{Definition}
+  \newcommand\nju@proposition@name{Proposition}
+  \newcommand\nju@lemma@name{Lemma}
+  \newcommand\nju@theorem@name{Theorem}
+  \newcommand\nju@axiom@name{Axiom}
+  \newcommand\nju@corollary@name{Corollary}
+  \newcommand\nju@exercise@name{Exercise}
+  \newcommand\nju@example@name{Example}
+  \newcommand\nju@remark@name{Remark}
+  \newcommand\nju@problem@name{Problem}
+  \newcommand\nju@conjecture@name{Conjecture}
+  \newcommand\nju@solution@name{Solution}
+\fi
+\theoremheaderfont{\bfseries}
+\newtheorem{assumption}{\nju@assumption@name}[chapter]
+\newtheorem{definition}{\nju@definition@name}[chapter]
+\newtheorem{proposition}{\nju@proposition@name}[chapter]
+\newtheorem{lemma}{\nju@lemma@name}[chapter]
+\newtheorem{theorem}{\nju@theorem@name}[chapter]
+\newtheorem{axiom}{\nju@axiom@name}[chapter]
+\newtheorem{corollary}{\nju@corollary@name}[chapter]
+\newtheorem{exercise}{\nju@exercise@name}[chapter]
+\newtheorem{example}{\nju@example@name}[chapter]
+\newtheorem{remark}{\nju@remark@name}[chapter]
+\newtheorem{problem}{\nju@problem@name}[chapter]
+\newtheorem{conjecture}{\nju@conjecture@name}[chapter]
+\newtheorem{solution}{\nju@solution@name}[chapter]
+
+%\RequirePackage{microtype}
+\ifnju@chinese
+\newcommand{\promisewords}{请独立完成作业，不得抄袭。\\若参考了其它资料，请给出引用。\\鼓励讨论，但需独立书写解题过程。}
+\else
+\newcommand{\promisewords}{I promise this work is done on my own with no plagiarism.}
+\fi
+\newcommand{\pshw}{\section*{\scshape Part I\ \ \ Homework}}
+\newcommand{\pscr}{\section*{\scshape Part II\ \ \ Correction}}
+\newcommand{\psfb}{\section*{\scshape Part III\ \ \ Feedback}}
+\newcommand{\Hrule}{\noindent\rule{\linewidth}{0.5mm}}
+
+\ifnju@awesomefont
+\RequirePackage{awesomefont}
+\fi
+
+\theorempostwork{\vspace{-0.5cm}\Hrule}
+\newtheorem*{pssolution}{\ifnju@awesomefont\faPencilSquareO\ \fi\nju@solution@name}
+\RequirePackage[listings]{tcolorbox}
+\newtcolorbox{ps@problem}[1]{fonttitle=\bfseries,title=#1,before skip=0.5cm, after skip=-0.5cm}
+\newenvironment{psproblem}[1][]{
+    \begin{ps@problem}{\ifnju@awesomefont\faQuestionCircle\ \fi\nju@problem@name\ #1}
+}{
+    \end{ps@problem}
+}
+%
+% \subsubsection{浮动对象}
+% \label{sec:float}
+% 设置浮动对象和文字之间的距离
+%    \begin{macrocode}
+\setlength{\floatsep}{20bp \@plus4pt \@minus1pt}
+\setlength{\intextsep}{20bp \@plus4pt \@minus2pt}
+\setlength{\textfloatsep}{20bp \@plus4pt \@minus2pt}
+\setlength{\@fptop}{0bp \@plus1.0fil}
+\setlength{\@fpsep}{12bp \@plus2.0fil}
+\setlength{\@fpbot}{0bp \@plus1.0fil}
+%    \end{macrocode}
+%
+% 下面这组命令使浮动对象的缺省值稍微宽松一点，从而防止幅度对象占据过多的文本页面，
+% 也可以防止在很大空白的浮动页上放置很小的图形。
+%    \begin{macrocode}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.65}
+\renewcommand{\floatpagefraction}{0.60}
+%    \end{macrocode}
+%
+% 定制浮动图形和表格标题样式
+% \begin{itemize}
+%   \item 图表标题字体为 11pt， 这里写作大五号
+%   \item 去掉图表号后面的冒号。图序与图名文字之间空一个汉字符宽度。
+%   \item 图：caption 在下，段前空 6 磅，段后空 12 磅
+%   \item 表：caption 在上，段前空 12 磅，段后空 6 磅
+% \end{itemize}
+%
+%    \begin{macrocode}
+\let\old@tabular\@tabular
+\def\nju@tabular{\dawu[1.5]\old@tabular}
+\DeclareCaptionLabelFormat{nju}{{\dawu[1.5]\normalfont #1~#2}}
+\DeclareCaptionLabelSeparator{nju}{\hspace{1em}}
+\DeclareCaptionFont{nju}{\dawu[1.5]}
+\captionsetup{labelformat=nju,labelsep=nju,font=nju,skip=6bp}
+\captionsetup[table]{position=top}
+\captionsetup[figure]{position=bottom}
+\captionsetup[sub]{font=nju}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\renewcommand{\thesubtable}{(\alph{subtable})}
+% \renewcommand{\p@subfigure}{:}
+%    \end{macrocode}
+% 我们采用 \pkg{longtable} 来处理跨页的表格。同样我们需要设置其默认字体为五号。
+%    \begin{macrocode}
+\let\nju@LT@array\LT@array
+\def\LT@array{\dawu[1.5]\nju@LT@array} % set default font size
+%    \end{macrocode}
+%
+% \begin{macro}{\hlinewd}
+% 简单的表格使用三线表推荐用 \cs{hlinewd}。如果表格比较复杂还是用 \pkg{booktabs} 的命令好一些。
+%    \begin{macrocode}
+\def\hlinewd#1{%
+  \noalign{\ifnum0=`}\fi\hrule \@height #1 \futurelet
+    \reserved@a\@xhline}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \subsubsection{章节标题}
+% \label{sec:theor}
+%    \begin{macrocode}
+\ifnju@chinese
+  \ctexset{%
+    chapter/name={第,章},
+    appendixname=附录,
+    contentsname={目\hspace{\ccwd}录},
+    listfigurename=插图索引,
+    listtablename=表格索引,
+    figurename=图,
+    tablename=表,
+    bibname=参考文献,
+    indexname=索引,
+  }
+  \newcommand\listequationname{公式索引}
+  \newcommand\equationname{公式}
+\else
+  \newcommand\listequationname{List of Equations}
+  \newcommand\equationname{Equation}
+\fi
+\newcommand{\cabstractname}{摘\hspace{\ccwd}要}
+\newcommand{\eabstractname}{Abstract}
+\let\CJK@todaysave=\today
+\def\CJK@todaysmall@short{\the\year 年 \the\month 月}
+\def\CJK@todaysmall{\the\year 年 \the\month 月 \the\day 日}
+\def\CJK@todaybig@short{\zhdigits{\the\year}年\zhnumber{\the\month}月}
+\def\CJK@todaybig{\zhdigits{\the\year}年\zhnumber{\the\month}月\zhnumber{\the\day}日}
+\def\CJK@today{\CJK@todaysmall}
+\renewcommand\today{\CJK@today}
+\newcommand\CJKtoday[1][1]{%
+  \ifcase#1\def\CJK@today{\CJK@todaysave}
+    \or\def\CJK@today{\CJK@todaysmall}
+    \or\def\CJK@today{\CJK@todaybig}
+  \fi}
+%    \end{macrocode}
+%
+% \pkg{fancyhdr} 定义页眉页脚很方便，但是有一个非常隐蔽的坑。通过 \pkg{fancyhdr}
+% 定义的样式在第一次被调用时会修改 \cs{chaptermark}，这会导致页眉信息错误（多余
+% 章号并且英文大写）。这是因为在原始的 \file{book.cls} 中定义如下（大意）：
+% \begin{latex}
+% \newcommand\chaptername{Chapter}
+% \newcommand\@chapapp{\chaptername}
+% \def\chaptermark#1{
+%   \markboth{\MakeUppercase{\@chapapp\ \thechapter}}{}}
+% \end{latex}
+% 很显然这个 \cs{\@chapapp} 不适合中文，因此我们使用\cs{CTEXthechapter}（
+% 如，“第 x 章”），同时会将 \cs{MakeUppercase} 去掉。也就是说我们会做如下动作：
+% \begin{latex}
+% \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\hskip\ccwd#1}{}}
+% \end{latex}
+% 但，\pkg{fancyhdr} 不知何故在 \cs{ps@fancy} 中对 \cs{chaptermark} 进行重定义
+% （其实一模一样），而这个 \cs{ps@fancy} 会在 \cs{fancypagestyle} 中使用，如下：
+% \begin{latex}
+% \newcommand{\fancypagestyle}[2]{%
+%   \@namedef{ps@#1}{\let\fancy@gbl\relax#2\relax\ps@fancy}}
+% \end{latex}
+% 这样的话，\cs{ps@fancy} 会在 \pkg{fancyhdr} 定义的任何样式首次样被激活时调用，从
+% 而覆盖我们的 \cs{chaptermark} 定义（后续样式再激活不会重复覆盖）。所以我们采用如下
+% 方法解决：
+%    \begin{macrocode}
+\AtBeginDocument{%
+  \pagestyle{nju@empty}
+  \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\hskip\ccwd#1}{}}}
+%    \end{macrocode}
+%
+% 各级标题格式设置。
+% \begin{description}
+% \item[chapter] 章序号与章名之间空一个汉字符 黑体三号字，居中书写，单倍行距，段
+%   前空 24 磅，段后空 18 磅。本科要求：段前段后间距 30/20 pt，行距 20pt。但正文
+%   章节 30pt 的话和样例效果不一致。
+% \item[section] 一级节标题，例如：\fbox{2.1 实验装置与实验方法}。节标题序号与标
+%   题名之间空一个汉字符（下同）。采用黑体四号（14pt）字居左书写，行距为固定
+%   值 20 磅，段前空 24 磅，段后空 6 磅。本科：25/12 pt，行距 18pt。
+% \item[subsection] 二级节标题，例如：\fbox{2.1.1 实验装置}。采用黑体 13pt 字居左
+%   书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。本科：中文黑体 12pt 字，
+%   英文 13pt 字，段间距 12/6 pt，行距 15pt。
+% \item[subsubsection] 三级节标题，例如：\fbox{2.1.2.1 归纳法}。采用黑体小四号
+%   （12pt）字居左书写，行距为固定值 20 磅，段前空 12 磅，段后空 6 磅。
+%
+% \end{description}
+%    \begin{macrocode}
+\newcommand\nju@chapter@titleformat[1]{%
+    \ifthenelse%
+      {\equal{#1}{\eabstractname}}%
+      {\bfseries #1}%
+      {#1}%
+  }
+\ctexset{%
+  chapter={
+    afterindent=true,
+    pagestyle={nju@headings},
+    beforeskip={9bp},
+    aftername=\hskip\ccwd,
+    afterskip={24bp},
+    format={\centering\sffamily\sanhao[1]},
+    nameformat=\relax,
+    numberformat=\relax,
+    titleformat=\nju@chapter@titleformat,
+    lofskip=0pt,
+    lotskip=0pt,
+  },
+  section={
+    afterindent=true,
+    beforeskip={24bp\@plus 1ex \@minus .2ex},
+    afterskip={6bp\@plus .2ex},
+    format={\sffamily\sihao[1.429]},
+  },
+  subsection={
+    afterindent=true,
+    beforeskip={16bp\@plus 1ex \@minus .2ex},
+    afterskip={6bp \@plus .2ex},
+    format={\sffamily\banxiaosi[1.538]},
+    numberformat={\sffamily\banxiaosi[1.538]},
+  },
+  subsubsection={
+    afterindent=true,
+    beforeskip={16bp\@plus 1ex \@minus .2ex},
+    afterskip={6bp \@plus .2ex},
+    format={\sffamily\xiaosi[1.667]},
+  },
+  paragraph/afterindent=true,
+  subparagraph/afterindent=true}
+%    \end{macrocode}
+%
+% \begin{macro}{\nju@chapter*}
+% 默认的 \cs{chapter*} 很难同时满足研究生院和本科生的论文要求。本科论文要求所有的
+% 章都出现在目录里，比如摘要、Abstract、主要符号表等，所以可以简单的扩展默
+% 认\cs{chapter*} 实现这个目的。但是研究生又不要这些出现在目录中，而且致谢和声明
+% 部分的章名、页眉和目录都不同，所以定义一个灵活的 \cs{nju@chapter*} 专门处理这些
+% 要求。
+%
+% \cs{nju@chapter*}\oarg{tocline}\marg{title}\oarg{header}: tocline 是出现在目录
+% 中的条目，如果为空则此 chapter 不出现在目录中，如果省略表示目录出现 title；
+% title 是章标题；header 是页眉出现的标题，如果忽略则取 title。通过这个宏我才真
+% 正体会到 \TeX\ macro 的力量！
+%    \begin{macrocode}
+\newcounter{nju@bookmark}
+\NewDocumentCommand\nju@chapter{s o m o}{
+  \IfBooleanF{#1}{%
+    \ClassError{njurepo}{You have to use the star form: \string\nju@chapter*}{}
+  }%
+  \ifnju@right\cleardoublepage\else\clearpage\fi\phantomsection%
+  \IfValueTF{#2}{%
+    \ifthenelse{\equal{#2}{}}{%
+      \addtocounter{nju@bookmark}\@ne
+      \pdfbookmark[0]{#3}{njuchapter.\thenju@bookmark}
+    }{%
+      \addcontentsline{toc}{chapter}{#3}
+    }
+  }{%
+    \addcontentsline{toc}{chapter}{#3}
+  }%
+  \ctexset{chapter/beforeskip=25bp}
+  \chapter*{#3}%
+  \ctexset{chapter/beforeskip=15bp}
+  \IfValueTF{#4}{%
+    \ifthenelse{\equal{#4}{}}
+    {\@mkboth{}{}}
+    {\@mkboth{#4}{#4}}
+  }{%
+    \@mkboth{#3}{#3}
+  }
+}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \subsubsection{目录}
+% \label{sec:toc}
+% 最多 4 层，即: x.x.x.x，对应的命令和层序号分别是：
+% \cs{chapter}(0), \cs{section}(1), \cs{subsection}(2), \cs{subsubsection}(3)。
+%    \begin{macrocode}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+%    \end{macrocode}
+%
+% 每章标题行前空 6 磅，后空 0 磅。章节名中英文用 Arial 字体，页码仍用 Times。
+% \begin{macro}{\tableofcontents}
+%    \begin{macrocode}
+\renewcommand\tableofcontents{%
+  \nju@chapter*[]{\contentsname}
+  \xiaosi[1.65]\@starttoc{toc}\normalsize}
+%    \end{macrocode}
+% 调整目录样式
+%    \begin{macrocode}
+\def\@pnumwidth{2em}
+\def\@tocrmarg{\@pnumwidth}
+\def\@dotsep{1}
+\renewcommand*\l@chapter[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \vskip 4bp \@plus\p@
+    \setlength\@tempdima{4em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      {#1}%
+      \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}\hfill%
+      \nobreak{#2}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+
+\patchcmd{\@dottedtocline}{\hb@xt@\@pnumwidth}{\hbox}{}{}
+\renewcommand*\l@section{%
+  \@dottedtocline{1}{\ccwd}{2.1em}}
+\renewcommand*\l@subsection{%
+  \@dottedtocline{2}{2\ccwd}{3em}}
+\renewcommand*\l@subsubsection{%
+  \@dottedtocline{3}{3.5em}{3.8em}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsection{附加页面}
+% \label{sec:etc}
+%
+% \subsubsection{封面}
+% \label{sec:cover}
+% 定义封面参数。
+%    \begin{macrocode}
+\def\nju@def@term#1{%
+  \define@key{nju}{#1}{\csname #1\endcsname{##1}}
+  \expandafter\gdef\csname #1\endcsname##1{%
+    \expandafter\gdef\csname nju@#1\endcsname{##1}}
+  \csname #1\endcsname{}}
+\nju@def@term{ctitle}
+\nju@def@term{csubtitle}
+\nju@def@term{csubsubtitle}
+\nju@def@term{etitle}
+\nju@def@term{esubtitle}
+\nju@def@term{esubsubtitle}
+\nju@def@term{cauthor}
+\nju@def@term{csupervisor}
+\nju@def@term{cassosupervisor}
+\nju@def@term{ccosupervisor}
+\nju@def@term{eauthor}
+\nju@def@term{esupervisor}
+\nju@def@term{eassosupervisor}
+\nju@def@term{ecosupervisor}
+\nju@def@term{cdegree}
+\nju@def@term{edegree}
+\nju@def@term{cdepartment}
+\nju@def@term{edepartment}
+\nju@def@term{cmajor}
+\nju@def@term{emajor}
+\nju@def@term{cdate}
+\nju@def@term{edate}
+\nju@def@term{stdid}
+\nju@def@term{mail}
+\cdate{\CJK@todaybig@short}
+\edate{\ifcase \month \or January\or February\or March\or April\or May%
+       \or June\or July \or August\or September\or October\or November
+       \or December\fi\unskip,\ \ \the\year}
+%    \end{macrocode}
+%
+% \begin{environment}{cabstract}
+% \begin{environment}{eabstract}
+% 摘要最好以环境的形式出现（否则命令的形式会导致开始结束的括号距离太远，我不喜
+% 欢），这就必须让环境能够自己保存内容留待以后使用。使用 \pkg{environ} 的
+% \cs{Collect@Body} 来实现。
+%    \begin{macrocode}
+\newcommand{\nju@@cabstract}[1]{\long\gdef\nju@cabstract{#1}}
+\newenvironment{cabstract}{\Collect@Body\nju@@cabstract}{}
+\newcommand{\nju@@eabstract}[1]{\long\gdef\nju@eabstract{#1}}
+\newenvironment{eabstract}{\Collect@Body\nju@@eabstract}{}
+%    \end{macrocode}
+% \end{environment}
+% \end{environment}
+%
+% \begin{macro}{\nju@parse@keywords}
+%   不同论文格式关键词之间的分割不太相同，我们用 \cs{ckeywords} 和
+%    \cs{ekeywords} 来收集关键词列表，然后用本命令来生成符合要求的格式。
+%    \begin{macrocode}
+\def\nju@parse@keywords#1{
+  \define@key{nju}{#1}{\csname #1\endcsname{##1}}
+  \expandafter\gdef\csname nju@#1\endcsname{}
+  \expandafter\gdef\csname #1\endcsname##1{
+    \@for\reserved@a:=##1\do{
+      \expandafter\ifx\csname nju@#1\endcsname\@empty\else
+        \expandafter\g@addto@macro\csname nju@#1\endcsname{%
+          \ignorespaces\csname nju@#1@separator\endcsname}
+      \fi
+      \expandafter\expandafter\expandafter\g@addto@macro%
+        \expandafter\csname nju@#1\expandafter\endcsname\expandafter{\reserved@a}}}}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\ckeywords}
+% \begin{macro}{\ekeywords}
+% 利用 \cs{nju@parse@keywords} 来定义，内部通过 \cs{nju@ckeywords} 和
+% \cs{nju@ekeywords} 来引用。
+%    \begin{macrocode}
+\nju@parse@keywords{ckeywords}
+\nju@parse@keywords{ekeywords}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\njusetup}
+% 由上可见，封面和封底有一大堆信息需要设置，为了简化操作界面，提供一
+% 个 \cs{njusetup} 命令支持 key/value 的方式来设置。key 就是前面各个设置项的
+% 名字。\note[说明：]{只能设置普通项，不支持环境项，
+% 如 \texttt{cabstract} 和 \texttt{eabstract}。} 由于这些设置项被 \cs{makecover}
+% 调用，所以此命令需要在 \cs{makecover} 之前被调用。
+%    \begin{macrocode}
+\def\njusetup{\kvsetkeys{nju}}
+%    \end{macrocode}
+% \end{macro}
+%
+% 定义封面用到的各种文字。
+%    \begin{macrocode}
+\def\nju@ckeywords@separator{；}
+\def\nju@ekeywords@separator{;}
+\def\nju@catalog@number@title{分类号}
+\def\nju@id@title{编号}
+\def\nju@title@sep{：}
+\def\nju@schoolname{南京大学}
+\def\nju@author@title{姓名}
+\def\nju@department@title{系别}
+\def\nju@major@title{专业}
+\def\nju@supervisor@title{指导教师}
+\def\nju@assosuper@title{辅导教师}
+\def\nju@studentid@title{学号}
+\def\nju@date@title{日期}
+\def\nju@mail@title{邮箱}
+\newcommand{\nju@ckeywords@title}{关键词：}
+\def\nju@title@pre{}
+
+\def\nju@eng@title@sep{:}
+\def\nju@eng@author@title{Name}
+\def\nju@eng@studentid@title{StdID}
+\def\nju@eng@date@title{Date}
+\def\nju@eng@mail@title{E-mail}
+%    \end{macrocode}
+%
+% 中文小型标题
+%    \begin{macrocode}
+\renewcommand{\maketitle}{
+  \nju@setup@pdfinfo
+  \begin{center} {\LARGE \ifnju@chinese\nju@ctitle\else\nju@etitle\fi}
+  \end{center}
+  \hspace*{\fill}
+  \ifnju@chinese
+    \nju@author@title\nju@title@sep\CJKunderline{\nju@cauthor}
+  \else
+    \nju@eng@author@title\nju@eng@title@sep\underline{\nju@eauthor}
+  \fi
+  \hspace*{\fill}
+  \ifx\nju@stdid\@empty\relax
+  \else
+    \ifnju@chinese
+      \nju@studentid@title\nju@title@sep\CJKunderline{\nju@stdid}
+    \else
+      \nju@eng@studentid@title\nju@eng@title@sep\underline{\nju@stdid}
+    \fi
+  \fi
+  \hspace*{\fill}
+  \ifnju@chinese
+    \nju@date@title\nju@title@sep\CJKunderline{\today}
+  \else
+    \nju@eng@date@title\nju@eng@title@sep\CJKunderline{\nju@edate}
+  \fi
+  \hspace*{\fill}\\
+}
+%    \end{macrocode}
+%
+% 别样封面
+%    \begin{macrocode}
+\newcommand{\maketitlepage}{
+  \nju@setup@pdfinfo
+  \begin{titlepage}
+    \begin{center}
+    \ifx\nju@esubsubtitle\@empty\relax  {\LARGE\sffamily\scshape\ifnju@chinese\nju@csubsubtitle\else\nju@esubsubtitle\fi\ }\\[1.5cm]
+    \else
+    {\LARGE\sffamily\scshape \ifnju@chinese\nju@csubsubtitle\else\nju@esubsubtitle\fi}\\[1.5cm]
+    \fi
+		{\Large\sffamily\scshape \ifnju@chinese\nju@csubtitle\else\nju@esubtitle\fi}\\
+    \rule{\linewidth}{0.5mm} \\[0.4cm]
+		{\huge\sffamily\bfseries \ifnju@chinese\nju@ctitle\else\nju@etitle\fi}\\
+		\rule{\linewidth}{0.5mm} \\[1.5cm]
+			
+		\begin{center}
+			\begin{tabular}{@{\hspace{0.5cm}}l@{\hspace{0.5cm}}l}
+				\nju@eauthor & \nju@stdid\\
+			\end{tabular}
+		\end{center}
+		\vfill
+		{\large \nju@edate}
+    \end{center}
+    \ifnju@right\cleardoublepage\else\clearpage\fi
+  \end{titlepage}
+}
+%    \end{macrocode}
+%
+% \myentry{封面第一页}
+% \begin{macro}{\nju@first@titlepage}
+% 题名使用一号黑体字，一行写不下时可分两行写，并采用 1.25 倍行距。
+% 申请学位的学科门类: 小二号宋体字。
+% 中文封面页边距：
+%  上- 6.0 厘米，下- 5.5 厘米，左- 4.0 厘米，右- 4.0 厘米，装订线 0 厘米；
+%
+%    \begin{macrocode}
+\newcommand\nju@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+\newlength{\nju@title@width}
+\ifxetex % todo: ugly codes
+  \newcommand{\nju@put@title}[2][\nju@title@width]{%
+  \begin{CJKfilltwosides}[b]{#1}#2\end{CJKfilltwosides}}
+\else
+  \newcommand{\nju@put@title}[2][\nju@title@width]{%
+  \begin{CJKfilltwosides}{#1}#2\end{CJKfilltwosides}}
+\fi
+\newcommand{\nju@first@titlepage}{
+  \begin{center}
+    \vspace*{-1.6cm}
+    \parbox[b][2.4cm][t]{\textwidth}{%
+      \rule{1cm}{0cm}}
+      \vskip0.65cm
+      \par\vskip2cm
+      {\xiaochu\heiti\ziju{0.5}\textbf\nju@csubtitle}
+      \vskip2.2cm\hskip0.8cm
+      \noindent\heiti\xiaoer\nju@title@pre
+      \parbox[t]{12cm}{%
+      \ignorespaces\yihao[1.51]%
+      \renewcommand{\CJKunderlinebasesep}{0.25cm}%
+      \renewcommand{\ULthickness}{1.3pt}%
+      \ifxetex
+        \xeCJKsetup{underline/format=\color{black}}%
+      \else
+        \def\CJKunderlinecolor{\color{black}}%
+      \fi
+      \centering\CJKunderline*{\nju@ctitle}
+      
+    }%
+      \vskip1.3cm
+%    \end{macrocode}
+%
+% 作者及导师信息部分使用三号仿宋字
+%    \begin{macrocode}
+      \vskip0.75cm
+      \ifx\nju@cassosupervisor\@empty%
+        \def\nju@tempa{7.15cm}
+      \else%
+        \def\nju@tempa{8.15cm}
+      \fi%
+      \parbox[t][\nju@tempa][t]{\textwidth}{%
+        {\fangsong\sanhao[1.95]%
+         \hspace*{1.9cm}
+         \setlength{\nju@title@width}{4em}
+         \setlength{\extrarowheight}{6pt}
+         \ifxetex % todo: ugly codes
+           \begin{tabular}{p{\nju@title@width}@{}l@{\extracolsep{8pt}}l}
+         \else
+           \begin{tabular}{p{\nju@title@width}l@{}l}
+         \fi
+             \nju@put@title{\nju@department@title} & \nju@title@sep
+               & \nju@cdepartment\\
+             \nju@put@title{\nju@major@title}      & \nju@title@sep
+               & \nju@cmajor\\
+             \nju@put@title{\nju@author@title}     & \nju@title@sep
+               & \nju@cauthor \\
+             \nju@put@title{\nju@supervisor@title} & \nju@title@sep
+               & \nju@csupervisor\\
+             \ifx\nju@cassosupervisor\@empty\else%
+               \nju@put@title{\nju@assosuper@title} & \nju@title@sep
+               & \nju@cassosupervisor\\
+             \fi
+           \end{tabular}
+        }}
+%    \end{macrocode}
+%
+% 论文成文打印的日期，用三号宋体汉字，不用阿拉伯数字
+% 本科：论文成文打印的日期用阿拉伯数字，采用小四号宋体
+%    \begin{macrocode}
+     \begin{center}
+       {\vskip-1.0cm\xiaosi
+         \songti\nju@cdate}
+     \end{center}
+    \end{center}} % end of titlepage
+%    \end{macrocode}
+% \end{macro}
+%
+% \myentry{英文封面}
+% \begin{macro}{\nju@engcover}
+%    \begin{macrocode}
+\newcommand{\nju@engcover}{%
+  \begin{center}
+    \vspace*{-5pt}
+    \parbox[t][5.2cm][t]{\paperwidth-7.2cm}{
+      \renewcommand{\baselinestretch}{1.5}
+      \begin{center}
+        \erhao[1.1]\bfseries\sffamily\nju@etitle%
+      \end{center}}
+    \parbox[t][][b]{\paperwidth-7.2cm}{
+      \renewcommand{\baselinestretch}{1.3}
+      \begin{center}
+        \sanhao\sffamily by\\[3bp]
+        \bfseries\nju@eauthor%
+        \ifx\nju@emajor\empty\relax\else
+          \\(~\nju@emajor~)%
+        \fi
+      \end{center}}
+    \par\vspace{0.9cm}
+    \parbox[t][2.1cm][t]{\paperwidth-7.2cm}{
+      \renewcommand{\baselinestretch}{1.2}
+      \xiaosan\centering
+      \begin{tabular}{rl}
+        Supervisor : & \nju@esupervisor\\
+        \ifx\nju@eassosupervisor\@empty
+          \else Associate Supervisor : & \nju@eassosupervisor\\\fi
+        \ifx\nju@ecosupervisor\@empty
+          \else Cooperate Supervisor : & \nju@ecosupervisor\\\fi
+      \end{tabular}}
+    \parbox[t][2cm][b]{\paperwidth-7.2cm}{
+    \begin{center}
+      \sanhao\bfseries\sffamily\nju@edate
+    \end{center}}
+  \end{center}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\makecover}
+% 生成封面总命令。
+%    \begin{macrocode}
+\def\makecover{%
+  \nju@setup@pdfinfo\nju@makecover}
+\def\nju@setup@pdfinfo{%
+  \ifnju@chinese
+    \hypersetup{
+      pdftitle    = \nju@ctitle,
+      pdfauthor   = \nju@cauthor,
+      pdfsubject  = \nju@cdegree,
+      pdfkeywords = \nju@ckeywords,
+    }%
+  \else
+    \hypersetup{
+      pdftitle    = \nju@etitle,
+      pdfauthor   = \nju@eauthor,
+      pdfsubject  = \nju@edegree,
+      pdfkeywords = \nju@ekeywords,
+    }%
+  \fi
+  \hypersetup{
+    pdfcreator={\njurepo-v\version}}}
+\NewDocumentCommand{\nju@makecover}{o}{
+  \phantomsection
+  \pdfbookmark[-1]{\nju@ctitle}{ctitle}
+  \normalsize%
+  \begin{titlepage}
+    \ifnju@chinese
+      \nju@first@titlepage
+    \else
+      \nju@engcover
+    \fi
+    \ifnju@right\cleardoublepage\else\clearpage\fi
+  \end{titlepage}
+}
+\newcommand{\makeabstract}{
+  \normalsize
+  \nju@makeabstract
+  \let\@tabular\nju@tabular
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsubsection{摘要}
+% \label{sec:abstractformat}
+%
+% \begin{macro}{\nju@put@keywords}
+% 排版关键字。
+%    \begin{macrocode}
+\newbox\nju@kw
+\newcommand\nju@put@keywords[2]{%
+  \begingroup
+    \setbox\nju@kw=\hbox{#1}
+    \indent%
+    \box\nju@kw#2\par
+  \endgroup}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\nju@makeabstract}
+% 中文摘要部分的标题为“\textbf{摘要}”，用黑体三号字。
+%    \begin{macrocode}
+\newcommand{\nju@makeabstract}{%
+  \clearpage
+  \pagestyle{nju@plain}
+  \pagenumbering{Roman}
+%    \end{macrocode}
+%
+% 摘要内容用小四号字书写，两端对齐，汉字用宋体，外文字用 Times New Roman 体，
+% 标点符号一律用中文输入状态下的标点符号。
+%    \begin{macrocode}
+  \ifnju@chinese
+    \nju@setchinese
+    \nju@chapter*[]{\cabstractname} % no tocline
+    \nju@cabstract
+    \vskip12bp
+    \nju@put@keywords{\textbf\nju@ckeywords@title}{\nju@ckeywords}
+  \else
+  \nju@setenglish
+    \nju@chapter*[]{\eabstractname} % no tocline
+    \nju@eabstract
+    \vskip12bp
+    \nju@put@keywords{%
+      \textbf{Key Words:\enskip}}{\nju@ekeywords}%
+  \fi
+  \nju@setdefaultlanguage
+}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+%
+% \subsubsection{主要符号表}
+% \label{sec:denotationfmt}
+% \begin{environment}{denotation}
+% 主要符号对照表。
+%    \begin{macrocode}
+\ifnju@chinese
+  \newcommand\nju@denotation@name{主要符号对照表}
+\else
+  \newcommand\nju@denotation@name{Nomenclature}
+\fi
+\newenvironment{denotation}[1][2.5cm]{%
+  \nju@chapter*[]{\nju@denotation@name} % no tocline
+  \vskip-30bp\xiaosi[1.6]\begin{nju@denotation}[labelwidth=#1]
+}{%
+  \end{nju@denotation}
+}
+\newlist{nju@denotation}{description}{1}
+\setlist[nju@denotation]{%
+  nosep,
+  font=\normalfont,
+  align=left,
+  leftmargin=!, % sum of the following 3 lengths
+  labelindent=0pt,
+  labelwidth=2.5cm,
+  labelsep*=0.5cm,
+  itemindent=0pt,
+}
+%    \end{macrocode}
+% \end{environment}
+%
+% \subsubsection{致谢与声明}
+% \label{sec:ackanddeclare}
+%
+% \begin{environment}{acknowledgement}
+% 支持扫描文件替换。
+%    \begin{macrocode}
+\ifnju@chinese
+  \newcommand\nju@ack@name{致\hspace{\ccwd}谢}
+\else
+  \newcommand\nju@ack@name{Acknowledgments}
+\fi
+\newcommand\nju@declarename{声\hspace{\ccwd}明}
+\newcommand{\nju@declaretext}{本人郑重声明：所呈交的学位论文，是本人在导师指导下
+  ，独立进行研究工作所取得的成果。尽我所知，除文中已经注明引用的内容外，本学位论
+  文的研究成果不包含任何他人享有著作权的内容。对本论文所涉及的研究工作做出贡献的
+  其他个人和集体，均已在文中以明确方式标明。}
+\newcommand{\nju@signature}{签\hspace{1em}名：}
+\newcommand{\nju@backdate}{日\hspace{1em}期：}
+%    \end{macrocode}
+%
+%  \cs{cleardoublepage}，使新开章节的页码到达正确的状态。否则会因为 \cs{addcontentsline}
+% 在 chapter 之前而导致目录页码错误。
+% 定义致谢与声明环境。
+%    \begin{macrocode}
+\NewDocumentEnvironment{acknowledgement}{o}{%
+    \nju@chapter*{\nju@ack@name}
+  }
+%    \end{macrocode}
+%
+% 声明部分
+%    \begin{macrocode}
+  {
+    \ifnju@english\relax\else%
+      \IfNoValueTF{#1}{%
+        \nju@chapter*{\nju@declarename}
+        \par{\xiaosi\parindent2em\nju@declaretext}\vskip2cm
+        {\xiaosi\hfill\nju@signature\nju@underline[2.5cm]\relax%
+         \nju@backdate\nju@underline[2.5cm]\relax}%
+      }{%
+        \includepdf[pagecommand={\thispagestyle{nju@empty}%
+          \phantomsection\addcontentsline{toc}{chapter}{\nju@declarename}%
+        }]{#1}%
+      }%
+    \fi
+  }
+%    \end{macrocode}
+% \end{environment}
+%
+% \subsubsection{图表索引}
+% \label{sec:threeindex}
+% \begin{macro}{\listoffigures}
+% \begin{macro}{\listoffigures*}
+% \begin{macro}{\listoftables}
+% \begin{macro}{\listoftables*}
+% 定义图表以及公式目录样式。
+%    \begin{macrocode}
+\def\nju@starttoc#1{% #1: float type, prepend type name in \listof*** entry.
+  \let\oldnumberline\numberline
+  \def\numberline##1{\oldnumberline{\csname #1name\endcsname\hskip.4em ##1}}
+  \@starttoc{\csname ext@#1\endcsname}
+  \let\numberline\oldnumberline}
+\def\nju@listof#1{% #1: float type
+  \@ifstar
+    {\nju@chapter*[]{\csname list#1name\endcsname}\nju@starttoc{#1}}
+    {\nju@chapter*{\csname list#1name\endcsname}\nju@starttoc{#1}}}
+\renewcommand\listoffigures{\nju@listof{figure}}
+\renewcommand*\l@figure{\addvspace{6bp}\@dottedtocline{1}{0em}{4em}}
+\renewcommand\listoftables{\nju@listof{table}}
+\let\l@table\l@figure
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\equcaption}
+%   本命令只是为了生成公式列表，所以这个 caption 是假的。如果要编号最好用
+%    equation 环境，如果是其它编号环境，请手动添加 \cs{equcaption}。
+% 用法如下：
+%
+% \cs{equcaption}\marg{counter}
+%
+% \marg{counter} 指定出现在索引中的编号，一般取 \cs{theequation}，如果你是用
+%  \pkg{amsmath} 的 \cs{tag}，那么默认是 \cs{tag} 的参数；除此之外可能需要你
+% 手工指定。
+%
+%    \begin{macrocode}
+\def\ext@equation{loe}
+\def\equcaption#1{%
+  \addcontentsline{\ext@equation}{equation}%
+                  {\protect\numberline{#1}}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\listofequations}
+% \begin{macro}{\listofequations*}
+% \LaTeX\ 默认没有公式索引，此处定义自己的 \cs{listofequations}。
+%    \begin{macrocode}
+\newcommand\listofequations{\nju@listof{equation}}
+\let\l@equation\l@figure
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \subsection{参考文献}
+% \label{sec:ref}
+%
+% \begin{macro}{\inlinecite}
+% 依赖于 \pkg{natbib} 宏包，修改其中的命令。 旧命令 \cs{onlinecite} 依然可用。
+%    \begin{macrocode}
+\newcommand\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{,}}
+\DeclareRobustCommand\inlinecite{\@inlinecite}
+\def\@inlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
+\let\onlinecite\inlinecite
+%    \end{macrocode}
+% \end{macro}
+%
+% 参考文献的正文部分用五号字。
+% 行距采用固定值 16 磅，段前空 3 磅，段后空 0 磅。
+%
+% 复用 \pkg{natbib} 的 \texttt{thebibliography} 环境，调整距离。
+%    \begin{macrocode}
+\renewcommand\bibsection{\nju@chapter*{\bibname}}
+\renewcommand\bibfont{\wuhao[1.5]}
+\setlength\bibhang{2\ccwd}
+\addtolength{\bibsep}{-0.7em}
+\setlength{\labelsep}{0.4em}
+\def\@biblabel#1{[#1]\hfill}
+%    \end{macrocode}
+%
+% 两种引用样式：
+%    \begin{macrocode}
+\expandafter\newcommand\csname bibstyle@numeric\endcsname{%
+  \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
+\expandafter\newcommand\csname bibstyle@author-year\endcsname{%
+  \bibpunct{(}{)}{;}{a}{,}{,}}
+%    \end{macrocode}
+%
+% 下面修改 \pkg{natbib} 的引用格式，主要是将页码写在上标位置。
+% numeric 模式的 \cs{citet} 的页码：
+%    \begin{macrocode}
+\patchcmd\NAT@citexnum{%
+  \@ifnum{\NAT@ctype=\z@}{%
+    \if*#2*\else\NAT@cmt#2\fi
+  }{}%
+  \NAT@mbox{\NAT@@close}%
+}{%
+  \NAT@mbox{\NAT@@close}%
+  \@ifnum{\NAT@ctype=\z@}{%
+    \if*#2*\else\textsuperscript{#2}\fi
+  }{}%
+}{}{}
+%    \end{macrocode}
+%
+% Numeric 模式的 \cs{citep} 的页码：
+%    \begin{macrocode}
+\renewcommand\NAT@citesuper[3]{\ifNAT@swa
+  \if*#2*\else#2\NAT@spacechar\fi
+\unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close\if*#3*\else#3\fi}%
+   \else #1\fi\endgroup}
+%    \end{macrocode}
+%
+% Author-year 模式的 \cs{citet} 的页码：
+%    \begin{macrocode}
+\patchcmd{\NAT@citex}{%
+  \if*#2*\else\NAT@cmt#2\fi
+  \if\relax\NAT@date\relax\else\NAT@@close\fi
+}{%
+  \if\relax\NAT@date\relax\else\NAT@@close\fi
+  \if*#2*\else\textsuperscript{#2}\fi
+}{}{}
+%    \end{macrocode}
+%
+% Author-year 模式的 \cs{citep} 的页码：
+%    \begin{macrocode}
+\renewcommand\NAT@citesuper[3]{\ifNAT@swa
+  \if*#2*\else#2\NAT@spacechar\fi
+\unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close\if*#3*\else#3\fi}%
+   \else #1\fi\endgroup}
+%    \end{macrocode}
+%
+% 在顺序编码制下，\pkg{natbib} 只有在三个以上连续文献引用才会使用连接号，
+% 这里修改为允许两个引用使用连接号。
+%    \begin{macrocode}
+\patchcmd{\NAT@citexnum}{%
+  \ifx\NAT@last@yr\relax
+    \def@NAT@last@yr{\@citea}%
+  \else
+    \def@NAT@last@yr{--\NAT@penalty}%
+  \fi
+}{%
+  \def@NAT@last@yr{-\NAT@penalty}%
+}{}{}
+%    \end{macrocode}
+%
+% \subsection{附录}
+% \label{sec:appendix}
+% \begin{environment}{appendix}
+% 主要给本科做外文翻译用。
+%    \begin{macrocode}
+\let\nju@appendix\appendix
+\renewenvironment{appendix}{%
+  \let\title\nju@appendix@title
+  \nju@appendix}{%
+  \let\title\@gobble}
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{macro}{\title}
+% 本科外文翻译文章的标题，用法：\cs{title}\marg{资料标题}。这个命令只能在附录环
+% 境下使用。
+%    \begin{macrocode}
+\let\title\@gobble
+\newcommand{\nju@appendix@title}[1]{%
+  \begin{center}
+    \xiaosi[1.667] #1
+  \end{center}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{environment}{translationbib}
+% 外文资料的参考文用宋体五号字，取固定行距17pt，段前后3pt。
+%    \begin{macrocode}
+\newlist{translationbib}{enumerate}{1}
+\setlist[translationbib]{label=[\arabic*],align=left,nosep,itemsep=6bp,
+  leftmargin=10mm,labelsep=!,before=\vspace{0.5\baselineskip}\wuhao[1.3]}
+%    \end{macrocode}
+% \end{environment}
+%\marginpar{这是边注}
+%
+%\subsection{颜色}
+%    \begin{macrocode}
+\RequirePackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\redoverlay}[2]{\textcolor<#2>{red}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\greenoverlay}[2]{\textcolor<#2>{green}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\blueoverlay}[2]{\textcolor<#2>{blue}{#1}}
+\newcommand{\purple}[1]{\textcolor{purple}{#1}}
+\newcommand{\cyan}[1]{\textcolor{cyan}{#1}}
+\newcommand{\teal}[1]{\textcolor{teal}{#1}}
+\newcommand{\magenta}[1]{{\color{magenta}#1}}
+\newcommand{\note}[2][Note]{{%
+  \color{magenta}{\bfseries #1}\emph{#2}}}
+%    \end{macrocode}
+%
+%\subsection{代码}
+%    \begin{macrocode}
+\RequirePackage{verbatim}
+\RequirePackage{algorithm}
+\RequirePackage{algpseudocode}
+\newcommand{\pseduo}[2]{
+\begin{algorithm}
+	\caption{\textsc{#1}}
+	\label{alg:#1}
+	\begin{algorithmic}[1]
+		#2
+	\end{algorithmic}
+\end{algorithm}
+}
+\RequirePackage{listings}
+\lstdefinestyle{lstStyleBase}{%
+   basicstyle=\small\ttfamily,
+   aboveskip=\medskipamount,
+   belowskip=\medskipamount,
+   lineskip=0pt,
+   boxpos=c,
+   showlines=false,
+   extendedchars=true,
+   upquote=true,
+   tabsize=2,
+   showtabs=false,
+   showspaces=false,
+   showstringspaces=false,
+   numbers=none,
+   linewidth=\linewidth,
+   xleftmargin=4pt,
+   xrightmargin=0pt,
+   resetmargins=false,
+   breaklines=true,
+   breakatwhitespace=false,
+   breakindent=0pt,
+   breakautoindent=true,
+   columns=flexible,
+   keepspaces=true,
+   gobble=2,
+   framesep=3pt,
+   rulesep=1pt,
+   framerule=1pt,
+   backgroundcolor=\color{gray!5},
+   stringstyle=\color{green!40!black!100},
+   keywordstyle=\bfseries\color{blue!50!black},
+   commentstyle=\slshape\color{black!60}
+}
+
+\newtcblisting{commandshell}{colback=black,colupper=white,colframe=yellow!75!black, listing only,listing options={style=tcblatex,language=sh},
+every listing line={\textcolor{red}{\small\ttfamily\bfseries \$>}}}
+
+\lstdefinestyle{lstStyleShell}{%
+   style=lstStyleBase,
+   frame=l,
+   rulecolor=\color{purple},
+   language=bash}
+
+\lstdefinestyle{lstStyleLaTeX}{%
+   style=lstStyleBase,
+   frame=l,
+   rulecolor=\color{violet},
+   language=[LaTeX]TeX}
+
+\lstdefinestyle{lstStylecdisplay}{%
+  style=lstStyleBase,
+  frame=tb,
+  rulecolor=\color{cyan},
+  keywordstyle=\color{magenta}\bfseries\ttfamily,
+  commentstyle=\color{codegreen}\ttfamily,
+	stringstyle=\color{codepurple}\ttfamily\sffamily,
+	backgroundcolor=\color{backcolour},
+	captionpos=b,
+	numbers=left,
+	numberstyle=\footnotesize\color{codegray},
+	stepnumber=1,
+  numbersep=5pt,
+  language=C
+}
+
+\lstdefinestyle{lstStylecpseudo}{%
+  style=lstStyleBase,
+  frame=none,
+  keywordstyle=\color{magenta}\bfseries\ttfamily,
+  commentstyle=\color{codegreen}\ttfamily,
+	stringstyle=\color{codepurple}\ttfamily\sffamily,
+	captionpos=b,
+	numbers=left,
+	numberstyle=\footnotesize\color{codegray},
+	stepnumber=1,
+  numbersep=5pt,
+  language=C
+}
+
+\lstdefinestyle{lstStylecplus}{%
+  style=lstStyleBase,
+  frame=l,
+  rulecolor=\color{blue},
+  language=C++
+}
+
+\lstdefinestyle{lstStyleverilog}{%
+  style=lstStyleBase,
+  frame=l,
+  rulecolor=\color{brown},
+  language=verilog
+}
+
+\lstdefinestyle{lstStylepython}{%
+  style=lstStyleBase,
+  frame=l,
+  rulecolor=\color{pink},
+  language=python
+}
+
+\lstnewenvironment{code}{\lstset{style=lstStyleBase}}{}
+\lstnewenvironment{latex}{\lstset{style=lstStyleLaTeX}}{}
+\lstnewenvironment{shell}{\lstset{style=lstStyleShell}}{}
+\lstnewenvironment{cdisplay}{\lstset{style=lstStylecdisplay}}{}
+\lstnewenvironment{cplus}{\lstset{style=lstStylecplus}}{}
+\lstnewenvironment{verilog}{\lstset{style=lstStyleverilog}}{}
+\lstnewenvironment{python}{\lstset{style=lstStylepython}}{}
+\lstnewenvironment{cpseudo}{\lstset{style=lstStylecpseudo}}{}
+%    \end{macrocode}
+%
+% \subsection{快速插入图片或图表}
+%    \begin{macrocode}
+\newcommand{\figpf}[2]{
+	\begin{figure}[H]
+		\centering
+		\includegraphics[#1]{figs/#2}
+	\end{figure}
+}
+
+%%%%%%%%%%%%%%%%%%%%
+\newcommand{\figpfc}[3]{
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[#1]{figs/#2}
+		\caption{#3}
+		\label{fig:#2}
+	\end{figure}
+}
+%%%%%%%%%%%%%%%%%%%
+\newcommand{\tabncc}[3]{
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|*{#1}{c|}}
+		\toprule
+		#2\\
+		\bottomrule
+	\end{tabular}
+	\caption{#3}
+	\label{form:#3}
+\end{table}}
+%%%%%%%%%%%%%%%%%%%
+\newcommand{\tabnc}[2]{
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|*{#1}{c|}}
+		\toprule
+		#2\\
+		\bottomrule
+	\end{tabular}
+\end{table}}
+\newcommand{\tnl}{\tabularnewline\midrule}
+%    \end{macrocode}
+%
+% \subsection{借用dtx文件代码}
+%    \begin{macrocode}
+\def\cmd#1{\cs{\expandafter\cmd@to@cs\string#1}}
+\def\cmd@to@cs#1#2{\char\number`#2\relax}
+\DeclareRobustCommand\cs[1]{\texttt{\char`\\#1}}
+\newcommand*{\meta}[1]{{%
+  \ensuremath{\langle}\rmfamily\itshape#1\/\ensuremath{\rangle}}}
+\providecommand\marg[1]{%
+  {\ttfamily\char`\{}\meta{#1}{\ttfamily\char`\}}}
+\providecommand\oarg[1]{%
+  {\ttfamily[}\meta{#1}{\ttfamily]}}
+\providecommand\parg[1]{%
+  {\ttfamily(}\meta{#1}{\ttfamily)}}
+\providecommand\pkg[1]{{\sffamily#1}}
+%    \end{macrocode}
+% 
+% \subsection{水印}
+%    \begin{macrocode}
+\RequirePackage{watermark}
+\ifnju@draft
+\AtEndOfClass{
+	\watermark{% 
+		\parbox[b][\paperheight]{\paperwidth}{% 
+		\vfill 
+		\centering% 
+		\begin{tikzpicture}[remember picture,overlay] 
+			\node [rotate=45,scale=10] at ($(current page.center) +(-1cm,1cm)$) 
+			{\textcolor[gray]{0.8}{DRAFT}}; 
+			\node [rotate=45,scale=3] at ($(current page.center) +(1cm,-1cm)$) 
+			{\textcolor[gray]{0.75}{Compile time: \the\year - \the\month - \the\day}}; 
+		\end{tikzpicture}% 
+		\vfill 
+		}
+  }
+}
+\fi
+%    \end{macrocode}
+%
+% \subsection{自定义代码}
+%    \begin{macrocode}
+
+\newcommand{\blankpage}{
+	\clearpage
+	\begin{titlepage}
+		\null\vfil
+		\begin{center}
+			\textit{This page intentionally left blank.}
+		\end{center}
+	\end{titlepage}
+}
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+%    \end{macrocode}
+% \subsection{结束部分}
+% \label{sec:finish}
+%    \begin{macrocode}
+\AtEndOfClass{\sloppy}
+%    \end{macrocode}
+%</cls> 
+%
+%
+%
+% \iffalse
+%    \begin{macrocode}
+%<*dtx-style>
+\ProvidesPackage{dtx-style}
+\RequirePackage{hypdoc}
+\RequirePackage{ifthen}
+\RequirePackage[UTF8,scheme=chinese]{ctex}
+\RequirePackage{newpxtext}
+\RequirePackage{newpxmath}
+\RequirePackage[
+  top=2.5cm, bottom=2.5cm,
+  left=4cm, right=2cm,marginparwidth=2.6cm,marginparsep=3mm,
+  headsep=3mm]{geometry}
+\RequirePackage{array,longtable,booktabs}
+\RequirePackage{listings}
+\RequirePackage{fancyhdr}
+\RequirePackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\redoverlay}[2]{\textcolor<#2>{red}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\greenoverlay}[2]{\textcolor<#2>{green}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\blueoverlay}[2]{\textcolor<#2>{blue}{#1}}
+\newcommand{\purple}[1]{\textcolor{purple}{#1}}
+\newcommand{\cyan}[1]{\textcolor{cyan}{#1}}
+\newcommand{\teal}[1]{\textcolor{teal}{#1}}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{metalogo}
+\RequirePackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclareMathOperator{\Hamilton}{\hat{H}} 
+\ifthenelse{\equal{\@nameuse{g__ctex_fontset_tl}}{mac}}{%
+  \xeCJKsetwidth{‘’“”}{1em}
+}{}
+
+\colorlet{nju@macro}{blue!60!black}
+\colorlet{nju@env}{blue!70!black}
+\colorlet{nju@option}{purple}
+\patchcmd{\PrintMacroName}{\MacroFont}{\MacroFont\bfseries\color{nju@macro}}{}{}
+\patchcmd{\PrintDescribeMacro}{\MacroFont}{\MacroFont\bfseries\color{nju@macro}}{}{}
+\patchcmd{\PrintDescribeEnv}{\MacroFont}{\MacroFont\bfseries\color{nju@env}}{}{}
+\patchcmd{\PrintEnvName}{\MacroFont}{\MacroFont\bfseries\color{nju@env}}{}{}
+
+\def\DescribeOption{%
+  \leavevmode\@bsphack\begingroup\MakePrivateLetters%
+  \Describe@Option}
+\def\Describe@Option#1{\endgroup
+  \marginpar{\raggedleft\PrintDescribeOption{#1}}%
+  \nju@special@index{option}{#1}\@esphack\ignorespaces}
+\def\PrintDescribeOption#1{\strut \MacroFont\bfseries\sffamily\color{nju@option} #1\ }
+\def\nju@special@index#1#2{\@bsphack
+  \begingroup
+    \HD@target
+    \let\HDorg@encapchar\encapchar
+    \edef\encapchar usage{%
+      \HDorg@encapchar hdclindex{\the\c@HD@hypercount}{usage}%
+    }%
+    \index{#2\actualchar{\string\ttfamily\space#2}
+           (#1)\encapchar usage}%
+    \index{#1:\levelchar#2\actualchar
+           {\string\ttfamily\space#2}\encapchar usage}%
+  \endgroup
+  \@esphack}
+
+\lstdefinestyle{lstStyleBase}{%
+   basicstyle=\small\ttfamily,
+   aboveskip=\medskipamount,
+   belowskip=\medskipamount,
+   lineskip=0pt,
+   boxpos=c,
+   showlines=false,
+   extendedchars=true,
+   upquote=true,
+   tabsize=2,
+   showtabs=false,
+   showspaces=false,
+   showstringspaces=false,
+   numbers=none,
+   linewidth=\linewidth,
+   xleftmargin=4pt,
+   xrightmargin=0pt,
+   resetmargins=false,
+   breaklines=true,
+   breakatwhitespace=false,
+   breakindent=0pt,
+   breakautoindent=true,
+   columns=flexible,
+   keepspaces=true,
+   gobble=2,
+   framesep=3pt,
+   rulesep=1pt,
+   framerule=1pt,
+   backgroundcolor=\color{gray!5},
+   stringstyle=\color{green!40!black!100},
+   keywordstyle=\bfseries\color{blue!50!black},
+   commentstyle=\slshape\color{black!60}}
+
+\lstdefinestyle{lstStyleShell}{%
+   style=lstStyleBase,
+   frame=l,
+   rulecolor=\color{purple},
+   language=bash}
+
+\lstdefinestyle{lstStyleLaTeX}{%
+   style=lstStyleBase,
+   frame=l,
+   rulecolor=\color{violet},
+   language=[LaTeX]TeX}
+\lstdefinestyle{lstStylecplus}{%
+   style=lstStyleBase,
+   frame=l,
+   rulecolor=\color{blue},
+   language=C++
+ }
+
+\lstnewenvironment{latex}{\lstset{style=lstStyleLaTeX}}{}
+\lstnewenvironment{shell}{\lstset{style=lstStyleShell}}{}
+\lstnewenvironment{cplus}{\lstset{style=lstStylecplus}}{}
+
+\setlist{nosep}
+
+\DeclareDocumentCommand{\option}{m}{\textsf{#1}}
+\DeclareDocumentCommand{\env}{m}{\texttt{#1}}
+\DeclareDocumentCommand{\pkg}{s m}{%
+  \texttt{#2}\IfBooleanF#1{\nju@special@index{package}{#2}}}
+\DeclareDocumentCommand{\file}{s m}{%
+  \texttt{#2}\IfBooleanF#1{\nju@special@index{file}{#2}}}
+\newcommand{\myentry}[1]{%
+  \marginpar{\raggedleft\color{purple}\bfseries\strut #1}}
+\newcommand{\note}[2][Note]{{%
+  \color{magenta}{\bfseries #1}\emph{#2}}}
+
+\def\njurepo{\textsc{NJU}\-\textsc{repo}}
+\def\thuthesis{\textsc{Thu}\-\textsc{Thesis}}
+%</dtx-style>
+%    \end{macrocode}
+% \fi
+% \Finale
